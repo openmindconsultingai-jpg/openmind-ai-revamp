@@ -12,7 +12,7 @@ const Contact = () => {
               <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-gradient">Kontakt</span>
+              <span className="text-gradient text-glow">Kontakt</span>
             </h2>
             <p className="text-xl text-muted-foreground">
               Gotowy na rozmowę o przyszłości? Skontaktuj się z nami już dziś
@@ -27,7 +27,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1 text-foreground">Email</h3>
+                    <h3 className="text-lg font-semibold mb-1 text-foreground text-glow-subtle">Email</h3>
                     <a href="mailto:biuro@openmind.pl" className="text-primary hover:underline text-lg">
                       biuro@openmind.pl
                     </a>
@@ -39,7 +39,7 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1 text-foreground">Telefon</h3>
+                    <h3 className="text-lg font-semibold mb-1 text-foreground text-glow-subtle">Telefon</h3>
                     <a href="tel:+48693016974" className="text-primary hover:underline text-lg">
                       +48 693 016 974
                     </a>
@@ -51,7 +51,7 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1 text-foreground">Lokalizacja</h3>
+                    <h3 className="text-lg font-semibold mb-1 text-foreground text-glow-subtle">Lokalizacja</h3>
                     <p className="text-muted-foreground text-lg">
                       Polska
                     </p>
@@ -60,7 +60,7 @@ const Contact = () => {
               </div>
 
               <div className="bg-primary/5 border border-primary/20 rounded-xl p-6">
-                <h3 className="text-lg font-semibold mb-3 text-foreground">Godziny pracy</h3>
+                <h3 className="text-lg font-semibold mb-3 text-foreground text-glow-subtle">Godziny pracy</h3>
                 <div className="space-y-2 text-muted-foreground">
                   <p>Poniedziałek - Piątek: 9:00 - 17:00</p>
                   <p>Sobota - Niedziela: Zamknięte</p>

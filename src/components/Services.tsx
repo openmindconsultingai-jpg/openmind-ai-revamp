@@ -51,7 +51,7 @@ const Services = () => {
             <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-gradient">Nasze Usługi</span>
+            <span className="text-gradient text-glow">Nasze Usługi</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Kompleksowe rozwiązania AI dostosowane do potrzeb nowoczesnych organizacji, 
@@ -75,7 +75,7 @@ const Services = () => {
                     <Icon className="w-7 h-7 text-primary" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold mb-4 text-foreground">
+                  <h3 className="text-2xl font-bold mb-4 text-foreground text-glow-subtle">
                     {service.title}
                   </h3>
                   

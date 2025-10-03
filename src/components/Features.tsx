@@ -37,7 +37,7 @@ const Features = () => {
                     <Icon className="w-8 h-8 text-primary" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-gradient transition-colors">
+                  <h3 className="text-2xl font-bold mb-4 text-foreground text-glow-subtle group-hover:text-gradient transition-colors">
                     {feature.title}
                   </h3>
                   

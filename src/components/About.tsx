@@ -13,7 +13,7 @@ const About = () => {
               <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-gradient">O nas</span>
+              <span className="text-gradient text-glow">O nas</span>
             </h2>
             <p className="text-xl text-muted-foreground">
               Jesteśmy zespołem pasjonatów technologii AI, którzy wierzą w demokratyzację dostępu do innowacyjnych narzędzi.
@@ -25,7 +25,7 @@ const About = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                 <Brain className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Ekspertyza</h3>
+              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">Ekspertyza</h3>
               <p className="text-muted-foreground">
                 Głęboka wiedza o możliwościach AI i jej praktycznym zastosowaniu
               </p>
@@ -35,7 +35,7 @@ const About = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                 <Target className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Precyzja</h3>
+              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">Precyzja</h3>
               <p className="text-muted-foreground">
                 Dopasowane rozwiązania, które rzeczywiście odpowiadają na Twoje potrzeby
               </p>
@@ -45,7 +45,7 @@ const About = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                 <Lightbulb className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Innowacja</h3>
+              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">Innowacja</h3>
               <p className="text-muted-foreground">
                 Najnowsze technologie w służbie praktycznych zastosowań
               </p>
