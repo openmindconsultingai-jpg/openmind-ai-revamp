@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
+import { supabase } from '@/integrations/supabase/client';
 
 const contactSchema = z.object({
   name: z.string()
@@ -51,25 +52,32 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Enkodowanie danych dla mailto
-      const subject = encodeURIComponent(`Wiadomość od ${data.name}`);
-      const body = encodeURIComponent(
-        `Imię: ${data.name}\nEmail: ${data.email}\n\nWiadomość:\n${data.message}`
-      );
+      console.log("Wysyłanie wiadomości...", data);
       
-      // Otwórz klienta email
-      window.location.href = `mailto:openmindconsultingai@gmail.com?subject=${subject}&body=${body}`;
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: data.name,
+          email: data.email,
+          message: data.message
+        }
+      });
+
+      if (error) {
+        console.error("Błąd wysyłania:", error);
+        throw error;
+      }
       
       toast({
-        title: "Otwieranie klienta email",
-        description: "Twoja wiadomość została przygotowana do wysłania.",
+        title: "Wiadomość wysłana!",
+        description: "Skontaktujemy się z Tobą wkrótce.",
       });
       
       reset();
     } catch (error) {
+      console.error("Błąd:", error);
       toast({
         title: "Błąd",
-        description: "Nie udało się otworzyć klienta email. Spróbuj ponownie.",
+        description: "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
         variant: "destructive"
       });
     } finally {
