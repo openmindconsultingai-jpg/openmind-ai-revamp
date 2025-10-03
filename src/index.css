@@ -74,6 +74,16 @@ All colors MUST be HSL.
   .glow-primary {
     box-shadow: var(--glow-primary);
   }
+  
+  .text-glow {
+    text-shadow: 0 0 20px hsl(176 100% 43% / 0.5), 
+                 0 0 40px hsl(176 100% 43% / 0.3),
+                 0 0 60px hsl(176 100% 43% / 0.2);
+  }
+  
+  .text-glow-subtle {
+    text-shadow: 0 0 15px hsl(176 100% 43% / 0.3);
+  }
 }
 
 @layer base {

@@ -14,10 +14,10 @@ const Hero = () => {
       {/* Animated AI Background */}
       <div className="absolute inset-0">
         <div 
-          className="w-full h-full bg-cover bg-center animate-slow-zoom"
+          className="w-full h-full bg-cover bg-center"
           style={{ 
             backgroundImage: `url(${heroBackground})`,
-            animation: 'slow-zoom 20s ease-in-out infinite alternate'
+            animation: 'slow-zoom 15s ease-in-out infinite alternate, subtle-shift 10s ease-in-out infinite'
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/90 to-background" />
@@ -31,9 +31,9 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            <span className="text-gradient">OpenMind</span>
+            <span className="text-gradient text-glow">OpenMind</span>
             <br />
-            <span className="text-foreground">AI Consulting</span>
+            <span className="text-foreground text-glow-subtle">AI Consulting</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">

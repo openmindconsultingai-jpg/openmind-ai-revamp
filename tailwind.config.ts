@@ -88,14 +88,23 @@ export default {
             transform: "scale(1)",
           },
           "100%": {
-            transform: "scale(1.1)",
+            transform: "scale(1.15)",
+          },
+        },
+        "subtle-shift": {
+          "0%, 100%": {
+            transform: "translateX(0) translateY(0)",
+          },
+          "50%": {
+            transform: "translateX(-10px) translateY(-10px)",
           },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "slow-zoom": "slow-zoom 20s ease-in-out infinite alternate",
+        "slow-zoom": "slow-zoom 15s ease-in-out infinite alternate",
+        "subtle-shift": "subtle-shift 10s ease-in-out infinite",
       },
     },
   },
