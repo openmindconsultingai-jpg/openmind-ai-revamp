@@ -30,10 +30,10 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight text-center">
             <span className="text-gradient text-glow">OpenMind</span>
             <br />
-            <span className="text-foreground text-glow">AI Consulting</span>
+            <span className="text-foreground text-glow">AI</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto text-glow-subtle">
