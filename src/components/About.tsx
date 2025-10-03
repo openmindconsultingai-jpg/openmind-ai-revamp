@@ -1,4 +1,5 @@
 import { Brain, Target, Lightbulb } from 'lucide-react';
+import logo from '@/assets/openmind-logo.webp';
 
 const About = () => {
   return (
@@ -8,6 +9,9 @@ const About = () => {
       <div className="container mx-auto px-4 relative">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
+            <div className="flex justify-center mb-6">
+              <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" />
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               <span className="text-gradient">O nas</span>
             </h2>

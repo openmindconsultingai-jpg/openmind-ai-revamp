@@ -1,4 +1,5 @@
 import { Brain, Users, Lightbulb, Target, Zap, Shield } from 'lucide-react';
+import logo from '@/assets/openmind-logo.webp';
 
 const services = [
   {
@@ -41,11 +42,14 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
+    <section id="services" className="py-20 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card to-background" />
       
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16">
+          <div className="flex justify-center mb-6">
+            <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" />
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-gradient">Nasze Usługi</span>
           </h2>

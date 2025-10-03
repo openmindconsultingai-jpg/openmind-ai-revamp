@@ -43,6 +43,12 @@ const Navigation = () => {
               O nas
             </button>
             <button
+              onClick={() => scrollToSection('services')}
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
+              Nasze usługi
+            </button>
+            <button
               onClick={() => scrollToSection('contact')}
               className="bg-primary text-primary-foreground px-6 py-2 rounded-lg hover:opacity-90 transition-opacity font-semibold"
             >
