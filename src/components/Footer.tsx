@@ -1,4 +1,11 @@
 const Footer = () => {
+  const scrollToPrivacy = () => {
+    const element = document.getElementById('privacy');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="border-t border-border py-8 bg-card">
       <div className="container mx-auto px-4">
@@ -8,9 +15,12 @@ const Footer = () => {
           </p>
           
           <div className="flex items-center gap-6">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              Prywatność i dane
-            </a>
+            <button 
+              onClick={scrollToPrivacy}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Polityka prywatności
+            </button>
           </div>
         </div>
       </div>

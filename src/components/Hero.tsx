@@ -26,8 +26,13 @@ const Hero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            Łączymy znajomość lokalnych wyzwań z najnowszymi możliwościami AI. 
-            Dzięki temu otrzymujesz skuteczne wsparcie oparte na sprawdzonych narzędziach.
+            Polski start-up łączący innowacyjność z elastycznością. 
+            Dostarczamy zaawansowane rozwiązania AI dostosowane do dynamicznie zmieniającego się rynku.
+          </p>
+          
+          <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto">
+            Łączymy lokalne know-how z globalnymi technologiami sztucznej inteligencji, 
+            oferując skuteczne wsparcie oparte na sprawdzonych narzędziach dla firm, szkół i rodzin.
           </p>
 
           <button
