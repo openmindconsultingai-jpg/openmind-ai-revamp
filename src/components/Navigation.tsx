@@ -27,7 +27,7 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <img src={logo} alt="OpenMind AI" className="h-12 md:h-14" />
+          <img src={logo} alt="OpenMind AI" className="h-16 md:h-20" />
           
           <div className="hidden md:flex items-center space-x-8">
             <button
@@ -37,16 +37,16 @@ const Navigation = () => {
               Strona główna
             </button>
             <button
-              onClick={() => scrollToSection('about')}
-              className="text-foreground hover:text-primary transition-colors font-medium"
-            >
-              O nas
-            </button>
-            <button
               onClick={() => scrollToSection('services')}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Nasze usługi
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
+              O nas
             </button>
             <button
               onClick={() => scrollToSection('contact')}

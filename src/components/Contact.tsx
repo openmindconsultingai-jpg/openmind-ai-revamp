@@ -28,8 +28,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold mb-1 text-foreground text-glow-subtle">Email</h3>
-                    <a href="mailto:biuro@openmind.pl" className="text-primary hover:underline text-lg">
-                      biuro@openmind.pl
+                    <a href="mailto:openmindconsultingai@gmail.com" className="text-primary hover:underline text-lg">
+                      openmindconsultingai@gmail.com
                     </a>
                   </div>
                 </div>

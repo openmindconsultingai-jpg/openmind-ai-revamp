@@ -51,19 +51,25 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Symulacja wysyłki - w przyszłości można zintegrować z backend
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Enkodowanie danych dla mailto
+      const subject = encodeURIComponent(`Wiadomość od ${data.name}`);
+      const body = encodeURIComponent(
+        `Imię: ${data.name}\nEmail: ${data.email}\n\nWiadomość:\n${data.message}`
+      );
+      
+      // Otwórz klienta email
+      window.location.href = `mailto:openmindconsultingai@gmail.com?subject=${subject}&body=${body}`;
       
       toast({
-        title: "Wiadomość wysłana!",
-        description: "Skontaktujemy się z Tobą wkrótce.",
+        title: "Otwieranie klienta email",
+        description: "Twoja wiadomość została przygotowana do wysłania.",
       });
       
       reset();
     } catch (error) {
       toast({
         title: "Błąd",
-        description: "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
+        description: "Nie udało się otworzyć klienta email. Spróbuj ponownie.",
         variant: "destructive"
       });
     } finally {
