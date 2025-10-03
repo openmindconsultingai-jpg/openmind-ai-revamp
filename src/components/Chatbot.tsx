@@ -31,7 +31,7 @@ const Chatbot = () => {
             height="100%"
             className="rounded-lg shadow-2xl border border-border"
             frameBorder="0"
-            title="OpenMind AI Chatbot"
+            title="OpenMind AI"
           />
         </div>
       )}
