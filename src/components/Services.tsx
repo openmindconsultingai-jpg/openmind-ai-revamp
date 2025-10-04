@@ -1,4 +1,4 @@
-import { Brain, Users, Lightbulb, Target, Zap, Shield, Rocket } from 'lucide-react';
+import { Brain, Users, Lightbulb, Target, Zap, Shield, Rocket, Video, Building2 } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
 import servicesBackground from '@/assets/services-background.jpg';
 
@@ -20,6 +20,18 @@ const services = [
     title: 'Działalność z AI w Tydzień',
     description: 'Kompleksowy program praktyczny, w którym jesteśmy Twoim partnerem we wdrożeniu gotowej firmy od zera. W zaledwie siedem dni przejdziesz przez formalności urzędowe, stworzysz profesjonalny branding (stronę www, identyfikację wizualną, grafiki, reels, stories, e-booki, SEO), nauczysz się zdobywać klientów i prowadzić social media – wszystko dzięki sztucznej inteligencji i narzędziom no-code. To rewolucja, która usuwa barierę między przeciętnym użytkownikiem a specjalistami od kodowania.',
     benefits: ['Pomoc w formalnościach urzędowych', 'Kompletny branding i strona WWW', 'Strategie pozyskiwania klientów z AI']
+  },
+  {
+    icon: Video,
+    title: 'Kampanie Social Media z AI Awatarami',
+    description: 'Tworzymy przełomowe kampanie w mediach społecznościowych z wykorzystaniem cyfrowych awatarów generowanych przez sztuczną inteligencję. Twoje AI alter ego, stworzone z głębokiego uczenia neuronowego, mówi Twoim głosem, w Twoim stylu, reprezentuje Twoją markę 24/7 – na TikToku, Instagramie, YouTube, LinkedIn. To nie deepfake, to inteligentna synteza wizerunku i osobowości, która skaluje Twoją obecność bez utraty autentyczności. Rozmawiamy o realnej rewolucji w content marketingu – mniej pracy produkcyjnej, więcej strategii i kreatywności.',
+    benefits: ['AI awatary dopasowane do marki', 'Skalowalna produkcja contentu', 'Konsystentna obecność w social media']
+  },
+  {
+    icon: Building2,
+    title: 'AI dla Administracji Publicznej',
+    description: 'Przygotowujemy sektor publiczny na cyfrową transformację opartą na sztucznej inteligencji. Wdrażamy inteligentne chatboty obsługi obywateli, automatyzujemy klasyfikację dokumentów i wniosków, budujemy systemy predykcyjne do planowania budżetu czy analiz demograficznych. AI w służbie publicznej to nie science fiction – to algorytmy, które uczą się z danych historycznych i wspierają podejmowanie decyzji administracyjnych, oszczędzając czas urzędników i poprawiając jakość usług dla mieszkańców. Wszystko zgodnie z RODO i normami bezpieczeństwa informacji.',
+    benefits: ['Automatyzacja obsługi obywateli', 'Inteligentne zarządzanie dokumentami', 'Zgodność z przepisami i RODO']
   },
   {
     icon: Lightbulb,
