@@ -1,5 +1,6 @@
-import { Brain, Users, Lightbulb, Target, Zap, Shield } from 'lucide-react';
+import { Brain, Users, Lightbulb, Target, Zap, Shield, Rocket } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
+import servicesBackground from '@/assets/services-background.jpg';
 
 const services = [
   {
@@ -13,6 +14,12 @@ const services = [
     title: 'Szkolenia i Warsztaty AI',
     description: 'Przekazujemy praktyczną wiedzę o tym, czym właściwie jest sztuczna inteligencja – algorytmy, które uczą się z przykładów i podejmują decyzje. Uczymy efektywnego wykorzystania ChatGPT, narzędzi generatywnych i systemów automatyzacji dla firm, instytucji publicznych oraz zespołów. Bez teorii – same konkretne umiejętności.',
     benefits: ['Praktyczne warsztaty', 'Szkolenia dostosowane do branży', 'Gotowe scenariusze użycia']
+  },
+  {
+    icon: Rocket,
+    title: 'Działalność z AI w Tydzień',
+    description: 'Kompleksowy program praktyczny, w którym jesteśmy Twoim partnerem we wdrożeniu gotowej firmy od zera. W zaledwie siedem dni przejdziesz przez formalności urzędowe, stworzysz profesjonalny branding (stronę www, identyfikację wizualną, grafiki, reels, stories, e-booki, SEO), nauczysz się zdobywać klientów i prowadzić social media – wszystko dzięki sztucznej inteligencji i narzędziom no-code. To rewolucja, która usuwa barierę między przeciętnym użytkownikiem a specjalistami od kodowania.',
+    benefits: ['Pomoc w formalnościach urzędowych', 'Kompletny branding i strona WWW', 'Strategie pozyskiwania klientów z AI']
   },
   {
     icon: Lightbulb,
@@ -43,7 +50,16 @@ const services = [
 const Services = () => {
   return (
     <section id="services" className="py-20 md:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card to-background" />
+      <div className="absolute inset-0">
+        <div 
+          className="w-full h-full bg-cover bg-center"
+          style={{ 
+            backgroundImage: `url(${servicesBackground})`,
+            animation: 'slow-zoom 15s ease-in-out infinite alternate'
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+      </div>
       
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16">

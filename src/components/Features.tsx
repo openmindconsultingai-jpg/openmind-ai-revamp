@@ -1,4 +1,5 @@
 import { CheckCircle2, Users, Globe } from 'lucide-react';
+import featuresBackground from '@/assets/features-background.jpg';
 
 const features = [
   {
@@ -20,8 +21,19 @@ const features = [
 
 const Features = () => {
   return (
-    <section id="services" className="py-20 md:py-32 relative">
-      <div className="container mx-auto px-4">
+    <section id="services" className="py-20 md:py-32 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <div 
+          className="w-full h-full bg-cover bg-center"
+          style={{ 
+            backgroundImage: `url(${featuresBackground})`,
+            animation: 'slow-zoom 15s ease-in-out infinite alternate'
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+      </div>
+      
+      <div className="container mx-auto px-4 relative">
         <div className="grid md:grid-cols-3 gap-8 md:gap-12">
           {features.map((feature, index) => {
             const Icon = feature.icon;

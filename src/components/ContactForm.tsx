@@ -175,7 +175,8 @@ const ContactForm = () => {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity font-semibold py-6 text-lg group"
+          variant="glass"
+          className="w-full font-semibold py-6 text-lg group"
         >
           {isSubmitting ? (
             "Wysyłanie..."

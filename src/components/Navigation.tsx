@@ -50,7 +50,7 @@ const Navigation = () => {
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="bg-primary text-primary-foreground px-6 py-2 rounded-lg hover:opacity-90 transition-opacity font-semibold"
+              className="bg-background/20 backdrop-blur-md border border-primary/30 text-primary-foreground hover:bg-background/30 hover:border-primary/50 shadow-lg px-6 py-2 rounded-lg transition-all font-semibold"
             >
               Kontakt
             </button>

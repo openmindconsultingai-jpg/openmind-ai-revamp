@@ -31,8 +31,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight text-center">
-            <span className="text-gradient text-glow">OpenMind</span>
-            <br />
+            <span className="text-gradient text-glow">OpenMind</span>{" "}
             <span className="text-foreground text-glow">AI</span>
           </h1>
           
@@ -48,7 +47,7 @@ const Hero = () => {
 
           <button
             onClick={scrollToContact}
-            className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl text-lg font-semibold hover:opacity-90 transition-all glow-primary"
+            className="group inline-flex items-center gap-2 bg-background/20 backdrop-blur-md border border-primary/30 text-primary-foreground hover:bg-background/30 hover:border-primary/50 shadow-lg px-8 py-4 rounded-xl text-lg font-semibold transition-all glow-primary"
           >
             Wkrocz w technologię jutra już dziś
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
