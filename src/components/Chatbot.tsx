@@ -12,9 +12,9 @@ const Chatbot = () => {
         <Button
           onClick={() => setIsMinimized(false)}
           size="lg"
-          className="rounded-full w-20 h-20 shadow-2xl p-0 overflow-hidden bg-gradient-to-br from-black via-black to-black/90 hover:from-black/90 hover:via-black hover:to-black border-2 border-primary relative animate-pulse hover:animate-none transition-all before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity"
+          className="rounded-full w-20 h-20 shadow-2xl p-0 overflow-hidden bg-black hover:bg-black/90 border-2 border-primary"
         >
-          <img src={logo} alt="OpenMind AI Chat" className="w-full h-full object-contain p-3 relative z-10" />
+          <img src={logo} alt="OpenMind AI Chat" className="w-full h-full object-contain p-3" />
         </Button>
       ) : (
         <div className="w-[364px] max-w-[calc(100vw-3rem)] h-[546px] max-h-[calc(100vh-6rem)] relative">

@@ -1,28 +1,25 @@
 import { CheckCircle2, Users, Globe } from 'lucide-react';
 import featuresBackground from '@/assets/features-background.jpg';
-import { useLanguage } from '@/contexts/LanguageContext';
+
+const features = [
+  {
+    icon: CheckCircle2,
+    title: 'Personalizacja i prostota',
+    description: 'Dopasowujemy inteligentne algorytmy do Twoich realnych wyzwań – bez technicznego żargonu. AI to dla nas nie abstrakcja, ale narzędzie, które naprawdę ułatwia codzienną pracę i oszczędza czas.',
+  },
+  {
+    icon: Users,
+    title: 'Dla biznesu, administracji i życia codziennego',
+    description: 'Sztuczna inteligencja to systemy, które uczą się z danych i podejmują decyzje – automatyzują rutynę, analizują trendy, odpowiadają na pytania. Pokażemy Ci, jak używać ich efektywnie, niezależnie czy zarządzasz firmą, instytucją publiczną, czy po prostu chcesz działać mądrzej w swoim życiu.',
+  },
+  {
+    icon: Globe,
+    title: 'Polskie know-how + globalne technologie',
+    description: 'Wykorzystujemy najnowsze modele językowe i narzędzia uczenia maszynowego od liderów branży, dostosowując je do lokalnych potrzeb. Przekładamy światową innowację na praktyczne korzyści dla polskich organizacji i użytkowników.',
+  },
+];
 
 const Features = () => {
-  const { t } = useLanguage();
-  
-  const features = [
-    {
-      icon: CheckCircle2,
-      title: t('features.1.title'),
-      description: t('features.1.desc'),
-    },
-    {
-      icon: Users,
-      title: t('features.2.title'),
-      description: t('features.2.desc'),
-    },
-    {
-      icon: Globe,
-      title: t('features.3.title'),
-      description: t('features.3.desc'),
-    },
-  ];
-
   return (
     <section id="services" className="py-20 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0">
