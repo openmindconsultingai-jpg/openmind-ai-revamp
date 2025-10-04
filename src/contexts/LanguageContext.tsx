@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Language = 'pl' | 'en';
 
@@ -8,9 +8,10 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+type TranslationKey = string;
+type Translations = Record<Language, Record<TranslationKey, string>>;
 
-const translations = {
+const translations: Translations = {
   pl: {
     // Navigation
     'nav.home': 'Strona główna',
@@ -163,7 +164,9 @@ const translations = {
   }
 };
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
+export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>(() => {
     const stored = localStorage.getItem('language');
     return (stored === 'en' || stored === 'pl') ? stored : 'pl';
