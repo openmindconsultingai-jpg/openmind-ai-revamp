@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import heroBackground from '@/assets/ai-hero-background.jpg';
 
@@ -45,13 +46,15 @@ const Hero = () => {
             oferując skuteczne wsparcie dla firm, sektora publicznego i rodzin w codziennym wykorzystaniu inteligentnych systemów.
           </p>
 
-          <button
+          <Button
             onClick={scrollToContact}
-            className="group inline-flex items-center gap-2 bg-background/20 backdrop-blur-md border border-primary/30 text-primary-foreground hover:bg-background/30 hover:border-primary/50 shadow-lg px-8 py-4 rounded-xl text-lg font-semibold transition-all glow-primary"
+            variant="glass"
+            size="lg"
+            className="group text-lg font-semibold"
           >
             Wkrocz w technologię jutra już dziś
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Button>
         </div>
       </div>
     </section>

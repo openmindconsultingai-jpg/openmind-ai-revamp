@@ -15,7 +15,7 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        glass: "bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md border border-white/30 text-foreground hover:text-primary hover:from-white/25 hover:to-white/10 hover:border-primary/70 hover:shadow-[0_0_30px_rgba(0,200,200,0.5),0_0_60px_rgba(0,200,200,0.2)] hover:scale-105 shadow-[0_8px_32px_rgba(0,200,200,0.15)] transition-all duration-300 relative before:absolute before:inset-0 before:rounded-md before:bg-gradient-to-br before:from-white/20 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300",
+        glass: "bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md border border-white/30 text-primary text-glow-subtle hover:text-glow hover:from-white/25 hover:to-white/10 hover:border-primary/70 hover:shadow-[0_0_30px_rgba(0,200,200,0.5),0_0_60px_rgba(0,200,200,0.2)] hover:scale-105 shadow-[0_8px_32px_rgba(0,200,200,0.15)] transition-all duration-300 relative before:absolute before:inset-0 before:rounded-md before:bg-gradient-to-br before:from-white/20 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",

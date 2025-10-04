@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
 import logo from '@/assets/openmind-logo.webp';
 
 const Navigation = () => {
@@ -48,12 +49,13 @@ const Navigation = () => {
             >
               O nas
             </button>
-            <button
+            <Button
               onClick={() => scrollToSection('contact')}
-              className="bg-background/20 backdrop-blur-md border border-primary/30 text-primary-foreground hover:bg-background/30 hover:border-primary/50 shadow-lg px-6 py-2 rounded-lg transition-all font-semibold"
+              variant="glass"
+              className="font-semibold"
             >
               Kontakt
-            </button>
+            </Button>
           </div>
         </div>
       </div>
