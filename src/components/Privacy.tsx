@@ -1,6 +1,8 @@
 import { Shield, Lock, Eye, FileText } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Privacy = () => {
+  const { t } = useLanguage();
   return (
     <section id="privacy" className="py-20 md:py-32 relative bg-card/50">
       <div className="container mx-auto px-4">
@@ -10,10 +12,10 @@ const Privacy = () => {
               <Shield className="w-10 h-10 text-primary" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-gradient">Polityka Prywatności</span>
+              <span className="text-gradient">{t('privacy.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground">
-              Twoje dane są bezpieczne. Zobowiązujemy się do ochrony Twojej prywatności.
+              {t('privacy.subtitle')}
             </p>
           </div>
 
@@ -25,11 +27,10 @@ const Privacy = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold mb-3 text-foreground">
-                    1. Administrator danych
+                    {t('privacy.admin.title')}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Administratorem danych osobowych jest OpenMind AI Consulting z siedzibą w Polsce. 
-                    Kontakt z administratorem możliwy jest pod adresem email: biuro@openmind.pl
+                    {t('privacy.admin.desc')}
                   </p>
                 </div>
               </div>
@@ -42,27 +43,27 @@ const Privacy = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold mb-3 text-foreground">
-                    2. Zakres przetwarzania danych
+                    {t('privacy.scope.title')}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    Przetwarzamy następujące dane osobowe:
+                    {t('privacy.scope.desc')}
                   </p>
                   <ul className="space-y-2 text-muted-foreground">
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span>Imię i nazwisko - w celu identyfikacji klienta i personalizacji komunikacji</span>
+                      <span>{t('privacy.scope.item1')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span>Adres email - w celu komunikacji i odpowiedzi na zapytania</span>
+                      <span>{t('privacy.scope.item2')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span>Numer telefonu - opcjonalnie, w celu kontaktu telefonicznego</span>
+                      <span>{t('privacy.scope.item3')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span>Treść wiadomości - zawartość zapytań i komunikacji z klientem</span>
+                      <span>{t('privacy.scope.item4')}</span>
                     </li>
                   </ul>
                 </div>
@@ -76,29 +77,23 @@ const Privacy = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold mb-3 text-foreground">
-                    3. Podstawa prawna i cel przetwarzania
+                    {t('privacy.legal.title')}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    Dane osobowe przetwarzane są na podstawie:
+                    {t('privacy.legal.desc')}
                   </p>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span>
-                        <strong className="text-foreground">Art. 6 ust. 1 lit. a RODO</strong> - zgoda na przetwarzanie danych w celu kontaktu i świadczenia usług
-                      </span>
+                      <span>{t('privacy.legal.item1')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span>
-                        <strong className="text-foreground">Art. 6 ust. 1 lit. b RODO</strong> - wykonanie umowy lub podjęcie działań przed zawarciem umowy
-                      </span>
+                      <span>{t('privacy.legal.item2')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span>
-                        <strong className="text-foreground">Art. 6 ust. 1 lit. f RODO</strong> - prawnie uzasadniony interes administratora w postaci marketingu produktów i usług
-                      </span>
+                      <span>{t('privacy.legal.item3')}</span>
                     </li>
                   </ul>
                 </div>
@@ -107,59 +102,55 @@ const Privacy = () => {
 
             <div className="bg-background border border-border rounded-2xl p-8">
               <h3 className="text-2xl font-bold mb-4 text-foreground">
-                4. Twoje prawa
+                {t('privacy.rights.title')}
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Zgodnie z RODO przysługują Ci następujące prawa:
+                {t('privacy.rights.desc')}
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="p-4 bg-primary/5 rounded-lg">
-                  <p className="font-semibold text-foreground mb-1">Prawo dostępu</p>
-                  <p className="text-sm text-muted-foreground">Do swoich danych osobowych</p>
+                  <p className="font-semibold text-foreground mb-1">{t('privacy.rights.access')}</p>
+                  <p className="text-sm text-muted-foreground">{t('privacy.rights.access.desc')}</p>
                 </div>
                 <div className="p-4 bg-primary/5 rounded-lg">
-                  <p className="font-semibold text-foreground mb-1">Prawo sprostowania</p>
-                  <p className="text-sm text-muted-foreground">Poprawiania nieprawidłowych danych</p>
+                  <p className="font-semibold text-foreground mb-1">{t('privacy.rights.rectification')}</p>
+                  <p className="text-sm text-muted-foreground">{t('privacy.rights.rectification.desc')}</p>
                 </div>
                 <div className="p-4 bg-primary/5 rounded-lg">
-                  <p className="font-semibold text-foreground mb-1">Prawo usunięcia</p>
-                  <p className="text-sm text-muted-foreground">Danych osobowych</p>
+                  <p className="font-semibold text-foreground mb-1">{t('privacy.rights.erasure')}</p>
+                  <p className="text-sm text-muted-foreground">{t('privacy.rights.erasure.desc')}</p>
                 </div>
                 <div className="p-4 bg-primary/5 rounded-lg">
-                  <p className="font-semibold text-foreground mb-1">Prawo do cofnięcia zgody</p>
-                  <p className="text-sm text-muted-foreground">W dowolnym momencie</p>
+                  <p className="font-semibold text-foreground mb-1">{t('privacy.rights.withdraw')}</p>
+                  <p className="text-sm text-muted-foreground">{t('privacy.rights.withdraw.desc')}</p>
                 </div>
               </div>
             </div>
 
             <div className="bg-background border border-border rounded-2xl p-8">
               <h3 className="text-2xl font-bold mb-4 text-foreground">
-                5. Okres przechowywania danych
+                {t('privacy.retention.title')}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Dane osobowe będą przechowywane przez okres niezbędny do realizacji celów, 
-                w jakich zostały zebrane, lub do momentu wycofania zgody. W przypadku umów 
-                i dokumentów księgowych - zgodnie z przepisami prawa (minimum 5 lat).
+                {t('privacy.retention.desc')}
               </p>
             </div>
 
             <div className="bg-background border border-border rounded-2xl p-8">
               <h3 className="text-2xl font-bold mb-4 text-foreground">
-                6. Bezpieczeństwo danych
+                {t('privacy.datasecurity.title')}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Stosujemy odpowiednie środki techniczne i organizacyjne zapewniające bezpieczeństwo 
-                przetwarzanych danych osobowych, w tym ochronę przed ich nieprawidłowym przetwarzaniem, 
-                utratą, uszkodzeniem lub zniszczeniem.
+                {t('privacy.datasecurity.desc')}
               </p>
             </div>
 
             <div className="bg-primary/10 border border-primary/30 rounded-2xl p-8">
               <h3 className="text-xl font-bold mb-3 text-foreground">
-                Pytania dotyczące polityki prywatności?
+                {t('privacy.questions.title')}
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                W przypadku pytań dotyczących przetwarzania danych osobowych, skontaktuj się z nami:
+                {t('privacy.questions.desc')}
               </p>
               <a 
                 href="mailto:biuro@openmind.pl" 
@@ -170,7 +161,7 @@ const Privacy = () => {
             </div>
 
             <p className="text-sm text-muted-foreground text-center pt-8">
-              Polityka prywatności obowiązuje od: 03.10.2025
+              {t('privacy.effective')}
             </p>
           </div>
         </div>
