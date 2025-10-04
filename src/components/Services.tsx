@@ -5,38 +5,38 @@ const services = [
   {
     icon: Brain,
     title: 'Konsultacje AI dla Biznesu',
-    description: 'Analiza potrzeb firmowych i dobór optymalnych rozwiązań AI zwiększających efektywność operacyjną. Implementacja narzędzi automatyzacji procesów, analizy danych i predykcji biznesowych.',
-    benefits: ['Automatyzacja procesów', 'Analiza danych', 'Predykcja trendów']
+    description: 'Analizujemy realne potrzeby Twojej firmy i dobieramy narzędzia sztucznej inteligencji, które naprawdę działają – od automatyzacji powtarzalnych zadań, przez predykcję trendów sprzedażowych, po inteligentną analizę dużych zbiorów danych. AI przestaje być buzzwordem, a staje się Twoim codziennym wsparciem operacyjnym.',
+    benefits: ['Automatyzacja procesów', 'Predykcyjna analiza danych', 'Optymalizacja decyzji']
   },
   {
     icon: Users,
     title: 'Szkolenia i Warsztaty AI',
-    description: 'Kompleksowe programy edukacyjne dla firm, szkół i instytucji. Praktyczne warsztaty nauczające wykorzystania ChatGPT, narzędzi do generowania grafik i automatyzacji codziennych zadań.',
-    benefits: ['Warsztaty praktyczne', 'Szkolenia indywidualne', 'Materiały online']
+    description: 'Przekazujemy praktyczną wiedzę o tym, czym właściwie jest sztuczna inteligencja – algorytmy, które uczą się z przykładów i podejmują decyzje. Uczymy efektywnego wykorzystania ChatGPT, narzędzi generatywnych i systemów automatyzacji dla firm, instytucji publicznych oraz zespołów. Bez teorii – same konkretne umiejętności.',
+    benefits: ['Praktyczne warsztaty', 'Szkolenia dostosowane do branży', 'Gotowe scenariusze użycia']
   },
   {
     icon: Lightbulb,
     title: 'Doradztwo Strategiczne',
-    description: 'Opracowanie strategii wdrożenia AI w organizacji. Identyfikacja obszarów do automatyzacji, ocena ROI inwestycji w AI oraz wsparcie w transformacji cyfrowej przedsiębiorstwa.',
-    benefits: ['Strategia wdrożenia', 'Analiza ROI', 'Transformacja cyfrowa']
+    description: 'Budujemy kompleksową strategię wdrożenia AI w Twojej organizacji. Pokazujemy, gdzie automatyzacja przyniesie największe korzyści, jak zmierzyć zwrot z inwestycji i jak przeprowadzić transformację cyfrową – krok po kroku, z uwzględnieniem specyfiki Twojego biznesu i realnych możliwości technologicznych.',
+    benefits: ['Mapa drogowa wdrożenia', 'Kalkulacja ROI', 'Plan transformacji']
   },
   {
     icon: Target,
-    title: 'Personalizowane Rozwiązania',
-    description: 'Tworzenie dedykowanych systemów AI dostosowanych do specyficznych potrzeb klienta. Od chatbotów po zaawansowane systemy analizy i przetwarzania danych biznesowych.',
-    benefits: ['Chatboty AI', 'Systemy analityczne', 'Integracje API']
+    title: 'Personalizowane Rozwiązania AI',
+    description: 'Tworzymy dedykowane systemy uczenia maszynowego i przetwarzania języka naturalnego szyte na miarę Twoich potrzeb. Chatboty rozumiejące kontekst, systemy rekomendacji, inteligentna klasyfikacja dokumentów – pokazujemy, jak AI może rozwiązać Twoje konkretne problemy biznesowe, nie tylko technologiczne.',
+    benefits: ['Chatboty konwersacyjne', 'Systemy rekomendacji', 'Automatyczna klasyfikacja']
   },
   {
     icon: Zap,
     title: 'Optymalizacja Procesów',
-    description: 'Audyt istniejących procesów i identyfikacja możliwości wykorzystania AI. Wdrożenie narzędzi zwiększających produktywność i redukujących koszty operacyjne.',
-    benefits: ['Audyt procesów', 'Redukcja kosztów', 'Wzrost produktywności']
+    description: 'Prześwietlamy Twoje procesy i wskazujemy, gdzie AI może zaoszczędzić czas i pieniądze. Identyfikujemy powtarzalne zadania nadające się do automatyzacji, pokazujemy potencjał predykcji i analizy danych. Wynik? Mniej rutyny, więcej wartościowej pracy, konkretne oszczędności operacyjne.',
+    benefits: ['Audyt potencjału AI', 'Redukcja kosztów', 'Wzrost efektywności zespołu']
   },
   {
     icon: Shield,
     title: 'Bezpieczeństwo i Etyka AI',
-    description: 'Doradztwo w zakresie bezpiecznego i etycznego wykorzystania sztucznej inteligencji. Implementacja polityk bezpieczeństwa danych i zgodności z regulacjami RODO.',
-    benefits: ['Zgodność z RODO', 'Polityki bezpieczeństwa', 'Etyka AI']
+    description: 'Wspieramy w bezpiecznym i etycznym wykorzystaniu sztucznej inteligencji – od polityk ochrony danych osobowych i zgodności z RODO, po świadome zarządzanie algorytmami. Dbamy o to, żeby AI działała zgodnie z prawem i wartościami Twojej organizacji, budując zaufanie klientów i pracowników.',
+    benefits: ['Compliance z RODO', 'Audyt bezpieczeństwa AI', 'Etyczne standardy']
   }
 ];
 
@@ -55,7 +55,7 @@ const Services = () => {
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Kompleksowe rozwiązania AI dostosowane do potrzeb nowoczesnych organizacji, 
-            edukacji i życia codziennego
+            sektora publicznego i życia codziennego
           </p>
         </div>
 

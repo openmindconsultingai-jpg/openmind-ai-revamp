@@ -4,17 +4,17 @@ const features = [
   {
     icon: CheckCircle2,
     title: 'Personalizacja i prostota',
-    description: 'Dopasowujemy narzędzia AI do Twoich realnych potrzeb – bez technicznego żargonu i zbędnych komplikacji. Oferujemy zrozumiałe, gotowe do użycia rozwiązania.',
+    description: 'Dopasowujemy inteligentne algorytmy do Twoich realnych wyzwań – bez technicznego żargonu. AI to dla nas nie abstrakcja, ale narzędzie, które naprawdę ułatwia codzienną pracę i oszczędza czas.',
   },
   {
     icon: Users,
-    title: 'Dla firm, rodzin i szkół',
-    description: 'Niezależnie, czy prowadzisz biznes, jesteś rodzicem, czy nauczycielem – pokażemy Ci, jak wykorzystać sztuczną inteligencję, by działać efektywniej i zyskać czas.',
+    title: 'Dla biznesu, administracji i życia codziennego',
+    description: 'Sztuczna inteligencja to systemy, które uczą się z danych i podejmują decyzje – automatyzują rutynę, analizują trendy, odpowiadają na pytania. Pokażemy Ci, jak używać ich efektywnie, niezależnie czy zarządzasz firmą, instytucją publiczną, czy po prostu chcesz działać mądrzej w swoim życiu.',
   },
   {
     icon: Globe,
     title: 'Polskie know-how + globalne technologie',
-    description: 'Łączymy znajomość lokalnych wyzwań z najnowszymi możliwościami AI. Dzięki temu otrzymujesz skuteczne wsparcie oparte na sprawdzonych narzędziach.',
+    description: 'Wykorzystujemy najnowsze modele językowe i narzędzia uczenia maszynowego od liderów branży, dostosowując je do lokalnych potrzeb. Przekładamy światową innowację na praktyczne korzyści dla polskich organizacji i użytkowników.',
   },
 ];
 

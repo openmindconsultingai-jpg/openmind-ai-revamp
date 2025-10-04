@@ -42,8 +42,8 @@ const Hero = () => {
           </p>
           
           <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto">
-            Łączymy lokalne know-how z globalnymi technologiami sztucznej inteligencji, 
-            oferując skuteczne wsparcie oparte na sprawdzonych narzędziach dla firm, szkół i rodzin.
+            Łączymy lokalne know-how z globalnymi technologiami uczenia maszynowego i przetwarzania języka naturalnego, 
+            oferując skuteczne wsparcie dla firm, sektora publicznego i rodzin w codziennym wykorzystaniu inteligentnych systemów.
           </p>
 
           <button
