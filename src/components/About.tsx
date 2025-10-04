@@ -15,7 +15,7 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               <span className="text-gradient text-glow">O nas</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Jesteśmy zespołem pasjonatów technologii AI, którzy wierzą w demokratyzację dostępu do innowacyjnych narzędzi.
             </p>
           </div>

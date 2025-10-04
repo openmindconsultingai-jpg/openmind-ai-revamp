@@ -75,11 +75,11 @@ const Services = () => {
                     <Icon className="w-7 h-7 text-primary" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold mb-4 text-foreground text-glow-subtle">
+                  <h3 className="text-2xl font-bold mb-4 text-foreground text-glow-subtle text-center">
                     {service.title}
                   </h3>
                   
-                  <p className="text-muted-foreground leading-relaxed mb-6">
+                  <p className="text-muted-foreground leading-relaxed mb-6 text-left">
                     {service.description}
                   </p>
 

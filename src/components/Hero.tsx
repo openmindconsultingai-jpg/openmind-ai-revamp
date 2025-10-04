@@ -36,12 +36,12 @@ const Hero = () => {
             <span className="text-foreground text-glow">AI</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto text-glow-subtle">
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-glow-subtle text-center">
             Polski start-up łączący innowacyjność z elastycznością. 
             Dostarczamy zaawansowane rozwiązania AI dostosowane do dynamicznie zmieniającego się rynku.
           </p>
           
-          <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground/80 max-w-3xl mx-auto text-left">
             Łączymy lokalne know-how z globalnymi technologiami uczenia maszynowego i przetwarzania języka naturalnego, 
             oferując skuteczne wsparcie dla firm, sektora publicznego i rodzin w codziennym wykorzystaniu inteligentnych systemów.
           </p>
