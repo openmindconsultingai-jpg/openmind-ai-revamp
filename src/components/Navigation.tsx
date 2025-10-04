@@ -59,14 +59,20 @@ const Navigation = () => {
               {t('nav.contact')}
             </Button>
             <button
-              onClick={() => setLanguage(language === 'pl' ? 'en' : 'pl')}
+              onClick={() => setLanguage(language === 'pl' ? 'en' : language === 'en' ? 'it' : 'pl')}
               className="ml-2 w-10 h-10 rounded-full overflow-hidden border-2 border-border hover:border-primary transition-colors flex-shrink-0"
-              title={language === 'pl' ? 'Switch to English' : 'Przełącz na polski'}
+              title={language === 'pl' ? 'Switch to English' : language === 'en' ? 'Passa all\'italiano' : 'Przełącz na polski'}
             >
               {language === 'pl' ? (
                 <img 
                   src="https://flagcdn.com/w80/gb.png" 
                   alt="English" 
+                  className="w-full h-full object-cover"
+                />
+              ) : language === 'en' ? (
+                <img 
+                  src="https://flagcdn.com/w80/it.png" 
+                  alt="Italiano" 
                   className="w-full h-full object-cover"
                 />
               ) : (
