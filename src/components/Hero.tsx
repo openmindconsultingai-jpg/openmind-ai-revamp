@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import heroBackground from '@/assets/ai-hero-background.jpg';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
@@ -32,18 +34,16 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight text-center">
-            <span className="text-gradient text-glow">OpenMind</span>{" "}
-            <span className="text-foreground text-glow">AI</span>
+            <span className="text-gradient text-glow">{t('hero.title')}</span>{" "}
+            <span className="text-foreground text-glow">{t('hero.subtitle')}</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-glow-subtle text-center">
-            Polski start-up łączący innowacyjność z elastycznością. 
-            Dostarczamy zaawansowane rozwiązania AI dostosowane do dynamicznie zmieniającego się rynku.
+            {t('hero.description')}
           </p>
           
           <p className="text-lg text-muted-foreground/80 max-w-3xl mx-auto text-left">
-            Łączymy lokalne know-how z globalnymi technologiami uczenia maszynowego i przetwarzania języka naturalnego, 
-            oferując skuteczne wsparcie dla firm, sektora publicznego i rodzin w codziennym wykorzystaniu inteligentnych systemów.
+            {t('hero.description2')}
           </p>
 
           <Button
@@ -52,7 +52,7 @@ const Hero = () => {
             size="lg"
             className="group text-lg font-semibold"
           >
-            Wkrocz w technologię jutra już dziś
+            {t('hero.cta')}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>

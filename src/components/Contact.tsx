@@ -2,8 +2,10 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import ContactForm from './ContactForm';
 import logo from '@/assets/openmind-logo.webp';
 import contactBackground from '@/assets/contact-background.jpg';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
   return (
     <section id="contact" className="py-20 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0">
@@ -24,10 +26,10 @@ const Contact = () => {
               <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-gradient text-glow">Kontakt</span>
+              <span className="text-gradient text-glow">{t('contact.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground">
-              Gotowy na rozmowę o przyszłości? Skontaktuj się z nami już dziś
+              {t('contact.subtitle')}
             </p>
           </div>
 
@@ -39,7 +41,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1 text-foreground text-glow-subtle">Email</h3>
+                    <h3 className="text-lg font-semibold mb-1 text-foreground text-glow-subtle">{t('contact.email')}</h3>
                     <a href="mailto:openmindconsultingai@gmail.com" className="text-primary hover:underline text-lg">
                       openmindconsultingai@gmail.com
                     </a>
@@ -51,7 +53,7 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1 text-foreground text-glow-subtle">Telefon</h3>
+                    <h3 className="text-lg font-semibold mb-1 text-foreground text-glow-subtle">{t('contact.phone')}</h3>
                     <a href="tel:+48693016974" className="text-primary hover:underline text-lg">
                       +48 693 016 974
                     </a>
@@ -63,19 +65,19 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1 text-foreground text-glow-subtle">Lokalizacja</h3>
+                    <h3 className="text-lg font-semibold mb-1 text-foreground text-glow-subtle">{t('contact.location')}</h3>
                     <p className="text-muted-foreground text-lg">
-                      Polska
+                      {t('contact.locationValue')}
                     </p>
                   </div>
                 </div>
               </div>
 
               <div className="bg-primary/5 border border-primary/20 rounded-xl p-6">
-                <h3 className="text-lg font-semibold mb-3 text-foreground text-glow-subtle">Godziny pracy</h3>
+                <h3 className="text-lg font-semibold mb-3 text-foreground text-glow-subtle">{t('contact.hours')}</h3>
                 <div className="space-y-2 text-muted-foreground">
-                  <p>Poniedziałek - Piątek: 9:00 - 17:00</p>
-                  <p>Sobota - Niedziela: Zamknięte</p>
+                  <p>{t('contact.hours.weekdays')}</p>
+                  <p>{t('contact.hours.weekend')}</p>
                 </div>
               </div>
             </div>

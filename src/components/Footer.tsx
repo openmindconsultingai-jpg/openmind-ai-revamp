@@ -1,4 +1,7 @@
+import { useLanguage } from '@/contexts/LanguageContext';
+
 const Footer = () => {
+  const { t } = useLanguage();
   const scrollToPrivacy = () => {
     const element = document.getElementById('privacy');
     if (element) {
@@ -11,7 +14,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground">
-            © 2025 OpenMind AI Consulting. Wszystkie prawa zastrzeżone.
+            {t('footer.copyright')}
           </p>
           
           <div className="flex items-center gap-6">
@@ -19,7 +22,7 @@ const Footer = () => {
               onClick={scrollToPrivacy}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              Polityka prywatności
+              {t('footer.privacy')}
             </button>
           </div>
         </div>

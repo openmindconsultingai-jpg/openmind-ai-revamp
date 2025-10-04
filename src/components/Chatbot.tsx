@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { MessageCircle, Minimize2 } from "lucide-react";
+import { Minimize2 } from "lucide-react";
 import { Button } from "./ui/button";
+import logo from '@/assets/openmind-logo.webp';
 
 const Chatbot = () => {
   const [isMinimized, setIsMinimized] = useState(false);
@@ -11,12 +12,12 @@ const Chatbot = () => {
         <Button
           onClick={() => setIsMinimized(false)}
           size="lg"
-          className="rounded-full w-14 h-14 shadow-2xl"
+          className="rounded-full w-20 h-20 shadow-2xl p-0 overflow-hidden"
         >
-          <MessageCircle className="w-6 h-6" />
+          <img src={logo} alt="OpenMind AI Chat" className="w-full h-full object-contain p-2" />
         </Button>
       ) : (
-        <div className="w-[280px] max-w-[calc(100vw-3rem)] h-[420px] max-h-[calc(100vh-6rem)] relative">
+        <div className="w-[364px] max-w-[calc(100vw-3rem)] h-[546px] max-h-[calc(100vh-6rem)] relative">
           <Button
             onClick={() => setIsMinimized(true)}
             size="icon"

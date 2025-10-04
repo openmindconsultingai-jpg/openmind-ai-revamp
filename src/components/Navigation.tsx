@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import logo from '@/assets/openmind-logo.webp';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navigation = () => {
+  const { language, setLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -35,27 +37,46 @@ const Navigation = () => {
               onClick={() => scrollToSection('home')}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
-              Strona główna
+              {t('nav.home')}
             </button>
             <button
               onClick={() => scrollToSection('services')}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
-              Nasze usługi
+              {t('nav.services')}
             </button>
             <button
               onClick={() => scrollToSection('about')}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
-              O nas
+              {t('nav.about')}
             </button>
             <Button
               onClick={() => scrollToSection('contact')}
               variant="glass"
               className="font-semibold"
             >
-              Kontakt
+              {t('nav.contact')}
             </Button>
+            <button
+              onClick={() => setLanguage(language === 'pl' ? 'en' : 'pl')}
+              className="ml-2 w-10 h-10 rounded-full overflow-hidden border-2 border-border hover:border-primary transition-colors flex-shrink-0"
+              title={language === 'pl' ? 'Switch to English' : 'Przełącz na polski'}
+            >
+              {language === 'pl' ? (
+                <img 
+                  src="https://flagcdn.com/w80/gb.png" 
+                  alt="English" 
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <img 
+                  src="https://flagcdn.com/w80/pl.png" 
+                  alt="Polski" 
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </button>
           </div>
         </div>
       </div>

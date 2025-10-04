@@ -9,31 +9,34 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { supabase } from '@/integrations/supabase/client';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const contactSchema = z.object({
+const getContactSchema = (language: 'pl' | 'en') => z.object({
   name: z.string()
     .trim()
-    .min(2, { message: "Imię musi zawierać co najmniej 2 znaki" })
-    .max(100, { message: "Imię nie może przekraczać 100 znaków" }),
+    .min(2, { message: language === 'pl' ? "Imię musi zawierać co najmniej 2 znaki" : "Name must be at least 2 characters" })
+    .max(100, { message: language === 'pl' ? "Imię nie może przekraczać 100 znaków" : "Name cannot exceed 100 characters" }),
   email: z.string()
     .trim()
-    .email({ message: "Podaj poprawny adres email" })
-    .max(255, { message: "Email nie może przekraczać 255 znaków" }),
+    .email({ message: language === 'pl' ? "Podaj poprawny adres email" : "Please provide a valid email address" })
+    .max(255, { message: language === 'pl' ? "Email nie może przekraczać 255 znaków" : "Email cannot exceed 255 characters" }),
   message: z.string()
     .trim()
-    .min(10, { message: "Wiadomość musi zawierać co najmniej 10 znaków" })
-    .max(1000, { message: "Wiadomość nie może przekraczać 1000 znaków" }),
+    .min(10, { message: language === 'pl' ? "Wiadomość musi zawierać co najmniej 10 znaków" : "Message must be at least 10 characters" })
+    .max(1000, { message: language === 'pl' ? "Wiadomość nie może przekraczać 1000 znaków" : "Message cannot exceed 1000 characters" }),
   privacy: z.boolean()
     .refine((val) => val === true, {
-      message: "Musisz zaakceptować politykę prywatności"
+      message: language === 'pl' ? "Musisz zaakceptować politykę prywatności" : "You must accept the privacy policy"
     })
 });
-
-type ContactFormData = z.infer<typeof contactSchema>;
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { language, t } = useLanguage();
+  
+  const contactSchema = getContactSchema(language);
+  type ContactFormData = z.infer<typeof contactSchema>;
   
   const {
     register,
@@ -68,16 +71,16 @@ const ContactForm = () => {
       }
       
       toast({
-        title: "Wiadomość wysłana!",
-        description: "Skontaktujemy się z Tobą wkrótce.",
+        title: t('contact.form.success'),
+        description: language === 'pl' ? "Skontaktujemy się z Tobą wkrótce." : "We'll get back to you soon.",
       });
       
       reset();
     } catch (error) {
       console.error("Błąd:", error);
       toast({
-        title: "Błąd",
-        description: "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
+        title: language === 'pl' ? "Błąd" : "Error",
+        description: t('contact.form.error'),
         variant: "destructive"
       });
     } finally {
@@ -95,9 +98,11 @@ const ContactForm = () => {
   return (
     <div className="bg-card border border-border rounded-2xl p-8 md:p-10 hover:border-primary/50 transition-colors">
       <div className="mb-8">
-        <h3 className="text-3xl font-bold mb-3 text-foreground">Wyślij wiadomość</h3>
+        <h3 className="text-3xl font-bold mb-3 text-foreground">
+          {language === 'pl' ? 'Wyślij wiadomość' : 'Send a Message'}
+        </h3>
         <p className="text-muted-foreground">
-          Wypełnij formularz, a my skontaktujemy się z Tobą w ciągu 24 godzin
+          {language === 'pl' ? 'Wypełnij formularz, a my skontaktujemy się z Tobą w ciągu 24 godzin' : 'Fill out the form and we\'ll get back to you within 24 hours'}
         </p>
       </div>
 
@@ -105,11 +110,11 @@ const ContactForm = () => {
         <div className="space-y-2">
           <label className="text-sm font-medium text-foreground flex items-center gap-2">
             <User className="w-4 h-4 text-primary" />
-            Imię i nazwisko
+            {t('contact.form.name')}
           </label>
           <Input
             {...register('name')}
-            placeholder="Jan Kowalski"
+            placeholder={language === 'pl' ? "Jan Kowalski" : "John Doe"}
             className="bg-background border-border focus:border-primary"
           />
           {errors.name && (
@@ -120,12 +125,12 @@ const ContactForm = () => {
         <div className="space-y-2">
           <label className="text-sm font-medium text-foreground flex items-center gap-2">
             <Mail className="w-4 h-4 text-primary" />
-            Adres email
+            {t('contact.form.email')}
           </label>
           <Input
             {...register('email')}
             type="email"
-            placeholder="jan@przyklad.pl"
+            placeholder={language === 'pl' ? "jan@przyklad.pl" : "john@example.com"}
             className="bg-background border-border focus:border-primary"
           />
           {errors.email && (
@@ -136,11 +141,11 @@ const ContactForm = () => {
         <div className="space-y-2">
           <label className="text-sm font-medium text-foreground flex items-center gap-2">
             <MessageSquare className="w-4 h-4 text-primary" />
-            Wiadomość
+            {t('contact.form.message')}
           </label>
           <Textarea
             {...register('message')}
-            placeholder="Opisz, jak możemy Ci pomóc..."
+            placeholder={language === 'pl' ? "Opisz, jak możemy Ci pomóc..." : "Describe how we can help you..."}
             rows={5}
             className="bg-background border-border focus:border-primary resize-none"
           />
@@ -157,15 +162,15 @@ const ContactForm = () => {
             className="mt-1"
           />
           <label htmlFor="privacy" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
-            Akceptuję{' '}
+            {language === 'pl' ? 'Akceptuję' : 'I accept the'}{' '}
             <button
               type="button"
               onClick={scrollToPrivacy}
               className="text-primary hover:underline font-medium"
             >
-              politykę prywatności
+              {language === 'pl' ? 'politykę prywatności' : 'privacy policy'}
             </button>
-            {' '}i wyrażam zgodę na przetwarzanie moich danych osobowych
+            {' '}{language === 'pl' ? 'i wyrażam zgodę na przetwarzanie moich danych osobowych' : 'and agree to the processing of my personal data'}
           </label>
         </div>
         {errors.privacy && (
@@ -179,10 +184,10 @@ const ContactForm = () => {
           className="w-full font-semibold py-6 text-lg group"
         >
           {isSubmitting ? (
-            "Wysyłanie..."
+            t('contact.form.sending')
           ) : (
             <>
-              Wyślij wiadomość
+              {t('contact.form.submit')}
               <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </>
           )}

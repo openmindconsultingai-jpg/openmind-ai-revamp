@@ -1,8 +1,10 @@
 import { Brain, Target, Lightbulb } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
 import aboutBackground from '@/assets/about-background.jpg';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
   return (
     <section id="about" className="py-20 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0">
@@ -23,10 +25,10 @@ const About = () => {
               <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-gradient text-glow">O nas</span>
+              <span className="text-gradient text-glow">{t('about.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Jesteśmy zespołem pasjonatów technologii AI, którzy wierzą w demokratyzację dostępu do innowacyjnych narzędzi.
+              {t('about.subtitle')}
             </p>
           </div>
 
@@ -35,9 +37,9 @@ const About = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                 <Brain className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">Ekspertyza</h3>
+              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">{t('about.expertise.title')}</h3>
               <p className="text-muted-foreground">
-                Głęboka wiedza o możliwościach AI i jej praktycznym zastosowaniu
+                {t('about.expertise.desc')}
               </p>
             </div>
 
@@ -45,9 +47,9 @@ const About = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                 <Target className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">Precyzja</h3>
+              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">{t('about.precision.title')}</h3>
               <p className="text-muted-foreground">
-                Dopasowane rozwiązania, które rzeczywiście odpowiadają na Twoje potrzeby
+                {t('about.precision.desc')}
               </p>
             </div>
 
@@ -55,9 +57,9 @@ const About = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                 <Lightbulb className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">Innowacja</h3>
+              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">{t('about.innovation.title')}</h3>
               <p className="text-muted-foreground">
-                Najnowsze technologie w służbie praktycznych zastosowań
+                {t('about.innovation.desc')}
               </p>
             </div>
           </div>
