@@ -45,8 +45,10 @@ const Features = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 
                 <div className="relative bg-card border border-border rounded-2xl p-8 hover:border-primary/50 transition-all">
-                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="w-8 h-8 text-primary" />
+                  <div className="flex justify-center mb-6">
+                    <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/10 transition-all duration-300 shadow-lg shadow-primary/10">
+                      <Icon className="w-10 h-10 text-primary" />
+                    </div>
                   </div>
                   
                   <h3 className="text-2xl font-bold mb-4 text-foreground text-glow-subtle group-hover:text-gradient transition-colors text-center">
