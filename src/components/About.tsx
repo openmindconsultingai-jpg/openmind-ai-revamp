@@ -27,9 +27,6 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               <span className="text-gradient text-glow">{t('about.title')}</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t('about.subtitle')}
-            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
