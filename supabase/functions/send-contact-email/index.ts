@@ -12,6 +12,7 @@ const corsHeaders = {
 interface ContactEmailRequest {
   name: string;
   email: string;
+  phone: string;
   message: string;
 }
 
@@ -22,7 +23,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, message }: ContactEmailRequest = await req.json();
+    const { name, email, phone, message }: ContactEmailRequest = await req.json();
 
     console.log("Sending contact email from:", name, email);
 
@@ -36,6 +37,7 @@ const handler = async (req: Request): Promise<Response> => {
         <h2>Nowa wiadomość z formularza kontaktowego</h2>
         <p><strong>Imię:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Telefon:</strong> ${phone}</p>
         <p><strong>Wiadomość:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
       `,

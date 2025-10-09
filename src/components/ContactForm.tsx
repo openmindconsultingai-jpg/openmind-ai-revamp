@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Mail, User, MessageSquare, Send } from 'lucide-react';
+import { Mail, User, MessageSquare, Send, Phone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,6 +20,10 @@ const getContactSchema = (language: 'pl' | 'en') => z.object({
     .trim()
     .email({ message: language === 'pl' ? "Podaj poprawny adres email" : "Please provide a valid email address" })
     .max(255, { message: language === 'pl' ? "Email nie może przekraczać 255 znaków" : "Email cannot exceed 255 characters" }),
+  phone: z.string()
+    .trim()
+    .min(9, { message: language === 'pl' ? "Numer telefonu musi zawierać co najmniej 9 cyfr" : "Phone number must be at least 9 digits" })
+    .max(20, { message: language === 'pl' ? "Numer telefonu nie może przekraczać 20 znaków" : "Phone number cannot exceed 20 characters" }),
   message: z.string()
     .trim()
     .min(10, { message: language === 'pl' ? "Wiadomość musi zawierać co najmniej 10 znaków" : "Message must be at least 10 characters" })
@@ -57,17 +61,41 @@ const ContactForm = () => {
     try {
       console.log("Wysyłanie wiadomości...", data);
       
-      const { error } = await supabase.functions.invoke('send-contact-email', {
+      // Wysłanie emaila
+      const emailPromise = supabase.functions.invoke('send-contact-email', {
         body: {
           name: data.name,
           email: data.email,
+          phone: data.phone,
           message: data.message
         }
       });
 
-      if (error) {
-        console.error("Błąd wysyłania:", error);
-        throw error;
+      // Wysłanie do CRM
+      const crmPromise = fetch('https://lmpaoodakxvqcaivximb.supabase.co/functions/v1/webhook-lead-capture', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          company: '',
+          source: 'website_form',
+          message: data.message
+        })
+      });
+
+      const [emailResult, crmResult] = await Promise.all([emailPromise, crmPromise]);
+
+      if (emailResult.error) {
+        console.error("Błąd wysyłania emaila:", emailResult.error);
+        throw emailResult.error;
+      }
+
+      if (!crmResult.ok) {
+        console.error("Błąd wysyłania do CRM:", await crmResult.text());
       }
       
       toast({
@@ -135,6 +163,22 @@ const ContactForm = () => {
           />
           {errors.email && (
             <p className="text-sm text-destructive">{errors.email.message}</p>
+          )}
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-foreground flex items-center gap-2">
+            <Phone className="w-4 h-4 text-primary" />
+            {t('contact.form.phone')}
+          </label>
+          <Input
+            {...register('phone')}
+            type="tel"
+            placeholder={language === 'pl' ? "+48 123 456 789" : "+1 234 567 890"}
+            className="bg-background border-border focus:border-primary"
+          />
+          {errors.phone && (
+            <p className="text-sm text-destructive">{errors.phone.message}</p>
           )}
         </div>
 
