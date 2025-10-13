@@ -30,7 +30,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Wysyłka emaila do firmy
     const emailResponse = await resend.emails.send({
       from: "OpenMind AI <onboarding@resend.dev>",
-      to: ["openmindconsultingai@gmail.com"],
+      to: ["biuro@openmindai.pl"],
       replyTo: email,
       subject: `Nowa wiadomość od ${name}`,
       html: `

@@ -50,10 +50,10 @@ const Hero = () => {
             onClick={scrollToContact}
             variant="glass"
             size="lg"
-            className="group text-lg font-semibold"
+            className="group text-sm sm:text-base md:text-lg font-semibold px-4 sm:px-6 md:px-8"
           >
-            {t('hero.cta')}
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <span className="text-center leading-tight">{t('hero.cta')}</span>
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform flex-shrink-0" />
           </Button>
         </div>
       </div>
