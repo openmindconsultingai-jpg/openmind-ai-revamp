@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ShoppingBag } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -55,6 +56,12 @@ const Navigation = () => {
             >
               {t('nav.about')}
             </button>
+            <Link to="/shop">
+              <Button variant="outline" className="font-medium">
+                <ShoppingBag className="h-4 w-4 mr-2" />
+                Shop
+              </Button>
+            </Link>
             <Button
               onClick={() => scrollToSection('contact')}
               variant="glass"
@@ -114,6 +121,12 @@ const Navigation = () => {
             >
               {t('nav.about')}
             </button>
+            <Link to="/shop" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button variant="outline" className="w-full font-medium">
+                <ShoppingBag className="h-4 w-4 mr-2" />
+                Shop
+              </Button>
+            </Link>
             <Button
               onClick={() => scrollToSection('contact')}
               variant="glass"
