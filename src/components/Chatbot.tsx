@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Minimize2 } from "lucide-react";
 import { Button } from "./ui/button";
 import logo from '@/assets/openmind-logo.webp';
 
 const Chatbot = () => {
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(true);
+
+  useEffect(() => {
+    const hasBeenOpened = localStorage.getItem('chatbot-opened');
+    
+    if (!hasBeenOpened) {
+      const timer = setTimeout(() => {
+        setIsMinimized(false);
+        localStorage.setItem('chatbot-opened', 'true');
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
