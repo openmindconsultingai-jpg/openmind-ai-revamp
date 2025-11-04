@@ -7,7 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const About = () => {
   const { t } = useLanguage();
   return (
-    <section id="about" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="about" className="pt-32 md:pt-40 pb-20 md:pb-32 relative overflow-hidden">
       <div className="absolute inset-0">
         <div 
           className="w-full h-full bg-cover bg-center"
