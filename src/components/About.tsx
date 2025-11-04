@@ -1,5 +1,6 @@
 import { Brain, Target, Lightbulb } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
+import ceoImage from '@/assets/ceo-lukasz-czarnecki.png';
 import aboutBackground from '@/assets/about-background.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -19,7 +20,7 @@ const About = () => {
       </div>
       
       <div className="container mx-auto px-4 relative">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex justify-center mb-6">
               <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" />
@@ -29,6 +30,38 @@ const About = () => {
             </h2>
           </div>
 
+          {/* CEO Section */}
+          <div className="mb-20 bg-card/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-border/50">
+            <div className="grid md:grid-cols-[300px_1fr] gap-8 md:gap-12 items-center">
+              <div className="mx-auto md:mx-0">
+                <img 
+                  src={ceoImage} 
+                  alt={t('about.ceo.name')}
+                  className="rounded-2xl w-full max-w-[300px] aspect-square object-cover shadow-lg"
+                />
+              </div>
+              <div className="text-center md:text-left space-y-4">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gradient text-glow-subtle mb-2">
+                    {t('about.ceo.name')}
+                  </h3>
+                  <p className="text-lg text-primary font-semibold">{t('about.ceo.title')}</p>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  {t('about.ceo.bio')}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Company Description */}
+          <div className="mb-16 max-w-5xl mx-auto">
+            <p className="text-lg text-muted-foreground leading-relaxed text-center">
+              {t('about.company.desc')}
+            </p>
+          </div>
+
+          {/* Values Grid */}
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center space-y-4">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
