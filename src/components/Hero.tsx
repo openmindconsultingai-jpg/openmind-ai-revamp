@@ -42,7 +42,7 @@ const Hero = () => {
             {t('hero.description')}
           </p>
           
-          <p className="text-lg text-muted-foreground/80 max-w-3xl mx-auto text-left">
+          <p className="text-lg text-muted-foreground/80 max-w-3xl mx-auto text-center">
             {t('hero.description2')}
           </p>
 

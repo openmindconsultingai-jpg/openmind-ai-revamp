@@ -32,15 +32,15 @@ const About = () => {
 
           {/* CEO Section */}
           <div className="mb-20 bg-card/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-border/50">
-            <div className="grid md:grid-cols-[300px_1fr] gap-8 md:gap-12 items-center">
-              <div className="mx-auto md:mx-0">
+            <div className="flex flex-col items-center text-center space-y-8">
+              <div className="overflow-hidden rounded-2xl shadow-lg group">
                 <img 
                   src={ceoImage} 
                   alt={t('about.ceo.name')}
-                  className="rounded-2xl w-full max-w-[300px] aspect-square object-cover shadow-lg"
+                  className="w-full max-w-[300px] aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div className="text-center md:text-left space-y-4">
+              <div className="space-y-4 max-w-3xl">
                 <div>
                   <h3 className="text-2xl md:text-3xl font-bold text-gradient text-glow-subtle mb-2">
                     {t('about.ceo.name')}
