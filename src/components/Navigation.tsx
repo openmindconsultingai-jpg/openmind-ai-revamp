@@ -61,6 +61,14 @@ const Navigation = () => {
             >
               {t('nav.about')}
             </Link>
+            <Link
+              to="/blog"
+              className={`text-foreground hover:text-primary transition-colors font-medium ${
+                location.pathname === '/blog' ? 'text-primary' : ''
+              }`}
+            >
+              {t('nav.blog')}
+            </Link>
             <Link to="/contact">
               <Button
                 variant="glass"
@@ -129,6 +137,15 @@ const Navigation = () => {
               }`}
             >
               {t('nav.about')}
+            </Link>
+            <Link
+              to="/blog"
+              onClick={closeMobileMenu}
+              className={`block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 ${
+                location.pathname === '/blog' ? 'text-primary' : ''
+              }`}
+            >
+              {t('nav.blog')}
             </Link>
             <Link to="/contact" onClick={closeMobileMenu}>
               <Button

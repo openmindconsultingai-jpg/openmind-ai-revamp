@@ -17,6 +17,7 @@ const translations: Translations = {
     'nav.home': 'Strona główna',
     'nav.services': 'Nasze usługi',
     'nav.about': 'O nas',
+    'nav.blog': 'Baza wiedzy o AI',
     'nav.contact': 'Kontakt',
     
     // Hero
@@ -165,6 +166,10 @@ const translations: Translations = {
     'contact.form.success': 'Wiadomość wysłana pomyślnie!',
     'contact.form.error': 'Wystąpił błąd podczas wysyłania wiadomości',
     
+    // Blog
+    'blog.subtitle': 'Praktyczna wiedza o sztucznej inteligencji, uczeniu maszynowym i automatyzacji',
+    'blog.coming-soon': 'Wkrótce pojawią się tutaj artykuły',
+    
     // Footer
     'footer.copyright': '© 2025 OpenMind AI Consulting. Wszystkie prawa zastrzeżone.',
     'footer.privacy': 'Polityka prywatności',
@@ -174,6 +179,7 @@ const translations: Translations = {
     'nav.home': 'Home',
     'nav.services': 'Our Services',
     'nav.about': 'About Us',
+    'nav.blog': 'AI Knowledge Base',
     'nav.contact': 'Contact',
     
     // Hero
@@ -321,6 +327,10 @@ const translations: Translations = {
     'contact.form.sending': 'Sending...',
     'contact.form.success': 'Message sent successfully!',
     'contact.form.error': 'An error occurred while sending the message',
+    
+    // Blog
+    'blog.subtitle': 'Practical knowledge about artificial intelligence, machine learning and automation',
+    'blog.coming-soon': 'Articles coming soon',
     
     // Footer
     'footer.copyright': '© 2025 OpenMind AI Consulting. All rights reserved.',
