@@ -38,6 +38,10 @@ const Hero = () => {
             <span className="text-foreground text-glow">{t('hero.subtitle')}</span>
           </h1>
           
+          <div className="flex justify-center my-8">
+            <div dangerouslySetInnerHTML={{ __html: '<elevenlabs-convai agent-id="agent_8601k9t05zq8f5tbghtehtcvpr3n"></elevenlabs-convai>' }} />
+          </div>
+          
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-glow-subtle text-center">
             {t('hero.description')}
           </p>
