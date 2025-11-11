@@ -31,7 +31,10 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <div dangerouslySetInnerHTML={{ __html: '<elevenlabs-convai agent-id="agent_8601k9t05zq8f5tbghtehtcvpr3n"></elevenlabs-convai>' }} />
+          <div 
+            className="fixed bottom-6 left-6 z-40 md:bottom-6 md:left-auto md:right-24" 
+            dangerouslySetInnerHTML={{ __html: '<elevenlabs-convai agent-id="agent_8601k9t05zq8f5tbghtehtcvpr3n"></elevenlabs-convai>' }} 
+          />
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>
