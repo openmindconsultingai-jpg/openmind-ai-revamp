@@ -2,14 +2,14 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import heroBackground from '@/assets/ai-hero-background.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   const { t } = useLanguage();
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const navigate = useNavigate();
+  
+  const handleCtaClick = () => {
+    navigate('/contact');
   };
 
   return (
@@ -47,7 +47,7 @@ const Hero = () => {
           </p>
 
           <Button
-            onClick={scrollToContact}
+            onClick={handleCtaClick}
             variant="glass"
             size="lg"
             className="group text-sm sm:text-base md:text-lg font-semibold px-4 sm:px-6 md:px-8"
