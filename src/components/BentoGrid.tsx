@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Brain, Building2, Users, GraduationCap, X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import VideoSectionBackground from '@/components/VideoSectionBackground';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -104,6 +105,8 @@ const BentoGrid = () => {
       ref={sectionRef}
       className="relative py-32 overflow-hidden"
     >
+      <VideoSectionBackground seed="bento" opacity={0.14} blurPx={14} overlayOpacity={0.88} />
+
       {/* Section Header */}
       <div className="container mx-auto px-6 mb-16">
         <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-center mb-4 font-semibold">
