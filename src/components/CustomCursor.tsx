@@ -10,6 +10,8 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
   const [isHovering, setIsHovering] = useState(false);
   const [hoverText, setHoverText] = useState('');
   const [isVisible, setIsVisible] = useState(false);
+  const magneticElement = useRef<HTMLElement | null>(null);
+  const magneticStrength = 0.3;
 
   useEffect(() => {
     if (!enabled) return;
@@ -39,29 +41,46 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
     const handleElementHover = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const hoverableElement = target.closest('[data-cursor]');
+      const interactiveElement = target.closest('a, button, [role="button"]') as HTMLElement;
       
       if (hoverableElement) {
         setIsHovering(true);
         const text = hoverableElement.getAttribute('data-cursor') || 'Odkryj';
         setHoverText(text);
-      } else if (target.closest('a, button')) {
+        magneticElement.current = hoverableElement as HTMLElement;
+      } else if (interactiveElement) {
         setIsHovering(true);
         setHoverText('');
+        magneticElement.current = interactiveElement;
       } else {
         setIsHovering(false);
         setHoverText('');
+        magneticElement.current = null;
       }
     };
 
-    // Smooth cursor animation
+    // Smooth cursor animation with magnetic effect
     const animateCursor = () => {
       const speed = 0.35;
       const ringSpeed = 0.25;
 
-      cursorX += (mouseX - cursorX) * speed;
-      cursorY += (mouseY - cursorY) * speed;
-      ringX += (mouseX - ringX) * ringSpeed;
-      ringY += (mouseY - ringY) * ringSpeed;
+      let targetX = mouseX;
+      let targetY = mouseY;
+
+      // Apply magnetic effect when hovering interactive elements
+      if (magneticElement.current && isHovering) {
+        const rect = magneticElement.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        targetX = mouseX + (centerX - mouseX) * magneticStrength;
+        targetY = mouseY + (centerY - mouseY) * magneticStrength;
+      }
+
+      cursorX += (targetX - cursorX) * speed;
+      cursorY += (targetY - cursorY) * speed;
+      ringX += (targetX - ringX) * ringSpeed;
+      ringY += (targetY - ringY) * ringSpeed;
 
       cursor.style.transform = `translate(${cursorX - 4}px, ${cursorY - 4}px)`;
       cursorRing.style.transform = `translate(${ringX - (isHovering ? 30 : 16)}px, ${ringY - (isHovering ? 30 : 16)}px)`;
