@@ -7,10 +7,16 @@ interface CustomCursorProps {
 const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const cursorRingRef = useRef<HTMLDivElement>(null);
+
   const [isHovering, setIsHovering] = useState(false);
   const [hoverText, setHoverText] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
+
+  const hoveringRef = useRef(false);
+  const hoverTextRef = useRef('');
+  const clickingRef = useRef(false);
+
   const magneticElement = useRef<HTMLElement | null>(null);
   const magneticStrength = 0.3;
 
@@ -28,54 +34,78 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
     let cursorY = 0;
     let ringX = 0;
     let ringY = 0;
+    let rafId = 0;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      setIsVisible(true);
+    const setHoverState = (nextHovering: boolean, nextText: string, nextMagneticEl: HTMLElement | null) => {
+      hoveringRef.current = nextHovering;
+      magneticElement.current = nextMagneticEl;
+
+      if (hoverTextRef.current !== nextText) {
+        hoverTextRef.current = nextText;
+        setHoverText(nextText);
+      }
+      setIsHovering((prev) => (prev === nextHovering ? prev : nextHovering));
     };
 
-    const handleMouseEnter = () => setIsVisible(true);
-    const handleMouseLeave = () => setIsVisible(false);
-    const handleMouseDown = () => setIsClicking(true);
-    const handleMouseUp = () => setIsClicking(false);
+    const handlePointerMove = (e: PointerEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      setIsVisible((v) => (v ? v : true));
+    };
 
-    // Handle hoverable elements
-    const handleElementHover = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const hoverableElement = target.closest('[data-cursor]');
-      const interactiveElement = target.closest('a, button, [role="button"]') as HTMLElement;
-      
+    const handlePointerEnter = () => setIsVisible(true);
+    const handlePointerLeave = () => setIsVisible(false);
+
+    const handlePointerOver = (e: PointerEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+
+      const hoverableElement = target.closest('[data-cursor]') as HTMLElement | null;
+      const interactiveElement = target.closest('a, button, [role="button"], [data-cursor]') as HTMLElement | null;
+
       if (hoverableElement) {
-        setIsHovering(true);
         const text = hoverableElement.getAttribute('data-cursor') || 'Odkryj';
-        setHoverText(text);
-        magneticElement.current = hoverableElement as HTMLElement;
+        setHoverState(true, text, hoverableElement);
       } else if (interactiveElement) {
-        setIsHovering(true);
-        setHoverText('');
-        magneticElement.current = interactiveElement;
-      } else {
-        setIsHovering(false);
-        setHoverText('');
-        magneticElement.current = null;
+        setHoverState(true, '', interactiveElement);
       }
     };
 
-    // Smooth cursor animation with magnetic effect
+    const handlePointerOut = (e: PointerEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+
+      // If leaving an interactive element and not immediately entering another, drop hover state.
+      const related = e.relatedTarget as HTMLElement | null;
+      if (related && related.closest('a, button, [role="button"], [data-cursor]')) return;
+
+      if (target.closest('a, button, [role="button"], [data-cursor]')) {
+        setHoverState(false, '', null);
+      }
+    };
+
+    const handlePointerDown = () => {
+      clickingRef.current = true;
+      setIsClicking(true);
+    };
+
+    const handlePointerUp = () => {
+      clickingRef.current = false;
+      setIsClicking(false);
+    };
+
     const animateCursor = () => {
-      const speed = 0.35;
-      const ringSpeed = 0.25;
+      const speed = 0.45;
+      const ringSpeed = 0.35;
 
       let targetX = mouseX;
       let targetY = mouseY;
 
-      // Apply magnetic effect when hovering interactive elements
-      if (magneticElement.current && isHovering) {
+      if (magneticElement.current && hoveringRef.current) {
         const rect = magneticElement.current.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        
+
         targetX = mouseX + (centerX - mouseX) * magneticStrength;
         targetY = mouseY + (centerY - mouseY) * magneticStrength;
       }
@@ -85,34 +115,36 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
       ringX += (targetX - ringX) * ringSpeed;
       ringY += (targetY - ringY) * ringSpeed;
 
-      cursor.style.transform = `translate(${cursorX - 4}px, ${cursorY - 4}px)`;
-      cursorRing.style.transform = `translate(${ringX - (isHovering ? 30 : 16)}px, ${ringY - (isHovering ? 30 : 16)}px)`;
+      cursor.style.transform = `translate3d(${cursorX - 4}px, ${cursorY - 4}px, 0)`;
+      cursorRing.style.transform = `translate3d(${ringX - (hoveringRef.current ? 30 : 16)}px, ${ringY - (hoveringRef.current ? 30 : 16)}px, 0)`;
 
-      requestAnimationFrame(animateCursor);
+      rafId = requestAnimationFrame(animateCursor);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mousemove', handleElementHover);
-    document.addEventListener('mouseenter', handleMouseEnter);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
-    
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    window.addEventListener('pointerdown', handlePointerDown, { passive: true });
+    window.addEventListener('pointerup', handlePointerUp, { passive: true });
+    window.addEventListener('pointerover', handlePointerOver, { passive: true });
+    window.addEventListener('pointerout', handlePointerOut, { passive: true });
+    window.addEventListener('pointerenter', handlePointerEnter, { passive: true });
+    window.addEventListener('pointerleave', handlePointerLeave, { passive: true });
+
     animateCursor();
 
-    // Add custom-cursor class to body
     document.body.classList.add('custom-cursor');
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mousemove', handleElementHover);
-      document.removeEventListener('mouseenter', handleMouseEnter);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerdown', handlePointerDown);
+      window.removeEventListener('pointerup', handlePointerUp);
+      window.removeEventListener('pointerover', handlePointerOver);
+      window.removeEventListener('pointerout', handlePointerOut);
+      window.removeEventListener('pointerenter', handlePointerEnter);
+      window.removeEventListener('pointerleave', handlePointerLeave);
+      cancelAnimationFrame(rafId);
       document.body.classList.remove('custom-cursor');
     };
-  }, [enabled, isHovering]);
+  }, [enabled]);
 
   if (!enabled) return null;
 
