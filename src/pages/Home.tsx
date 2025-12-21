@@ -1,4 +1,4 @@
-import EtherealHero from '@/components/EtherealHero';
+import VideoHero from '@/components/VideoHero';
 import MissionSection from '@/components/MissionSection';
 import BentoGrid from '@/components/BentoGrid';
 import ParticleFooter from '@/components/ParticleFooter';
@@ -14,7 +14,7 @@ const Home = () => {
     <div className="min-h-screen bg-background">
       <CustomCursor enabled={typeof window !== 'undefined' && window.innerWidth > 768} />
       <FloatingNav />
-      <EtherealHero />
+      <VideoHero />
       <MissionSection />
       <BentoGrid />
       <ParticleFooter />
