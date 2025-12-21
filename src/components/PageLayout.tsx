@@ -48,7 +48,7 @@ const PageLayout = ({ children, showParticles = true, showVideoBackground = true
     <div ref={containerRef} className="min-h-screen bg-background relative overflow-hidden">
       {/* Video Background for subpages - sequential playback */}
       {showVideoBackground && currentVideo && (
-        <div className="fixed inset-0 overflow-hidden">
+        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
           <video
             key={currentVideo.url}
             autoPlay
@@ -58,16 +58,16 @@ const PageLayout = ({ children, showParticles = true, showVideoBackground = true
             onEnded={handleVideoEnd}
             className="absolute inset-0 w-full h-full object-cover"
             style={{
-              opacity: isFadingOut ? 0 : (isVideoReady ? 0.35 : 0),
-              filter: 'blur(6px)',
+              opacity: isFadingOut ? 0 : (isVideoReady ? 0.55 : 0),
+              filter: 'blur(4px)',
               transition: 'opacity 2000ms ease-in-out',
             }}
           >
             <source src={currentVideo.url} type="video/mp4" />
           </video>
           
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-background/70" />
+          {/* Dark overlay (kept lighter so the video is visible) */}
+          <div className="absolute inset-0 bg-background/45" />
           
           {/* Noise overlay */}
           <div 
