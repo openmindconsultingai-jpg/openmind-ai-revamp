@@ -55,8 +55,8 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
 
     // Smooth cursor animation
     const animateCursor = () => {
-      const speed = 0.15;
-      const ringSpeed = 0.08;
+      const speed = 0.35;
+      const ringSpeed = 0.25;
 
       cursorX += (mouseX - cursorX) * speed;
       cursorY += (mouseY - cursorY) * speed;
