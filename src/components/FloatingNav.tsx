@@ -3,9 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const FloatingNav = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -69,7 +66,7 @@ const FloatingNav = () => {
               key={item.path}
               to={item.path}
               className={`
-                px-5 py-2.5 rounded-full font-mono text-sm transition-all duration-300
+                px-5 py-2.5 rounded-full font-sans text-sm transition-all duration-300
                 ${location.pathname === item.path 
                   ? 'bg-primary text-primary-foreground' 
                   : 'text-foreground/70 hover:text-foreground hover:bg-muted/50'
@@ -123,7 +120,7 @@ const FloatingNav = () => {
                 to={item.path}
                 onClick={() => setIsMenuOpen(false)}
                 className={`
-                  font-serif text-3xl transition-all duration-300
+                  font-heading text-3xl transition-all duration-300 font-semibold
                   ${location.pathname === item.path 
                     ? 'text-gradient' 
                     : 'text-foreground/70 hover:text-foreground'

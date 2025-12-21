@@ -1,16 +1,13 @@
-import Navigation from '@/components/Navigation';
+import PageLayout from '@/components/PageLayout';
 import Privacy from '@/components/Privacy';
 import Footer from '@/components/Footer';
-import Chatbot from '@/components/Chatbot';
 
 const PrivacyPage = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <PageLayout>
       <Privacy />
       <Footer />
-      <Chatbot />
-    </div>
+    </PageLayout>
   );
 };
 

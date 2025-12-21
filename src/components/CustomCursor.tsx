@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface CustomCursorProps {
   enabled?: boolean;
@@ -86,7 +86,7 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.body.classList.remove('custom-cursor');
     };
-  }, [enabled]);
+  }, [enabled, isHovering]);
 
   if (!enabled) return null;
 
@@ -104,23 +104,19 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
       {/* Cursor ring */}
       <div
         ref={cursorRingRef}
-        className={`fixed top-0 left-0 pointer-events-none z-[9998] transition-all duration-300 ${
+        className={`fixed top-0 left-0 pointer-events-none z-[9998] transition-all duration-300 rounded-full flex items-center justify-center ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}
         style={{
           width: isHovering ? 60 : 32,
           height: isHovering ? 60 : 32,
-          border: `1px solid hsl(185 100% 55% / ${isHovering ? 0.8 : 0.4})`,
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: isHovering ? 'hsl(185 100% 55% / 0.1)' : 'transparent',
+          border: `1px solid hsl(176 100% 43% / ${isHovering ? 0.8 : 0.4})`,
+          backgroundColor: isHovering ? 'hsl(176 100% 43% / 0.1)' : 'transparent',
         }}
       >
         {hoverText && (
           <span 
-            className="font-mono text-[10px] text-primary uppercase tracking-wider"
+            className="font-sans text-[10px] text-primary uppercase tracking-wider"
             style={{ opacity: isHovering ? 1 : 0, transition: 'opacity 0.2s' }}
           >
             {hoverText}

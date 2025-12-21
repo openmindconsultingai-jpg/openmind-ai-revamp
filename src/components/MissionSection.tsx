@@ -75,8 +75,8 @@ const MissionSection = () => {
         className="mission-bg absolute inset-0 opacity-30"
         style={{
           background: `
-            radial-gradient(circle at 30% 30%, hsl(185 100% 55% / 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 70% 70%, hsl(270 60% 50% / 0.3) 0%, transparent 50%)
+            radial-gradient(circle at 30% 30%, hsl(176 100% 43% / 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 70% 70%, hsl(190 100% 50% / 0.3) 0%, transparent 50%)
           `,
         }}
       />
@@ -85,7 +85,7 @@ const MissionSection = () => {
       <div className="relative z-10 container mx-auto px-6">
         <h2 
           ref={textRef}
-          className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center leading-tight max-w-5xl mx-auto"
+          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center leading-tight max-w-5xl mx-auto font-semibold"
           style={{ perspective: '1000px' }}
         >
           {words.map((word, i) => (

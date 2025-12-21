@@ -1,14 +1,13 @@
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import PageLayout from '@/components/PageLayout';
 import BlogContent from '@/components/Blog';
+import Footer from '@/components/Footer';
 
 const Blog = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <PageLayout>
       <BlogContent />
       <Footer />
-    </div>
+    </PageLayout>
   );
 };
 

@@ -14,9 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['Libre Baskerville', 'Georgia', 'serif'],
-        mono: ['Space Mono', 'Consolas', 'monospace'],
-        sans: ['Space Mono', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        heading: ['Poppins', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -86,8 +85,8 @@ export default {
           "50%": { transform: "translateY(-20px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(185 100% 55% / 0.3)" },
-          "50%": { boxShadow: "0 0 40px hsl(185 100% 55% / 0.6), 0 0 60px hsl(270 60% 50% / 0.3)" },
+          "0%, 100%": { boxShadow: "0 0 20px hsl(176 100% 43% / 0.3)" },
+          "50%": { boxShadow: "0 0 40px hsl(176 100% 43% / 0.6), 0 0 60px hsl(190 100% 50% / 0.3)" },
         },
         "text-reveal": {
           "0%": { opacity: "0", filter: "blur(10px)", transform: "translateY(20px)" },
@@ -116,9 +115,13 @@ export default {
           "0%": { opacity: "0", transform: "scale(0.95)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
-        "spotlight": {
-          "0%": { opacity: "0", transform: "translate(-50%, -50%) scale(0.5)" },
-          "100%": { opacity: "1", transform: "translate(-50%, -50%) scale(1)" },
+        "slow-zoom": {
+          "0%": { transform: "scale(1)" },
+          "100%": { transform: "scale(1.15)" },
+        },
+        "subtle-shift": {
+          "0%, 100%": { transform: "translateX(0) translateY(0)" },
+          "50%": { transform: "translateX(-10px) translateY(-10px)" },
         },
       },
       animation: {
@@ -132,7 +135,8 @@ export default {
         "slide-up": "slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "fade-in": "fade-in 0.5s ease-out forwards",
         "scale-in": "scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        "spotlight": "spotlight 0.3s ease-out forwards",
+        "slow-zoom": "slow-zoom 15s ease-in-out infinite alternate",
+        "subtle-shift": "subtle-shift 10s ease-in-out infinite",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

@@ -12,7 +12,7 @@ const services = [
     icon: Building2,
     titleKey: 'services.business.title',
     descKey: 'services.business.desc',
-    color: 'hsl(185 100% 55%)',
+    color: 'hsl(176 100% 43%)',
     gridClass: 'md:col-span-2 md:row-span-2',
   },
   {
@@ -20,7 +20,7 @@ const services = [
     icon: Users,
     titleKey: 'services.administration.title',
     descKey: 'services.administration.desc',
-    color: 'hsl(270 60% 50%)',
+    color: 'hsl(190 100% 50%)',
     gridClass: 'md:col-span-1 md:row-span-1',
   },
   {
@@ -28,7 +28,7 @@ const services = [
     icon: GraduationCap,
     titleKey: 'services.education.title',
     descKey: 'services.education.desc',
-    color: 'hsl(280 100% 65%)',
+    color: 'hsl(176 100% 43%)',
     gridClass: 'md:col-span-1 md:row-span-1',
   },
   {
@@ -36,7 +36,7 @@ const services = [
     icon: Brain,
     titleKey: 'services.ai.title',
     descKey: 'services.ai.desc',
-    color: 'hsl(200 100% 60%)',
+    color: 'hsl(190 100% 50%)',
     gridClass: 'md:col-span-2 md:row-span-1',
   },
 ];
@@ -106,10 +106,10 @@ const BentoGrid = () => {
     >
       {/* Section Header */}
       <div className="container mx-auto px-6 mb-16">
-        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-center mb-4">
+        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-center mb-4 font-semibold">
           <span className="text-gradient">{t('services.title')}</span>
         </h2>
-        <p className="font-mono text-muted-foreground text-center max-w-2xl mx-auto">
+        <p className="font-sans text-muted-foreground text-center max-w-2xl mx-auto">
           {t('services.subtitle')}
         </p>
       </div>
@@ -127,7 +127,7 @@ const BentoGrid = () => {
         <div 
           className="absolute inset-0 pointer-events-none opacity-50 transition-opacity duration-300"
           style={{
-            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(185 100% 55% / 0.1), transparent 40%)`,
+            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(176 100% 43% / 0.1), transparent 40%)`,
           }}
         />
 
@@ -171,10 +171,10 @@ const BentoGrid = () => {
                   </div>
 
                   {/* Content */}
-                  <h3 className="relative z-10 font-serif text-2xl mb-3 text-foreground">
+                  <h3 className="relative z-10 font-heading text-2xl mb-3 text-foreground font-semibold">
                     {t(service.titleKey)}
                   </h3>
-                  <p className="relative z-10 font-mono text-sm text-muted-foreground leading-relaxed">
+                  <p className="relative z-10 font-sans text-sm text-muted-foreground leading-relaxed">
                     {t(service.descKey)}
                   </p>
 
@@ -230,10 +230,10 @@ const BentoGrid = () => {
                     <Icon size={40} style={{ color: service.color }} />
                   </div>
                   
-                  <h3 className="font-serif text-4xl mb-4 text-gradient">
+                  <h3 className="font-heading text-4xl mb-4 text-gradient font-semibold">
                     {t(service.titleKey)}
                   </h3>
-                  <p className="font-mono text-lg text-muted-foreground leading-relaxed">
+                  <p className="font-sans text-lg text-muted-foreground leading-relaxed">
                     {t(service.descKey)}
                   </p>
                 </>
