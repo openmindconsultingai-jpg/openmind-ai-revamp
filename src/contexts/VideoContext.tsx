@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
 interface VideoFile {
@@ -8,16 +8,30 @@ interface VideoFile {
 
 interface VideoContextValue {
   videos: VideoFile[];
+  currentVideo: VideoFile | null;
   isLoading: boolean;
-  getVideoForSection: (sectionId: string) => VideoFile | null;
+  nextVideo: () => void;
 }
 
 const VideoContext = createContext<VideoContextValue | null>(null);
 
+// Fisher-Yates shuffle
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 export const VideoProvider = ({ children }: { children: ReactNode }) => {
-  const [videos, setVideos] = useState<VideoFile[]>([]);
+  const [allVideos, setAllVideos] = useState<VideoFile[]>([]);
+  const [playlist, setPlaylist] = useState<VideoFile[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Fetch videos once on mount
   useEffect(() => {
     const fetchVideos = async () => {
       try {
@@ -34,9 +48,13 @@ export const VideoProvider = ({ children }: { children: ReactNode }) => {
             url: supabase.storage.from('hero').getPublicUrl(file.name).data.publicUrl
           }));
 
-        // Shuffle videos randomly on load
-        const shuffled = [...videoFiles].sort(() => Math.random() - 0.5);
-        setVideos(shuffled);
+        setAllVideos(videoFiles);
+        
+        // Create initial shuffled playlist
+        const shuffled = shuffleArray(videoFiles);
+        setPlaylist(shuffled);
+        
+        console.log(`Loaded ${videoFiles.length} videos, shuffled playlist created`);
       } catch (err) {
         console.error('Error fetching videos:', err);
       } finally {
@@ -47,21 +65,32 @@ export const VideoProvider = ({ children }: { children: ReactNode }) => {
     fetchVideos();
   }, []);
 
-  // Deterministic selection based on section ID
-  const getVideoForSection = (sectionId: string): VideoFile | null => {
-    if (videos.length === 0) return null;
+  // Move to next video in playlist, reshuffle when complete
+  const nextVideo = useCallback(() => {
+    if (playlist.length === 0) return;
     
-    let hash = 0;
-    for (let i = 0; i < sectionId.length; i++) {
-      hash = (hash << 5) - hash + sectionId.charCodeAt(i);
-      hash |= 0;
+    const nextIndex = currentIndex + 1;
+    
+    if (nextIndex >= playlist.length) {
+      // Reshuffle playlist and start from beginning
+      const reshuffled = shuffleArray(allVideos);
+      setPlaylist(reshuffled);
+      setCurrentIndex(0);
+      console.log('Playlist complete, reshuffled for new sequence');
+    } else {
+      setCurrentIndex(nextIndex);
     }
-    const idx = Math.abs(hash) % videos.length;
-    return videos[idx];
-  };
+  }, [currentIndex, playlist.length, allVideos]);
+
+  const currentVideo = playlist.length > 0 ? playlist[currentIndex] : null;
 
   return (
-    <VideoContext.Provider value={{ videos, isLoading, getVideoForSection }}>
+    <VideoContext.Provider value={{ 
+      videos: playlist, 
+      currentVideo, 
+      isLoading, 
+      nextVideo 
+    }}>
       {children}
     </VideoContext.Provider>
   );
@@ -75,17 +104,13 @@ export const useVideoContext = () => {
   return context;
 };
 
-// For hero - returns first video and cycling capability
+// Legacy hook for compatibility
 export const useHeroVideos = () => {
-  const { videos, isLoading } = useVideoContext();
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const currentVideo = videos.length > 0 ? videos[currentIndex] : null;
-
-  const getNextVideo = () => {
-    if (videos.length === 0) return;
-    setCurrentIndex((prev) => (prev + 1) % videos.length);
+  const { videos, currentVideo, isLoading, nextVideo } = useVideoContext();
+  return { 
+    videos, 
+    currentVideo, 
+    isLoading, 
+    getNextVideo: nextVideo 
   };
-
-  return { videos, currentVideo, isLoading, getNextVideo };
 };

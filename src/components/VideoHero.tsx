@@ -112,7 +112,6 @@ const VideoHero = () => {
             key={currentVideo.url}
             autoPlay
             muted
-            loop
             playsInline
             onEnded={handleVideoEnded}
             onCanPlay={handleVideoCanPlay}

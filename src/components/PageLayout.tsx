@@ -15,7 +15,7 @@ const PageLayout = ({ children, showParticles = true, showVideoBackground = true
   useSmoothScroll();
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
   const containerRef = useRef<HTMLDivElement>(null);
-  const { currentVideo, isLoading } = useHeroVideos();
+  const { currentVideo, isLoading, getNextVideo } = useHeroVideos();
   const [isVideoReady, setIsVideoReady] = useState(false);
 
   useEffect(() => {
@@ -29,30 +29,39 @@ const PageLayout = ({ children, showParticles = true, showVideoBackground = true
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Reset video ready state when video changes
+  useEffect(() => {
+    setIsVideoReady(false);
+  }, [currentVideo?.url]);
+
+  const handleVideoEnd = () => {
+    getNextVideo();
+  };
+
   return (
     <div ref={containerRef} className="min-h-screen bg-background relative overflow-hidden">
-      {/* Video Background for subpages */}
+      {/* Video Background for subpages - sequential playback */}
       {showVideoBackground && currentVideo && (
         <div className="fixed inset-0 overflow-hidden">
           <video
             key={currentVideo.url}
             autoPlay
             muted
-            loop
             playsInline
             onCanPlay={() => setIsVideoReady(true)}
+            onEnded={handleVideoEnd}
             className="absolute inset-0 w-full h-full object-cover"
             style={{
-              opacity: isVideoReady ? 0.15 : 0,
-              filter: 'blur(8px)',
-              transition: 'opacity 1s ease-out',
+              opacity: isVideoReady ? 0.35 : 0,
+              filter: 'blur(6px)',
+              transition: 'opacity 800ms ease-out',
             }}
           >
             <source src={currentVideo.url} type="video/mp4" />
           </video>
           
           {/* Dark overlay */}
-          <div className="absolute inset-0 bg-background/80" />
+          <div className="absolute inset-0 bg-background/70" />
           
           {/* Noise overlay */}
           <div 
