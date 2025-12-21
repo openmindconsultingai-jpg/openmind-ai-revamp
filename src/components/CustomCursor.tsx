@@ -10,6 +10,7 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
   const [isHovering, setIsHovering] = useState(false);
   const [hoverText, setHoverText] = useState('');
   const [isVisible, setIsVisible] = useState(false);
+  const [isClicking, setIsClicking] = useState(false);
   const magneticElement = useRef<HTMLElement | null>(null);
   const magneticStrength = 0.3;
 
@@ -36,6 +37,8 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
 
     const handleMouseEnter = () => setIsVisible(true);
     const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseDown = () => setIsClicking(true);
+    const handleMouseUp = () => setIsClicking(false);
 
     // Handle hoverable elements
     const handleElementHover = (e: MouseEvent) => {
@@ -92,6 +95,8 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
     window.addEventListener('mousemove', handleElementHover);
     document.addEventListener('mouseenter', handleMouseEnter);
     document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseup', handleMouseUp);
     
     animateCursor();
 
@@ -103,6 +108,8 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
       window.removeEventListener('mousemove', handleElementHover);
       document.removeEventListener('mouseenter', handleMouseEnter);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mouseup', handleMouseUp);
       document.body.classList.remove('custom-cursor');
     };
   }, [enabled, isHovering]);
@@ -114,23 +121,23 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
       {/* Main cursor dot */}
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 w-2 h-2 rounded-full bg-primary pointer-events-none z-[9999] transition-opacity duration-200 ${
+        className={`fixed top-0 left-0 w-2 h-2 rounded-full bg-primary pointer-events-none z-[9999] transition-all duration-150 ${
           isVisible ? 'opacity-100' : 'opacity-0'
-        }`}
+        } ${isClicking ? 'scale-50' : 'scale-100'}`}
         style={{ mixBlendMode: 'difference' }}
       />
       
       {/* Cursor ring */}
       <div
         ref={cursorRingRef}
-        className={`fixed top-0 left-0 pointer-events-none z-[9998] transition-all duration-300 rounded-full flex items-center justify-center ${
+        className={`fixed top-0 left-0 pointer-events-none z-[9998] transition-all duration-150 rounded-full flex items-center justify-center ${
           isVisible ? 'opacity-100' : 'opacity-0'
-        }`}
+        } ${isClicking ? 'scale-75' : 'scale-100'}`}
         style={{
           width: isHovering ? 60 : 32,
           height: isHovering ? 60 : 32,
-          border: `1px solid hsl(176 100% 43% / ${isHovering ? 0.8 : 0.4})`,
-          backgroundColor: isHovering ? 'hsl(176 100% 43% / 0.1)' : 'transparent',
+          border: `1px solid hsl(176 100% 43% / ${isClicking ? 1 : isHovering ? 0.8 : 0.4})`,
+          backgroundColor: isClicking ? 'hsl(176 100% 43% / 0.2)' : isHovering ? 'hsl(176 100% 43% / 0.1)' : 'transparent',
         }}
       >
         {hoverText && (
