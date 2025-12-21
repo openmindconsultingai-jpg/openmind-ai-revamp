@@ -16,15 +16,21 @@ const VideoSectionBackground = ({
 }: VideoSectionBackgroundProps) => {
   const { currentVideo, isLoading, nextVideo } = useVideoContext();
   const [isReady, setIsReady] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Reset readiness when video changes
   useEffect(() => {
     setIsReady(false);
+    setIsFadingOut(false);
   }, [currentVideo?.url]);
 
   const handleVideoEnd = () => {
-    nextVideo();
+    // Start 2s fade out, then switch video
+    setIsFadingOut(true);
+    setTimeout(() => {
+      nextVideo();
+    }, 2000);
   };
 
   if (isLoading || !currentVideo) return null;
@@ -41,10 +47,10 @@ const VideoSectionBackground = ({
         onEnded={handleVideoEnd}
         className="absolute inset-0 w-full h-full object-cover"
         style={{
-          opacity: isReady ? opacity : 0,
+          opacity: isFadingOut ? 0 : (isReady ? opacity : 0),
           filter: `blur(${blurPx}px)`,
           transform: 'scale(1.1)',
-          transition: 'opacity 800ms ease-out',
+          transition: 'opacity 2000ms ease-in-out',
           willChange: 'opacity',
         }}
       >

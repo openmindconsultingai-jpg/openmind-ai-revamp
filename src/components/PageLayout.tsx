@@ -3,7 +3,7 @@ import FloatingNav from '@/components/FloatingNav';
 import CustomCursor from '@/components/CustomCursor';
 import Chatbot from '@/components/Chatbot';
 import useSmoothScroll from '@/hooks/useSmoothScroll';
-import { useHeroVideos } from '@/hooks/useHeroVideos';
+import { useVideoContext } from '@/contexts/VideoContext';
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -15,8 +15,9 @@ const PageLayout = ({ children, showParticles = true, showVideoBackground = true
   useSmoothScroll();
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
   const containerRef = useRef<HTMLDivElement>(null);
-  const { currentVideo, isLoading, getNextVideo } = useHeroVideos();
+  const { currentVideo, isLoading, nextVideo } = useVideoContext();
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -32,10 +33,15 @@ const PageLayout = ({ children, showParticles = true, showVideoBackground = true
   // Reset video ready state when video changes
   useEffect(() => {
     setIsVideoReady(false);
+    setIsFadingOut(false);
   }, [currentVideo?.url]);
 
   const handleVideoEnd = () => {
-    getNextVideo();
+    // Start 2s fade out, then switch video
+    setIsFadingOut(true);
+    setTimeout(() => {
+      nextVideo();
+    }, 2000);
   };
 
   return (
@@ -52,9 +58,9 @@ const PageLayout = ({ children, showParticles = true, showVideoBackground = true
             onEnded={handleVideoEnd}
             className="absolute inset-0 w-full h-full object-cover"
             style={{
-              opacity: isVideoReady ? 0.35 : 0,
+              opacity: isFadingOut ? 0 : (isVideoReady ? 0.35 : 0),
               filter: 'blur(6px)',
-              transition: 'opacity 800ms ease-out',
+              transition: 'opacity 2000ms ease-in-out',
             }}
           >
             <source src={currentVideo.url} type="video/mp4" />
