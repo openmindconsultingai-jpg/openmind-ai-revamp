@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { Brain, Users, Lightbulb, Target, Zap, Shield, Rocket, Video, Building2 } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
-import servicesBackground from '@/assets/services-background.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
+import VideoSectionBackground from '@/components/VideoSectionBackground';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -111,17 +111,8 @@ const Services = () => {
         }
       );
 
-      // Background parallax
-      gsap.to('.services-bg', {
-        yPercent: 30,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-        },
-      });
+      // Background parallax (was image-based)
+      // Video background is handled by VideoSectionBackground.
     }, sectionRef);
 
     return () => ctx.revert();
@@ -130,12 +121,7 @@ const Services = () => {
   return (
     <section ref={sectionRef} id="services" className="pt-32 md:pt-40 pb-20 md:pb-32 relative overflow-hidden">
       <div className="absolute inset-0">
-        <div 
-          className="services-bg w-full h-[120%] bg-cover bg-center"
-          style={{ 
-            backgroundImage: `url(${servicesBackground})`,
-          }}
-        />
+        <VideoSectionBackground opacity={0.28} blurPx={6} overlayOpacity={0.72} />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
       </div>
       

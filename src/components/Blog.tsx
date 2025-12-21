@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import BlogArticleCard from './BlogArticleCard';
 import BlogArticle from './BlogArticle';
+import VideoSectionBackground from '@/components/VideoSectionBackground';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -103,6 +104,8 @@ const Blog = () => {
 
   return (
     <section ref={sectionRef} className="pt-32 pb-20 px-4 relative overflow-hidden">
+      <VideoSectionBackground opacity={0.24} blurPx={7} overlayOpacity={0.76} />
+
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 
