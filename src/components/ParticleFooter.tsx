@@ -98,7 +98,7 @@ const ParticleFooter = () => {
 
   return (
     <footer ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <VideoSectionBackground seed="footer" opacity={0.12} blurPx={18} overlayOpacity={0.9} />
+      <VideoSectionBackground opacity={0.16} blurPx={14} overlayOpacity={0.86} />
 
       {/* Particle Canvas */}
       <canvas

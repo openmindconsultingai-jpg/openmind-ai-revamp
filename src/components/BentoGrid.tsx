@@ -105,7 +105,7 @@ const BentoGrid = () => {
       ref={sectionRef}
       className="relative py-32 overflow-hidden"
     >
-      <VideoSectionBackground seed="bento" opacity={0.14} blurPx={14} overlayOpacity={0.88} />
+      <VideoSectionBackground opacity={0.18} blurPx={10} overlayOpacity={0.84} />
 
       {/* Section Header */}
       <div className="container mx-auto px-6 mb-16">

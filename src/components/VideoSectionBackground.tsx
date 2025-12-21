@@ -2,90 +2,56 @@ import { useState, useEffect, useRef } from 'react';
 import { useVideoContext } from '@/contexts/VideoContext';
 
 interface VideoSectionBackgroundProps {
-  seed?: string;
   className?: string;
   opacity?: number;
   blurPx?: number;
   overlayOpacity?: number;
-  scrollFade?: boolean;
 }
 
 const VideoSectionBackground = ({
-  seed = 'default',
   className = '',
-  opacity = 0.18,
-  blurPx = 10,
-  overlayOpacity = 0.82,
-  scrollFade = true,
+  opacity = 0.22,
+  blurPx = 8,
+  overlayOpacity = 0.78,
 }: VideoSectionBackgroundProps) => {
-  const { getVideoForSection, isLoading } = useVideoContext();
+  const { currentVideo, isLoading, nextVideo } = useVideoContext();
   const [isReady, setIsReady] = useState(false);
-  const [scrollOpacity, setScrollOpacity] = useState(1);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const selected = getVideoForSection(seed);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Reset readiness when video changes
   useEffect(() => {
     setIsReady(false);
-  }, [selected?.url]);
+  }, [currentVideo?.url]);
 
-  // Scroll-based crossfade effect
-  useEffect(() => {
-    if (!scrollFade || !containerRef.current) return;
+  const handleVideoEnd = () => {
+    nextVideo();
+  };
 
-    const handleScroll = () => {
-      const container = containerRef.current;
-      if (!container) return;
-
-      const rect = container.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-      // Calculate visibility ratio (1 = fully visible, 0 = fully out of view)
-      const visibleTop = Math.max(0, Math.min(windowHeight, rect.bottom));
-      const visibleBottom = Math.max(0, Math.min(windowHeight, windowHeight - rect.top));
-      const visibleHeight = Math.min(visibleTop, visibleBottom, rect.height);
-      const visibilityRatio = Math.max(0, Math.min(1, visibleHeight / Math.min(rect.height, windowHeight)));
-
-      // Smooth fade in/out based on scroll position
-      setScrollOpacity(visibilityRatio);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrollFade]);
-
-  if (isLoading || !selected) return null;
-
-  const finalOpacity = isReady ? opacity * scrollOpacity : 0;
+  if (isLoading || !currentVideo) return null;
 
   return (
-    <div 
-      ref={containerRef}
-      className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
-    >
+    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
       <video
-        key={selected.url}
+        ref={videoRef}
+        key={currentVideo.url}
         autoPlay
         muted
-        loop
         playsInline
         onCanPlay={() => setIsReady(true)}
+        onEnded={handleVideoEnd}
         className="absolute inset-0 w-full h-full object-cover"
         style={{
-          opacity: finalOpacity,
+          opacity: isReady ? opacity : 0,
           filter: `blur(${blurPx}px)`,
           transform: 'scale(1.1)',
-          transition: 'opacity 600ms ease-out',
+          transition: 'opacity 800ms ease-out',
           willChange: 'opacity',
         }}
       >
-        <source src={selected.url} type="video/mp4" />
+        <source src={currentVideo.url} type="video/mp4" />
       </video>
 
-      {/* Dark overlay to keep typography readable */}
+      {/* Dark overlay */}
       <div 
         className="absolute inset-0 bg-background transition-opacity duration-500" 
         style={{ opacity: overlayOpacity }} 

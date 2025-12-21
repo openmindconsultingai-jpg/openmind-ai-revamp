@@ -107,7 +107,7 @@ const MissionSection = () => {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden py-32"
     >
-      <VideoSectionBackground seed="mission" opacity={0.16} blurPx={16} overlayOpacity={0.86} />
+      <VideoSectionBackground opacity={0.20} blurPx={12} overlayOpacity={0.82} />
 
       {/* Parallax background layers */}
       <div 
