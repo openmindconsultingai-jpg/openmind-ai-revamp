@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import VideoSectionBackground from '@/components/VideoSectionBackground';
 
 const ParticleFooter = () => {
   const { t } = useLanguage();
@@ -97,6 +98,8 @@ const ParticleFooter = () => {
 
   return (
     <footer ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <VideoSectionBackground seed="footer" opacity={0.12} blurPx={18} overlayOpacity={0.9} />
+
       {/* Particle Canvas */}
       <canvas
         ref={canvasRef}

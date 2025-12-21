@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import VideoSectionBackground from '@/components/VideoSectionBackground';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -106,6 +107,8 @@ const MissionSection = () => {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden py-32"
     >
+      <VideoSectionBackground seed="mission" opacity={0.16} blurPx={16} overlayOpacity={0.86} />
+
       {/* Parallax background layers */}
       <div 
         className="mission-bg-layer-1 absolute inset-0 opacity-20"
