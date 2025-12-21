@@ -1,10 +1,18 @@
+import { useEffect, useRef } from 'react';
 import { Brain, Users, Lightbulb, Target, Zap, Shield, Rocket, Video, Building2 } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
 import servicesBackground from '@/assets/services-background.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
   const { t } = useLanguage();
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
   
   const services = [
     {
@@ -62,21 +70,77 @@ const Services = () => {
       benefitKeys: ['services.security.benefit1', 'services.security.benefit2', 'services.security.benefit3']
     }
   ];
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header animation
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: 'top 85%',
+            end: 'top 50%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+
+      // Cards stagger animation
+      gsap.fromTo(
+        '.service-card',
+        { opacity: 0, y: 80, scale: 0.9 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: 'top 80%',
+            end: 'top 20%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+
+      // Background parallax
+      gsap.to('.services-bg', {
+        yPercent: 30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="services" className="pt-32 md:pt-40 pb-20 md:pb-32 relative overflow-hidden">
+    <section ref={sectionRef} id="services" className="pt-32 md:pt-40 pb-20 md:pb-32 relative overflow-hidden">
       <div className="absolute inset-0">
         <div 
-          className="w-full h-full bg-cover bg-center"
+          className="services-bg w-full h-[120%] bg-cover bg-center"
           style={{ 
             backgroundImage: `url(${servicesBackground})`,
-            animation: 'slow-zoom 15s ease-in-out infinite alternate'
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
       </div>
       
       <div className="container mx-auto px-4 relative">
-        <div className="text-center mb-16">
+        <div ref={headerRef} className="text-center mb-16">
           <div className="flex justify-center mb-6">
             <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" />
           </div>
@@ -88,18 +152,17 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <div
                 key={index}
-                className="group relative animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="service-card group relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
-                <div className="relative bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+                <div className="relative bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-2">
                   <div className="flex justify-center mb-6">
                     <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/10 transition-all duration-300 shadow-lg shadow-primary/10">
                       <Icon className="w-10 h-10 text-primary" />
