@@ -1,10 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const ParticleFooter = () => {
   const { t } = useLanguage();
@@ -77,7 +73,7 @@ const ParticleFooter = () => {
         // Draw
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(185, 100%, 55%, ${p.alpha})`;
+        ctx.fillStyle = `hsla(176, 100%, 43%, ${p.alpha})`;
         ctx.fill();
       });
 
@@ -109,14 +105,14 @@ const ParticleFooter = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
-        <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-8 text-gradient-silver">
+        <h2 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-8 text-gradient-silver font-bold">
           {t('footer.cta') || 'Zacznijmy Projekt'}
         </h2>
         
         <button
           onClick={() => navigate('/contact')}
           data-cursor="Start"
-          className="group relative inline-flex items-center gap-3 px-10 py-5 font-mono text-lg rounded-full glass border border-primary/30 hover:border-primary transition-all duration-500 hover:glow-primary"
+          className="group relative inline-flex items-center gap-3 px-10 py-5 font-sans text-lg rounded-full glass border border-primary/30 hover:border-primary transition-all duration-500 hover:glow-primary"
         >
           <span>{t('nav.contact')}</span>
           <span className="text-primary group-hover:translate-x-1 transition-transform">→</span>
@@ -124,7 +120,7 @@ const ParticleFooter = () => {
 
         {/* Footer links */}
         <div className="mt-20 pt-8 border-t border-border/30">
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-sans text-sm text-muted-foreground">
             {t('footer.copyright')}
           </p>
         </div>

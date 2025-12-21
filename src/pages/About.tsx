@@ -1,16 +1,13 @@
-import Navigation from '@/components/Navigation';
+import PageLayout from '@/components/PageLayout';
 import About from '@/components/About';
 import Footer from '@/components/Footer';
-import Chatbot from '@/components/Chatbot';
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <PageLayout>
       <About />
       <Footer />
-      <Chatbot />
-    </div>
+    </PageLayout>
   );
 };
 

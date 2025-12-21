@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <CustomCursor enabled={window.innerWidth > 768} />
+      <CustomCursor enabled={typeof window !== 'undefined' && window.innerWidth > 768} />
       <FloatingNav />
       <EtherealHero />
       <MissionSection />

@@ -98,7 +98,7 @@ const EtherealHero = () => {
         <div 
           className="orb-1 absolute w-[600px] h-[600px] rounded-full opacity-30"
           style={{
-            background: 'radial-gradient(circle, hsl(185 100% 55% / 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, hsl(176 100% 43% / 0.4) 0%, transparent 70%)',
             left: '10%',
             top: '20%',
             transform: `translate(${(mousePosition.x - 0.5) * -30}px, ${(mousePosition.y - 0.5) * -30}px)`,
@@ -108,7 +108,7 @@ const EtherealHero = () => {
         <div 
           className="orb-2 absolute w-[800px] h-[800px] rounded-full opacity-20"
           style={{
-            background: 'radial-gradient(circle, hsl(270 60% 50% / 0.5) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, hsl(190 100% 50% / 0.5) 0%, transparent 70%)',
             right: '-10%',
             top: '-20%',
             transform: `translate(${(mousePosition.x - 0.5) * 40}px, ${(mousePosition.y - 0.5) * 40}px)`,
@@ -118,7 +118,7 @@ const EtherealHero = () => {
         <div 
           className="orb-3 absolute w-[500px] h-[500px] rounded-full opacity-25"
           style={{
-            background: 'radial-gradient(circle, hsl(280 100% 65% / 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, hsl(176 100% 43% / 0.4) 0%, transparent 70%)',
             left: '40%',
             bottom: '-10%',
             transform: `translate(${(mousePosition.x - 0.5) * -20}px, ${(mousePosition.y - 0.5) * -20}px)`,
@@ -132,8 +132,8 @@ const EtherealHero = () => {
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `
-            linear-gradient(hsl(185 100% 55% / 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(185 100% 55% / 0.3) 1px, transparent 1px)
+            linear-gradient(hsl(176 100% 43% / 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(176 100% 43% / 0.3) 1px, transparent 1px)
           `,
           backgroundSize: '100px 100px',
         }}
@@ -144,7 +144,7 @@ const EtherealHero = () => {
         {/* Main Title with letter-by-letter animation */}
         <h1 
           ref={titleRef}
-          className="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-8 leading-none tracking-tight"
+          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-8 leading-none tracking-tight"
         >
           <span className="block text-glow">
             {titleText.split('').map((letter, i) => (
@@ -173,7 +173,7 @@ const EtherealHero = () => {
         {/* Subtitle */}
         <p 
           ref={subtitleRef}
-          className="font-mono text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto opacity-0"
+          className="font-sans text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto opacity-0"
         >
           {t('hero.description')}
         </p>
@@ -181,7 +181,7 @@ const EtherealHero = () => {
         {/* Scroll indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
           <div className="flex flex-col items-center gap-3 animate-pulse">
-            <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
+            <span className="font-sans text-xs text-muted-foreground uppercase tracking-widest">
               Scroll
             </span>
             <div className="w-px h-12 bg-gradient-to-b from-primary/50 to-transparent" />
