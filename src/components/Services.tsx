@@ -121,8 +121,8 @@ const Services = () => {
   return (
     <section ref={sectionRef} id="services" className="pt-32 md:pt-40 pb-20 md:pb-32 relative overflow-hidden">
       <div className="absolute inset-0">
-        <VideoSectionBackground opacity={0.28} blurPx={6} overlayOpacity={0.72} />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+        <VideoSectionBackground opacity={0.5} blurPx={4} overlayOpacity={0.55} />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/35 to-background" />
       </div>
       
       <div className="container mx-auto px-4 relative">

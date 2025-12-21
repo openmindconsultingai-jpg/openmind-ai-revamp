@@ -104,7 +104,7 @@ const Blog = () => {
 
   return (
     <section ref={sectionRef} className="pt-32 pb-20 px-4 relative overflow-hidden">
-      <VideoSectionBackground opacity={0.24} blurPx={7} overlayOpacity={0.76} />
+      <VideoSectionBackground opacity={0.45} blurPx={5} overlayOpacity={0.6} />
 
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
