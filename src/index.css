@@ -2,96 +2,369 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ═══════════════════════════════════════════════════════════════════════════
+   ETHEREAL INTELLIGENCE DESIGN SYSTEM
+   Premium Dark Theme with Iridescent Accents
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 @layer base {
   :root {
-    --background: 220 15% 5%;
-    --foreground: 180 100% 98%;
+    /* Core: OLED Black with Midnight Navy undertones */
+    --background: 230 15% 3%;
+    --foreground: 0 0% 95%;
 
-    --card: 220 15% 8%;
-    --card-foreground: 180 100% 98%;
+    /* Cards: Slightly elevated surfaces */
+    --card: 230 20% 6%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 220 15% 8%;
-    --popover-foreground: 180 100% 98%;
+    --popover: 230 20% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 176 100% 43%;
-    --primary-foreground: 220 15% 5%;
+    /* Primary: Iridescent Cyan */
+    --primary: 185 100% 55%;
+    --primary-foreground: 230 15% 3%;
 
-    --secondary: 220 15% 12%;
-    --secondary-foreground: 176 100% 43%;
+    /* Secondary: Deep Purple Glow */
+    --secondary: 270 60% 50%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 180 10% 60%;
+    /* Muted: Subtle grays */
+    --muted: 230 15% 12%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 176 100% 43%;
-    --accent-foreground: 220 15% 5%;
+    /* Accent: Neon Violet */
+    --accent: 280 100% 65%;
+    --accent-foreground: 0 0% 95%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Silver tones */
+    --silver: 220 10% 70%;
+    --silver-muted: 220 10% 40%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 15%;
-    --ring: 176 100% 43%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --radius: 0.75rem;
-    
-    --gradient-primary: linear-gradient(135deg, hsl(176 100% 43%), hsl(190 100% 50%));
-    --gradient-dark: linear-gradient(180deg, hsl(220 15% 5%), hsl(220 15% 8%));
-    --glow-primary: 0 0 40px hsl(176 100% 43% / 0.3);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --border: 230 20% 15%;
+    --input: 230 20% 10%;
+    --ring: 185 100% 55%;
 
-    --sidebar-background: 0 0% 98%;
+    --radius: 1rem;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Premium Gradients */
+    --gradient-iridescent: linear-gradient(
+      135deg,
+      hsl(185 100% 55%) 0%,
+      hsl(270 60% 50%) 50%,
+      hsl(280 100% 65%) 100%
+    );
+    --gradient-glass: linear-gradient(
+      135deg,
+      hsl(230 20% 10% / 0.8) 0%,
+      hsl(230 20% 5% / 0.6) 100%
+    );
+    --gradient-fade-down: linear-gradient(
+      to bottom,
+      transparent 0%,
+      hsl(230 15% 3%) 100%
+    );
+    --gradient-spotlight: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      hsl(185 100% 55% / 0.15),
+      transparent 40%
+    );
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Glows & Shadows */
+    --glow-primary: 0 0 60px hsl(185 100% 55% / 0.4);
+    --glow-secondary: 0 0 40px hsl(270 60% 50% / 0.3);
+    --glow-accent: 0 0 50px hsl(280 100% 65% / 0.35);
+    --shadow-glass: 0 8px 32px hsl(230 15% 0% / 0.5);
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    /* Glassmorphism */
+    --glass-bg: hsl(230 20% 8% / 0.7);
+    --glass-border: hsl(0 0% 100% / 0.08);
+    --glass-highlight: hsl(0 0% 100% / 0.05);
 
-    --sidebar-accent: 240 4.8% 95.9%;
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 220 15% 5%;
-    --foreground: 180 100% 98%;
+    /* Sidebar (keeping for compatibility) */
+    --sidebar-background: 230 15% 3%;
+    --sidebar-foreground: 0 0% 60%;
+    --sidebar-primary: 185 100% 55%;
+    --sidebar-primary-foreground: 230 15% 3%;
+    --sidebar-accent: 230 20% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 230 20% 15%;
+    --sidebar-ring: 185 100% 55%;
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 @layer utilities {
+  /* Text Gradients */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-cyan-400;
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-iridescent);
   }
-  
+
+  .text-gradient-silver {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(220 10% 70%) 100%);
+  }
+
+  /* Glows */
   .glow-primary {
     box-shadow: var(--glow-primary);
   }
-  
-  .text-glow {
-    text-shadow: 0 0 20px hsl(176 100% 43% / 0.5), 
-                 0 0 40px hsl(176 100% 43% / 0.3),
-                 0 0 60px hsl(176 100% 43% / 0.2);
+
+  .glow-secondary {
+    box-shadow: var(--glow-secondary);
   }
-  
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  .text-glow {
+    text-shadow: 
+      0 0 30px hsl(185 100% 55% / 0.6),
+      0 0 60px hsl(270 60% 50% / 0.4),
+      0 0 90px hsl(280 100% 65% / 0.2);
+  }
+
   .text-glow-subtle {
-    text-shadow: 0 0 15px hsl(176 100% 43% / 0.3);
+    text-shadow: 0 0 20px hsl(185 100% 55% / 0.3);
+  }
+
+  /* Glassmorphism */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-subtle {
+    background: hsl(230 20% 8% / 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(0 0% 100% / 0.05);
+  }
+
+  /* Noise Overlay */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  /* Spotlight Effect */
+  .spotlight {
+    position: relative;
+  }
+
+  .spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-spotlight);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+  /* Premium Border */
+  .border-gradient {
+    position: relative;
+    background: var(--glass-bg);
+    border-radius: var(--radius);
+  }
+
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: var(--gradient-iridescent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+  }
+
+  .border-gradient:hover::before {
+    opacity: 0.6;
+  }
+
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Pulse Glow */
+  .pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   KEYFRAME ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(185 100% 55% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(185 100% 55% / 0.6), 0 0 60px hsl(270 60% 50% / 0.3);
+  }
+}
+
+@keyframes text-reveal {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes orb-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+  75% {
+    transform: translate(40px, 10px) scale(1.05);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 @layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: 'Space Mono', monospace;
+    overflow-x: hidden;
   }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+
+  /* Selection */
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CUSTOM CURSOR STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.custom-cursor {
+  cursor: none;
+}
+
+.custom-cursor * {
+  cursor: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LENIS SMOOTH SCROLL
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
