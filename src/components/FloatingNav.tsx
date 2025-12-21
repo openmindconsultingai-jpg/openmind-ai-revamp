@@ -54,59 +54,80 @@ const FloatingNav = () => {
 
   return (
     <>
-      {/* Floating Pill Navigation */}
+      {/* Floating Pill Navigation - Bottom Center */}
       <nav 
         ref={navRef}
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
       >
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-1 glass rounded-full px-2 py-2">
+        {/* Desktop Navigation - Minimalist Pill */}
+        <div 
+          className="hidden md:flex items-center gap-0.5 rounded-full px-1.5 py-1.5"
+          style={{
+            background: 'hsl(220 15% 8% / 0.85)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid hsl(0 0% 100% / 0.06)',
+            boxShadow: '0 8px 32px hsl(220 15% 0% / 0.4), 0 0 0 1px hsl(0 0% 100% / 0.02) inset',
+          }}
+        >
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
               className={`
-                px-5 py-2.5 rounded-full font-sans text-sm transition-all duration-300
+                px-4 py-2 rounded-full font-sans text-sm transition-all duration-300
                 ${location.pathname === item.path 
-                  ? 'bg-primary text-primary-foreground' 
-                  : 'text-foreground/70 hover:text-foreground hover:bg-muted/50'
+                  ? 'bg-primary text-primary-foreground shadow-lg' 
+                  : 'text-foreground/60 hover:text-foreground hover:bg-muted/30'
                 }
               `}
+              style={{
+                boxShadow: location.pathname === item.path 
+                  ? '0 0 20px hsl(176 100% 43% / 0.4)' 
+                  : 'none'
+              }}
             >
               {item.label}
             </Link>
           ))}
           
           {/* Language Switcher */}
-          <div className="flex items-center gap-1 ml-2 pl-2 border-l border-border/50">
+          <div className="flex items-center gap-0.5 ml-1.5 pl-1.5 border-l border-border/30">
             <button
               onClick={() => setLanguage('pl')}
-              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                language === 'pl' ? 'bg-primary/20 ring-2 ring-primary' : 'hover:bg-muted/50'
+              className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
+                language === 'pl' ? 'bg-primary/20 ring-1 ring-primary' : 'hover:bg-muted/30'
               }`}
               aria-label="Polski"
             >
-              <span className="text-sm">🇵🇱</span>
+              <span className="text-xs">🇵🇱</span>
             </button>
             <button
               onClick={() => setLanguage('en')}
-              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                language === 'en' ? 'bg-primary/20 ring-2 ring-primary' : 'hover:bg-muted/50'
+              className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
+                language === 'en' ? 'bg-primary/20 ring-1 ring-primary' : 'hover:bg-muted/30'
               }`}
               aria-label="English"
             >
-              <span className="text-sm">🇬🇧</span>
+              <span className="text-xs">🇬🇧</span>
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation Trigger */}
+        {/* Mobile Navigation Trigger - Floating Pill */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden glass rounded-full p-4 text-foreground"
+          className="md:hidden rounded-full p-3.5 text-foreground transition-all duration-300"
+          style={{
+            background: 'hsl(220 15% 8% / 0.85)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid hsl(0 0% 100% / 0.06)',
+            boxShadow: '0 8px 32px hsl(220 15% 0% / 0.4)',
+          }}
           aria-label="Toggle menu"
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
