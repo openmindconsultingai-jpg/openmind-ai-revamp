@@ -115,10 +115,10 @@ const About = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="pt-32 md:pt-40 pb-20 md:pb-32 relative overflow-hidden">
+    <section ref={sectionRef} id="about" className="pt-20 md:pt-24 pb-20 md:pb-32 relative overflow-hidden">
       <div className="absolute inset-0">
-        <VideoSectionBackground opacity={0.5} blurPx={4} overlayOpacity={0.55} />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/35 to-background" />
+        <VideoSectionBackground opacity={0.6} blurPx={3} overlayOpacity={0.45} />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/25 to-background" />
       </div>
       
       <div className="container mx-auto px-4 relative">
