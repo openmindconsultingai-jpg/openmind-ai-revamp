@@ -195,7 +195,6 @@ const VideoHero = () => {
               </span>
             ))}
           </span>
-          </span>
           <span className="block mt-2">
             {aiText.split('').map((letter, i) => (
               <span 
