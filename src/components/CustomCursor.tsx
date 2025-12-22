@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 interface CustomCursorProps {
   enabled?: boolean;
@@ -7,18 +7,58 @@ interface CustomCursorProps {
 const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const cursorRingRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
 
-  const [isHovering, setIsHovering] = useState(false);
-  const [hoverText, setHoverText] = useState('');
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClicking, setIsClicking] = useState(false);
+  // All state kept in refs to avoid React re-renders during animation
+  const stateRef = useRef({
+    mouseX: 0,
+    mouseY: 0,
+    ringX: 0,
+    ringY: 0,
+    isHovering: false,
+    isClicking: false,
+    isVisible: false,
+    hoverText: '',
+    magneticElement: null as HTMLElement | null,
+  });
 
-  const hoveringRef = useRef(false);
-  const hoverTextRef = useRef('');
-  const clickingRef = useRef(false);
-
-  const magneticElement = useRef<HTMLElement | null>(null);
   const magneticStrength = 0.3;
+
+  const updateCursorStyles = useCallback(() => {
+    const cursor = cursorRef.current;
+    const cursorRing = cursorRingRef.current;
+    const textEl = textRef.current;
+    const state = stateRef.current;
+
+    if (!cursor || !cursorRing) return;
+
+    // Update visibility
+    cursor.style.opacity = state.isVisible ? '1' : '0';
+    cursorRing.style.opacity = state.isVisible ? '1' : '0';
+
+    // Update click state
+    cursor.style.transform = `translate3d(${state.mouseX - 4}px, ${state.mouseY - 4}px, 0) scale(${state.isClicking ? 0.5 : 1})`;
+
+    // Update hover state for ring
+    const ringSize = state.isHovering ? 60 : 32;
+    const ringOffset = state.isHovering ? 30 : 16;
+    
+    cursorRing.style.width = `${ringSize}px`;
+    cursorRing.style.height = `${ringSize}px`;
+    cursorRing.style.borderColor = `hsl(176 100% 43% / ${state.isClicking ? 1 : state.isHovering ? 0.8 : 0.4})`;
+    cursorRing.style.backgroundColor = state.isClicking 
+      ? 'hsl(176 100% 43% / 0.2)' 
+      : state.isHovering 
+        ? 'hsl(176 100% 43% / 0.1)' 
+        : 'transparent';
+    cursorRing.style.transform = `translate3d(${state.ringX - ringOffset}px, ${state.ringY - ringOffset}px, 0) scale(${state.isClicking ? 0.75 : 1})`;
+
+    // Update text
+    if (textEl) {
+      textEl.textContent = state.hoverText;
+      textEl.style.opacity = state.isHovering && state.hoverText ? '1' : '0';
+    }
+  }, []);
 
   useEffect(() => {
     if (!enabled) return;
@@ -28,33 +68,24 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
 
     if (!cursor || !cursorRing) return;
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-    let ringX = 0;
-    let ringY = 0;
     let rafId = 0;
-
-    const setHoverState = (nextHovering: boolean, nextText: string, nextMagneticEl: HTMLElement | null) => {
-      hoveringRef.current = nextHovering;
-      magneticElement.current = nextMagneticEl;
-
-      if (hoverTextRef.current !== nextText) {
-        hoverTextRef.current = nextText;
-        setHoverText(nextText);
-      }
-      setIsHovering((prev) => (prev === nextHovering ? prev : nextHovering));
-    };
+    const state = stateRef.current;
 
     const handlePointerMove = (e: PointerEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      setIsVisible((v) => (v ? v : true));
+      state.mouseX = e.clientX;
+      state.mouseY = e.clientY;
+      if (!state.isVisible) {
+        state.isVisible = true;
+      }
     };
 
-    const handlePointerEnter = () => setIsVisible(true);
-    const handlePointerLeave = () => setIsVisible(false);
+    const handlePointerEnter = () => {
+      state.isVisible = true;
+    };
+
+    const handlePointerLeave = () => {
+      state.isVisible = false;
+    };
 
     const handlePointerOver = (e: PointerEvent) => {
       const target = e.target as HTMLElement | null;
@@ -64,10 +95,13 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
       const interactiveElement = target.closest('a, button, [role="button"], [data-cursor]') as HTMLElement | null;
 
       if (hoverableElement) {
-        const text = hoverableElement.getAttribute('data-cursor') || 'Odkryj';
-        setHoverState(true, text, hoverableElement);
+        state.isHovering = true;
+        state.hoverText = hoverableElement.getAttribute('data-cursor') || 'Odkryj';
+        state.magneticElement = hoverableElement;
       } else if (interactiveElement) {
-        setHoverState(true, '', interactiveElement);
+        state.isHovering = true;
+        state.hoverText = '';
+        state.magneticElement = interactiveElement;
       }
     };
 
@@ -75,63 +109,59 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      // If leaving an interactive element and not immediately entering another, drop hover state.
       const related = e.relatedTarget as HTMLElement | null;
       if (related && related.closest('a, button, [role="button"], [data-cursor]')) return;
 
       if (target.closest('a, button, [role="button"], [data-cursor]')) {
-        setHoverState(false, '', null);
+        state.isHovering = false;
+        state.hoverText = '';
+        state.magneticElement = null;
       }
     };
 
     const handlePointerDown = () => {
-      clickingRef.current = true;
-      setIsClicking(true);
+      state.isClicking = true;
     };
 
     const handlePointerUp = () => {
-      clickingRef.current = false;
-      setIsClicking(false);
+      state.isClicking = false;
     };
 
     const animateCursor = () => {
-      // Instant response - no interpolation for dot
-      let targetX = mouseX;
-      let targetY = mouseY;
+      let targetX = state.mouseX;
+      let targetY = state.mouseY;
 
-      if (magneticElement.current && hoveringRef.current) {
-        const rect = magneticElement.current.getBoundingClientRect();
+      // Magnetic effect
+      if (state.magneticElement && state.isHovering) {
+        const rect = state.magneticElement.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
 
-        targetX = mouseX + (centerX - mouseX) * magneticStrength;
-        targetY = mouseY + (centerY - mouseY) * magneticStrength;
+        targetX = state.mouseX + (centerX - state.mouseX) * magneticStrength;
+        targetY = state.mouseY + (centerY - state.mouseY) * magneticStrength;
       }
 
-      // Cursor dot follows instantly
-      cursorX = targetX;
-      cursorY = targetY;
-      
-      // Ring follows with minimal lag
-      ringX += (targetX - ringX) * 0.35;
-      ringY += (targetY - ringY) * 0.35;
+      // Ring follows with smooth interpolation
+      state.ringX += (targetX - state.ringX) * 0.25;
+      state.ringY += (targetY - state.ringY) * 0.25;
 
-      cursor.style.transform = `translate3d(${cursorX - 4}px, ${cursorY - 4}px, 0)`;
-      cursorRing.style.transform = `translate3d(${ringX - (hoveringRef.current ? 30 : 16)}px, ${ringY - (hoveringRef.current ? 30 : 16)}px, 0)`;
+      // Update DOM directly - no React re-render needed
+      updateCursorStyles();
 
       rafId = requestAnimationFrame(animateCursor);
     };
 
-    window.addEventListener('pointermove', handlePointerMove, { passive: true });
-    window.addEventListener('pointerdown', handlePointerDown, { passive: true });
-    window.addEventListener('pointerup', handlePointerUp, { passive: true });
-    window.addEventListener('pointerover', handlePointerOver, { passive: true });
-    window.addEventListener('pointerout', handlePointerOut, { passive: true });
-    window.addEventListener('pointerenter', handlePointerEnter, { passive: true });
-    window.addEventListener('pointerleave', handlePointerLeave, { passive: true });
+    // Use passive event listeners for better performance
+    const options = { passive: true };
+    window.addEventListener('pointermove', handlePointerMove, options);
+    window.addEventListener('pointerdown', handlePointerDown, options);
+    window.addEventListener('pointerup', handlePointerUp, options);
+    window.addEventListener('pointerover', handlePointerOver, options);
+    window.addEventListener('pointerout', handlePointerOut, options);
+    document.addEventListener('pointerenter', handlePointerEnter, options);
+    document.addEventListener('pointerleave', handlePointerLeave, options);
 
     animateCursor();
-
     document.body.classList.add('custom-cursor');
 
     return () => {
@@ -140,48 +170,72 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
       window.removeEventListener('pointerup', handlePointerUp);
       window.removeEventListener('pointerover', handlePointerOver);
       window.removeEventListener('pointerout', handlePointerOut);
-      window.removeEventListener('pointerenter', handlePointerEnter);
-      window.removeEventListener('pointerleave', handlePointerLeave);
+      document.removeEventListener('pointerenter', handlePointerEnter);
+      document.removeEventListener('pointerleave', handlePointerLeave);
       cancelAnimationFrame(rafId);
       document.body.classList.remove('custom-cursor');
     };
-  }, [enabled]);
+  }, [enabled, updateCursorStyles]);
 
   if (!enabled) return null;
 
   return (
     <>
-      {/* Main cursor dot */}
+      {/* Main cursor dot - GPU accelerated */}
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 w-2 h-2 rounded-full bg-primary pointer-events-none z-[9999] ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        } ${isClicking ? 'scale-50' : 'scale-100'}`}
-        style={{ mixBlendMode: 'difference', willChange: 'transform' }}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: 8,
+          height: 8,
+          borderRadius: '50%',
+          backgroundColor: 'hsl(176 100% 43%)',
+          pointerEvents: 'none',
+          zIndex: 9999,
+          mixBlendMode: 'difference',
+          willChange: 'transform',
+          backfaceVisibility: 'hidden',
+          transform: 'translate3d(0, 0, 0)',
+        }}
       />
       
-      {/* Cursor ring */}
+      {/* Cursor ring - GPU accelerated */}
       <div
         ref={cursorRingRef}
-        className={`fixed top-0 left-0 pointer-events-none z-[9998] rounded-full flex items-center justify-center transition-[width,height,border-color,background-color] duration-100 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        } ${isClicking ? 'scale-75' : 'scale-100'}`}
         style={{
-          width: isHovering ? 60 : 32,
-          height: isHovering ? 60 : 32,
-          border: `1px solid hsl(176 100% 43% / ${isClicking ? 1 : isHovering ? 0.8 : 0.4})`,
-          backgroundColor: isClicking ? 'hsl(176 100% 43% / 0.2)' : isHovering ? 'hsl(176 100% 43% / 0.1)' : 'transparent',
-          willChange: 'transform',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: 32,
+          height: 32,
+          borderRadius: '50%',
+          border: '1px solid hsl(176 100% 43% / 0.4)',
+          backgroundColor: 'transparent',
+          pointerEvents: 'none',
+          zIndex: 9998,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          willChange: 'transform, width, height',
+          backfaceVisibility: 'hidden',
+          transform: 'translate3d(0, 0, 0)',
+          transition: 'width 0.15s ease-out, height 0.15s ease-out, border-color 0.1s, background-color 0.1s',
         }}
       >
-        {hoverText && (
-          <span 
-            className="font-sans text-[10px] text-primary uppercase tracking-wider"
-            style={{ opacity: isHovering ? 1 : 0, transition: 'opacity 0.2s' }}
-          >
-            {hoverText}
-          </span>
-        )}
+        <span 
+          ref={textRef}
+          style={{
+            fontFamily: 'Inter, system-ui, sans-serif',
+            fontSize: 10,
+            color: 'hsl(176 100% 43%)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            opacity: 0,
+            transition: 'opacity 0.15s',
+          }}
+        />
       </div>
     </>
   );
