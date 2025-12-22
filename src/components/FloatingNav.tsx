@@ -1,48 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
+import { memo, useState, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
-import gsap from 'gsap';
 
-const FloatingNav = () => {
+const FloatingNav = memo(() => {
   const { language, setLanguage, t } = useLanguage();
-  const [isVisible, setIsVisible] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
-  const lastScrollY = useRef(0);
   const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > 100) {
-        if (currentScrollY > lastScrollY.current) {
-          setIsVisible(false);
-        } else {
-          setIsVisible(true);
-        }
-      } else {
-        setIsVisible(true);
-      }
-      
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => !prev);
   }, []);
 
-  useEffect(() => {
-    if (navRef.current) {
-      gsap.to(navRef.current, {
-        y: isVisible ? 0 : 100,
-        opacity: isVisible ? 1 : 0,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-    }
-  }, [isVisible]);
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
 
   const navItems = [
     { path: '/', label: t('nav.home') },
@@ -55,10 +27,7 @@ const FloatingNav = () => {
   return (
     <>
       {/* Floating Pill Navigation - Bottom Center */}
-      <nav 
-        ref={navRef}
-        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
-      >
+      <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transition-transform duration-300">
         {/* Desktop Navigation - Minimalist Pill */}
         <div 
           className="hidden md:flex items-center gap-0.5 rounded-full px-1.5 py-1.5"
@@ -75,9 +44,9 @@ const FloatingNav = () => {
               key={item.path}
               to={item.path}
               className={`
-                px-4 py-2 rounded-full font-sans text-sm transition-all duration-300
+                px-4 py-2 rounded-full font-sans text-sm transition-colors duration-200
                 ${location.pathname === item.path 
-                  ? 'bg-primary text-primary-foreground shadow-lg' 
+                  ? 'bg-primary text-primary-foreground' 
                   : 'text-foreground/60 hover:text-foreground hover:bg-muted/30'
                 }
               `}
@@ -95,7 +64,7 @@ const FloatingNav = () => {
           <div className="flex items-center gap-1 ml-1.5 pl-1.5 border-l border-border/30">
             <button
               onClick={() => setLanguage('pl')}
-              className={`w-8 h-8 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300 ${
+              className={`w-8 h-8 rounded-full overflow-hidden flex items-center justify-center transition-opacity duration-200 ${
                 language === 'pl' ? 'ring-2 ring-primary ring-offset-1 ring-offset-background' : 'opacity-60 hover:opacity-100'
               }`}
               aria-label="Polski"
@@ -104,11 +73,12 @@ const FloatingNav = () => {
                 src="https://flagcdn.com/w40/pl.png" 
                 alt="Polski" 
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </button>
             <button
               onClick={() => setLanguage('en')}
-              className={`w-8 h-8 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300 ${
+              className={`w-8 h-8 rounded-full overflow-hidden flex items-center justify-center transition-opacity duration-200 ${
                 language === 'en' ? 'ring-2 ring-primary ring-offset-1 ring-offset-background' : 'opacity-60 hover:opacity-100'
               }`}
               aria-label="English"
@@ -117,6 +87,7 @@ const FloatingNav = () => {
                 src="https://flagcdn.com/w40/gb.png" 
                 alt="English" 
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </button>
           </div>
@@ -124,8 +95,8 @@ const FloatingNav = () => {
 
         {/* Mobile Navigation Trigger - Floating Pill */}
         <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden rounded-full p-3.5 text-foreground transition-all duration-300"
+          onClick={toggleMenu}
+          className="md:hidden rounded-full p-3.5 text-foreground transition-colors duration-200"
           style={{
             background: 'hsl(220 15% 8% / 0.85)',
             backdropFilter: 'blur(20px)',
@@ -147,9 +118,9 @@ const FloatingNav = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenu}
                 className={`
-                  font-heading text-3xl transition-all duration-300 font-semibold
+                  font-heading text-3xl transition-colors duration-200 font-semibold
                   ${location.pathname === item.path 
                     ? 'text-gradient' 
                     : 'text-foreground/70 hover:text-foreground'
@@ -164,7 +135,7 @@ const FloatingNav = () => {
             <div className="flex items-center gap-4 mt-4">
               <button
                 onClick={() => setLanguage('pl')}
-                className={`w-12 h-12 rounded-full overflow-hidden transition-all ${
+                className={`w-12 h-12 rounded-full overflow-hidden transition-opacity duration-200 ${
                   language === 'pl' ? 'ring-2 ring-primary scale-110' : 'opacity-50'
                 }`}
               >
@@ -172,11 +143,12 @@ const FloatingNav = () => {
                   src="https://flagcdn.com/w80/pl.png" 
                   alt="Polski" 
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </button>
               <button
                 onClick={() => setLanguage('en')}
-                className={`w-12 h-12 rounded-full overflow-hidden transition-all ${
+                className={`w-12 h-12 rounded-full overflow-hidden transition-opacity duration-200 ${
                   language === 'en' ? 'ring-2 ring-primary scale-110' : 'opacity-50'
                 }`}
               >
@@ -184,6 +156,7 @@ const FloatingNav = () => {
                   src="https://flagcdn.com/w80/gb.png" 
                   alt="English" 
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </button>
             </div>
@@ -192,6 +165,8 @@ const FloatingNav = () => {
       )}
     </>
   );
-};
+});
+
+FloatingNav.displayName = 'FloatingNav';
 
 export default FloatingNav;

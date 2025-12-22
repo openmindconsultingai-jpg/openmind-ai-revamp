@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { memo, useState, useEffect, useRef } from 'react';
 import { useVideoContext } from '@/contexts/VideoContext';
 
 interface VideoSectionBackgroundProps {
@@ -8,7 +8,7 @@ interface VideoSectionBackgroundProps {
   overlayOpacity?: number;
 }
 
-const VideoSectionBackground = ({
+const VideoSectionBackground = memo(({
   className = '',
   opacity = 0.22,
   blurPx = 8,
@@ -26,11 +26,10 @@ const VideoSectionBackground = ({
   }, [currentVideo?.url]);
 
   const handleVideoEnd = () => {
-    // Start 2s fade out, then switch video
     setIsFadingOut(true);
     setTimeout(() => {
       nextVideo();
-    }, 2000);
+    }, 1500);
   };
 
   if (isLoading || !currentVideo) return null;
@@ -50,8 +49,7 @@ const VideoSectionBackground = ({
           opacity: isFadingOut ? 0 : (isReady ? opacity : 0),
           filter: `blur(${blurPx}px)`,
           transform: 'scale(1.1)',
-          transition: 'opacity 2000ms ease-in-out',
-          willChange: 'opacity',
+          transition: 'opacity 1.5s ease-out',
         }}
       >
         <source src={currentVideo.url} type="video/mp4" />
@@ -59,21 +57,22 @@ const VideoSectionBackground = ({
 
       {/* Dark overlay */}
       <div 
-        className="absolute inset-0 bg-background transition-opacity duration-500" 
+        className="absolute inset-0 bg-background" 
         style={{ opacity: overlayOpacity }} 
       />
 
-      {/* Cinematic grain */}
+      {/* Cinematic grain - static */}
       <div 
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          opacity: 0.05,
           mixBlendMode: 'overlay',
         }}
       />
     </div>
   );
-};
+});
+
+VideoSectionBackground.displayName = 'VideoSectionBackground';
 
 export default VideoSectionBackground;

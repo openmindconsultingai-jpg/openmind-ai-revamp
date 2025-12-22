@@ -1,88 +1,40 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, memo } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import gsap from 'gsap';
 
-const EtherealHero = () => {
+const EtherealHero = memo(() => {
   const { t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Text reveal animation
+      // Text reveal animation - simplified
       gsap.fromTo(
         '.hero-letter',
         { 
           opacity: 0, 
-          filter: 'blur(10px)',
-          y: 30 
+          y: 20 
         },
         { 
           opacity: 1, 
-          filter: 'blur(0px)',
           y: 0,
-          duration: 0.8,
-          stagger: 0.03,
-          ease: 'power3.out',
-          delay: 0.5
+          duration: 0.5,
+          stagger: 0.02,
+          ease: 'power2.out',
+          delay: 0.3
         }
       );
 
       gsap.fromTo(
         subtitleRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 1, delay: 1.5, ease: 'power2.out' }
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.6, delay: 1, ease: 'power2.out' }
       );
-
-      // Floating orbs animation
-      gsap.to('.orb-1', {
-        x: 'random(-50, 50)',
-        y: 'random(-50, 50)',
-        scale: 'random(0.9, 1.1)',
-        duration: 'random(15, 25)',
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-      });
-
-      gsap.to('.orb-2', {
-        x: 'random(-40, 40)',
-        y: 'random(-40, 40)',
-        scale: 'random(0.85, 1.15)',
-        duration: 'random(18, 28)',
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        delay: 2
-      });
-
-      gsap.to('.orb-3', {
-        x: 'random(-60, 60)',
-        y: 'random(-60, 60)',
-        scale: 'random(0.8, 1.2)',
-        duration: 'random(20, 30)',
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        delay: 4
-      });
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
-
-  // Mouse parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-      setMousePosition({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const titleText = "OpenMind";
@@ -91,45 +43,39 @@ const EtherealHero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden noise-overlay"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated Background Orbs */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Static Background Orbs - no animation */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 
-          className="orb-1 absolute w-[600px] h-[600px] rounded-full opacity-30"
+          className="absolute w-[600px] h-[600px] rounded-full opacity-20"
           style={{
             background: 'radial-gradient(circle, hsl(176 100% 43% / 0.4) 0%, transparent 70%)',
             left: '10%',
             top: '20%',
-            transform: `translate(${(mousePosition.x - 0.5) * -30}px, ${(mousePosition.y - 0.5) * -30}px)`,
-            transition: 'transform 0.3s ease-out',
           }}
         />
         <div 
-          className="orb-2 absolute w-[800px] h-[800px] rounded-full opacity-20"
+          className="absolute w-[800px] h-[800px] rounded-full opacity-15"
           style={{
             background: 'radial-gradient(circle, hsl(190 100% 50% / 0.5) 0%, transparent 70%)',
             right: '-10%',
             top: '-20%',
-            transform: `translate(${(mousePosition.x - 0.5) * 40}px, ${(mousePosition.y - 0.5) * 40}px)`,
-            transition: 'transform 0.3s ease-out',
           }}
         />
         <div 
-          className="orb-3 absolute w-[500px] h-[500px] rounded-full opacity-25"
+          className="absolute w-[500px] h-[500px] rounded-full opacity-20"
           style={{
             background: 'radial-gradient(circle, hsl(176 100% 43% / 0.4) 0%, transparent 70%)',
             left: '40%',
             bottom: '-10%',
-            transform: `translate(${(mousePosition.x - 0.5) * -20}px, ${(mousePosition.y - 0.5) * -20}px)`,
-            transition: 'transform 0.3s ease-out',
           }}
         />
       </div>
 
-      {/* Grid pattern overlay */}
+      {/* Grid pattern overlay - static */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
         style={{
           backgroundImage: `
             linear-gradient(hsl(176 100% 43% / 0.3) 1px, transparent 1px),
@@ -146,7 +92,7 @@ const EtherealHero = () => {
           ref={titleRef}
           className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-8 leading-none tracking-tight"
         >
-          <span className="block text-glow">
+          <span className="block">
             {titleText.split('').map((letter, i) => (
               <span 
                 key={i} 
@@ -162,7 +108,7 @@ const EtherealHero = () => {
               <span 
                 key={i} 
                 className="hero-letter inline-block text-gradient"
-                style={{ opacity: 0, animationDelay: `${(titleText.length + i) * 0.03}s` }}
+                style={{ opacity: 0 }}
               >
                 {letter}
               </span>
@@ -180,7 +126,7 @@ const EtherealHero = () => {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
-          <div className="flex flex-col items-center gap-3 animate-pulse">
+          <div className="flex flex-col items-center gap-3">
             <span className="font-sans text-xs text-muted-foreground uppercase tracking-widest">
               Scroll
             </span>
@@ -193,6 +139,8 @@ const EtherealHero = () => {
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
-};
+});
+
+EtherealHero.displayName = 'EtherealHero';
 
 export default EtherealHero;
