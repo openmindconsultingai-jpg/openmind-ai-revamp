@@ -49,50 +49,6 @@ const AIAdvisorPage = () => {
               </div>
             </div>
 
-            {/* Info Cards */}
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
-              <div className="glass rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🎯</span>
-                </div>
-                <h3 className="font-semibold mb-2">
-                  {t('language') === 'pl' ? 'Spersonalizowane propozycje' : 'Personalized proposals'}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {t('language') === 'pl' 
-                    ? 'Otrzymaj propozycje dopasowane do Twojej branży i potrzeb' 
-                    : 'Get proposals tailored to your industry and needs'}
-                </p>
-              </div>
-              
-              <div className="glass rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">📄</span>
-                </div>
-                <h3 className="font-semibold mb-2">
-                  {t('language') === 'pl' ? 'Pobierz podsumowanie' : 'Download summary'}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {t('language') === 'pl' 
-                    ? 'Zapisz propozycje zastosowań AI w formacie HTML' 
-                    : 'Save AI application proposals in HTML format'}
-                </p>
-              </div>
-              
-              <div className="glass rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">💬</span>
-                </div>
-                <h3 className="font-semibold mb-2">
-                  {t('language') === 'pl' ? 'Umów konsultację' : 'Book consultation'}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {t('language') === 'pl' 
-                    ? 'Po rozmowie z AI umów się na bezpłatną konsultację' 
-                    : 'After chatting with AI, book a free consultation'}
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
