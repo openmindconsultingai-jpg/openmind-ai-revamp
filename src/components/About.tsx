@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Brain, Target, Lightbulb } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
 import ceoImage from '@/assets/ceo-lukasz-czarnecki.png';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
@@ -164,35 +163,83 @@ const About = () => {
           </div>
 
           {/* Values Grid */}
-          <div ref={valuesRef} className="grid md:grid-cols-3 gap-8">
-            <div className="value-card text-center space-y-4 p-6 rounded-2xl bg-card/30 backdrop-blur-sm border border-border/30 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <Brain className="w-8 h-8 text-primary" />
+          <div ref={valuesRef} className="grid md:grid-cols-3 gap-6 md:gap-8">
+            <div className="value-card group cursor-pointer">
+              <div 
+                className="relative h-full min-h-[280px] md:min-h-[320px] rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02]"
+                style={{
+                  boxShadow: `0 0 0 1px hsl(0 0% 100% / 0.08), 0 25px 60px -20px hsl(0 0% 0% / 0.6)`,
+                }}
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" 
+                  alt={t('about.expertise.title')}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `radial-gradient(400px circle at 50% 50%, hsl(176 100% 43% / 0.2), transparent 60%)`,
+                  }}
+                />
+                <div className="absolute inset-0 p-6 flex flex-col justify-end text-center">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">{t('about.expertise.title')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('about.expertise.desc')}</p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">{t('about.expertise.title')}</h3>
-              <p className="text-muted-foreground">
-                {t('about.expertise.desc')}
-              </p>
             </div>
 
-            <div className="value-card text-center space-y-4 p-6 rounded-2xl bg-card/30 backdrop-blur-sm border border-border/30 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <Target className="w-8 h-8 text-primary" />
+            <div className="value-card group cursor-pointer">
+              <div 
+                className="relative h-full min-h-[280px] md:min-h-[320px] rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02]"
+                style={{
+                  boxShadow: `0 0 0 1px hsl(0 0% 100% / 0.08), 0 25px 60px -20px hsl(0 0% 0% / 0.6)`,
+                }}
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" 
+                  alt={t('about.precision.title')}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `radial-gradient(400px circle at 50% 50%, hsl(176 100% 43% / 0.2), transparent 60%)`,
+                  }}
+                />
+                <div className="absolute inset-0 p-6 flex flex-col justify-end text-center">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">{t('about.precision.title')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('about.precision.desc')}</p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">{t('about.precision.title')}</h3>
-              <p className="text-muted-foreground">
-                {t('about.precision.desc')}
-              </p>
             </div>
 
-            <div className="value-card text-center space-y-4 p-6 rounded-2xl bg-card/30 backdrop-blur-sm border border-border/30 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <Lightbulb className="w-8 h-8 text-primary" />
+            <div className="value-card group cursor-pointer">
+              <div 
+                className="relative h-full min-h-[280px] md:min-h-[320px] rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02]"
+                style={{
+                  boxShadow: `0 0 0 1px hsl(0 0% 100% / 0.08), 0 25px 60px -20px hsl(0 0% 0% / 0.6)`,
+                }}
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80" 
+                  alt={t('about.innovation.title')}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `radial-gradient(400px circle at 50% 50%, hsl(176 100% 43% / 0.2), transparent 60%)`,
+                  }}
+                />
+                <div className="absolute inset-0 p-6 flex flex-col justify-end text-center">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">{t('about.innovation.title')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('about.innovation.desc')}</p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground text-glow-subtle">{t('about.innovation.title')}</h3>
-              <p className="text-muted-foreground">
-                {t('about.innovation.desc')}
-              </p>
             </div>
           </div>
         </div>

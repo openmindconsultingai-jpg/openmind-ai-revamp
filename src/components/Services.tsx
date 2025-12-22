@@ -229,11 +229,6 @@ const Services = () => {
 
                   {/* Content */}
                   <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-                    {/* Icon */}
-                    <div className="absolute top-6 right-6 w-14 h-14 bg-background/30 backdrop-blur-md rounded-xl flex items-center justify-center border border-primary/20 group-hover:border-primary/50 transition-all duration-300">
-                      <Icon className="w-7 h-7 text-primary" />
-                    </div>
-                    
                     <h3 className="relative z-10 font-heading text-xl md:text-2xl mb-3 text-foreground font-semibold">
                       {t(service.titleKey)}
                     </h3>
@@ -249,12 +244,6 @@ const Services = () => {
                           <span>{t(benefitKey)}</span>
                         </div>
                       ))}
-                    </div>
-
-                    {/* CTA */}
-                    <div className="relative z-10 inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all mt-4 text-sm">
-                      <span>Dowiedz się więcej</span>
-                      <span className="transition-transform group-hover:translate-x-1">→</span>
                     </div>
                   </div>
                 </div>
