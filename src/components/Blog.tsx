@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useNavigate } from 'react-router-dom';
 import BlogArticleCard from './BlogArticleCard';
-import BlogArticle from './BlogArticle';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -11,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Blog = () => {
   const { t } = useLanguage();
-  const [selectedArticle, setSelectedArticle] = useState<number | null>(null);
+  const navigate = useNavigate();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
@@ -41,11 +40,9 @@ const Blog = () => {
     excerptKey: `blog.article${i + 1}.excerpt`,
     contentKey: `blog.article${i + 1}.content`,
     publishDate: generatePublishDate(i),
-  }));
+  })).sort((a, b) => b.publishDate.getTime() - a.publishDate.getTime());
 
   useEffect(() => {
-    if (selectedArticle !== null) return;
-
     const ctx = gsap.context(() => {
       // Header animation
       gsap.fromTo(
@@ -85,26 +82,7 @@ const Blog = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [selectedArticle]);
-
-  if (selectedArticle !== null) {
-    const article = articles.find(a => a.id === selectedArticle);
-    if (article) {
-      return (
-        <section className="pt-32 pb-20 px-4">
-          <div className="container mx-auto max-w-6xl">
-            <BlogArticle
-              titleKey={article.titleKey}
-              contentKey={article.contentKey}
-              articleId={article.id}
-              onBack={() => setSelectedArticle(null)}
-              publishDate={article.publishDate}
-            />
-          </div>
-        </section>
-      );
-    }
-  }
+  }, []);
 
   return (
     <section ref={sectionRef} className="pt-20 md:pt-24 pb-20 px-4 relative overflow-hidden">
@@ -144,7 +122,7 @@ const Blog = () => {
           {articles.map((article) => (
             <div 
               key={article.id} 
-              onClick={() => setSelectedArticle(article.id)} 
+              onClick={() => navigate(`/blog/${article.id}`)} 
               className="blog-card cursor-pointer transition-transform duration-300 hover:-translate-y-2"
               style={{ transformStyle: 'preserve-3d' }}
             >
