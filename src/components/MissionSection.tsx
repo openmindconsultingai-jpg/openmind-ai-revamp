@@ -99,84 +99,55 @@ const MissionSection = () => {
     }
   }, []);
 
-  const missionText = t('hero.subtitle');
-  const words = missionText.split(' ');
-
   return (
     <section 
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden py-32"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden py-24 md:py-32"
     >
-      <VideoSectionBackground opacity={0.20} blurPx={12} overlayOpacity={0.82} />
+      <VideoSectionBackground opacity={0.25} blurPx={8} overlayOpacity={0.75} />
 
-      {/* Parallax background layers */}
-      <div 
-        className="mission-bg-layer-1 absolute inset-0 opacity-20"
-        style={{
-          background: `
-            radial-gradient(circle at 20% 30%, hsl(176 100% 43% / 0.4) 0%, transparent 40%),
-            radial-gradient(circle at 80% 70%, hsl(190 100% 50% / 0.3) 0%, transparent 40%)
-          `,
-        }}
-      />
-      
-      <div 
-        className="mission-bg-layer-2 absolute inset-0 opacity-15"
-        style={{
-          background: `
-            radial-gradient(circle at 60% 20%, hsl(176 100% 50% / 0.3) 0%, transparent 30%),
-            radial-gradient(circle at 30% 80%, hsl(190 100% 60% / 0.2) 0%, transparent 35%)
-          `,
-        }}
-      />
-
-      {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `
-            linear-gradient(hsl(176 100% 43% / 0.5) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(176 100% 43% / 0.5) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-        }}
-      />
 
       {/* Content */}
       <div 
         ref={textContainerRef}
-        className="relative z-10 container mx-auto px-6"
+        className="relative z-10 container mx-auto px-6 text-center"
       >
+        {/* Mission Title */}
         <h2 
-          className="mission-title font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[120px] 2xl:text-[140px] text-center leading-[0.95] max-w-6xl mx-auto font-bold tracking-tight"
+          className="mission-title font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-8 md:mb-12 font-bold tracking-tight"
           style={{ 
             perspective: '1000px',
-            transform: `translate(${mousePos.x * 10}px, ${mousePos.y * 10}px)`,
+            transform: `translate(${mousePos.x * 5}px, ${mousePos.y * 5}px)`,
             transition: 'transform 0.3s ease-out',
           }}
         >
-          {words.map((word, i) => (
-            <span 
-              key={i} 
-              className="mission-word inline-block mr-[0.25em] cursor-default"
-              style={{ 
-                transformStyle: 'preserve-3d',
-                textShadow: `
-                  ${mousePos.x * 20}px ${mousePos.y * 20}px 40px hsl(176 100% 43% / 0.3),
-                  0 0 80px hsl(176 100% 43% / 0.15)
-                `,
-                transition: 'text-shadow 0.3s ease-out',
-              }}
-            >
-              <span className="text-gradient-silver hover:text-gradient transition-all duration-300">
-                {word}
-              </span>
-            </span>
-          ))}
+          <span className="text-gradient">{t('mission.title')}</span>
         </h2>
 
+        {/* SEO-optimized description */}
+        <div className="max-w-4xl mx-auto space-y-6">
+          <p 
+            className="mission-word font-sans text-lg sm:text-xl md:text-2xl text-foreground/90 leading-relaxed"
+            style={{ 
+              textShadow: `${mousePos.x * 10}px ${mousePos.y * 10}px 30px hsl(176 100% 43% / 0.2)`,
+              transition: 'text-shadow 0.3s ease-out',
+            }}
+          >
+            {t('mission.description1')}
+          </p>
+          <p 
+            className="mission-word font-sans text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed"
+            style={{ 
+              textShadow: `${mousePos.x * 8}px ${mousePos.y * 8}px 25px hsl(176 100% 43% / 0.15)`,
+              transition: 'text-shadow 0.3s ease-out',
+            }}
+          >
+            {t('mission.description2')}
+          </p>
+        </div>
+
         {/* Decorative elements */}
-        <div className="flex justify-center mt-20 gap-4">
+        <div className="flex justify-center mt-16 gap-4">
           <div className="w-2 h-2 rounded-full bg-primary/50 animate-pulse" />
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent self-center" />
           <div className="w-2 h-2 rounded-full bg-primary/50 animate-pulse" style={{ animationDelay: '0.5s' }} />

@@ -98,7 +98,7 @@ const ParticleFooter = () => {
 
   return (
     <footer ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <VideoSectionBackground opacity={0.16} blurPx={14} overlayOpacity={0.86} />
+      <VideoSectionBackground opacity={0.2} blurPx={10} overlayOpacity={0.8} />
 
       {/* Particle Canvas */}
       <canvas
@@ -107,22 +107,41 @@ const ParticleFooter = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <h2 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-8 text-gradient-silver font-bold">
+      <div className="relative z-10 container mx-auto px-6 text-center flex flex-col items-center justify-center">
+        <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-10 md:mb-14 text-gradient-silver font-bold">
           {t('footer.cta') || 'Zacznijmy Projekt'}
         </h2>
         
+        {/* Large Contact Button - 4x larger */}
         <button
           onClick={() => navigate('/contact')}
           data-cursor="Start"
-          className="group relative inline-flex items-center gap-3 px-10 py-5 font-sans text-lg rounded-full glass border border-primary/30 hover:border-primary transition-all duration-500 hover:glow-primary"
+          className="group relative inline-flex items-center justify-center gap-4 px-16 md:px-24 py-8 md:py-10 font-sans text-2xl md:text-3xl rounded-full glass border-2 border-primary/50 hover:border-primary transition-all duration-500 hover:glow-primary hover:scale-105"
+          style={{
+            boxShadow: '0 0 40px hsl(176 100% 43% / 0.3), 0 20px 60px -20px hsl(0 0% 0% / 0.5)',
+          }}
         >
-          <span>{t('nav.contact')}</span>
-          <span className="text-primary group-hover:translate-x-1 transition-transform">→</span>
+          <span className="font-semibold">{t('nav.contact')}</span>
+          <span className="text-primary text-3xl md:text-4xl group-hover:translate-x-2 transition-transform">→</span>
         </button>
 
-        {/* Footer links */}
-        <div className="mt-20 pt-8 border-t border-border/30">
+        {/* Footer links with Privacy Policy and RODO */}
+        <div className="mt-24 md:mt-32 pt-8 border-t border-border/30 w-full max-w-2xl">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-6">
+            <button
+              onClick={() => navigate('/privacy')}
+              className="font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              {t('footer.privacy')}
+            </button>
+            <span className="hidden sm:block text-muted-foreground/50">|</span>
+            <button
+              onClick={() => navigate('/privacy')}
+              className="font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              {t('footer.rodo')}
+            </button>
+          </div>
           <p className="font-sans text-sm text-muted-foreground">
             {t('footer.copyright')}
           </p>
