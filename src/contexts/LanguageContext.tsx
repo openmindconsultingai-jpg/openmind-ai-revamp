@@ -336,6 +336,106 @@ const translations: Translations = {
     'blog.article30.excerpt': 'Grafowe Sieci Neuronowe stały się standardem w zarządzaniu infrastrukturą miejską i logistyką, modelując skomplikowane zależności w przestrzeni i czasie.',
     'blog.article30.content': 'Większość danych w świecie rzeczywistym nie ma struktury prostej tabeli czy obrazka, lecz strukturę grafu – sieci powiązań. Miasto to graf, gdzie skrzyżowania to węzły, a ulice to krawędzie. Tradycyjne metody słabo radzą sobie z taką nieregularną strukturą. Tutaj wkraczają Grafowe Sieci Neuronowe (GNN).\n\nW 2025 roku GNN stały się standardem w zarządzaniu infrastrukturą miejską. Nowoczesne architektury, takie jak Spatio-Temporal GNN, potrafią modelować skomplikowane zależności nie tylko w przestrzeni, ale i w czasie.\n\nPrzełomowe modele, takie jak LightST, są 40 razy szybsze w inferencji niż poprzednie rozwiązania. Umożliwia to sterowanie sygnalizacją świetlną w czasie rzeczywistym w skali całej metropolii. Systemy przewidują korki zanim one powstaną.\n\nGNN znajdują też zastosowanie w rekomendacjach (Pinterest, Uber Eats) i odkrywaniu leków. To technologia pozwalająca AI "zrozumieć" relacje i strukturę świata.',
     
+    // Article 31
+    'blog.article31.title': 'Fenomen „Nano Banana": Demokratyzacja Edycji Obrazu w Ekosystemie Google',
+    'blog.article31.excerpt': 'Grudzień 2025 przyniósł fundamentalną zmianę w edycji grafiki cyfrowej. Model Gemini 2.5 Flash Image "Nano Banana" zatarł granicę między profesjonalną edycją a codzienną komunikacją.',
+    'blog.article31.content': 'Grudzień 2025 roku przyniósł fundamentalną zmianę w sposobie, w jaki masowy odbiorca wchodzi w interakcję z grafiką cyfrową. Wprowadzenie przez Google modelu Gemini 2.5 Flash Image „Nano Banana" to zmiana paradygmatu, która zatarła granicę między profesjonalną edycją a codzienną komunikacją.\n\nSukces tego narzędzia, które przyciągnęło 23 miliony nowych użytkowników do ekosystemu Gemini, opiera się na wszechobecności i szybkości. Model został zoptymalizowany pod kątem ekstremalnie niskiej latencji.\n\nKluczową innowacją techniczną jest zaawansowane rozumienie przestrzenne i kontekstowe. Model analizuje geometrię twarzy (mesh 3D), kierunek padania światła, cienie i estetykę zdjęcia, generując obiekt, który fizycznie i estetycznie „przynależy" do sceny.\n\nNano Banana wykazuje się również niespotykaną spójnością postaci (Character Consistency), zachowując tożsamość osoby na zdjęciu.',
+    
+    // Article 32
+    'blog.article32.title': 'Nano Banana Pro: Gemini 3 i Nowa Definicja Profesjonalizmu w Generowaniu Obrazu',
+    'blog.article32.excerpt': 'Nano Banana Pro, oparty na modelu Gemini 3 Pro Image, redefiniuje standardy w zastosowaniach komercyjnych i enterprise z bezkompromisową precyzją.',
+    'blog.article32.content': 'Nano Banana Pro, oparty na potężniejszym modelu Gemini 3 Pro Image, redefiniuje standardy w zastosowaniach komercyjnych i enterprise. Model ten został zaprojektowany z myślą o bezkompromisowej precyzji.\n\nNajwiększym przełomem jest zaawansowany rendering tekstu (Advanced Text Rendering). Nano Banana Pro eliminuje problem halucynacji tekstowych, umożliwiając tworzenie plakatów, etykiet produktów i materiałów marketingowych z idealnie odwzorowaną typografią w wielu językach.\n\nModel Pro wprowadza również rewolucyjną koncepcję uziemienia w wiedzy o świecie (Enhanced World Knowledge). Dzięki głębokiemu połączeniu z Google Search i Knowledge Graph, model może generować grafiki merytorycznie poprawne.\n\nW aspekcie technicznym oferuje natywną obsługę rozdzielczości 4K oraz zaawansowane sterowanie parametrami wirtualnej kamery.',
+    
+    // Article 33
+    'blog.article33.title': 'Google Flow i Veo 3.1: Symfonia Audio-Wizualna i Kontrola Reżyserska',
+    'blog.article33.excerpt': 'Google wykonało milowy krok w dziedzinie generatywnego wideo z modelem Veo 3.1 i pełną, natywną integracją generowania obrazu z dźwiękiem.',
+    'blog.article33.content': 'W grudniu 2025 roku Google wykonało milowy krok w dziedzinie generatywnego wideo, wprowadzając model Veo 3.1 do swojego profesjonalnego narzędzia Flow. Najważniejszą innowacją jest pełna, natywna integracja generowania obrazu z dźwiękiem.\n\nVeo 3.1 tworzy kompletne doświadczenie audiowizualne, w którym dźwięk jest ściśle skorelowany z akcją na ekranie. Jeśli postać upuszcza szklankę, słyszymy brzęk dokładnie w momencie uderzenia o podłogę.\n\nNarzędzie Flow oferuje funkcje Ingredients to Video (dostarczanie zestawu składników dla spójnej sceny) oraz Frames to Video (definiowanie klatek początkowych i końcowych).\n\nWprowadzenie modelu Veo 3 Fast umożliwia szybką iterację pomysłów przy znacznie niższych kosztach obliczeniowych.',
+    
+    // Article 34
+    'blog.article34.title': 'FLUX.2: Nowy Król Open Core i Rozdzielczości 4MP',
+    'blog.article34.excerpt': 'Niemiecki startup Black Forest Labs zrewolucjonizował rynek modeli otwartych, wypuszczając rodzinę modeli FLUX.2 z natywną obsługą 4 megapikseli.',
+    'blog.article34.content': 'Niemiecki startup Black Forest Labs w grudniu 2025 zrewolucjonizował rynek modeli otwartych, wypuszczając rodzinę modeli FLUX.2. Model wprowadza natywną obsługę generowania obrazów w rozdzielczości 4 megapikseli.\n\nFLUX.2 opiera się na hybrydowej architekturze łączącej model językowo-wizualny (VLM) o 24 miliardach parametrów z transformatorem przepływu. Pozwala to na Multi-Reference Support – możliwość jednoczesnego uwzględnienia do 10 obrazów referencyjnych.\n\nModel oferuje przełomowe możliwości sterowania poprzez JSON prompting oraz precyzyjną kontrolę kolorów za pomocą kodów HEX.\n\nDostępność wariantów [pro], [flex] i [dev] umożliwia elastyczne dopasowanie modelu do infrastruktury i budżetu.',
+    
+    // Article 35
+    'blog.article35.title': 'Canva Dream Lab: Leonardo.ai w Sercu Masowego Designu',
+    'blog.article35.excerpt': 'Przejęcie Leonardo.ai przez Canvę przyniosło Dream Lab – głęboką integrację modelu Phoenix z interfejsem Canvy dostępnym dla 200 milionów użytkowników.',
+    'blog.article35.content': 'Przejęcie Leonardo.ai przez Canvę za setki milionów dolarów przyniosło owoce w postaci Dream Lab. Jest to głęboka integracja potężnego modelu Phoenix bezpośrednio z interfejsem Canvy, transformująca popularne narzędzie w zaawansowane studio generatywne.\n\nDream Lab wyróżnia się funkcją Style Reference, która pozwala użytkownikom przesyłać własne obrazy jako wzorce stylistyczne. W połączeniu z funkcją On-Brand Images, organizacje mogą zapewnić zgodność materiałów z identyfikacją wizualną.\n\nSiła Dream Lab leży w ekosystemie Canvy – wygenerowany obraz można natychmiast edytować za pomocą Magic Edit, usunąć tło jednym kliknięciem, dodać animację czy włączyć do prezentacji.\n\nCanva staje się „systemem operacyjnym dla kreatywności", eliminując barierę wejścia dla zaawansowanych technik graficznych.',
+    
+    // Article 36
+    'blog.article36.title': 'Runway Gen-4.5 i Aleph: Fizyka Świata w Edycji Wideo',
+    'blog.article36.excerpt': 'Runway wprowadza pojęcie edycji opartej na symulacji świata. Aleph to silnik symulacyjny respektujący fizykę sceny i oświetlenie.',
+    'blog.article36.content': 'Firma Runway w grudniu 2025 kontynuuje swoją misję budowania kamery przyszłości. Nowy model Gen-4.5 wraz z systemem edycji Aleph wprowadza pojęcie edycji opartej na symulacji świata (General World Models).\n\nAleph to nie jest zwykły edytor wideo – to silnik symulacyjny. Zmiana pogody ze słonecznej na deszczową generuje realistyczne odbicia w kałużach i zmienia zachowanie światła na mokrych powierzchniach.\n\nKluczową nowością jest funkcja Act-Two, umożliwiająca przeniesienie gry aktorskiej z prostego nagrania wideo na dowolną wygenerowaną postać z zachowaniem pełnej wierności mikroekspresji.\n\nDla profesjonalistów VFX Runway oferuje Director Mode, dający inżynieryjną precyzję w sterowaniu wirtualną kamerą.',
+    
+    // Article 37
+    'blog.article37.title': 'Kling AI 2.0: Chiński Gigant i Hiperrealizm Ruchu',
+    'blog.article37.excerpt': 'Pochodzący od chińskiego giganta Kuaishou, Kling AI stał się jednym z liderów globalnego wyścigu wideo AI z jakością 1080p przy 60 fps.',
+    'blog.article37.content': 'Pochodzący od chińskiego giganta technologicznego Kuaishou, Kling AI w wersjach 1.6 i 2.0 stał się jednym z niekwestionowanych liderów globalnego wyścigu wideo AI. Głównym atutem jest jakość 1080p przy 30 lub 60 klatkach na sekundę oraz zdolność do generowania długich, spójnych sekwencji do 3 minut.\n\nKling 2.0 wyróżnia się w renderowaniu skomplikowanych interakcji fizycznych. Postać podnosząca przedmiot, dłonie wchodzące w interakcję z wodą są renderowane z fizyczną poprawnością.\n\nDla twórców mediów społecznościowych Kling wprowadził gotowe presety efektowe, takie jak wiralowy MochiMochi, oraz natywną generację dźwięku w modelu 2.6.\n\nDostępność poprzez wydajne API i agresywna polityka cenowa sprawia, że Kling jest coraz częściej wybierany jako backend dla aplikacji marketingowych.',
+    
+    // Article 38
+    'blog.article38.title': 'Luma Dream Machine (Ray 2): Precyzja Montażowa',
+    'blog.article38.excerpt': 'Luma Labs z modelem Ray 2 koncentruje się na funkcjonalnościach niezbędnych w profesjonalnym workflow montażowym: Keyframes, Looping i Extend.',
+    'blog.article38.content': 'Luma Labs z modelem Ray 2 w Dream Machine koncentruje się na funkcjonalnościach niezbędnych w profesjonalnym workflow montażowym i designerskim. Grudniowe aktualizacje przyniosły kluczowe funkcje: Keyframes, Looping i Extend.\n\nFunkcja Keyframes pozwala zdefiniować dokładny punkt startowy i końcowy wideo, oddając AI zadanie wygenerowania płynnego przejścia między nimi. Looping umożliwia tworzenie perfekcyjnych, niezauważalnych pętli.\n\nLuma wyróżnia się również szybkością renderowania – model Ray 2 generuje 120 klatek w minutę, co czyni go najbardziej efektywnym narzędziem w dynamicznych środowiskach produkcyjnych.\n\nOtwarty dostęp do API pozwala na integrację z silnikami gier (Unity, Unreal Engine) i aplikacjami 3D.',
+    
+    // Article 39
+    'blog.article39.title': 'Hailuo AI (MiniMax) 2.3: Jakość Premium w Cenie Standard',
+    'blog.article39.excerpt': 'Hailuo AI to „czarny koń" końcówki 2025 roku, oferujący jakość wideo porównywalną z liderami rynku przy znacznie agresywniejszej polityce cenowej.',
+    'blog.article39.content': 'Hailuo AI (stworzone przez MiniMax) z modelem 2.3 to „czarny koń" końcówki 2025 roku. Platforma zyskała popularność dzięki oferowaniu jakości wideo porównywalnej z liderami rynku przy znacznie bardziej agresywnej polityce cenowej.\n\nModel 2.3 wyróżnia się doskonałym Prompt Adherence oraz dynamiką ruchu. Dzięki integracji z modelem DeepSeek AI, narzędzie pomaga użytkownikom w rozwijaniu prostych pomysłów w szczegółowe scenariusze filmowe.\n\nFunkcja Image-to-Video działa wyjątkowo skutecznie, ożywiając statyczne grafiki z zachowaniem ich oryginalnego stylu artystycznego.\n\nDodatkowo model oferuje funkcję Subject Reference, co pozwala na tworzenie krótkich filmów fabularnych z powtarzającymi się bohaterami.',
+    
+    // Article 40
+    'blog.article40.title': 'Ideogram 3.0: Typografia i Design Bez Kompromisów',
+    'blog.article40.excerpt': 'Ideogram 3.0 zajął unikalną niszę designerską, skupiając się na perfekcyjnym renderingu tekstu i kompozycji graficznej dla projektantów.',
+    'blog.article40.content': 'W świecie generatorów obrazu, zdominowanym przez walkę o fotorealizm, Ideogram 3.0 zajął i umocnił unikalną niszę designerską. Podczas gdy inni walczą o realizm, Ideogram skupił się na perfekcyjnym renderingu tekstu i kompozycji graficznej.\n\nIdeogram 3.0 potrafi generować skomplikowane układy typograficzne – plakaty filmowe, logotypy, okładki książek – z poprawnie napisanym tekstem. Model rozumie zasady hierarchii wizualnej, kerningu i doboru krojów pisma.\n\nNowością jest Style Reference System, który pozwala na przesłanie do 3 obrazów referencyjnych, korzystając z biblioteki ponad 4 miliardów presetów stylistycznych.\n\nFunkcje Magic Fill i Extend na nieskończonym płótnie czynią z Ideograma kompletne studio projektowe.',
+    
+    // Article 41
+    'blog.article41.title': 'Suno v5: Od Generowania do Produkcji Muzycznej',
+    'blog.article41.excerpt': 'Premiera modelu Suno v5 zamknęła debatę o jakości radiowej AI. Model oferuje 44.1kHz stereo i funkcję Personas dla spójnych albumów.',
+    'blog.article41.content': 'Grudzień 2025 przyniósł premierę modelu Suno v5, co ostatecznie zamknęło debatę na temat tego, czy AI może generować dźwięk o jakości radiowej. Suno v5 oferuje jakość 44.1kHz stereo, eliminując charakterystyczny szum AI.\n\nNajważniejszą innowacją jest funkcja Personas. Użytkownik może zapisać głos i styl wokalny wygenerowanej postaci, a następnie używać go w kolejnych utworach. To umożliwia tworzenie całych albumów koncepcyjnych.\n\nDla profesjonalnych producentów przełomem jest funkcja Stems – możliwość pobrania oddzielnych ścieżek dla wokalu, perkusji, basu i instrumentów w formacie WAV.\n\nFunkcja Cover Covers pozwala na transformację gatunkową istniejącego audio.',
+    
+    // Article 42
+    'blog.article42.title': 'Udio: Struktura, Kontrola i Nowy Ład w Przemyśle Muzycznym',
+    'blog.article42.excerpt': 'Udio obrało kurs na profesjonalizację z precyzyjnym generowaniem struktury utworu i historycznymi partnerstwami z Warner Music i Universal.',
+    'blog.article42.content': 'Udio w swojej aktualizacji z grudnia 2025 obrało kurs na profesjonalizację i strukturalną precyzję. Udio rozumie, że piosenka to zorganizowana forma: intro, zwrotka, refren, mostek, solo, outro. Nowy interfejs pozwala na sekwencyjne generowanie tych elementów.\n\nKluczową funkcją techniczną jest zaawansowany Inpainting i Remixing. Inpainting pozwala zaznaczyć fragment utworu i kazać AI wygenerować tylko ten kawałek na nowo, bez zmieniania reszty.\n\nStrategicznie Udio wyróżnia się podejściem do praw autorskich. Firma zawarła historyczne partnerstwa z Warner Music Group i Universal Music Group.\n\nUżytkownicy mogą zyskać dostęp do modeli trenowanych na legalnych, licencjonowanych katalogach, tworząc nowy model monetyzacji dla artystów.',
+    
+    // Article 43
+    'blog.article43.title': 'ElevenLabs: Od Syntezy Mowy do Globalnego Systemu Operacyjnego Audio',
+    'blog.article43.excerpt': 'ElevenLabs przekształciło się w Audio OS – kompletny system operacyjny dla dźwięku z rewolucyjnym Dubbing Studio i Visual Dubbing.',
+    'blog.article43.content': 'ElevenLabs w 2025 roku przekształciło się w Audio OS – kompletny system operacyjny dla dźwięku w mediach. Największą nowością jest Dubbing Studio z funkcją visual dubbing (synchronizacja ruchu warg) oraz re-voice.\n\nTechnologia pozwala na automatyczne przetłumaczenie ścieżki dialogowej na 29 języków z zachowaniem Voice Cloning – głos tłumaczenia brzmi jak głos oryginalnego aktora, zachowując unikalną barwę i intonację.\n\nDla branży gier i audiobooków kluczowa jest funkcja Voice Design v3, pozwalająca na tworzenie głosów ex nihilo na podstawie opisu tekstowego (Prompt-to-Voice).\n\nElevenLabs wchodzi w sferę Conversational AI z modelami o ultra-niskiej latencji (<400ms), umożliwiającymi płynne rozmowy z botami.',
+    
+    // Article 44
+    'blog.article44.title': 'Autodesk Flow Studio: AI Wkracza do Fabryki Snów',
+    'blog.article44.excerpt': 'Przejęcie Wonder Dynamics przez Autodesk demokratyzuje zaawansowane efekty VFX, czyniąc motion capture i rotoskopię dostępnymi z przeglądarki.',
+    'blog.article44.content': 'Przejęcie startupu Wonder Dynamics przez Autodesk i rebranding na Autodesk Flow Studio to moment zwrotny dla branży VFX. Do tej pory zaawansowane efekty wymagały drogiego sprzętu i tygodni pracy animatorów. Flow Studio demokratyzuje ten proces.\n\nSercem systemu jest AI, która analizuje zwykłe wideo i automatycznie wykonuje Motion Capture, Rotoskopię, Clean Plate i Lighting Match.\n\nDla profesjonalnych studiów kluczowa jest modułowość – możliwość eksportu poszczególnych elementów do Maya, Blendera czy Unreal Engine 5.\n\nTo koniec ery szarych ludzików w kombinezonach z kulkami – teraz motion capture dzieje się wszędzie.',
+    
+    // Article 45
+    'blog.article45.title': 'Figma "Make Designs": Koniec Lorem Ipsum w Projektowaniu UI',
+    'blog.article45.excerpt': 'Figma z funkcją Make Designs fundamentalnie zmienia rolę projektanta, generując w pełni funkcjonalne makiety na podstawie promptu tekstowego.',
+    'blog.article45.content': 'Figma w 2025 roku wprowadziła funkcję Make Designs, która fundamentalnie zmienia rolę projektanta. Zamiast ręcznie rysować prostokąty, projektant staje się kuratorem i strategiem.\n\nFunkcja pozwala na wygenerowanie w pełni funkcjonalnych, edytowalnych makiet na podstawie promptu tekstowego. Co ważne, nie jest to płaski obrazek, ale struktura warstw z Auto Layout, komponentami i stylami typograficznymi.\n\nMake Designs rozwiązuje problem pustej kartki. AI inteligentnie wypełnia projekt treścią – generuje copywriting, dobiera pasujące ikony i zdjęcia.\n\nW połączeniu z wtyczkami jak Builder.io Visual Copilot, projekty można eksportować bezpośrednio do czystego kodu (React, Vue, Tailwind CSS).',
+    
+    // Article 46
+    'blog.article46.title': 'Meta Movie Gen: Potencjał Masowego Wdrożenia i Era Syntetycznej Rzeczywistości',
+    'blog.article46.excerpt': 'Meta Movie Gen ma potencjał wywarcia największego wpływu społecznego – nie buduje narzędzia dla filmowców, ale dla 3 miliardów użytkowników Facebooka i Instagrama.',
+    'blog.article46.content': 'Meta Movie Gen to technologia, która ma potencjał wywarcia największego wpływu społecznego. Meta nie buduje narzędzia dla filmowców, ale dla 3 miliardów użytkowników Facebooka, Instagrama i WhatsAppa.\n\nNajpotężniejszą funkcją jest Personalized Video Generation. Użytkownik przesyła jedno zdjęcie profilowe i może wygenerować film, w którym jest głównym bohaterem.\n\nMeta planuje udostępnić narzędzia w formie Super Reels – generatora treści, który pozwoli każdemu tworzyć wysokobudżetowe klipy bez wychodzenia z domu.\n\nMovie Gen wprowadza też zaawansowaną edycję wideo poleceniami tekstowymi, demokratyzując postprodukcję dla mas.',
+    
+    // Article 47
+    'blog.article47.title': 'Recraft AI: Wektory, Skalowalność i Nowy Standard Brandingu',
+    'blog.article47.excerpt': 'Recraft AI z modelem V3 zrewolucjonizował rynek, wprowadzając natywną generację grafiki wektorowej (SVG) – jedyne narzędzie myślące matematycznymi krzywymi.',
+    'blog.article47.content': 'Większość generatorów obrazu operuje na pikselach (grafika rastrowa). Recraft AI z modelem V3 zrewolucjonizował rynek, wprowadzając natywną generację grafiki wektorowej (SVG). To jedyne narzędzie tej klasy, które myśli matematycznymi krzywymi.\n\nDla branży brandingowej i poligraficznej to game changer. Wygenerowane logo czy ikona jest nieskończenie skalowalna – można ją wydrukować na wizytówce lub na plandece przykrywającej wieżowiec.\n\nRecraft umożliwia tworzenie całych zestawów ikon w jednolitym stylu. Unikalną funkcją jest Vectorization 2.0 – zamiana szkicu w czysty, edytowalny plik wektorowy z podziałem na warstwy.\n\nW grudniu 2025 Recraft dodał eksport do formatu Lottie dla animacji wektorowych na stronach www.',
+    
+    // Article 48
+    'blog.article48.title': 'Magnific AI: Halucynacja jako Narzędzie Artystyczne i Photoshop na Sterydach',
+    'blog.article48.excerpt': 'Magnific AI zdefiniowało nową kategorię Generative Upscaling, używając modelu AI do zmyślania brakujących detali w wysokiej rozdzielczości.',
+    'blog.article48.content': 'Magnific AI to narzędzie, które zdefiniowało nową kategorię w obróbce obrazu: Generative Upscaling. Magnific używa potężnego modelu AI, aby zmyślić (hallucinate) brakujące detale w wysokiej rozdzielczości.\n\nJeśli powiększamy zdjęcie oka, Magnific nie tylko wygładza krawędzie – dorysowuje rzęsy, pory na skórze i odbicia w tęczówce, których nie było w oryginale. Suwaki Creativity i Resemblance dają artyście kontrolę nad poziomem kreatywności.\n\nW 2025 roku Magnific dodał funkcje Relight (zmiana oświetlenia sceny po fakcie) oraz Style Transfer (przenoszenie stylu).\n\nIntegracja jako plugin do Adobe Photoshop sprawiła, że stał się standardowym narzędziem finishing touch dla artystów cyfrowych.',
+    
+    // Article 49
+    'blog.article49.title': 'Midjourney v7: Ucieczka do Przodu – 3D, Web i Szybkość',
+    'blog.article49.excerpt': 'Midjourney v7 wprowadza fundamentalną zmianę w architekturze modelu, integrując rozumienie przestrzenne 3D oparte na technikach NeRF.',
+    'blog.article49.content': 'Midjourney v7 to ostateczne przejście na dedykowaną, profesjonalną platformę webową (Alpha Web). Ale zmiany sięgają głębiej niż interfejs. Midjourney v7 wprowadza fundamentalną zmianę w architekturze modelu, integrując rozumienie przestrzenne 3D.\n\nDzięki temu model znacznie lepiej radzi sobie z perspektywą, oświetleniem i spójnością obiektów pod różnymi kątami. Odbicia w lustrach są poprawne geometrycznie, a cienie spójne ze źródłami światła.\n\nKluczową nowością użytkową jest Draft Mode, który generuje obrazy 10 razy szybciej, pozwalając na błyskawiczną iterację pomysłów.\n\nMidjourney wprowadziło też zaawansowany Editor dla edycji inpainting i outpainting na nieskończonym płótnie.',
+    
+    // Article 50
+    'blog.article50.title': 'Krea AI: Wideo w Czasie Rzeczywistym i Śmierć Renderowania',
+    'blog.article50.excerpt': 'Krea AI z modelem Realtime 14B jako pierwszy oferuje generowanie wideo z prędkością 11 fps, kończąc paradygmat czekaj-zobacz-wynik.',
+    'blog.article50.content': 'Krea AI wstrząsnęła branżą kreatywną, udostępniając model Krea Realtime 14B, który jako pierwszy komercyjny system oferuje generowanie wideo z prędkością 11 klatek na sekundę. To oznacza koniec paradygmatu wpisz prompt, czekaj 2 minuty, zobacz wynik.\n\nTa technologia, oparta na metodzie destylacji modeli dyfuzyjnych (LCM), otwiera nowe zastosowania: Interaktywne Instalacje i VJ-ing, Szybkie Prototypowanie i Aplikacja na iPada z Apple Pencil.\n\nKrea AI wprowadziła też funkcję Pattern Tool, która pozwala układać logotypy lub wzory wewnątrz generowanych obrazów.\n\nOtwarcie części kodu modelu dla społeczności sprawiło, że Krea stała się ulubieńcem deweloperów i hakerów kreatywnych.',
+    
     // Footer
     'footer.copyright': '© 2025 OpenMind AI Consulting. Wszystkie prawa zastrzeżone.',
     'footer.privacy': 'Polityka prywatności',
@@ -605,6 +705,66 @@ const translations: Translations = {
     'blog.article30.title': 'Graph Neural Networks (GNN) in Traffic Prediction: Smart City Intelligence',
     'blog.article30.excerpt': 'Graph Neural Networks have become the standard in city infrastructure management and logistics, modeling complex dependencies in space and time.',
     'blog.article30.content': 'GNNs model data with graph structure – networks of relationships. Breakthrough models like LightST are 40x faster in inference. They enable real-time traffic light control across entire metropolises, predicting congestion before it occurs. GNNs also find applications in recommendations and drug discovery.',
+    'blog.article31.title': 'The "Nano Banana" Phenomenon: Democratizing Image Editing in Google\'s Ecosystem',
+    'blog.article31.excerpt': 'December 2025 brought a fundamental change in digital graphics editing. The Gemini 2.5 Flash Image "Nano Banana" model blurred the line between professional editing and everyday communication.',
+    'blog.article31.content': 'December 2025 brought a paradigm shift in how mass audiences interact with digital graphics. Google\'s Gemini 2.5 Flash Image "Nano Banana" attracted 23 million new users to the Gemini ecosystem. Key innovations include advanced spatial understanding and unprecedented character consistency.',
+    'blog.article32.title': 'Nano Banana Pro: Gemini 3 and the New Definition of Professional Image Generation',
+    'blog.article32.excerpt': 'Nano Banana Pro, based on Gemini 3 Pro Image, redefines commercial and enterprise standards with uncompromising precision.',
+    'blog.article32.content': 'Nano Banana Pro based on Gemini 3 Pro Image redefines enterprise standards. The biggest breakthrough is Advanced Text Rendering, eliminating text hallucinations. It also features Enhanced World Knowledge through deep integration with Google Search and Knowledge Graph.',
+    'blog.article33.title': 'Google Flow and Veo 3.1: Audio-Visual Symphony and Director Control',
+    'blog.article33.excerpt': 'Google made a milestone in generative video with Veo 3.1 and full native integration of image and sound generation.',
+    'blog.article33.content': 'Google\'s Veo 3.1 in Flow offers full native integration of image and sound generation. The tool offers Ingredients to Video and Frames to Video functions, plus Veo 3 Fast for rapid iteration.',
+    'blog.article34.title': 'FLUX.2: The New Open Core King and 4MP Resolution',
+    'blog.article34.excerpt': 'German startup Black Forest Labs revolutionized the open model market with FLUX.2 featuring native 4 megapixel support.',
+    'blog.article34.content': 'Black Forest Labs\' FLUX.2 features a hybrid architecture with a 24 billion parameter VLM and flow transformer. It supports Multi-Reference with up to 10 reference images, JSON prompting, and HEX color control.',
+    'blog.article35.title': 'Canva Dream Lab: Leonardo.ai at the Heart of Mass Design',
+    'blog.article35.excerpt': 'The acquisition of Leonardo.ai by Canva brought Dream Lab – deep integration of the Phoenix model with Canva\'s interface for 200 million users.',
+    'blog.article35.content': 'Canva\'s acquisition of Leonardo.ai resulted in Dream Lab, integrating the powerful Phoenix model. Features include Style Reference, On-Brand Images, Magic Edit, and seamless animation capabilities.',
+    'blog.article36.title': 'Runway Gen-4.5 and Aleph: World Physics in Video Editing',
+    'blog.article36.excerpt': 'Runway introduces world simulation-based editing. Aleph is a simulation engine respecting scene physics and lighting.',
+    'blog.article36.content': 'Runway\'s Gen-4.5 with Aleph introduces General World Models for simulation-based editing. Features include Act-Two for performance capture democratization and Director Mode for precise camera control.',
+    'blog.article37.title': 'Kling AI 2.0: The Chinese Giant and Motion Hyperrealism',
+    'blog.article37.excerpt': 'From Chinese giant Kuaishou, Kling AI became a leader in global video AI with 1080p quality at 60 fps.',
+    'blog.article37.content': 'Kuaishou\'s Kling AI 2.0 offers 1080p at 60fps and coherent sequences up to 3 minutes. It excels at complex physical interactions and offers presets like the viral MochiMochi effect with native audio generation.',
+    'blog.article38.title': 'Luma Dream Machine (Ray 2): Editing Precision',
+    'blog.article38.excerpt': 'Luma Labs with Ray 2 focuses on professional workflow features: Keyframes, Looping, and Extend.',
+    'blog.article38.content': 'Luma\'s Ray 2 delivers Keyframes, Looping, and Extend functions. It generates 120 frames per minute and offers open API access for integration with Unity, Unreal Engine, and Blender.',
+    'blog.article39.title': 'Hailuo AI (MiniMax) 2.3: Premium Quality at Standard Price',
+    'blog.article39.excerpt': 'Hailuo AI is the dark horse of late 2025, offering video quality comparable to market leaders at much more aggressive pricing.',
+    'blog.article39.content': 'MiniMax\'s Hailuo AI 2.3 offers excellent Prompt Adherence and dynamic motion. DeepSeek AI integration helps develop simple ideas into detailed film scenarios. Image-to-Video preserves original artistic style.',
+    'blog.article40.title': 'Ideogram 3.0: Typography and Design Without Compromise',
+    'blog.article40.excerpt': 'Ideogram 3.0 carved a unique designer niche, focusing on perfect text rendering and graphic composition.',
+    'blog.article40.content': 'Ideogram 3.0 generates complex typographic layouts with correctly rendered text. The Style Reference System supports up to 3 reference images from over 4 billion style presets. Magic Fill and Extend on Infinite Canvas complete the studio.',
+    'blog.article41.title': 'Suno v5: From Generation to Music Production',
+    'blog.article41.excerpt': 'Suno v5 closed the debate on radio-quality AI audio. The model offers 44.1kHz stereo and Personas for coherent albums.',
+    'blog.article41.content': 'Suno v5 offers 44.1kHz stereo quality. Personas enable saving and reusing virtual vocalist voices. Stems allow downloading separate tracks for vocals, drums, bass, and instruments in WAV format.',
+    'blog.article42.title': 'Udio: Structure, Control, and New Order in the Music Industry',
+    'blog.article42.excerpt': 'Udio set course for professionalization with precise song structure generation and historic partnerships with Warner Music and Universal.',
+    'blog.article42.content': 'Udio enables sequential generation of song elements: intro, verse, chorus, bridge, solo, outro. Advanced Inpainting and Remixing allow regenerating specific fragments. Historic partnerships with Warner Music Group and Universal Music Group create legal licensing frameworks.',
+    'blog.article43.title': 'ElevenLabs: From Speech Synthesis to Global Audio Operating System',
+    'blog.article43.excerpt': 'ElevenLabs transformed into Audio OS – a complete audio operating system with revolutionary Dubbing Studio and Visual Dubbing.',
+    'blog.article43.content': 'ElevenLabs\' Dubbing Studio offers visual dubbing with lip sync and re-voice in 29 languages while preserving Voice Cloning. Voice Design v3 creates voices from text descriptions. Conversational AI models achieve <400ms latency.',
+    'blog.article44.title': 'Autodesk Flow Studio: AI Enters the Dream Factory',
+    'blog.article44.excerpt': 'Wonder Dynamics acquisition by Autodesk democratizes advanced VFX, making motion capture and rotoscoping accessible from a browser.',
+    'blog.article44.content': 'Autodesk Flow Studio (ex-Wonder Dynamics) automates Motion Capture, Rotoscoping, Clean Plate, and Lighting Match from ordinary video. Modular export to Maya, Blender, or Unreal Engine 5 enables professional pipeline integration.',
+    'blog.article45.title': 'Figma "Make Designs": End of Lorem Ipsum in UI Design',
+    'blog.article45.excerpt': 'Figma\'s Make Designs fundamentally changes the designer\'s role, generating fully functional mockups from text prompts.',
+    'blog.article45.content': 'Figma Make Designs generates editable mockups with Auto Layout, components, and typographic styles from text prompts. AI generates contextual copywriting, icons, and images. Integration with Builder.io enables direct code export.',
+    'blog.article46.title': 'Meta Movie Gen: Mass Deployment Potential and Synthetic Reality Era',
+    'blog.article46.excerpt': 'Meta Movie Gen has potential for the greatest social impact – built not for filmmakers but for 3 billion Facebook and Instagram users.',
+    'blog.article46.content': 'Meta Movie Gen offers Personalized Video Generation where users become main characters from a single profile photo. Super Reels will let anyone create high-budget clips. Text command video editing democratizes post-production.',
+    'blog.article47.title': 'Recraft AI: Vectors, Scalability, and New Branding Standard',
+    'blog.article47.excerpt': 'Recraft AI with V3 model revolutionized the market with native SVG vector graphics generation – the only tool thinking in mathematical curves.',
+    'blog.article47.content': 'Recraft V3 generates native SVG vector graphics – infinitely scalable logos and icons. Vectorization 2.0 converts sketches to layered vector files. December 2025 added Lottie export for web animations.',
+    'blog.article48.title': 'Magnific AI: Hallucination as Artistic Tool and Photoshop on Steroids',
+    'blog.article48.excerpt': 'Magnific AI defined the new Generative Upscaling category, using AI to hallucinate missing high-resolution details.',
+    'blog.article48.content': 'Magnific AI hallucinated missing details in high resolution – adding eyelashes, skin pores, and iris reflections that weren\'t in the original. Creativity and Resemblance sliders give control. Relight and Style Transfer added in 2025.',
+    'blog.article49.title': 'Midjourney v7: Escape Forward – 3D, Web, and Speed',
+    'blog.article49.excerpt': 'Midjourney v7 introduces fundamental architecture changes, integrating 3D spatial understanding based on NeRF techniques.',
+    'blog.article49.content': 'Midjourney v7 moves to dedicated Alpha Web platform with 3D spatial understanding integration. Draft Mode is 10x faster. Advanced Editor enables inpainting and outpainting on infinite canvas.',
+    'blog.article50.title': 'Krea AI: Real-Time Video and the Death of Rendering',
+    'blog.article50.excerpt': 'Krea AI with Realtime 14B model first offers video generation at 11 fps, ending the wait-and-see paradigm.',
+    'blog.article50.content': 'Krea Realtime 14B generates video at 11 fps using Latent Consistency Models. Applications include live VJ-ing, rapid prototyping, and iPad with Apple Pencil. Pattern Tool enables embedding logos in generated images. Open source parts attracted creative hackers.',
     
     // Footer
     'footer.copyright': '© 2025 OpenMind AI Consulting. All rights reserved.',
