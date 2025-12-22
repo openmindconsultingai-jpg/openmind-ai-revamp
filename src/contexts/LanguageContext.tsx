@@ -16,6 +16,7 @@ const translations: Translations = {
     // Navigation
     'nav.home': 'Strona główna',
     'nav.services': 'Nasze usługi',
+    'nav.aiAdvisor': 'Kreator AI',
     'nav.about': 'O nas',
     'nav.blog': 'Baza wiedzy o AI',
     'nav.contact': 'Kontakt',
@@ -854,6 +855,7 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     // Navigation
     'nav.home': 'Home',
     'nav.services': 'Our Services',
+    'nav.aiAdvisor': 'AI Creator',
     'nav.about': 'About Us',
     'nav.blog': 'AI Knowledge Base',
     'nav.contact': 'Contact',
