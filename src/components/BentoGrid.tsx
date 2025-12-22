@@ -5,6 +5,7 @@ import { X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
+import AIAdvisorChat from '@/components/AIAdvisorChat';
 import bentoContactImg from '@/assets/bento-contact.jpg';
 import bentoAdvisorImg from '@/assets/bento-ai-advisor.jpg';
 
@@ -227,15 +228,8 @@ const BentoGrid = () => {
                 </p>
               </div>
               
-              <div className="flex-1 p-6">
-                <iframe
-                  src="https://www.chatbase.co/chatbot-iframe/SqPZ4YgcXWDi1VhFEdoGc"
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  className="rounded-xl"
-                  title="AI Advisor Chatbot"
-                />
+              <div className="flex-1 overflow-hidden">
+                <AIAdvisorChat />
               </div>
             </div>
           </div>
