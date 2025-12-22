@@ -1,34 +1,25 @@
-import { useEffect, useRef, useState } from 'react';
+import { memo, useState, useCallback } from 'react';
 import { Brain, Users, Lightbulb, Target, Zap, Shield, Rocket, Video, Building2, ChevronDown, ChevronUp } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
 import { useLanguage } from '@/contexts/LanguageContext';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 type ExpandedCards = Record<number, boolean>;
 
-// Service images - using abstract AI/tech themed images
 const serviceImages = [
-  'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80', // AI Brain
-  'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80', // Team training
-  'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80', // Business tech
-  'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80', // Social media
-  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80', // Buildings
-  'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&q=80', // Strategy
-  'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80', // Custom tech
-  'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80', // Optimization
-  'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80', // Security
+  'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+  'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+  'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
+  'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
+  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
+  'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&q=80',
+  'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
+  'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80',
+  'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80',
 ];
 
-const Services = () => {
-  const { t } = useLanguage();
-  const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+const Services = memo(() => {
+  const { t, language } = useLanguage();
   const [expandedCards, setExpandedCards] = useState<ExpandedCards>({});
   
   const services = [
@@ -97,126 +88,44 @@ const Services = () => {
     }
   ];
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Header animation
-      gsap.fromTo(
-        headerRef.current,
-        { opacity: 0, y: 60 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: 'top 85%',
-            end: 'top 50%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-
-      // Cards stagger animation
-      gsap.fromTo(
-        '.service-card',
-        { opacity: 0, y: 80, scale: 0.9 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: 'top 80%',
-            end: 'top 20%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-
-      // Background parallax (was image-based)
-      // Video background is handled by VideoSectionBackground.
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  // Spotlight effect tracking
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (cardsRef.current) {
-        const rect = cardsRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top,
-        });
-      }
-    };
-
-    const grid = cardsRef.current;
-    if (grid) {
-      grid.addEventListener('mousemove', handleMouseMove);
-      return () => grid.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
-
-  const toggleCard = (index: number) => {
+  const toggleCard = useCallback((index: number) => {
     setExpandedCards(prev => ({
       ...prev,
       [index]: !prev[index]
     }));
-  };
+  }, []);
 
   return (
-    <section ref={sectionRef} id="services" className="pt-20 md:pt-24 pb-20 md:pb-32 relative overflow-hidden">
+    <section id="services" className="pt-20 md:pt-24 pb-20 md:pb-32 relative overflow-hidden">
       <div className="absolute inset-0">
         <VideoSectionBackground opacity={0.6} blurPx={3} overlayOpacity={0.45} />
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/25 to-background" />
       </div>
       
       <div className="container mx-auto px-4 relative">
-        <div ref={headerRef} className="text-center mb-16">
+        <div className="text-center mb-16">
           <div className="flex justify-center mb-6">
-            <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" />
+            <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" loading="lazy" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-gradient text-glow">{t('services.title')}</span>
+            <span className="text-gradient">{t('services.title')}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             {t('services.subtitle')}
           </p>
         </div>
 
-        <div 
-          ref={cardsRef} 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative"
-          style={{
-            '--mouse-x': `${mousePosition.x}px`,
-            '--mouse-y': `${mousePosition.y}px`,
-          } as React.CSSProperties}
-        >
-          {/* Spotlight overlay */}
-          <div 
-            className="absolute inset-0 pointer-events-none opacity-50 transition-opacity duration-300 z-0"
-            style={{
-              background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(176 100% 43% / 0.1), transparent 40%)`,
-            }}
-          />
-          
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => {
-            const Icon = service.icon;
             const isExpanded = expandedCards[index];
             return (
               <div
                 key={index}
-                className="service-card group relative cursor-pointer"
+                className="group relative cursor-pointer"
                 onClick={() => toggleCard(index)}
               >
                 <div 
-                  className={`relative h-full rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] ${
+                  className={`relative h-full rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.01] ${
                     isExpanded ? 'min-h-[520px] md:min-h-[580px]' : 'min-h-[380px] md:min-h-[420px]'
                   }`}
                   style={{
@@ -227,19 +136,12 @@ const Services = () => {
                   <img 
                     src={service.image} 
                     alt={t(service.titleKey)} 
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
                   />
                   
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
-
-                  {/* Gradient glow on hover */}
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background: `radial-gradient(400px circle at 50% 50%, hsl(176 100% 43% / 0.2), transparent 60%)`,
-                    }}
-                  />
 
                   {/* Content */}
                   <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
@@ -247,7 +149,7 @@ const Services = () => {
                       {t(service.titleKey)}
                     </h3>
                     
-                    <p className={`relative z-10 font-sans text-sm text-muted-foreground leading-relaxed mb-4 transition-all duration-300 ${
+                    <p className={`relative z-10 font-sans text-sm text-muted-foreground leading-relaxed mb-4 transition-all duration-200 ${
                       isExpanded ? '' : 'line-clamp-2'
                     }`}>
                       {t(service.descKey)}
@@ -264,7 +166,7 @@ const Services = () => {
 
                     {/* Expand/Collapse button */}
                     <div className="relative z-10 mt-4 flex items-center gap-2 text-primary text-sm font-medium">
-                      <span>{isExpanded ? (t('language') === 'pl' ? 'Zwiń' : 'Collapse') : (t('language') === 'pl' ? 'Rozwiń' : 'Expand')}</span>
+                      <span>{isExpanded ? (language === 'pl' ? 'Zwiń' : 'Collapse') : (language === 'pl' ? 'Rozwiń' : 'Expand')}</span>
                       {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                     </div>
                   </div>
@@ -276,6 +178,8 @@ const Services = () => {
       </div>
     </section>
   );
-};
+});
+
+Services.displayName = 'Services';
 
 export default Services;
