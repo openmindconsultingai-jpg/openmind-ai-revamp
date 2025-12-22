@@ -48,6 +48,12 @@ const VideoHero = () => {
         { opacity: 0, y: 30, filter: 'blur(10px)' },
         { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, delay: 1.5, ease: 'power2.out' }
       );
+
+      gsap.fromTo(
+        '.hero-cta',
+        { opacity: 0, y: 30, scale: 0.9 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.8, delay: 2, ease: 'power2.out' }
+      );
     }, containerRef);
 
     return () => ctx.revert();
@@ -217,15 +223,16 @@ const VideoHero = () => {
         {/* CTA Button with shimmer effect */}
         <a 
           href="#booking" 
-          className="hero-subtitle inline-block relative overflow-hidden px-10 py-5 bg-primary text-primary-foreground font-heading font-semibold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_hsl(176_100%_43%/0.5)]"
+          className="hero-cta inline-block relative overflow-hidden px-10 py-5 bg-primary text-primary-foreground font-heading font-semibold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_hsl(176_100%_43%/0.5)]"
           style={{ opacity: 0 }}
         >
           <span className="relative z-10">Umów bezpłatną konsultację</span>
           {/* Shimmer overlay */}
           <span 
-            className="absolute inset-0 z-0 animate-shimmer"
+            className="absolute inset-0 z-0"
             style={{
-              background: 'linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.3) 50%, transparent 100%)',
+              background: 'linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.4) 50%, transparent 100%)',
+              animation: 'shimmer 2s ease-in-out infinite',
             }}
           />
         </a>
