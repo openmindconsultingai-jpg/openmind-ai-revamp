@@ -11,3 +11,9 @@ verify_jwt = false
 
 [functions.check-booking-rate-limit]
 verify_jwt = false
+
+[functions.forward-to-crm]
+verify_jwt = false
+
+[functions.send-contact-email]
+verify_jwt = false
