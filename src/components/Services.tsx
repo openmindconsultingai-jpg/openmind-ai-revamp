@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Brain, Users, Lightbulb, Target, Zap, Shield, Rocket, Video, Building2 } from 'lucide-react';
+import { Brain, Users, Lightbulb, Target, Zap, Shield, Rocket, Video, Building2, ChevronDown, ChevronUp } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
 import { useLanguage } from '@/contexts/LanguageContext';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
@@ -7,6 +7,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+type ExpandedCards = Record<number, boolean>;
 
 // Service images - using abstract AI/tech themed images
 const serviceImages = [
@@ -27,6 +29,7 @@ const Services = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [expandedCards, setExpandedCards] = useState<ExpandedCards>({});
   
   const services = [
     {
@@ -160,6 +163,13 @@ const Services = () => {
     }
   }, []);
 
+  const toggleCard = (index: number) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
   return (
     <section ref={sectionRef} id="services" className="pt-20 md:pt-24 pb-20 md:pb-32 relative overflow-hidden">
       <div className="absolute inset-0">
@@ -198,13 +208,17 @@ const Services = () => {
           
           {services.map((service, index) => {
             const Icon = service.icon;
+            const isExpanded = expandedCards[index];
             return (
               <div
                 key={index}
                 className="service-card group relative cursor-pointer"
+                onClick={() => toggleCard(index)}
               >
                 <div 
-                  className="relative h-full min-h-[380px] md:min-h-[420px] rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02]"
+                  className={`relative h-full rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] ${
+                    isExpanded ? 'min-h-[520px] md:min-h-[580px]' : 'min-h-[380px] md:min-h-[420px]'
+                  }`}
                   style={{
                     boxShadow: `0 0 0 1px hsl(0 0% 100% / 0.08), 0 25px 60px -20px hsl(0 0% 0% / 0.6)`,
                   }}
@@ -233,7 +247,9 @@ const Services = () => {
                       {t(service.titleKey)}
                     </h3>
                     
-                    <p className="relative z-10 font-sans text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-2">
+                    <p className={`relative z-10 font-sans text-sm text-muted-foreground leading-relaxed mb-4 transition-all duration-300 ${
+                      isExpanded ? '' : 'line-clamp-2'
+                    }`}>
                       {t(service.descKey)}
                     </p>
 
@@ -244,6 +260,12 @@ const Services = () => {
                           <span>{t(benefitKey)}</span>
                         </div>
                       ))}
+                    </div>
+
+                    {/* Expand/Collapse button */}
+                    <div className="relative z-10 mt-4 flex items-center gap-2 text-primary text-sm font-medium">
+                      <span>{isExpanded ? (t('language') === 'pl' ? 'Zwiń' : 'Collapse') : (t('language') === 'pl' ? 'Rozwiń' : 'Expand')}</span>
+                      {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                     </div>
                   </div>
                 </div>

@@ -92,24 +92,32 @@ const FloatingNav = () => {
           ))}
           
           {/* Language Switcher */}
-          <div className="flex items-center gap-0.5 ml-1.5 pl-1.5 border-l border-border/30">
+          <div className="flex items-center gap-1 ml-1.5 pl-1.5 border-l border-border/30">
             <button
               onClick={() => setLanguage('pl')}
-              className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
-                language === 'pl' ? 'bg-primary/20 ring-1 ring-primary' : 'hover:bg-muted/30'
+              className={`w-8 h-8 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300 ${
+                language === 'pl' ? 'ring-2 ring-primary ring-offset-1 ring-offset-background' : 'opacity-60 hover:opacity-100'
               }`}
               aria-label="Polski"
             >
-              <span className="text-xs">🇵🇱</span>
+              <img 
+                src="https://flagcdn.com/w40/pl.png" 
+                alt="Polski" 
+                className="w-full h-full object-cover"
+              />
             </button>
             <button
               onClick={() => setLanguage('en')}
-              className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
-                language === 'en' ? 'bg-primary/20 ring-1 ring-primary' : 'hover:bg-muted/30'
+              className={`w-8 h-8 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300 ${
+                language === 'en' ? 'ring-2 ring-primary ring-offset-1 ring-offset-background' : 'opacity-60 hover:opacity-100'
               }`}
               aria-label="English"
             >
-              <span className="text-xs">🇬🇧</span>
+              <img 
+                src="https://flagcdn.com/w40/gb.png" 
+                alt="English" 
+                className="w-full h-full object-cover"
+              />
             </button>
           </div>
         </div>
@@ -156,19 +164,27 @@ const FloatingNav = () => {
             <div className="flex items-center gap-4 mt-4">
               <button
                 onClick={() => setLanguage('pl')}
-                className={`text-2xl transition-all ${
-                  language === 'pl' ? 'scale-125' : 'opacity-50'
+                className={`w-12 h-12 rounded-full overflow-hidden transition-all ${
+                  language === 'pl' ? 'ring-2 ring-primary scale-110' : 'opacity-50'
                 }`}
               >
-                🇵🇱
+                <img 
+                  src="https://flagcdn.com/w80/pl.png" 
+                  alt="Polski" 
+                  className="w-full h-full object-cover"
+                />
               </button>
               <button
                 onClick={() => setLanguage('en')}
-                className={`text-2xl transition-all ${
-                  language === 'en' ? 'scale-125' : 'opacity-50'
+                className={`w-12 h-12 rounded-full overflow-hidden transition-all ${
+                  language === 'en' ? 'ring-2 ring-primary scale-110' : 'opacity-50'
                 }`}
               >
-                🇬🇧
+                <img 
+                  src="https://flagcdn.com/w80/gb.png" 
+                  alt="English" 
+                  className="w-full h-full object-cover"
+                />
               </button>
             </div>
           </nav>

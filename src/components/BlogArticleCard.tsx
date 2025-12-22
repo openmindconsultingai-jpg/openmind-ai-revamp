@@ -1,31 +1,34 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { User } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface BlogArticleCardProps {
   titleKey: string;
   excerptKey: string;
   articleId: number;
+  publishDate?: Date;
 }
 
-const BlogArticleCard = ({ titleKey, excerptKey, articleId }: BlogArticleCardProps) => {
-  const { t } = useLanguage();
+const BlogArticleCard = ({ titleKey, excerptKey, articleId, publishDate }: BlogArticleCardProps) => {
+  const { t, language } = useLanguage();
 
-  const handleReadMore = () => {
-    // Scroll to article content (will be implemented with full article view)
-    const element = document.getElementById(`article-${articleId}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString(language === 'pl' ? 'pl-PL' : 'en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   };
 
   return (
     <Card className="p-6 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10">
-      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-        <User className="w-4 h-4" />
-        <span>Łukasz Czarnecki</span>
-      </div>
+      {publishDate && (
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+          <Calendar className="w-4 h-4" />
+          <span>{formatDate(publishDate)}</span>
+        </div>
+      )}
       
       <h3 className="text-2xl font-bold mb-4 text-foreground">
         {t(titleKey)}
@@ -36,7 +39,6 @@ const BlogArticleCard = ({ titleKey, excerptKey, articleId }: BlogArticleCardPro
       </p>
       
       <Button 
-        onClick={handleReadMore}
         variant="outline" 
         className="w-full group"
       >

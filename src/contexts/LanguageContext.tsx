@@ -26,6 +26,7 @@ const translations: Translations = {
     'hero.description': 'Polski start-up łączący innowacyjność z elastycznością. Dostarczamy zaawansowane rozwiązania AI dostosowane do dynamicznie zmieniającego się rynku.',
     'hero.description2': 'Łączymy lokalne know-how z globalnymi technologiami uczenia maszynowego i przetwarzania języka naturalnego, oferując skuteczne wsparcie dla firm, sektora publicznego i rodzin w codziennym wykorzystaniu inteligentnych systemów.',
     'hero.cta': 'Wkrocz w technologię jutra już dziś',
+    'hero.cta.consultation': 'Umów bezpłatną konsultację',
     
     // Mission Section
     'mission.title': 'Nasza Misja',
@@ -354,7 +355,8 @@ const translations: Translations = {
     'hero.subtitle': 'AI',
     'hero.description': 'A Polish startup combining innovation with flexibility. We deliver advanced AI solutions tailored to a dynamically changing market.',
     'hero.description2': 'We combine local know-how with global machine learning and natural language processing technologies, offering effective support for businesses, the public sector, and families in everyday use of intelligent systems.',
-    'hero.cta': 'Step into tomorrow\'s technology today',
+    'hero.cta': "Step into tomorrow's technology today",
+    'hero.cta.consultation': 'Book a free consultation',
     
     // Mission Section
     'mission.title': 'Our Mission',
