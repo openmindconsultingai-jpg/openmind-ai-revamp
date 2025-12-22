@@ -5,6 +5,34 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// Rate limiting - max requests per IP per hour
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_MAX = 50; // Max 50 AI requests per hour per IP
+const RATE_LIMIT_WINDOW = 3600000; // 1 hour in milliseconds
+
+function getClientIP(req: Request): string {
+  return req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+         req.headers.get('x-real-ip') || 
+         'unknown';
+}
+
+function checkRateLimit(identifier: string): { allowed: boolean; remaining: number } {
+  const now = Date.now();
+  const record = rateLimitMap.get(identifier);
+  
+  if (!record || now > record.resetTime) {
+    rateLimitMap.set(identifier, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
+    return { allowed: true, remaining: RATE_LIMIT_MAX - 1 };
+  }
+  
+  if (record.count >= RATE_LIMIT_MAX) {
+    return { allowed: false, remaining: 0 };
+  }
+  
+  record.count++;
+  return { allowed: true, remaining: RATE_LIMIT_MAX - record.count };
+}
+
 const SYSTEM_PROMPT = `Jesteś wirtualnym doradcą AI od OpenMind AI Consulting - ekspertem w znajdowaniu kreatywnych zastosowań sztucznej inteligencji w biznesie, życiu codziennym, edukacji i innych dziedzinach.
 
 TWOJA ROLA:
@@ -46,8 +74,38 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Rate limiting
+  const clientIP = getClientIP(req);
+  const rateCheck = checkRateLimit(clientIP);
+  
+  if (!rateCheck.allowed) {
+    console.log("Rate limit exceeded for IP:", clientIP);
+    return new Response(JSON.stringify({ 
+      error: "Zbyt wiele zapytań. Spróbuj ponownie za godzinę." 
+    }), {
+      status: 429,
+      headers: { 
+        ...corsHeaders, 
+        "Content-Type": "application/json",
+        "X-RateLimit-Remaining": "0"
+      },
+    });
+  }
+
   try {
     const { messages, generatePdf } = await req.json();
+    
+    // Validate messages array
+    if (!messages || !Array.isArray(messages)) {
+      return new Response(JSON.stringify({ error: "Invalid request format" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Limit message history to prevent abuse
+    const limitedMessages = messages.slice(-20);
+    
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
     if (!LOVABLE_API_KEY) {
@@ -81,7 +139,7 @@ serve(async (req) => {
                 "nextSteps": "Zachęta do kontaktu z OpenMind AI Consulting"
               }`
             },
-            ...messages,
+            ...limitedMessages,
           ],
         }),
       });
@@ -97,7 +155,11 @@ serve(async (req) => {
         type: "pdf",
         content: pdfData.choices[0].message.content 
       }), {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        headers: { 
+          ...corsHeaders, 
+          "Content-Type": "application/json",
+          "X-RateLimit-Remaining": String(rateCheck.remaining)
+        },
       });
     }
 
@@ -112,7 +174,7 @@ serve(async (req) => {
         model: "google/gemini-3-pro-preview",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
-          ...messages,
+          ...limitedMessages,
         ],
         stream: true,
       }),
@@ -140,7 +202,11 @@ serve(async (req) => {
     }
 
     return new Response(response.body, {
-      headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
+      headers: { 
+        ...corsHeaders, 
+        "Content-Type": "text/event-stream",
+        "X-RateLimit-Remaining": String(rateCheck.remaining)
+      },
     });
   } catch (error) {
     console.error("AI Advisor error:", error);
