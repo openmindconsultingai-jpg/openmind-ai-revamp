@@ -95,9 +95,9 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
     };
 
     const animateCursor = () => {
-      // Faster response (less inertia)
-      const speed = 0.8;
-      const ringSpeed = 0.65;
+      // Maximum response speed (almost instant)
+      const speed = 0.95;
+      const ringSpeed = 0.85;
 
       let targetX = mouseX;
       let targetY = mouseY;

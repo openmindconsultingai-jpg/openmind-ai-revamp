@@ -15,29 +15,12 @@ const Blog = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
-  const articles = [
-    {
-      id: 1,
-      titleKey: 'blog.article1.title',
-      dateKey: 'blog.article1.date',
-      excerptKey: 'blog.article1.excerpt',
-      contentKey: 'blog.article1.content',
-    },
-    {
-      id: 2,
-      titleKey: 'blog.article2.title',
-      dateKey: 'blog.article2.date',
-      excerptKey: 'blog.article2.excerpt',
-      contentKey: 'blog.article2.content',
-    },
-    {
-      id: 3,
-      titleKey: 'blog.article3.title',
-      dateKey: 'blog.article3.date',
-      excerptKey: 'blog.article3.excerpt',
-      contentKey: 'blog.article3.content',
-    },
-  ];
+  const articles = Array.from({ length: 24 }, (_, i) => ({
+    id: i + 1,
+    titleKey: `blog.article${i + 1}.title`,
+    excerptKey: `blog.article${i + 1}.excerpt`,
+    contentKey: `blog.article${i + 1}.content`,
+  }));
 
   useEffect(() => {
     if (selectedArticle !== null) return;
