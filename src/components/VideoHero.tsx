@@ -181,20 +181,20 @@ const VideoHero = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto">
+      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto -mt-32">
         {/* Main Title with letter-by-letter mist reveal */}
         <h1 
           ref={titleRef}
-          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold mb-6 leading-none tracking-tight"
+          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold mb-8 leading-none tracking-tight"
         >
-          <span className="block text-foreground" style={{ textShadow: '0 0 60px hsl(176 100% 43% / 0.5)' }}>
+          <span className="text-foreground" style={{ textShadow: '0 0 60px hsl(176 100% 43% / 0.5)' }}>
             {titleText.split('').map((letter, i) => (
               <span key={i} className="hero-letter inline-block">
                 {letter}
               </span>
             ))}
           </span>
-          <span className="block mt-2">
+          <span className="ml-4">
             {aiText.split('').map((letter, i) => (
               <span 
                 key={i} 
@@ -210,9 +210,25 @@ const VideoHero = () => {
         </h1>
 
         {/* Subtitle */}
-        <p className="hero-subtitle font-sans text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto">
+        <p className="hero-subtitle font-sans text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto mb-10">
           {t('hero.description')}
         </p>
+
+        {/* CTA Button with shimmer effect */}
+        <a 
+          href="#booking" 
+          className="hero-subtitle inline-block relative overflow-hidden px-10 py-5 bg-primary text-primary-foreground font-heading font-semibold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_hsl(176_100%_43%/0.5)]"
+          style={{ opacity: 0 }}
+        >
+          <span className="relative z-10">Umów bezpłatną konsultację</span>
+          {/* Shimmer overlay */}
+          <span 
+            className="absolute inset-0 z-0 animate-shimmer"
+            style={{
+              background: 'linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.3) 50%, transparent 100%)',
+            }}
+          />
+        </a>
       </div>
 
       {/* Scroll indicator */}
