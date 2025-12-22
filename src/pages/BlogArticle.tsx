@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PageLayout from '@/components/PageLayout';
 import BlogArticleComponent from '@/components/BlogArticle';
@@ -25,14 +26,15 @@ const articles = Array.from({ length: 30 }, (_, i) => ({
 const BlogArticlePage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  
-  const articleId = parseInt(id || '1', 10);
-  const article = articles.find(a => a.id === articleId);
 
-  if (!article) {
-    navigate('/blog');
-    return null;
-  }
+  const articleId = parseInt(id || '1', 10);
+  const article = articles.find((a) => a.id === articleId);
+
+  useEffect(() => {
+    if (!article) navigate('/blog');
+  }, [article, navigate]);
+
+  if (!article) return null;
 
   return (
     <PageLayout>
