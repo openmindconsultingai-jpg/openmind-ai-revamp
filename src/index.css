@@ -321,6 +321,13 @@
     overflow-x: hidden;
   }
 
+  /* Text Justification for better aesthetics */
+  p, .text-justify-content {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', system-ui, sans-serif;
   }
