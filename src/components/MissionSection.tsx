@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { noWidows } from '@/lib/typography';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
@@ -133,7 +134,7 @@ const MissionSection = () => {
               transition: 'text-shadow 0.3s ease-out',
             }}
           >
-            {t('mission.description1')}
+            {noWidows(t('mission.description1'))}
           </p>
           <p 
             className="mission-word font-sans text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed"
@@ -142,7 +143,7 @@ const MissionSection = () => {
               transition: 'text-shadow 0.3s ease-out',
             }}
           >
-            {t('mission.description2')}
+            {noWidows(t('mission.description2'))}
           </p>
         </div>
 

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useHeroVideos } from '@/hooks/useHeroVideos';
+import { noWidows } from '@/lib/typography';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -217,7 +218,7 @@ const VideoHero = () => {
 
         {/* Subtitle */}
         <p className="hero-subtitle font-sans text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto mb-10">
-          {t('hero.description')}
+          {noWidows(t('hero.description'))}
         </p>
 
         {/* CTA Button with glass effect and artistic animation */}

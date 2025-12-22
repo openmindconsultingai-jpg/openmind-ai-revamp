@@ -3,6 +3,7 @@ import logo from '@/assets/openmind-logo.webp';
 import ceoImage from '@/assets/ceo-lukasz-czarnecki.png';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { noWidows } from '@/lib/typography';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -57,7 +58,7 @@ const About = () => {
       
       return (
         <p key={index} className="text-muted-foreground leading-relaxed mb-3">
-          {trimmedLine}
+          {noWidows(trimmedLine)}
         </p>
       );
     });
