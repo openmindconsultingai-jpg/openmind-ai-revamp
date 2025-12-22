@@ -416,7 +416,117 @@ Innym kluczowym zastosowaniem jest priorytetyzacja (triage). Algorytmy AI analiz
 
 AI w Mayo Clinic pomaga również w rekonstrukcji obrazu – algorytmy pozwalają na wykonywanie badań rezonansem magnetycznym (MRI) szybciej i przy niższej dawce promieniowania w CT, a następnie "odszumiają" obraz do jakości diagnostycznej. To zwiększa komfort i bezpieczeństwo pacjentów oraz przepustowość drogich urządzeń. Przykład Mayo Clinic pokazuje, że AI w medycynie to nie science-fiction, ale realne narzędzie wspierające lekarzy w walce z czasem i chorobą.`,
 
-    // Articles 21-60 Polish content will be added here
+    // Article 21
+    'blog.article21.title': 'Mechanistic Interpretability: Jak Zrozumieć "Mózg" Sztucznej Inteligencji?',
+    'blog.article21.excerpt': 'Współczesne modele AI są często określane mianem "czarnych skrzynek". Interpretowalność mechanistyczna to dziedzina nauki, która stawia sobie za cel inżynierię wsteczną tych systemów.',
+    'blog.article21.content': `Współczesne modele AI, zwłaszcza wielkie sieci neuronowe (Deep Neural Networks), są często określane mianem "czarnych skrzynek". Wiemy, jakie dane do nich wchodzą i co z nich wychodzi, ale procesy zachodzące wewnątrz – miliony operacji na wagach – pozostają nieprzejrzyste. Interpretowalność mechanistyczna (Mechanistic Interpretability - MI) to dynamicznie rozwijająca się dziedzina nauki, która stawia sobie za cel inżynierię wsteczną tych systemów. To swoista "neuronauka sztucznych mózgów".
+
+Naukowcy z Anthropic, OpenAI i ośrodków akademickich odkryli, że sieci neuronowe nie są chaotyczną zupą liczb, lecz organizują się w obwody (circuits), podobne do funkcjonalnych obszarów w ludzkim mózgu. Zidentyfikowano np. "obwody indukcyjne" odpowiedzialne za uczenie się wzorców w sekwencjach, czy neurony reagujące na konkretne koncepcje (np. neurony wykrywające krawędzie, twarze, czy emocje w tekście).
+
+Jednym z najważniejszych i najbardziej zaskakujących odkryć jest zjawisko superpozycji (superposition). Okazuje się, że sieci neuronowe potrafią kodować więcej pojęć niż mają neuronów. Robią to, "upychając" wiele niezwiązanych ze sobą cech (np. "samochód" i "filozofia Hegla") w jednym neuronie, wykorzystując wysokowymiarową przestrzeń wektorową. To zjawisko polisemii neuronowej. Badania nagrodzone na konferencji NeurIPS 2025 pokazały, że superpozycja jest powiązana z odpornością modelu (robustness) na uszkodzenia.
+
+Zrozumienie tych mechanizmów jest absolutnie kluczowe dla bezpieczeństwa AI (AI Safety). Jeśli zrozumiemy, jak model "myśli", będziemy w stanie wykryć ukryte uprzedzenia, potencjalnie niebezpieczne zachowania czy tylne furtki w systemach. To pierwszy krok do budowania AI, któremu możemy naprawdę zaufać.`,
+
+    // Article 22
+    'blog.article22.title': 'Neurosymboliczne AI: Synteza Logiki i Uczenia Maszynowego',
+    'blog.article22.excerpt': 'Przyszłość AI nie leży w coraz większych sieciach neuronowych, lecz w architekturach hybrydowych – Neurosymbolic AI, łączących zdolność uczenia się z precyzją logicznego wnioskowania.',
+    'blog.article22.content': `Przez dekady świat AI był podzielony na dwa obozy: symboliczny (logika, reguły, systemy eksperckie) i koneksjonistyczny (sieci neuronowe, uczenie z danych). Deep Learning (DL) zdominował ostatnią dekadę, świetnie radząc sobie z percepcją (obrazy, dźwięk), ale wciąż kuleje w zadaniach wymagających ścisłej logiki, planowania wieloetapowego i zdrowego rozsądku. Przyszłość AI nie leży w coraz większych sieciach neuronowych, lecz w architekturach hybrydowych – Neurosymbolic AI (NeSy).
+
+Systemy neurosymboliczne łączą zdolność uczenia się z surowych danych (domena sieci neuronowych) z precyzją logicznego wnioskowania (domena symboliczna). Jak to działa? W uproszczeniu: sieć neuronowa przetwarza dane sensoryczne na symbole (np. obraz kamery -> symbol "czerwone światło"), a następnie moduł symboliczny podejmuje decyzję na podstawie wgranych lub nauczonych reguł ("jeśli czerwone światło, to STOP").
+
+To podejście ma trzy gigantyczne zalety. Po pierwsze, Interpretowalność: proces decyzyjny jest w pełni przejrzysty dla człowieka, co jest kluczowe w medycynie czy prawie. Po drugie, Efektywność Danych: systemy te potrzebują drastycznie mniej danych treningowych, ponieważ potrafią generalizować na podstawie zaszczepionych reguł, a nie muszą uczyć się wszystkiego od zera na przykładach. Po trzecie, Bezpieczeństwo: można w nie wbudować "sztywne" ograniczenia (Shielding), których sieć nie może naruszyć, niezależnie od tego, co "wymyśli" statystycznie.
+
+W 2025 roku Neurosymboliczne AI zyskuje na znaczeniu w robotyce autonomicznej, gdzie błąd wynikający ze statystycznej pomyłki (np. nierozpoznanie znaku) jest nieakceptowalny. To synteza, która może doprowadzić nas do systemów AI, które nie tylko "widzą" i "mówią", ale też "rozumieją" świat w sposób przyczynowo-skutkowy.`,
+
+    // Article 23
+    'blog.article23.title': 'Spiking Neural Networks (SNN): Trzecia Generacja Sieci Neuronowych',
+    'blog.article23.excerpt': 'Impulsowe Sieci Neuronowe naśladują biologiczny mechanizm mózgu, oferując rewolucyjną efektywność energetyczną. Rok 2025 przyniósł przełom dzięki architekturom hybrydowym.',
+    'blog.article23.content': `Większość dzisiejszych sieci neuronowych (ANN) to matematyczne abstrakcje, które działają w sposób ciągły i synchroniczny, co jest bardzo energochłonne. Mózg działa inaczej – neurony komunikują się za pomocą krótkich impulsów elektrycznych (spikes) tylko wtedy, gdy jest to konieczne (np. gdy następuje zmiana w otoczeniu). Impulsowe Sieci Neuronowe (SNN), zwane trzecią generacją sieci, naśladują ten biologiczny mechanizm, oferując rewolucyjną efektywność energetyczną.
+
+Do niedawna SNN były ciekawostką akademicką – trudne w trenowaniu (brak różniczkowalności impulsu) i mniej dokładne niż klasyczne sieci Deep Learning. Jednak rok 2025 przyniósł przełom dzięki pracom nad architekturami hybrydowymi, takimi jak Spike Aggregation Transformer (SAFormer) czy Spiking Transformer. Badacze opracowali metody trenowania (surrogate gradients) i nowe mechanizmy atencji, takie jak Accurate Addition-Only Spiking Self-Attention.
+
+Kluczową innowacją jest zastąpienie kosztownego mnożenia macierzy (podstawa działania Transformerów) operacjami dodawania (accumulation), które są znacznie tańsze obliczeniowo. Dzięki temu hybrydowe modele SNN osiągają dokładność porównywalną z klasycznymi modelami na zbiorach takich jak ImageNet, zużywając przy tym ułamek energii.
+
+Dzięki tym postępom, SNN stają się idealnym rozwiązaniem dla Edge AI – dronów, inteligentnych czujników IoT, implantów medycznych i protez, które muszą działać na baterii przez długi czas, przetwarzając dane w czasie rzeczywistym bez łączenia się z chmurą. To technologia, która przenosi inteligencję z centrów danych bezpośrednio do urządzeń w naszej kieszeni.`,
+
+    // Article 24
+    'blog.article24.title': 'Płynne Sieci Neuronowe (LNN): Adaptacja w Czasie Rzeczywistym',
+    'blog.article24.excerpt': 'Naukowcy z MIT CSAIL stworzyli Liquid Neural Networks – "płynne" sieci neuronowe, inspirowane układem nerwowym nicienia C. elegans, które adaptują się w locie do nowych warunków.',
+    'blog.article24.content': `Tradycyjna sieć neuronowa po wytrenowaniu jest "zamrożona". Jej wagi są stałe. Jeśli otoczenie się zmieni (np. autonomiczny samochód wjedzie z autostrady w ulewę i mgłę), model może przestać działać poprawnie, bo nie był na to przygotowany. Naukowcy z MIT CSAIL, pod kierunkiem Ramina Hasaniego, stworzyli Liquid Neural Networks (LNN) – "płynne" sieci neuronowe, inspirowane układem nerwowym małego nicienia C. elegans.
+
+Unikalną cechą LNN jest to, że ich parametry są określone przez równania różniczkowe, które zmieniają się w czasie w zależności od danych wejściowych. Sieć jest plastyczna po treningu – ciągle się adaptuje do nowych warunków w locie. To fundamentalna różnica wobec statycznych architektur typu Transformer czy CNN.
+
+Drugą rewolucyjną cechą jest ich mikro-rozmiar i efektywność. LNN potrafią sterować autonomicznym dronem czy pojazdem, używając zaledwie 19 neuronów, podczas gdy tradycyjne sieci potrzebują ich tysięcy lub milionów, aby osiągnąć ten sam efekt. Mniejsza sieć oznacza szybsze obliczenia, mniejsze zużycie energii i – co najważniejsze – interpretowalność. Możemy zajrzeć do środka i zrozumieć, jak te 19 neuronów podejmuje decyzję.
+
+W 2025 roku LNN znajdują zastosowanie w robotyce, nawigacji w trudnym terenie, monitorowaniu pacjentów (analiza EKG) i przewidywaniu szeregów czasowych w finansach. Są one szczególnie przydatne tam, gdzie dane są zaszumione, niekompletne lub zmieniają się dynamicznie w czasie. To krok w stronę AI, która jest bardziej organiczna i elastyczna.`,
+
+    // Article 25
+    'blog.article25.title': 'Obliczenia Neuromorficzne i Intel Loihi 2: Hardware Wzorowany na Mózgu',
+    'blog.article25.excerpt': 'Procesory neuromorficzne, takie jak Intel Loihi 2, naśladują fizyczną architekturę mózgu, integrując pamięć i obliczenia w każdym "neuronie". To hardware\'owa podstawa trzeciej fali AI.',
+    'blog.article25.content': `Tradycyjne procesory (architektura von Neumanna) oddzielają jednostkę obliczeniową (CPU) od pamięci (RAM). Ciągłe przesyłanie danych między nimi generuje opóźnienia i zużywa ogromne ilości energii – to tzw. "wąskie gardło von Neumanna". W obliczu kończącego się Prawa Moore'a, inżynierowie zwrócili się ku naturze. Procesory neuromorficzne, takie jak Intel Loihi 2, naśladują fizyczną architekturę mózgu, integrując pamięć i obliczenia w każdym "neuronie".
+
+Chip Intel Loihi 2, wykonany w procesie technologicznym Intel 4, posiada 128 rdzeni neuromorficznych symulujących do 1 miliona neuronów i 120 milionów synaps. Jego działanie jest asynchroniczne i sterowane zdarzeniami (event-driven). Oznacza to, że nie ma zegara taktującego, który zużywa prąd nawet gdy nic się nie dzieje. Obliczenia zachodzą tylko wtedy, gdy pojawi się impuls (spike), czyli nowa informacja. Jeśli kamera patrzy na statyczną ścianę, procesor zużywa blisko zera energii.
+
+Badania z 2025 roku pokazują, że na Loihi 2 można uruchamiać nawet zaawansowane modele językowe i algorytmy optymalizacyjne z 1000-krotnie wyższą efektywnością energetyczną i 100 razy szybciej niż na konwencjonalnych CPU/GPU w specyficznych zadaniach. Chip wspiera również adaptacyjne uczenie się na urządzeniu.
+
+Technologia ta jest kluczowa dla przyszłości robotyki roju, inteligentnych protez (które muszą reagować w milisekundach), systemów Smart City oraz zastosowań kosmicznych, gdzie każdy wat energii jest na wagę złota. Neuromorfika to hardware'owa podstawa dla trzeciej fali AI.`,
+
+    // Article 26
+    'blog.article26.title': 'Model Collapse: Dlaczego AI Potrzebuje Ludzkich Danych?',
+    'blog.article26.excerpt': 'Zjawisko autofagii danych prowadzi do Model Collapse – zapaści modelu. Badania pokazują, że iteracyjne trenowanie modelu na jego własnym wyjściu prowadzi do szybkiej degeneracji.',
+    'blog.article26.content': `W miarę jak internet wypełnia się treściami generowanymi przez AI (teksty, obrazy, kod), modele zaczynają być trenowane na danych wytworzonych przez inne modele. To zjawisko, zwane autofagią danych, prowadzi do Model Collapse (zapaści modelu). Badania z Uniwersytetu Oksfordzkiego i innych ośrodków opublikowane w „Nature" pokazują, że iteracyjne trenowanie modelu na jego własnym wyjściu prowadzi do szybkiej degeneracji.
+
+Proces ten przebiega w dwóch fazach. Najpierw następuje utrata wariancji i "ogonów rozkładu" – model przestaje generować rzeczy rzadkie, nietypowe i kreatywne, stając się coraz bardziej przeciętny i stereotypowy. W drugiej fazie następuje całkowite załamanie – model zaczyna generować bełkot, halucynacje i traci kontakt z rzeczywistością. Dzieje się tak, ponieważ błędy i uproszczenia są wzmacniane w każdym kolejnym cyklu treningowym.
+
+Jak temu zapobiec? Badania z 2025 roku wskazują na konieczność dostępu do "czystych" danych pochodzenia ludzkiego. Okazuje się, że dane ludzkie są zasobem nieodnawialnym i coraz cenniejszym – niczym "złoto" dla AI. Rozwiązania obejmują: utrzymanie zdrowej proporcji danych ludzkich (np. min. 10-20%) w zbiorze treningowym, archiwizację internetu sprzed ery AI, oraz wykorzystanie zaawansowanych metod filtrowania syntetycznych danych przez "wyrocznie" (ludzi lub lepsze modele).
+
+Odkrycie Model Collapse ma fundamentalne znaczenie dla przyszłości AI. Pokazuje, że sztuczna inteligencja nie może istnieć w próżni – jest pasożytem (lub symbiontem) na ludzkiej kulturze i kreatywności. Bez ciągłego dopływu nowej, ludzkiej wiedzy, AI wpadnie w spiralę degradacji. To dobra wiadomość dla twórców, pisarzy i artystów – ich praca jest niezbędna dla przetrwania systemów AI.`,
+
+    // Article 27
+    'blog.article27.title': 'AlphaFold 3: Biologia Obliczeniowa i Nowa Era Medycyny',
+    'blog.article27.excerpt': 'AlphaFold 3 to trzęsienie ziemi w biologii molekularnej, porównywalne z odkryciem struktury DNA. Model potrafi przewidzieć strukturę i interakcje białek z DNA, RNA oraz potencjalnymi lekami.',
+    'blog.article27.content': `Wprowadzenie modelu AlphaFold 3 przez Google DeepMind i Isomorphic Labs w 2024 roku było trzęsieniem ziemi w biologii molekularnej, porównywalnym z odkryciem struktury DNA. Podczas gdy poprzednie wersje (AlphaFold 2) potrafiły przewidzieć kształt pojedynczych białek, AlphaFold 3 idzie o krok dalej – modeluje całe systemy biologiczne. Oparty na nowej architekturze dyfuzyjnej (podobnej do tej w generatorach obrazów), potrafi przewidzieć strukturę i interakcje białek z DNA, RNA, a także z małymi cząsteczkami (ligandami), czyli potencjalnymi lekami.
+
+Implikacje dla medycyny są niewyobrażalne. Tradycyjne odkrywanie leków to proces metodą prób i błędów, trwający dekadę i kosztujący miliardy. Dzięki AlphaFold 3 naukowcy mogą projektować leki "in silico" (w komputerze), sprawdzając z atomową precyzją, jak dana cząsteczka połączy się z receptorem w komórce rakowej czy wirusie. Firmy takie jak Insilico Medicine czy Isomorphic Labs wprowadzają leki do badań klinicznych w 18 miesięcy, skracając fazę przedkliniczną o lata.
+
+AlphaFold 3 otwiera też drogę do badania tzw. "undruggable targets" (celów trudnych do leczenia), takich jak białka nieuporządkowane, które nie mają stałej struktury i były dotąd niewidzialne dla tradycyjnych metod krystalografii. Model ten pozwala zrozumieć fundamentalne procesy życia na poziomie molekularnym – od regulacji genów po mechanizmy odporności.
+
+To początek ery Bio-Inteligencji, w której biologia staje się dyscypliną inżynieryjną i obliczeniową. Choć model nie jest idealny (czasem halucynuje niestabilne struktury), jest narzędziem, które przyspiesza postęp naukowy o rzędy wielkości. Nagroda Nobla z Chemii w 2024 dla twórców AlphaFold potwierdziła, że AI stało się nieodłącznym elementem współczesnej nauki.`,
+
+    // Article 28
+    'blog.article28.title': 'Causal AI: Drabina Przyczynowości Judea Pearla',
+    'blog.article28.excerpt': 'Judea Pearl twierdzi, że dzisiejsze AI utknęło na najniższym szczeblu Drabiny Przyczynowości. Causal AI to nurt badawczy łączący grafy przyczynowe z uczeniem maszynowym.',
+    'blog.article28.content': `Współczesne Deep Learning to potężna maszyna statystyczna, mistrz w znajdowaniu korelacji ("ludzie, którzy kupują pieluchy, kupują też piwo"). Jednak korelacja to nie przyczynowość. Judea Pearl, laureat Nagrody Turinga, twierdzi, że dzisiejsze AI utknęło na najniższym szczeblu Drabiny Przyczynowości: asocjacji (obserwacji). Modele widzą, że "A występuje z B", ale nie wiedzą, czy A powoduje B, czy może mają wspólną przyczynę C.
+
+Aby AI stało się naprawdę inteligentne i godne zaufania w biznesie i nauce, musi wejść na wyższe szczeble drabiny. Drugi szczebel to Interwencja ("Co się stanie, jeśli zrobię X?"). Model musi umieć przewidzieć skutki działań, których nigdy wcześniej nie widział (np. "co się stanie ze sprzedażą, jeśli podwoimy cenę?", nawet jeśli nigdy tego nie robiliśmy). Trzeci, najwyższy szczebel to Kontrfaktyczność ("Co by się stało, gdybym postąpił inaczej?"). To zdolność do wyobrażania sobie alternatywnych scenariuszy, kluczowa dla rozumienia przyczyn porażek i nauki.
+
+Causal AI to nurt badawczy, który łączy grafy przyczynowe z uczeniem maszynowym. W 2025 roku modele przyczynowe (Causal Deep Learning) zyskują na popularności, ponieważ są bardziej odporne na zmiany warunków (distribution shift) i potrafią wyjaśnić swoje decyzje ("odrzuciłem wniosek kredytowy, ponieważ dochód jest niski", a nie "bo korelujesz z grupą X").
+
+Dla biznesu Causal AI to święty graal. Pozwala odpowiadać na pytania "Dlaczego?" i optymalizować strategie marketingowe czy cenowe w oparciu o rzeczywiste skutki, a nie przypadkowe korelacje w danych. To technologia, która przekształca AI z biernego obserwatora w aktywnego analityka rzeczywistości.`,
+
+    // Article 29
+    'blog.article29.title': 'Constitutional AI vs RLHF: Jak Kontrolować Superinteligencję?',
+    'blog.article29.excerpt': 'Metoda Constitutional AI rozwinięta przez Anthropic rozwiązuje problem skalowalności nadzoru nad modelami AI. Zamiast polegać na mikrozarządzaniu, model otrzymuje "Konstytucję".',
+    'blog.article29.content': `Wraz ze wzrostem możliwości modeli AI, kluczowym problemem staje się ich "dostrojenie" (alignment) do ludzkich wartości. Dotychczas standardem był RLHF (Reinforcement Learning from Human Feedback) – proces, w którym armia ludzi ocenia odpowiedzi modelu (np. "ta odpowiedź jest lepsza/bezpieczniejsza"). Jest to jednak proces drogi, powolny, trudny do skalowania i podatny na ludzkie błędy oraz uprzedzenia konkretnych pracowników.
+
+Metoda Constitutional AI (CAI), rozwinięta przez firmę Anthropic (twórców Claude), rozwiązuje problem skalowalności nadzoru. Zamiast polegać na mikrozarządzaniu każdą odpowiedzią przez ludzi, badacze dają modelowi "Konstytucję" – krótki zestaw nadrzędnych zasad i wartości (np. zaczerpniętych z Powszechnej Deklaracji Praw Człowieka, zasad Apple czy zasad "non-maleficence").
+
+Proces składa się z dwóch faz. W fazie nadzorowanej (Supervised Phase), model generuje odpowiedzi, a następnie sam je krytykuje w oparciu o Konstytucję ("Czy ta odpowiedź zachęca do przemocy? Tak. Muszę ją zmienić.") i generuje poprawioną wersję. W ten sposób model sam tworzy sobie dane treningowe. W drugiej fazie (RLAIF - Reinforcement Learning from AI Feedback), model AI zastępuje człowieka w roli oceniania preferencji, trenując ostateczny model.
+
+Dzięki CAI proces staje się skalowalny (AI może oceniać miliony przykładów w minuty), tańszy i bardziej transparentny – zasady są jawne i zapisane w Konstytucji, w przeciwieństwie do niejawnych, rozmytych preferencji tysięcy ludzkich annotatorów. To krok w stronę "samoregulującej się" sztucznej inteligencji, która jest bezpieczna z samej swojej konstrukcji ("helpful, honest, harmless").`,
+
+    // Article 30
+    'blog.article30.title': 'Grafowe Sieci Neuronowe (GNN) w Prognozowaniu Ruchu: Inteligencja Miast',
+    'blog.article30.excerpt': 'W 2025 roku GNN stały się standardem w zarządzaniu infrastrukturą miejską. Nowoczesne architektury potrafią modelować skomplikowane zależności w przestrzeni i czasie.',
+    'blog.article30.content': `Większość danych w świecie rzeczywistym nie ma struktury prostej tabeli czy obrazka, lecz strukturę grafu – sieci powiązań. Miasto to graf, gdzie skrzyżowania to węzły, a ulice to krawędzie. Cząsteczki chemiczne to grafy atomów. Sieci społecznościowe to grafy relacji. Tradycyjne metody (jak CNN) słabo radzą sobie z taką nieregularną strukturą. Tutaj wkraczają Grafowe Sieci Neuronowe (GNN).
+
+W 2025 roku GNN stały się standardem w zarządzaniu infrastrukturą miejską i logistyką. Nowoczesne architektury, takie jak Spatio-Temporal GNN (czasoprzestrzenne GNN), potrafią modelować skomplikowane zależności nie tylko w przestrzeni (jak korek na jednej ulicy wpływa na sąsiednie), ale i w czasie (jak poranny szczyt wpływa na sytuację popołudniową).
+
+Przełomowe modele, takie jak LightST, są nie tylko dokładniejsze, ale i 40 razy szybsze w inferencji niż poprzednie rozwiązania oparte na klasycznym Deep Learningu. Umożliwia to sterowanie sygnalizacją świetlną w czasie rzeczywistym w skali całej metropolii, a nie tylko lokalnie. Systemy te przewidują korki zanim one powstaną, dynamicznie zmieniając cykle świateł, aby rozładować zatory.
+
+GNN znajdują też zastosowanie w rekomendacjach (Pinterest, Uber Eats) i odkrywaniu leków (modelowanie molekuł jako grafów). To technologia, która pozwala AI "zrozumieć" relacje i strukturę świata, czyniąc systemy Smart City czy Smart Grid naprawdę inteligentnymi i adaptacyjnymi.`,
+
+    // Articles 31-60 Polish content will be added here
     
     // Footer
     'footer.copyright': '© 2025 OpenMind AI Consulting. Wszystkie prawa zastrzeżone.',
@@ -828,7 +938,117 @@ Another key application is prioritization (triage). AI algorithms analyze scans 
 
 AI at Mayo Clinic also helps with image reconstruction – algorithms allow MRI exams to be performed faster and at lower radiation doses in CT, then "denoise" the image to diagnostic quality. This increases patient comfort and safety, as well as throughput of expensive equipment. The Mayo Clinic example shows that AI in medicine is not science fiction, but a real tool supporting doctors in the fight against time and disease.`,
 
-    // Articles 21-60 English content will be added here
+    // Article 21
+    'blog.article21.title': 'Mechanistic Interpretability: How to Understand the "Brain" of Artificial Intelligence?',
+    'blog.article21.excerpt': 'Modern AI models are often called "black boxes." Mechanistic interpretability is a field of science that aims to reverse-engineer these systems.',
+    'blog.article21.content': `Modern AI models, especially large neural networks (Deep Neural Networks), are often called "black boxes." We know what data goes in and what comes out, but the processes inside – millions of weight operations – remain opaque. Mechanistic Interpretability (MI) is a dynamically developing field of science that aims to reverse-engineer these systems. It's a kind of "neuroscience of artificial brains."
+
+Scientists from Anthropic, OpenAI, and academic centers have discovered that neural networks are not a chaotic soup of numbers, but organize themselves into circuits, similar to functional areas in the human brain. For example, "induction circuits" responsible for learning patterns in sequences have been identified, as well as neurons responding to specific concepts (e.g., neurons detecting edges, faces, or emotions in text).
+
+One of the most important and surprising discoveries is the phenomenon of superposition. It turns out that neural networks can encode more concepts than they have neurons. They do this by "packing" many unrelated features (e.g., "car" and "Hegel's philosophy") into one neuron, using high-dimensional vector space. This is the phenomenon of neuronal polysemy. Research awarded at NeurIPS 2025 showed that superposition is linked to model robustness to damage.
+
+Understanding these mechanisms is absolutely crucial for AI Safety. If we understand how the model "thinks," we will be able to detect hidden biases, potentially dangerous behaviors, or backdoors in systems. This is the first step toward building AI we can truly trust.`,
+
+    // Article 22
+    'blog.article22.title': 'Neurosymbolic AI: Synthesis of Logic and Machine Learning',
+    'blog.article22.excerpt': 'The future of AI lies not in ever-larger neural networks, but in hybrid architectures – Neurosymbolic AI, combining learning ability with precision of logical reasoning.',
+    'blog.article22.content': `For decades, the AI world was divided into two camps: symbolic (logic, rules, expert systems) and connectionist (neural networks, learning from data). Deep Learning (DL) dominated the last decade, handling perception (images, sound) excellently, but still struggles with tasks requiring strict logic, multi-step planning, and common sense. The future of AI lies not in ever-larger neural networks, but in hybrid architectures – Neurosymbolic AI (NeSy).
+
+Neurosymbolic systems combine the ability to learn from raw data (neural network domain) with the precision of logical reasoning (symbolic domain). How does it work? Simply put: a neural network processes sensory data into symbols (e.g., camera image -> "red light" symbol), then the symbolic module makes a decision based on loaded or learned rules ("if red light, then STOP").
+
+This approach has three gigantic advantages. First, Interpretability: the decision process is fully transparent to humans, which is crucial in medicine or law. Second, Data Efficiency: these systems need drastically less training data because they can generalize based on injected rules rather than learning everything from scratch through examples. Third, Safety: "hard" constraints (Shielding) can be built in that the network cannot violate, regardless of what it "invents" statistically.
+
+In 2025, Neurosymbolic AI is gaining importance in autonomous robotics, where an error resulting from statistical mistake (e.g., not recognizing a sign) is unacceptable. It's a synthesis that can lead us to AI systems that not only "see" and "speak," but also "understand" the world in a causal way.`,
+
+    // Article 23
+    'blog.article23.title': 'Spiking Neural Networks (SNN): The Third Generation of Neural Networks',
+    'blog.article23.excerpt': 'Spiking Neural Networks mimic the biological mechanism of the brain, offering revolutionary energy efficiency. 2025 brought a breakthrough thanks to hybrid architectures.',
+    'blog.article23.content': `Most of today's neural networks (ANN) are mathematical abstractions that operate in a continuous and synchronous manner, which is very energy-intensive. The brain works differently – neurons communicate using short electrical impulses (spikes) only when necessary (e.g., when there's a change in the environment). Spiking Neural Networks (SNN), called the third generation of networks, mimic this biological mechanism, offering revolutionary energy efficiency.
+
+Until recently, SNNs were an academic curiosity – difficult to train (lack of spike differentiability) and less accurate than classical Deep Learning networks. However, 2025 brought a breakthrough thanks to work on hybrid architectures such as Spike Aggregation Transformer (SAFormer) or Spiking Transformer. Researchers developed training methods (surrogate gradients) and new attention mechanisms, such as Accurate Addition-Only Spiking Self-Attention.
+
+The key innovation is replacing expensive matrix multiplication (the basis of Transformer operation) with addition operations (accumulation), which are much cheaper computationally. Thanks to this, hybrid SNN models achieve accuracy comparable to classical models on datasets like ImageNet, while consuming a fraction of the energy.
+
+Thanks to these advances, SNNs are becoming an ideal solution for Edge AI – drones, smart IoT sensors, medical implants, and prosthetics that must run on batteries for long periods, processing data in real-time without connecting to the cloud. It's technology that moves intelligence from data centers directly to devices in our pockets.`,
+
+    // Article 24
+    'blog.article24.title': 'Liquid Neural Networks (LNN): Real-Time Adaptation',
+    'blog.article24.excerpt': 'Scientists from MIT CSAIL created Liquid Neural Networks – "fluid" neural networks inspired by the nervous system of the C. elegans worm that adapt on the fly to new conditions.',
+    'blog.article24.content': `A traditional neural network after training is "frozen." Its weights are fixed. If the environment changes (e.g., an autonomous car drives from a highway into rain and fog), the model may stop working correctly because it wasn't prepared for that. Scientists from MIT CSAIL, led by Ramin Hasani, created Liquid Neural Networks (LNN) – "fluid" neural networks inspired by the nervous system of the small C. elegans worm.
+
+A unique feature of LNN is that their parameters are determined by differential equations that change over time depending on input data. The network is plastic after training – it continuously adapts to new conditions on the fly. This is a fundamental difference from static architectures like Transformer or CNN.
+
+The second revolutionary feature is their micro-size and efficiency. LNNs can control an autonomous drone or vehicle using just 19 neurons, while traditional networks need thousands or millions to achieve the same effect. A smaller network means faster computations, lower energy consumption, and – most importantly – interpretability. We can look inside and understand how those 19 neurons make decisions.
+
+In 2025, LNNs find applications in robotics, navigation in difficult terrain, patient monitoring (ECG analysis), and financial time series prediction. They are particularly useful where data is noisy, incomplete, or changes dynamically over time. It's a step toward AI that is more organic and flexible.`,
+
+    // Article 25
+    'blog.article25.title': 'Neuromorphic Computing and Intel Loihi 2: Brain-Inspired Hardware',
+    'blog.article25.excerpt': 'Neuromorphic processors like Intel Loihi 2 mimic the physical architecture of the brain, integrating memory and computation in each "neuron." This is the hardware foundation for the third wave of AI.',
+    'blog.article25.content': `Traditional processors (von Neumann architecture) separate the computing unit (CPU) from memory (RAM). Continuous data transfer between them generates delays and consumes enormous amounts of energy – the so-called "von Neumann bottleneck." In the face of Moore's Law ending, engineers turned to nature. Neuromorphic processors, such as Intel Loihi 2, mimic the physical architecture of the brain, integrating memory and computation in each "neuron."
+
+The Intel Loihi 2 chip, manufactured in Intel 4 process technology, has 128 neuromorphic cores simulating up to 1 million neurons and 120 million synapses. Its operation is asynchronous and event-driven. This means there's no clock cycle consuming power even when nothing is happening. Computations occur only when a spike (new information) appears. If a camera is looking at a static wall, the processor consumes close to zero energy.
+
+Research from 2025 shows that Loihi 2 can run even advanced language models and optimization algorithms with 1000x higher energy efficiency and 100x faster than conventional CPU/GPU in specific tasks. The chip also supports adaptive on-device learning.
+
+This technology is crucial for the future of swarm robotics, intelligent prosthetics (which must react in milliseconds), Smart City systems, and space applications, where every watt of energy is precious. Neuromorphics is the hardware foundation for the third wave of AI.`,
+
+    // Article 26
+    'blog.article26.title': 'Model Collapse: Why Does AI Need Human Data?',
+    'blog.article26.excerpt': 'The phenomenon of data autophagy leads to Model Collapse. Research shows that iteratively training a model on its own output leads to rapid degeneration.',
+    'blog.article26.content': `As the internet fills with AI-generated content (text, images, code), models begin to be trained on data produced by other models. This phenomenon, called data autophagy, leads to Model Collapse. Research from Oxford University and other centers published in "Nature" shows that iteratively training a model on its own output leads to rapid degeneration.
+
+This process occurs in two phases. First comes loss of variance and "distribution tails" – the model stops generating rare, unusual, and creative things, becoming increasingly average and stereotypical. In the second phase comes complete collapse – the model starts generating gibberish, hallucinations, and loses contact with reality. This happens because errors and simplifications are amplified in each subsequent training cycle.
+
+How to prevent this? Research from 2025 points to the necessity of access to "clean" data of human origin. It turns out that human data is a non-renewable and increasingly valuable resource – like "gold" for AI. Solutions include: maintaining a healthy proportion of human data (e.g., min. 10-20%) in the training set, archiving the pre-AI-era internet, and using advanced methods for filtering synthetic data through "oracles" (humans or better models).
+
+The discovery of Model Collapse has fundamental implications for the future of AI. It shows that artificial intelligence cannot exist in a vacuum – it's a parasite (or symbiont) on human culture and creativity. Without a continuous influx of new, human knowledge, AI will fall into a spiral of degradation. This is good news for creators, writers, and artists – their work is essential for AI systems' survival.`,
+
+    // Article 27
+    'blog.article27.title': 'AlphaFold 3: Computational Biology and a New Era of Medicine',
+    'blog.article27.excerpt': 'AlphaFold 3 is an earthquake in molecular biology, comparable to the discovery of DNA structure. The model can predict the structure and interactions of proteins with DNA, RNA, and potential drugs.',
+    'blog.article27.content': `The introduction of AlphaFold 3 by Google DeepMind and Isomorphic Labs in 2024 was an earthquake in molecular biology, comparable to the discovery of DNA structure. While previous versions (AlphaFold 2) could predict the shape of individual proteins, AlphaFold 3 goes further – it models entire biological systems. Based on a new diffusion architecture (similar to that in image generators), it can predict the structure and interactions of proteins with DNA, RNA, as well as small molecules (ligands), i.e., potential drugs.
+
+The implications for medicine are unimaginable. Traditional drug discovery is a trial-and-error process that takes a decade and costs billions. Thanks to AlphaFold 3, scientists can design drugs "in silico" (on computer), checking with atomic precision how a given molecule will bind to a receptor in a cancer cell or virus. Companies like Insilico Medicine or Isomorphic Labs are bringing drugs to clinical trials in 18 months, shortening the preclinical phase by years.
+
+AlphaFold 3 also opens the door to studying so-called "undruggable targets," such as disordered proteins that don't have a fixed structure and were previously invisible to traditional crystallography methods. This model allows understanding fundamental life processes at the molecular level – from gene regulation to immune mechanisms.
+
+This is the beginning of the Bio-Intelligence era, in which biology becomes an engineering and computational discipline. Although the model isn't perfect (it sometimes hallucinates unstable structures), it's a tool that accelerates scientific progress by orders of magnitude. The 2024 Nobel Prize in Chemistry for AlphaFold creators confirmed that AI has become an integral part of modern science.`,
+
+    // Article 28
+    'blog.article28.title': 'Causal AI: Judea Pearls Ladder of Causation',
+    'blog.article28.excerpt': 'Judea Pearl argues that today AI is stuck on the lowest rung of the Ladder of Causation. Causal AI is a research direction combining causal graphs with machine learning.',
+    'blog.article28.content': `Modern Deep Learning is a powerful statistical machine, a master at finding correlations ("people who buy diapers also buy beer"). But correlation is not causation. Judea Pearl, Turing Award laureate, argues that today's AI is stuck on the lowest rung of the Ladder of Causation: association (observation). Models see that "A occurs with B," but don't know whether A causes B, or maybe they have a common cause C.
+
+For AI to become truly intelligent and trustworthy in business and science, it must climb to higher rungs of the ladder. The second rung is Intervention ("What will happen if I do X?"). The model must be able to predict the effects of actions it has never seen before (e.g., "what will happen to sales if we double the price?" even if we've never done that). The third, highest rung is Counterfactual ("What would have happened if I had acted differently?"). This is the ability to imagine alternative scenarios, crucial for understanding causes of failures and learning.
+
+Causal AI is a research direction that combines causal graphs with machine learning. In 2025, causal models (Causal Deep Learning) are gaining popularity because they are more resistant to distribution shift and can explain their decisions ("I rejected the loan application because income is low," not "because you correlate with group X").
+
+For business, Causal AI is the holy grail. It allows answering "Why?" questions and optimizing marketing or pricing strategies based on actual effects, not random correlations in data. It's technology that transforms AI from a passive observer into an active reality analyst.`,
+
+    // Article 29
+    'blog.article29.title': 'Constitutional AI vs RLHF: How to Control Superintelligence?',
+    'blog.article29.excerpt': 'The Constitutional AI method developed by Anthropic solves the problem of scalable AI model oversight. Instead of relying on micromanagement, the model receives a "Constitution."',
+    'blog.article29.content': `As AI model capabilities grow, the key problem becomes their "alignment" to human values. Until now, the standard was RLHF (Reinforcement Learning from Human Feedback) – a process in which an army of people evaluates model responses (e.g., "this answer is better/safer"). However, this is an expensive, slow process, difficult to scale, and susceptible to human errors and biases of specific workers.
+
+The Constitutional AI (CAI) method, developed by Anthropic (creators of Claude), solves the problem of scalable oversight. Instead of relying on human micromanagement of every response, researchers give the model a "Constitution" – a short set of overarching principles and values (e.g., derived from the Universal Declaration of Human Rights, Apple's principles, or "non-maleficence" principles).
+
+The process consists of two phases. In the Supervised Phase, the model generates responses, then criticizes them itself based on the Constitution ("Does this answer encourage violence? Yes. I must change it.") and generates a corrected version. This way, the model creates its own training data. In the second phase (RLAIF - Reinforcement Learning from AI Feedback), an AI model replaces humans in evaluating preferences, training the final model.
+
+Thanks to CAI, the process becomes scalable (AI can evaluate millions of examples in minutes), cheaper, and more transparent – principles are explicit and written in the Constitution, unlike the implicit, diffuse preferences of thousands of human annotators. It's a step toward "self-regulating" artificial intelligence that is safe by its very construction ("helpful, honest, harmless").`,
+
+    // Article 30
+    'blog.article30.title': 'Graph Neural Networks (GNN) in Traffic Prediction: City Intelligence',
+    'blog.article30.excerpt': 'In 2025, GNNs became the standard in urban infrastructure management. Modern architectures can model complex dependencies in both space and time.',
+    'blog.article30.content': `Most data in the real world doesn't have the structure of a simple table or image, but a graph structure – a network of connections. A city is a graph where intersections are nodes and streets are edges. Chemical molecules are graphs of atoms. Social networks are graphs of relationships. Traditional methods (like CNN) handle such irregular structure poorly. This is where Graph Neural Networks (GNN) come in.
+
+In 2025, GNNs became the standard in urban infrastructure and logistics management. Modern architectures, such as Spatio-Temporal GNN, can model complex dependencies not only in space (how a traffic jam on one street affects neighboring ones) but also in time (how the morning rush affects the afternoon situation).
+
+Breakthrough models, such as LightST, are not only more accurate but also 40 times faster in inference than previous solutions based on classical Deep Learning. This enables real-time traffic light control at the scale of an entire metropolis, not just locally. These systems predict traffic jams before they form, dynamically changing light cycles to relieve congestion.
+
+GNNs also find applications in recommendations (Pinterest, Uber Eats) and drug discovery (modeling molecules as graphs). It's technology that allows AI to "understand" relationships and world structure, making Smart City or Smart Grid systems truly intelligent and adaptive.`,
+
+    // Articles 31-60 English content will be added here
     
     // Footer
     'footer.copyright': '© 2025 OpenMind AI Consulting. All rights reserved.',
