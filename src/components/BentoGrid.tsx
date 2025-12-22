@@ -1,53 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Brain, Building2, Users, GraduationCap, X } from 'lucide-react';
+import { MessageSquare, Sparkles, X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const services = [
-  {
-    id: 'business',
-    icon: Building2,
-    titleKey: 'services.business.title',
-    descKey: 'services.business.desc',
-    color: 'hsl(176 100% 43%)',
-    gridClass: 'md:col-span-2 md:row-span-2',
-  },
-  {
-    id: 'administration',
-    icon: Users,
-    titleKey: 'services.administration.title',
-    descKey: 'services.administration.desc',
-    color: 'hsl(190 100% 50%)',
-    gridClass: 'md:col-span-1 md:row-span-1',
-  },
-  {
-    id: 'education',
-    icon: GraduationCap,
-    titleKey: 'services.education.title',
-    descKey: 'services.education.desc',
-    color: 'hsl(176 100% 43%)',
-    gridClass: 'md:col-span-1 md:row-span-1',
-  },
-  {
-    id: 'ai',
-    icon: Brain,
-    titleKey: 'services.ai.title',
-    descKey: 'services.ai.desc',
-    color: 'hsl(190 100% 50%)',
-    gridClass: 'md:col-span-2 md:row-span-1',
-  },
-];
-
 const BentoGrid = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [expandedService, setExpandedService] = useState<string | null>(null);
+  const [showAdvisor, setShowAdvisor] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -92,32 +59,36 @@ const BentoGrid = () => {
     }
   }, []);
 
-  const handleCardClick = (id: string) => {
-    setExpandedService(id);
+  const handleContactClick = () => {
+    navigate('/contact');
   };
 
-  const closeExpanded = () => {
-    setExpandedService(null);
+  const handleAdvisorClick = () => {
+    setShowAdvisor(true);
+  };
+
+  const closeAdvisor = () => {
+    setShowAdvisor(false);
   };
 
   return (
     <section 
       ref={sectionRef}
-      className="relative py-32 overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden"
     >
-      <VideoSectionBackground opacity={0.18} blurPx={10} overlayOpacity={0.84} />
+      <VideoSectionBackground opacity={0.25} blurPx={6} overlayOpacity={0.7} />
 
       {/* Section Header */}
-      <div className="container mx-auto px-6 mb-16">
+      <div className="container mx-auto px-6 mb-12 md:mb-16">
         <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-center mb-4 font-semibold">
           <span className="text-gradient">{t('services.title')}</span>
         </h2>
-        <p className="font-sans text-muted-foreground text-center max-w-2xl mx-auto">
+        <p className="font-sans text-muted-foreground text-center max-w-2xl mx-auto text-base md:text-lg">
           {t('services.subtitle')}
         </p>
       </div>
 
-      {/* Bento Grid */}
+      {/* Bento Grid - 2 tiles */}
       <div 
         ref={gridRef}
         className="container mx-auto px-6 relative"
@@ -130,118 +101,171 @@ const BentoGrid = () => {
         <div 
           className="absolute inset-0 pointer-events-none opacity-50 transition-opacity duration-300"
           style={{
-            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(176 100% 43% / 0.1), transparent 40%)`,
+            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(176 100% 43% / 0.15), transparent 40%)`,
           }}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={service.id}
-                className={`bento-card ${service.gridClass} group cursor-pointer`}
-                onClick={() => handleCardClick(service.id)}
-                data-cursor="Odkryj"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+          {/* Contact Tile */}
+          <div
+            className="bento-card group cursor-pointer"
+            onClick={handleContactClick}
+            data-cursor="Kontakt"
+          >
+            <div 
+              className="relative h-full min-h-[320px] md:min-h-[380px] p-8 rounded-2xl glass border border-border/30 overflow-hidden transition-all duration-500 hover:border-primary/50 hover:scale-[1.02]"
+              style={{
+                boxShadow: `0 0 0 1px hsl(0 0% 100% / 0.08), 0 25px 60px -20px hsl(0 0% 0% / 0.6)`,
+              }}
+            >
+              {/* Gradient glow on hover */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: `radial-gradient(400px circle at 50% 50%, hsl(176 100% 43% / 0.2), transparent 60%)`,
+                }}
+              />
+
+              {/* Icon */}
+              <div 
+                className="relative z-10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110"
+                style={{ 
+                  background: `linear-gradient(135deg, hsl(176 100% 43% / 0.25), transparent)`,
+                  border: `1px solid hsl(176 100% 43% / 0.4)`,
+                }}
               >
-                <div 
-                  className="relative h-full min-h-[280px] p-8 rounded-2xl glass border border-border/20 overflow-hidden transition-all duration-500 hover:border-primary/30"
-                  style={{
-                    boxShadow: `0 0 0 1px hsl(0 0% 100% / 0.05), 0 20px 50px -20px hsl(0 0% 0% / 0.5)`,
-                  }}
-                >
-                  {/* Gradient glow on hover */}
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background: `radial-gradient(400px circle at 50% 50%, ${service.color}15, transparent 60%)`,
-                    }}
-                  />
-
-                  {/* Icon */}
-                  <div 
-                    className="relative z-10 w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${service.color}20, transparent)`,
-                      border: `1px solid ${service.color}30`,
-                    }}
-                  >
-                    <Icon 
-                      size={28} 
-                      style={{ color: service.color }}
-                      className="transition-transform duration-500 group-hover:rotate-12"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="relative z-10 font-heading text-2xl mb-3 text-foreground font-semibold">
-                    {t(service.titleKey)}
-                  </h3>
-                  <p className="relative z-10 font-sans text-sm text-muted-foreground leading-relaxed">
-                    {t(service.descKey)}
-                  </p>
-
-                  {/* Corner accent */}
-                  <div 
-                    className="absolute bottom-0 right-0 w-32 h-32 opacity-20 group-hover:opacity-40 transition-opacity duration-500"
-                    style={{
-                      background: `radial-gradient(circle at bottom right, ${service.color}, transparent 70%)`,
-                    }}
-                  />
-                </div>
+                <MessageSquare 
+                  size={32} 
+                  className="text-primary transition-transform duration-500 group-hover:rotate-12"
+                />
               </div>
-            );
-          })}
+
+              {/* Content */}
+              <h3 className="relative z-10 font-heading text-2xl md:text-3xl mb-4 text-foreground font-semibold">
+                {t('bento.contact.title')}
+              </h3>
+              <p className="relative z-10 font-sans text-base text-muted-foreground leading-relaxed mb-6">
+                {t('bento.contact.desc')}
+              </p>
+
+              {/* CTA */}
+              <div className="relative z-10 inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
+                <span>{t('bento.contact.cta')}</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </div>
+
+              {/* Corner accent */}
+              <div 
+                className="absolute bottom-0 right-0 w-40 h-40 opacity-30 group-hover:opacity-50 transition-opacity duration-500"
+                style={{
+                  background: `radial-gradient(circle at bottom right, hsl(176 100% 43%), transparent 70%)`,
+                }}
+              />
+            </div>
+          </div>
+
+          {/* AI Advisor Tile */}
+          <div
+            className="bento-card group cursor-pointer"
+            onClick={handleAdvisorClick}
+            data-cursor="Doradca"
+          >
+            <div 
+              className="relative h-full min-h-[320px] md:min-h-[380px] p-8 rounded-2xl glass border border-border/30 overflow-hidden transition-all duration-500 hover:border-primary/50 hover:scale-[1.02]"
+              style={{
+                boxShadow: `0 0 0 1px hsl(0 0% 100% / 0.08), 0 25px 60px -20px hsl(0 0% 0% / 0.6)`,
+              }}
+            >
+              {/* Gradient glow on hover */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: `radial-gradient(400px circle at 50% 50%, hsl(190 100% 50% / 0.2), transparent 60%)`,
+                }}
+              />
+
+              {/* Icon */}
+              <div 
+                className="relative z-10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110"
+                style={{ 
+                  background: `linear-gradient(135deg, hsl(190 100% 50% / 0.25), transparent)`,
+                  border: `1px solid hsl(190 100% 50% / 0.4)`,
+                }}
+              >
+                <Sparkles 
+                  size={32} 
+                  className="text-cyan-400 transition-transform duration-500 group-hover:rotate-12"
+                />
+              </div>
+
+              {/* Content */}
+              <h3 className="relative z-10 font-heading text-2xl md:text-3xl mb-4 text-foreground font-semibold">
+                {t('bento.advisor.title')}
+              </h3>
+              <p className="relative z-10 font-sans text-base text-muted-foreground leading-relaxed mb-6">
+                {t('bento.advisor.desc')}
+              </p>
+
+              {/* CTA */}
+              <div className="relative z-10 inline-flex items-center gap-2 text-cyan-400 font-medium group-hover:gap-3 transition-all">
+                <span>{t('bento.advisor.cta')}</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </div>
+
+              {/* Corner accent */}
+              <div 
+                className="absolute bottom-0 right-0 w-40 h-40 opacity-30 group-hover:opacity-50 transition-opacity duration-500"
+                style={{
+                  background: `radial-gradient(circle at bottom right, hsl(190 100% 50%), transparent 70%)`,
+                }}
+              />
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Expanded Service Modal */}
-      {expandedService && (
+      {/* AI Advisor Modal */}
+      {showAdvisor && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-6"
-          onClick={closeExpanded}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6"
+          onClick={closeAdvisor}
         >
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-background/90 backdrop-blur-xl" />
+          <div className="absolute inset-0 bg-background/95 backdrop-blur-xl" />
           
           {/* Modal Content */}
           <div 
-            className="relative max-w-2xl w-full glass rounded-3xl p-10 animate-scale-in"
+            className="relative w-full max-w-4xl h-[80vh] glass rounded-3xl overflow-hidden animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              onClick={closeExpanded}
-              className="absolute top-6 right-6 p-2 rounded-full hover:bg-muted/50 transition-colors"
+              onClick={closeAdvisor}
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/50 hover:bg-muted/50 transition-colors"
             >
               <X size={24} />
             </button>
 
-            {(() => {
-              const service = services.find(s => s.id === expandedService);
-              if (!service) return null;
-              const Icon = service.icon;
+            <div className="h-full flex flex-col">
+              <div className="p-6 border-b border-border/30">
+                <h3 className="font-heading text-2xl md:text-3xl text-gradient font-semibold">
+                  {t('bento.advisor.modal.title')}
+                </h3>
+                <p className="text-muted-foreground mt-2">
+                  {t('bento.advisor.modal.subtitle')}
+                </p>
+              </div>
               
-              return (
-                <>
-                  <div 
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center mb-8"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${service.color}30, transparent)`,
-                      border: `1px solid ${service.color}40`,
-                    }}
-                  >
-                    <Icon size={40} style={{ color: service.color }} />
-                  </div>
-                  
-                  <h3 className="font-heading text-4xl mb-4 text-gradient font-semibold">
-                    {t(service.titleKey)}
-                  </h3>
-                  <p className="font-sans text-lg text-muted-foreground leading-relaxed">
-                    {t(service.descKey)}
-                  </p>
-                </>
-              );
-            })()}
+              <div className="flex-1 p-6">
+                <iframe
+                  src="https://www.chatbase.co/chatbot-iframe/SqPZ4YgcXWDi1VhFEdoGc"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  className="rounded-xl"
+                  title="AI Advisor Chatbot"
+                />
+              </div>
+            </div>
           </div>
         </div>
       )}

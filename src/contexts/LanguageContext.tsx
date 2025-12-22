@@ -27,6 +27,21 @@ const translations: Translations = {
     'hero.description2': 'Łączymy lokalne know-how z globalnymi technologiami uczenia maszynowego i przetwarzania języka naturalnego, oferując skuteczne wsparcie dla firm, sektora publicznego i rodzin w codziennym wykorzystaniu inteligentnych systemów.',
     'hero.cta': 'Wkrocz w technologię jutra już dziś',
     
+    // Mission Section
+    'mission.title': 'Nasza Misja',
+    'mission.description1': 'OpenMind AI Consulting to polski startup specjalizujący się w doradztwie i wdrażaniu rozwiązań sztucznej inteligencji dla biznesu, administracji publicznej i życia codziennego. Pomagamy organizacjom każdej wielkości odkryć prawdziwy potencjał AI – od automatyzacji procesów, przez inteligentną analizę danych, po tworzenie chatbotów i asystentów wirtualnych.',
+    'mission.description2': 'Wierzymy, że sztuczna inteligencja powinna być dostępna dla każdego. Naszą misją jest przekładanie zaawansowanych technologii uczenia maszynowego i przetwarzania języka naturalnego na praktyczne korzyści – oszczędność czasu, redukcję kosztów i zwiększenie konkurencyjności. Działamy w zgodzie z RODO, stawiając na bezpieczeństwo danych i etyczne wykorzystanie AI.',
+    
+    // Bento Grid Tiles
+    'bento.contact.title': 'Skontaktuj się z nami',
+    'bento.contact.desc': 'Masz pytania o wdrożenie AI w swojej firmie? Chcesz dowiedzieć się, jak sztuczna inteligencja może usprawnić Twoje procesy? Wypełnij formularz kontaktowy, a nasi eksperci skontaktują się z Tobą w ciągu 24 godzin.',
+    'bento.contact.cta': 'Przejdź do formularza',
+    'bento.advisor.title': 'Kreator zastosowań AI',
+    'bento.advisor.desc': 'Nie wiesz, jak AI może Ci pomóc? Nasz inteligentny doradca przeanalizuje Twoje potrzeby i zaproponuje optymalne rozwiązania dopasowane do Twojego życia, biznesu, edukacji czy innych dziedzin. Odkryj prawdziwy potencjał sztucznej inteligencji.',
+    'bento.advisor.cta': 'Uruchom doradcę AI',
+    'bento.advisor.modal.title': 'Doradca AI – Znajdź zastosowanie dla sztucznej inteligencji',
+    'bento.advisor.modal.subtitle': 'Odpowiedz na kilka pytań, a nasz AI pomoże Ci odkryć, jak sztuczna inteligencja może usprawnić Twoje życie, biznes lub edukację.',
+    
     // Features
     'features.title': 'Dlaczego OpenMind AI?',
     'features.subtitle': 'Kompleksowe podejście do transformacji cyfrowej',
@@ -185,6 +200,8 @@ const translations: Translations = {
     // Footer
     'footer.copyright': '© 2025 OpenMind AI Consulting. Wszystkie prawa zastrzeżone.',
     'footer.privacy': 'Polityka prywatności',
+    'footer.rodo': 'RODO',
+    'footer.cta': 'Zacznijmy Projekt',
   },
   en: {
     // Navigation
@@ -200,6 +217,21 @@ const translations: Translations = {
     'hero.description': 'A Polish startup combining innovation with flexibility. We deliver advanced AI solutions tailored to a dynamically changing market.',
     'hero.description2': 'We combine local know-how with global machine learning and natural language processing technologies, offering effective support for businesses, the public sector, and families in everyday use of intelligent systems.',
     'hero.cta': 'Step into tomorrow\'s technology today',
+    
+    // Mission Section
+    'mission.title': 'Our Mission',
+    'mission.description1': 'OpenMind AI Consulting is a Polish startup specializing in artificial intelligence consulting and implementation for business, public administration, and everyday life. We help organizations of all sizes discover the true potential of AI – from process automation, through intelligent data analysis, to creating chatbots and virtual assistants.',
+    'mission.description2': 'We believe artificial intelligence should be accessible to everyone. Our mission is to translate advanced machine learning and natural language processing technologies into practical benefits – time savings, cost reduction, and increased competitiveness. We operate in compliance with GDPR, prioritizing data security and ethical AI use.',
+    
+    // Bento Grid Tiles
+    'bento.contact.title': 'Contact Us',
+    'bento.contact.desc': 'Have questions about implementing AI in your company? Want to learn how artificial intelligence can streamline your processes? Fill out the contact form, and our experts will reach out within 24 hours.',
+    'bento.contact.cta': 'Go to form',
+    'bento.advisor.title': 'AI Application Creator',
+    'bento.advisor.desc': 'Not sure how AI can help you? Our intelligent advisor will analyze your needs and suggest optimal solutions tailored to your life, business, education, or other areas. Discover the true potential of artificial intelligence.',
+    'bento.advisor.cta': 'Launch AI Advisor',
+    'bento.advisor.modal.title': 'AI Advisor – Find Applications for Artificial Intelligence',
+    'bento.advisor.modal.subtitle': 'Answer a few questions, and our AI will help you discover how artificial intelligence can improve your life, business, or education.',
     
     // Features
     'features.title': 'Why OpenMind AI?',
@@ -359,6 +391,8 @@ const translations: Translations = {
     // Footer
     'footer.copyright': '© 2025 OpenMind AI Consulting. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
+    'footer.rodo': 'GDPR',
+    'footer.cta': 'Let\'s Start a Project',
   }
 };
 
