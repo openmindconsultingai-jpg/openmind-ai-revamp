@@ -172,7 +172,7 @@ const About = () => {
                 }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" 
+                  src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80" 
                   alt={t('about.expertise.title')}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -224,7 +224,7 @@ const About = () => {
                 }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80" 
+                  src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80" 
                   alt={t('about.innovation.title')}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
