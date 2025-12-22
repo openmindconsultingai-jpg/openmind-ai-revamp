@@ -8,7 +8,7 @@ const corsHeaders = {
 };
 
 // Dane OpenMind AI Consulting
-const OWNER_EMAIL = "biuro@openmind.biz.pl";
+const OWNER_EMAIL = "openmindconsultingai@gmail.com"; // Email powiązany z kontem Resend
 const COMPANY_NAME = "OpenMind AI Consulting";
 // Użyj domeny testowej Resend - zmień na własną po weryfikacji w https://resend.com/domains
 const SENDER_EMAIL = "onboarding@resend.dev";
@@ -260,25 +260,39 @@ serve(async (req: Request): Promise<Response> => {
       );
     }
 
-    // Email do klienta
-    await sendEmail(
-      booking.clientEmail,
-      `✅ Potwierdzenie konsultacji - ${COMPANY_NAME}`,
-      generateClientEmailHtml(booking),
-      `${COMPANY_NAME} <${SENDER_EMAIL}>`
-    );
+    // W trybie testowym Resend (bez zweryfikowanej domeny) wysyłaj tylko do właściciela
+    const isTestMode = SENDER_EMAIL === "onboarding@resend.dev";
+    
+    // Email do właściciela (zawsze działa)
+    try {
+      await sendEmail(
+        OWNER_EMAIL,
+        `🔔 Nowa konsultacja: ${booking.clientName} - ${formatDate(booking.bookingDate)} ${booking.bookingTime}`,
+        generateOwnerEmailHtml(booking),
+        `${COMPANY_NAME} System <${SENDER_EMAIL}>`
+      );
+      console.log('Owner email sent successfully');
+    } catch (ownerEmailError) {
+      console.error('Owner email error:', ownerEmailError);
+    }
 
-    console.log('Client email sent successfully');
-
-    // Email do właściciela
-    await sendEmail(
-      OWNER_EMAIL,
-      `🔔 Nowa konsultacja: ${booking.clientName} - ${formatDate(booking.bookingDate)} ${booking.bookingTime}`,
-      generateOwnerEmailHtml(booking),
-      `${COMPANY_NAME} System <${SENDER_EMAIL}>`
-    );
-
-    console.log('Owner email sent successfully');
+    // Email do klienta (tylko jeśli nie tryb testowy lub email klienta = email właściciela)
+    if (!isTestMode || booking.clientEmail.toLowerCase() === OWNER_EMAIL.toLowerCase()) {
+      try {
+        await sendEmail(
+          booking.clientEmail,
+          `✅ Potwierdzenie konsultacji - ${COMPANY_NAME}`,
+          generateClientEmailHtml(booking),
+          `${COMPANY_NAME} <${SENDER_EMAIL}>`
+        );
+        console.log('Client email sent successfully');
+      } catch (clientEmailError) {
+        console.error('Client email error (test mode restriction):', clientEmailError);
+        // W trybie testowym to jest oczekiwane - kontynuuj
+      }
+    } else {
+      console.log('Test mode: skipping client email (domain not verified)');
+    }
 
     return new Response(
       JSON.stringify({ success: true }),
