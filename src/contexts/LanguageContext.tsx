@@ -848,7 +848,7 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     'footer.copyright': '© 2025 OpenMind AI Consulting. Wszystkie prawa zastrzeżone.',
     'footer.privacy': 'Polityka prywatności',
     'footer.rodo': 'RODO',
-    'footer.cta': 'Zacznijmy Projekt',
+    'footer.cta': 'Obserwuj nas w social mediach',
   },
   en: {
     // Navigation
@@ -1694,7 +1694,7 @@ In this reality, the creator's role will undergo profound redefinition. The futu
     'footer.copyright': '© 2025 OpenMind AI Consulting. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
     'footer.rodo': 'GDPR',
-    'footer.cta': "Let's Start a Project",
+    'footer.cta': 'Follow us on social media',
   }
 };
 
