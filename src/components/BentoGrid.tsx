@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MessageSquare, Sparkles, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
+import bentoContactImg from '@/assets/bento-contact.jpg';
+import bentoAdvisorImg from '@/assets/bento-ai-advisor.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,16 +80,6 @@ const BentoGrid = () => {
     >
       <VideoSectionBackground opacity={0.25} blurPx={6} overlayOpacity={0.7} />
 
-      {/* Section Header */}
-      <div className="container mx-auto px-6 mb-12 md:mb-16">
-        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-center mb-4 font-semibold">
-          <span className="text-gradient">{t('services.title')}</span>
-        </h2>
-        <p className="font-sans text-muted-foreground text-center max-w-2xl mx-auto text-base md:text-lg">
-          {t('services.subtitle')}
-        </p>
-      </div>
-
       {/* Bento Grid - 2 tiles */}
       <div 
         ref={gridRef}
@@ -113,11 +105,21 @@ const BentoGrid = () => {
             data-cursor="Kontakt"
           >
             <div 
-              className="relative h-full min-h-[320px] md:min-h-[380px] p-8 rounded-2xl glass border border-border/30 overflow-hidden transition-all duration-500 hover:border-primary/50 hover:scale-[1.02]"
+              className="relative h-full min-h-[320px] md:min-h-[380px] rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02]"
               style={{
                 boxShadow: `0 0 0 1px hsl(0 0% 100% / 0.08), 0 25px 60px -20px hsl(0 0% 0% / 0.6)`,
               }}
             >
+              {/* Background Image */}
+              <img 
+                src={bentoContactImg} 
+                alt="Contact" 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
+
               {/* Gradient glow on hover */}
               <div 
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -126,41 +128,21 @@ const BentoGrid = () => {
                 }}
               />
 
-              {/* Icon */}
-              <div 
-                className="relative z-10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110"
-                style={{ 
-                  background: `linear-gradient(135deg, hsl(176 100% 43% / 0.25), transparent)`,
-                  border: `1px solid hsl(176 100% 43% / 0.4)`,
-                }}
-              >
-                <MessageSquare 
-                  size={32} 
-                  className="text-primary transition-transform duration-500 group-hover:rotate-12"
-                />
-              </div>
-
               {/* Content */}
-              <h3 className="relative z-10 font-heading text-2xl md:text-3xl mb-4 text-foreground font-semibold">
-                {t('bento.contact.title')}
-              </h3>
-              <p className="relative z-10 font-sans text-base text-muted-foreground leading-relaxed mb-6">
-                {t('bento.contact.desc')}
-              </p>
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <h3 className="relative z-10 font-heading text-2xl md:text-3xl mb-4 text-foreground font-semibold">
+                  {t('bento.contact.title')}
+                </h3>
+                <p className="relative z-10 font-sans text-base text-muted-foreground leading-relaxed mb-6">
+                  {t('bento.contact.desc')}
+                </p>
 
-              {/* CTA */}
-              <div className="relative z-10 inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
-                <span>{t('bento.contact.cta')}</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
+                {/* CTA */}
+                <div className="relative z-10 inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
+                  <span>{t('bento.contact.cta')}</span>
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </div>
               </div>
-
-              {/* Corner accent */}
-              <div 
-                className="absolute bottom-0 right-0 w-40 h-40 opacity-30 group-hover:opacity-50 transition-opacity duration-500"
-                style={{
-                  background: `radial-gradient(circle at bottom right, hsl(176 100% 43%), transparent 70%)`,
-                }}
-              />
             </div>
           </div>
 
@@ -171,11 +153,21 @@ const BentoGrid = () => {
             data-cursor="Doradca"
           >
             <div 
-              className="relative h-full min-h-[320px] md:min-h-[380px] p-8 rounded-2xl glass border border-border/30 overflow-hidden transition-all duration-500 hover:border-primary/50 hover:scale-[1.02]"
+              className="relative h-full min-h-[320px] md:min-h-[380px] rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02]"
               style={{
                 boxShadow: `0 0 0 1px hsl(0 0% 100% / 0.08), 0 25px 60px -20px hsl(0 0% 0% / 0.6)`,
               }}
             >
+              {/* Background Image */}
+              <img 
+                src={bentoAdvisorImg} 
+                alt="AI Advisor" 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
+
               {/* Gradient glow on hover */}
               <div 
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -184,41 +176,21 @@ const BentoGrid = () => {
                 }}
               />
 
-              {/* Icon */}
-              <div 
-                className="relative z-10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110"
-                style={{ 
-                  background: `linear-gradient(135deg, hsl(190 100% 50% / 0.25), transparent)`,
-                  border: `1px solid hsl(190 100% 50% / 0.4)`,
-                }}
-              >
-                <Sparkles 
-                  size={32} 
-                  className="text-cyan-400 transition-transform duration-500 group-hover:rotate-12"
-                />
-              </div>
-
               {/* Content */}
-              <h3 className="relative z-10 font-heading text-2xl md:text-3xl mb-4 text-foreground font-semibold">
-                {t('bento.advisor.title')}
-              </h3>
-              <p className="relative z-10 font-sans text-base text-muted-foreground leading-relaxed mb-6">
-                {t('bento.advisor.desc')}
-              </p>
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <h3 className="relative z-10 font-heading text-2xl md:text-3xl mb-4 text-foreground font-semibold">
+                  {t('bento.advisor.title')}
+                </h3>
+                <p className="relative z-10 font-sans text-base text-muted-foreground leading-relaxed mb-6">
+                  {t('bento.advisor.desc')}
+                </p>
 
-              {/* CTA */}
-              <div className="relative z-10 inline-flex items-center gap-2 text-cyan-400 font-medium group-hover:gap-3 transition-all">
-                <span>{t('bento.advisor.cta')}</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
+                {/* CTA */}
+                <div className="relative z-10 inline-flex items-center gap-2 text-cyan-400 font-medium group-hover:gap-3 transition-all">
+                  <span>{t('bento.advisor.cta')}</span>
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </div>
               </div>
-
-              {/* Corner accent */}
-              <div 
-                className="absolute bottom-0 right-0 w-40 h-40 opacity-30 group-hover:opacity-50 transition-opacity duration-500"
-                style={{
-                  background: `radial-gradient(circle at bottom right, hsl(190 100% 50%), transparent 70%)`,
-                }}
-              />
             </div>
           </div>
         </div>
