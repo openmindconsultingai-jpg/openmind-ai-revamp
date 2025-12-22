@@ -4,6 +4,7 @@ import { useHeroVideos } from '@/hooks/useHeroVideos';
 import { noWidows } from '@/lib/typography';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import BookingModal from '@/components/BookingModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,7 @@ const VideoHero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [animationStarted, setAnimationStarted] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   // Text reveal animation - starts immediately
   useEffect(() => {
@@ -230,8 +232,8 @@ const VideoHero = () => {
         </div>
 
         {/* CTA Button with glass effect and artistic animation */}
-        <a 
-          href="#booking" 
+        <button 
+          onClick={() => setIsBookingOpen(true)}
           className="hero-cta group inline-block relative overflow-hidden px-12 py-5 rounded-full transition-all duration-500 hover:scale-105"
           style={{
             background: 'linear-gradient(135deg, hsl(176 100% 43% / 0.1) 0%, hsl(190 100% 50% / 0.05) 100%)',
@@ -314,7 +316,10 @@ const VideoHero = () => {
               animation: 'shimmer 3s ease-in-out infinite',
             }}
           />
-        </a>
+        </button>
+
+        {/* Booking Modal */}
+        <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
       </div>
 
       {/* Scroll indicator */}

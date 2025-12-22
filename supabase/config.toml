@@ -2,3 +2,12 @@ project_id = "nyxcjvbeipocvgjforpn"
 
 [functions.ai-advisor]
 verify_jwt = false
+
+[functions.booking-availability]
+verify_jwt = false
+
+[functions.send-booking-confirmation]
+verify_jwt = false
+
+[functions.check-booking-rate-limit]
+verify_jwt = false
