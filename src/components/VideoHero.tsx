@@ -217,9 +217,17 @@ const VideoHero = () => {
         </h1>
 
         {/* Subtitle */}
-        <p className="hero-subtitle font-sans text-lg sm:text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto mb-10">
-          {noWidows(t('hero.description'))}
-        </p>
+        <div className="hero-subtitle font-sans max-w-2xl mx-auto mb-10 space-y-2 text-center">
+          <p className="text-lg sm:text-xl md:text-2xl text-foreground/80 font-medium">
+            {noWidows(t('hero.description'))}
+          </p>
+          <p className="text-base sm:text-lg md:text-xl text-foreground/70">
+            {noWidows(t('hero.description2'))}
+          </p>
+          <p className="text-base sm:text-lg md:text-xl text-foreground/60">
+            {noWidows(t('hero.description3'))}
+          </p>
+        </div>
 
         {/* CTA Button with glass effect and artistic animation */}
         <a 

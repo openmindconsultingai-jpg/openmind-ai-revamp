@@ -24,7 +24,8 @@ const translations: Translations = {
     'hero.title': 'OpenMind',
     'hero.subtitle': 'AI',
     'hero.description': 'Zwinność Start-upu. Technologie Gigantów.',
-    'hero.description2': 'Nie goń rynku – wyprzedź go. Dostarczamy rozwiązania AI, które adaptują się szybciej niż Twoja konkurencja.',
+    'hero.description2': 'Nie goń rynku – wyprzedź go.',
+    'hero.description3': 'Dostarczamy rozwiązania AI, które adaptują się szybciej niż Twoja konkurencja.',
     'hero.cta': 'Wkrocz w technologię jutra już dziś',
     'hero.cta.consultation': 'Umów bezpłatną konsultację',
     
@@ -861,7 +862,8 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     'hero.title': 'OpenMind',
     'hero.subtitle': 'AI',
     'hero.description': 'Start-up Agility. Giant Technology.',
-    'hero.description2': "Don't chase the market – stay ahead. We deliver AI solutions that adapt faster than your competition.",
+    'hero.description2': "Don't chase the market – stay ahead.",
+    'hero.description3': 'We deliver AI solutions that adapt faster than your competition.',
     'hero.cta': "Step into tomorrow's technology today",
     'hero.cta.consultation': 'Book a free consultation',
     
