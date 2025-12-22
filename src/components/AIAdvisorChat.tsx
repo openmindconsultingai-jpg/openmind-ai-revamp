@@ -216,97 +216,128 @@ const AIAdvisorChat = () => {
       const contentWidth = pageWidth - 2 * margin;
       let yPos = margin;
 
+      // Helper function to check page break
+      const checkPageBreak = (requiredSpace: number) => {
+        if (yPos + requiredSpace > pageHeight - 25) {
+          pdf.addPage();
+          yPos = margin;
+          return true;
+        }
+        return false;
+      };
+
       // Header with gradient-like effect
       pdf.setFillColor(0, 212, 170);
-      pdf.rect(0, 0, pageWidth, 45, 'F');
+      pdf.rect(0, 0, pageWidth, 40, 'F');
       
       // Logo text
       pdf.setTextColor(255, 255, 255);
-      pdf.setFontSize(24);
+      pdf.setFontSize(22);
       pdf.setFont('helvetica', 'bold');
-      pdf.text('OpenMind AI', margin, 25);
+      pdf.text('OpenMind AI', margin, 22);
       
-      pdf.setFontSize(12);
+      pdf.setFontSize(11);
       pdf.setFont('helvetica', 'normal');
-      pdf.text('Consulting & Solutions', margin, 35);
+      pdf.text('Consulting & Solutions', margin, 32);
 
-      yPos = 60;
+      yPos = 55;
 
       // Title
-      pdf.setTextColor(0, 168, 168);
-      pdf.setFontSize(20);
+      pdf.setTextColor(0, 140, 140);
+      pdf.setFontSize(18);
       pdf.setFont('helvetica', 'bold');
       const titleLines = pdf.splitTextToSize(pdfContent.title || 'Twoje spersonalizowane zastosowania AI', contentWidth);
       pdf.text(titleLines, margin, yPos);
-      yPos += titleLines.length * 8 + 10;
+      yPos += titleLines.length * 7 + 8;
 
       // Summary
       if (pdfContent.summary) {
-        pdf.setTextColor(100, 100, 100);
-        pdf.setFontSize(11);
+        pdf.setTextColor(80, 80, 80);
+        pdf.setFontSize(10);
         pdf.setFont('helvetica', 'italic');
         const summaryLines = pdf.splitTextToSize(pdfContent.summary, contentWidth);
         pdf.text(summaryLines, margin, yPos);
-        yPos += summaryLines.length * 5 + 15;
+        yPos += summaryLines.length * 4.5 + 12;
       }
 
       // Applications
-      pdf.setTextColor(26, 26, 26);
       const applications = pdfContent.applications || [];
+      const lineHeight = 4.5;
+      const titleLineHeight = 6;
       
       applications.forEach((app: any, index: number) => {
-        // Check if we need a new page
-        if (yPos > pageHeight - 60) {
-          pdf.addPage();
-          yPos = margin;
-        }
+        // Calculate required height for this application
+        const appTitle = `${index + 1}. ${app.name || 'Zastosowanie'}`;
+        const titleLines = pdf.splitTextToSize(appTitle, contentWidth - 10);
+        
+        pdf.setFontSize(10);
+        const descLines = pdf.splitTextToSize(app.description || '', contentWidth - 10);
+        
+        pdf.setFontSize(9);
+        const benefitText = app.benefit ? `Korzysc: ${app.benefit}` : '';
+        const benefitLines = benefitText ? pdf.splitTextToSize(benefitText, contentWidth - 10) : [];
+        
+        const boxPadding = 8;
+        const spacing = 3;
+        const boxHeight = boxPadding + 
+          (titleLines.length * titleLineHeight) + spacing +
+          (descLines.length * lineHeight) + 
+          (benefitLines.length > 0 ? spacing + (benefitLines.length * lineHeight) : 0) + 
+          boxPadding;
+
+        // Check for page break
+        checkPageBreak(boxHeight + 8);
 
         // Application box background
-        pdf.setFillColor(245, 245, 245);
-        const boxHeight = 35;
-        pdf.roundedRect(margin - 5, yPos - 5, contentWidth + 10, boxHeight, 3, 3, 'F');
+        pdf.setFillColor(248, 248, 248);
+        pdf.setDrawColor(220, 220, 220);
+        pdf.roundedRect(margin, yPos, contentWidth, boxHeight, 2, 2, 'FD');
+
+        let textY = yPos + boxPadding;
 
         // Application number and name
-        pdf.setTextColor(0, 168, 168);
-        pdf.setFontSize(14);
+        pdf.setTextColor(0, 140, 140);
+        pdf.setFontSize(12);
         pdf.setFont('helvetica', 'bold');
-        const appTitle = `${index + 1}. ${app.name || 'Zastosowanie'}`;
-        pdf.text(appTitle, margin, yPos + 5);
+        pdf.text(titleLines, margin + 5, textY);
+        textY += titleLines.length * titleLineHeight + spacing;
 
         // Description
-        pdf.setTextColor(60, 60, 60);
+        pdf.setTextColor(50, 50, 50);
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
-        const descLines = pdf.splitTextToSize(app.description || '', contentWidth - 10);
-        pdf.text(descLines.slice(0, 2), margin, yPos + 13);
+        pdf.text(descLines, margin + 5, textY);
+        textY += descLines.length * lineHeight;
 
         // Benefit
-        if (app.benefit) {
-          pdf.setTextColor(0, 150, 136);
+        if (benefitLines.length > 0) {
+          textY += spacing;
+          pdf.setTextColor(0, 130, 120);
           pdf.setFontSize(9);
           pdf.setFont('helvetica', 'italic');
-          pdf.text(`✓ ${app.benefit}`, margin, yPos + 25);
+          pdf.text(benefitLines, margin + 5, textY);
         }
 
-        yPos += boxHeight + 10;
+        yPos += boxHeight + 6;
       });
 
       // Next steps section
-      if (yPos > pageHeight - 50) {
-        pdf.addPage();
-        yPos = margin;
-      }
+      checkPageBreak(35);
 
-      yPos += 10;
+      yPos += 8;
+      
+      const nextStepsText = pdfContent.nextSteps || 'Skontaktuj się z nami, aby omówić wdrożenie tych rozwiązań!';
+      pdf.setFontSize(10);
+      const nextStepsLines = pdf.splitTextToSize(nextStepsText, contentWidth - 10);
+      const nextStepsBoxHeight = 12 + (nextStepsLines.length * 4.5);
+      
       pdf.setFillColor(0, 212, 170);
-      pdf.roundedRect(margin - 5, yPos - 5, contentWidth + 10, 25, 3, 3, 'F');
+      pdf.roundedRect(margin, yPos, contentWidth, nextStepsBoxHeight, 2, 2, 'F');
       
       pdf.setTextColor(255, 255, 255);
-      pdf.setFontSize(11);
+      pdf.setFontSize(10);
       pdf.setFont('helvetica', 'bold');
-      const nextStepsText = pdfContent.nextSteps || 'Skontaktuj się z nami, aby omówić wdrożenie!';
-      const nextStepsLines = pdf.splitTextToSize(nextStepsText, contentWidth);
-      pdf.text(nextStepsLines, margin, yPos + 8);
+      pdf.text(nextStepsLines, margin + 5, yPos + 8);
 
       // Footer
       const footerY = pageHeight - 15;
