@@ -261,9 +261,9 @@ const AIAdvisorChat = () => {
   };
 
   return (
-    <div className="flex flex-col h-full max-h-full overflow-hidden">
+    <div className="flex flex-col h-full overflow-hidden">
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
+      <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-4 scroll-smooth" style={{ overscrollBehavior: 'contain' }}>
         {messages.map((msg, i) => (
           <div
             key={i}

@@ -218,8 +218,8 @@ const BentoGrid = () => {
               <X size={24} />
             </button>
 
-            <div className="h-full flex flex-col">
-              <div className="p-6 border-b border-border/30">
+            <div className="h-full flex flex-col overflow-hidden">
+              <div className="shrink-0 p-6 border-b border-border/30">
                 <h3 className="font-heading text-2xl md:text-3xl text-gradient font-semibold">
                   {t('bento.advisor.modal.title')}
                 </h3>
@@ -228,7 +228,7 @@ const BentoGrid = () => {
                 </p>
               </div>
               
-              <div className="flex-1 overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-hidden">
                 <AIAdvisorChat />
               </div>
             </div>
