@@ -114,6 +114,8 @@ serve(async (req) => {
 
     // If generating PDF, return structured response
     if (generatePdf) {
+      console.log("Generating PDF with messages count:", limitedMessages.length);
+      
       const pdfResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -121,24 +123,29 @@ serve(async (req) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "google/gemini-3-pro-preview",
+          model: "google/gemini-2.5-flash",
           messages: [
             { 
               role: "system", 
-              content: `Na podstawie poprzedniej rozmowy, wyodrębnij i podsumuj wszystkie zaproponowane zastosowania AI. 
-              Odpowiedz TYLKO w formacie JSON (bez markdown, bez backticks):
-              {
-                "title": "Twoje spersonalizowane zastosowania AI",
-                "summary": "Krótkie podsumowanie sytuacji użytkownika (2-3 zdania)",
-                "applications": [
-                  {
-                    "name": "Nazwa zastosowania",
-                    "description": "Szczegółowy opis zastosowania i jak to pomoże użytkownikowi",
-                    "benefit": "Główna korzyść biznesowa lub osobista"
-                  }
-                ],
-                "nextSteps": "Skontaktuj się z nami, aby omówić wdrożenie tych rozwiązań w Twojej firmie!"
-              }`
+              content: `Jesteś ekspertem w podsumowywaniu rozmów o AI. Na podstawie poniższej rozmowy z doradcą AI, wyodrębnij WSZYSTKIE zaproponowane zastosowania sztucznej inteligencji.
+
+WAŻNE: Przeanalizuj całą rozmowę i znajdź każde zastosowanie AI, które było wspomniane lub zasugerowane.
+
+Odpowiedz TYLKO czystym JSON (bez markdown, bez backticks, bez dodatkowego tekstu):
+{
+  "title": "Twoje spersonalizowane zastosowania AI",
+  "summary": "Krótkie podsumowanie sytuacji i potrzeb użytkownika (2-3 zdania)",
+  "applications": [
+    {
+      "name": "Nazwa zastosowania",
+      "description": "Szczegółowy opis jak to zastosowanie pomoże użytkownikowi",
+      "benefit": "Główna korzyść (np. oszczędność czasu, pieniędzy, lepsza jakość)"
+    }
+  ],
+  "nextSteps": "Skontaktuj się z OpenMind AI Consulting, aby omówić wdrożenie tych rozwiązań!"
+}
+
+Upewnij się, że tablica "applications" zawiera WSZYSTKIE zastosowania wspomniane w rozmowie.`
             },
             ...limitedMessages,
           ],
@@ -152,9 +159,19 @@ serve(async (req) => {
       }
 
       const pdfData = await pdfResponse.json();
+      console.log("PDF response received:", JSON.stringify(pdfData).slice(0, 500));
+      
+      const content = pdfData.choices?.[0]?.message?.content || "";
+      console.log("Extracted content length:", content.length);
+      
+      if (!content) {
+        console.error("Empty content from AI response");
+        throw new Error("Empty response from AI");
+      }
+      
       return new Response(JSON.stringify({ 
         type: "pdf",
-        content: pdfData.choices[0].message.content 
+        content: content 
       }), {
         headers: { 
           ...corsHeaders, 
@@ -172,7 +189,7 @@ serve(async (req) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemini-3-pro-preview",
+        model: "google/gemini-2.5-flash",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           ...limitedMessages,
