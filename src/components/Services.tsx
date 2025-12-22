@@ -1,15 +1,18 @@
 import { memo, useState, useCallback } from 'react';
 import { 
   Brain, Cpu, Video, GraduationCap, Building2, 
-  ChevronDown, ChevronUp, Shield, Zap, Bot, 
-  Mic, MessageSquare, Workflow, Film, Users2, 
-  TrendingUp, Globe, Palette, BookOpen, Briefcase,
-  Lightbulb, Stethoscope, ShoppingCart, Home, Scale,
-  Clapperboard, GraduationCap as Education, Factory, Plane
+  ChevronDown, ChevronUp
 } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
 import { useLanguage } from '@/contexts/LanguageContext';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
+
+// Service category images
+import serviceConsulting from '@/assets/service-consulting.jpg';
+import serviceDevelopment from '@/assets/service-development.jpg';
+import serviceMedia from '@/assets/service-media.jpg';
+import serviceAcademy from '@/assets/service-academy.jpg';
+import serviceIndustries from '@/assets/service-industries.jpg';
 
 type ExpandedCards = Record<number, boolean>;
 
@@ -26,6 +29,7 @@ interface ServiceCategory {
   description: string;
   items: ServiceItem[];
   gradient: string;
+  image: string;
 }
 
 const Services = memo(() => {
@@ -49,7 +53,8 @@ const Services = memo(() => {
           { title: 'Strategia Transformacji Cyfrowej', desc: 'Opracowujemy kompleksowe plany wdrożeniowe, które integrują sztuczną inteligencję z DNA Twojej firmy. Od restrukturyzacji przepływu pracy po nowe modele biznesowe oparte na danych.' },
           { title: 'AI Ethics, Compliance & Security', desc: 'Innowacja wymaga bezpieczeństwa. Zapewniamy pełne wsparcie w zakresie zgodności z regulacjami (EU AI Act, RODO/GDPR), etyki algorytmicznej oraz cyberbezpieczeństwa systemów opartych na LLM. Chronimy Twój know-how przed wyciekiem.' }
         ],
-        gradient: 'from-blue-500/20 via-cyan-500/10 to-transparent'
+        gradient: 'from-blue-500/20 via-cyan-500/10 to-transparent',
+        image: serviceConsulting
       },
       {
         icon: Cpu,
@@ -63,7 +68,8 @@ const Services = memo(() => {
           { title: 'Custom LLM & Enterprise Chatbots', desc: 'Budujemy "Mózg Firmy". Trenujemy i dostrajamy (fine-tuning) modele językowe na Twoich wewnętrznych danych. Otrzymujesz bezpiecznego, prywatnego asystenta, który zna każdą procedurę w Twojej firmie.' },
           { title: 'Hiperautomatyzacja (Hyperautomation Ecosystems)', desc: 'Łączymy izolowane systemy (CRM, ERP, Slack, Email) w jeden inteligentny organizm. Wykorzystujemy zaawansowane skrypty i AI, aby zautomatyzować nawet najbardziej nieliniowe i skomplikowane procesy biurowe.' }
         ],
-        gradient: 'from-violet-500/20 via-purple-500/10 to-transparent'
+        gradient: 'from-violet-500/20 via-purple-500/10 to-transparent',
+        image: serviceDevelopment
       },
       {
         icon: Video,
@@ -78,7 +84,8 @@ const Services = memo(() => {
           { title: 'Globalizacja Contentu (AI Dubbing)', desc: 'Złam bariery językowe. Automatycznie tłumaczymy i dubbingujemy Twoje materiały wideo na 50+ języków, zachowując oryginalną barwę głosu i synchronizację ruchu warg (lip-sync).' },
           { title: 'Grafika i Design z NanoBanana', desc: 'Wykorzystujemy zaawansowane możliwości modelu NanoBanana oraz innych topowych narzędzi do generowania spójnych systemów identyfikacji wizualnej, assetów do gier i materiałów marketingowych.' }
         ],
-        gradient: 'from-rose-500/20 via-pink-500/10 to-transparent'
+        gradient: 'from-rose-500/20 via-pink-500/10 to-transparent',
+        image: serviceMedia
       },
       {
         icon: GraduationCap,
@@ -92,7 +99,8 @@ const Services = memo(() => {
           { title: 'Executive AI Mentoring', desc: 'Elitarne sesje dla Kadry Zarządzającej (C-Level). Uczymy liderów, jak podejmować strategiczne decyzje w oparciu o AI, jak zarządzać zmianą w organizacji i jak identyfikować nowe modele przychodowe.' },
           { title: 'Creative AI Lab', desc: 'Praktyczne warsztaty kreatywne. Uczymy Twój zespół in-house, jak samodzielnie obsługiwać narzędzia takie jak NanoBanana, Kling czy Veo, aby uniezależnić firmę od zewnętrznych agencji.' }
         ],
-        gradient: 'from-amber-500/20 via-orange-500/10 to-transparent'
+        gradient: 'from-amber-500/20 via-orange-500/10 to-transparent',
+        image: serviceAcademy
       },
       {
         icon: Building2,
@@ -110,7 +118,8 @@ const Services = memo(() => {
           { title: '🏭 Logistyka, Produkcja i Przemysł', desc: 'Predykcyjne Utrzymanie Ruchu, Optymalizacja Tras, Zarządzanie Magazynem – optymalizacja łańcucha dostaw i zasobów.' },
           { title: '✈️ Turystyka i HoReCa', desc: 'Wirtualny Concierge, Dynamiczne Ceny, Wielojęzyczna Obsługa Gości – luksusowa obsługa gościa na autopilocie.' }
         ],
-        gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent'
+        gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
+        image: serviceIndustries
       }
     ] as ServiceCategory[]
   } : {
@@ -130,7 +139,8 @@ const Services = memo(() => {
           { title: 'Digital Transformation Strategy', desc: 'We develop comprehensive implementation plans that integrate artificial intelligence with your company\'s DNA. From workflow restructuring to new data-driven business models.' },
           { title: 'AI Ethics, Compliance & Security', desc: 'Innovation requires security. We provide full support in regulatory compliance (EU AI Act, GDPR), algorithmic ethics, and cybersecurity of LLM-based systems. We protect your know-how from leakage.' }
         ],
-        gradient: 'from-blue-500/20 via-cyan-500/10 to-transparent'
+        gradient: 'from-blue-500/20 via-cyan-500/10 to-transparent',
+        image: serviceConsulting
       },
       {
         icon: Cpu,
@@ -144,7 +154,8 @@ const Services = memo(() => {
           { title: 'Custom LLM & Enterprise Chatbots', desc: 'We build the "Company Brain". We train and fine-tune language models on your internal data. You get a secure, private assistant that knows every procedure in your company.' },
           { title: 'Hyperautomation Ecosystems', desc: 'We connect isolated systems (CRM, ERP, Slack, Email) into one intelligent organism. We use advanced scripts and AI to automate even the most non-linear and complex office processes.' }
         ],
-        gradient: 'from-violet-500/20 via-purple-500/10 to-transparent'
+        gradient: 'from-violet-500/20 via-purple-500/10 to-transparent',
+        image: serviceDevelopment
       },
       {
         icon: Video,
@@ -159,7 +170,8 @@ const Services = memo(() => {
           { title: 'Content Globalization (AI Dubbing)', desc: 'Break language barriers. We automatically translate and dub your video content into 50+ languages, preserving the original voice timbre and lip-sync.' },
           { title: 'Graphics and Design with NanoBanana', desc: 'We use advanced capabilities of NanoBanana and other top tools to generate cohesive visual identity systems, game assets, and marketing materials.' }
         ],
-        gradient: 'from-rose-500/20 via-pink-500/10 to-transparent'
+        gradient: 'from-rose-500/20 via-pink-500/10 to-transparent',
+        image: serviceMedia
       },
       {
         icon: GraduationCap,
@@ -173,7 +185,8 @@ const Services = memo(() => {
           { title: 'Executive AI Mentoring', desc: 'Elite sessions for C-Level Management. We teach leaders how to make strategic decisions based on AI, how to manage organizational change, and how to identify new revenue models.' },
           { title: 'Creative AI Lab', desc: 'Practical creative workshops. We teach your in-house team how to independently use tools like NanoBanana, Kling, or Veo to make the company independent from external agencies.' }
         ],
-        gradient: 'from-amber-500/20 via-orange-500/10 to-transparent'
+        gradient: 'from-amber-500/20 via-orange-500/10 to-transparent',
+        image: serviceAcademy
       },
       {
         icon: Building2,
@@ -191,7 +204,8 @@ const Services = memo(() => {
           { title: '🏭 Logistics, Production and Industry', desc: 'Predictive Maintenance, Route Optimization, Warehouse Management – supply chain and resource optimization.' },
           { title: '✈️ Tourism and HoReCa', desc: 'Virtual Concierge, Dynamic Pricing, Multilingual Guest Service – luxury guest service on autopilot.' }
         ],
-        gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent'
+        gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
+        image: serviceIndustries
       }
     ] as ServiceCategory[]
   };
@@ -241,68 +255,93 @@ const Services = memo(() => {
                     boxShadow: `0 0 0 1px hsl(0 0% 100% / 0.05), 0 25px 50px -20px hsl(0 0% 0% / 0.4)`,
                   }}
                 >
+                  {/* Background Image */}
+                  <img 
+                    src={category.image} 
+                    alt={category.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-300"
+                    loading="lazy"
+                  />
+                  
                   {/* Gradient accent */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-60`} />
+                  <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/40" />
                   
                   {/* Content */}
-                  <div className="relative p-6 md:p-10 lg:p-12">
-                    {/* Header Row */}
-                    <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8 mb-6">
-                      {/* Number & Icon */}
-                      <div className="flex items-center gap-4 md:gap-6">
-                        <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary/30 font-heading">
-                          {category.number}
-                        </span>
-                        <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                          <IconComponent className="w-6 h-6 md:w-7 md:h-7 text-primary" />
+                  <div className="relative p-6 md:p-10 lg:p-12 flex flex-col lg:flex-row gap-6 lg:gap-10">
+                    {/* Left side - Text content */}
+                    <div className="flex-1">
+                      {/* Header Row */}
+                      <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8 mb-6">
+                        {/* Number & Icon */}
+                        <div className="flex items-center gap-4 md:gap-6">
+                          <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary/30 font-heading">
+                            {category.number}
+                          </span>
+                          <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                            <IconComponent className="w-6 h-6 md:w-7 md:h-7 text-primary" />
+                          </div>
+                        </div>
+                        
+                        {/* Title & Subtitle */}
+                        <div className="flex-1">
+                          <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2 font-heading">
+                            {category.title}
+                          </h3>
+                          <p className="text-lg md:text-xl text-primary font-medium">
+                            {category.subtitle}
+                          </p>
                         </div>
                       </div>
                       
-                      {/* Title & Subtitle */}
-                      <div className="flex-1">
-                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2 font-heading">
-                          {category.title}
-                        </h3>
-                        <p className="text-lg md:text-xl text-primary font-medium">
-                          {category.subtitle}
-                        </p>
+                      {/* Description */}
+                      <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6 max-w-3xl">
+                        {category.description}
+                      </p>
+                    
+                      {/* Expandable Items */}
+                      <div 
+                        className={`grid gap-4 transition-all duration-300 overflow-hidden ${
+                          isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                        }`}
+                      >
+                        {category.items.map((item, itemIndex) => (
+                          <div 
+                            key={itemIndex}
+                            className="p-4 md:p-6 rounded-xl bg-background/40 border border-border/20 hover:border-border/40 transition-colors"
+                          >
+                            <h4 className="text-lg md:text-xl font-semibold text-foreground mb-2">
+                              {item.title}
+                            </h4>
+                            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                              {item.desc}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      {/* Expand/Collapse Button */}
+                      <button
+                        onClick={() => toggleCard(index)}
+                        className="mt-6 flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium text-base md:text-lg"
+                      >
+                        <span>{isExpanded ? content.collapse : content.expand}</span>
+                        {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                      </button>
+                    </div>
+                    
+                    {/* Right side - Featured Image */}
+                    <div className="hidden lg:block w-80 xl:w-96 flex-shrink-0">
+                      <div className="relative h-full min-h-[280px] rounded-2xl overflow-hidden">
+                        <img 
+                          src={category.image} 
+                          alt={category.title}
+                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                        <div className={`absolute inset-0 bg-gradient-to-t ${category.gradient} opacity-40`} />
                       </div>
                     </div>
-                    
-                    {/* Description */}
-                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6 max-w-4xl">
-                      {category.description}
-                    </p>
-                    
-                    {/* Expandable Items */}
-                    <div 
-                      className={`grid gap-4 transition-all duration-300 overflow-hidden ${
-                        isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
-                      }`}
-                    >
-                      {category.items.map((item, itemIndex) => (
-                        <div 
-                          key={itemIndex}
-                          className="p-4 md:p-6 rounded-xl bg-background/40 border border-border/20 hover:border-border/40 transition-colors"
-                        >
-                          <h4 className="text-lg md:text-xl font-semibold text-foreground mb-2">
-                            {item.title}
-                          </h4>
-                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                            {item.desc}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    {/* Expand/Collapse Button */}
-                    <button
-                      onClick={() => toggleCard(index)}
-                      className="mt-6 flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium text-base md:text-lg"
-                    >
-                      <span>{isExpanded ? content.collapse : content.expand}</span>
-                      {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                    </button>
                   </div>
                 </div>
               </div>
