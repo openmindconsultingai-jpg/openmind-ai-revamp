@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import logo from '@/assets/openmind-logo.webp';
 import ceoImage from '@/assets/ceo-lukasz-czarnecki.png';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
@@ -8,6 +8,22 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Headers to style with gradient
+const STYLED_HEADERS = [
+  'Więcej niż Software House. Więcej niż Agencja.',
+  'More than a Software House. More than an Agency.',
+  'Nasza Filozofia: Logika i Magia',
+  'Our Philosophy: Logic and Magic',
+  'Pionierzy Praktycznej Innowacji',
+  'Pioneers of Practical Innovation',
+  'Dlaczego OpenMind?',
+  'Why OpenMind?',
+  'Nasza Misja',
+  'Our Mission',
+  'OpenMind AI Consulting. Twój partner w transformacji.',
+  'OpenMind AI Consulting. Your partner in transformation.',
+];
+
 const About = () => {
   const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
@@ -15,6 +31,37 @@ const About = () => {
   const ceoRef = useRef<HTMLDivElement>(null);
   const descRef = useRef<HTMLDivElement>(null);
   const valuesRef = useRef<HTMLDivElement>(null);
+
+  // Parse bio text and style headers
+  const renderStyledBio = useMemo(() => {
+    const bio = t('about.ceo.bio');
+    const lines = bio.split('\n');
+    
+    return lines.map((line, index) => {
+      const trimmedLine = line.trim();
+      
+      if (!trimmedLine) {
+        return <div key={index} className="h-4" />;
+      }
+      
+      if (STYLED_HEADERS.includes(trimmedLine)) {
+        return (
+          <h4 
+            key={index} 
+            className="text-xl md:text-2xl font-bold text-gradient text-glow-subtle mt-8 mb-4 first:mt-0"
+          >
+            {trimmedLine}
+          </h4>
+        );
+      }
+      
+      return (
+        <p key={index} className="text-muted-foreground leading-relaxed mb-3">
+          {trimmedLine}
+        </p>
+      );
+    });
+  }, [t]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -141,15 +188,15 @@ const About = () => {
                   className="w-full max-w-[300px] aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div className="ceo-text space-y-4 max-w-4xl">
-                <h3 className="text-2xl md:text-3xl font-bold text-gradient text-glow-subtle mb-2">
+              <div className="ceo-text space-y-2 max-w-4xl text-left">
+                <h3 className="text-2xl md:text-3xl font-bold text-gradient text-glow-subtle mb-2 text-center">
                   {t('about.ceo.name')}
                 </h3>
-                <p className="text-primary/80 text-lg mb-4">
+                <p className="text-primary/80 text-lg mb-6 text-center">
                   {t('about.ceo.title')}
                 </p>
-                <div className="text-muted-foreground leading-relaxed text-lg whitespace-pre-line">
-                  {t('about.ceo.bio')}
+                <div className="space-y-0">
+                  {renderStyledBio}
                 </div>
               </div>
             </div>
