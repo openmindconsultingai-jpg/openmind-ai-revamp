@@ -46,10 +46,13 @@ const About = () => {
       }
       
       if (STYLED_HEADERS.includes(trimmedLine)) {
+        // Center "OpenMind AI Consulting. Twój partner w transformacji." headers
+        const shouldCenter = trimmedLine.includes('OpenMind AI Consulting. Twój partner') || 
+                             trimmedLine.includes('OpenMind AI Consulting. Your partner');
         return (
           <h4 
             key={index} 
-            className="text-xl md:text-2xl font-bold text-gradient text-glow-subtle mt-8 mb-4 first:mt-0"
+            className={`text-xl md:text-2xl font-bold text-gradient text-glow-subtle mt-8 mb-4 first:mt-0 ${shouldCenter ? 'text-center' : ''}`}
           >
             {trimmedLine}
           </h4>
@@ -189,11 +192,11 @@ const About = () => {
                   className="w-full max-w-[300px] aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div className="ceo-text space-y-2 max-w-4xl text-left">
+              <div className="ceo-text space-y-2 max-w-4xl">
                 <h3 className="text-2xl md:text-3xl font-bold text-gradient text-glow-subtle mb-2 text-center">
                   {t('about.ceo.name')}
                 </h3>
-                <p className="text-primary/80 text-lg mb-6 text-center">
+                <p className="text-primary/80 text-lg mb-6 text-center mx-auto max-w-md">
                   {t('about.ceo.title')}
                 </p>
                 <div className="space-y-0">
