@@ -220,18 +220,89 @@ const VideoHero = () => {
           {t('hero.description')}
         </p>
 
-        {/* CTA Button with shimmer effect */}
+        {/* CTA Button with glass effect and artistic animation */}
         <a 
           href="#booking" 
-          className="hero-cta inline-block relative overflow-hidden px-10 py-5 bg-primary text-primary-foreground font-heading font-semibold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_hsl(176_100%_43%/0.5)]"
+          className="hero-cta group inline-block relative overflow-hidden px-12 py-5 rounded-full transition-all duration-500 hover:scale-105"
+          style={{
+            background: 'linear-gradient(135deg, hsl(176 100% 43% / 0.1) 0%, hsl(190 100% 50% / 0.05) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid hsl(176 100% 43% / 0.3)',
+            boxShadow: '0 0 40px hsl(176 100% 43% / 0.15), inset 0 0 20px hsl(176 100% 43% / 0.05)',
+          }}
         >
-          <span className="relative z-10">Umów bezpłatną konsultację</span>
-          {/* Shimmer overlay */}
+          {/* Animated border glow */}
           <span 
-            className="absolute inset-0 z-0"
+            className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             style={{
-              background: 'linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.4) 50%, transparent 100%)',
+              background: 'linear-gradient(90deg, transparent, hsl(176 100% 43% / 0.4), transparent)',
               animation: 'shimmer 2s ease-in-out infinite',
+            }}
+          />
+          
+          {/* Rotating gradient border */}
+          <span 
+            className="absolute -inset-[2px] rounded-full opacity-60"
+            style={{
+              background: 'conic-gradient(from 0deg, transparent 0%, hsl(176 100% 43% / 0.5) 10%, transparent 20%, transparent 80%, hsl(190 100% 50% / 0.5) 90%, transparent 100%)',
+              animation: 'spin 4s linear infinite',
+            }}
+          />
+          
+          {/* Inner glass layer */}
+          <span 
+            className="absolute inset-[1px] rounded-full"
+            style={{
+              background: 'linear-gradient(135deg, hsl(220 15% 5% / 0.8) 0%, hsl(220 15% 10% / 0.6) 100%)',
+              backdropFilter: 'blur(10px)',
+            }}
+          />
+          
+          {/* Floating particles effect */}
+          <span className="absolute inset-0 rounded-full overflow-hidden">
+            <span 
+              className="absolute w-1 h-1 bg-primary/60 rounded-full"
+              style={{
+                left: '20%',
+                animation: 'float 3s ease-in-out infinite',
+                animationDelay: '0s',
+              }}
+            />
+            <span 
+              className="absolute w-1.5 h-1.5 bg-primary/40 rounded-full"
+              style={{
+                left: '60%',
+                animation: 'float 3s ease-in-out infinite',
+                animationDelay: '1s',
+              }}
+            />
+            <span 
+              className="absolute w-1 h-1 bg-primary/50 rounded-full"
+              style={{
+                left: '80%',
+                animation: 'float 3s ease-in-out infinite',
+                animationDelay: '2s',
+              }}
+            />
+          </span>
+          
+          {/* Text with glow */}
+          <span 
+            className="relative z-10 font-heading font-semibold text-lg text-foreground group-hover:text-primary transition-colors duration-300"
+            style={{
+              textShadow: '0 0 20px hsl(176 100% 43% / 0.5)',
+            }}
+          >
+            Umów bezpłatną konsultację
+          </span>
+          
+          {/* Shimmer sweep effect */}
+          <span 
+            className="absolute inset-0 z-5 rounded-full"
+            style={{
+              background: 'linear-gradient(110deg, transparent 25%, hsl(176 100% 43% / 0.2) 50%, transparent 75%)',
+              animation: 'shimmer 3s ease-in-out infinite',
             }}
           />
         </a>
