@@ -262,8 +262,18 @@ const AIAdvisorChat = () => {
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      {/* Messages */}
-      <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-4 scroll-smooth" style={{ overscrollBehavior: 'contain' }}>
+      {/* Messages - fixed scroll with mouse wheel */}
+      <div 
+        className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-4 space-y-4" 
+        style={{ 
+          overscrollBehavior: 'contain',
+          scrollBehavior: 'auto',
+          WebkitOverflowScrolling: 'touch',
+        }}
+        onWheel={(e) => {
+          e.stopPropagation();
+        }}
+      >
         {messages.map((msg, i) => (
           <div
             key={i}

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { X, Calendar, Clock, User, Mail, Phone, MessageSquare, ChevronLeft, ChevronRight, Check, Loader2 } from 'lucide-react';
+import { X, Calendar, Clock, User, Mail, Phone, MessageSquare, ChevronLeft, ChevronRight, Check, Loader2, Shield } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Checkbox } from '@/components/ui/checkbox';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -26,6 +27,9 @@ const getBookingSchema = (language: 'pl' | 'en') => z.object({
   clientEmail: z.string().email(language === 'pl' ? 'Nieprawidłowy adres email' : 'Invalid email address'),
   clientPhone: z.string().min(9, language === 'pl' ? 'Nieprawidłowy numer telefonu' : 'Invalid phone number'),
   notes: z.string().optional(),
+  privacyConsent: z.boolean().refine(val => val === true, {
+    message: language === 'pl' ? 'Wymagana zgoda na przetwarzanie danych' : 'Privacy consent is required',
+  }),
 });
 
 type BookingFormData = z.infer<ReturnType<typeof getBookingSchema>>;
@@ -49,6 +53,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       clientEmail: '',
       clientPhone: '',
       notes: '',
+      privacyConsent: false,
     },
   });
 
@@ -374,22 +379,24 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                   <Loader2 className="animate-spin text-primary" size={32} />
                 </div>
               ) : (
-                <div className="grid grid-cols-4 gap-2">
-                  {timeSlots.map((slot) => (
-                    <button
-                      key={slot.time}
-                      onClick={() => slot.isAvailable && handleTimeSelect(slot.time)}
-                      disabled={!slot.isAvailable}
-                      className={`
-                        py-3 rounded-lg text-sm font-medium transition-all
-                        ${slot.isAvailable 
-                          ? 'bg-muted/50 hover:bg-primary/20 hover:text-primary border border-transparent hover:border-primary/30' 
-                          : 'bg-muted/20 text-muted-foreground/30 cursor-not-allowed line-through'}
-                      `}
-                    >
-                      {slot.time}
-                    </button>
-                  ))}
+                <div className="max-h-[200px] overflow-y-auto pr-2 custom-scrollbar">
+                  <div className="grid grid-cols-4 gap-2">
+                    {timeSlots.map((slot) => (
+                      <button
+                        key={slot.time}
+                        onClick={() => slot.isAvailable && handleTimeSelect(slot.time)}
+                        disabled={!slot.isAvailable}
+                        className={`
+                          py-2.5 rounded-lg text-sm font-medium transition-all
+                          ${slot.isAvailable 
+                            ? 'bg-muted/50 hover:bg-primary/20 hover:text-primary border border-transparent hover:border-primary/30' 
+                            : 'bg-muted/20 text-muted-foreground/30 cursor-not-allowed line-through'}
+                        `}
+                      >
+                        {slot.time}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -512,6 +519,39 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                           />
                         </FormControl>
                         <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* Privacy consent - RODO */}
+                  <FormField
+                    control={form.control}
+                    name="privacyConsent"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-border/50 p-4 bg-background/30">
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
+                        </FormControl>
+                        <div className="space-y-1 leading-none">
+                          <FormLabel className="text-sm font-normal cursor-pointer">
+                            <Shield size={12} className="inline mr-1 text-primary" />
+                            {language === 'pl' 
+                              ? 'Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji rezerwacji zgodnie z ' 
+                              : 'I consent to the processing of my personal data for the booking purpose in accordance with the '}
+                            <a 
+                              href="/privacy" 
+                              target="_blank" 
+                              className="text-primary hover:underline"
+                            >
+                              {language === 'pl' ? 'Polityką Prywatności' : 'Privacy Policy'}
+                            </a>
+                            {language === 'pl' ? ' oraz RODO.' : ' and GDPR.'}
+                          </FormLabel>
+                          <FormMessage />
+                        </div>
                       </FormItem>
                     )}
                   />

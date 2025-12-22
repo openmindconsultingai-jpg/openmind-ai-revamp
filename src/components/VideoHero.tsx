@@ -190,7 +190,7 @@ const VideoHero = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto -mt-32">
+      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto -mt-48">
         {/* Main Title with letter-by-letter mist reveal */}
         <h1 
           ref={titleRef}
@@ -322,13 +322,13 @@ const VideoHero = () => {
         <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20">
-        <div className="flex flex-col items-center gap-3">
+      {/* Scroll indicator - positioned below CTA button */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+        <div className="flex flex-col items-center gap-2">
           <span className="font-sans text-xs text-foreground/50 uppercase tracking-[0.3em]">
             Scroll
           </span>
-          <div className="w-px h-16 bg-gradient-to-b from-primary/60 to-transparent animate-pulse" />
+          <div className="w-px h-12 bg-gradient-to-b from-primary/60 to-transparent animate-pulse" />
         </div>
       </div>
     </section>
