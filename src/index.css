@@ -321,11 +321,18 @@
     overflow-x: hidden;
   }
 
-  /* Text Justification for better aesthetics */
-  p, .text-justify-content {
+  /* Text Justification for better aesthetics - exclude hero section */
+  p:not(.hero-subtitle p):not(.text-center-override), 
+  .text-justify-content {
     text-align: justify;
     hyphens: auto;
     -webkit-hyphens: auto;
+  }
+
+  /* Force center alignment when needed */
+  .text-center-override,
+  .hero-subtitle p {
+    text-align: center !important;
   }
 
   h1, h2, h3, h4, h5, h6 {
