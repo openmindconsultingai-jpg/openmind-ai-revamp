@@ -95,10 +95,7 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
     };
 
     const animateCursor = () => {
-      // Instant response - no lag
-      const speed = 1;
-      const ringSpeed = 0.95;
-
+      // Instant response - no interpolation for dot
       let targetX = mouseX;
       let targetY = mouseY;
 
@@ -111,10 +108,13 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
         targetY = mouseY + (centerY - mouseY) * magneticStrength;
       }
 
-      cursorX += (targetX - cursorX) * speed;
-      cursorY += (targetY - cursorY) * speed;
-      ringX += (targetX - ringX) * ringSpeed;
-      ringY += (targetY - ringY) * ringSpeed;
+      // Cursor dot follows instantly
+      cursorX = targetX;
+      cursorY = targetY;
+      
+      // Ring follows with minimal lag
+      ringX += (targetX - ringX) * 0.35;
+      ringY += (targetY - ringY) * 0.35;
 
       cursor.style.transform = `translate3d(${cursorX - 4}px, ${cursorY - 4}px, 0)`;
       cursorRing.style.transform = `translate3d(${ringX - (hoveringRef.current ? 30 : 16)}px, ${ringY - (hoveringRef.current ? 30 : 16)}px, 0)`;
@@ -154,16 +154,16 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
       {/* Main cursor dot */}
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 w-2 h-2 rounded-full bg-primary pointer-events-none z-[9999] transition-all duration-150 ${
+        className={`fixed top-0 left-0 w-2 h-2 rounded-full bg-primary pointer-events-none z-[9999] ${
           isVisible ? 'opacity-100' : 'opacity-0'
         } ${isClicking ? 'scale-50' : 'scale-100'}`}
-        style={{ mixBlendMode: 'difference' }}
+        style={{ mixBlendMode: 'difference', willChange: 'transform' }}
       />
       
       {/* Cursor ring */}
       <div
         ref={cursorRingRef}
-        className={`fixed top-0 left-0 pointer-events-none z-[9998] transition-all duration-150 rounded-full flex items-center justify-center ${
+        className={`fixed top-0 left-0 pointer-events-none z-[9998] rounded-full flex items-center justify-center transition-[width,height,border-color,background-color] duration-100 ${
           isVisible ? 'opacity-100' : 'opacity-0'
         } ${isClicking ? 'scale-75' : 'scale-100'}`}
         style={{
@@ -171,6 +171,7 @@ const CustomCursor = ({ enabled = true }: CustomCursorProps) => {
           height: isHovering ? 60 : 32,
           border: `1px solid hsl(176 100% 43% / ${isClicking ? 1 : isHovering ? 0.8 : 0.4})`,
           backgroundColor: isClicking ? 'hsl(176 100% 43% / 0.2)' : isHovering ? 'hsl(176 100% 43% / 0.1)' : 'transparent',
+          willChange: 'transform',
         }}
       >
         {hoverText && (
