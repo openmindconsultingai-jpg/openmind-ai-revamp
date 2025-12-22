@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
-import AIAdvisorChat from '@/components/AIAdvisorChat';
 import bentoContactImg from '@/assets/bento-contact.jpg';
 import bentoAdvisorImg from '@/assets/bento-ai-advisor.jpg';
 
@@ -17,7 +15,6 @@ const BentoGrid = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [showAdvisor, setShowAdvisor] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -67,11 +64,7 @@ const BentoGrid = () => {
   };
 
   const handleAdvisorClick = () => {
-    setShowAdvisor(true);
-  };
-
-  const closeAdvisor = () => {
-    setShowAdvisor(false);
+    navigate('/ai-advisor');
   };
 
   return (
@@ -196,45 +189,6 @@ const BentoGrid = () => {
           </div>
         </div>
       </div>
-
-      {/* AI Advisor Modal */}
-      {showAdvisor && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6"
-          onClick={closeAdvisor}
-        >
-          {/* Backdrop */}
-          <div className="absolute inset-0 bg-background/95 backdrop-blur-xl" />
-          
-          {/* Modal Content */}
-          <div 
-            className="relative w-full max-w-4xl h-[80vh] glass rounded-3xl overflow-hidden animate-scale-in"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={closeAdvisor}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/50 hover:bg-muted/50 transition-colors"
-            >
-              <X size={24} />
-            </button>
-
-            <div className="h-full flex flex-col overflow-hidden">
-              <div className="shrink-0 p-6 border-b border-border/30">
-                <h3 className="font-heading text-2xl md:text-3xl text-gradient font-semibold">
-                  {t('bento.advisor.modal.title')}
-                </h3>
-                <p className="text-muted-foreground mt-2">
-                  {t('bento.advisor.modal.subtitle')}
-                </p>
-              </div>
-              
-              <div className="flex-1 min-h-0 overflow-hidden">
-                <AIAdvisorChat />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
