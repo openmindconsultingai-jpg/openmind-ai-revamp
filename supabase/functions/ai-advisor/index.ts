@@ -116,6 +116,10 @@ serve(async (req) => {
     if (generatePdf) {
       console.log("Generating PDF with messages count:", limitedMessages.length);
       
+      const transcript = limitedMessages
+        .map((m: any) => `${m.role === "user" ? "Użytkownik" : "Doradca AI"}: ${String(m.content || "").trim()}`)
+        .join("\n\n");
+
       const pdfResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -124,30 +128,17 @@ serve(async (req) => {
         },
         body: JSON.stringify({
           model: "google/gemini-2.5-flash",
+          max_tokens: 1400,
           messages: [
-            { 
-              role: "system", 
-              content: `Jesteś ekspertem w podsumowywaniu rozmów o AI. Na podstawie poniższej rozmowy z doradcą AI, wyodrębnij WSZYSTKIE zaproponowane zastosowania sztucznej inteligencji.
-
-WAŻNE: Przeanalizuj całą rozmowę i znajdź każde zastosowanie AI, które było wspomniane lub zasugerowane.
-
-Odpowiedz TYLKO czystym JSON (bez markdown, bez backticks, bez dodatkowego tekstu):
-{
-  "title": "Twoje spersonalizowane zastosowania AI",
-  "summary": "Krótkie podsumowanie sytuacji i potrzeb użytkownika (2-3 zdania)",
-  "applications": [
-    {
-      "name": "Nazwa zastosowania",
-      "description": "Szczegółowy opis jak to zastosowanie pomoże użytkownikowi",
-      "benefit": "Główna korzyść (np. oszczędność czasu, pieniędzy, lepsza jakość)"
-    }
-  ],
-  "nextSteps": "Skontaktuj się z OpenMind AI Consulting, aby omówić wdrożenie tych rozwiązań!"
-}
-
-Upewnij się, że tablica "applications" zawiera WSZYSTKIE zastosowania wspomniane w rozmowie.`
+            {
+              role: "system",
+              content:
+                "Jesteś asystentem, który tworzy raport. ZAWSZE zwracasz WYŁĄCZNIE poprawny JSON (bez markdown, bez backticks, bez dodatkowych zdań).",
             },
-            ...limitedMessages,
+            {
+              role: "user",
+              content: `Na podstawie poniższej transkrypcji rozmowy wyodrębnij wszystkie konkretne zastosowania AI, które zostały zaproponowane (lista ma być kompletna).\n\nZwróć JSON o strukturze:\n{\n  \"title\": \"Twoje spersonalizowane zastosowania AI\",\n  \"summary\": \"2-3 zdania podsumowania sytuacji\",\n  \"applications\": [\n    {\n      \"name\": \"...\",\n      \"description\": \"...\",\n      \"benefit\": \"...\"\n    }\n  ],\n  \"nextSteps\": \"Wezwanie do kontaktu\"\n}\n\nTRANSKRYPCJA:\n${transcript}`,
+            },
           ],
         }),
       });
