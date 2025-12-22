@@ -23,8 +23,8 @@ const translations: Translations = {
     // Hero
     'hero.title': 'OpenMind',
     'hero.subtitle': 'AI',
-    'hero.description': 'Polski start-up łączący innowacyjność z elastycznością. Dostarczamy zaawansowane rozwiązania AI dostosowane do dynamicznie zmieniającego się rynku.',
-    'hero.description2': 'Łączymy lokalne know-how z globalnymi technologiami uczenia maszynowego i przetwarzania języka naturalnego, oferując skuteczne wsparcie dla firm, sektora publicznego i rodzin w codziennym wykorzystaniu inteligentnych systemów.',
+    'hero.description': 'Zwinność Start-upu. Technologie Gigantów.',
+    'hero.description2': 'Nie goń rynku – wyprzedź go. Dostarczamy rozwiązania AI, które adaptują się szybciej niż Twoja konkurencja.',
     'hero.cta': 'Wkrocz w technologię jutra już dziś',
     'hero.cta.consultation': 'Umów bezpłatną konsultację',
     
@@ -860,8 +860,8 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     // Hero
     'hero.title': 'OpenMind',
     'hero.subtitle': 'AI',
-    'hero.description': 'A Polish startup combining innovation with flexibility. We deliver advanced AI solutions tailored to a dynamically changing market.',
-    'hero.description2': 'We combine local know-how with global machine learning and natural language processing technologies, offering effective support for businesses, the public sector, and families in everyday use of intelligent systems.',
+    'hero.description': 'Start-up Agility. Giant Technology.',
+    'hero.description2': "Don't chase the market – stay ahead. We deliver AI solutions that adapt faster than your competition.",
     'hero.cta': "Step into tomorrow's technology today",
     'hero.cta.consultation': 'Book a free consultation',
     
