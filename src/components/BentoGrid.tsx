@@ -77,7 +77,7 @@ const BentoGrid = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-12 md:py-16 -mt-32 overflow-hidden"
     >
       <VideoSectionBackground opacity={0.25} blurPx={6} overlayOpacity={0.7} />
 

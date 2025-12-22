@@ -154,13 +154,6 @@ const MissionSection = () => {
         </div>
       </div>
 
-      {/* Top gradient for smooth transition from hero */}
-      <div 
-        className="absolute top-0 left-0 right-0 h-48 pointer-events-none"
-        style={{
-          background: 'linear-gradient(to bottom, hsl(220 15% 5%) 0%, transparent 100%)',
-        }}
-      />
     </section>
   );
 };
