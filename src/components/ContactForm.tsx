@@ -118,18 +118,18 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-card border border-border rounded-2xl p-8 md:p-10 hover:border-primary/50 transition-colors">
-      <div className="mb-8">
-        <h3 className="text-3xl font-bold mb-3 text-foreground">
+    <div className="bg-card border border-border rounded-2xl p-5 sm:p-8 md:p-10 hover:border-primary/50 transition-colors">
+      <div className="mb-6 sm:mb-8">
+        <h3 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3 text-foreground">
           {language === 'pl' ? 'Wyślij wiadomość' : 'Send a Message'}
         </h3>
-        <p className="text-muted-foreground">
+        <p className="text-sm sm:text-base text-muted-foreground">
           {language === 'pl' ? 'Wypełnij formularz, a my skontaktujemy się z Tobą w ciągu 24 godzin' : 'Fill out the form and we\'ll get back to you within 24 hours'}
         </p>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div className="space-y-2">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
+        <div className="space-y-1.5 sm:space-y-2">
           <label className="text-sm font-medium text-foreground flex items-center gap-2">
             <User className="w-4 h-4 text-primary" />
             {t('contact.form.name')}
@@ -144,7 +144,7 @@ const ContactForm = () => {
           )}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1.5 sm:space-y-2">
           <label className="text-sm font-medium text-foreground flex items-center gap-2">
             <Mail className="w-4 h-4 text-primary" />
             {t('contact.form.email')}
@@ -160,7 +160,7 @@ const ContactForm = () => {
           )}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1.5 sm:space-y-2">
           <label className="text-sm font-medium text-foreground flex items-center gap-2">
             <Phone className="w-4 h-4 text-primary" />
             {t('contact.form.phone')}
@@ -176,7 +176,7 @@ const ContactForm = () => {
           )}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1.5 sm:space-y-2">
           <label className="text-sm font-medium text-foreground flex items-center gap-2">
             <MessageSquare className="w-4 h-4 text-primary" />
             {t('contact.form.message')}
@@ -184,7 +184,7 @@ const ContactForm = () => {
           <Textarea
             {...register('message')}
             placeholder={language === 'pl' ? "Opisz, jak możemy Ci pomóc..." : "Describe how we can help you..."}
-            rows={5}
+            rows={4}
             className="bg-background border-border focus:border-primary resize-none"
           />
           {errors.message && (
@@ -192,14 +192,14 @@ const ContactForm = () => {
           )}
         </div>
 
-        <div className="flex items-start gap-3 pt-2">
+        <div className="flex items-start gap-3 pt-1 sm:pt-2">
           <Checkbox
             id="privacy"
             checked={privacyAccepted}
             onCheckedChange={(checked) => setValue('privacy', checked as boolean)}
-            className="mt-1"
+            className="mt-0.5"
           />
-          <label htmlFor="privacy" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
+          <label htmlFor="privacy" className="text-xs sm:text-sm text-muted-foreground leading-relaxed cursor-pointer">
             {language === 'pl' ? 'Akceptuję' : 'I accept the'}{' '}
             <button
               type="button"
@@ -219,7 +219,7 @@ const ContactForm = () => {
           type="submit"
           disabled={isSubmitting}
           variant="glass"
-          className="w-full font-semibold py-6 text-lg group"
+          className="w-full font-semibold py-5 sm:py-6 text-base sm:text-lg group"
         >
           {isSubmitting ? (
             t('contact.form.sending')

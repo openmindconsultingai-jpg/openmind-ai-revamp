@@ -259,7 +259,8 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4"
+      style={{ paddingBottom: 'env(safe-area-inset-bottom, 12px)' }}
       onClick={onClose}
     >
       {/* Backdrop */}
@@ -267,29 +268,29 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       
       {/* Modal */}
       <div 
-        className="relative w-full max-w-lg glass rounded-3xl overflow-hidden animate-scale-in"
+        className="relative w-full max-w-lg glass rounded-2xl sm:rounded-3xl overflow-hidden animate-scale-in max-h-[90vh] sm:max-h-[85vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/50 hover:bg-muted/50 transition-colors"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 p-2 rounded-full bg-background/50 hover:bg-muted/50 transition-colors"
         >
           <X size={20} />
         </button>
 
         {/* Header */}
-        <div className="p-6 border-b border-border/30">
-          <h3 className="font-heading text-xl md:text-2xl text-gradient font-semibold">
+        <div className="p-4 sm:p-6 border-b border-border/30 flex-shrink-0">
+          <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-gradient font-semibold pr-8">
             {language === 'pl' ? 'Zarezerwuj bezpłatną konsultację' : 'Book a free consultation'}
           </h3>
-          <p className="text-muted-foreground text-sm mt-1">
+          <p className="text-muted-foreground text-xs sm:text-sm mt-1">
             {language === 'pl' ? '30 minut rozmowy o Twoich potrzebach AI' : '30 minutes to discuss your AI needs'}
           </p>
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-4 sm:p-6 overflow-y-auto flex-1" style={{ WebkitOverflowScrolling: 'touch' }}>
           
           {/* Step: Date Selection */}
           {step === 'date' && (
@@ -415,25 +416,27 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
             <div>
               <button
                 onClick={() => setStep('time')}
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-4 transition-colors"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-3 sm:mb-4 transition-colors"
               >
                 <ChevronLeft size={16} />
                 {language === 'pl' ? 'Zmień godzinę' : 'Change time'}
               </button>
 
-              <div className="flex flex-wrap gap-2 mb-6">
-                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 border border-primary/20">
-                  <Calendar size={16} className="text-primary" />
-                  <span className="text-sm">{formatDateDisplay(selectedDate)}</span>
+              <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
+                <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-primary/10 border border-primary/20">
+                  <Calendar size={14} className="text-primary sm:hidden" />
+                  <Calendar size={16} className="text-primary hidden sm:block" />
+                  <span className="text-xs sm:text-sm">{formatDateDisplay(selectedDate)}</span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 border border-primary/20">
-                  <Clock size={16} className="text-primary" />
-                  <span className="text-sm">{selectedTime}</span>
+                <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-primary/10 border border-primary/20">
+                  <Clock size={14} className="text-primary sm:hidden" />
+                  <Clock size={16} className="text-primary hidden sm:block" />
+                  <span className="text-xs sm:text-sm">{selectedTime}</span>
                 </div>
               </div>
 
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 sm:space-y-4">
                   <FormField
                     control={form.control}
                     name="clientName"
@@ -528,15 +531,16 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                     control={form.control}
                     name="privacyConsent"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-border/50 p-4 bg-background/30">
+                      <FormItem className="flex flex-row items-start space-x-2 sm:space-x-3 space-y-0 rounded-md border border-border/50 p-3 sm:p-4 bg-background/30">
                         <FormControl>
                           <Checkbox
                             checked={field.value}
                             onCheckedChange={field.onChange}
+                            className="mt-0.5"
                           />
                         </FormControl>
                         <div className="space-y-1 leading-none">
-                          <FormLabel className="text-sm font-normal cursor-pointer">
+                          <FormLabel className="text-xs sm:text-sm font-normal cursor-pointer leading-relaxed">
                             <Shield size={12} className="inline mr-1 text-primary" />
                             {language === 'pl' 
                               ? 'Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji rezerwacji zgodnie z ' 
