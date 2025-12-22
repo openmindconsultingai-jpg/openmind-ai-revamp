@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useNavigate } from 'react-router-dom';
 import BlogArticleCard from './BlogArticleCard';
 import BlogArticle from './BlogArticle';
 import VideoSectionBackground from '@/components/VideoSectionBackground';
@@ -15,11 +16,31 @@ const Blog = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
+  // Generowanie dat od 1 września 2025 do 22 grudnia 2025 (co ok. 4 dni)
+  const generatePublishDate = (index: number) => {
+    const startDate = new Date('2025-09-01');
+    const endDate = new Date('2025-12-22');
+    const totalDays = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+    const dayStep = Math.floor(totalDays / 29); // 30 artykułów, 29 przerw
+    const publishDate = new Date(startDate);
+    publishDate.setDate(publishDate.getDate() + (index * dayStep));
+    return publishDate;
+  };
+
+  const formatDate = (date: Date, lang: string) => {
+    return date.toLocaleDateString(lang === 'pl' ? 'pl-PL' : 'en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
   const articles = Array.from({ length: 30 }, (_, i) => ({
     id: i + 1,
     titleKey: `blog.article${i + 1}.title`,
     excerptKey: `blog.article${i + 1}.excerpt`,
     contentKey: `blog.article${i + 1}.content`,
+    publishDate: generatePublishDate(i),
   }));
 
   useEffect(() => {
@@ -77,6 +98,7 @@ const Blog = () => {
               contentKey={article.contentKey}
               articleId={article.id}
               onBack={() => setSelectedArticle(null)}
+              publishDate={article.publishDate}
             />
           </div>
         </section>
@@ -130,6 +152,7 @@ const Blog = () => {
                 titleKey={article.titleKey}
                 excerptKey={article.excerptKey}
                 articleId={article.id}
+                publishDate={article.publishDate}
               />
             </div>
           ))}

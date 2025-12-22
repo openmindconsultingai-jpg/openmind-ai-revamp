@@ -294,7 +294,7 @@ const VideoHero = () => {
               textShadow: '0 0 20px hsl(176 100% 43% / 0.5)',
             }}
           >
-            Umów bezpłatną konsultację
+            {t('hero.cta.consultation')}
           </span>
           
           {/* Shimmer sweep effect */}
