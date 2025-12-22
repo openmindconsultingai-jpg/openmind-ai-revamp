@@ -141,25 +141,15 @@ const About = () => {
                   className="w-full max-w-[300px] aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div className="ceo-text space-y-4 max-w-3xl">
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-gradient text-glow-subtle mb-2">
-                    {t('about.ceo.name')}
-                  </h3>
-                  <p className="text-lg text-primary font-semibold">{t('about.ceo.title')}</p>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
+              <div className="ceo-text space-y-4 max-w-4xl">
+                <h3 className="text-2xl md:text-3xl font-bold text-gradient text-glow-subtle mb-4">
+                  {t('about.ceo.name')}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed text-lg">
                   {t('about.ceo.bio')}
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* Company Description */}
-          <div ref={descRef} className="mb-16 max-w-5xl mx-auto">
-            <p className="text-lg text-muted-foreground leading-relaxed text-center">
-              {t('about.company.desc')}
-            </p>
           </div>
 
           {/* Values Grid */}
