@@ -3,6 +3,7 @@ import { Send, Download, Loader2, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+import jsPDF from 'jspdf';
 
 type Message = {
   role: 'user' | 'assistant';
@@ -196,61 +197,144 @@ const AIAdvisorChat = () => {
       } catch {
         pdfContent = { 
           title: 'Twoje zastosowania AI',
+          summary: 'Podsumowanie Twojej rozmowy z doradcą AI.',
           applications: [{ name: 'Podsumowanie', description: data.content, benefit: '' }],
           nextSteps: 'Skontaktuj się z nami!'
         };
       }
 
-      // Generate HTML for PDF
-      const htmlContent = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <meta charset="UTF-8">
-          <title>${pdfContent.title}</title>
-          <style>
-            body { font-family: 'Segoe UI', sans-serif; padding: 40px; color: #1a1a1a; }
-            h1 { color: #00d4aa; margin-bottom: 30px; }
-            .app { margin-bottom: 25px; padding: 20px; background: #f5f5f5; border-radius: 10px; }
-            .app h3 { color: #00a8a8; margin: 0 0 10px 0; }
-            .app p { margin: 5px 0; }
-            .benefit { color: #666; font-style: italic; }
-            .footer { margin-top: 40px; padding-top: 20px; border-top: 2px solid #00d4aa; }
-            .footer p { color: #00a8a8; font-weight: bold; }
-          </style>
-        </head>
-        <body>
-          <h1>${pdfContent.title}</h1>
-          ${pdfContent.applications.map((app: any, i: number) => `
-            <div class="app">
-              <h3>${i + 1}. ${app.name}</h3>
-              <p>${app.description}</p>
-              ${app.benefit ? `<p class="benefit">✓ ${app.benefit}</p>` : ''}
-            </div>
-          `).join('')}
-          <div class="footer">
-            <p>${pdfContent.nextSteps}</p>
-            <p>OpenMind AI Consulting | kontakt@openmind.pl</p>
-          </div>
-        </body>
-        </html>
-      `;
+      // Generate PDF using jsPDF
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      });
 
-      // Create and download
-      const blob = new Blob([htmlContent], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'Zastosowania-AI-OpenMind.html';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const margin = 20;
+      const contentWidth = pageWidth - 2 * margin;
+      let yPos = margin;
 
-      toast.success('Podsumowanie zostało pobrane!');
+      // Header with gradient-like effect
+      pdf.setFillColor(0, 212, 170);
+      pdf.rect(0, 0, pageWidth, 45, 'F');
+      
+      // Logo text
+      pdf.setTextColor(255, 255, 255);
+      pdf.setFontSize(24);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('OpenMind AI', margin, 25);
+      
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('Consulting & Solutions', margin, 35);
+
+      yPos = 60;
+
+      // Title
+      pdf.setTextColor(0, 168, 168);
+      pdf.setFontSize(20);
+      pdf.setFont('helvetica', 'bold');
+      const titleLines = pdf.splitTextToSize(pdfContent.title || 'Twoje spersonalizowane zastosowania AI', contentWidth);
+      pdf.text(titleLines, margin, yPos);
+      yPos += titleLines.length * 8 + 10;
+
+      // Summary
+      if (pdfContent.summary) {
+        pdf.setTextColor(100, 100, 100);
+        pdf.setFontSize(11);
+        pdf.setFont('helvetica', 'italic');
+        const summaryLines = pdf.splitTextToSize(pdfContent.summary, contentWidth);
+        pdf.text(summaryLines, margin, yPos);
+        yPos += summaryLines.length * 5 + 15;
+      }
+
+      // Applications
+      pdf.setTextColor(26, 26, 26);
+      const applications = pdfContent.applications || [];
+      
+      applications.forEach((app: any, index: number) => {
+        // Check if we need a new page
+        if (yPos > pageHeight - 60) {
+          pdf.addPage();
+          yPos = margin;
+        }
+
+        // Application box background
+        pdf.setFillColor(245, 245, 245);
+        const boxHeight = 35;
+        pdf.roundedRect(margin - 5, yPos - 5, contentWidth + 10, boxHeight, 3, 3, 'F');
+
+        // Application number and name
+        pdf.setTextColor(0, 168, 168);
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        const appTitle = `${index + 1}. ${app.name || 'Zastosowanie'}`;
+        pdf.text(appTitle, margin, yPos + 5);
+
+        // Description
+        pdf.setTextColor(60, 60, 60);
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        const descLines = pdf.splitTextToSize(app.description || '', contentWidth - 10);
+        pdf.text(descLines.slice(0, 2), margin, yPos + 13);
+
+        // Benefit
+        if (app.benefit) {
+          pdf.setTextColor(0, 150, 136);
+          pdf.setFontSize(9);
+          pdf.setFont('helvetica', 'italic');
+          pdf.text(`✓ ${app.benefit}`, margin, yPos + 25);
+        }
+
+        yPos += boxHeight + 10;
+      });
+
+      // Next steps section
+      if (yPos > pageHeight - 50) {
+        pdf.addPage();
+        yPos = margin;
+      }
+
+      yPos += 10;
+      pdf.setFillColor(0, 212, 170);
+      pdf.roundedRect(margin - 5, yPos - 5, contentWidth + 10, 25, 3, 3, 'F');
+      
+      pdf.setTextColor(255, 255, 255);
+      pdf.setFontSize(11);
+      pdf.setFont('helvetica', 'bold');
+      const nextStepsText = pdfContent.nextSteps || 'Skontaktuj się z nami, aby omówić wdrożenie!';
+      const nextStepsLines = pdf.splitTextToSize(nextStepsText, contentWidth);
+      pdf.text(nextStepsLines, margin, yPos + 8);
+
+      // Footer
+      const footerY = pageHeight - 15;
+      pdf.setDrawColor(0, 212, 170);
+      pdf.setLineWidth(0.5);
+      pdf.line(margin, footerY - 5, pageWidth - margin, footerY - 5);
+      
+      pdf.setTextColor(0, 168, 168);
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('OpenMind AI Consulting', margin, footerY);
+      
+      pdf.setTextColor(100, 100, 100);
+      pdf.setFontSize(9);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('biuro@openmindai.pl', margin, footerY + 5);
+      
+      // Date on the right
+      const today = new Date().toLocaleDateString('pl-PL');
+      pdf.text(`Wygenerowano: ${today}`, pageWidth - margin - 40, footerY);
+
+      // Save PDF
+      pdf.save('Diagnoza-AI-OpenMind.pdf');
+
+      toast.success('Raport PDF został pobrany!');
     } catch (error) {
       console.error('PDF generation error:', error);
-      toast.error('Nie udało się wygenerować podsumowania.');
+      toast.error('Nie udało się wygenerować raportu PDF.');
     } finally {
       setIsLoading(false);
     }
@@ -311,7 +395,7 @@ const AIAdvisorChat = () => {
             className="gap-2"
           >
             <Download size={16} />
-            Pobierz podsumowanie
+            Pobierz raport PDF
           </Button>
           <Button
             size="sm"

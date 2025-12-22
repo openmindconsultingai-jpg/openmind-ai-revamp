@@ -121,22 +121,23 @@ serve(async (req) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "google/gemini-2.5-flash",
+          model: "google/gemini-3-pro-preview",
           messages: [
             { 
               role: "system", 
               content: `Na podstawie poprzedniej rozmowy, wyodrębnij i podsumuj wszystkie zaproponowane zastosowania AI. 
-              Odpowiedz w formacie JSON:
+              Odpowiedz TYLKO w formacie JSON (bez markdown, bez backticks):
               {
                 "title": "Twoje spersonalizowane zastosowania AI",
+                "summary": "Krótkie podsumowanie sytuacji użytkownika (2-3 zdania)",
                 "applications": [
                   {
                     "name": "Nazwa zastosowania",
-                    "description": "Krótki opis korzyści",
-                    "benefit": "Główna korzyść"
+                    "description": "Szczegółowy opis zastosowania i jak to pomoże użytkownikowi",
+                    "benefit": "Główna korzyść biznesowa lub osobista"
                   }
                 ],
-                "nextSteps": "Zachęta do kontaktu z OpenMind AI Consulting"
+                "nextSteps": "Skontaktuj się z nami, aby omówić wdrożenie tych rozwiązań w Twojej firmie!"
               }`
             },
             ...limitedMessages,
@@ -171,7 +172,7 @@ serve(async (req) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
+        model: "google/gemini-3-pro-preview",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           ...limitedMessages,
