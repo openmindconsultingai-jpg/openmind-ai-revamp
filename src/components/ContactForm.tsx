@@ -59,7 +59,7 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      console.log("Wysyłanie wiadomości...", data);
+      console.log("Wysyłanie wiadomości...");
       
       // Wysłanie emaila
       const emailPromise = supabase.functions.invoke('send-contact-email', {
@@ -71,20 +71,14 @@ const ContactForm = () => {
         }
       });
 
-      // Wysłanie do CRM
-      const crmPromise = fetch('https://lmpaoodakxvqcaivximb.supabase.co/functions/v1/webhook-lead-capture', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+      // Wysłanie do CRM przez proxy Edge Function
+      const crmPromise = supabase.functions.invoke('forward-to-crm', {
+        body: {
           name: data.name,
           email: data.email,
           phone: data.phone,
-          company: '',
-          source: 'website_form',
           message: data.message
-        })
+        }
       });
 
       const [emailResult, crmResult] = await Promise.all([emailPromise, crmPromise]);
@@ -94,8 +88,8 @@ const ContactForm = () => {
         throw emailResult.error;
       }
 
-      if (!crmResult.ok) {
-        console.error("Błąd wysyłania do CRM:", await crmResult.text());
+      if (crmResult.error) {
+        console.error("Błąd wysyłania do CRM:", crmResult.error);
       }
       
       toast({

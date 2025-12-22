@@ -3,6 +3,7 @@ import { User, ArrowLeft, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useNavigate } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 
 interface BlogArticleProps {
   titleKey: string;
@@ -21,6 +22,14 @@ const BlogArticle = ({ titleKey, contentKey, articleId, onBack, publishDate }: B
       year: 'numeric',
       month: 'long',
       day: 'numeric'
+    });
+  };
+
+  // Sanitize HTML content to prevent XSS attacks
+  const sanitizeHtml = (html: string): string => {
+    return DOMPurify.sanitize(html, {
+      ALLOWED_TAGS: ['strong', 'em', 'b', 'i', 'br'],
+      ALLOWED_ATTR: []
     });
   };
   
@@ -51,8 +60,9 @@ const BlogArticle = ({ titleKey, contentKey, articleId, onBack, publishDate }: B
             <ul className="list-disc list-inside space-y-2 ml-4">
               {items.map((item, i) => {
                 const text = item.replace(/^-\s*/, '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                const sanitizedText = sanitizeHtml(text);
                 return (
-                  <li key={i} className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: text }} />
+                  <li key={i} className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: sanitizedText }} />
                 );
               })}
             </ul>
@@ -67,8 +77,9 @@ const BlogArticle = ({ titleKey, contentKey, articleId, onBack, publishDate }: B
           <ol key={index} className="list-decimal list-inside space-y-2 ml-4 mb-4">
             {lines.map((item, i) => {
               const text = item.replace(/^\d+\.\s*/, '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+              const sanitizedText = sanitizeHtml(text);
               return (
-                <li key={i} className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: text }} />
+                <li key={i} className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: sanitizedText }} />
               );
             })}
           </ol>
@@ -77,8 +88,9 @@ const BlogArticle = ({ titleKey, contentKey, articleId, onBack, publishDate }: B
       
       // Regular paragraphs with bold text support
       const formattedText = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      const sanitizedText = sanitizeHtml(formattedText);
       return (
-        <p key={index} className="text-muted-foreground mb-4 leading-relaxed" dangerouslySetInnerHTML={{ __html: formattedText }} />
+        <p key={index} className="text-muted-foreground mb-4 leading-relaxed" dangerouslySetInnerHTML={{ __html: sanitizedText }} />
       );
     });
   };
