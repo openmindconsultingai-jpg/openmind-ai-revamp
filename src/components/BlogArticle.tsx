@@ -1,17 +1,16 @@
 import { Card } from '@/components/ui/card';
-import { Calendar, ArrowLeft } from 'lucide-react';
+import { User, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface BlogArticleProps {
   titleKey: string;
-  dateKey: string;
   contentKey: string;
   articleId: number;
   onBack: () => void;
 }
 
-const BlogArticle = ({ titleKey, dateKey, contentKey, articleId, onBack }: BlogArticleProps) => {
+const BlogArticle = ({ titleKey, contentKey, articleId, onBack }: BlogArticleProps) => {
   const { t } = useLanguage();
   
   // Split content by newlines and handle markdown-like formatting
@@ -86,8 +85,8 @@ const BlogArticle = ({ titleKey, dateKey, contentKey, articleId, onBack }: BlogA
       
       <Card className="p-8">
         <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-          <Calendar className="w-4 h-4" />
-          <span>{t(dateKey)}</span>
+          <User className="w-4 h-4" />
+          <span>Łukasz Czarnecki</span>
         </div>
         
         <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">

@@ -15,7 +15,7 @@ const Blog = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
-  const articles = Array.from({ length: 24 }, (_, i) => ({
+  const articles = Array.from({ length: 30 }, (_, i) => ({
     id: i + 1,
     titleKey: `blog.article${i + 1}.title`,
     excerptKey: `blog.article${i + 1}.excerpt`,
@@ -74,7 +74,6 @@ const Blog = () => {
           <div className="container mx-auto max-w-6xl">
             <BlogArticle
               titleKey={article.titleKey}
-              dateKey={article.dateKey}
               contentKey={article.contentKey}
               articleId={article.id}
               onBack={() => setSelectedArticle(null)}
@@ -129,7 +128,6 @@ const Blog = () => {
             >
               <BlogArticleCard
                 titleKey={article.titleKey}
-                dateKey={article.dateKey}
                 excerptKey={article.excerptKey}
                 articleId={article.id}
               />

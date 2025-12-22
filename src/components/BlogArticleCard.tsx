@@ -1,16 +1,15 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar } from 'lucide-react';
+import { User } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface BlogArticleCardProps {
   titleKey: string;
-  dateKey: string;
   excerptKey: string;
   articleId: number;
 }
 
-const BlogArticleCard = ({ titleKey, dateKey, excerptKey, articleId }: BlogArticleCardProps) => {
+const BlogArticleCard = ({ titleKey, excerptKey, articleId }: BlogArticleCardProps) => {
   const { t } = useLanguage();
 
   const handleReadMore = () => {
@@ -24,8 +23,8 @@ const BlogArticleCard = ({ titleKey, dateKey, excerptKey, articleId }: BlogArtic
   return (
     <Card className="p-6 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10">
       <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-        <Calendar className="w-4 h-4" />
-        <span>{t(dateKey)}</span>
+        <User className="w-4 h-4" />
+        <span>Łukasz Czarnecki</span>
       </div>
       
       <h3 className="text-2xl font-bold mb-4 text-foreground">
