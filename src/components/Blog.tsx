@@ -15,12 +15,12 @@ const Blog = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
-  // Generowanie dat od 1 września 2025 do 22 grudnia 2025 (co ok. 1.9 dni)
+  // Generowanie dat od 1 września 2025 do 22 grudnia 2025 (30 artykułów)
   const generatePublishDate = (index: number) => {
     const startDate = new Date('2025-09-01');
     const endDate = new Date('2025-12-22');
     const totalDays = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
-    const dayStep = Math.floor(totalDays / 59); // 60 artykułów, 59 przerw
+    const dayStep = Math.floor(totalDays / 29); // 30 artykułów, 29 przerw
     const publishDate = new Date(startDate);
     publishDate.setDate(publishDate.getDate() + (index * dayStep));
     return publishDate;
@@ -34,7 +34,7 @@ const Blog = () => {
     });
   };
 
-  const articles = Array.from({ length: 60 }, (_, i) => ({
+  const articles = Array.from({ length: 30 }, (_, i) => ({
     id: i + 1,
     titleKey: `blog.article${i + 1}.title`,
     excerptKey: `blog.article${i + 1}.excerpt`,
