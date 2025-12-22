@@ -10,7 +10,8 @@ const corsHeaders = {
 // Dane OpenMind AI Consulting
 const OWNER_EMAIL = "biuro@openmind.biz.pl";
 const COMPANY_NAME = "OpenMind AI Consulting";
-const SENDER_EMAIL = "rezerwacje@openmind.biz.pl";
+// Użyj domeny testowej Resend - zmień na własną po weryfikacji w https://resend.com/domains
+const SENDER_EMAIL = "onboarding@resend.dev";
 
 function escapeHtml(text: string): string {
   if (!text) return '';
