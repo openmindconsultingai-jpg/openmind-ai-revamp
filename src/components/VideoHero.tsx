@@ -224,7 +224,6 @@ const VideoHero = () => {
         <a 
           href="#booking" 
           className="hero-cta inline-block relative overflow-hidden px-10 py-5 bg-primary text-primary-foreground font-heading font-semibold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_hsl(176_100%_43%/0.5)]"
-          style={{ opacity: 0 }}
         >
           <span className="relative z-10">Umów bezpłatną konsultację</span>
           {/* Shimmer overlay */}
