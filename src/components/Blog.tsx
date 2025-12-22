@@ -15,15 +15,29 @@ const Blog = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
-  // Generowanie dat od 1 września 2025 do 22 grudnia 2025 (30 artykułów)
-  const generatePublishDate = (index: number) => {
-    const startDate = new Date('2025-09-01');
-    const endDate = new Date('2025-12-22');
-    const totalDays = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
-    const dayStep = Math.floor(totalDays / 29); // 30 artykułów, 29 przerw
-    const publishDate = new Date(startDate);
-    publishDate.setDate(publishDate.getDate() + (index * dayStep));
-    return publishDate;
+  // Generowanie dat: artykuły 31-60 (z drugiej bazy) = 27.11-22.12, artykuły 1-30 (z pierwszej bazy) = 1.09-26.11
+  const generatePublishDate = (articleId: number) => {
+    if (articleId >= 31 && articleId <= 60) {
+      // Artykuły 31-60: daty od 27 listopada do 22 grudnia 2025 (najnowsze)
+      const startDate = new Date('2025-11-27');
+      const endDate = new Date('2025-12-22');
+      const totalDays = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+      const dayStep = totalDays / 29; // 30 artykułów, 29 przerw
+      const index = articleId - 31; // 0-29
+      const publishDate = new Date(startDate);
+      publishDate.setDate(publishDate.getDate() + Math.floor(index * dayStep));
+      return publishDate;
+    } else {
+      // Artykuły 1-30: daty od 1 września do 26 listopada 2025 (starsze)
+      const startDate = new Date('2025-09-01');
+      const endDate = new Date('2025-11-26');
+      const totalDays = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+      const dayStep = totalDays / 29; // 30 artykułów, 29 przerw
+      const index = articleId - 1; // 0-29
+      const publishDate = new Date(startDate);
+      publishDate.setDate(publishDate.getDate() + Math.floor(index * dayStep));
+      return publishDate;
+    }
   };
 
   const formatDate = (date: Date, lang: string) => {
@@ -34,12 +48,12 @@ const Blog = () => {
     });
   };
 
-  const articles = Array.from({ length: 30 }, (_, i) => ({
+  const articles = Array.from({ length: 60 }, (_, i) => ({
     id: i + 1,
     titleKey: `blog.article${i + 1}.title`,
     excerptKey: `blog.article${i + 1}.excerpt`,
     contentKey: `blog.article${i + 1}.content`,
-    publishDate: generatePublishDate(i),
+    publishDate: generatePublishDate(i + 1),
   })).sort((a, b) => b.publishDate.getTime() - a.publishDate.getTime());
 
   useEffect(() => {
