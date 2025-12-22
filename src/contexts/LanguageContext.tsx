@@ -153,7 +153,42 @@ const translations: Translations = {
     // About
     'about.title': 'O nas',
     'about.ceo.name': 'Łukasz Czarnecki',
-    'about.ceo.bio': 'Absolwent Uniwersytetu Mikołaja Kopernika w Toruniu na kierunku bezpieczeństwo wewnętrzne, ze specjalizacją bezpieczeństwa informacji. Doświadczenie zdobywał w administracji publicznej oraz jako manager w międzynarodowej korporacji, pracując dla organizacji takich jak General Electric, Amazon, Macquarie, J.P. Morgan, American Express oraz ONZ. Dziś jako założyciel OpenMind AI Consulting projektuje, wdraża i utrzymuje rozwiązania oparte na zaawansowanych modelach językowych i obrazowych, które realnie wspierają sprzedaż, marketing i obsługę klienta. Zakres usług obejmuje strategiczną diagnozę i definiowanie KPI, budowę chatbotów konwersacyjnych oraz asystentów produktowych, aplikacji tworzonych pod specyficzne problemy firm, integracje API z systemami CRM, e-commerce, płatności i rezerwacji, a także warstwę pamięci i wyszukiwania wiedzy (RAG) oraz automatyzacje procesów. Projekty realizowane są w modelu SaaS – ze stałą opłatą aktywacyjną i przewidywalnym, dostosowanym do potrzeb abonamentem – rozwijając rozwiązania iteracyjnie, w oparciu o pomiar efektywności, testy A/B i regularne przeglądy. Celem jest trwałe zwiększanie liczby wartościowych zapytań i rezerwacji, skracanie czasu odpowiedzi, redukcja zwrotów oraz wzrost satysfakcji klientów.',
+    'about.ceo.title': 'Założyciel i Właściciel OpenMind AI Consulting',
+    'about.ceo.bio': `Jesteśmy interdyscyplinarnym hubem technologicznym. W OpenMind AI Consulting zacieramy granicę między inżynierią oprogramowania a sztuką cyfrową, dostarczając rozwiązania, które jeszcze wczoraj wydawały się niemożliwe.
+
+Więcej niż Software House. Więcej niż Agencja.
+
+Rynek AI jest sfragmentaryzowany. Programiści często nie rozumieją biznesu, a agencje kreatywne nie potrafią pisać kodu. My wypełniamy tę lukę.
+
+OpenMind AI Consulting powstało z przekonania, że prawdziwa rewolucja dzieje się na styku dziedzin. Jesteśmy zespołem innowatorów, w którym analitycy danych pracują ramię w ramię z artystami wizualnymi, a architekci systemowi z ekspertami od strategii biznesowej.
+
+Nie jesteśmy tu po to, by tylko "wdrożyć AI". Jesteśmy tu, by zdefiniować na nowo Twój model operacyjny i wizerunek.
+
+Nasza Filozofia: Logika i Magia
+
+Wierzymy w podejście 360 stopni. Dla nas technologia ma dwie twarze, a my opanowaliśmy obie:
+
+Logika (Hard Tech): Budujemy stabilne fundamenty. Autonomiczne agenty, bezpieczne modele LLM, automatyzacja procesów w Pythonie. To nasz kręgosłup.
+
+Magia (Generative Art): Tworzymy to, co widoczne. Wykorzystujemy modele generatywne nowej generacji, takie jak Sora 2, Veo 3.1, Kling czy NanoBanana, by dostarczać content wizualny o jakości, która do niedawna wymagała budżetów Hollywood.
+
+Pionierzy Praktycznej Innowacji
+
+Nie ścigamy się o tytuł "pierwszych". Ścigamy się o tytuł najskuteczniejszych. Jako jedni z nielicznych na rynku nie traktujemy narzędzi AI jako ciekawostki, ale jako integralną część biznesu. Kiedy inni dopiero testują nowe modele, my mamy już opracowane pipeline'y produkcyjne, które wdrażamy u klientów z branży medycznej, e-commerce, nieruchomości czy prawa.
+
+Dlaczego OpenMind?
+
+Technologia Jutra Dziś: Pracujemy na modelach wideo i graficznych (Sora 2, NanoBanana), które stanowią absolutną czołówkę światową.
+
+Bezpieczeństwo przede wszystkim: Innowacja nie może zagrażać Twoim danym. Nasze wdrożenia są zgodne z najwyższymi standardami compliance i etyki AI.
+
+Transfer Wiedzy: Nie uzależniamy Cię od nas. Poprzez naszą AI Academy uczymy Twój zespół, jak przejąć stery i samodzielnie korzystać z wdrożonych narzędzi.
+
+Nasza Misja
+
+Demokratyzacja supermocy. Chcemy, aby każda firma – od wyspecjalizowanej kancelarii prawnej po globalną markę retailową – miała dostęp do narzędzi, które skalują jej możliwości w nieskończoność.
+
+OpenMind AI Consulting. Twój partner w transformacji.`,
     'about.expertise.title': 'Ekspertyza',
     'about.expertise.desc': 'Głęboka wiedza o możliwościach AI i jej praktycznym zastosowaniu',
     'about.precision.title': 'Precyzja',
@@ -955,7 +990,42 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     // About
     'about.title': 'About Us',
     'about.ceo.name': 'Łukasz Czarnecki',
-    'about.ceo.bio': 'Graduate of Nicolaus Copernicus University in Toruń in Internal Security with a specialization in Information Security. Gained experience in public administration and as a manager in an international corporation, working for organizations such as General Electric, Amazon, Macquarie, J.P. Morgan, American Express, and the United Nations. Today, as the founder of OpenMind AI Consulting, he designs, implements, and maintains solutions based on advanced language and image models that effectively support sales, marketing, and customer service. The scope of services includes strategic diagnosis and KPI definition, building conversational chatbots and product assistants, applications created for specific company problems, API integrations with CRM systems, e-commerce, payments and reservations, as well as memory and knowledge search layers (RAG) and process automation. Projects are delivered in a SaaS model – with a fixed activation fee and a predictable, needs-adjusted subscription – developing solutions iteratively based on effectiveness measurement, A/B testing, and regular reviews. The goal is to sustainably increase valuable inquiries and reservations, reduce response times, reduce returns, and increase customer satisfaction.',
+    'about.ceo.title': 'Founder and Owner of OpenMind AI Consulting',
+    'about.ceo.bio': `We are an interdisciplinary technology hub. At OpenMind AI Consulting, we blur the line between software engineering and digital art, delivering solutions that seemed impossible just yesterday.
+
+More than a Software House. More than an Agency.
+
+The AI market is fragmented. Programmers often don't understand business, and creative agencies can't write code. We fill this gap.
+
+OpenMind AI Consulting was founded on the belief that true revolution happens at the intersection of disciplines. We are a team of innovators where data analysts work side by side with visual artists, and system architects with business strategy experts.
+
+We're not here just to "implement AI". We're here to redefine your operational model and image.
+
+Our Philosophy: Logic and Magic
+
+We believe in a 360-degree approach. For us, technology has two faces, and we've mastered both:
+
+Logic (Hard Tech): We build stable foundations. Autonomous agents, secure LLM models, process automation in Python. This is our backbone.
+
+Magic (Generative Art): We create what's visible. We use next-generation generative models such as Sora 2, Veo 3.1, Kling, and NanoBanana to deliver visual content of quality that until recently required Hollywood budgets.
+
+Pioneers of Practical Innovation
+
+We don't race for the title of "first". We race for the title of most effective. As one of the few on the market, we don't treat AI tools as curiosities but as an integral part of business. While others are just testing new models, we already have production pipelines that we deploy for clients in medical, e-commerce, real estate, and legal industries.
+
+Why OpenMind?
+
+Tomorrow's Technology Today: We work with video and graphic models (Sora 2, NanoBanana) that represent the absolute world-class standard.
+
+Security First: Innovation cannot threaten your data. Our implementations comply with the highest compliance and AI ethics standards.
+
+Knowledge Transfer: We don't make you dependent on us. Through our AI Academy, we teach your team how to take the reins and independently use the implemented tools.
+
+Our Mission
+
+Democratization of superpowers. We want every company – from a specialized law firm to a global retail brand – to have access to tools that scale their capabilities infinitely.
+
+OpenMind AI Consulting. Your partner in transformation.`,
     'about.expertise.title': 'Expertise',
     'about.expertise.desc': 'Deep knowledge of AI capabilities and its practical application',
     'about.precision.title': 'Precision',

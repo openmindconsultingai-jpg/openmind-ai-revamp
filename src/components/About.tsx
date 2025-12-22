@@ -142,12 +142,15 @@ const About = () => {
                 />
               </div>
               <div className="ceo-text space-y-4 max-w-4xl">
-                <h3 className="text-2xl md:text-3xl font-bold text-gradient text-glow-subtle mb-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-gradient text-glow-subtle mb-2">
                   {t('about.ceo.name')}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-lg">
-                  {t('about.ceo.bio')}
+                <p className="text-primary/80 text-lg mb-4">
+                  {t('about.ceo.title')}
                 </p>
+                <div className="text-muted-foreground leading-relaxed text-lg whitespace-pre-line">
+                  {t('about.ceo.bio')}
+                </div>
               </div>
             </div>
           </div>
