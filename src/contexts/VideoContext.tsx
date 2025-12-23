@@ -30,40 +30,49 @@ export const VideoProvider = ({ children }: { children: ReactNode }) => {
   const [playlist, setPlaylist] = useState<VideoFile[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasFetched, setHasFetched] = useState(false);
 
-  // Fetch videos once on mount
+  // Defer video fetching - don't block initial render
   useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const { data, error } = await supabase.storage
-          .from('hero')
-          .list('', { limit: 100 });
+    // Wait for initial paint before fetching videos
+    const timeoutId = setTimeout(() => {
+      if (hasFetched) return;
+      
+      const fetchVideos = async () => {
+        try {
+          const { data, error } = await supabase.storage
+            .from('hero')
+            .list('', { limit: 100 });
 
-        if (error) throw error;
+          if (error) throw error;
 
-        const videoFiles = data
-          .filter(file => file.name.endsWith('.mp4'))
-          .map(file => ({
-            name: file.name,
-            url: supabase.storage.from('hero').getPublicUrl(file.name).data.publicUrl
-          }));
+          const videoFiles = data
+            .filter(file => file.name.endsWith('.mp4'))
+            .map(file => ({
+              name: file.name,
+              url: supabase.storage.from('hero').getPublicUrl(file.name).data.publicUrl
+            }));
 
-        setAllVideos(videoFiles);
-        
-        // Create initial shuffled playlist
-        const shuffled = shuffleArray(videoFiles);
-        setPlaylist(shuffled);
-        
-        console.log(`Loaded ${videoFiles.length} videos, shuffled playlist created`);
-      } catch (err) {
-        console.error('Error fetching videos:', err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+          setAllVideos(videoFiles);
+          
+          // Create initial shuffled playlist
+          const shuffled = shuffleArray(videoFiles);
+          setPlaylist(shuffled);
+          setHasFetched(true);
+          
+          console.log(`Loaded ${videoFiles.length} videos, shuffled playlist created`);
+        } catch (err) {
+          console.error('Error fetching videos:', err);
+        } finally {
+          setIsLoading(false);
+        }
+      };
 
-    fetchVideos();
-  }, []);
+      fetchVideos();
+    }, 500); // 500ms delay to allow FCP first
+    
+    return () => clearTimeout(timeoutId);
+  }, [hasFetched]);
 
   // Move to next video in playlist, reshuffle when complete
   const nextVideo = useCallback(() => {
