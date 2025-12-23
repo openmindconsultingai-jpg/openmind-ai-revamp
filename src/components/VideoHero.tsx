@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useHeroVideos } from '@/hooks/useHeroVideos';
 import { noWidows } from '@/lib/typography';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import BookingModal from '@/components/BookingModal';
+
+// Lazy load BookingModal - not needed for initial render
+const BookingModal = lazy(() => import('@/components/BookingModal'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +20,21 @@ const VideoHero = () => {
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [animationStarted, setAnimationStarted] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [videoLoadDeferred, setVideoLoadDeferred] = useState(true);
+
+  // Check if mobile and defer video loading
+  useEffect(() => {
+    const checkMobile = window.innerWidth < 768;
+    setIsMobile(checkMobile);
+    
+    // Defer video loading to after critical content is painted
+    const timer = setTimeout(() => {
+      setVideoLoadDeferred(false);
+    }, checkMobile ? 100 : 0); // Small delay on mobile for faster FCP
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   // Text reveal animation - starts immediately
   useEffect(() => {
@@ -85,8 +102,10 @@ const VideoHero = () => {
     return () => ctx.revert();
   }, []);
 
-  // Mouse parallax effect
+  // Mouse parallax effect - disabled on mobile for performance
   useEffect(() => {
+    if (isMobile) return;
+    
     const handleMouseMove = (e: MouseEvent) => {
       const x = e.clientX / window.innerWidth;
       const y = e.clientY / window.innerHeight;
@@ -95,7 +114,7 @@ const VideoHero = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [isMobile]);
 
   const handleVideoEnded = () => {
     getNextVideo();
@@ -113,22 +132,29 @@ const VideoHero = () => {
       ref={containerRef}
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Video Background */}
+      {/* Video Background - deferred loading for better FCP */}
       <div className="absolute inset-0 overflow-hidden">
-        {currentVideo && (
+        {/* Placeholder gradient shown immediately */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-primary/10"
+          style={{ opacity: isVideoReady ? 0 : 1, transition: 'opacity 1s ease-out' }}
+        />
+        
+        {!videoLoadDeferred && currentVideo && (
           <video
             ref={videoRef}
             key={currentVideo.url}
             autoPlay
             muted
             playsInline
+            preload="metadata"
             onEnded={handleVideoEnded}
             onCanPlay={handleVideoCanPlay}
             className="absolute inset-0 w-full h-full object-cover"
             style={{
               opacity: isVideoReady ? 1 : 0,
               transition: 'opacity 1.5s ease-out',
-              willChange: 'transform, filter',
+              willChange: isMobile ? 'auto' : 'transform, filter',
             }}
           >
             <source src={currentVideo.url} type="video/mp4" />
@@ -165,29 +191,31 @@ const VideoHero = () => {
         }}
       />
 
-      {/* Subtle animated orbs with parallax */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div 
-          className="absolute w-[600px] h-[600px] rounded-full opacity-20"
-          style={{
-            background: 'radial-gradient(circle, hsl(176 100% 43% / 0.4) 0%, transparent 70%)',
-            left: '10%',
-            top: '20%',
-            transform: `translate(${(mousePosition.x - 0.5) * -40}px, ${(mousePosition.y - 0.5) * -40}px)`,
-            transition: 'transform 0.5s ease-out',
-          }}
-        />
-        <div 
-          className="absolute w-[800px] h-[800px] rounded-full opacity-15"
-          style={{
-            background: 'radial-gradient(circle, hsl(190 100% 50% / 0.5) 0%, transparent 70%)',
-            right: '-10%',
-            top: '-20%',
-            transform: `translate(${(mousePosition.x - 0.5) * 50}px, ${(mousePosition.y - 0.5) * 50}px)`,
-            transition: 'transform 0.5s ease-out',
-          }}
-        />
-      </div>
+      {/* Subtle animated orbs with parallax - simplified on mobile */}
+      {!isMobile && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div 
+            className="absolute w-[600px] h-[600px] rounded-full opacity-20"
+            style={{
+              background: 'radial-gradient(circle, hsl(176 100% 43% / 0.4) 0%, transparent 70%)',
+              left: '10%',
+              top: '20%',
+              transform: `translate(${(mousePosition.x - 0.5) * -40}px, ${(mousePosition.y - 0.5) * -40}px)`,
+              transition: 'transform 0.5s ease-out',
+            }}
+          />
+          <div 
+            className="absolute w-[800px] h-[800px] rounded-full opacity-15"
+            style={{
+              background: 'radial-gradient(circle, hsl(190 100% 50% / 0.5) 0%, transparent 70%)',
+              right: '-10%',
+              top: '-20%',
+              transform: `translate(${(mousePosition.x - 0.5) * 50}px, ${(mousePosition.y - 0.5) * 50}px)`,
+              transition: 'transform 0.5s ease-out',
+            }}
+          />
+        </div>
+      )}
 
       {/* Hero Content */}
       <div className="relative z-20 text-center px-6 max-w-6xl mx-auto -mt-48">
@@ -318,8 +346,12 @@ const VideoHero = () => {
           />
         </button>
 
-        {/* Booking Modal */}
-        <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+        {/* Booking Modal - lazy loaded */}
+        {isBookingOpen && (
+          <Suspense fallback={null}>
+            <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+          </Suspense>
+        )}
       </div>
 
       {/* Scroll indicator - positioned below CTA button */}
