@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,10 +7,16 @@
     <meta name="description" content="OpenMind AI Consulting łączy polskie know-how z globalnymi technologiami AI. Skuteczne wsparcie dla firm, rodzin i szkół.">
     <meta name="author" content="OpenMind AI" />
     
-    <!-- Fonts: Outfit (headings) + DM Sans (body) -->
+    <!-- Critical: Preconnect to font origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Fonts with display=swap for non-blocking load -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    </noscript>
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website" />
@@ -38,6 +44,7 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    <!-- Defer non-critical third-party scripts -->
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" defer type="text/javascript"></script>
   </body>
 </html>
