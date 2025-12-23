@@ -33,15 +33,7 @@ export const VideoProvider = ({ children }: { children: ReactNode }) => {
   const [hasFetched, setHasFetched] = useState(false);
 
   // Defer video fetching - don't block initial render
-  // On mobile: don't fetch at all (no video shown)
   useEffect(() => {
-    // Skip fetching on mobile - video not used
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    if (isMobile) {
-      setIsLoading(false);
-      return;
-    }
-    
     // Wait for initial paint before fetching videos
     const timeoutId = setTimeout(() => {
       if (hasFetched) return;
