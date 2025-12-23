@@ -20,20 +20,25 @@ const VideoHero = () => {
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [animationStarted, setAnimationStarted] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [videoLoadDeferred, setVideoLoadDeferred] = useState(true);
+  const [isMobile, setIsMobile] = useState(() => 
+    typeof window !== 'undefined' && window.innerWidth < 768
+  );
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
-  // Check if mobile and defer video loading
+  // On mobile: no video at all (static background only)
+  // On desktop: defer video loading slightly for better FCP
   useEffect(() => {
     const checkMobile = window.innerWidth < 768;
     setIsMobile(checkMobile);
     
-    // Defer video loading to after critical content is painted
-    const timer = setTimeout(() => {
-      setVideoLoadDeferred(false);
-    }, checkMobile ? 100 : 0); // Small delay on mobile for faster FCP
-    
-    return () => clearTimeout(timer);
+    if (!checkMobile) {
+      // Desktop: load video after a short delay
+      const timer = setTimeout(() => {
+        setShouldLoadVideo(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+    // Mobile: never load video - static background only
   }, []);
 
   // Text reveal animation - starts immediately
@@ -132,15 +137,20 @@ const VideoHero = () => {
       ref={containerRef}
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Video Background - deferred loading for better FCP */}
+      {/* Background - static on mobile, video on desktop */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Placeholder gradient shown immediately */}
+        {/* Static gradient background - shown on mobile OR while video loads */}
         <div 
-          className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-primary/10"
-          style={{ opacity: isVideoReady ? 0 : 1, transition: 'opacity 1s ease-out' }}
+          className="absolute inset-0"
+          style={{ 
+            background: 'radial-gradient(ellipse at 60% 40%, hsl(176 100% 43% / 0.15) 0%, hsl(220 15% 5%) 60%)',
+            opacity: (isMobile || !isVideoReady) ? 1 : 0, 
+            transition: 'opacity 1s ease-out' 
+          }}
         />
         
-        {!videoLoadDeferred && currentVideo && (
+        {/* Video only on desktop */}
+        {!isMobile && shouldLoadVideo && currentVideo && (
           <video
             ref={videoRef}
             key={currentVideo.url}
@@ -154,7 +164,7 @@ const VideoHero = () => {
             style={{
               opacity: isVideoReady ? 1 : 0,
               transition: 'opacity 1.5s ease-out',
-              willChange: isMobile ? 'auto' : 'transform, filter',
+              willChange: 'transform, filter',
             }}
           >
             <source src={currentVideo.url} type="video/mp4" />
