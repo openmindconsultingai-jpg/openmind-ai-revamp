@@ -56,7 +56,7 @@ const ServiceAreas = () => {
           {voivodeships.map((v) => (
             <Link
               key={v.slug}
-              to={`/gdzie-dzialamy/${v.slug}`}
+              to={`/gdzie-dzialamy/${v.slug}/${v.cities[0].slug}`}
               className="area-card group relative rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] block"
               style={{
                 background: 'linear-gradient(145deg, hsl(220 15% 10% / 0.8) 0%, hsl(220 15% 6% / 0.9) 100%)',
