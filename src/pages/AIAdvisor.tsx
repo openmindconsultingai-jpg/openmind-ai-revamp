@@ -1,7 +1,7 @@
 import PageLayout from '@/components/PageLayout';
 import Footer from '@/components/Footer';
 import AIAdvisorChat from '@/components/AIAdvisorChat';
-import VideoSectionBackground from '@/components/VideoSectionBackground';
+
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const AIAdvisorPage = () => {
@@ -12,7 +12,7 @@ const AIAdvisorPage = () => {
       <section className="relative min-h-screen pt-16 sm:pt-20 pb-20 sm:pb-32 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0">
-          <VideoSectionBackground opacity={0.4} blurPx={4} overlayOpacity={0.6} />
+          
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
         </div>
 

@@ -5,7 +5,7 @@ import {
 } from 'lucide-react';
 import logo from '@/assets/openmind-logo.webp';
 import { useLanguage } from '@/contexts/LanguageContext';
-import VideoSectionBackground from '@/components/VideoSectionBackground';
+
 
 // Service category images
 import serviceConsulting from '@/assets/service-consulting.jpg';
@@ -220,7 +220,7 @@ const Services = memo(() => {
   return (
     <section id="services" className="pt-20 md:pt-24 pb-20 md:pb-32 relative overflow-hidden">
       <div className="absolute inset-0">
-        <VideoSectionBackground opacity={0.5} blurPx={4} overlayOpacity={0.5} />
+        
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
       </div>
       

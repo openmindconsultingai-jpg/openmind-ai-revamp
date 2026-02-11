@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import VideoHero from '@/components/VideoHero';
 import FloatingNav from '@/components/FloatingNav';
-import CustomCursor from '@/components/CustomCursor';
+
 import useSmoothScroll from '@/hooks/useSmoothScroll';
 
 // Lazy load below-the-fold sections for better FCP/LCP
@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <CustomCursor enabled={typeof window !== 'undefined' && window.innerWidth > 768} />
+      
       <FloatingNav />
       <VideoHero />
       <Suspense fallback={<div className="min-h-screen bg-background" />}>
