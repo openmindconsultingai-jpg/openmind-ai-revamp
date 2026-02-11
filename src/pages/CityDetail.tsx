@@ -13,7 +13,7 @@ const CityDetail = () => {
   const result = slug && citySlug ? findCity(slug, citySlug) : null;
   if (!result) return <Navigate to="/" replace />;
 
-  const { voivodeship, city } = result;
+  const { city } = result;
 
   const heading = language === 'pl'
     ? `Szkolenia, wdrażanie i agencja kreatywna AI w ${city.locative}`
@@ -33,10 +33,10 @@ const CityDetail = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Back link */}
-            <Link to={`/gdzie-dzialamy/${voivodeship.slug}`}>
+            <Link to="/#gdzie-dzialamy">
               <Button variant="ghost" className="mb-8 gap-2 text-muted-foreground hover:text-foreground">
                 <ArrowLeft className="w-4 h-4" />
-                {language === 'pl' ? `Woj. ${voivodeship.name.toLowerCase()}` : voivodeship.name}
+                {language === 'pl' ? `Powrót do mapy` : 'Back to areas'}
               </Button>
             </Link>
 
