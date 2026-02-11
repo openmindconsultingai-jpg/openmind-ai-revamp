@@ -19,6 +19,7 @@ const BlogArticlePage = lazy(() => import("./pages/BlogArticle"));
 const ContactPage = lazy(() => import("./pages/Contact"));
 const PrivacyPage = lazy(() => import("./pages/Privacy"));
 const AIAdvisorPage = lazy(() => import("./pages/AIAdvisor"));
+const VoivodeshipDetail = lazy(() => import("./pages/VoivodeshipDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/contact" element={<Suspense fallback={<PageLoader />}><ContactPage /></Suspense>} />
             <Route path="/privacy" element={<Suspense fallback={<PageLoader />}><PrivacyPage /></Suspense>} />
             <Route path="/ai-advisor" element={<Suspense fallback={<PageLoader />}><AIAdvisorPage /></Suspense>} />
+            <Route path="/gdzie-dzialamy/:slug" element={<Suspense fallback={<PageLoader />}><VoivodeshipDetail /></Suspense>} />
             <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
           </Routes>
         </BrowserRouter>
