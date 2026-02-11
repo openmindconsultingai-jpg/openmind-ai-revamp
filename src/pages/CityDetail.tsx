@@ -1,30 +1,31 @@
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 import PageLayout from '@/components/PageLayout';
 import ContactForm from '@/components/ContactForm';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { MapPin, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { findVoivodeship } from '@/data/voivodeships';
+import { findCity } from '@/data/voivodeships';
 
-const VoivodeshipDetail = () => {
-  const { slug } = useParams<{ slug: string }>();
+const CityDetail = () => {
+  const { slug, citySlug } = useParams<{ slug: string; citySlug: string }>();
   const { language } = useLanguage();
 
-  const data = slug ? findVoivodeship(slug) : null;
-  if (!data) return <Navigate to="/" replace />;
+  const result = slug && citySlug ? findCity(slug, citySlug) : null;
+  if (!result) return <Navigate to="/" replace />;
+
+  const { voivodeship, city } = result;
 
   const heading = language === 'pl'
-    ? `Szkolenia, wdrażanie i agencja kreatywna AI w województwie ${data.locativeName}`
-    : `AI Training, Implementation & Creative Agency in ${data.name}`;
+    ? `Szkolenia, wdrażanie i agencja kreatywna AI w ${city.locative}`
+    : `AI Training, Implementation & Creative Agency in ${city.name}`;
 
   const paragraph1 = language === 'pl'
-    ? `Szkolenia, wdrażanie i agencja kreatywna AI w województwie ${data.locativeName}. Jako regionalny lider transformacji cyfrowej, pomagamy firmom wdrażać technologie jutra, zapewniając realną oszczędność czasu, redukcję kosztów oraz pełne bezpieczeństwo danych w zgodzie z RODO. Nasz zespół ekspertów łączy strategiczne doradztwo z innowacyjną produkcją wizualną, budując przewagę konkurencyjną lokalnych przedsiębiorstw już dziś.`
-    : `We offer comprehensive AI services for businesses in the ${data.name} voivodeship. As a regional leader in digital transformation, we help businesses implement tomorrow's technologies, ensuring real time savings, cost reduction, and full GDPR-compliant data security.`;
+    ? `Szkolenia, wdrażanie i agencja kreatywna AI w województwie ${voivodeship.locativeName}. Jako regionalny lider transformacji cyfrowej, pomagamy firmom wdrażać technologie jutra, zapewniając realną oszczędność czasu, redukcję kosztów oraz pełne bezpieczeństwo danych w zgodzie z RODO. Nasz zespół ekspertów łączy strategiczne doradztwo z innowacyjną produkcją wizualną, budując przewagę konkurencyjną lokalnych przedsiębiorstw już dziś.`
+    : `AI training, implementation, and creative agency in the ${voivodeship.name} voivodeship. As a regional leader in digital transformation, we help businesses implement tomorrow's technologies, ensuring real time savings, cost reduction, and full GDPR-compliant data security. Our team of experts combines strategic consulting with innovative visual production, building competitive advantage for local businesses today.`;
 
   const paragraph2 = language === 'pl'
-    ? `Oferujemy kompleksowe usługi sztucznej inteligencji dla firm z województwa ${data.locativeName}. Szkolenia AI, automatyzacja procesów, generatywne media i doradztwo strategiczne – zdalnie lub stacjonarnie w Twoim mieście.`
-    : `AI training, process automation, generative media, and strategic consulting – remotely or on-site in your city.`;
+    ? `Oferujemy kompleksowe usługi sztucznej inteligencji dla firm w ${city.locative}. Szkolenia AI, automatyzacja procesów, generatywne media i doradztwo strategiczne – zdalnie lub stacjonarnie w Twoim mieście.`
+    : `We offer comprehensive AI services for businesses in ${city.name}. AI training, process automation, generative media, and strategic consulting – remotely or on-site in your city.`;
 
   return (
     <PageLayout>
@@ -32,10 +33,10 @@ const VoivodeshipDetail = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Back link */}
-            <Link to="/#gdzie-dzialamy">
+            <Link to={`/gdzie-dzialamy/${voivodeship.slug}`}>
               <Button variant="ghost" className="mb-8 gap-2 text-muted-foreground hover:text-foreground">
                 <ArrowLeft className="w-4 h-4" />
-                {language === 'pl' ? 'Powrót' : 'Back'}
+                {language === 'pl' ? `Woj. ${voivodeship.name.toLowerCase()}` : voivodeship.name}
               </Button>
             </Link>
 
@@ -46,7 +47,7 @@ const VoivodeshipDetail = () => {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <span className="text-sm font-medium text-primary tracking-wider uppercase">
-                  {language === 'pl' ? `Województwo ${data.name.toLowerCase()}` : data.name}
+                  {city.name}
                 </span>
               </div>
 
@@ -60,24 +61,6 @@ const VoivodeshipDetail = () => {
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
                 {paragraph2}
               </p>
-            </div>
-
-            {/* Cities */}
-            <div className="mb-14 md:mb-20">
-              <h2 className="font-heading text-xl md:text-2xl font-semibold mb-6 text-foreground">
-                {language === 'pl' ? 'Miasta, w których działamy' : 'Cities we serve'}
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {data.cities.map((city) => (
-                  <Link
-                    key={city.slug}
-                    to={`/gdzie-dzialamy/${data.slug}/${city.slug}`}
-                    className="px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors"
-                  >
-                    {city.name}
-                  </Link>
-                ))}
-              </div>
             </div>
 
             {/* Services summary */}
@@ -127,4 +110,4 @@ const VoivodeshipDetail = () => {
   );
 };
 
-export default VoivodeshipDetail;
+export default CityDetail;
