@@ -3,6 +3,7 @@ import FloatingNav from '@/components/FloatingNav';
 import ParticleBackground from '@/components/ParticleBackground';
 import Chatbot from '@/components/Chatbot';
 import useSmoothScroll from '@/hooks/useSmoothScroll';
+import useCanonical from '@/hooks/useCanonical';
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -12,6 +13,7 @@ interface PageLayoutProps {
 
 const PageLayout = memo(({ children }: PageLayoutProps) => {
   useSmoothScroll();
+  useCanonical();
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
