@@ -54,12 +54,12 @@ const ServiceAreas = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
           {voivodeships.map((v) => (
-            <Link
+            <div
               key={v.slug}
-              to={`/gdzie-dzialamy/${v.slug}/${v.cities[0].slug}`}
-              className="area-card group relative rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] block"
+              className="area-card group relative rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02]"
               style={{
-                background: 'linear-gradient(145deg, hsl(220 15% 10% / 0.8) 0%, hsl(220 15% 6% / 0.9) 100%)',
+                background:
+                  'linear-gradient(145deg, hsl(220 15% 10% / 0.8) 0%, hsl(220 15% 6% / 0.9) 100%)',
                 border: '1px solid hsl(176 100% 43% / 0.12)',
                 boxShadow: '0 4px 30px hsl(0 0% 0% / 0.3)',
               }}
@@ -67,18 +67,28 @@ const ServiceAreas = () => {
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
-                  background: 'radial-gradient(300px circle at 50% 0%, hsl(176 100% 43% / 0.15), transparent 60%)',
+                  background:
+                    'radial-gradient(300px circle at 50% 0%, hsl(176 100% 43% / 0.15), transparent 60%)',
                 }}
               />
 
               <div className="relative z-10 p-5 md:p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
+                  <Link
+                    to={`/gdzie-dzialamy/${v.slug}/${v.cities[0].slug}`}
+                    className="flex items-center gap-2 min-w-0"
+                    aria-label={
+                      language === 'pl'
+                        ? `Przejdź do podstron miast w województwie ${v.name}`
+                        : `Open cities in ${v.name}`
+                    }
+                  >
                     <MapPin className="w-4 h-4 text-primary shrink-0" />
-                    <h3 className="font-heading text-sm md:text-base font-semibold text-primary tracking-wide">
+                    <h3 className="font-heading text-sm md:text-base font-semibold text-primary tracking-wide truncate">
                       {language === 'pl' ? `Woj. ${v.name.toLowerCase()}` : v.name}
                     </h3>
-                  </div>
+                  </Link>
+
                   <ChevronRight className="w-4 h-4 text-primary/50 group-hover:text-primary group-hover:translate-x-1 transition-all" />
                 </div>
 
@@ -86,14 +96,19 @@ const ServiceAreas = () => {
 
                 <ul className="space-y-1.5">
                   {v.cities.map((city) => (
-                    <li key={city.slug} className="flex items-center gap-2 text-sm text-foreground/70 font-sans">
-                      <span className="w-1 h-1 rounded-full bg-primary/50 shrink-0" />
-                      {city.name}
+                    <li key={city.slug}>
+                      <Link
+                        to={`/gdzie-dzialamy/${v.slug}/${city.slug}`}
+                        className="flex items-center gap-2 text-sm text-foreground/70 font-sans hover:text-foreground transition-colors"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-primary/50 shrink-0" />
+                        {city.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
