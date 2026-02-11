@@ -24,16 +24,16 @@ const ParticleBackground = memo(() => {
       size: number; alpha: number;
     }> = [];
 
-    const count = Math.min(100, Math.floor(window.innerWidth * window.innerHeight / 15000));
+    const count = Math.min(200, Math.floor(window.innerWidth * window.innerHeight / 8000));
 
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        size: Math.random() * 2 + 0.5,
-        alpha: Math.random() * 0.5 + 0.15,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2.5 + 1,
+        alpha: Math.random() * 0.6 + 0.3,
       });
     }
 
