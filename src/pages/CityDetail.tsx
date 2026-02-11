@@ -20,8 +20,8 @@ const CityDetail = () => {
     : `AI Training, Implementation & Creative Agency in ${city.name}`;
 
   const paragraph1 = language === 'pl'
-    ? `Szkolenia, wdrażanie i agencja kreatywna AI w województwie ${voivodeship.locativeName}. Jako regionalny lider transformacji cyfrowej, pomagamy firmom wdrażać technologie jutra, zapewniając realną oszczędność czasu, redukcję kosztów oraz pełne bezpieczeństwo danych w zgodzie z RODO. Nasz zespół ekspertów łączy strategiczne doradztwo z innowacyjną produkcją wizualną, budując przewagę konkurencyjną lokalnych przedsiębiorstw już dziś.`
-    : `AI training, implementation, and creative agency in the ${voivodeship.name} voivodeship. As a regional leader in digital transformation, we help businesses implement tomorrow's technologies, ensuring real time savings, cost reduction, and full GDPR-compliant data security. Our team of experts combines strategic consulting with innovative visual production, building competitive advantage for local businesses today.`;
+    ? `Szkolenia, wdrażanie i agencja kreatywna AI w ${city.locative}. Jako regionalny lider transformacji cyfrowej, pomagamy firmom wdrażać technologie jutra, zapewniając realną oszczędność czasu, redukcję kosztów oraz pełne bezpieczeństwo danych w zgodzie z RODO. Nasz zespół ekspertów łączy strategiczne doradztwo z innowacyjną produkcją wizualną, budując przewagę konkurencyjną lokalnych przedsiębiorstw już dziś.`
+    : `AI training, implementation, and creative agency in ${city.name}. As a regional leader in digital transformation, we help businesses implement tomorrow's technologies, ensuring real time savings, cost reduction, and full GDPR-compliant data security. Our team of experts combines strategic consulting with innovative visual production, building competitive advantage for local businesses today.`;
 
   const paragraph2 = language === 'pl'
     ? `Oferujemy kompleksowe usługi sztucznej inteligencji dla firm w ${city.locative}. Szkolenia AI, automatyzacja procesów, generatywne media i doradztwo strategiczne – zdalnie lub stacjonarnie w Twoim mieście.`
