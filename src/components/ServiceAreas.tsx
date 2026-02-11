@@ -4,27 +4,9 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, ChevronRight } from 'lucide-react';
+import { voivodeships } from '@/data/voivodeships';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const voivodeships = [
-  { name: 'Dolnośląskie', slug: 'dolnoslaskie', cities: ['Wrocław', 'Wałbrzych', 'Legnica', 'Jelenia Góra', 'Lubin', 'Głogów', 'Świdnica', 'Bolesławiec', 'Oleśnica', 'Oława'] },
-  { name: 'Kujawsko-Pomorskie', slug: 'kujawsko-pomorskie', cities: ['Bydgoszcz', 'Toruń', 'Włocławek', 'Grudziądz', 'Inowrocław', 'Brodnica', 'Świecie', 'Chełmno', 'Nakło nad Notecią'] },
-  { name: 'Lubelskie', slug: 'lubelskie', cities: ['Lublin', 'Zamość', 'Chełm', 'Biała Podlaska', 'Puławy', 'Świdnik', 'Kraśnik', 'Łuków', 'Biłgoraj'] },
-  { name: 'Lubuskie', slug: 'lubuskie', cities: ['Zielona Góra', 'Gorzów Wielkopolski', 'Nowa Sól', 'Żary', 'Żagań', 'Świebodzin', 'Kostrzyn nad Odrą', 'Międzyrzecz'] },
-  { name: 'Łódzkie', slug: 'lodzkie', cities: ['Łódź', 'Pabianice', 'Zgierz', 'Aleksandrów Łódzki', 'Konstantynów Łódzki', 'Ozorków', 'Głowno', 'Kutno', 'Sieradz'] },
-  { name: 'Małopolskie', slug: 'malopolskie', cities: ['Kraków', 'Tarnów', 'Nowy Sącz', 'Oświęcim', 'Chrzanów', 'Olkusz', 'Nowy Targ', 'Bochnia', 'Gorlice', 'Zakopane'] },
-  { name: 'Mazowieckie', slug: 'mazowieckie', cities: ['Warszawa', 'Radom', 'Płock', 'Siedlce', 'Pruszków', 'Legionowo', 'Ostrołęka', 'Piaseczno', 'Otwock', 'Ciechanów'] },
-  { name: 'Opolskie', slug: 'opolskie', cities: ['Opole', 'Kędzierzyn-Koźle', 'Nysa', 'Brzeg', 'Kluczbork', 'Prudnik', 'Strzelce Opolskie', 'Namysłów', 'Krapkowice'] },
-  { name: 'Podkarpackie', slug: 'podkarpackie', cities: ['Rzeszów', 'Przemyśl', 'Stalowa Wola', 'Mielec', 'Tarnobrzeg', 'Krosno', 'Dębica', 'Jarosław', 'Sanok', 'Jasło'] },
-  { name: 'Podlaskie', slug: 'podlaskie', cities: ['Białystok', 'Suwałki', 'Łomża', 'Augustów', 'Zambrów', 'Grajewo', 'Hajnówka', 'Sokółka', 'Łapy', 'Siemiatycze'] },
-  { name: 'Pomorskie', slug: 'pomorskie', cities: ['Gdańsk', 'Gdynia', 'Sopot', 'Tczew', 'Starogard Gdański', 'Rumia', 'Chojnice', 'Malbork', 'Kwidzyn', 'Słupsk'] },
-  { name: 'Śląskie', slug: 'slaskie', cities: ['Katowice', 'Częstochowa', 'Sosnowiec', 'Gliwice', 'Zabrze', 'Bielsko-Biała', 'Bytom', 'Ruda Śląska', 'Rybnik', 'Tychy'] },
-  { name: 'Świętokrzyskie', slug: 'swietokrzyskie', cities: ['Kielce', 'Starachowice', 'Ostrowiec Świętokrzyski', 'Skarżysko-Kamienna', 'Sandomierz', 'Końskie', 'Busko-Zdrój', 'Staszów'] },
-  { name: 'Warmińsko-Mazurskie', slug: 'warminsko-mazurskie', cities: ['Olsztyn', 'Elbląg', 'Ełk', 'Iława', 'Ostróda', 'Giżycko', 'Kętrzyn', 'Mrągowo', 'Bartoszyce', 'Szczytno'] },
-  { name: 'Wielkopolskie', slug: 'wielkopolskie', cities: ['Poznań', 'Kalisz', 'Konin', 'Piła', 'Ostrów Wielkopolski', 'Gniezno', 'Leszno', 'Luboń', 'Świdnica', 'Śrem'] },
-  { name: 'Zachodniopomorskie', slug: 'zachodniopomorskie', cities: ['Szczecin', 'Koszalin', 'Stargard', 'Kołobrzeg', 'Świnoujście', 'Szczecinek', 'Police', 'Wałcz', 'Białogard', 'Goleniów'] },
-];
 
 const ServiceAreas = () => {
   const { language } = useLanguage();
@@ -104,9 +86,9 @@ const ServiceAreas = () => {
 
                 <ul className="space-y-1.5">
                   {v.cities.map((city) => (
-                    <li key={city} className="flex items-center gap-2 text-sm text-foreground/70 font-sans">
+                    <li key={city.slug} className="flex items-center gap-2 text-sm text-foreground/70 font-sans">
                       <span className="w-1 h-1 rounded-full bg-primary/50 shrink-0" />
-                      {city}
+                      {city.name}
                     </li>
                   ))}
                 </ul>
