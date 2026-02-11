@@ -3,7 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { noWidows } from '@/lib/typography';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import VideoSectionBackground from '@/components/VideoSectionBackground';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -105,7 +105,7 @@ const MissionSection = () => {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden py-24 md:py-32"
     >
-      <VideoSectionBackground opacity={0.25} blurPx={8} overlayOpacity={0.75} />
+      
 
 
       {/* Content */}

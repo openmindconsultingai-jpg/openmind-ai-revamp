@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import ContactForm from './ContactForm';
 import logo from '@/assets/openmind-logo.webp';
-import VideoSectionBackground from '@/components/VideoSectionBackground';
+
 import { useLanguage } from '@/contexts/LanguageContext';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -82,7 +82,7 @@ const Contact = () => {
   return (
     <section ref={sectionRef} id="contact" className="pt-20 md:pt-24 pb-20 md:pb-32 relative overflow-hidden">
       <div className="absolute inset-0">
-        <VideoSectionBackground opacity={0.6} blurPx={3} overlayOpacity={0.45} />
+        
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/25 to-background" />
       </div>
       

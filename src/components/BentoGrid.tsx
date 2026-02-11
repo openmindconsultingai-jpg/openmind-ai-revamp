@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import VideoSectionBackground from '@/components/VideoSectionBackground';
+
 import bentoContactImg from '@/assets/bento-contact.jpg';
 import bentoAdvisorImg from '@/assets/bento-ai-advisor.jpg';
 
@@ -72,7 +72,7 @@ const BentoGrid = () => {
       ref={sectionRef}
       className="relative py-12 md:py-16 -mt-32 overflow-hidden"
     >
-      <VideoSectionBackground opacity={0.25} blurPx={6} overlayOpacity={0.7} />
+      
 
       {/* Bento Grid - 2 tiles */}
       <div 

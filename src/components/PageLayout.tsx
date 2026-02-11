@@ -1,6 +1,6 @@
 import { ReactNode, memo } from 'react';
 import FloatingNav from '@/components/FloatingNav';
-import CustomCursor from '@/components/CustomCursor';
+
 import Chatbot from '@/components/Chatbot';
 import useSmoothScroll from '@/hooks/useSmoothScroll';
 
@@ -47,7 +47,7 @@ const PageLayout = memo(({ children }: PageLayoutProps) => {
         }}
       />
 
-      <CustomCursor enabled={typeof window !== 'undefined' && window.innerWidth > 768} />
+      
       <FloatingNav />
       
       <main className="relative z-10">
