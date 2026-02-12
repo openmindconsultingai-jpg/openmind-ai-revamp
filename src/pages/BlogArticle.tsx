@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PageLayout from '@/components/PageLayout';
 import BlogArticleComponent from '@/components/BlogArticle';
 import Footer from '@/components/Footer';
+import usePageMeta from '@/hooks/usePageMeta';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-// Generowanie dat: artykuły 31-60 (z drugiej bazy) = 27.11-22.12, artykuły 1-30 (z pierwszej bazy) = 1.09-26.11
 const generatePublishDate = (articleId: number) => {
   if (articleId >= 31 && articleId <= 60) {
-    // Artykuły 31-60: daty od 27 listopada do 22 grudnia 2025 (najnowsze)
     const startDate = new Date('2025-11-27');
     const endDate = new Date('2025-12-22');
     const totalDays = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
@@ -17,7 +17,6 @@ const generatePublishDate = (articleId: number) => {
     publishDate.setDate(publishDate.getDate() + Math.floor(index * dayStep));
     return publishDate;
   } else {
-    // Artykuły 1-30: daty od 1 września do 26 listopada 2025 (starsze)
     const startDate = new Date('2025-09-01');
     const endDate = new Date('2025-11-26');
     const totalDays = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
@@ -40,9 +39,37 @@ const articles = Array.from({ length: 60 }, (_, i) => ({
 const BlogArticlePage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const articleId = parseInt(id || '1', 10);
   const article = articles.find((a) => a.id === articleId);
+
+  const articleTitle = article ? t(article.titleKey) : '';
+  const articleExcerpt = article ? t(article.excerptKey) : '';
+
+  const jsonLd = useMemo(() => article ? ({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: articleTitle,
+    description: articleExcerpt,
+    author: { '@type': 'Person', name: 'Łukasz Czarnecki' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'OpenMind AI Consulting',
+      url: 'https://openmindai.pl',
+    },
+    datePublished: article.publishDate.toISOString(),
+    mainEntityOfPage: `https://openmindai.pl/blog/${article.id}`,
+  }) : undefined, [article, articleTitle, articleExcerpt]);
+
+  usePageMeta({
+    title: article ? `${articleTitle} | Baza Wiedzy AI – OpenMind AI` : 'Artykuł | OpenMind AI',
+    description: article ? articleExcerpt.slice(0, 155) + '…' : '',
+    keywords: 'artykuł AI, sztuczna inteligencja, machine learning, automatyzacja, ChatGPT, OpenMind AI, baza wiedzy',
+    path: `/blog/${id}`,
+    ogType: 'article',
+    jsonLd,
+  });
 
   useEffect(() => {
     if (!article) navigate('/blog');

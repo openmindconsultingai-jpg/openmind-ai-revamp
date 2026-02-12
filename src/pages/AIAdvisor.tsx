@@ -1,18 +1,24 @@
 import PageLayout from '@/components/PageLayout';
 import Footer from '@/components/Footer';
 import AIAdvisorChat from '@/components/AIAdvisorChat';
-
+import usePageMeta from '@/hooks/usePageMeta';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const AIAdvisorPage = () => {
   const { t } = useLanguage();
+
+  usePageMeta({
+    title: 'Kreator Zastosowań AI – Darmowy Doradca Sztucznej Inteligencji | OpenMind AI',
+    description: 'Bezpłatny kreator zastosowań AI. Odpowiedz na kilka pytań, a nasz inteligentny doradca zaproponuje optymalne rozwiązania AI dla Twojego biznesu, edukacji lub życia codziennego. Odkryj potencjał sztucznej inteligencji.',
+    keywords: 'kreator AI, doradca AI, zastosowania sztucznej inteligencji, AI dla biznesu, AI dla edukacji, darmowe narzędzie AI, chatbot doradczy, automatyzacja, optymalizacja procesów',
+    path: '/ai-advisor',
+  });
 
   return (
     <PageLayout>
       <section className="relative min-h-screen pt-16 sm:pt-20 pb-20 sm:pb-32 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0">
-          
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
         </div>
 
@@ -48,7 +54,6 @@ const AIAdvisorPage = () => {
                 <AIAdvisorChat />
               </div>
             </div>
-
           </div>
         </div>
       </section>
