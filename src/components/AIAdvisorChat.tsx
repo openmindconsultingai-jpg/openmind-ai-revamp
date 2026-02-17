@@ -377,9 +377,12 @@ const AIAdvisorChat = () => {
       yPos += 6;
 
       const nextStepsText = pdfContent.nextSteps || 'Skontaktuj się z nami, aby omówić wdrożenie tych rozwiązań!';
-      pdf.setFontSize(9);
-      const nextStepsLines = pdf.splitTextToSize(nextStepsText, contentWidth - 16);
-      const ctaHeight = 14 + (nextStepsLines.length * 4.5);
+      pdf.setFontSize(10);
+      pdf.setFont('Roboto', 'normal');
+      const nextStepsLines = pdf.splitTextToSize(nextStepsText, contentWidth - 20);
+      const ctaHeight = 12 + (nextStepsLines.length * 5);
+
+      checkPageBreak(ctaHeight + 8);
 
       // CTA box with cyan background
       pdf.setFillColor(cyan.r, cyan.g, cyan.b);
@@ -388,7 +391,7 @@ const AIAdvisorChat = () => {
       pdf.setTextColor(darkBg.r, darkBg.g, darkBg.b);
       pdf.setFontSize(10);
       pdf.setFont('Roboto', 'bold');
-      pdf.text(nextStepsLines, margin + 8, yPos + 9);
+      pdf.text(nextStepsLines, margin + 10, yPos + 8);
 
       // === FOOTER ===
       const totalPages = pdf.getNumberOfPages();
