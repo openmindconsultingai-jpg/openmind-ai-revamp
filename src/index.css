@@ -109,9 +109,12 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-cyan-400;
     font-style: italic;
     filter: drop-shadow(0 0 20px hsl(176 100% 43% / 0.4)) drop-shadow(0 0 50px hsl(176 100% 43% / 0.2));
-    padding-right: 0.1em;
-    padding-left: 0.03em;
-    padding-bottom: 0.1em;
+    display: inline;
+    padding-right: 0.15em;
+    padding-left: 0.05em;
+    padding-bottom: 0.15em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 
   .text-gradient-silver {
