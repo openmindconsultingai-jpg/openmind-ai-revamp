@@ -92,7 +92,7 @@ const Contact = () => {
             <div className="flex justify-center mb-6">
               <img src={logo} alt="OpenMind AI" className="h-16 opacity-80" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6">
               <span className="text-gradient text-glow">{t('contact.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground">

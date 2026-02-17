@@ -46,7 +46,7 @@ const Blog = memo(() => {
 
       <div className="container mx-auto max-w-6xl relative">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span className="text-gradient">{t('nav.blog')}</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">

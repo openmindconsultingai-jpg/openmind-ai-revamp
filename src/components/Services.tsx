@@ -268,7 +268,7 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
                 {active.icon}
               </div>
               <div>
-                <h2 className="font-heading text-xl md:text-2xl lg:text-3xl font-semibold text-foreground">
+                <h2 className="font-heading text-xl md:text-2xl lg:text-3xl font-bold text-gradient">
                   {active.h2}
                 </h2>
                 <p className="text-muted-foreground mt-2 max-w-2xl">
