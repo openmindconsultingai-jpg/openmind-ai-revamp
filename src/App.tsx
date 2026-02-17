@@ -44,6 +44,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Suspense fallback={<PageLoader />}><ServicesPage /></Suspense>} />
+            <Route path="/services/:serviceSlug" element={<Suspense fallback={<PageLoader />}><ServicesPage /></Suspense>} />
             <Route path="/about" element={<Suspense fallback={<PageLoader />}><AboutPage /></Suspense>} />
             <Route path="/blog" element={<Suspense fallback={<PageLoader />}><BlogPage /></Suspense>} />
             <Route path="/blog/:id" element={<Suspense fallback={<PageLoader />}><BlogArticlePage /></Suspense>} />

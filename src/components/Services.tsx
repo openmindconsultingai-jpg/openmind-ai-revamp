@@ -1,5 +1,6 @@
 import { memo, useState, useRef, useEffect } from 'react';
-import { Video, Bot, GraduationCap, Globe, Check, ChevronRight } from 'lucide-react';
+import { Video, Bot, GraduationCap, Globe, ChevronRight, ArrowRight } from 'lucide-react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -7,6 +8,11 @@ import serviceVideoCreative from '@/assets/service-video-creative.mp4';
 import serviceVideoAutomation from '@/assets/service-video-automation.mp4';
 import serviceVideoEducation from '@/assets/service-video-education.mp4';
 import serviceVideoWeb from '@/assets/service-video-web.mp4';
+
+import imgCreative from '@/assets/service-media.jpg';
+import imgAutomation from '@/assets/service-development.jpg';
+import imgEducation from '@/assets/service-academy.jpg';
+import imgWeb from '@/assets/service-consulting.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +23,7 @@ interface ServiceData {
   h2: string;
   description: string;
   video: string;
+  image: string;
   accentClass: string;
   items?: string[];
   subTabs?: {
@@ -34,6 +41,7 @@ const services: ServiceData[] = [
     h2: 'Agencja Kreatywna AI: Wideo Marketing, Teledyski i Virale',
     description: 'Tworzymy historie, które algorytmy kochają. Nasze produkcje wideo generowane przez AI zdobywają miliony wyświetleń i angażują odbiorców jak żadne inne medium.',
     video: serviceVideoCreative,
+    image: imgCreative,
     accentClass: 'text-rose-400 border-rose-500/40 bg-rose-500/10',
     items: [
       'Produkcja Wideo i Teledysków AI (Sora/Runway)',
@@ -50,6 +58,7 @@ const services: ServiceData[] = [
     h2: 'Automatyzacja Procesów Biznesowych i Wdrażanie Aplikacji AI',
     description: 'Zamieniamy ludzką pracę na inteligentne systemy. Automatyzujemy powtarzalne zadania, integrujemy narzędzia AI i budujemy dedykowane aplikacje, które skalują Twój biznes.',
     video: serviceVideoAutomation,
+    image: imgAutomation,
     accentClass: 'text-violet-400 border-violet-500/40 bg-violet-500/10',
     items: [
       'Budowa Dedykowanych Aplikacji AI dla Firm',
@@ -66,6 +75,7 @@ const services: ServiceData[] = [
     h2: 'Szkolenia AI, Konsultacje i Edukacja Technologiczna',
     description: 'Uczymy ludzi i organizacje, jak wykorzystać pełen potencjał sztucznej inteligencji – od korporacji po dzieci.',
     video: serviceVideoEducation,
+    image: imgEducation,
     accentClass: 'text-primary border-primary/40 bg-primary/10',
     subTabs: [
       {
@@ -104,6 +114,7 @@ const services: ServiceData[] = [
     h2: 'Inteligentne Strony WWW, Chatboty i Nowoczesny Branding',
     description: 'Cyfrowa tożsamość, która aktywnie sprzedaje. Projektujemy strony internetowe zintegrowane z AI, wdrażamy chatboty i budujemy nowoczesne marki.',
     video: serviceVideoWeb,
+    image: imgWeb,
     accentClass: 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10',
     items: [
       'Projektowanie Stron WWW Zintegrowanych z AI',
@@ -115,11 +126,27 @@ const services: ServiceData[] = [
   },
 ];
 
-const Services = memo(() => {
-  const [activeTab, setActiveTab] = useState('creative');
+/* ── Main component ── */
+
+interface ServicesProps {
+  serviceSlug?: string;
+}
+
+const Services = memo(({ serviceSlug }: ServicesProps) => {
+  const resolvedSlug = serviceSlug || 'creative';
+  const [activeTab, setActiveTab] = useState(resolvedSlug);
   const [eduSubTab, setEduSubTab] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  // Sync with URL param
+  useEffect(() => {
+    if (serviceSlug && services.some(s => s.id === serviceSlug)) {
+      setActiveTab(serviceSlug);
+      setEduSubTab(0);
+    }
+  }, [serviceSlug]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -146,7 +173,13 @@ const Services = memo(() => {
     );
   }, [activeTab]);
 
-  const active = services.find(s => s.id === activeTab)!;
+  const handleTabClick = (id: string) => {
+    setActiveTab(id);
+    setEduSubTab(0);
+    navigate(`/services/${id}`, { replace: true });
+  };
+
+  const active = services.find(s => s.id === activeTab) || services[0];
 
   return (
     <section ref={sectionRef} className="relative py-20 md:py-28 overflow-hidden">
@@ -166,30 +199,46 @@ const Services = memo(() => {
           </p>
         </div>
 
-        {/* Tab triggers – 4 equal cards */}
+        {/* Tab triggers – 4 equal cards with background images */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 max-w-5xl mx-auto mb-6">
           {services.map((s) => {
             const isActive = activeTab === s.id;
             return (
               <button
                 key={s.id}
-                onClick={() => { setActiveTab(s.id); setEduSubTab(0); }}
-                className={`service-tab-trigger group relative rounded-xl p-4 md:p-5 text-left transition-all duration-300 border backdrop-blur-sm
+                onClick={() => handleTabClick(s.id)}
+                className={`service-tab-trigger group relative rounded-xl overflow-hidden aspect-[4/3] transition-all duration-300 border
                   ${isActive
-                    ? `glass border-primary/50 shadow-[0_0_30px_hsl(var(--primary)/0.15)]`
-                    : 'bg-secondary/30 border-border/30 hover:border-primary/30 hover:bg-secondary/50'
+                    ? 'border-primary/60 shadow-[0_0_30px_hsl(var(--primary)/0.2)] scale-[1.02]'
+                    : 'border-border/30 hover:border-primary/30 hover:scale-[1.01]'
                   }`}
               >
-                <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 transition-colors duration-300
-                  ${isActive ? s.accentClass : 'bg-muted/50 text-muted-foreground'}`}>
-                  {s.icon}
+                {/* Background image */}
+                <img
+                  src={s.image}
+                  alt={s.label}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                {/* Dark overlay */}
+                <div className={`absolute inset-0 transition-opacity duration-300 ${
+                  isActive ? 'bg-background/70' : 'bg-background/80 group-hover:bg-background/65'
+                }`} />
+
+                {/* Content – centered */}
+                <div className="relative z-10 flex flex-col items-center justify-center h-full p-4 text-center">
+                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-colors duration-300 backdrop-blur-sm
+                    ${isActive ? s.accentClass : 'bg-muted/50 text-muted-foreground'}`}>
+                    {s.icon}
+                  </div>
+                  <h3 className={`font-heading text-sm md:text-base font-semibold transition-colors duration-300
+                    ${isActive ? 'text-foreground' : 'text-foreground/70'}`}>
+                    {s.label}
+                  </h3>
                 </div>
-                <h3 className={`font-heading text-sm md:text-base font-semibold transition-colors duration-300
-                  ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}>
-                  {s.label}
-                </h3>
+
+                {/* Active indicator arrow */}
                 {isActive && (
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 rotate-45 bg-secondary/80 border-b border-r border-primary/30" />
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 rotate-45 bg-background/90 border-b border-r border-primary/30 z-20" />
                 )}
               </button>
             );
@@ -214,7 +263,6 @@ const Services = memo(() => {
           >
             <source src={active.video} type="video/mp4" />
           </video>
-          {/* Dark overlay */}
           <div className="absolute inset-0 bg-background/85" />
 
           {/* Content */}
@@ -233,7 +281,7 @@ const Services = memo(() => {
               </div>
             </div>
 
-            {/* Items or Sub-tabs */}
+            {/* Items */}
             {active.items && (
               <ul className="grid md:grid-cols-2 gap-3 mt-6">
                 {active.items.map((item, i) => (
@@ -245,9 +293,9 @@ const Services = memo(() => {
               </ul>
             )}
 
+            {/* Sub-tabs (Education) */}
             {active.subTabs && (
               <div className="mt-6">
-                {/* Sub-tab triggers */}
                 <div className="flex gap-2 mb-6">
                   {active.subTabs.map((st, i) => (
                     <button
@@ -265,8 +313,6 @@ const Services = memo(() => {
                     </button>
                   ))}
                 </div>
-
-                {/* Sub-tab content */}
                 <div className="grid md:grid-cols-2 gap-3">
                   {active.subTabs[eduSubTab].items.map((item, i) => (
                     <div
@@ -287,6 +333,20 @@ const Services = memo(() => {
                 </div>
               </div>
             )}
+
+            {/* CTA Button */}
+            <div className="mt-10 flex justify-center">
+              <Link
+                to="/contact"
+                className="group/cta relative inline-flex items-center gap-3 px-8 py-4 rounded-xl font-heading font-semibold text-base md:text-lg
+                  bg-primary/10 border border-primary/40 text-primary backdrop-blur-sm
+                  hover:bg-primary/20 hover:border-primary/60 hover:shadow-[0_0_40px_hsl(var(--primary)/0.2)]
+                  transition-all duration-300"
+              >
+                Umów bezpłatną konsultację
+                <ArrowRight className="w-5 h-5 transition-transform group-hover/cta:translate-x-1" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
