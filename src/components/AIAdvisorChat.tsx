@@ -189,7 +189,6 @@ const AIAdvisorChat = () => {
 
       const data = await resp.json();
       
-      // Parse the JSON content
       let pdfContent;
       try {
         const cleanContent = data.content.replace(/```json\n?|\n?```/g, '').trim();
@@ -203,165 +202,197 @@ const AIAdvisorChat = () => {
         };
       }
 
-      // Generate PDF using jsPDF
-      const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm',
-        format: 'a4'
-      });
-
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
-      const margin = 20;
+      const margin = 18;
       const contentWidth = pageWidth - 2 * margin;
-      let yPos = margin;
+      let yPos = 0;
 
-      // Helper function to check page break
-      const checkPageBreak = (requiredSpace: number) => {
-        if (yPos + requiredSpace > pageHeight - 25) {
+      // Brand colors
+      const cyan = { r: 0, g: 219, b: 174 };    // hsl(176, 100%, 43%)
+      const darkBg = { r: 12, g: 14, b: 18 };    // dark background
+      const darkCard = { r: 18, g: 21, b: 27 };   // card bg
+      const textLight = { r: 240, g: 255, b: 252 };
+      const textMuted = { r: 140, g: 155, b: 160 };
+
+      const checkPageBreak = (space: number) => {
+        if (yPos + space > pageHeight - 30) {
           pdf.addPage();
+          // Dark page background
+          pdf.setFillColor(darkBg.r, darkBg.g, darkBg.b);
+          pdf.rect(0, 0, pageWidth, pageHeight, 'F');
           yPos = margin;
           return true;
         }
         return false;
       };
 
-      // Header with gradient-like effect
-      pdf.setFillColor(0, 212, 170);
-      pdf.rect(0, 0, pageWidth, 40, 'F');
+      // === PAGE BACKGROUND ===
+      pdf.setFillColor(darkBg.r, darkBg.g, darkBg.b);
+      pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+
+      // === HEADER BAR ===
+      // Gradient-like header with cyan accent line
+      pdf.setFillColor(darkCard.r, darkCard.g, darkCard.b);
+      pdf.rect(0, 0, pageWidth, 38, 'F');
       
-      // Logo text
-      pdf.setTextColor(255, 255, 255);
-      pdf.setFontSize(22);
+      // Cyan accent line at bottom of header
+      pdf.setFillColor(cyan.r, cyan.g, cyan.b);
+      pdf.rect(0, 38, pageWidth, 1.2, 'F');
+
+      // Logo / Brand name
+      pdf.setTextColor(cyan.r, cyan.g, cyan.b);
+      pdf.setFontSize(20);
       pdf.setFont('helvetica', 'bold');
-      pdf.text('OpenMind AI', margin, 22);
-      
-      pdf.setFontSize(11);
+      pdf.text('OpenMind AI', margin, 18);
+
+      pdf.setTextColor(textMuted.r, textMuted.g, textMuted.b);
+      pdf.setFontSize(9);
       pdf.setFont('helvetica', 'normal');
-      pdf.text('Consulting & Solutions', margin, 32);
+      pdf.text('Consulting & Solutions', margin, 25);
 
-      yPos = 55;
+      // Date on right
+      const today = new Date().toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+      pdf.setTextColor(textMuted.r, textMuted.g, textMuted.b);
+      pdf.setFontSize(8);
+      pdf.text(today, pageWidth - margin, 25, { align: 'right' });
 
-      // Title
-      pdf.setTextColor(0, 140, 140);
-      pdf.setFontSize(18);
+      yPos = 50;
+
+      // === TITLE ===
+      pdf.setTextColor(textLight.r, textLight.g, textLight.b);
+      pdf.setFontSize(20);
       pdf.setFont('helvetica', 'bold');
-      const titleLines = pdf.splitTextToSize(pdfContent.title || 'Twoje spersonalizowane zastosowania AI', contentWidth);
+      const titleText = pdfContent.title || 'Twoje spersonalizowane zastosowania AI';
+      const titleLines = pdf.splitTextToSize(titleText, contentWidth);
       pdf.text(titleLines, margin, yPos);
-      yPos += titleLines.length * 7 + 8;
+      yPos += titleLines.length * 8 + 4;
 
-      // Summary
+      // Cyan underline for title
+      pdf.setDrawColor(cyan.r, cyan.g, cyan.b);
+      pdf.setLineWidth(0.6);
+      pdf.line(margin, yPos, margin + 50, yPos);
+      yPos += 10;
+
+      // === SUMMARY ===
       if (pdfContent.summary) {
-        pdf.setTextColor(80, 80, 80);
+        pdf.setTextColor(textMuted.r, textMuted.g, textMuted.b);
         pdf.setFontSize(10);
         pdf.setFont('helvetica', 'italic');
         const summaryLines = pdf.splitTextToSize(pdfContent.summary, contentWidth);
         pdf.text(summaryLines, margin, yPos);
-        yPos += summaryLines.length * 4.5 + 12;
+        yPos += summaryLines.length * 5 + 12;
       }
 
-      // Applications
+      // === APPLICATIONS ===
       const applications = pdfContent.applications || [];
-      const lineHeight = 4.5;
-      const titleLineHeight = 6;
-      
+
       applications.forEach((app: any, index: number) => {
-        // Calculate required height for this application
-        const appTitle = `${index + 1}. ${app.name || 'Zastosowanie'}`;
-        const titleLines = pdf.splitTextToSize(appTitle, contentWidth - 10);
-        
-        pdf.setFontSize(10);
-        const descLines = pdf.splitTextToSize(app.description || '', contentWidth - 10);
-        
+        const appName = app.name || 'Zastosowanie';
+        const appDesc = app.description || '';
+        const appBenefit = app.benefit || '';
+
+        // Pre-calculate heights
+        pdf.setFontSize(11);
+        const nameLines = pdf.splitTextToSize(appName, contentWidth - 20);
         pdf.setFontSize(9);
-        const benefitText = app.benefit ? `Korzysc: ${app.benefit}` : '';
-        const benefitLines = benefitText ? pdf.splitTextToSize(benefitText, contentWidth - 10) : [];
-        
-        const boxPadding = 8;
-        const spacing = 3;
-        const boxHeight = boxPadding + 
-          (titleLines.length * titleLineHeight) + spacing +
-          (descLines.length * lineHeight) + 
-          (benefitLines.length > 0 ? spacing + (benefitLines.length * lineHeight) : 0) + 
-          boxPadding;
+        const descLines = pdf.splitTextToSize(appDesc, contentWidth - 16);
+        pdf.setFontSize(8);
+        const benefitLines = appBenefit ? pdf.splitTextToSize(`✦ ${appBenefit}`, contentWidth - 16) : [];
 
-        // Check for page break
-        checkPageBreak(boxHeight + 8);
+        const cardPadding = 8;
+        const cardHeight = cardPadding + 
+          (nameLines.length * 5.5) + 4 +
+          (descLines.length * 4.2) +
+          (benefitLines.length > 0 ? 4 + (benefitLines.length * 3.8) : 0) +
+          cardPadding;
 
-        // Application box background
-        pdf.setFillColor(248, 248, 248);
-        pdf.setDrawColor(220, 220, 220);
-        pdf.roundedRect(margin, yPos, contentWidth, boxHeight, 2, 2, 'FD');
+        checkPageBreak(cardHeight + 8);
 
-        let textY = yPos + boxPadding;
+        // Card background
+        pdf.setFillColor(darkCard.r, darkCard.g, darkCard.b);
+        pdf.roundedRect(margin, yPos, contentWidth, cardHeight, 2, 2, 'F');
 
-        // Application number and name
-        pdf.setTextColor(0, 140, 140);
-        pdf.setFontSize(12);
+        // Cyan left accent bar
+        pdf.setFillColor(cyan.r, cyan.g, cyan.b);
+        pdf.rect(margin, yPos, 2.5, cardHeight, 'F');
+
+        let textY = yPos + cardPadding;
+
+        // Number badge + name
+        pdf.setTextColor(cyan.r, cyan.g, cyan.b);
+        pdf.setFontSize(11);
         pdf.setFont('helvetica', 'bold');
-        pdf.text(titleLines, margin + 5, textY);
-        textY += titleLines.length * titleLineHeight + spacing;
+        const numberStr = `${String(index + 1).padStart(2, '0')}`;
+        pdf.text(numberStr, margin + 7, textY + 1);
+        
+        pdf.setTextColor(textLight.r, textLight.g, textLight.b);
+        pdf.text(nameLines, margin + 18, textY + 1);
+        textY += nameLines.length * 5.5 + 4;
 
         // Description
-        pdf.setTextColor(50, 50, 50);
-        pdf.setFontSize(10);
+        pdf.setTextColor(textMuted.r, textMuted.g, textMuted.b);
+        pdf.setFontSize(9);
         pdf.setFont('helvetica', 'normal');
-        pdf.text(descLines, margin + 5, textY);
-        textY += descLines.length * lineHeight;
+        pdf.text(descLines, margin + 8, textY);
+        textY += descLines.length * 4.2;
 
         // Benefit
         if (benefitLines.length > 0) {
-          textY += spacing;
-          pdf.setTextColor(0, 130, 120);
-          pdf.setFontSize(9);
+          textY += 3;
+          pdf.setTextColor(cyan.r, cyan.g, cyan.b);
+          pdf.setFontSize(8);
           pdf.setFont('helvetica', 'italic');
-          pdf.text(benefitLines, margin + 5, textY);
+          pdf.text(benefitLines, margin + 8, textY);
         }
 
-        yPos += boxHeight + 6;
+        yPos += cardHeight + 5;
       });
 
-      // Next steps section
-      checkPageBreak(35);
+      // === NEXT STEPS CTA ===
+      checkPageBreak(30);
+      yPos += 6;
 
-      yPos += 8;
-      
       const nextStepsText = pdfContent.nextSteps || 'Skontaktuj się z nami, aby omówić wdrożenie tych rozwiązań!';
-      pdf.setFontSize(10);
-      const nextStepsLines = pdf.splitTextToSize(nextStepsText, contentWidth - 10);
-      const nextStepsBoxHeight = 12 + (nextStepsLines.length * 4.5);
-      
-      pdf.setFillColor(0, 212, 170);
-      pdf.roundedRect(margin, yPos, contentWidth, nextStepsBoxHeight, 2, 2, 'F');
-      
-      pdf.setTextColor(255, 255, 255);
-      pdf.setFontSize(10);
-      pdf.setFont('helvetica', 'bold');
-      pdf.text(nextStepsLines, margin + 5, yPos + 8);
-
-      // Footer
-      const footerY = pageHeight - 15;
-      pdf.setDrawColor(0, 212, 170);
-      pdf.setLineWidth(0.5);
-      pdf.line(margin, footerY - 5, pageWidth - margin, footerY - 5);
-      
-      pdf.setTextColor(0, 168, 168);
-      pdf.setFontSize(10);
-      pdf.setFont('helvetica', 'bold');
-      pdf.text('OpenMind AI Consulting', margin, footerY);
-      
-      pdf.setTextColor(100, 100, 100);
       pdf.setFontSize(9);
-      pdf.setFont('helvetica', 'normal');
-      pdf.text('biuro@openmindai.pl', margin, footerY + 5);
-      
-      // Date on the right
-      const today = new Date().toLocaleDateString('pl-PL');
-      pdf.text(`Wygenerowano: ${today}`, pageWidth - margin - 40, footerY);
+      const nextStepsLines = pdf.splitTextToSize(nextStepsText, contentWidth - 16);
+      const ctaHeight = 14 + (nextStepsLines.length * 4.5);
 
-      // Save PDF
+      // CTA box with cyan background
+      pdf.setFillColor(cyan.r, cyan.g, cyan.b);
+      pdf.roundedRect(margin, yPos, contentWidth, ctaHeight, 2, 2, 'F');
+
+      pdf.setTextColor(darkBg.r, darkBg.g, darkBg.b);
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text(nextStepsLines, margin + 8, yPos + 9);
+
+      // === FOOTER ===
+      const totalPages = pdf.getNumberOfPages();
+      for (let p = 1; p <= totalPages; p++) {
+        pdf.setPage(p);
+        const footerY = pageHeight - 12;
+        
+        // Footer line
+        pdf.setDrawColor(30, 35, 45);
+        pdf.setLineWidth(0.3);
+        pdf.line(margin, footerY - 4, pageWidth - margin, footerY - 4);
+
+        pdf.setTextColor(cyan.r, cyan.g, cyan.b);
+        pdf.setFontSize(8);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('OpenMind AI', margin, footerY);
+
+        pdf.setTextColor(textMuted.r, textMuted.g, textMuted.b);
+        pdf.setFontSize(7);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text('biuro@openmindai.pl  ·  openmindai.pl', margin + 28, footerY);
+
+        pdf.text(`${p} / ${totalPages}`, pageWidth - margin, footerY, { align: 'right' });
+      }
+
       pdf.save('Diagnoza-AI-OpenMind.pdf');
-
       toast.success('Raport PDF został pobrany!');
     } catch (error) {
       console.error('PDF generation error:', error);
