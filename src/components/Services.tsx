@@ -226,10 +226,6 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
 
                 {/* Content – centered */}
                 <div className="relative z-10 flex flex-col items-center justify-center h-full p-4 text-center">
-                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-colors duration-300 backdrop-blur-sm
-                    ${isActive ? s.accentClass : 'bg-muted/50 text-muted-foreground'}`}>
-                    {s.icon}
-                  </div>
                   <h3 className={`font-heading text-sm md:text-base font-semibold transition-colors duration-300
                     ${isActive ? 'text-foreground' : 'text-foreground/70'}`}>
                     {s.label}
