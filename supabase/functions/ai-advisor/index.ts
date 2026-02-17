@@ -7,8 +7,8 @@ const corsHeaders = {
 
 // Rate limiting - max requests per IP per hour
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_MAX = 50; // Max 50 AI requests per hour per IP
-const RATE_LIMIT_WINDOW = 3600000; // 1 hour in milliseconds
+const RATE_LIMIT_MAX = 50;
+const RATE_LIMIT_WINDOW = 3600000;
 
 function getClientIP(req: Request): string {
   return req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
@@ -31,6 +31,29 @@ function checkRateLimit(identifier: string): { allowed: boolean; remaining: numb
   
   record.count++;
   return { allowed: true, remaining: RATE_LIMIT_MAX - record.count };
+}
+
+// Input validation
+function validateMessages(messages: unknown): { valid: boolean; error?: string; data?: Array<{ role: string; content: string }> } {
+  if (!messages || !Array.isArray(messages)) {
+    return { valid: false, error: "Invalid request format: messages must be an array" };
+  }
+  if (messages.length === 0 || messages.length > 50) {
+    return { valid: false, error: "Messages array must have 1-50 items" };
+  }
+  const validRoles = new Set(["user", "assistant", "system"]);
+  for (const msg of messages) {
+    if (!msg || typeof msg !== 'object') {
+      return { valid: false, error: "Each message must be an object" };
+    }
+    if (!validRoles.has(msg.role)) {
+      return { valid: false, error: "Invalid message role" };
+    }
+    if (typeof msg.content !== 'string' || msg.content.length === 0 || msg.content.length > 4000) {
+      return { valid: false, error: "Message content must be 1-4000 characters" };
+    }
+  }
+  return { valid: true, data: messages as Array<{ role: string; content: string }> };
 }
 
 const SYSTEM_PROMPT = `Jesteś wirtualnym doradcą AI od OpenMind AI Consulting - ekspertem w znajdowaniu kreatywnych zastosowań sztucznej inteligencji w biznesie, życiu codziennym, edukacji i innych dziedzinach.
@@ -74,7 +97,6 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  // Rate limiting
   const clientIP = getClientIP(req);
   const rateCheck = checkRateLimit(clientIP);
   
@@ -93,31 +115,35 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, generatePdf } = await req.json();
+    const body = await req.json();
+    const { generatePdf } = body;
     
-    // Validate messages array
-    if (!messages || !Array.isArray(messages)) {
-      return new Response(JSON.stringify({ error: "Invalid request format" }), {
+    // Validate messages
+    const validation = validateMessages(body.messages);
+    if (!validation.valid) {
+      return new Response(JSON.stringify({ error: validation.error }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    // Limit message history to prevent abuse
-    const limitedMessages = messages.slice(-20);
+    const limitedMessages = validation.data!.slice(-20);
     
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
     if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY is not configured");
+      console.error("LOVABLE_API_KEY is not configured");
+      return new Response(JSON.stringify({ error: "Usługa tymczasowo niedostępna." }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
-    // If generating PDF, return structured response
     if (generatePdf) {
       console.log("Generating PDF with messages count:", limitedMessages.length);
       
       const transcript = limitedMessages
-        .map((m: any) => `${m.role === "user" ? "Użytkownik" : "Doradca AI"}: ${String(m.content || "").trim()}`)
+        .map((m) => `${m.role === "user" ? "Użytkownik" : "Doradca AI"}: ${String(m.content || "").trim()}`)
         .join("\n\n");
 
       const pdfResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
@@ -144,20 +170,22 @@ serve(async (req) => {
       });
 
       if (!pdfResponse.ok) {
-        const errorText = await pdfResponse.text();
-        console.error("AI gateway error for PDF:", pdfResponse.status, errorText);
-        throw new Error("Failed to generate PDF content");
+        console.error("AI gateway error for PDF:", pdfResponse.status);
+        return new Response(JSON.stringify({ error: "Nie udało się wygenerować raportu." }), {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
       }
 
       const pdfData = await pdfResponse.json();
-      console.log("PDF response received:", JSON.stringify(pdfData).slice(0, 500));
-      
       const content = pdfData.choices?.[0]?.message?.content || "";
-      console.log("Extracted content length:", content.length);
       
       if (!content) {
         console.error("Empty content from AI response");
-        throw new Error("Empty response from AI");
+        return new Response(JSON.stringify({ error: "Nie udało się wygenerować raportu." }), {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
       }
       
       return new Response(JSON.stringify({ 
@@ -202,8 +230,7 @@ serve(async (req) => {
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      const errorText = await response.text();
-      console.error("AI gateway error:", response.status, errorText);
+      console.error("AI gateway error:", response.status);
       return new Response(JSON.stringify({ error: "Błąd serwera AI" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -219,7 +246,7 @@ serve(async (req) => {
     });
   } catch (error) {
     console.error("AI Advisor error:", error);
-    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : "Nieznany błąd" }), {
+    return new Response(JSON.stringify({ error: "Wystąpił błąd. Spróbuj ponownie." }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });

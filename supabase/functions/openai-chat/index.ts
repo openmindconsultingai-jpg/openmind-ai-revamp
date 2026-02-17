@@ -27,6 +27,36 @@ function checkRateLimit(id: string): { allowed: boolean; remaining: number } {
   return { allowed: true, remaining: RATE_LIMIT_MAX - rec.count };
 }
 
+// Input validation
+function validateInput(body: any): { valid: boolean; error?: string } {
+  const { messages, sessionId, conversationId } = body;
+
+  if (!messages || !Array.isArray(messages)) {
+    return { valid: false, error: "messages must be an array" };
+  }
+  if (messages.length === 0 || messages.length > 50) {
+    return { valid: false, error: "messages must have 1-50 items" };
+  }
+
+  const validRoles = new Set(["user", "assistant", "system"]);
+  for (const msg of messages) {
+    if (!msg || typeof msg !== 'object') return { valid: false, error: "Invalid message format" };
+    if (!validRoles.has(msg.role)) return { valid: false, error: "Invalid message role" };
+    if (typeof msg.content !== 'string' || msg.content.length === 0 || msg.content.length > 4000) {
+      return { valid: false, error: "Message content must be 1-4000 characters" };
+    }
+  }
+
+  if (sessionId !== undefined && (typeof sessionId !== 'string' || sessionId.length > 100)) {
+    return { valid: false, error: "Invalid sessionId" };
+  }
+  if (conversationId !== undefined && (typeof conversationId !== 'string' || conversationId.length > 100)) {
+    return { valid: false, error: "Invalid conversationId" };
+  }
+
+  return { valid: true };
+}
+
 const SYSTEM_PROMPT = `Jesteś ekspertem AI i wirtualnym doradcą firmy OpenMind AI Consulting — polskiego hubu technologicznego specjalizującego się we wdrożeniach sztucznej inteligencji.
 
 O FIRMIE OPENMIND AI CONSULTING:
@@ -68,22 +98,36 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, sessionId, conversationId } = await req.json();
+    const body = await req.json();
 
-    if (!messages || !Array.isArray(messages)) {
-      return new Response(JSON.stringify({ error: "Invalid request" }), {
+    // Validate input
+    const validation = validateInput(body);
+    if (!validation.valid) {
+      return new Response(JSON.stringify({ error: validation.error }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
+
+    const { messages, sessionId, conversationId } = body;
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     const MEM0_API_KEY = Deno.env.get("MEM0_API_KEY");
     const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
-    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY not configured");
-    if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) throw new Error("Supabase not configured");
+    if (!LOVABLE_API_KEY) {
+      console.error("LOVABLE_API_KEY not configured");
+      return new Response(JSON.stringify({ error: "Usługa tymczasowo niedostępna." }), {
+        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+      console.error("Supabase not configured");
+      return new Response(JSON.stringify({ error: "Usługa tymczasowo niedostępna." }), {
+        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
@@ -124,7 +168,6 @@ serve(async (req) => {
     let memoryContext = "";
     if (MEM0_API_KEY && sessionId) {
       try {
-        // Search for memories related to this user
         const memSearchRes = await fetch("https://api.mem0.ai/v1/memories/search/", {
           method: "POST",
           headers: {
@@ -186,18 +229,17 @@ serve(async (req) => {
           status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      const errorText = await response.text();
-      console.error("AI gateway error:", response.status, errorText);
-      throw new Error("AI gateway error");
+      console.error("AI gateway error:", response.status);
+      return new Response(JSON.stringify({ error: "Wystąpił błąd. Spróbuj ponownie." }), {
+        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
     // ── Stream response + collect for memory ──
     const { readable, writable } = new TransformStream();
     const writer = writable.getWriter();
-    const encoder = new TextEncoder();
     const decoder = new TextDecoder();
 
-    // Process stream in background
     (async () => {
       let fullResponse = "";
       const reader = response.body!.getReader();
@@ -206,11 +248,8 @@ serve(async (req) => {
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
-
-          // Forward SSE data to client
           await writer.write(value);
 
-          // Collect response text for memory
           const chunk = decoder.decode(value, { stream: true });
           for (const line of chunk.split("\n")) {
             if (!line.startsWith("data: ") || line.includes("[DONE]")) continue;
@@ -226,7 +265,6 @@ serve(async (req) => {
       } finally {
         await writer.close();
 
-        // Save assistant response to Supabase
         if (convId && fullResponse) {
           await supabase.from("chat_messages").insert({
             conversation_id: convId,
@@ -235,7 +273,6 @@ serve(async (req) => {
           });
         }
 
-        // Save to Mem0 memory (async, non-blocking)
         if (MEM0_API_KEY && sessionId && fullResponse) {
           try {
             await fetch("https://api.mem0.ai/v1/memories/", {
@@ -268,7 +305,7 @@ serve(async (req) => {
     });
   } catch (error) {
     console.error("Chat error:", error);
-    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : "Nieznany błąd" }), {
+    return new Response(JSON.stringify({ error: "Wystąpił błąd. Spróbuj ponownie." }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });

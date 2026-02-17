@@ -8,8 +8,8 @@ const corsHeaders = {
 
 // In-memory rate limiting as backup
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_MAX = 3; // Max 3 bookings per email per day
-const RATE_LIMIT_WINDOW = 86400000; // 24 hours in milliseconds
+const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_WINDOW = 86400000;
 
 function checkMemoryRateLimit(identifier: string): boolean {
   const now = Date.now();
@@ -34,23 +34,30 @@ serve(async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { clientEmail } = await req.json();
+    const data = await req.json();
     
-    if (!clientEmail) {
+    // Validate input
+    if (!data || typeof data !== 'object' || !data.clientEmail || typeof data.clientEmail !== 'string') {
       return new Response(
         JSON.stringify({ allowed: false, error: "Missing client email" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    const normalizedEmail = clientEmail.toLowerCase().trim();
-    console.log('Rate limit check for:', normalizedEmail);
+    if (!data.clientEmail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) || data.clientEmail.length > 255) {
+      return new Response(
+        JSON.stringify({ allowed: false, error: "Invalid email format" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const normalizedEmail = data.clientEmail.toLowerCase().trim();
+    console.log('Rate limit check');
     
-    // Check in-memory rate limit
     const allowed = checkMemoryRateLimit(normalizedEmail);
     
     if (!allowed) {
-      console.log('Rate limit exceeded for:', normalizedEmail);
+      console.log('Rate limit exceeded');
       return new Response(
         JSON.stringify({ 
           allowed: false, 
@@ -60,12 +67,10 @@ serve(async (req: Request): Promise<Response> => {
       );
     }
 
-    // Also check database for persistent rate limiting
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Count bookings from this email in last 24 hours
     const oneDayAgo = new Date(Date.now() - RATE_LIMIT_WINDOW).toISOString();
     
     const { count, error } = await supabase
@@ -76,7 +81,6 @@ serve(async (req: Request): Promise<Response> => {
 
     if (error) {
       console.error('Database rate limit check error:', error);
-      // Allow if DB check fails, rely on memory limit
       return new Response(
         JSON.stringify({ allowed: true }),
         { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -84,7 +88,7 @@ serve(async (req: Request): Promise<Response> => {
     }
 
     if (count !== null && count >= RATE_LIMIT_MAX) {
-      console.log('Database rate limit exceeded for:', normalizedEmail, 'count:', count);
+      console.log('Database rate limit exceeded');
       return new Response(
         JSON.stringify({ 
           allowed: false, 
