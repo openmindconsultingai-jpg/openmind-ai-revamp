@@ -190,9 +190,9 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-14 md:mb-18">
-          <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Agencja AI, Automatyzacja i Szkolenia –{' '}
-            <span className="text-gradient">Wdrażamy Sztuczną Inteligencję w Biznesie</span>
+          <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <span className="text-foreground">Agencja AI, Automatyzacja i Szkolenia –</span>{' '}
+            <span className="text-gradient text-glow">Wdrażamy Sztuczną Inteligencję w Biznesie</span>
           </h1>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
             Pionierskie rozwiązania – od wiralowych produkcji wideo, przez automatyzację firm, aż po edukację przyszłych pokoleń.
