@@ -16,7 +16,7 @@ const translations: Translations = {
     // Navigation
     'nav.home': 'Strona główna',
     'nav.services': 'Nasze usługi',
-    'nav.aiAdvisor': 'Kreator AI',
+    'nav.aiAdvisor': 'Wirtualny Doradca',
     'nav.about': 'O nas',
     'nav.blog': 'Baza wiedzy o AI',
     'nav.contact': 'Kontakt',
@@ -39,7 +39,7 @@ const translations: Translations = {
     'bento.contact.title': 'Skontaktuj się z nami',
     'bento.contact.desc': 'Masz pytania o wdrożenie AI w swojej firmie? Chcesz dowiedzieć się, jak sztuczna inteligencja może usprawnić Twoje procesy? Wypełnij formularz kontaktowy, a nasi eksperci skontaktują się z Tobą w ciągu 24 godzin.',
     'bento.contact.cta': 'Przejdź do formularza',
-    'bento.advisor.title': 'Kreator zastosowań AI',
+    'bento.advisor.title': 'Wirtualny Doradca AI',
     'bento.advisor.desc': 'Nie wiesz, jak AI może Ci pomóc? Nasz inteligentny doradca przeanalizuje Twoje potrzeby i zaproponuje optymalne rozwiązania dopasowane do Twojego życia, biznesu, edukacji czy innych dziedzin. Odkryj prawdziwy potencjał sztucznej inteligencji.',
     'bento.advisor.cta': 'Uruchom doradcę AI',
     'bento.advisor.modal.title': 'Doradca AI – Znajdź zastosowanie dla sztucznej inteligencji',

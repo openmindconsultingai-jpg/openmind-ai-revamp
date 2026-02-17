@@ -8,9 +8,9 @@ const AIAdvisorPage = () => {
   const { t } = useLanguage();
 
   usePageMeta({
-    title: 'Kreator Zastosowań AI – Darmowy Doradca Sztucznej Inteligencji | OpenMind AI',
-    description: 'Bezpłatny kreator zastosowań AI. Odpowiedz na kilka pytań, a nasz inteligentny doradca zaproponuje optymalne rozwiązania AI dla Twojego biznesu, edukacji lub życia codziennego. Odkryj potencjał sztucznej inteligencji.',
-    keywords: 'kreator AI, doradca AI, zastosowania sztucznej inteligencji, AI dla biznesu, AI dla edukacji, darmowe narzędzie AI, chatbot doradczy, automatyzacja, optymalizacja procesów',
+    title: 'Wirtualny Doradca AI – Darmowy Doradca Sztucznej Inteligencji | OpenMind AI',
+    description: 'Bezpłatny wirtualny doradca AI. Odpowiedz na kilka pytań, a nasz inteligentny doradca zaproponuje optymalne rozwiązania AI dla Twojego biznesu, edukacji lub życia codziennego. Odkryj potencjał sztucznej inteligencji.',
+    keywords: 'wirtualny doradca AI, doradca AI, zastosowania sztucznej inteligencji, AI dla biznesu, AI dla edukacji, darmowe narzędzie AI, chatbot doradczy, automatyzacja, optymalizacja procesów',
     path: '/ai-advisor',
   });
 
