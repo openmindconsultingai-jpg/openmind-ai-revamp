@@ -6,6 +6,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Sloty 30-minutowe: 9:00 - 17:00 (ostatni slot o 16:30)
 const TIME_SLOTS = [
   "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
   "12:00", "12:30", "13:00", "13:30", "14:00", "14:30",
@@ -14,51 +15,30 @@ const TIME_SLOTS = [
 
 const MAX_BOOKINGS_PER_DAY = 16;
 
-// Input validation
-function validateInput(data: any): { valid: boolean; error?: string } {
-  if (!data || typeof data !== 'object') return { valid: false, error: "Invalid request" };
-  
-  const validActions = ['get_day_slots', 'check_availability'];
-  if (!data.action || !validActions.includes(data.action)) {
-    return { valid: false, error: 'Invalid action' };
-  }
-
-  if (data.date && (typeof data.date !== 'string' || !data.date.match(/^\d{4}-\d{2}-\d{2}$/))) {
-    return { valid: false, error: 'Invalid date format (expected YYYY-MM-DD)' };
-  }
-
-  if (data.time && (typeof data.time !== 'string' || !data.time.match(/^\d{2}:\d{2}$/))) {
-    return { valid: false, error: 'Invalid time format (expected HH:MM)' };
-  }
-
-  return { valid: true };
-}
-
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const data = await req.json();
+    const { action, date, time } = await req.json();
     
-    // Validate input
-    const validation = validateInput(data);
-    if (!validation.valid) {
+    console.log('Booking availability - action:', action, 'date:', date, 'time:', time);
+    
+    const validActions = ['get_day_slots', 'check_availability'];
+    if (!action || !validActions.includes(action)) {
       return new Response(
-        JSON.stringify({ error: validation.error }),
+        JSON.stringify({ error: 'Invalid action. Valid: ' + validActions.join(', ') }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
-
-    const { action, date, time } = data;
-    console.log('Booking availability - action:', action);
 
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
     );
 
+    // ====== ACTION: get_day_slots ======
     if (action === 'get_day_slots') {
       if (!date) {
         return new Response(
@@ -67,6 +47,7 @@ serve(async (req) => {
         );
       }
 
+      // Pobierz zajęte sloty z bazy danych
       const { data: bookings, error } = await supabase
         .from('bookings')
         .select('booking_time')
@@ -102,11 +83,17 @@ serve(async (req) => {
       const availableCount = slots.filter(s => s.isAvailable).length;
 
       return new Response(
-        JSON.stringify({ slots, bookedCount, availableCount, isDayFull }),
+        JSON.stringify({ 
+          slots,
+          bookedCount,
+          availableCount,
+          isDayFull,
+        }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
+    // ====== ACTION: check_availability ======
     if (action === 'check_availability') {
       if (!date || !time) {
         return new Response(
@@ -131,8 +118,10 @@ serve(async (req) => {
         );
       }
 
+      const available = !existingBooking;
+
       return new Response(
-        JSON.stringify({ available: !existingBooking }),
+        JSON.stringify({ available }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }

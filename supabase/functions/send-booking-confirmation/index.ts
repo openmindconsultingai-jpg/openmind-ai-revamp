@@ -7,8 +7,10 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const OWNER_EMAIL = "openmindconsultingai@gmail.com";
+// Dane OpenMind AI Consulting
+const OWNER_EMAIL = "openmindconsultingai@gmail.com"; // Email powiązany z kontem Resend
 const COMPANY_NAME = "OpenMind AI Consulting";
+// Użyj domeny testowej Resend - zmień na własną po weryfikacji w https://resend.com/domains
 const SENDER_EMAIL = "onboarding@resend.dev";
 
 function escapeHtml(text: string): string {
@@ -28,30 +30,6 @@ interface BookingConfirmationRequest {
   bookingDate: string;
   bookingTime: string;
   notes?: string;
-}
-
-// Input validation
-function validateBookingInput(data: any): { valid: boolean; error?: string } {
-  if (!data || typeof data !== 'object') return { valid: false, error: "Invalid request" };
-  if (!data.clientName || typeof data.clientName !== 'string' || data.clientName.trim().length < 2 || data.clientName.length > 100) {
-    return { valid: false, error: "Invalid client name" };
-  }
-  if (!data.clientEmail || typeof data.clientEmail !== 'string' || !data.clientEmail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) || data.clientEmail.length > 255) {
-    return { valid: false, error: "Invalid email address" };
-  }
-  if (!data.clientPhone || typeof data.clientPhone !== 'string' || data.clientPhone.length > 20) {
-    return { valid: false, error: "Invalid phone number" };
-  }
-  if (!data.bookingDate || typeof data.bookingDate !== 'string' || !data.bookingDate.match(/^\d{4}-\d{2}-\d{2}$/)) {
-    return { valid: false, error: "Invalid booking date" };
-  }
-  if (!data.bookingTime || typeof data.bookingTime !== 'string' || !data.bookingTime.match(/^\d{2}:\d{2}$/)) {
-    return { valid: false, error: "Invalid booking time" };
-  }
-  if (data.notes && (typeof data.notes !== 'string' || data.notes.length > 1000)) {
-    return { valid: false, error: "Notes must be under 1000 characters" };
-  }
-  return { valid: true };
 }
 
 const formatDate = (dateStr: string): string => {
@@ -251,8 +229,7 @@ async function sendEmail(to: string, subject: string, html: string, from: string
 
   if (!response.ok) {
     const error = await response.text();
-    console.error("Email send error:", error);
-    throw new Error("Failed to send email");
+    throw new Error(`Failed to send email: ${error}`);
   }
 
   return await response.json();
@@ -264,19 +241,16 @@ serve(async (req: Request): Promise<Response> => {
   }
 
   try {
-    const data = await req.json();
+    const booking: BookingConfirmationRequest = await req.json();
     
-    // Validate input
-    const validation = validateBookingInput(data);
-    if (!validation.valid) {
+    console.log('Sending booking confirmation for:', booking.clientEmail);
+    
+    if (!booking.clientEmail || !booking.clientName || !booking.bookingDate || !booking.bookingTime) {
       return new Response(
-        JSON.stringify({ error: validation.error }),
+        JSON.stringify({ error: "Missing required booking fields" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
-
-    const booking = data as BookingConfirmationRequest;
-    console.log('Sending booking confirmation');
 
     if (!RESEND_API_KEY) {
       console.error("RESEND_API_KEY not configured");
@@ -286,12 +260,14 @@ serve(async (req: Request): Promise<Response> => {
       );
     }
 
+    // W trybie testowym Resend (bez zweryfikowanej domeny) wysyłaj tylko do właściciela
     const isTestMode = SENDER_EMAIL === "onboarding@resend.dev";
     
+    // Email do właściciela (zawsze działa)
     try {
       await sendEmail(
         OWNER_EMAIL,
-        `🔔 Nowa konsultacja: ${escapeHtml(booking.clientName)} - ${formatDate(booking.bookingDate)} ${booking.bookingTime}`,
+        `🔔 Nowa konsultacja: ${booking.clientName} - ${formatDate(booking.bookingDate)} ${booking.bookingTime}`,
         generateOwnerEmailHtml(booking),
         `${COMPANY_NAME} System <${SENDER_EMAIL}>`
       );
@@ -300,6 +276,7 @@ serve(async (req: Request): Promise<Response> => {
       console.error('Owner email error:', ownerEmailError);
     }
 
+    // Email do klienta (tylko jeśli nie tryb testowy lub email klienta = email właściciela)
     if (!isTestMode || booking.clientEmail.toLowerCase() === OWNER_EMAIL.toLowerCase()) {
       try {
         await sendEmail(
@@ -310,10 +287,11 @@ serve(async (req: Request): Promise<Response> => {
         );
         console.log('Client email sent successfully');
       } catch (clientEmailError) {
-        console.error('Client email error:', clientEmailError);
+        console.error('Client email error (test mode restriction):', clientEmailError);
+        // W trybie testowym to jest oczekiwane - kontynuuj
       }
     } else {
-      console.log('Test mode: skipping client email');
+      console.log('Test mode: skipping client email (domain not verified)');
     }
 
     return new Response(
