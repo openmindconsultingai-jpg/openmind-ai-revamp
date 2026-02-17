@@ -1,29 +1,152 @@
 import { memo, useState, useRef, useEffect } from 'react';
-import { Video, Bot, GraduationCap, Globe, Check } from 'lucide-react';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Video, Bot, GraduationCap, Globe, Check, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import serviceVideoCreative from '@/assets/service-video-creative.mp4';
+import serviceVideoAutomation from '@/assets/service-video-automation.mp4';
+import serviceVideoEducation from '@/assets/service-video-education.mp4';
+import serviceVideoWeb from '@/assets/service-video-web.mp4';
+
 gsap.registerPlugin(ScrollTrigger);
 
+interface ServiceData {
+  id: string;
+  icon: React.ReactNode;
+  label: string;
+  h2: string;
+  description: string;
+  video: string;
+  accentClass: string;
+  items?: string[];
+  subTabs?: {
+    label: string;
+    accent?: boolean;
+    items: { title: string; junior?: boolean }[];
+  }[];
+}
+
+const services: ServiceData[] = [
+  {
+    id: 'creative',
+    icon: <Video className="w-5 h-5" />,
+    label: 'Agencja Kreatywna',
+    h2: 'Agencja Kreatywna AI: Wideo Marketing, Teledyski i Virale',
+    description: 'Tworzymy historie, które algorytmy kochają. Nasze produkcje wideo generowane przez AI zdobywają miliony wyświetleń i angażują odbiorców jak żadne inne medium.',
+    video: serviceVideoCreative,
+    accentClass: 'text-rose-400 border-rose-500/40 bg-rose-500/10',
+    items: [
+      'Produkcja Wideo i Teledysków AI (Sora/Runway)',
+      'Wiralowe Rolki i TikToki (Short Form Video)',
+      'Wirtualni Influencerzy i Cyfrowi Ambasadorzy',
+      'Kampanie Reklamowe z AI Awatarami',
+      'Generatywna Grafika i Kreacje Wizualne',
+    ],
+  },
+  {
+    id: 'automation',
+    icon: <Bot className="w-5 h-5" />,
+    label: 'Automatyzacja',
+    h2: 'Automatyzacja Procesów Biznesowych i Wdrażanie Aplikacji AI',
+    description: 'Zamieniamy ludzką pracę na inteligentne systemy. Automatyzujemy powtarzalne zadania, integrujemy narzędzia AI i budujemy dedykowane aplikacje, które skalują Twój biznes.',
+    video: serviceVideoAutomation,
+    accentClass: 'text-violet-400 border-violet-500/40 bg-violet-500/10',
+    items: [
+      'Budowa Dedykowanych Aplikacji AI dla Firm',
+      'Automatyzacja Workflow i Integracja (Make/n8n)',
+      'Analityka Danych i Raportowanie AI',
+      'Wdrożenia ChatGPT / Copilot w Organizacjach',
+      'Doradztwo Strategiczne i Audyt Procesów',
+    ],
+  },
+  {
+    id: 'education',
+    icon: <GraduationCap className="w-5 h-5" />,
+    label: 'Szkolenia AI',
+    h2: 'Szkolenia AI, Konsultacje i Edukacja Technologiczna',
+    description: 'Uczymy ludzi i organizacje, jak wykorzystać pełen potencjał sztucznej inteligencji – od korporacji po dzieci.',
+    video: serviceVideoEducation,
+    accentClass: 'text-primary border-primary/40 bg-primary/10',
+    subTabs: [
+      {
+        label: 'Dla Firm',
+        items: [
+          { title: 'Szkolenia "AI w Biznesie" – warsztaty dla zespołów' },
+          { title: 'Transformacja Zespołów i Management 3.0' },
+          { title: 'Wdrażanie narzędzi AI w korporacjach' },
+          { title: 'Konsultacje strategiczne 1:1 dla kadry zarządzającej' },
+        ],
+      },
+      {
+        label: 'Dla Ciebie',
+        items: [
+          { title: 'Kursy Prompt Engineering – od podstaw do eksperta' },
+          { title: 'Budowanie Marki Osobistej z AI' },
+          { title: 'Bootcamp dla Freelancerów – monetyzacja AI' },
+          { title: 'Tworzenie Treści z AI – tekst, obraz, wideo' },
+        ],
+      },
+      {
+        label: '🚀 JUNIOR',
+        accent: true,
+        items: [
+          { title: 'Akademia Młodego Twórcy (10-14 lat)', junior: true },
+          { title: 'AI Safety First: Bezpieczeństwo i krytyczne myślenie', junior: true },
+          { title: 'Szkoła Promptowania i Logiki dla dzieci', junior: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'web',
+    icon: <Globe className="w-5 h-5" />,
+    label: 'Strony & Branding',
+    h2: 'Inteligentne Strony WWW, Chatboty i Nowoczesny Branding',
+    description: 'Cyfrowa tożsamość, która aktywnie sprzedaje. Projektujemy strony internetowe zintegrowane z AI, wdrażamy chatboty i budujemy nowoczesne marki.',
+    video: serviceVideoWeb,
+    accentClass: 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10',
+    items: [
+      'Projektowanie Stron WWW Zintegrowanych z AI',
+      'Wdrożenia Chatbotów i Asystentów Głosowych',
+      'Generatywny Branding i Identyfikacja Wizualna',
+      'SEO i Pozycjonowanie z Wykorzystaniem AI',
+      'Systemy CRM i Marketing Automation',
+    ],
+  },
+];
+
 const Services = memo(() => {
-  const [activeTab, setActiveTab] = useState('firms');
+  const [activeTab, setActiveTab] = useState('creative');
+  const [eduSubTab, setEduSubTab] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        '.service-card',
-        { opacity: 0, y: 50, scale: 0.97 },
+        '.service-tab-trigger',
+        { opacity: 0, y: 30 },
         {
-          opacity: 1, y: 0, scale: 1,
-          stagger: 0.12, duration: 0.7, ease: 'power3.out',
+          opacity: 1, y: 0,
+          stagger: 0.1, duration: 0.6, ease: 'power3.out',
           scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
         }
       );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
+
+  // Animate content on tab change
+  useEffect(() => {
+    if (!contentRef.current) return;
+    gsap.fromTo(
+      contentRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+    );
+  }, [activeTab]);
+
+  const active = services.find(s => s.id === activeTab)!;
 
   return (
     <section ref={sectionRef} className="relative py-20 md:py-28 overflow-hidden">
@@ -33,167 +156,138 @@ const Services = memo(() => {
 
       <div className="container mx-auto px-6">
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center mb-16 md:mb-20">
+        <div className="max-w-4xl mx-auto text-center mb-14 md:mb-18">
           <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
             Agencja AI, Automatyzacja i Szkolenia –{' '}
             <span className="text-gradient">Wdrażamy Sztuczną Inteligencję w Biznesie</span>
           </h1>
-          <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto text-center-override">
+          <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
             Pionierskie rozwiązania – od wiralowych produkcji wideo, przez automatyzację firm, aż po edukację przyszłych pokoleń.
           </p>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        {/* Tab triggers – 4 equal cards */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 max-w-5xl mx-auto mb-6">
+          {services.map((s) => {
+            const isActive = activeTab === s.id;
+            return (
+              <button
+                key={s.id}
+                onClick={() => { setActiveTab(s.id); setEduSubTab(0); }}
+                className={`service-tab-trigger group relative rounded-xl p-4 md:p-5 text-left transition-all duration-300 border backdrop-blur-sm
+                  ${isActive
+                    ? `glass border-primary/50 shadow-[0_0_30px_hsl(var(--primary)/0.15)]`
+                    : 'bg-secondary/30 border-border/30 hover:border-primary/30 hover:bg-secondary/50'
+                  }`}
+              >
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 transition-colors duration-300
+                  ${isActive ? s.accentClass : 'bg-muted/50 text-muted-foreground'}`}>
+                  {s.icon}
+                </div>
+                <h3 className={`font-heading text-sm md:text-base font-semibold transition-colors duration-300
+                  ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}>
+                  {s.label}
+                </h3>
+                {isActive && (
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 rotate-45 bg-secondary/80 border-b border-r border-primary/30" />
+                )}
+              </button>
+            );
+          })}
+        </div>
 
-          {/* CARD 1 - Creative */}
-          <ServiceCard
-            icon={<Video className="w-6 h-6" />}
-            accentColor="from-rose-500/20 to-pink-600/10"
-            glowColor="rose-500"
-            iconBg="bg-rose-500/10 text-rose-400"
+        {/* Expanded content */}
+        <div
+          ref={contentRef}
+          key={activeTab}
+          className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden border border-border/30"
+        >
+          {/* Video background */}
+          <video
+            key={active.video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ filter: 'blur(4px)', transform: 'scale(1.05)' }}
           >
-            <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-2">
-              Agencja Kreatywna AI: Wideo Marketing, Teledyski i Virale
-            </h2>
-            <p className="text-muted-foreground text-sm mb-5">
-              Tworzymy historie, które algorytmy kochają.
-            </p>
-            <ul className="space-y-3">
-              <ListItem>Produkcja Wideo i Teledysków AI (Sora/Runway)</ListItem>
-              <ListItem>Wiralowe Rolki i TikToki (Short Form Video)</ListItem>
-              <ListItem>Wirtualni Influencerzy i Cyfrowi Ambasadorzy</ListItem>
-            </ul>
-          </ServiceCard>
+            <source src={active.video} type="video/mp4" />
+          </video>
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-background/85" />
 
-          {/* CARD 2 - Automation */}
-          <ServiceCard
-            icon={<Bot className="w-6 h-6" />}
-            accentColor="from-violet-500/20 to-blue-600/10"
-            glowColor="violet-500"
-            iconBg="bg-violet-500/10 text-violet-400"
-          >
-            <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-2">
-              Automatyzacja Procesów Biznesowych i Wdrażanie Aplikacji AI
-            </h2>
-            <p className="text-muted-foreground text-sm mb-5">
-              Zamieniamy ludzką pracę na inteligentne systemy.
-            </p>
-            <ul className="space-y-3">
-              <ListItem>Budowa Dedykowanych Aplikacji AI dla Firm</ListItem>
-              <ListItem>Automatyzacja Workflow i Integracja (Make/n8n)</ListItem>
-              <ListItem>Analityka Danych i Raportowanie AI</ListItem>
-            </ul>
-          </ServiceCard>
+          {/* Content */}
+          <div className="relative z-10 p-6 md:p-10 lg:p-12">
+            <div className="flex items-start gap-4 mb-6">
+              <div className={`shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${active.accentClass}`}>
+                {active.icon}
+              </div>
+              <div>
+                <h2 className="font-heading text-xl md:text-2xl lg:text-3xl font-semibold text-foreground">
+                  {active.h2}
+                </h2>
+                <p className="text-muted-foreground mt-2 max-w-2xl">
+                  {active.description}
+                </p>
+              </div>
+            </div>
 
-          {/* CARD 3 - Education (full width, with tabs) */}
-          <div className="service-card md:col-span-2 group">
-            <div className="relative h-full rounded-2xl glass p-6 md:p-8 overflow-hidden transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_0_60px_hsl(176_100%_43%/0.15)]">
-              {/* Gradient accent */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+            {/* Items or Sub-tabs */}
+            {active.items && (
+              <ul className="grid md:grid-cols-2 gap-3 mt-6">
+                {active.items.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 group/item">
+                    <ChevronRight className={`w-5 h-5 shrink-0 mt-0.5 transition-transform group-hover/item:translate-x-1 ${active.accentClass.split(' ')[0]}`} />
+                    <span className="text-foreground/90 text-sm md:text-base">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
 
-              <div className="relative z-10">
-                {/* Icon + Title */}
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                    <GraduationCap className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground">
-                      Szkolenia AI, Konsultacje i Edukacja Technologiczna
-                    </h2>
-                  </div>
+            {active.subTabs && (
+              <div className="mt-6">
+                {/* Sub-tab triggers */}
+                <div className="flex gap-2 mb-6">
+                  {active.subTabs.map((st, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setEduSubTab(i)}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 border
+                        ${st.accent && eduSubTab === i
+                          ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-background border-amber-400/50'
+                          : eduSubTab === i
+                            ? 'bg-primary/20 text-primary border-primary/30'
+                            : 'bg-secondary/30 text-muted-foreground border-border/30 hover:border-primary/20'
+                        }`}
+                    >
+                      {st.label}
+                    </button>
+                  ))}
                 </div>
 
-                {/* Tabs */}
-                <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                  <TabsList className="w-full md:w-auto bg-secondary/50 backdrop-blur-sm border border-border/50 p-1 rounded-xl mb-6">
-                    <TabsTrigger
-                      value="firms"
-                      className="rounded-lg data-[state=active]:bg-primary/20 data-[state=active]:text-primary px-5 py-2 text-sm font-medium"
+                {/* Sub-tab content */}
+                <div className="grid md:grid-cols-2 gap-3">
+                  {active.subTabs[eduSubTab].items.map((item, i) => (
+                    <div
+                      key={i}
+                      className={`rounded-xl p-4 border transition-all duration-300 ${
+                        item.junior
+                          ? 'bg-gradient-to-br from-amber-500/10 to-orange-500/5 border-amber-500/20'
+                          : 'bg-secondary/30 border-border/30'
+                      }`}
                     >
-                      Dla Firm
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="personal"
-                      className="rounded-lg data-[state=active]:bg-primary/20 data-[state=active]:text-primary px-5 py-2 text-sm font-medium"
-                    >
-                      Dla Ciebie
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="junior"
-                      className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-400 data-[state=active]:to-orange-500 data-[state=active]:text-background px-5 py-2 text-sm font-medium"
-                    >
-                      🚀 JUNIOR
-                    </TabsTrigger>
-                  </TabsList>
-
-                  <TabsContent value="firms" className="mt-0">
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <TabCard title='Szkolenia "AI w Biznesie"' />
-                      <TabCard title="Transformacja Zespołów i Management 3.0" />
-                      <TabCard title="Wdrażanie narzędzi w korporacjach" />
+                      <h3 className={`font-heading text-sm md:text-base font-medium ${
+                        item.junior ? 'text-amber-300' : 'text-foreground'
+                      }`}>
+                        {item.title}
+                      </h3>
                     </div>
-                  </TabsContent>
-
-                  <TabsContent value="personal" className="mt-0">
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <TabCard title="Kursy Prompt Engineering" />
-                      <TabCard title="Budowanie Marki Osobistej z AI" />
-                      <TabCard title="Bootcamp dla Freelancerów" />
-                    </div>
-                  </TabsContent>
-
-                  <TabsContent value="junior" className="mt-0">
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <TabCard
-                        title="Akademia Młodego Twórcy (10-14 lat)"
-                        junior
-                      />
-                      <TabCard
-                        title="AI Safety First: Bezpieczeństwo i krytyczne myślenie"
-                        junior
-                      />
-                      <TabCard
-                        title="Szkoła Promptowania i Logiki dla dzieci"
-                        junior
-                      />
-                    </div>
-                  </TabsContent>
-                </Tabs>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
-
-          {/* CARD 4 - Web & Brand (full width) */}
-          <ServiceCard
-            icon={<Globe className="w-6 h-6" />}
-            accentColor="from-emerald-500/20 to-teal-600/10"
-            glowColor="emerald-500"
-            iconBg="bg-emerald-500/10 text-emerald-400"
-            className="md:col-span-2"
-          >
-            <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-2">
-              Inteligentne Strony WWW, Chatboty i Nowoczesny Branding
-            </h2>
-            <p className="text-muted-foreground text-sm mb-5">
-              Cyfrowa tożsamość, która aktywnie sprzedaje.
-            </p>
-            <div className="grid md:grid-cols-3 gap-4">
-              <div className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                <span className="text-foreground/90 text-sm">Projektowanie Stron WWW Zintegrowanych z AI</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                <span className="text-foreground/90 text-sm">Wdrożenia Chatbotów i Asystentów Głosowych</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                <span className="text-foreground/90 text-sm">Generatywny Branding i Identyfikacja Wizualna</span>
-              </div>
-            </div>
-          </ServiceCard>
         </div>
       </div>
     </section>
@@ -201,68 +295,5 @@ const Services = memo(() => {
 });
 
 Services.displayName = 'Services';
-
-/* ── Reusable sub-components ───────────────────────────────────── */
-
-function ServiceCard({
-  icon,
-  accentColor,
-  glowColor,
-  iconBg,
-  className = '',
-  children,
-}: {
-  icon: React.ReactNode;
-  accentColor: string;
-  glowColor: string;
-  iconBg: string;
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className={`service-card group ${className}`}>
-      <div
-        className={`relative h-full rounded-2xl glass p-6 md:p-8 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_60px_hsl(176_100%_43%/0.12)]`}
-      >
-        {/* Hover gradient */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-br ${accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}
-        />
-
-        <div className="relative z-10">
-          <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center mb-5`}>
-            {icon}
-          </div>
-          {children}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ListItem({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex items-start gap-3">
-      <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-      <span className="text-foreground/90 text-sm">{children}</span>
-    </li>
-  );
-}
-
-function TabCard({ title, junior = false }: { title: string; junior?: boolean }) {
-  return (
-    <div
-      className={`rounded-xl p-4 border transition-all duration-300 ${
-        junior
-          ? 'bg-gradient-to-br from-amber-500/10 to-orange-500/5 border-amber-500/20 hover:border-amber-400/40'
-          : 'bg-secondary/30 border-border/30 hover:border-primary/30'
-      }`}
-    >
-      <h3 className={`font-heading text-sm font-medium ${junior ? 'text-amber-300' : 'text-foreground'}`}>
-        {title}
-      </h3>
-    </div>
-  );
-}
 
 export default Services;
