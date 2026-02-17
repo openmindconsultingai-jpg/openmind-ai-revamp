@@ -4,6 +4,19 @@ import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import jsPDF from 'jspdf';
+import robotoFontUrl from '@/assets/fonts/Roboto-Regular.ttf';
+
+// Helper: load font as base64 for jsPDF Unicode support
+const loadFontBase64 = async (): Promise<string> => {
+  const response = await fetch(robotoFontUrl);
+  const buffer = await response.arrayBuffer();
+  const bytes = new Uint8Array(buffer);
+  let binary = '';
+  for (let i = 0; i < bytes.length; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary);
+};
 
 type Message = {
   role: 'user' | 'assistant';
@@ -203,6 +216,15 @@ const AIAdvisorChat = () => {
       }
 
       const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+      // Embed Roboto font for Polish character support
+      const fontBase64 = await loadFontBase64();
+      pdf.addFileToVFS('Roboto-Regular.ttf', fontBase64);
+      pdf.addFont('Roboto-Regular.ttf', 'Roboto', 'normal');
+      pdf.addFont('Roboto-Regular.ttf', 'Roboto', 'bold');
+      pdf.addFont('Roboto-Regular.ttf', 'Roboto', 'italic');
+      pdf.setFont('Roboto');
+
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
       const margin = 18;
@@ -244,12 +266,12 @@ const AIAdvisorChat = () => {
       // Logo / Brand name
       pdf.setTextColor(cyan.r, cyan.g, cyan.b);
       pdf.setFontSize(20);
-      pdf.setFont('helvetica', 'bold');
+      pdf.setFont('Roboto', 'bold');
       pdf.text('OpenMind AI', margin, 18);
 
       pdf.setTextColor(textMuted.r, textMuted.g, textMuted.b);
       pdf.setFontSize(9);
-      pdf.setFont('helvetica', 'normal');
+      pdf.setFont('Roboto', 'normal');
       pdf.text('Consulting & Solutions', margin, 25);
 
       // Date on right
@@ -263,7 +285,7 @@ const AIAdvisorChat = () => {
       // === TITLE ===
       pdf.setTextColor(textLight.r, textLight.g, textLight.b);
       pdf.setFontSize(20);
-      pdf.setFont('helvetica', 'bold');
+      pdf.setFont('Roboto', 'bold');
       const titleText = pdfContent.title || 'Twoje spersonalizowane zastosowania AI';
       const titleLines = pdf.splitTextToSize(titleText, contentWidth);
       pdf.text(titleLines, margin, yPos);
@@ -279,7 +301,7 @@ const AIAdvisorChat = () => {
       if (pdfContent.summary) {
         pdf.setTextColor(textMuted.r, textMuted.g, textMuted.b);
         pdf.setFontSize(10);
-        pdf.setFont('helvetica', 'italic');
+        pdf.setFont('Roboto', 'italic');
         const summaryLines = pdf.splitTextToSize(pdfContent.summary, contentWidth);
         pdf.text(summaryLines, margin, yPos);
         yPos += summaryLines.length * 5 + 12;
@@ -323,7 +345,7 @@ const AIAdvisorChat = () => {
         // Number badge + name
         pdf.setTextColor(cyan.r, cyan.g, cyan.b);
         pdf.setFontSize(11);
-        pdf.setFont('helvetica', 'bold');
+        pdf.setFont('Roboto', 'bold');
         const numberStr = `${String(index + 1).padStart(2, '0')}`;
         pdf.text(numberStr, margin + 7, textY + 1);
         
@@ -334,7 +356,7 @@ const AIAdvisorChat = () => {
         // Description
         pdf.setTextColor(textMuted.r, textMuted.g, textMuted.b);
         pdf.setFontSize(9);
-        pdf.setFont('helvetica', 'normal');
+        pdf.setFont('Roboto', 'normal');
         pdf.text(descLines, margin + 8, textY);
         textY += descLines.length * 4.2;
 
@@ -343,7 +365,7 @@ const AIAdvisorChat = () => {
           textY += 3;
           pdf.setTextColor(cyan.r, cyan.g, cyan.b);
           pdf.setFontSize(8);
-          pdf.setFont('helvetica', 'italic');
+          pdf.setFont('Roboto', 'italic');
           pdf.text(benefitLines, margin + 8, textY);
         }
 
@@ -365,7 +387,7 @@ const AIAdvisorChat = () => {
 
       pdf.setTextColor(darkBg.r, darkBg.g, darkBg.b);
       pdf.setFontSize(10);
-      pdf.setFont('helvetica', 'bold');
+      pdf.setFont('Roboto', 'bold');
       pdf.text(nextStepsLines, margin + 8, yPos + 9);
 
       // === FOOTER ===
@@ -381,12 +403,12 @@ const AIAdvisorChat = () => {
 
         pdf.setTextColor(cyan.r, cyan.g, cyan.b);
         pdf.setFontSize(8);
-        pdf.setFont('helvetica', 'bold');
+        pdf.setFont('Roboto', 'bold');
         pdf.text('OpenMind AI', margin, footerY);
 
         pdf.setTextColor(textMuted.r, textMuted.g, textMuted.b);
         pdf.setFontSize(7);
-        pdf.setFont('helvetica', 'normal');
+        pdf.setFont('Roboto', 'normal');
         pdf.text('biuro@openmindai.pl  ·  openmindai.pl', margin + 28, footerY);
 
         pdf.text(`${p} / ${totalPages}`, pageWidth - margin, footerY, { align: 'right' });
