@@ -231,13 +231,14 @@ const VideoHero = () => {
               </span>
             ))}
           </span>
-          <span className="-ml-2">
+          <span className="ml-4">
             {aiText.split('').map((letter, i) => (
               <span 
                 key={i} 
                 className="hero-letter inline-block text-gradient"
                 style={{ 
-                  textShadow: '0 0 80px hsl(176 100% 43% / 0.8), 0 0 160px hsl(176 100% 43% / 0.5)'
+                  textShadow: '0 0 80px hsl(176 100% 43% / 0.8), 0 0 160px hsl(176 100% 43% / 0.5)',
+                  ...(i === 1 ? { marginLeft: '-0.15em' } : {}),
                 }}
               >
                 {letter}
