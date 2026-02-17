@@ -38,8 +38,8 @@ function validateMessages(messages: unknown): { valid: boolean; error?: string; 
   if (!messages || !Array.isArray(messages)) {
     return { valid: false, error: "Invalid request format: messages must be an array" };
   }
-  if (messages.length === 0 || messages.length > 50) {
-    return { valid: false, error: "Messages array must have 1-50 items" };
+  if (messages.length > 50) {
+    return { valid: false, error: "Messages array must have at most 50 items" };
   }
   const validRoles = new Set(["user", "assistant", "system"]);
   for (const msg of messages) {
