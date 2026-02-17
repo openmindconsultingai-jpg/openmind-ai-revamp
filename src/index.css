@@ -108,8 +108,10 @@
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-cyan-400;
     font-style: italic;
-    padding-right: 0.05em;
-    padding-bottom: 0.05em;
+    filter: drop-shadow(0 0 20px hsl(176 100% 43% / 0.4)) drop-shadow(0 0 50px hsl(176 100% 43% / 0.2));
+    padding-right: 0.1em;
+    padding-left: 0.03em;
+    padding-bottom: 0.1em;
   }
 
   .text-gradient-silver {
