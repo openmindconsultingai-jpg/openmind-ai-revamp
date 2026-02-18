@@ -6,6 +6,9 @@ import swiadomo from '@/assets/logos/swiadomo.png';
 import djsSkrobj from '@/assets/logos/djs-skrobj.jpg';
 import zenGarden from '@/assets/logos/zen-garden.png';
 import michalowski from '@/assets/logos/michalowski.png';
+import tissese from '@/assets/logos/tissese.png';
+import cwt from '@/assets/logos/cwt.png';
+import corallo from '@/assets/logos/corallo.png';
 
 const logos = [
   { src: pivotExpo, alt: 'Pivot Expo Modular Stands' },
@@ -15,6 +18,9 @@ const logos = [
   { src: djsSkrobj, alt: "DJ's Skrobj Agency" },
   { src: zenGarden, alt: 'Studio Masażu Zen Garden' },
   { src: michalowski, alt: 'Usługi Podatkowo-Księgowe Michałowski' },
+  { src: tissese, alt: 'Cooperativa Agricola Tissese' },
+  { src: cwt, alt: 'CWT' },
+  { src: corallo, alt: 'V&E Corallo – Your Sardinian Experience' },
 ];
 
 // Duplicate for seamless infinite loop
