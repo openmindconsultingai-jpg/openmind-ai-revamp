@@ -35,7 +35,10 @@ const allLogos = [...logos, ...logos];
 const LogoTicker = () => {
   const { t } = useLanguage();
   return (
-    <div className="hero-cta mt-10 w-full max-w-4xl mx-auto">
+    <div
+      className="hero-cta mt-10 w-full max-w-4xl mx-auto"
+      style={{ overflow: 'hidden', maxWidth: '100vw' }}
+    >
       {/* Label */}
       <p
         className="font-sans text-xs uppercase tracking-[0.25em] text-center mb-6"
@@ -59,7 +62,7 @@ const LogoTicker = () => {
           style={{
             animation: 'ticker-scroll 32s linear infinite',
             width: 'max-content',
-            gap: '56px',
+            gap: '40px',
           }}
         >
           {allLogos.map((logo, i) => (
@@ -67,8 +70,8 @@ const LogoTicker = () => {
               key={i}
               className="flex-shrink-0 flex items-center justify-center"
               style={{
-                width: '160px',
-                height: '72px',
+                width: '120px',
+                height: '56px',
               }}
             >
               <img
