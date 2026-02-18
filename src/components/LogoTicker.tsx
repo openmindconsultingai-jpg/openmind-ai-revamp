@@ -1,4 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
+import rzeczpospolita from '@/assets/logos/rzeczpospolita.png';
 import pivotExpo from '@/assets/logos/pivot-expo.png';
 import podatkowyInfo from '@/assets/logos/podatkowy-info.png';
 import detektyw from '@/assets/logos/detektyw.png';
@@ -13,6 +14,7 @@ import fabrykaTekstow from '@/assets/logos/fabryka-tekstow.png';
 import impuls from '@/assets/logos/impuls.png';
 
 const logos = [
+  { src: rzeczpospolita, alt: 'Rzeczpospolita' },
   { src: pivotExpo, alt: 'Pivot Expo Modular Stands' },
   { src: podatkowyInfo, alt: 'Podatkowy.info' },
   { src: detektyw, alt: 'Detektyw z Służb' },
