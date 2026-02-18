@@ -10,6 +10,7 @@ import tissese from '@/assets/logos/tissese.png';
 import cwt from '@/assets/logos/cwt.png';
 import corallo from '@/assets/logos/corallo.png';
 import fabrykaTekstow from '@/assets/logos/fabryka-tekstow.png';
+import impuls from '@/assets/logos/impuls.png';
 
 const logos = [
   { src: pivotExpo, alt: 'Pivot Expo Modular Stands' },
@@ -23,6 +24,7 @@ const logos = [
   { src: cwt, alt: 'CWT' },
   { src: corallo, alt: 'V&E Corallo – Your Sardinian Experience' },
   { src: fabrykaTekstow, alt: 'Fabryka Tekstów 24/7' },
+  { src: impuls, alt: 'Impuls – Obsługa Imprez' },
 ];
 
 // Duplicate for seamless infinite loop
