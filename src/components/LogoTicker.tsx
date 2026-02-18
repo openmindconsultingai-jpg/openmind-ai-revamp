@@ -51,14 +51,13 @@ const LogoTicker = () => {
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="max-h-10 max-w-[120px] w-auto object-contain"
+                className="max-h-10 max-w-[120px] w-auto object-contain rounded"
                 style={{
-                  filter: 'brightness(0) invert(1)',
-                  opacity: 0.45,
+                  opacity: 0.6,
                   transition: 'opacity 0.3s ease',
                 }}
-                onMouseEnter={e => ((e.currentTarget as HTMLImageElement).style.opacity = '0.85')}
-                onMouseLeave={e => ((e.currentTarget as HTMLImageElement).style.opacity = '0.45')}
+                onMouseEnter={e => ((e.currentTarget as HTMLImageElement).style.opacity = '1')}
+                onMouseLeave={e => ((e.currentTarget as HTMLImageElement).style.opacity = '0.6')}
               />
             </div>
           ))}
