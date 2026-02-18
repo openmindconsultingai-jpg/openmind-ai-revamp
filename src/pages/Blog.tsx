@@ -2,8 +2,10 @@ import PageLayout from '@/components/PageLayout';
 import BlogContent from '@/components/Blog';
 import Footer from '@/components/Footer';
 import usePageMeta from '@/hooks/usePageMeta';
+import useCanonical from '@/hooks/useCanonical';
 
 const Blog = () => {
+  useCanonical();
   usePageMeta({
     title: 'Baza Wiedzy o AI – Artykuły, Poradniki, Aktualności | OpenMind AI',
     description: 'Praktyczna baza wiedzy o sztucznej inteligencji: artykuły o machine learning, automatyzacji, ChatGPT, generatywnej AI, wdrożeniach dla firm, trendach technologicznych. Bezpłatne poradniki i case study od ekspertów OpenMind AI.',

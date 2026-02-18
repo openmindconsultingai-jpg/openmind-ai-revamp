@@ -2,8 +2,10 @@ import PageLayout from '@/components/PageLayout';
 import Privacy from '@/components/Privacy';
 import Footer from '@/components/Footer';
 import usePageMeta from '@/hooks/usePageMeta';
+import useCanonical from '@/hooks/useCanonical';
 
 const PrivacyPage = () => {
+  useCanonical();
   usePageMeta({
     title: 'Polityka Prywatności | OpenMind AI Consulting',
     description: 'Polityka prywatności OpenMind AI Consulting. Informacje o przetwarzaniu danych osobowych, prawach użytkowników zgodnie z RODO oraz bezpieczeństwie danych.',

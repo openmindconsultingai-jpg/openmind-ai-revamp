@@ -2,10 +2,11 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const SITE_URL = 'https://openmindai.pl';
+const PRODUCTION_HOST = 'openmindai.pl';
 
 /**
  * Sets <link rel="canonical"> in <head> based on the current route.
- * Removes query params and hash to keep canonical clean.
+ * Also sets noindex on non-production domains (preview/staging).
  */
 const useCanonical = () => {
   const { pathname } = useLocation();
@@ -13,6 +14,7 @@ const useCanonical = () => {
   useEffect(() => {
     const canonicalUrl = `${SITE_URL}${pathname === '/' ? '' : pathname}`;
 
+    // Set canonical link
     let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!link) {
       link = document.createElement('link');
@@ -20,6 +22,16 @@ const useCanonical = () => {
       document.head.appendChild(link);
     }
     link.setAttribute('href', canonicalUrl);
+
+    // Block indexing on non-production domains (preview, staging, lovable.app, etc.)
+    const isProduction = window.location.hostname === PRODUCTION_HOST;
+    let robotsMeta = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    if (!robotsMeta) {
+      robotsMeta = document.createElement('meta');
+      robotsMeta.setAttribute('name', 'robots');
+      document.head.appendChild(robotsMeta);
+    }
+    robotsMeta.setAttribute('content', isProduction ? 'index, follow' : 'noindex, nofollow');
 
     return () => {
       // Don't remove – let the next page update it

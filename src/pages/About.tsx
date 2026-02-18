@@ -2,8 +2,10 @@ import PageLayout from '@/components/PageLayout';
 import About from '@/components/About';
 import Footer from '@/components/Footer';
 import usePageMeta from '@/hooks/usePageMeta';
+import useCanonical from '@/hooks/useCanonical';
 
 const AboutPage = () => {
+  useCanonical();
   usePageMeta({
     title: 'O nas – OpenMind AI Consulting | Eksperci AI w Polsce',
     description: 'Poznaj OpenMind AI Consulting – polski hub technologiczny łączący inżynierię AI z kreatywnością. Szkolenia, wdrożenia, generatywne media, automatyzacja. Zespół ekspertów AI z doświadczeniem w e-commerce, medycynie, prawie i nieruchomościach.',

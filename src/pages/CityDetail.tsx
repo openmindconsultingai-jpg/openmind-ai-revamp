@@ -7,6 +7,7 @@ import { MapPin, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { findCity } from '@/data/voivodeships';
 import usePageMeta from '@/hooks/usePageMeta';
+import useCanonical from '@/hooks/useCanonical';
 
 const CityDetail = () => {
   const { slug, citySlug } = useParams<{ slug: string; citySlug: string }>();
@@ -50,6 +51,8 @@ const CityDetail = () => {
       },
     };
   }, [city, voivodeship, slug, citySlug, seoDescription]);
+
+  useCanonical();
 
   usePageMeta({
     title: seoTitle,
