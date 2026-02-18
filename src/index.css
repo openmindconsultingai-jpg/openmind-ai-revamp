@@ -301,6 +301,11 @@
   }
 }
 
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 @keyframes subtle-shift {
   0%, 100% {
     transform: translateX(0) translateY(0);

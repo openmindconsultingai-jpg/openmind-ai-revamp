@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Lazy load BookingModal - not needed for initial render
 const BookingModal = lazy(() => import('@/components/BookingModal'));
+const LogoTicker = lazy(() => import('@/components/LogoTicker'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -346,6 +347,11 @@ const VideoHero = () => {
             }}
           />
         </button>
+
+        {/* Logo Ticker */}
+        <Suspense fallback={null}>
+          <LogoTicker />
+        </Suspense>
 
         {/* Booking Modal - lazy loaded */}
         {isBookingOpen && (
