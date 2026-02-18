@@ -72,11 +72,11 @@ const LogoTicker = () => {
                 alt={logo.alt}
                 className="w-full h-full object-contain"
                 style={{
-                  opacity: 0.7,
+                  opacity: 0.4,
                   transition: 'opacity 0.3s ease',
                 }}
                 onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.opacity = '1'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.opacity = '0.7'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.opacity = '0.4'; }}
               />
             </div>
           ))}
