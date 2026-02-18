@@ -1,6 +1,7 @@
 import { memo, useState, useRef, useEffect } from 'react';
 import { Video, Bot, GraduationCap, Globe, ChevronRight, ArrowRight } from 'lucide-react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -16,115 +17,36 @@ import imgWeb from '@/assets/service-consulting.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface ServiceData {
-  id: string;
-  icon: React.ReactNode;
-  label: string;
-  h2: string;
-  description: string;
-  video: string;
-  image: string;
-  accentClass: string;
-  items?: string[];
-  subTabs?: {
-    label: string;
-    accent?: boolean;
-    items: { title: string; junior?: boolean }[];
-  }[];
-}
+const SERVICE_IDS = ['creative', 'automation', 'education', 'web'] as const;
+type ServiceId = typeof SERVICE_IDS[number];
 
-const services: ServiceData[] = [
-  {
-    id: 'creative',
-    icon: <Video className="w-5 h-5" />,
-    label: 'Agencja Kreatywna',
-    h2: 'Agencja Kreatywna AI: Wideo Marketing, Teledyski i Virale',
-    description: 'Tworzymy historie, które algorytmy kochają. Nasze produkcje wideo generowane przez AI zdobywają miliony wyświetleń i angażują odbiorców jak żadne inne medium.',
-    video: serviceVideoCreative,
-    image: imgCreative,
-    accentClass: 'text-rose-400 border-rose-500/40 bg-rose-500/10',
-    items: [
-      'Produkcja Wideo i Teledysków AI (Sora/Runway)',
-      'Wiralowe Rolki i TikToki (Short Form Video)',
-      'Wirtualni Influencerzy i Cyfrowi Ambasadorzy',
-      'Kampanie Reklamowe z AI Awatarami',
-      'Generatywna Grafika i Kreacje Wizualne',
-    ],
-  },
-  {
-    id: 'automation',
-    icon: <Bot className="w-5 h-5" />,
-    label: 'Automatyzacja',
-    h2: 'Automatyzacja Procesów Biznesowych i Wdrażanie Aplikacji AI',
-    description: 'Zamieniamy ludzką pracę na inteligentne systemy. Automatyzujemy powtarzalne zadania, integrujemy narzędzia AI i budujemy dedykowane aplikacje, które skalują Twój biznes.',
-    video: serviceVideoAutomation,
-    image: imgAutomation,
-    accentClass: 'text-violet-400 border-violet-500/40 bg-violet-500/10',
-    items: [
-      'Budowa Dedykowanych Aplikacji AI dla Firm',
-      'Automatyzacja Workflow i Integracja (Make/n8n)',
-      'Analityka Danych i Raportowanie AI',
-      'Wdrożenia ChatGPT / Copilot w Organizacjach',
-      'Doradztwo Strategiczne i Audyt Procesów',
-    ],
-  },
-  {
-    id: 'education',
-    icon: <GraduationCap className="w-5 h-5" />,
-    label: 'Szkolenia AI',
-    h2: 'Szkolenia AI, Konsultacje i Edukacja Technologiczna',
-    description: 'Uczymy ludzi i organizacje, jak wykorzystać pełen potencjał sztucznej inteligencji – od korporacji po dzieci.',
-    video: serviceVideoEducation,
-    image: imgEducation,
-    accentClass: 'text-primary border-primary/40 bg-primary/10',
-    subTabs: [
-      {
-        label: 'Dla Firm',
-        items: [
-          { title: 'Szkolenia "AI w Biznesie" – warsztaty dla zespołów' },
-          { title: 'Transformacja Zespołów i Management 3.0' },
-          { title: 'Wdrażanie narzędzi AI w korporacjach' },
-          { title: 'Konsultacje strategiczne 1:1 dla kadry zarządzającej' },
-        ],
-      },
-      {
-        label: 'Dla Ciebie',
-        items: [
-          { title: 'Kursy Prompt Engineering – od podstaw do eksperta' },
-          { title: 'Budowanie Marki Osobistej z AI' },
-          { title: 'Bootcamp dla Freelancerów – monetyzacja AI' },
-          { title: 'Tworzenie Treści z AI – tekst, obraz, wideo' },
-        ],
-      },
-      {
-        label: '🚀 JUNIOR',
-        accent: true,
-        items: [
-          { title: 'Akademia Młodego Twórcy (10-14 lat)', junior: true },
-          { title: 'AI Safety First: Bezpieczeństwo i krytyczne myślenie', junior: true },
-          { title: 'Szkoła Promptowania i Logiki dla dzieci', junior: true },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'web',
-    icon: <Globe className="w-5 h-5" />,
-    label: 'Strony & Branding',
-    h2: 'Inteligentne Strony WWW, Chatboty i Nowoczesny Branding',
-    description: 'Cyfrowa tożsamość, która aktywnie sprzedaje. Projektujemy strony internetowe zintegrowane z AI, wdrażamy chatboty i budujemy nowoczesne marki.',
-    video: serviceVideoWeb,
-    image: imgWeb,
-    accentClass: 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10',
-    items: [
-      'Projektowanie Stron WWW Zintegrowanych z AI',
-      'Wdrożenia Chatbotów i Asystentów Głosowych',
-      'Generatywny Branding i Identyfikacja Wizualna',
-      'SEO i Pozycjonowanie z Wykorzystaniem AI',
-      'Systemy CRM i Marketing Automation',
-    ],
-  },
-];
+const SERVICE_VIDEOS: Record<ServiceId, string> = {
+  creative: serviceVideoCreative,
+  automation: serviceVideoAutomation,
+  education: serviceVideoEducation,
+  web: serviceVideoWeb,
+};
+
+const SERVICE_IMAGES: Record<ServiceId, string> = {
+  creative: imgCreative,
+  automation: imgAutomation,
+  education: imgEducation,
+  web: imgWeb,
+};
+
+const SERVICE_ACCENT: Record<ServiceId, string> = {
+  creative: 'text-rose-400 border-rose-500/40 bg-rose-500/10',
+  automation: 'text-violet-400 border-violet-500/40 bg-violet-500/10',
+  education: 'text-primary border-primary/40 bg-primary/10',
+  web: 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10',
+};
+
+const SERVICE_ICONS: Record<ServiceId, React.ReactNode> = {
+  creative: <Video className="w-5 h-5" />,
+  automation: <Bot className="w-5 h-5" />,
+  education: <GraduationCap className="w-5 h-5" />,
+  web: <Globe className="w-5 h-5" />,
+};
 
 /* ── Main component ── */
 
@@ -133,8 +55,9 @@ interface ServicesProps {
 }
 
 const Services = memo(({ serviceSlug }: ServicesProps) => {
-  const resolvedSlug = serviceSlug || 'creative';
-  const [activeTab, setActiveTab] = useState(resolvedSlug);
+  const { t } = useLanguage();
+  const resolvedSlug = (serviceSlug && SERVICE_IDS.includes(serviceSlug as ServiceId)) ? serviceSlug as ServiceId : 'creative';
+  const [activeTab, setActiveTab] = useState<ServiceId>(resolvedSlug);
   const [eduSubTab, setEduSubTab] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -142,8 +65,8 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
 
   // Sync with URL param
   useEffect(() => {
-    if (serviceSlug && services.some(s => s.id === serviceSlug)) {
-      setActiveTab(serviceSlug);
+    if (serviceSlug && SERVICE_IDS.includes(serviceSlug as ServiceId)) {
+      setActiveTab(serviceSlug as ServiceId);
       setEduSubTab(0);
     }
   }, [serviceSlug]);
@@ -173,13 +96,47 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
     );
   }, [activeTab]);
 
-  const handleTabClick = (id: string) => {
+  const handleTabClick = (id: ServiceId) => {
     setActiveTab(id);
     setEduSubTab(0);
     navigate(`/services/${id}`, { replace: true });
   };
 
-  const active = services.find(s => s.id === activeTab) || services[0];
+  // Build service data from translations
+  const getItems = (id: ServiceId): string[] => {
+    const keys = ['item1', 'item2', 'item3', 'item4', 'item5'];
+    return keys.map(k => t(`services.tab.${id}.${k}`)).filter(v => v && !v.startsWith('services.tab.'));
+  };
+
+  const getSubTabs = () => [
+    {
+      label: t('services.tab.education.sub1.label'),
+      items: [
+        { title: t('services.tab.education.sub1.item1') },
+        { title: t('services.tab.education.sub1.item2') },
+        { title: t('services.tab.education.sub1.item3') },
+        { title: t('services.tab.education.sub1.item4') },
+      ],
+    },
+    {
+      label: t('services.tab.education.sub2.label'),
+      items: [
+        { title: t('services.tab.education.sub2.item1') },
+        { title: t('services.tab.education.sub2.item2') },
+        { title: t('services.tab.education.sub2.item3') },
+        { title: t('services.tab.education.sub2.item4') },
+      ],
+    },
+    {
+      label: t('services.tab.education.sub3.label'),
+      accent: true,
+      items: [
+        { title: t('services.tab.education.sub3.item1'), junior: true },
+        { title: t('services.tab.education.sub3.item2'), junior: true },
+        { title: t('services.tab.education.sub3.item3'), junior: true },
+      ],
+    },
+  ];
 
   return (
     <section ref={sectionRef} className="relative py-20 md:py-28 overflow-hidden">
@@ -191,48 +148,42 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-14 md:mb-18">
           <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="text-foreground">Agencja AI, Automatyzacja i Szkolenia –</span>{' '}
-            <span className="text-gradient text-glow">Wdrażamy Sztuczną Inteligencję w Biznesie</span>
+            <span className="text-foreground">{t('services.header.title1')}</span>{' '}
+            <span className="text-gradient text-glow">{t('services.header.title2')}</span>
           </h1>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            Pionierskie rozwiązania – od wiralowych produkcji wideo, przez automatyzację firm, aż po edukację przyszłych pokoleń.
+            {t('services.header.subtitle')}
           </p>
         </div>
 
-        {/* Tab triggers – 4 equal cards with background images */}
+        {/* Tab triggers */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 max-w-5xl mx-auto mb-6">
-          {services.map((s) => {
-            const isActive = activeTab === s.id;
+          {SERVICE_IDS.map((id) => {
+            const isActive = activeTab === id;
             return (
               <button
-                key={s.id}
-                onClick={() => handleTabClick(s.id)}
+                key={id}
+                onClick={() => handleTabClick(id)}
                 className={`service-tab-trigger group relative rounded-xl overflow-hidden aspect-[4/3] transition-all duration-300 border
                   ${isActive
                     ? 'border-primary/60 shadow-[0_0_30px_hsl(var(--primary)/0.2)] scale-[1.02]'
                     : 'border-border/30 hover:border-primary/30 hover:scale-[1.01]'
                   }`}
               >
-                {/* Background image */}
                 <img
-                  src={s.image}
-                  alt={s.label}
+                  src={SERVICE_IMAGES[id]}
+                  alt={t(`services.tab.${id}.label`)}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                {/* Dark overlay */}
                 <div className={`absolute inset-0 transition-opacity duration-300 ${
                   isActive ? 'bg-background/70' : 'bg-background/80 group-hover:bg-background/65'
                 }`} />
-
-                {/* Content – centered */}
                 <div className="relative z-10 flex flex-col items-center justify-center h-full p-4 text-center">
                   <h3 className={`font-heading text-sm md:text-base font-semibold transition-colors duration-300
                     ${isActive ? 'text-foreground' : 'text-foreground/70'}`}>
-                    {s.label}
+                    {t(`services.tab.${id}.label`)}
                   </h3>
                 </div>
-
-                {/* Active indicator arrow */}
                 {isActive && (
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 rotate-45 bg-background/90 border-b border-r border-primary/30 z-20" />
                 )}
@@ -249,7 +200,7 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
         >
           {/* Video background */}
           <video
-            key={active.video}
+            key={SERVICE_VIDEOS[activeTab]}
             autoPlay
             muted
             loop
@@ -257,32 +208,32 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
             className="absolute inset-0 w-full h-full object-cover"
             style={{ filter: 'blur(4px)', transform: 'scale(1.05)' }}
           >
-            <source src={active.video} type="video/mp4" />
+            <source src={SERVICE_VIDEOS[activeTab]} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-background/85" />
 
           {/* Content */}
           <div className="relative z-10 p-6 md:p-10 lg:p-12">
             <div className="flex items-start gap-4 mb-6">
-              <div className={`shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${active.accentClass}`}>
-                {active.icon}
+              <div className={`shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${SERVICE_ACCENT[activeTab]}`}>
+                {SERVICE_ICONS[activeTab]}
               </div>
               <div>
                 <h2 className="font-heading text-xl md:text-2xl lg:text-3xl font-bold text-gradient">
-                  {active.h2}
+                  {t(`services.tab.${activeTab}.h2`)}
                 </h2>
                 <p className="text-muted-foreground mt-2 max-w-2xl">
-                  {active.description}
+                  {t(`services.tab.${activeTab}.description`)}
                 </p>
               </div>
             </div>
 
-            {/* Items */}
-            {active.items && (
+            {/* Items (non-education) */}
+            {activeTab !== 'education' && (
               <ul className="grid md:grid-cols-2 gap-3 mt-6">
-                {active.items.map((item, i) => (
+                {getItems(activeTab).map((item, i) => (
                   <li key={i} className="flex items-start gap-3 group/item">
-                    <ChevronRight className={`w-5 h-5 shrink-0 mt-0.5 transition-transform group-hover/item:translate-x-1 ${active.accentClass.split(' ')[0]}`} />
+                    <ChevronRight className={`w-5 h-5 shrink-0 mt-0.5 transition-transform group-hover/item:translate-x-1 ${SERVICE_ACCENT[activeTab].split(' ')[0]}`} />
                     <span className="text-foreground/90 text-sm md:text-base">{item}</span>
                   </li>
                 ))}
@@ -290,10 +241,10 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
             )}
 
             {/* Sub-tabs (Education) */}
-            {active.subTabs && (
+            {activeTab === 'education' && (
               <div className="mt-6">
                 <div className="flex gap-2 mb-6">
-                  {active.subTabs.map((st, i) => (
+                  {getSubTabs().map((st, i) => (
                     <button
                       key={i}
                       onClick={() => setEduSubTab(i)}
@@ -310,7 +261,7 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
                   ))}
                 </div>
                 <div className="grid md:grid-cols-2 gap-3">
-                  {active.subTabs[eduSubTab].items.map((item, i) => (
+                  {getSubTabs()[eduSubTab].items.map((item, i) => (
                     <div
                       key={i}
                       className={`rounded-xl p-4 border transition-all duration-300 ${
@@ -339,7 +290,7 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
                   hover:bg-primary/20 hover:border-primary/60 hover:shadow-[0_0_40px_hsl(var(--primary)/0.2)]
                   transition-all duration-300"
               >
-                Umów bezpłatną konsultację
+                {t('services.cta')}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover/cta:translate-x-1" />
               </Link>
             </div>

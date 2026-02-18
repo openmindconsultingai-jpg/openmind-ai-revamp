@@ -845,6 +845,61 @@ Kluczowym trendem technologicznym będzie Real-time Generative Media. Przejście
 
 W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przyszłości to nie rzemieślnik dłubiący w pikselach, ale reżyser i kurator, zarządzający orkiestrą inteligentnych algorytmów. Umiejętność techniczna ustąpi miejsca wyobraźni, smakowi artystycznemu i zdolności łączenia kropek ("Model Orchestration"), gdzie jedynym limitem staje się kreatywność w zadawaniu pytań i definiowaniu wizji.`,
 
+    // Services (hardcoded in component)
+    'services.header.title1': 'Agencja AI, Automatyzacja i Szkolenia –',
+    'services.header.title2': 'Wdrażamy Sztuczną Inteligencję w Biznesie',
+    'services.header.subtitle': 'Pionierskie rozwiązania – od wiralowych produkcji wideo, przez automatyzację firm, aż po edukację przyszłych pokoleń.',
+    'services.cta': 'Umów bezpłatną konsultację',
+
+    // Service tabs
+    'services.tab.creative.label': 'Agencja Kreatywna',
+    'services.tab.creative.h2': 'Agencja Kreatywna AI: Wideo Marketing, Teledyski i Virale',
+    'services.tab.creative.description': 'Tworzymy historie, które algorytmy kochają. Nasze produkcje wideo generowane przez AI zdobywają miliony wyświetleń i angażują odbiorców jak żadne inne medium.',
+    'services.tab.creative.item1': 'Produkcja Wideo i Teledysków AI (Sora/Runway)',
+    'services.tab.creative.item2': 'Wiralowe Rolki i TikToki (Short Form Video)',
+    'services.tab.creative.item3': 'Wirtualni Influencerzy i Cyfrowi Ambasadorzy',
+    'services.tab.creative.item4': 'Kampanie Reklamowe z AI Awatarami',
+    'services.tab.creative.item5': 'Generatywna Grafika i Kreacje Wizualne',
+
+    'services.tab.automation.label': 'Automatyzacja',
+    'services.tab.automation.h2': 'Automatyzacja Procesów Biznesowych i Wdrażanie Aplikacji AI',
+    'services.tab.automation.description': 'Zamieniamy ludzką pracę na inteligentne systemy. Automatyzujemy powtarzalne zadania, integrujemy narzędzia AI i budujemy dedykowane aplikacje, które skalują Twój biznes.',
+    'services.tab.automation.item1': 'Budowa Dedykowanych Aplikacji AI dla Firm',
+    'services.tab.automation.item2': 'Automatyzacja Workflow i Integracja (Make/n8n)',
+    'services.tab.automation.item3': 'Analityka Danych i Raportowanie AI',
+    'services.tab.automation.item4': 'Wdrożenia ChatGPT / Copilot w Organizacjach',
+    'services.tab.automation.item5': 'Doradztwo Strategiczne i Audyt Procesów',
+
+    'services.tab.education.label': 'Szkolenia AI',
+    'services.tab.education.h2': 'Szkolenia AI, Konsultacje i Edukacja Technologiczna',
+    'services.tab.education.description': 'Uczymy ludzi i organizacje, jak wykorzystać pełen potencjał sztucznej inteligencji – od korporacji po dzieci.',
+    'services.tab.education.sub1.label': 'Dla Firm',
+    'services.tab.education.sub1.item1': 'Szkolenia "AI w Biznesie" – warsztaty dla zespołów',
+    'services.tab.education.sub1.item2': 'Transformacja Zespołów i Management 3.0',
+    'services.tab.education.sub1.item3': 'Wdrażanie narzędzi AI w korporacjach',
+    'services.tab.education.sub1.item4': 'Konsultacje strategiczne 1:1 dla kadry zarządzającej',
+    'services.tab.education.sub2.label': 'Dla Ciebie',
+    'services.tab.education.sub2.item1': 'Kursy Prompt Engineering – od podstaw do eksperta',
+    'services.tab.education.sub2.item2': 'Budowanie Marki Osobistej z AI',
+    'services.tab.education.sub2.item3': 'Bootcamp dla Freelancerów – monetyzacja AI',
+    'services.tab.education.sub2.item4': 'Tworzenie Treści z AI – tekst, obraz, wideo',
+    'services.tab.education.sub3.label': '🚀 JUNIOR',
+    'services.tab.education.sub3.item1': 'Akademia Młodego Twórcy (10-14 lat)',
+    'services.tab.education.sub3.item2': 'AI Safety First: Bezpieczeństwo i krytyczne myślenie',
+    'services.tab.education.sub3.item3': 'Szkoła Promptowania i Logiki dla dzieci',
+
+    'services.tab.web.label': 'Strony & Branding',
+    'services.tab.web.h2': 'Inteligentne Strony WWW, Chatboty i Nowoczesny Branding',
+    'services.tab.web.description': 'Cyfrowa tożsamość, która aktywnie sprzedaje. Projektujemy strony internetowe zintegrowane z AI, wdrażamy chatboty i budujemy nowoczesne marki.',
+    'services.tab.web.item1': 'Projektowanie Stron WWW Zintegrowanych z AI',
+    'services.tab.web.item2': 'Wdrożenia Chatbotów i Asystentów Głosowych',
+    'services.tab.web.item3': 'Generatywny Branding i Identyfikacja Wizualna',
+    'services.tab.web.item4': 'SEO i Pozycjonowanie z Wykorzystaniem AI',
+    'services.tab.web.item5': 'Systemy CRM i Marketing Automation',
+
+    // Logo ticker
+    'logoticker.label': 'Zaufali nam',
+
     // Footer
     'footer.copyright': '© 2025 OpenMind AI Consulting. Wszystkie prawa zastrzeżone.',
     'footer.privacy': 'Polityka prywatności',
@@ -1692,6 +1747,61 @@ A key technological trend will be Real-time Generative Media. The transition fro
 
 In this reality, the creator's role will undergo profound redefinition. The future creator is not a craftsman tinkering with pixels but a director and curator, managing an orchestra of intelligent algorithms. Technical skill will give way to imagination, artistic taste, and the ability to connect dots ("Model Orchestration"), where the only limit becomes creativity in asking questions and defining vision.`,
     
+    // Services (hardcoded in component)
+    'services.header.title1': 'AI Agency, Automation & Training –',
+    'services.header.title2': 'We Deploy Artificial Intelligence in Business',
+    'services.header.subtitle': 'Pioneering solutions – from viral video productions, through business automation, to educating future generations.',
+    'services.cta': 'Book a free consultation',
+
+    // Service tabs
+    'services.tab.creative.label': 'Creative Agency',
+    'services.tab.creative.h2': 'AI Creative Agency: Video Marketing, Music Videos & Virals',
+    'services.tab.creative.description': 'We create stories that algorithms love. Our AI-generated video productions gain millions of views and engage audiences like no other medium.',
+    'services.tab.creative.item1': 'AI Video & Music Video Production (Sora/Runway)',
+    'services.tab.creative.item2': 'Viral Reels & TikToks (Short Form Video)',
+    'services.tab.creative.item3': 'Virtual Influencers & Digital Ambassadors',
+    'services.tab.creative.item4': 'Ad Campaigns with AI Avatars',
+    'services.tab.creative.item5': 'Generative Graphics & Visual Creations',
+
+    'services.tab.automation.label': 'Automation',
+    'services.tab.automation.h2': 'Business Process Automation & AI Application Deployment',
+    'services.tab.automation.description': 'We replace human labor with intelligent systems. We automate repetitive tasks, integrate AI tools, and build dedicated applications that scale your business.',
+    'services.tab.automation.item1': 'Building Dedicated AI Applications for Companies',
+    'services.tab.automation.item2': 'Workflow Automation & Integration (Make/n8n)',
+    'services.tab.automation.item3': 'Data Analytics & AI Reporting',
+    'services.tab.automation.item4': 'ChatGPT / Copilot Deployments in Organizations',
+    'services.tab.automation.item5': 'Strategic Consulting & Process Audit',
+
+    'services.tab.education.label': 'AI Training',
+    'services.tab.education.h2': 'AI Training, Consulting & Technology Education',
+    'services.tab.education.description': 'We teach people and organizations how to harness the full potential of artificial intelligence – from corporations to children.',
+    'services.tab.education.sub1.label': 'For Companies',
+    'services.tab.education.sub1.item1': '"AI in Business" Training – team workshops',
+    'services.tab.education.sub1.item2': 'Team Transformation & Management 3.0',
+    'services.tab.education.sub1.item3': 'Deploying AI tools in corporations',
+    'services.tab.education.sub1.item4': '1:1 strategic consulting for management',
+    'services.tab.education.sub2.label': 'For You',
+    'services.tab.education.sub2.item1': 'Prompt Engineering Courses – from basics to expert',
+    'services.tab.education.sub2.item2': 'Building Personal Brand with AI',
+    'services.tab.education.sub2.item3': 'Freelancer Bootcamp – AI monetization',
+    'services.tab.education.sub2.item4': 'Creating Content with AI – text, image, video',
+    'services.tab.education.sub3.label': '🚀 JUNIOR',
+    'services.tab.education.sub3.item1': 'Young Creator Academy (ages 10–14)',
+    'services.tab.education.sub3.item2': 'AI Safety First: Security & Critical Thinking',
+    'services.tab.education.sub3.item3': 'Prompting & Logic School for Children',
+
+    'services.tab.web.label': 'Web & Branding',
+    'services.tab.web.h2': 'Intelligent Websites, Chatbots & Modern Branding',
+    'services.tab.web.description': 'A digital identity that actively sells. We design AI-integrated websites, deploy chatbots, and build modern brands.',
+    'services.tab.web.item1': 'AI-Integrated Website Design',
+    'services.tab.web.item2': 'Chatbot & Voice Assistant Deployments',
+    'services.tab.web.item3': 'Generative Branding & Visual Identity',
+    'services.tab.web.item4': 'SEO & Positioning Using AI',
+    'services.tab.web.item5': 'CRM Systems & Marketing Automation',
+
+    // Logo ticker
+    'logoticker.label': 'They trusted us',
+
     // Footer
     'footer.copyright': '© 2025 OpenMind AI Consulting. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
