@@ -1,3 +1,4 @@
+import { useLanguage } from '@/contexts/LanguageContext';
 import pivotExpo from '@/assets/logos/pivot-expo.png';
 import podatkowyInfo from '@/assets/logos/podatkowy-info.png';
 import detektyw from '@/assets/logos/detektyw.png';
@@ -8,18 +9,19 @@ import michalowski from '@/assets/logos/michalowski.png';
 
 const logos = [
   { src: pivotExpo, alt: 'Pivot Expo Modular Stands' },
-  { src: podatkowyInfo, alt: 'Podatkowy.info – Księgowość dla firm' },
+  { src: podatkowyInfo, alt: 'Podatkowy.info' },
   { src: detektyw, alt: 'Detektyw z Służb' },
   { src: swiadomo, alt: 'Świadomo' },
   { src: djsSkrobj, alt: "DJ's Skrobj Agency" },
   { src: zenGarden, alt: 'Studio Masażu Zen Garden' },
-  { src: michalowski, alt: 'Usługi Podatkowo-Księgowe Paweł Michałowski' },
+  { src: michalowski, alt: 'Usługi Podatkowo-Księgowe Michałowski' },
 ];
 
 // Duplicate for seamless infinite loop
 const allLogos = [...logos, ...logos];
 
 const LogoTicker = () => {
+  const { t } = useLanguage();
   return (
     <div className="hero-cta mt-10 w-full max-w-4xl mx-auto">
       {/* Label */}
@@ -27,7 +29,7 @@ const LogoTicker = () => {
         className="font-sans text-xs uppercase tracking-[0.25em] text-center mb-6"
         style={{ color: 'hsl(176 100% 43% / 0.5)' }}
       >
-        Zaufali nam
+        {t('logoticker.label')}
       </p>
 
       {/* Ticker wrapper */}
@@ -77,4 +79,3 @@ const LogoTicker = () => {
 };
 
 export default LogoTicker;
-
