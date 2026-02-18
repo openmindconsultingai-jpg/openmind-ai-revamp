@@ -3,6 +3,7 @@ import PageLayout from '@/components/PageLayout';
 import Services from '@/components/Services';
 import Footer from '@/components/Footer';
 import usePageMeta from '@/hooks/usePageMeta';
+import useCanonical from '@/hooks/useCanonical';
 
 const servicesMeta: Record<string, { title: string; description: string; keywords: string }> = {
   creative: {
@@ -36,6 +37,7 @@ const defaultMeta = {
 const ServicesPage = () => {
   const { serviceSlug } = useParams<{ serviceSlug?: string }>();
   const meta = (serviceSlug && servicesMeta[serviceSlug]) || defaultMeta;
+  useCanonical();
 
   usePageMeta({
     title: meta.title,

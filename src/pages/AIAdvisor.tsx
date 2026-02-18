@@ -2,10 +2,12 @@ import PageLayout from '@/components/PageLayout';
 import Footer from '@/components/Footer';
 import AIAdvisorChat from '@/components/AIAdvisorChat';
 import usePageMeta from '@/hooks/usePageMeta';
+import useCanonical from '@/hooks/useCanonical';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const AIAdvisorPage = () => {
   const { t } = useLanguage();
+  useCanonical();
 
   usePageMeta({
     title: 'Wirtualny Doradca AI – Darmowy Doradca Sztucznej Inteligencji | OpenMind AI',

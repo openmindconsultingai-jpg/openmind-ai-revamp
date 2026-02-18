@@ -4,6 +4,7 @@ import PageLayout from '@/components/PageLayout';
 import BlogArticleComponent from '@/components/BlogArticle';
 import Footer from '@/components/Footer';
 import usePageMeta from '@/hooks/usePageMeta';
+import useCanonical from '@/hooks/useCanonical';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const generatePublishDate = (articleId: number) => {
@@ -40,6 +41,7 @@ const BlogArticlePage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { t } = useLanguage();
+  useCanonical();
 
   const articleId = parseInt(id || '1', 10);
   const article = articles.find((a) => a.id === articleId);
