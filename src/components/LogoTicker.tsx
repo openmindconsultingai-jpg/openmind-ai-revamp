@@ -19,24 +19,13 @@ const logos = [
 // Duplicate for seamless infinite loop
 const allLogos = [...logos, ...logos];
 
-// CSS filter that converts any logo to dark/black + green-cyan tint matching the brand palette
-// 1. grayscale → removes original colors
-// 2. sepia → warm base tone needed for hue-rotate
-// 3. saturate → boosts colour intensity
-// 4. hue-rotate(130deg) → shifts warm yellow into teal/green (hsl ~176)
-// 5. brightness(0.8) contrast(1.3) → makes it darker / more contrasty (black-green look)
-const LOGO_FILTER =
-  'grayscale(1) sepia(1) saturate(6) hue-rotate(130deg) brightness(0.75) contrast(1.4)';
-const LOGO_FILTER_HOVER =
-  'grayscale(1) sepia(1) saturate(8) hue-rotate(130deg) brightness(1) contrast(1.3)';
-
 const LogoTicker = () => {
   return (
-    <div className="hero-cta mt-10 w-full max-w-3xl mx-auto">
+    <div className="hero-cta mt-10 w-full max-w-4xl mx-auto">
       {/* Label */}
       <p
-        className="font-sans text-xs uppercase tracking-[0.25em] text-center mb-5"
-        style={{ color: 'hsl(176 100% 43% / 0.45)' }}
+        className="font-sans text-xs uppercase tracking-[0.25em] text-center mb-6"
+        style={{ color: 'hsl(176 100% 43% / 0.5)' }}
       >
         Zaufali nam
       </p>
@@ -56,7 +45,7 @@ const LogoTicker = () => {
           style={{
             animation: 'ticker-scroll 32s linear infinite',
             width: 'max-content',
-            gap: '48px',
+            gap: '56px',
           }}
         >
           {allLogos.map((logo, i) => (
@@ -64,9 +53,8 @@ const LogoTicker = () => {
               key={i}
               className="flex-shrink-0 flex items-center justify-center"
               style={{
-                /* Fixed slot size so every logo occupies the same area */
-                width: '120px',
-                height: '52px',
+                width: '160px',
+                height: '72px',
               }}
             >
               <img
@@ -74,20 +62,11 @@ const LogoTicker = () => {
                 alt={logo.alt}
                 className="w-full h-full object-contain"
                 style={{
-                  filter: LOGO_FILTER,
-                  opacity: 0.75,
-                  transition: 'filter 0.35s ease, opacity 0.35s ease',
+                  opacity: 0.7,
+                  transition: 'opacity 0.3s ease',
                 }}
-                onMouseEnter={e => {
-                  const img = e.currentTarget as HTMLImageElement;
-                  img.style.filter = LOGO_FILTER_HOVER;
-                  img.style.opacity = '1';
-                }}
-                onMouseLeave={e => {
-                  const img = e.currentTarget as HTMLImageElement;
-                  img.style.filter = LOGO_FILTER;
-                  img.style.opacity = '0.75';
-                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.opacity = '1'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.opacity = '0.7'; }}
               />
             </div>
           ))}
@@ -98,3 +77,4 @@ const LogoTicker = () => {
 };
 
 export default LogoTicker;
+
