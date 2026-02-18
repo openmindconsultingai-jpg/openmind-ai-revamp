@@ -131,7 +131,7 @@ const VideoHero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-screen flex items-center justify-center overflow-hidden" style={{ maxWidth: '100vw' }}
     >
       {/* Video Background - deferred loading for better FCP */}
       <div className="absolute inset-0 overflow-hidden">
