@@ -36,9 +36,9 @@ const CityDetail = () => {
       '@type': 'LocalBusiness',
       name: `OpenMind AI – ${city.name}`,
       description: seoDescription,
-      url: `https://openmindai.pl/gdzie-dzialamy/${slug}/${citySlug}`,
+      url: `https://www.openmindai.pl/gdzie-dzialamy/${slug}/${citySlug}`,
       areaServed: { '@type': 'City', name: city.name },
-      provider: { '@type': 'Organization', name: 'OpenMind AI Consulting', url: 'https://openmindai.pl' },
+      provider: { '@type': 'Organization', name: 'OpenMind AI Consulting', url: 'https://www.openmindai.pl' },
       address: { '@type': 'PostalAddress', addressLocality: city.name, addressRegion: voivodeship.name, addressCountry: 'PL' },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
