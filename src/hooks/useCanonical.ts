@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const SITE_URL = 'https://www.openmindai.pl';
-const PRODUCTION_HOST = 'www.openmindai.pl';
+const PRODUCTION_HOSTS = ['www.openmindai.pl', 'openmindai.pl'];
 
 /**
  * Sets <link rel="canonical"> in <head> based on the current route.
@@ -24,7 +24,7 @@ const useCanonical = () => {
     link.setAttribute('href', canonicalUrl);
 
     // Block indexing on non-production domains (preview, staging, lovable.app, etc.)
-    const isProduction = window.location.hostname === PRODUCTION_HOST;
+    const isProduction = PRODUCTION_HOSTS.includes(window.location.hostname);
     let robotsMeta = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
     if (!robotsMeta) {
       robotsMeta = document.createElement('meta');
