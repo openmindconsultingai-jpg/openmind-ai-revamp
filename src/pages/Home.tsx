@@ -11,6 +11,7 @@ const MissionSection = lazy(() => import('@/components/MissionSection'));
 const BentoGrid = lazy(() => import('@/components/BentoGrid'));
 const ServiceAreas = lazy(() => import('@/components/ServiceAreas'));
 const ParticleFooter = lazy(() => import('@/components/ParticleFooter'));
+const SeoContentSections = lazy(() => import('@/components/SeoContentSections'));
 const Chatbot = lazy(() => import('@/components/Chatbot'));
 
 const Home = () => {
@@ -48,6 +49,7 @@ const Home = () => {
       <Suspense fallback={<div className="min-h-screen bg-background" />}>
         <MissionSection />
         <BentoGrid />
+        <SeoContentSections />
         <ServiceAreas />
         <ParticleFooter />
         <Chatbot />
