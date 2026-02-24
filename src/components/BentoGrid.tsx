@@ -107,7 +107,8 @@ const BentoGrid = () => {
               {/* Background Image */}
               <img 
                 src={bentoContactImg} 
-                alt="Contact" 
+                alt="Kontakt – konsulting sztucznej inteligencji AI OpenMind" 
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               
@@ -155,7 +156,8 @@ const BentoGrid = () => {
               {/* Background Image */}
               <img 
                 src={bentoAdvisorImg} 
-                alt="AI Advisor" 
+                alt="Wirtualny Doradca AI – sztuczna inteligencja SI dla biznesu" 
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               

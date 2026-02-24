@@ -14,19 +14,19 @@ import fabrykaTekstow from '@/assets/logos/fabryka-tekstow.png';
 import impuls from '@/assets/logos/impuls.png';
 
 const logos = [
-  { src: rzeczpospolita, alt: 'Rzeczpospolita' },
-  { src: pivotExpo, alt: 'Pivot Expo Modular Stands' },
-  { src: podatkowyInfo, alt: 'Podatkowy.info' },
-  { src: detektyw, alt: 'Detektyw z Służb' },
-  { src: swiadomo, alt: 'Świadomo' },
-  { src: djsSkrobj, alt: "DJ's Skrobj Agency" },
-  { src: zenGarden, alt: 'Studio Masażu Zen Garden' },
-  { src: michalowski, alt: 'Usługi Podatkowo-Księgowe Michałowski' },
-  { src: tissese, alt: 'Cooperativa Agricola Tissese' },
-  { src: cwt, alt: 'CWT' },
-  { src: corallo, alt: 'V&E Corallo – Your Sardinian Experience' },
-  { src: fabrykaTekstow, alt: 'Fabryka Tekstów 24/7' },
-  { src: impuls, alt: 'Impuls – Obsługa Imprez' },
+  { src: rzeczpospolita, alt: 'Rzeczpospolita – klient OpenMind AI sztuczna inteligencja' },
+  { src: pivotExpo, alt: 'Pivot Expo – klient wdrożeń AI' },
+  { src: podatkowyInfo, alt: 'Podatkowy.info – automatyzacja AI' },
+  { src: detektyw, alt: 'Detektyw z Służb – klient AI' },
+  { src: swiadomo, alt: 'Świadomo – szkolenia SI' },
+  { src: djsSkrobj, alt: "DJ's Skrobj Agency – klient AI" },
+  { src: zenGarden, alt: 'Zen Garden – klient sztucznej inteligencji' },
+  { src: michalowski, alt: 'Usługi Księgowe Michałowski – automatyzacja AI' },
+  { src: tissese, alt: 'Cooperativa Tissese – klient AI' },
+  { src: cwt, alt: 'CWT – klient wdrożeń SI' },
+  { src: corallo, alt: 'V&E Corallo – klient AI' },
+  { src: fabrykaTekstow, alt: 'Fabryka Tekstów – content AI' },
+  { src: impuls, alt: 'Impuls – klient sztucznej inteligencji' },
 ];
 
 // Duplicate for seamless infinite loop
@@ -77,6 +77,7 @@ const LogoTicker = () => {
               <img
                 src={logo.src}
                 alt={logo.alt}
+                loading="lazy"
                 className="w-full h-full object-contain"
                 style={{
                   opacity: 0.4,

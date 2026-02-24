@@ -58,10 +58,10 @@ const BlogArticlePage = () => {
     publisher: {
       '@type': 'Organization',
       name: 'OpenMind AI Consulting',
-      url: 'https://openmindai.pl',
+      url: 'https://www.openmindai.pl',
     },
     datePublished: article.publishDate.toISOString(),
-    mainEntityOfPage: `https://openmindai.pl/blog/${article.id}`,
+    mainEntityOfPage: `https://www.openmindai.pl/blog/${article.id}`,
   }) : undefined, [article, articleTitle, articleExcerpt]);
 
   usePageMeta({
