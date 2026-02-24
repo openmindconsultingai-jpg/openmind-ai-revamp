@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-const SITE_URL = 'https://openmindai.pl';
+const SITE_URL = 'https://www.openmindai.pl';
 const SITE_NAME = 'OpenMind AI';
-const DEFAULT_IMAGE = 'https://storage.googleapis.com/gpt-engineer-file-uploads/hL5DHSK2kPP5D5kfMFPItZpWWjm1/social-images/social-1759531582102-Open_Mind-min[1].png';
+const DEFAULT_IMAGE = 'https://www.openmindai.pl/og-image.jpg';
 
 interface PageMetaOptions {
   title: string;

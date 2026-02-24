@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const SITE_URL = 'https://openmindai.pl';
-const PRODUCTION_HOST = 'openmindai.pl';
+const SITE_URL = 'https://www.openmindai.pl';
+const PRODUCTION_HOST = 'www.openmindai.pl';
 
 /**
  * Sets <link rel="canonical"> in <head> based on the current route.
