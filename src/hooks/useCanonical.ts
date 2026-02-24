@@ -31,7 +31,7 @@ const useCanonical = () => {
       robotsMeta.setAttribute('name', 'robots');
       document.head.appendChild(robotsMeta);
     }
-    robotsMeta.setAttribute('content', isProduction ? 'index, follow' : 'noindex, nofollow');
+    robotsMeta.setAttribute('content', isProduction ? 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' : 'noindex, nofollow');
 
     return () => {
       // Don't remove – let the next page update it
