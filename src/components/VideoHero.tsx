@@ -127,6 +127,7 @@ const VideoHero = () => {
 
   const titleText = "OpenMind";
   const aiText = "AI";
+  const seoH1Text = "Sztuczna Inteligencja (AI/SI) dla Twojej Firmy i Szkoły";
 
   return (
     <section 
@@ -220,10 +221,11 @@ const VideoHero = () => {
 
       {/* Hero Content */}
       <div className="relative z-20 text-center px-6 max-w-6xl mx-auto -mt-8 md:-mt-48">
-        {/* Main Title with letter-by-letter mist reveal */}
-        <h1 
+        {/* Visually prominent brand name */}
+        <div 
           ref={titleRef}
           className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold mb-8 leading-none tracking-tight"
+          aria-hidden="true"
         >
           <span className="text-foreground" style={{ textShadow: '0 0 60px hsl(176 100% 43% / 0.5)' }}>
             {titleText.split('').map((letter, i) => (
@@ -246,18 +248,17 @@ const VideoHero = () => {
               </span>
             ))}
           </span>
+        </div>
+
+        {/* SEO H1 - visually smaller but semantically the main heading */}
+        <h1 className="hero-subtitle font-heading text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-foreground/90 mb-4 max-w-4xl mx-auto">
+          {seoH1Text}
         </h1>
 
         {/* Subtitle */}
         <div className="hero-subtitle font-sans max-w-3xl mx-auto mb-10 space-y-3" style={{ textAlign: 'center' }}>
-          <p className="text-xl sm:text-2xl md:text-3xl text-foreground/80 font-medium" style={{ textAlign: 'center' }}>
-            {noWidows(t('hero.description'))}
-          </p>
-          <p className="text-xl sm:text-2xl md:text-3xl text-foreground/70" style={{ textAlign: 'center' }}>
-            {noWidows(t('hero.description2'))}
-          </p>
-          <p className="text-xl sm:text-2xl md:text-3xl text-foreground/60" style={{ textAlign: 'center' }}>
-            {noWidows(t('hero.description3'))}
+          <p className="text-base sm:text-lg md:text-xl text-foreground/70" style={{ textAlign: 'center' }}>
+            OpenMind AI to polski lider wdrożeń sztucznej inteligencji. Pomagamy firmom, agencjom i&nbsp;szkołom w&nbsp;całej Polsce wykorzystać moc AI i&nbsp;SI – od konsultingu po gotowe rozwiązania.
           </p>
         </div>
 
