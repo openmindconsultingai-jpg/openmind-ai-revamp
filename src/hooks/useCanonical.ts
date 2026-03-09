@@ -39,6 +39,7 @@ const useCanonical = () => {
     };
 
     setHreflang('pl');
+    setHreflang('en');
     setHreflang('x-default');
 
     // --- Robots ---
