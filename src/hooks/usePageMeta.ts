@@ -28,6 +28,7 @@ const usePageMeta = ({
   jsonLd,
 }: PageMetaOptions) => {
   useEffect(() => {
+    console.log('[usePageMeta] path=', path, 'computed url=', `${SITE_URL}${path === '/' ? '' : path}`);
     // Title
     document.title = title;
 
