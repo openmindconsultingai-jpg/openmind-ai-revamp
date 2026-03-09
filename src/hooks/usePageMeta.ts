@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const SITE_URL = 'https://www.openmindai.pl';
 const SITE_NAME = 'OpenMind AI';
@@ -16,18 +17,34 @@ interface PageMetaOptions {
 
 /**
  * Sets document <title>, <meta name="description">, <meta name="keywords">,
- * Open Graph tags, Twitter Card tags, and optional JSON-LD structured data.
+ * Open Graph tags, Twitter Card tags, canonical, hreflang, and optional JSON-LD.
+ *
+ * IMPORTANT: canonical & hreflang are derived from the CURRENT window.location.pathname
+ * (NOT from the `path` prop) to guarantee they always reflect the real URL.
+ * The `path` prop is kept only as a fallback / for og:url.
  */
 const usePageMeta = ({
   title,
   description,
   keywords,
-  path = '',
+  path,
   ogImage = DEFAULT_IMAGE,
   ogType = 'website',
   jsonLd,
 }: PageMetaOptions) => {
+  const { pathname } = useLocation();
+
   useEffect(() => {
+    // Derive canonical URL from the actual browser pathname (most reliable source)
+    const rawPath = pathname || window.location.pathname || '';
+    const normalizedPath = rawPath !== '/' ? rawPath.replace(/\/+$/, '') : '';
+    const canonicalUrl = `${SITE_URL}${normalizedPath}`;
+
+    // Also compute og:url from explicit path prop if provided, else use canonical
+    const ogUrl = path != null
+      ? `${SITE_URL}${path === '/' ? '' : path}`
+      : canonicalUrl;
+
     // Title
     document.title = title;
 
@@ -42,21 +59,20 @@ const usePageMeta = ({
       el.setAttribute('content', content);
     };
 
-    const url = `${SITE_URL}${path === '/' ? '' : path}`;
-
-    // Canonical + hreflang (driven by explicit page path)
+    // --- Canonical ---
     document.querySelectorAll('link[rel="canonical"]').forEach((el) => el.remove());
     const canonicalLink = document.createElement('link');
     canonicalLink.setAttribute('rel', 'canonical');
-    canonicalLink.setAttribute('href', url);
+    canonicalLink.setAttribute('href', canonicalUrl);
     document.head.appendChild(canonicalLink);
 
+    // --- Hreflang (always same as canonical) ---
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
     ['pl', 'en', 'x-default'].forEach((lang) => {
       const alternateLink = document.createElement('link');
       alternateLink.setAttribute('rel', 'alternate');
       alternateLink.setAttribute('hreflang', lang);
-      alternateLink.setAttribute('href', url);
+      alternateLink.setAttribute('href', canonicalUrl);
       document.head.appendChild(alternateLink);
     });
 
@@ -67,7 +83,7 @@ const usePageMeta = ({
     // Open Graph
     setMeta('property', 'og:title', title);
     setMeta('property', 'og:description', description);
-    setMeta('property', 'og:url', url);
+    setMeta('property', 'og:url', ogUrl);
     setMeta('property', 'og:image', ogImage);
     setMeta('property', 'og:type', ogType);
     setMeta('property', 'og:site_name', SITE_NAME);
@@ -93,11 +109,10 @@ const usePageMeta = ({
     }
 
     return () => {
-      // Cleanup JSON-LD on unmount
       const s = document.querySelector('script[data-page-jsonld]');
       if (s) s.remove();
     };
-  }, [title, description, keywords, path, ogImage, ogType, jsonLd]);
+  }, [title, description, keywords, path, pathname, ogImage, ogType, jsonLd]);
 };
 
 export default usePageMeta;
