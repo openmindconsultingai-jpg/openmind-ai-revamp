@@ -44,6 +44,22 @@ const usePageMeta = ({
 
     const url = `${SITE_URL}${path === '/' ? '' : path}`;
 
+    // Canonical + hreflang (driven by explicit page path)
+    document.querySelectorAll('link[rel="canonical"]').forEach((el) => el.remove());
+    const canonicalLink = document.createElement('link');
+    canonicalLink.setAttribute('rel', 'canonical');
+    canonicalLink.setAttribute('href', url);
+    document.head.appendChild(canonicalLink);
+
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
+    ['pl', 'en', 'x-default'].forEach((lang) => {
+      const alternateLink = document.createElement('link');
+      alternateLink.setAttribute('rel', 'alternate');
+      alternateLink.setAttribute('hreflang', lang);
+      alternateLink.setAttribute('href', url);
+      document.head.appendChild(alternateLink);
+    });
+
     // Standard meta
     setMeta('name', 'description', description);
     if (keywords) setMeta('name', 'keywords', keywords);
