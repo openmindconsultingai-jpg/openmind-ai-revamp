@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://openmindai.pl/sitemap.xml
+Sitemap: https://www.openmindai.pl/sitemap.xml
