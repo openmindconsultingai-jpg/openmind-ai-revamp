@@ -50,7 +50,15 @@ const App = () => (
             <Route path="/blog/:id" element={<Suspense fallback={<PageLoader />}><BlogArticlePage /></Suspense>} />
             <Route path="/contact" element={<Suspense fallback={<PageLoader />}><ContactPage /></Suspense>} />
             <Route path="/privacy" element={<Suspense fallback={<PageLoader />}><PrivacyPage /></Suspense>} />
+            {/* 301 redirects from old site URLs */}
             <Route path="/polityka-prywatnosci-i-bezpieczenstwo-danych" element={<Navigate to="/privacy" replace />} />
+            <Route path="/polityka-prywatnosci-i-bezpieczenstwa-danych" element={<Navigate to="/privacy" replace />} />
+            <Route path="/o-nas" element={<Navigate to="/about" replace />} />
+            <Route path="/kontakt" element={<Navigate to="/contact" replace />} />
+            <Route path="/oferta" element={<Navigate to="/services" replace />} />
+            <Route path="/en/o-nas-en" element={<Navigate to="/about" replace />} />
+            <Route path="/en/kontakt-en" element={<Navigate to="/contact" replace />} />
+            <Route path="/en/oferta-en" element={<Navigate to="/services" replace />} />
             <Route path="/ai-advisor" element={<Suspense fallback={<PageLoader />}><AIAdvisorPage /></Suspense>} />
             <Route path="/gdzie-dzialamy/:slug" element={<Suspense fallback={<PageLoader />}><VoivodeshipDetail /></Suspense>} />
             <Route path="/gdzie-dzialamy/:slug/:citySlug" element={<Suspense fallback={<PageLoader />}><CityDetail /></Suspense>} />
