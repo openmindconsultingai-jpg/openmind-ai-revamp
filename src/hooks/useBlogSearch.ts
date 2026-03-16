@@ -1,5 +1,6 @@
 import { useState, useMemo, useCallback } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { digestArticles } from '@/data/blogArticlesDigest';
 
 interface Article {
   id: number;
@@ -10,22 +11,23 @@ interface Article {
   category?: string;
 }
 
-// Kategorie artykułów oparte na ID
+// Kategorie artykułów 1-60 oparte na ID
 const getArticleCategory = (id: number, lang: 'pl' | 'en'): string => {
+  // Articles 61-110 use digestArticles
+  const digestArticle = digestArticles.find(a => a.id === id);
+  if (digestArticle) {
+    return lang === 'pl' ? digestArticle.category.pl : digestArticle.category.en;
+  }
+
   const categories: Record<string, [number, number][]> = {
-    // Modele wideo AI
     'Wideo AI': [[31, 45]],
     'Video AI': [[31, 45]],
-    // Modele obrazów AI  
     'Obrazy AI': [[46, 55]],
     'Image AI': [[46, 55]],
-    // Narzędzia biznesowe
     'Biznes': [[1, 10], [56, 60]],
     'Business': [[1, 10], [56, 60]],
-    // Automatyzacja
     'Automatyzacja': [[11, 20]],
     'Automation': [[11, 20]],
-    // Edukacja i rozwój
     'Edukacja': [[21, 30]],
     'Education': [[21, 30]],
   };
@@ -53,7 +55,7 @@ export const useBlogSearch = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  // Generowanie dat
+  // Generowanie dat dla artykułów 1-60
   const generatePublishDate = useCallback((articleId: number) => {
     if (articleId >= 31 && articleId <= 60) {
       const startDate = new Date('2025-11-27');
@@ -72,35 +74,45 @@ export const useBlogSearch = () => {
     }
   }, []);
 
-  // Wszystkie artykuły
+  // Wszystkie artykuły (1-60 + 61-110)
   const allArticles = useMemo(() => {
-    return Array.from({ length: 60 }, (_, i) => ({
+    const oldArticles = Array.from({ length: 60 }, (_, i) => ({
       id: i + 1,
       titleKey: `blog.article${i + 1}.title`,
       excerptKey: `blog.article${i + 1}.excerpt`,
       contentKey: `blog.article${i + 1}.content`,
       publishDate: generatePublishDate(i + 1),
       category: getArticleCategory(i + 1, language),
-    })).sort((a, b) => b.publishDate.getTime() - a.publishDate.getTime());
+    }));
+
+    const newArticles = digestArticles.map(da => ({
+      id: da.id,
+      titleKey: `blog.article${da.id}.title`,
+      excerptKey: `blog.article${da.id}.excerpt`,
+      contentKey: `blog.article${da.id}.content`,
+      publishDate: new Date(da.date),
+      category: language === 'pl' ? da.category.pl : da.category.en,
+    }));
+
+    return [...oldArticles, ...newArticles]
+      .sort((a, b) => b.publishDate.getTime() - a.publishDate.getTime());
   }, [generatePublishDate, language]);
 
-  // Kategorie
+  // Kategorie — include new ones from digest
   const categories = useMemo(() => {
     return language === 'pl'
-      ? ['Wideo AI', 'Obrazy AI', 'Biznes', 'Automatyzacja', 'Edukacja']
-      : ['Video AI', 'Image AI', 'Business', 'Automation', 'Education'];
+      ? ['Wideo AI', 'Obrazy AI', 'Biznes', 'Automatyzacja', 'Edukacja', 'LLM', 'Hardware', 'Agenci AI', 'Regulacje', 'Inwestycje', 'Audio', 'Badania', 'Zastosowania']
+      : ['Video AI', 'Image AI', 'Business', 'Automation', 'Education', 'LLM', 'Hardware', 'AI Agents', 'Regulations', 'Investments', 'Audio', 'Research', 'Applications'];
   }, [language]);
 
   // Filtrowane artykuły
   const filteredArticles = useMemo(() => {
     let result = allArticles;
 
-    // Filtruj po kategorii
     if (selectedCategory) {
       result = result.filter(article => article.category === selectedCategory);
     }
 
-    // Filtruj po wyszukiwaniu
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase().trim();
       result = result.filter(article => {
