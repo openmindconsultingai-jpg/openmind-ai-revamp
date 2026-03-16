@@ -899,6 +899,29 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     'services.tab.web.item4': 'SEO i Pozycjonowanie z Wykorzystaniem AI',
     'services.tab.web.item5': 'Systemy CRM i Marketing Automation',
 
+    // SEO Content Sections
+    'seo.section1.title': 'Konsulting AI i wdrożenia SI w Polsce',
+    'seo.section1.content': 'Nie wiesz jak zacząć z sztuczną inteligencją? OpenMind AI przeprowadzi Cię przez cały proces – od audytu potrzeb, przez dobór narzędzi AI/SI, aż po pełne wdrożenie i szkolenie zespołu. Pomagamy firmom każdej wielkości wejść w świat sztucznej inteligencji bez zbędnego ryzyka.',
+    'seo.section2.title': 'Szkolenia ze Sztucznej Inteligencji (AI i SI)',
+    'seo.section2.content': 'Nasze szkolenia AI/SI to praktyczna wiedza bez zbędnej teorii. Uczymy jak używać ChatGPT, automatyzować procesy, tworzyć obrazy i wideo przy pomocy sztucznej inteligencji. Szkolenia dostępne online i stacjonarnie w całej Polsce – dla firm, agencji i szkół.',
+    'seo.section3.title': 'Automatyzacja Procesów ze Sztuczną Inteligencją',
+    'seo.section3.content': 'Sztuczna inteligencja (AI/SI) może przejąć powtarzalne zadania w Twojej firmie – obsługę klienta, generowanie raportów, analizę danych i więcej. OpenMind AI projektuje i wdraża automatyzacje oparte na AI, które realnie oszczędzają czas i pieniądze.',
+    'seo.section4.title': 'Agencja Kreatywna AI – Wideo i Obrazy generowane przez SI',
+    'seo.section4.content': 'Tworzymy profesjonalne materiały reklamowe z wykorzystaniem sztucznej inteligencji: wideo AI, obrazy AI, animacje i content dla mediów społecznościowych. Generatywna AI (SI) otwiera nowe możliwości dla Twojej marki – szybciej i taniej niż tradycyjne metody.',
+    'seo.section5.title': 'Sztuczna Inteligencja dla Szkół i Edukacji',
+    'seo.section5.content': 'OpenMind AI wspiera szkoły i nauczycieli w Polsce we wdrożeniu AI/SI do edukacji. Prowadzimy warsztaty dla uczniów, szkolenia dla nauczycieli i pomagamy placówkom zrozumieć i bezpiecznie wykorzystać sztuczną inteligencję w nauczaniu.',
+    'seo.faq.title': 'Najczęstsze pytania o AI i Sztuczną Inteligencję',
+    'seo.faq1.question': 'Czym różni się AI od SI?',
+    'seo.faq1.answer': 'AI (Artificial Intelligence) i SI (Sztuczna Inteligencja) to dokładnie to samo pojęcie – angielskie i polskie określenie tej samej technologii. OpenMind AI używa obu terminów, pomagając firmom i szkołom w całej Polsce wdrażać rozwiązania oparte na sztucznej inteligencji.',
+    'seo.faq2.question': 'Jak sztuczna inteligencja może pomóc mojej firmie?',
+    'seo.faq2.answer': 'AI/SI automatyzuje powtarzalne zadania, analizuje dane, obsługuje klientów przez chatboty, generuje treści marketingowe i wspiera podejmowanie decyzji. OpenMind AI pomoże zidentyfikować obszary, w których sztuczna inteligencja przyniesie Twojej firmie największe korzyści.',
+    'seo.faq3.question': 'Czy szkolenia AI są dla każdego?',
+    'seo.faq3.answer': 'Tak! Nasze szkolenia ze sztucznej inteligencji są dostosowane do różnych poziomów zaawansowania – od podstaw dla osób bez doświadczenia technicznego, po zaawansowane warsztaty dla specjalistów IT. Szkolimy firmy, nauczycieli i pracowników administracji.',
+    'seo.faq4.question': 'Ile kosztuje wdrożenie AI/SI?',
+    'seo.faq4.answer': 'Koszt zależy od zakresu projektu. Oferujemy bezpłatną konsultację, podczas której oceniamy potrzeby i przedstawiamy wycenę. Nasze rozwiązania AI/SI są skalowalne – możesz zacząć od małego projektu pilotażowego i rozwijać go w miarę potrzeb.',
+    'seo.faq5.question': 'Czy AI zastąpi moich pracowników?',
+    'seo.faq5.answer': 'Sztuczna inteligencja nie zastępuje ludzi – wspiera ich. AI/SI przejmuje powtarzalne, czasochłonne zadania, dzięki czemu pracownicy mogą skupić się na kreatywnej i strategicznej pracy. Nasze wdrożenia zawsze uwzględniają szkolenie zespołu.',
+
     // Logo ticker
     'logoticker.label': 'Zaufali nam',
 
