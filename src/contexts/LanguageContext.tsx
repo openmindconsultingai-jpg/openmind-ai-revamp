@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { digestTranslationsPl, digestTranslationsEn } from '@/data/blogArticlesDigest';
 
 type Language = 'pl' | 'en';
 
