@@ -127,7 +127,8 @@ const VideoHero = () => {
 
   const titleText = "OpenMind";
   const aiText = "AI";
-  const seoH1Text = "Sztuczna Inteligencja (AI/SI) dla Twojej Firmy i Szkoły";
+  const seoH1Text = t('hero.seo.h1');
+  const heroDescriptionText = t('hero.seo.description');
 
   return (
     <section 
@@ -220,7 +221,7 @@ const VideoHero = () => {
       )}
 
       {/* Hero Content */}
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto -mt-8 md:-mt-48">
+      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto -mt-8 md:-mt-24">
         {/* Visually prominent brand name */}
         <div 
           ref={titleRef}
@@ -258,7 +259,7 @@ const VideoHero = () => {
         {/* Subtitle */}
         <div className="hero-subtitle font-sans max-w-3xl mx-auto mb-10 space-y-3" style={{ textAlign: 'center' }}>
           <p className="text-base sm:text-lg md:text-xl text-foreground/70" style={{ textAlign: 'center' }}>
-            OpenMind AI to polski lider wdrożeń sztucznej inteligencji. Pomagamy firmom, agencjom i&nbsp;szkołom w&nbsp;całej Polsce wykorzystać moc AI i&nbsp;SI – od konsultingu po gotowe rozwiązania.
+            {heroDescriptionText}
           </p>
         </div>
 

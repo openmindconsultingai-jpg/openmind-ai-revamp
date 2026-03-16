@@ -29,6 +29,8 @@ const translations: Translations = {
     'hero.description3': 'Dostarczamy rozwiązania AI, które adaptują się szybciej niż Twoja konkurencja.',
     'hero.cta': 'Wkrocz w technologię jutra już dziś',
     'hero.cta.consultation': 'Umów bezpłatną konsultację',
+    'hero.seo.h1': 'Sztuczna Inteligencja (AI/SI) dla Twojej Firmy i Szkoły',
+    'hero.seo.description': 'OpenMind AI to polski lider wdrożeń sztucznej inteligencji. Pomagamy firmom, agencjom i\u00a0szkołom w\u00a0całej Polsce wykorzystać moc AI i\u00a0SI – od konsultingu po gotowe rozwiązania.',
     
     // Mission Section
     'mission.title': 'Nasza Misja',
@@ -897,6 +899,29 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     'services.tab.web.item4': 'SEO i Pozycjonowanie z Wykorzystaniem AI',
     'services.tab.web.item5': 'Systemy CRM i Marketing Automation',
 
+    // SEO Content Sections
+    'seo.section1.title': 'Konsulting AI i wdrożenia SI w Polsce',
+    'seo.section1.content': 'Nie wiesz jak zacząć z sztuczną inteligencją? OpenMind AI przeprowadzi Cię przez cały proces – od audytu potrzeb, przez dobór narzędzi AI/SI, aż po pełne wdrożenie i szkolenie zespołu. Pomagamy firmom każdej wielkości wejść w świat sztucznej inteligencji bez zbędnego ryzyka.',
+    'seo.section2.title': 'Szkolenia ze Sztucznej Inteligencji (AI i SI)',
+    'seo.section2.content': 'Nasze szkolenia AI/SI to praktyczna wiedza bez zbędnej teorii. Uczymy jak używać ChatGPT, automatyzować procesy, tworzyć obrazy i wideo przy pomocy sztucznej inteligencji. Szkolenia dostępne online i stacjonarnie w całej Polsce – dla firm, agencji i szkół.',
+    'seo.section3.title': 'Automatyzacja Procesów ze Sztuczną Inteligencją',
+    'seo.section3.content': 'Sztuczna inteligencja (AI/SI) może przejąć powtarzalne zadania w Twojej firmie – obsługę klienta, generowanie raportów, analizę danych i więcej. OpenMind AI projektuje i wdraża automatyzacje oparte na AI, które realnie oszczędzają czas i pieniądze.',
+    'seo.section4.title': 'Agencja Kreatywna AI – Wideo i Obrazy generowane przez SI',
+    'seo.section4.content': 'Tworzymy profesjonalne materiały reklamowe z wykorzystaniem sztucznej inteligencji: wideo AI, obrazy AI, animacje i content dla mediów społecznościowych. Generatywna AI (SI) otwiera nowe możliwości dla Twojej marki – szybciej i taniej niż tradycyjne metody.',
+    'seo.section5.title': 'Sztuczna Inteligencja dla Szkół i Edukacji',
+    'seo.section5.content': 'OpenMind AI wspiera szkoły i nauczycieli w Polsce we wdrożeniu AI/SI do edukacji. Prowadzimy warsztaty dla uczniów, szkolenia dla nauczycieli i pomagamy placówkom zrozumieć i bezpiecznie wykorzystać sztuczną inteligencję w nauczaniu.',
+    'seo.faq.title': 'Najczęstsze pytania o AI i Sztuczną Inteligencję',
+    'seo.faq1.question': 'Czym różni się AI od SI?',
+    'seo.faq1.answer': 'AI (Artificial Intelligence) i SI (Sztuczna Inteligencja) to dokładnie to samo pojęcie – angielskie i polskie określenie tej samej technologii. OpenMind AI używa obu terminów, pomagając firmom i szkołom w całej Polsce wdrażać rozwiązania oparte na sztucznej inteligencji.',
+    'seo.faq2.question': 'Jak sztuczna inteligencja może pomóc mojej firmie?',
+    'seo.faq2.answer': 'AI/SI automatyzuje powtarzalne zadania, analizuje dane, obsługuje klientów przez chatboty, generuje treści marketingowe i wspiera podejmowanie decyzji. OpenMind AI pomoże zidentyfikować obszary, w których sztuczna inteligencja przyniesie Twojej firmie największe korzyści.',
+    'seo.faq3.question': 'Czy szkolenia AI są dla każdego?',
+    'seo.faq3.answer': 'Tak! Nasze szkolenia ze sztucznej inteligencji są dostosowane do różnych poziomów zaawansowania – od podstaw dla osób bez doświadczenia technicznego, po zaawansowane warsztaty dla specjalistów IT. Szkolimy firmy, nauczycieli i pracowników administracji.',
+    'seo.faq4.question': 'Ile kosztuje wdrożenie AI/SI?',
+    'seo.faq4.answer': 'Koszt zależy od zakresu projektu. Oferujemy bezpłatną konsultację, podczas której oceniamy potrzeby i przedstawiamy wycenę. Nasze rozwiązania AI/SI są skalowalne – możesz zacząć od małego projektu pilotażowego i rozwijać go w miarę potrzeb.',
+    'seo.faq5.question': 'Czy AI zastąpi moich pracowników?',
+    'seo.faq5.answer': 'Sztuczna inteligencja nie zastępuje ludzi – wspiera ich. AI/SI przejmuje powtarzalne, czasochłonne zadania, dzięki czemu pracownicy mogą skupić się na kreatywnej i strategicznej pracy. Nasze wdrożenia zawsze uwzględniają szkolenie zespołu.',
+
     // Logo ticker
     'logoticker.label': 'Zaufali nam',
 
@@ -923,6 +948,8 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     'hero.description3': 'We deliver AI solutions that adapt faster than your competition.',
     'hero.cta': "Step into tomorrow's technology today",
     'hero.cta.consultation': 'Book a free consultation',
+    'hero.seo.h1': 'Artificial Intelligence (AI) for Your Business and School',
+    'hero.seo.description': 'OpenMind AI is a Polish leader in artificial intelligence implementation. We help businesses, agencies, and schools across Poland harness the power of AI – from consulting to ready-made solutions.',
     
     // Mission Section
     'mission.title': 'Our Mission',
@@ -1804,6 +1831,29 @@ In this reality, the creator's role will undergo profound redefinition. The futu
 
     // Footer
     'footer.copyright': '© 2025 OpenMind AI Consulting. All rights reserved.',
+    // SEO Content Sections
+    'seo.section1.title': 'AI Consulting & Implementation in Poland',
+    'seo.section1.content': "Not sure how to get started with artificial intelligence? OpenMind AI will guide you through the entire process – from needs assessment, through tool selection, to full implementation and team training. We help businesses of all sizes enter the world of AI without unnecessary risk.",
+    'seo.section2.title': 'Artificial Intelligence (AI) Training',
+    'seo.section2.content': "Our AI training delivers practical knowledge without unnecessary theory. We teach how to use ChatGPT, automate processes, create images and video with artificial intelligence. Training available online and on-site across Poland – for businesses, agencies, and schools.",
+    'seo.section3.title': 'Process Automation with Artificial Intelligence',
+    'seo.section3.content': "AI can take over repetitive tasks in your company – customer service, report generation, data analysis and more. OpenMind AI designs and implements AI-based automations that genuinely save time and money.",
+    'seo.section4.title': 'AI Creative Agency – AI-Generated Video & Images',
+    'seo.section4.content': "We create professional advertising materials using artificial intelligence: AI video, AI images, animations, and social media content. Generative AI opens new possibilities for your brand – faster and cheaper than traditional methods.",
+    'seo.section5.title': 'Artificial Intelligence for Schools & Education',
+    'seo.section5.content': "OpenMind AI supports schools and teachers in Poland in implementing AI into education. We conduct workshops for students, training for teachers, and help institutions understand and safely use artificial intelligence in teaching.",
+    'seo.faq.title': 'Frequently Asked Questions About AI',
+    'seo.faq1.question': 'What is AI (Artificial Intelligence)?',
+    'seo.faq1.answer': "AI (Artificial Intelligence) refers to computer systems that can learn from data and make decisions. OpenMind AI helps businesses and schools across Poland implement solutions based on artificial intelligence.",
+    'seo.faq2.question': 'How can AI help my business?',
+    'seo.faq2.answer': "AI automates repetitive tasks, analyzes data, handles customers through chatbots, generates marketing content, and supports decision-making. OpenMind AI will help identify the areas where artificial intelligence will bring the greatest benefits to your company.",
+    'seo.faq3.question': 'Are AI trainings for everyone?',
+    'seo.faq3.answer': "Yes! Our AI training courses are tailored to different skill levels – from basics for people without technical experience, to advanced workshops for IT specialists. We train companies, teachers, and administration staff.",
+    'seo.faq4.question': 'How much does AI implementation cost?',
+    'seo.faq4.answer': "The cost depends on the project scope. We offer a free consultation where we assess your needs and provide a quote. Our AI solutions are scalable – you can start with a small pilot project and grow it as needed.",
+    'seo.faq5.question': 'Will AI replace my employees?',
+    'seo.faq5.answer': "Artificial intelligence doesn't replace people – it supports them. AI takes over repetitive, time-consuming tasks so employees can focus on creative and strategic work. Our implementations always include team training.",
+
     'footer.privacy': 'Privacy Policy',
     'footer.rodo': 'GDPR',
     'footer.cta': 'Follow us on social media',
