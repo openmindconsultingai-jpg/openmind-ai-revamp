@@ -29,6 +29,8 @@ const translations: Translations = {
     'hero.description3': 'Dostarczamy rozwiązania AI, które adaptują się szybciej niż Twoja konkurencja.',
     'hero.cta': 'Wkrocz w technologię jutra już dziś',
     'hero.cta.consultation': 'Umów bezpłatną konsultację',
+    'hero.seo.h1': 'Sztuczna Inteligencja (AI/SI) dla Twojej Firmy i Szkoły',
+    'hero.seo.description': 'OpenMind AI to polski lider wdrożeń sztucznej inteligencji. Pomagamy firmom, agencjom i\u00a0szkołom w\u00a0całej Polsce wykorzystać moc AI i\u00a0SI – od konsultingu po gotowe rozwiązania.',
     
     // Mission Section
     'mission.title': 'Nasza Misja',
