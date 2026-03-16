@@ -925,6 +925,8 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     'hero.description3': 'We deliver AI solutions that adapt faster than your competition.',
     'hero.cta': "Step into tomorrow's technology today",
     'hero.cta.consultation': 'Book a free consultation',
+    'hero.seo.h1': 'Artificial Intelligence (AI) for Your Business and School',
+    'hero.seo.description': 'OpenMind AI is a Polish leader in artificial intelligence implementation. We help businesses, agencies, and schools across Poland harness the power of AI – from consulting to ready-made solutions.',
     
     // Mission Section
     'mission.title': 'Our Mission',
