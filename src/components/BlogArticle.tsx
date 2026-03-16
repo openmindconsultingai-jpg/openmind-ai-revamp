@@ -130,7 +130,7 @@ const BlogArticle = ({ titleKey, contentKey, articleId, onBack, publishDate }: B
         <div className="mt-12 pt-6 border-t border-border">
           <div className="flex items-center gap-3">
             <User className="w-5 h-5 text-primary" />
-            <span className="text-foreground font-medium">Łukasz Czarnecki</span>
+            <span className="text-foreground font-medium">OpenMind AI Consulting</span>
           </div>
         </div>
       </Card>
