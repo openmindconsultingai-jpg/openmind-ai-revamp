@@ -127,7 +127,8 @@ const VideoHero = () => {
 
   const titleText = "OpenMind";
   const aiText = "AI";
-  const seoH1Text = "Sztuczna Inteligencja (AI/SI) dla Twojej Firmy i Szkoły";
+  const seoH1Text = t('hero.seo.h1');
+  const heroDescriptionText = t('hero.seo.description');
 
   return (
     <section 
