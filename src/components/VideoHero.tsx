@@ -259,7 +259,7 @@ const VideoHero = () => {
         {/* Subtitle */}
         <div className="hero-subtitle font-sans max-w-3xl mx-auto mb-10 space-y-3" style={{ textAlign: 'center' }}>
           <p className="text-base sm:text-lg md:text-xl text-foreground/70" style={{ textAlign: 'center' }}>
-            OpenMind AI to polski lider wdrożeń sztucznej inteligencji. Pomagamy firmom, agencjom i&nbsp;szkołom w&nbsp;całej Polsce wykorzystać moc AI i&nbsp;SI – od konsultingu po gotowe rozwiązania.
+            {heroDescriptionText}
           </p>
         </div>
 
