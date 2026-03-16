@@ -1874,7 +1874,10 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   }, [language]);
 
   const t = (key: string): string => {
-    return translations[language][key] || key;
+    if (language === 'pl') {
+      return translations.pl[key] || digestTranslationsPl[key] || key;
+    }
+    return translations.en[key] || digestTranslationsEn[key] || key;
   };
 
   return (

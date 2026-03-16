@@ -6,12 +6,18 @@ import Footer from '@/components/Footer';
 import usePageMeta from '@/hooks/usePageMeta';
 import useCanonical from '@/hooks/useCanonical';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { digestArticles } from '@/data/blogArticlesDigest';
 
 const generatePublishDate = (articleId: number) => {
+  // Digest articles (61-110)
+  const digestArticle = digestArticles.find(a => a.id === articleId);
+  if (digestArticle) {
+    return new Date(digestArticle.date);
+  }
+
   if (articleId >= 31 && articleId <= 60) {
     const startDate = new Date('2025-11-27');
-    const endDate = new Date('2025-12-22');
-    const totalDays = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+    const totalDays = Math.floor((new Date('2025-12-22').getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
     const dayStep = totalDays / 29;
     const index = articleId - 31;
     const publishDate = new Date(startDate);
@@ -19,8 +25,7 @@ const generatePublishDate = (articleId: number) => {
     return publishDate;
   } else {
     const startDate = new Date('2025-09-01');
-    const endDate = new Date('2025-11-26');
-    const totalDays = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+    const totalDays = Math.floor((new Date('2025-11-26').getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
     const dayStep = totalDays / 29;
     const index = articleId - 1;
     const publishDate = new Date(startDate);
@@ -29,7 +34,7 @@ const generatePublishDate = (articleId: number) => {
   }
 };
 
-const articles = Array.from({ length: 60 }, (_, i) => ({
+const articles = Array.from({ length: 110 }, (_, i) => ({
   id: i + 1,
   titleKey: `blog.article${i + 1}.title`,
   excerptKey: `blog.article${i + 1}.excerpt`,
