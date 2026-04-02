@@ -23,7 +23,7 @@ const logos = [
   { src: zenGarden, alt: 'Zen Garden – klient sztucznej inteligencji' },
   { src: michalowski, alt: 'Usługi Księgowe Michałowski – automatyzacja AI' },
   { src: tissese, alt: 'Cooperativa Tissese – klient AI' },
-  { src: cwt, alt: 'CWT – klient wdrożeń SI' },
+  
   { src: corallo, alt: 'V&E Corallo – klient AI' },
   { src: fabrykaTekstow, alt: 'Fabryka Tekstów – content AI' },
   { src: impuls, alt: 'Impuls – klient sztucznej inteligencji' },
