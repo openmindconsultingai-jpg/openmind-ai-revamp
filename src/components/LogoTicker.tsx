@@ -8,7 +8,7 @@ import djsSkrobj from '@/assets/logos/djs-skrobj.jpg';
 import zenGarden from '@/assets/logos/zen-garden.png';
 import michalowski from '@/assets/logos/michalowski.png';
 import tissese from '@/assets/logos/tissese.png';
-import cwt from '@/assets/logos/cwt.png';
+
 import corallo from '@/assets/logos/corallo.png';
 import fabrykaTekstow from '@/assets/logos/fabryka-tekstow.png';
 import impuls from '@/assets/logos/impuls.png';
