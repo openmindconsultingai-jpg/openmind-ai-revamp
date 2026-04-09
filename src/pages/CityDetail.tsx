@@ -216,7 +216,7 @@ const CityDetail = () => {
                       </h2>
                     </div>
                     <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                      {content.opisGospodarki}
+                      {localOpisGospodarki}
                     </p>
                   </div>
 
@@ -226,7 +226,7 @@ const CityDetail = () => {
                       {language === 'pl' ? `Kluczowe branże w ${city!.locative}` : `Key industries in ${city!.name}`}
                     </h3>
                     <div className="grid sm:grid-cols-2 gap-3">
-                      {content.branzeKluczowe.map((branza) => (
+                      {(localBranzeKluczowe || []).map((branza) => (
                         <div key={branza} className="flex items-center gap-2 p-3 rounded-lg border border-border bg-card/50">
                           <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
                           <span className="text-sm text-foreground">{branza}</span>
@@ -244,7 +244,7 @@ const CityDetail = () => {
                       </h2>
                     </div>
                     <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                      {content.wyzwaniaAI}
+                      {localWyzwaniaAI}
                     </p>
                   </div>
 
@@ -254,7 +254,7 @@ const CityDetail = () => {
                       {language === 'pl' ? 'Przykładowy scenariusz wdrożenia' : 'Example Implementation Scenario'}
                     </h3>
                     <p className="text-base text-foreground leading-relaxed">
-                      {content.przykladZastosowania}
+                      {localPrzykladZastosowania}
                     </p>
                   </div>
 
@@ -266,7 +266,7 @@ const CityDetail = () => {
                         {language === 'pl' ? `Jak obsługujemy klientów z ${city!.name}` : `How We Serve Clients in ${city!.name}`}
                       </h2>
                     </div>
-                    <p className="text-sm text-muted-foreground">{content.czasDojazdu}</p>
+                    <p className="text-sm text-muted-foreground">{localCzasDojazdu}</p>
                   </div>
                 </>
               ) : (
@@ -312,7 +312,7 @@ const CityDetail = () => {
             </div>
 
             {/* FAQ */}
-            {content?.faq && content.faq.length > 0 && (
+            {localFaq && localFaq.length > 0 && (
               <div className="mb-14 md:mb-20">
                 <div className="flex items-center gap-2 mb-6">
                   <HelpCircle className="w-5 h-5 text-primary" />
@@ -323,7 +323,7 @@ const CityDetail = () => {
                   </h2>
                 </div>
                 <Accordion type="single" collapsible className="space-y-3">
-                  {content.faq.map((item, i) => (
+                  {localFaq.map((item, i) => (
                     <AccordionItem key={i} value={`faq-${i}`} className="border border-border rounded-xl px-5">
                       <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline">
                         {item.pytanie}
