@@ -389,6 +389,18 @@ export const swietokrzyskieCities: MiastoData[] = [
           "Rekomendujemy szkolenia online — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł dla pojedynczej osoby.",
       },
     ],
+      en: {
+      opisGospodarki: "Jędrzejów is a district town in the southern part of the Świętokrzyskie Voivodeship, located along the E77 road. The city's economy is based on the cement industry (cement plant traditions), agriculture, small-scale manufacturing, and trade. The city is known for the world-class Przypkowski Museum (the third-largest collection of sundials globally).",
+      branzeKluczowe: ["cement industry", "agriculture and processing", "small-scale manufacturing", "trade and services"],
+      wyzwaniaAI: "In Jędrzejów, typical areas for AI application include industrial companies (documentation), agriculture and processing, local retail businesses, and SMEs. OpenMind AI offers implementations and training for companies in Jędrzejów.",
+      czasDojazdu: "Jędrzejów is served online from Kielce (approx. 45 min travel time) or Krakow (approx. 1.5h). On-site visits are available for larger projects.",
+      przykladZastosowania: "An example implementation scenario: for a manufacturing company in Jędrzejów, AI can be implemented to automate the generation of offers and technical documentation, saving many hours of work for the sales department.",
+      faq: [
+        { question: "How does AI support companies in Jędrzejów?", answer: "Companies primarily benefit from: documentation automation, offer generation, customer inquiry handling, and marketing content creation. Typical costs: 300-600 PLN/month + initial training 2-4 thousand PLN." },
+        { question: "How much does a basic AI implementation cost?", answer: "For a small company: a one-day training session costs 3-5 thousand PLN, tool configuration 3-8 thousand PLN, monthly licenses 300-600 PLN/month. Total startup cost: 6-13 thousand PLN + 400 PLN/month." },
+        { question: "How can I start without traveling to Kielce?", answer: "We recommend online training — 3-4 hours of intensive live workshops plus a week of support. Cost: 1.5-3 thousand PLN for an individual." }
+      ],
+    },
   },
   {
     slug: "wloszczowa",
@@ -434,6 +446,18 @@ export const swietokrzyskieCities: MiastoData[] = [
           "Najlepiej online — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł dla pojedynczej osoby.",
       },
     ],
+      en: {
+      opisGospodarki: "Włoszczowa is a district town in the western part of the Świętokrzyskie Voivodeship, a railway junction on the CMK (Central Rail Line). The city's economy is based on agriculture, small-scale manufacturing, trade, and railway logistics.",
+      branzeKluczowe: ["agriculture and processing", "railway logistics (CMK)", "small-scale manufacturing", "local trade"],
+      wyzwaniaAI: "In Włoszczowa, typical areas for AI application include small manufacturing companies, agricultural and processing farms, local retail businesses, and SMEs. OpenMind AI offers affordable implementations for micro-entrepreneurs in Włoszczowa.",
+      czasDojazdu: "Włoszczowa is served online from Kielce or Częstochowa (approx. 1h travel time). On-site visits are available for groups of 6+ people.",
+      przykladZastosowania: "An example implementation scenario: for a small retail company in Włoszczowa, simple AI tools can be implemented to automate office work and customer service.",
+      faq: [
+        { question: "Does a micro-company in Włoszczowa need AI?", answer: "Yes — for 100-300 PLN per month, you gain access to tools that save many hours of work per week. A one-day initial training costs 1-2 thousand PLN." },
+        { question: "What are the simplest AI tools for a small company?", answer: "Minimal stack: ChatGPT Plus (100 PLN/month) + Canva Pro (55 PLN/month). A total of 155 PLN/month covers 80% of a micro-entrepreneur's needs." },
+        { question: "Where can one learn AI near Włoszczowa?", answer: "The best option is online — 3-4 hours of intensive live workshops plus a week of support. Cost: 1.5-3 thousand PLN for an individual." }
+      ],
+    },
   },
   {
     slug: "pinczow",
@@ -479,6 +503,18 @@ export const swietokrzyskieCities: MiastoData[] = [
           "Minimalny stack: ChatGPT Plus + Canva Pro (155 zł/mc). Pokrywa 80% potrzeb mikroprzedsiębiorcy. Jednodniowe szkolenie wstępne 1-2 tys. zł.",
       },
     ],
+      en: {
+      opisGospodarki: "Pińczów is a district town in Ponidzie, a historical center of the Renaissance (Pińczów Academy). The city's economy is based on agriculture, tourism (Nadnidziański Landscape Park), small-scale manufacturing, and local trade.",
+      branzeKluczowe: ["agriculture and processing", "tourism (Nadnidziański Landscape Park)", "small-scale manufacturing", "local trade"],
+      wyzwaniaAI: "In Pińczów, typical areas for AI application include agricultural farms, agritourism facilities, local retail businesses, and SMEs. OpenMind AI offers affordable implementations for companies in Pińczów.",
+      czasDojazdu: "Pińczów is served online from Kielce (approx. 45 min travel time) or Krakow (approx. 1.5h). On-site visits are available for larger projects.",
+      przykladZastosowania: "An example implementation scenario: for an agritourism farm near Pińczów, a multilingual booking chatbot can be implemented, along with the generation of descriptions for Ponidzie attractions.",
+      faq: [
+        { question: "How does AI help agritourism in Ponidzie?", answer: "Agritourism farms benefit from: multilingual guest inquiry handling, generating descriptions of regional attractions, creating social media content, and managing bookings. Cost: 200-400 PLN/month for a small facility + training 1.5-3 thousand PLN." },
+        { question: "Can farmers from the Pińczów area use AI?", answer: "Yes — AI supports: documentation for ARiMR subsidies, official correspondence, and direct sales customer service. Basic stack: 100-200 PLN/month, training 1-2 thousand PLN." },
+        { question: "What are the simplest implementations for a small company?", answer: "Minimal stack: ChatGPT Plus + Canva Pro (155 PLN/month). This covers 80% of a micro-entrepreneur's needs. A one-day initial training costs 1-2 thousand PLN." }
+      ],
+    },
   },
   {
     slug: "opatow",
@@ -524,5 +560,17 @@ export const swietokrzyskieCities: MiastoData[] = [
           "Minimalny stack: ChatGPT Plus + Canva Pro (155 zł/mc). Pokrywa 80% potrzeb mikroprzedsiębiorcy. Szkolenie 1-2 tys. zł.",
       },
     ],
+      en: {
+      opisGospodarki: "Opatów is a district capital in the northeastern part of the Świętokrzyskie Voivodeship, and one of the oldest cities in the region (granted city rights as early as the 11th century). The city's economy is based on agriculture, small-scale production, trade, and historical tourism.",
+      branzeKluczowe: ["agriculture and processing", "historical tourism", "small-scale production", "local trade"],
+      wyzwaniaAI: "In Opatów, typical areas for AI application include small processing companies, farms, local trading companies, and SMEs. OpenMind AI offers affordable implementations for micro-enterprises in Opatów.",
+      czasDojazdu: "Opatów is served online from Kielce or Sandomierz (travel time approx. 1 hour). On-site visits for larger projects.",
+      przykladZastosowania: "Example implementation scenario: for a small company in Opatów, it is possible to implement simple AI tools to automate office work, generate offers, and handle customer inquiries.",
+      faq: [
+        { question: "Does a micro-enterprise in Opatów need AI?", answer: "Yes – for 100-300 PLN per month, you get tools that save many hours of work per week. A one-day introductory training costs 1-2 thousand PLN." },
+        { question: "How to start with AI without traveling to Kielce?", answer: "Online training is available from anywhere – 3-4 hours of intensive live workshops plus a week of support. Cost: 1.5-3 thousand PLN." },
+        { question: "What are the simplest implementations for a small company?", answer: "Minimum stack: ChatGPT Plus + Canva Pro (155 PLN/month). This covers 80% of a micro-entrepreneur's needs. Training costs 1-2 thousand PLN." }
+      ],
+    },
   },
 ];

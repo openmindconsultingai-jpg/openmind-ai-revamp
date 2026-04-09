@@ -45,6 +45,18 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Dla średniej firmy spedycji morskiej: audyt 10-25 tys. zł, pilotaż (np. automatyzacja dokumentów celnych) 20-60 tys. zł, pełne wdrożenie z integracją systemów 100-400 tys. zł. Plus miesięczne licencje 1500-5000 zł/mc. Pierwsze ROI typowo w 6-9 miesięcy dzięki automatyzacji najbardziej czasochłonnych procesów administracyjnych.",
       },
     ],
+      en: {
+      opisGospodarki: "Szczecin is the capital of the West Pomeranian Voivodeship and one of Poland's largest port cities. It is an important center for maritime economy, logistics, shipbuilding, IT, and BPO/SSC. Its proximity to Germany (border within a few kilometers) fosters cross-border trade and the development of companies serving the DACH market.",
+      branzeKluczowe: ["maritime economy and port logistics", "IT and BPO/SSC (Asseco, Tieto)", "shipbuilding industry", "cross-border trade (DE)"],
+      wyzwaniaAI: "In Szczecin, typical areas for AI application include maritime logistics companies (customs documentation, multilingual support), IT companies (copilots, development automation), BPO/SSC (back-office automation), companies serving the German market (translations, Polish-German communication), and shipyards and the marine industry. OpenMind AI offers implementations and training for companies in Szczecin.",
+      czasDojazdu: "Szczecin is served in a hybrid mode from Warsaw – travel time is approximately 5 hours. Most implementation work is carried out remotely, with on-site visits scheduled 2 weeks in advance.",
+      przykladZastosowania: "An example implementation scenario: for a Szczecin-based maritime freight forwarding company, AI can be implemented to automate customs documents (B/L, SAD, CMR) and customer service in several languages (Polish, German, English, Danish, Swedish), typically reducing the administrative department's workload by 30-45%.",
+      faq: [
+        { question: "Which companies in Szczecin most frequently implement AI?", answer: "In Szczecin, leaders include: maritime logistics and freight forwarding companies (document automation, multilingual support), IT companies and software houses (copilots for developers), BPO/SSC, companies serving the German market (especially on the Polish-German border side), marketing agencies, and medium-sized manufacturing companies. There is also strong demand among port-related businesses." },
+        { question: "How does AI support companies serving the German market?", answer: "Polish-German companies primarily benefit from: automatic Polish-German translations (GPT-4, Claude, DeepL perform very well), serving German customers in their language, generating bilingual offers and documentation, and analyzing legal documents and commercial agreements in German. Proximity to the border (Berlin 2 hours drive) is a huge competitive advantage." },
+        { question: "How much does AI implementation cost for a maritime logistics company?", answer: "For a medium-sized maritime freight forwarding company: audit 10-25 thousand PLN, pilot project (e.g., customs document automation) 20-60 thousand PLN, full implementation with system integration 100-400 thousand PLN. Plus monthly licenses 1500-5000 PLN/month. The first ROI is typically seen within 6-9 months due to the automation of the most time-consuming administrative processes." }
+      ],
+    },
   },
   {
     slug: "koszalin",
@@ -90,6 +102,18 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Dla średniego hotelu nad morzem (20-50 pokoi): chatbot rezerwacyjny 10-25 tys. zł + 300-600 zł/mc utrzymania, szkolenie recepcji 3-6 tys. zł, narzędzia marketingowe 300-500 zł/mc. Łącznie start: 13-31 tys. zł + 800 zł/mc. Zwrot typowo w 4-8 miesięcy przez wzrost rezerwacji bezpośrednich i lepszą obsługę gości zagranicznych.",
       },
     ],
+      en: {
+      opisGospodarki: "Koszalin is the second-largest city in the West Pomeranian Voivodeship, an academic center (Politechnika Koszalińska) and an economic hub of the central coast. The city's economy is based on manufacturing, food processing, trade, and coastal tourism (Mielno and surrounding areas).",
+      branzeKluczowe: ["manufacturing and processing", "coastal tourism (Mielno)", "regional trade", "education (PK)"],
+      wyzwaniaAI: "In Koszalin, typical areas for AI application include manufacturing companies (office work automation, offers), food companies (marketing, export), tourist facilities on the central coast, and the university. OpenMind AI offers implementations and training for companies in Koszalin.",
+      czasDojazdu: "Koszalin is served in a hybrid mode from Szczecin or Gdańsk – travel time is approximately 2 hours. On-site meetings are scheduled 2 weeks in advance, with most implementations conducted online.",
+      przykladZastosowania: "An example implementation scenario: for a Koszalin-based food company exporting to the German market, AI can be implemented to automate the generation of product descriptions and labels in several languages (Polish, German, English), supporting the company's export expansion without increasing the marketing department.",
+      faq: [
+        { question: "How does AI support manufacturing companies in Koszalin?", answer: "Manufacturing companies primarily benefit from: automation of technical documentation and commercial offers, handling B2B customer inquiries in several languages, generating marketing content, and analyzing production data. For companies exporting to Germany, automatic Polish-German translations and customer service in their language are particularly important. Typical costs: 400-900 PLN/month + implementation 10-30 thousand PLN." },
+        { question: "Do you provide AI training for Politechnika Koszalińska?", answer: "Yes, we offer training for universities – for academic staff (using AI in technical education, identifying AI-generated work, ethics, research applications), for university administration, and workshops for students. We conduct training on-site in Koszalin or online for greater flexibility." },
+        { question: "How much does AI implementation cost for a tourist facility in Mielno?", answer: "For a medium-sized seaside hotel (20-50 rooms): reservation chatbot 10-25 thousand PLN + 300-600 PLN/month for maintenance, reception training 3-6 thousand PLN, marketing tools 300-500 PLN/month. Total start-up: 13-31 thousand PLN + 800 PLN/month. Return on investment typically within 4-8 months due to increased direct bookings and better service for foreign guests." }
+      ],
+    },
   },
   {
     slug: "stargard",
@@ -135,6 +159,18 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Proste wdrożenie (szkolenie zespołu + konfiguracja narzędzi do tłumaczeń i obsługi dokumentów): kilku dni do kilku tygodni. Pełne wdrożenie z integracją z systemami firmy (TMS, fakturowanie): 2-4 miesiące. Zawsze rekomendujemy etapowe podejście zaczynając od pilotu w jednym obszarze z największym potencjałem szybkiego ROI.",
       },
     ],
+      en: {
+      opisGospodarki: "Stargard is a district town in the Szczecin agglomeration, with historic defensive walls. The city's economy is based on industrial production, logistics (railway hub), trade, and services. Its proximity to Szczecin and the German border fosters the development of companies involved in cross-border trade.",
+      branzeKluczowe: ["industrial production", "logistics and transport", "cross-border trade", "historical tourism"],
+      wyzwaniaAI: "In Stargard, typical areas for AI application include logistics companies (transport documentation, multilingual support), manufacturing companies, cross-border trade with Germany, and local SMEs. OpenMind AI offers implementations and training for companies in Stargard.",
+      czasDojazdu: "Stargard is served from Szczecin – travel time is approximately 40 minutes. On-site training and implementations are available on short notice.",
+      przykladZastosowania: "An example implementation scenario: for a Stargard-based trading company conducting exchange with Germany, AI can be implemented to automatically translate offers and documentation and serve German customers in their language, significantly accelerating the handling of cross-border inquiries.",
+      faq: [
+        { question: "How does AI support Polish-German companies from Stargard?", answer: "Companies trading with Germany primarily benefit from: automatic Polish-German translations (excellent quality for this language pair), handling inquiries from German customers, generating bilingual offers and documentation, automating correspondence, and analyzing legal and commercial documents. Typical costs: 300-600 PLN/month + initial training 2-4 thousand PLN." },
+        { question: "Which AI tools are best for German translations?", answer: "For Polish-German business translations, we recommend: DeepL Pro (140 PLN/month) – highest quality for standard commercial documents, ChatGPT Plus (100 PLN/month) – good for contextual translations with an understanding of industry specifics, Claude Pro (100 PLN/month) – good for long legal documents. For most companies, a DeepL Pro + ChatGPT Plus stack (240 PLN/month) covers 95% of needs." },
+        { question: "How long does AI implementation take for a logistics company from Stargard?", answer: "Simple implementation (team training + configuration of translation and document handling tools): a few days to a few weeks. Full implementation with integration into company systems (TMS, invoicing): 2-4 months. We always recommend a phased approach, starting with a pilot in one area with the greatest potential for quick ROI." }
+      ],
+    },
   },
   {
     slug: "kolobrzeg",
@@ -180,6 +216,18 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Dla średniego hotelu (50-150 pokoi): chatbot rezerwacyjny z obsługą wielu języków 15-40 tys. zł (jednorazowo) + 300-800 zł/mc utrzymania, szkolenie zespołu recepcji 5-10 tys. zł, narzędzia do generowania contentu 300-500 zł/mc. Łącznie start: 20-50 tys. zł + 800 zł/mc. Zwrot zwykle w 5-9 miesięcy dzięki zwiększonej liczbie rezerwacji bezpośrednich.",
       },
     ],
+      en: {
+      opisGospodarki: "Kołobrzeg is one of Poland's most popular spa and tourist towns, offering a wide range of sanatoriums, SPA hotels, and seaside attractions. The city's economy is primarily based on health and leisure tourism – hundreds of accommodation facilities serve millions of tourists annually, including a large number of guests from Germany and Scandinavia.",
+      branzeKluczowe: ["health tourism", "sanatoriums and SPA hotels", "seaside tourism", "retail for tourists"],
+      wyzwaniaAI: "In Kołobrzeg, typical areas for AI application include sanatoriums and SPA hotels (multilingual patient service, booking chatbots), accommodation facilities (dynamic pricing, marketing), restaurants, and shops for tourists. OpenMind AI offers implementations and training for Kołobrzeg's tourism industry.",
+      czasDojazdu: "Kołobrzeg is served online from Szczecin or Gdańsk (travel time approx. 2-3 hours). On-site visits for larger projects are scheduled during the off-peak season.",
+      przykladZastosowania: "An example implementation scenario: for a sanatorium or SPA hotel in Kołobrzeg, it's possible to implement a multilingual booking chatbot serving guests (Polish, German, English, Danish, Swedish) and automate responses to typical inquiries about treatments and stays. This typically reduces the workload on reception by 40-55% during peak season.",
+      faq: [
+        { question: "How does AI support sanatoriums and SPA hotels in Kołobrzeg?", answer: "Health resorts in Kołobrzeg serve guests from several countries (Germany, Poland, Scandinavia) – AI helps with: multilingual booking chatbots, automatic generation of treatment descriptions and wellness offers, online reservation handling, and analysis of reviews from Booking and Google. For medical facilities, GDPR compliance is crucial – we use enterprise tools with data hosting in the EU. Cost: 400-900 PLN/month for a medium-sized facility." },
+        { question: "How do facilities in Kołobrzeg serve German guests with AI?", answer: "German guests constitute a significant portion of Kołobrzeg's clientele. AI radically simplifies their service: a chatbot responds automatically in German, generates offers in German, translates reviews and inquiries, and handles special requests regarding diet or treatments. One person with a good AI stack can serve German clients as effectively as four without it." },
+        { question: "How much does it cost to implement a chatbot for a medium-sized hotel in Kołobrzeg?", answer: "For a medium-sized hotel (50-150 rooms): a multilingual booking chatbot costs 15-40 thousand PLN (one-time) + 300-800 PLN/month for maintenance, reception team training costs 5-10 thousand PLN, content generation tools cost 300-500 PLN/month. Total startup cost: 20-50 thousand PLN + 800 PLN/month. ROI is usually within 5-9 months due to an increased number of direct bookings." }
+      ],
+    },
   },
   {
     slug: "swinoujscie",
@@ -225,6 +273,18 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Dla małego pensjonatu (10-25 pokoi): ChatGPT Plus do komunikacji i tłumaczeń (100 zł/mc), Canva AI do grafik (55 zł/mc), prosty chatbot dwujęzyczny polski-niemiecki (od 100-200 zł/mc). Plus jednodniowe szkolenie dla właściciela 1.5-3 tys. zł. Łączny koszt: 3-5 tys. zł startu + 300-400 zł/mc. Efekt: znaczna oszczędność czasu i lepsza obsługa gości.",
       },
     ],
+      en: {
+      opisGospodarki: "Świnoujście is a seaside city located on three islands (Wolin, Uznam, Karsibór), with a developed tourism sector and a seaport (including an LNG terminal). The city's economy is based on health and leisure tourism, the port, and cross-border trade with Germany (due to its direct proximity).",
+      branzeKluczowe: ["health and seaside tourism", "seaport and LNG terminal", "cross-border trade with Germany", "hospitality and gastronomy"],
+      wyzwaniaAI: "In Świnoujście, typical areas for AI application include hotels and guesthouses (multilingual guest service, especially for German guests), sanatoriums, port and logistics companies, restaurants, and shops for tourists. OpenMind AI offers implementations and training for companies in Świnoujście.",
+      czasDojazdu: "Świnoujście is served online from Szczecin (travel time approx. 1.5 hours plus ferry). On-site visits for larger projects are scheduled during the off-peak season.",
+      przykladZastosowania: "An example implementation scenario: for a hotel in Świnoujście primarily serving German guests, it's possible to implement a fully bilingual chatbot (Polish, German) and automate the generation of seasonal offers in both languages, significantly increasing the conversion rate of bookings from German clients.",
+      faq: [
+        { question: "How does AI help hotels in Świnoujście serve German guests?", answer: "Świnoujście is de facto a bilingual tourist city – the Polish-German border is just a few kilometers away, and German guests constitute a significant portion of the clientele. AI radically simplifies service: the chatbot operates fully in German, generates offer descriptions in German, translates reviews from German portals, and handles inquiries about specific guest requirements. Typical cost: 300-700 PLN/month." },
+        { question: "Can sanatoriums in Świnoujście use AI in compliance with GDPR?", answer: "Yes, but it requires appropriate tools. For healthcare facilities, we recommend: tools with data hosting in the EU (Azure OpenAI EU), data processing agreements, minimizing data sent to AI, and conducting a DPIA analysis before implementation. Public ChatGPT is NOT recommended for medical data. AI supports administration, not medical diagnoses." },
+        { question: "What are the costs of AI implementation for a small guesthouse in Świnoujście?", answer: "For a small guesthouse (10-25 rooms): ChatGPT Plus for communication and translations (100 PLN/month), Canva AI for graphics (55 PLN/month), a simple bilingual Polish-German chatbot (from 100-200 PLN/month). Plus a one-day training for the owner costing 1.5-3 thousand PLN. Total cost: 3-5 thousand PLN to start + 300-400 PLN/month. The effect: significant time savings and better guest service." }
+      ],
+    },
   },
   {
     slug: "szczecinek",
@@ -270,6 +330,18 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Tak — praktycznie cały proces wdrożenia może odbywać się zdalnie: rozmowy wstępne online, szkolenia webinarowe, konfiguracja narzędzi przez dostęp zdalny. Dla większych projektów planujemy 1-2 wizyty stacjonarne. Większość prac (80-90%) realizowana jest zdalnie ze Szczecina lub Gdańska, co jest ważne dla firm z mniejszych miejscowości.",
       },
     ],
+      en: {
+      opisGospodarki: "Szczecinek is a district town in the central part of the West Pomeranian Voivodeship, a center for the timber industry (Kronospan Szczecinek – manufacturer of wood-based panels) and furniture manufacturing. The local economy also relies on tourism (lake district region), trade, and small-scale production.",
+      branzeKluczowe: ["timber industry (Kronospan)", "furniture manufacturing", "regional tourism", "local trade"],
+      wyzwaniaAI: "In Szczecinek, typical areas for AI application include subcontractors in the timber sector (technical documentation, offers), furniture manufacturers (product descriptions, export), tourist facilities in the lake district region, and local SMEs. OpenMind AI offers implementations and training for companies in Szczecinek.",
+      czasDojazdu: "Szczecinek is served online from Szczecin or Gdańsk (travel time approx. 2 hours). On-site visits for larger projects are scheduled in advance.",
+      przykladZastosowania: "An example implementation scenario: for a Szczecinek-based subcontractor in the timber sector, it's possible to implement AI to automate the preparation of technical specifications and offers for clients, significantly reducing response times to quotation requests.",
+      faq: [
+        { question: "How does AI support companies in the timber sector from Szczecinek?", answer: "Timber companies (Kronospan and their subcontractors) primarily implement AI for: automating technical documentation and specifications, generating offers for B2B clients, handling inquiries from business partners (often in foreign languages), and analyzing production data. Enterprise tools are crucial for companies working with large clients." },
+        { question: "Can furniture manufacturers from Szczecinek benefit from AI?", answer: "Yes – furniture manufacturers primarily benefit from: automatic generation of product descriptions in export languages (German, English, Dutch, Scandinavian), creation of professional catalog graphics, handling inquiries from marketplaces, and analyzing market trends. Typical costs: 400-800 PLN/month + initial implementation of 5-15 thousand PLN." },
+        { question: "Is it possible to implement AI remotely for a company in Szczecinek?", answer: "Yes – practically the entire implementation process can be done remotely: initial online discussions, webinar training, tool configuration via remote access. For larger projects, we plan 1-2 on-site visits. Most of the work (80-90%) is carried out remotely from Szczecin or Gdańsk, which is important for companies in smaller towns." }
+      ],
+    },
   },
   {
     slug: "police",
@@ -315,6 +387,18 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Ze względu na wymagania bezpieczeństwa, wdrożenia w sektorze chemicznym trwają dłużej niż standardowe. Pilot: 8-12 tygodni od rozmowy wstępnej do uruchomienia. Pełne wdrożenie z bezpieczną infrastrukturą: 4-8 miesięcy. Koszty: pilot 25-60 tys. zł, pełne wdrożenie 100-350 tys. zł plus 2000-8000 zł/mc infrastruktury i licencji.",
       },
     ],
+      en: {
+      opisGospodarki: "Police is a district town in the Szczecin agglomeration, primarily known for its chemical industry (Grupa Azoty Zakłady Chemiczne Police – one of the largest fertilizer producers in Poland). The town's economy is based on the chemical sector, subcontracting companies, and local retail and services for residents.",
+      branzeKluczowe: ["chemical industry (Grupa Azoty Police)", "subcontracting companies for industry", "river logistics", "local trade"],
+      wyzwaniaAI: "In Police, typical areas for AI application include subcontracting companies in the chemical sector (technical documentation, report analysis, B2B customer service – while maintaining data security requirements), local service companies, and retail SMEs. OpenMind AI offers implementations and training tailored to the chemical sector's specific needs.",
+      czasDojazdu: "Police is served from Szczecin – travel time approximately 30-40 minutes. On-site training and implementations are available on short notice.",
+      przykladZastosowania: "Example implementation scenario: For a Police-based chemical sector subcontractor, AI can be implemented to automate the preparation of Safety Data Sheets (SDS) and REACH documentation – ensuring full control over commercial data confidentiality using enterprise tools.",
+      faq: [
+        { question: "How does AI support chemical companies in Police?", answer: "Chemical companies (subcontractors of Grupa Azoty and others) implement AI for: automating the preparation of SDS and REACH documentation, analyzing laboratory test reports, generating offers and technical documentation, handling B2B customer inquiries, and translating documentation for export markets. Enterprise tools (Azure OpenAI EU) are crucial due to the confidentiality of formulas and commercial data." },
+        { question: "Is public ChatGPT safe for a chemical company?", answer: "Public ChatGPT is NOT recommended for sensitive data in the chemical sector (formulas, B2B customer data, technical specifications). For this sector, we recommend: Azure OpenAI in EU West/EU North regions, Claude via AWS Bedrock in Frankfurt, or local open-source models. Public versions of ChatGPT should only be used for non-sensitive applications (marketing, external communication, general inquiries)." },
+        { question: "How long does it take to implement secure AI in a chemical company?", answer: "Due to security requirements, implementations in the chemical sector take longer than standard. Pilot project: 8-12 weeks from initial discussion to launch. Full implementation with secure infrastructure: 4-8 months. Costs: pilot 25-60 thousand PLN, full implementation 100-350 thousand PLN plus 2000-8000 PLN/month for infrastructure and licenses." }
+      ],
+    },
   },
   {
     slug: "walcz",
@@ -360,6 +444,18 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Najlepiej online — nasze szkolenia online to 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie po szkoleniu. Koszt: 1.5-3 tys. zł dla pojedynczej osoby, 3-5 tys. zł dla grupy do 5 osób. Efektywność porównywalna ze szkoleniami stacjonarnymi, bez konieczności dojazdu do większego miasta.",
       },
     ],
+      en: {
+      opisGospodarki: "Wałcz is a district town in the eastern part of the West Pomeranian Voivodeship, with an economy based on small-scale manufacturing, agriculture, food processing, trade, and tourism (lake district region). The town also hosts the Land Forces Academy and a military base.",
+      branzeKluczowe: ["small-scale manufacturing", "agriculture and processing", "tourism (lake district)", "military education"],
+      wyzwaniaAI: "In Wałcz, typical areas for AI application include small manufacturing and processing companies, agritourism farms in the lake district region, local trade companies, and service SMEs. OpenMind AI offers affordable implementations and training for companies in Wałcz.",
+      czasDojazdu: "Wałcz is served online from Piła (approx. 1 hour travel) or Szczecin (approx. 2 hours). On-site visits for larger projects require advance notice.",
+      przykladZastosowania: "Example implementation scenario: For a small processing company in Wałcz, simple AI tools can be implemented to generate product descriptions, handle customer inquiries, and automate official correspondence, typically saving the owner 8-15 hours of work per week.",
+      faq: [
+        { question: "Does a small company in Wałcz need AI?", answer: "Yes – for small businesses, AI is exceptionally valuable because it saves time on tasks that are not core to the business (writing emails, offers, descriptions). For 200-400 PLN per month, you get tools that perform the work of several people. The key is good initial training (1-3 thousand PLN) to know how to use them effectively." },
+        { question: "How can an agritourism farm in the lake district use AI?", answer: "For agritourism, AI supports: handling reservations in several languages, writing social media posts, creating promotional graphics, translating communication with foreign guests, and generating descriptions of regional attractions. Stack: ChatGPT Plus (100 PLN/month) + Canva AI (55 PLN/month) + free DeepL = 155 PLN/month. One-day online training: 1.5-3 thousand PLN." },
+        { question: "Where can I learn AI without leaving Wałcz?", answer: "Online is best – our online training consists of 3-4 hours of intensive live workshops plus a week of post-training support. Cost: 1.5-3 thousand PLN for an individual, 3-5 thousand PLN for a group of up to 5 people. The effectiveness is comparable to on-site training, without the need to travel to a larger city." }
+      ],
+    },
   },
   {
     slug: "bialogard",
@@ -405,6 +501,18 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Rekomendujemy szkolenia online — są tańsze niż stacjonarne, nie wymagają dojazdu, a efektywność jest porównywalna. Nasze szkolenia online to 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie po szkoleniu. Koszt: 1.5-3 tys. zł dla pojedynczej osoby, 3-5 tys. zł dla grupy do 5 osób.",
       },
     ],
+      en: {
+      opisGospodarki: "Białogard is a district town in the central part of the West Pomeranian Voivodeship, with an economy based on agriculture, agri-food processing, small-scale manufacturing, and trade. The town serves as a local center for surrounding rural municipalities, and its proximity to Koszalin and the coast fosters connections with the tourism market.",
+      branzeKluczowe: ["agriculture and processing", "small-scale manufacturing", "regional trade", "services for residents"],
+      wyzwaniaAI: "In Białogard, typical areas for AI application include agri-food processing companies, local trade and service companies, and agricultural farms. OpenMind AI offers affordable implementations and training for micro-entrepreneurs in Białogard.",
+      czasDojazdu: "Białogard is served online from Koszalin (approx. 30 minutes travel) or Szczecin (approx. 2 hours). On-site visits for groups of 6+ people.",
+      przykladZastosowania: "Example implementation scenario: For a small trading company in Białogard, basic AI tools can be implemented to automate office work, generate product descriptions, and handle customer inquiries, saving the owner several hours of work per week.",
+      faq: [
+        { question: "Does a micro-company in Białogard need AI?", answer: "Yes – micro-companies are often the biggest beneficiaries of AI because they don't have the budget for marketing or additional employees. For 100-300 PLN per month, they gain access to tools that save many hours of work per week. The key is good initial training (1-2 thousand PLN) to know how to use them effectively in daily work." },
+        { question: "What are the simplest AI implementations for a small business?", answer: "The three simplest and fastest are: 1) ChatGPT for generating sales offers and responding to customer inquiries (start in one day), 2) Canva AI for creating marketing graphics and social media posts (a few hours), 3) Simple email templates in ChatGPT (immediate). These three are sufficient for 60-70% of a small business's needs. Cost: 150-200 PLN/month." },
+        { question: "How can I start with AI without traveling to Szczecin?", answer: "We recommend online training – it's cheaper than on-site, requires no travel, and the effectiveness is comparable. Our online training consists of 3-4 hours of intensive live workshops plus a week of post-training support. Cost: 1.5-3 thousand PLN for an individual, 3-5 thousand PLN for a group of up to 5 people." }
+      ],
+    },
   },
   {
     slug: "goleniow",
@@ -450,6 +558,18 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Goleniów jest blisko Szczecina (30 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla grup 6+ osób realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni od pierwszego kontaktu. Wizyty stacjonarne łączymy często z innymi firmami z aglomeracji szczecińskiej.",
       },
     ],
+      en: {
+      opisGospodarki: "Goleniów is a district town within the Szczecin metropolitan area, characterized by a dynamically developing manufacturing and logistics sector. Goleniów is home to the Goleniów Industrial Park (GPP) and a Special Economic Zone, attracting international investors. The city also hosts the Szczecin-Goleniów Airport.",
+      branzeKluczowe: ["manufacturing in GPP and SSE", "logistics (airport, proximity to Szczecin)", "trade and services", "subcontracting companies for manufacturing"],
+      wyzwaniaAI: "In Goleniów, typical areas for AI application include companies from the industrial park and SSE (documentation automation, international customer service), logistics companies associated with the airport, and local SMEs. OpenMind AI offers implementations and training for companies in Goleniów.",
+      czasDojazdu: "Goleniów is served from Szczecin – travel time approximately 30 minutes. On-site training and implementations are available on short notice.",
+      przykladZastosowania: "An example implementation scenario: for a company in the Goleniów Industrial Park, it is possible to implement AI for automating technical documentation and handling inquiries from international clients in several languages (Polish, German, English, Scandinavian), which supports the company's export expansion.",
+      faq: [
+        { question: "How does AI support companies in the Goleniów Industrial Park?", answer: "Companies from GPP and SSE most often implement AI for: automating the preparation of offers and documentation for international clients, generating product sheets in several languages, handling B2B inquiries, analyzing production reports, and supporting HR departments. Many companies export to Germany and Scandinavia, so translation automation is one of the main areas. Typical projects: PLN 15-60k for a pilot." },
+        { question: "Do logistics companies associated with the airport use AI?", answer: "Yes – companies serving Szczecin-Goleniów Airport (handling, freight forwarding, passenger service) benefit from: multilingual chatbots for passengers and clients, document automation, handling inquiries in several languages (Polish, German, English, Scandinavian). Typical implementation cost for a medium-sized company: PLN 15-50k + PLN 400-800/month." },
+        { question: "How quickly can AI be implemented in a company in Goleniów?", answer: "Goleniów is close to Szczecin (30 min), so the first consultation meeting is possible within a few days. We conduct training for groups of 6+ people within 1-2 weeks. Simple implementations are launched within a few days or weeks from the first contact. On-site visits are often combined with other companies from the Szczecin metropolitan area." }
+      ],
+    },
   },
   {
     slug: "gryfino",
@@ -495,6 +615,18 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Gryfino jest blisko Szczecina (30 min), więc pierwsze spotkanie konsultacyjne możliwe w ciągu kilku dni. Szkolenia realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni.",
       },
     ],
+      en: {
+      opisGospodarki: "Gryfino is a district town in the western part of the West Pomeranian Voivodeship, close to Szczecin and the German border. The city's economy is based on energy (Dolna Odra Power Plant – one of the largest power plants in northern Poland), industry, cross-border trade, and services for the Szczecin metropolitan area.",
+      branzeKluczowe: ["energy (Dolna Odra Power Plant)", "cross-border trade with Germany", "industry and manufacturing", "support for Szczecin"],
+      wyzwaniaAI: "In Gryfino, typical areas for AI application include subcontracting companies for the energy sector (Dolna Odra Power Plant), cross-border trade companies (Polish-German translations), local SMEs, and companies serving the Szczecin metropolitan area. OpenMind AI offers implementations and training for companies in Gryfino.",
+      czasDojazdu: "Gryfino is served from Szczecin – travel time approximately 30 minutes. On-site training and implementations are available on short notice, often combined with companies in Szczecin.",
+      przykladZastosowania: "An example implementation scenario: for a Gryfino-based subcontracting company of the Dolna Odra Power Plant, it is possible to implement AI for automating the preparation of tender offers and technical documentation in accordance with PGE requirements.",
+      faq: [
+        { question: "How does AI support energy sector companies in Gryfino?", answer: "Subcontracting companies of the Dolna Odra Power Plant primarily implement AI for: automating the preparation of tender offers, generating technical documentation in accordance with PGE requirements, analyzing reports, and handling B2B correspondence. Enterprise tools with full data control are key." },
+        { question: "How does AI help companies on the German border?", answer: "Cross-border companies benefit from: automatic Polish-German translations, servicing German clients, generating bilingual offers, and analyzing commercial documents. Typical cost: PLN 300-600/month." },
+        { question: "How quickly can AI be implemented in a company in Gryfino?", answer: "Gryfino is close to Szczecin (30 min), so the first consultation meeting is possible within a few days. We conduct training within 1-2 weeks. Simple implementations are launched within a few days or weeks." }
+      ],
+    },
   },
   {
     slug: "choszczno",
@@ -540,5 +672,17 @@ export const zachodniopomorskieCities: MiastoData[] = [
           "Rekomendujemy szkolenia online — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł. Bez konieczności dojazdu.",
       },
     ],
+      en: {
+      opisGospodarki: "Choszczno is a district town in the central part of the West Pomeranian Voivodeship, surrounded by picturesque lakes. The city's economy is based on agriculture, food processing, tourism (lakes, Drawieński National Park nearby), and small-scale manufacturing and local trade.",
+      branzeKluczowe: ["agriculture and processing", "tourism (lakes, DPN)", "small-scale manufacturing", "local trade"],
+      wyzwaniaAI: "In Choszczno, typical areas for AI application include agricultural and processing companies, tourist facilities (hotels, guesthouses, agritourism farms), local trade companies, and SMEs. OpenMind AI offers implementations and training for companies in Choszczno.",
+      czasDojazdu: "Choszczno is served online from Szczecin (approx. 1h travel time) or Gorzów (approx. 1h). On-site visits for larger projects.",
+      przykladZastosowania: "An example implementation scenario: for an agritourism facility by a lake near Choszczno, it is possible to implement a multilingual booking chatbot (Polish, German, English) and generate descriptions of regional attractions.",
+      faq: [
+        { question: "How does AI support tourism in the Choszczno area?", answer: "Tourist facilities (hotels, guesthouses, agritourism farms by the lakes) serve guests from Poland, Germany, and Scandinavia. AI simplifies multilingual service, generating offer descriptions, and creating content for social media. Cost: PLN 200-500/month for a small facility." },
+        { question: "How much does a basic AI implementation cost in Choszczno?", answer: "For a small company: one-day training PLN 3-5k, tool configuration PLN 3-8k, licenses PLN 300-600/month. Total start-up: PLN 6-13k + PLN 400/month." },
+        { question: "How to start without traveling to Szczecin?", answer: "We recommend online training – 3-4 hours of intensive live workshops plus weekly support. Cost: PLN 1.5-3k. No travel required." }
+      ],
+    },
   },
 ];
