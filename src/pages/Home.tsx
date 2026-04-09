@@ -20,25 +20,32 @@ const Home = () => {
 
   const jsonLd = useMemo(() => ({
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'ProfessionalService',
     name: 'OpenMind AI Consulting',
-    url: 'https://www.openmindai.pl',
-    logo: 'https://www.openmindai.pl/logo.png',
-    description: 'Szkolenia AI, wdrożenia sztucznej inteligencji, agencja kreatywna AI, automatyzacja procesów i doradztwo strategiczne dla firm w Polsce.',
-    address: { '@type': 'PostalAddress', addressCountry: 'PL' },
-    sameAs: ['https://twitter.com/OpenMindAI_PL'],
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'customer service',
-      availableLanguage: ['Polish', 'English'],
-    },
+    description: 'Polski lider wdrożeń sztucznej inteligencji dla firm, agencji marketingowych i szkół. Konsulting AI, szkolenia z ChatGPT, Claude, Copilot i Gemini, automatyzacja procesów biznesowych.',
+    url: 'https://openmindai.pl',
+    areaServed: { '@type': 'Country', name: 'Polska' },
+    serviceType: [
+      'Wdrożenia AI',
+      'Szkolenia AI',
+      'Konsulting sztuczna inteligencja',
+      'Automatyzacja procesów',
+      'AI dla szkół',
+    ],
+    priceRange: '$$',
+    knowsAbout: [
+      'ChatGPT', 'Claude', 'Gemini', 'Microsoft Copilot',
+      'Midjourney', 'ElevenLabs', 'Runway', 'Azure OpenAI',
+    ],
   }), []);
 
   usePageMeta({
-    title: 'OpenMind AI – Szkolenia AI, Wdrożenia, Agencja Kreatywna | Polska',
-    description: 'Szkolenia AI, wdrożenia sztucznej inteligencji, automatyzacja procesów, produkcja wideo i grafik AI, chatboty, doradztwo strategiczne. Kompleksowa transformacja cyfrowa dla firm w całej Polsce. RODO. Bezpłatna konsultacja.',
-    keywords: 'szkolenia AI, wdrożenia AI, sztuczna inteligencja, automatyzacja procesów, agencja kreatywna AI, chatbot AI, doradztwo AI, transformacja cyfrowa, kursy AI, machine learning, generatywna AI, produkcja wideo AI, OpenMind AI, Polska',
+    title: 'OpenMind AI Consulting — Wdrożenia AI, szkolenia i konsulting dla firm i szkół w Polsce',
+    description: 'OpenMind AI — polski lider wdrożeń sztucznej inteligencji dla firm, agencji i szkół. Konsulting, szkolenia AI i automatyzacja. Bezpłatne konsultacje.',
+    keywords: 'wdrożenia AI, szkolenia AI, konsulting AI, sztuczna inteligencja, automatyzacja procesów, ChatGPT, Claude, Gemini, Copilot, AI dla firm, AI dla szkół, OpenMind AI, Polska',
     path: '/',
+    ogTitle: 'OpenMind AI Consulting — Wdrożenia AI dla firm i szkół w Polsce',
+    ogDescription: 'Polski lider wdrożeń sztucznej inteligencji. Konsulting, szkolenia AI z ChatGPT, Claude, Copilot, Gemini. Bezpłatne pierwsze konsultacje.',
     jsonLd,
   });
 
