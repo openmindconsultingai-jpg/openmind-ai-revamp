@@ -128,155 +128,226 @@
   <url><loc>https://www.openmindai.pl/blog/110</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <!-- Gdzie działamy - dolnoslaskie -->
-
-  <!-- Gdzie działamy - dzierzoniow -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dzierzoniow/dzierzoniow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - zgorzelec -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zgorzelec/zgorzelec</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/wroclaw</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/walbrzych</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/legnica</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/jelenia-gora</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/lubin</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/glogow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/swidnica</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/boleslawiec</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/olesnica</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/olawa</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/dzierzoniow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/zgorzelec</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - kujawsko-pomorskie -->
-
-  <!-- Gdzie działamy - rypin -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/rypin/rypin</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - tuchola -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/tuchola/tuchola</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - aleksandrow-kujawski -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/aleksandrow-kujawski/aleksandrow-kujawski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/bydgoszcz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/torun</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/wloclawek</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/grudziadz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/inowroclaw</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/brodnica</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/swiecie</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/chelmno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/naklo-nad-notecia</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/rypin</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/tuchola</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie/aleksandrow-kujawski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - lubelskie -->
-
-  <!-- Gdzie działamy - lubartow -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubartow/lubartow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - tomaszow-lubelski -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/tomaszow-lubelski/tomaszow-lubelski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - hrubieszow -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/hrubieszow/hrubieszow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/lublin</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/zamosc</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/chelm</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/biala-podlaska</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/pulawy</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/swidnik</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/krasnik</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/lukow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/bilgoraj</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/lubartow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/tomaszow-lubelski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie/hrubieszow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - lubuskie -->
-
-  <!-- Gdzie działamy - slubice -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slubice/slubice</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - sulechow -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/sulechow/sulechow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - gubin -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/gubin/gubin</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - szprotawa -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/szprotawa/szprotawa</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/zielona-gora</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/gorzow-wielkopolski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/nowa-sol</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/zary</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/zagan</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/swiebodzin</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/kostrzyn-nad-odra</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/miedzyrzecz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/slubice</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/sulechow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/gubin</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie/szprotawa</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - lodzkie -->
-
-  <!-- Gdzie działamy - piotrkow-trybunalski -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/piotrkow-trybunalski/piotrkow-trybunalski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - tomaszow-mazowiecki -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/tomaszow-mazowiecki/tomaszow-mazowiecki</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - belchatow -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/belchatow/belchatow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/lodz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/pabianice</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/zgierz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/aleksandrow-lodzki</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/konstantynow-lodzki</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/ozorkow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/glowno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/kutno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/sieradz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/piotrkow-trybunalski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/tomaszow-mazowiecki</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie/belchatow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - malopolskie -->
-
-  <!-- Gdzie działamy - wieliczka -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wieliczka/wieliczka</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - andrychow -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/andrychow/andrychow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/krakow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/tarnow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/nowy-sacz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/oswiecim</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/chrzanow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/olkusz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/nowy-targ</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/bochnia</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/gorlice</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/zakopane</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/wieliczka</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie/andrychow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - mazowieckie -->
-
-  <!-- Gdzie działamy - minsk-mazowiecki -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/minsk-mazowiecki/minsk-mazowiecki</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - wyszkow -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wyszkow/wyszkow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/warszawa</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/radom</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/plock</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/siedlce</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/pruszkow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/legionowo</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/ostroleka</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/piaseczno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/otwock</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/ciechanow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/minsk-mazowiecki</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie/wyszkow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - opolskie -->
-
-  <!-- Gdzie działamy - glubczyce -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/glubczyce/glubczyce</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - olesno -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/olesno/olesno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - grodkow -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/grodkow/grodkow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/opole</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/kedzierzyn-kozle</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/nysa</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/brzeg</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/kluczbork</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/prudnik</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/strzelce-opolskie</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/namyslow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/krapkowice</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/glubczyce</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/olesno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie/grodkow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - podkarpackie -->
-
-  <!-- Gdzie działamy - lancut -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lancut/lancut</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - ropczyce -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/ropczyce/ropczyce</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/rzeszow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/przemysl</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/stalowa-wola</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/mielec</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/tarnobrzeg</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/krosno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/debica</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/jaroslaw</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/sanok</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/jaslo</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/lancut</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie/ropczyce</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - podlaskie -->
-
-  <!-- Gdzie działamy - bielsk-podlaski -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/bielsk-podlaski/bielsk-podlaski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - kolno -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kolno/kolno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/bialystok</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/suwalki</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/lomza</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/augustow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/zambrow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/grajewo</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/hajnowka</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/sokolka</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/lapy</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/siemiatycze</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/bielsk-podlaski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie/kolno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - pomorskie -->
-
-  <!-- Gdzie działamy - wejherowo -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wejherowo/wejherowo</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - lebork -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lebork/lebork</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/gdansk</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/gdynia</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/sopot</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/tczew</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/starogard-gdanski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/rumia</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/chojnice</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/malbork</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/kwidzyn</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/slupsk</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/wejherowo</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie/lebork</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - slaskie -->
-
-  <!-- Gdzie działamy - dabrowa-gornicza -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dabrowa-gornicza/dabrowa-gornicza</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - jastrzebie-zdroj -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/jastrzebie-zdroj/jastrzebie-zdroj</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/katowice</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/czestochowa</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/sosnowiec</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/gliwice</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/zabrze</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/bielsko-biala</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/bytom</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/ruda-slaska</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/rybnik</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/tychy</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/dabrowa-gornicza</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie/jastrzebie-zdroj</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - swietokrzyskie -->
-
-  <!-- Gdzie działamy - jedrzejow -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/jedrzejow/jedrzejow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - wloszczowa -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wloszczowa/wloszczowa</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - pinczow -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pinczow/pinczow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - opatow -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opatow/opatow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/kielce</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/starachowice</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/ostrowiec-swietokrzyski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/skarzysko-kamienna</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/sandomierz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/konskie</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/busko-zdroj</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/staszow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/jedrzejow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/wloszczowa</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/pinczow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie/opatow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - warminsko-mazurskie -->
-
-  <!-- Gdzie działamy - dzialdowo -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dzialdowo/dzialdowo</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - nidzica -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/nidzica/nidzica</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/olsztyn</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/elblag</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/elk</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/ilawa</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/ostroda</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/gizycko</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/ketrzyn</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/mragowo</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/bartoszyce</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/szczytno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/dzialdowo</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie/nidzica</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - wielkopolskie -->
-
-  <!-- Gdzie działamy - swarzedz -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swarzedz/swarzedz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - turek -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/turek/turek</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/poznan</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/kalisz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/konin</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/pila</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/ostrow-wielkopolski</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/gniezno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/leszno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/lubon</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/swidnica</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/srem</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/swarzedz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie/turek</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Gdzie działamy - zachodniopomorskie -->
-
-  <!-- Gdzie działamy - gryfino -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/gryfino/gryfino</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
-  <!-- Gdzie działamy - choszczno -->
-  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/choszczno/choszczno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/szczecin</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/koszalin</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/stargard</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/kolobrzeg</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/swinoujscie</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/szczecinek</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/police</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/walcz</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/bialogard</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/goleniow</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/gryfino</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie/choszczno</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
