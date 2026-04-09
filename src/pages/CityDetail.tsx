@@ -58,9 +58,19 @@ const CityDetail = () => {
       : `AI training ${city.name}, AI implementation ${city.name}, artificial intelligence course ${city.name}, process automation ${city.name}`
     : '';
 
+  // Resolve localized content fields
+  const enData = content?.en;
+  const isEn = language === 'en';
+  const localOpisGospodarki = isEn && enData?.opisGospodarki ? enData.opisGospodarki : content?.opisGospodarki;
+  const localBranzeKluczowe = isEn && enData?.branzeKluczowe ? enData.branzeKluczowe : content?.branzeKluczowe;
+  const localWyzwaniaAI = isEn && enData?.wyzwaniaAI ? enData.wyzwaniaAI : content?.wyzwaniaAI;
+  const localCzasDojazdu = isEn && enData?.czasDojazdu ? enData.czasDojazdu : content?.czasDojazdu;
+  const localPrzykladZastosowania = isEn && enData?.przykladZastosowania ? enData.przykladZastosowania : content?.przykladZastosowania;
+  const localFaq = isEn && enData?.faq ? enData.faq.map(f => ({ pytanie: f.question, odpowiedz: f.answer })) : content?.faq;
+
   const jsonLd = useMemo(() => {
     if (!city || !voivodeship) return undefined;
-    const faqItems = content?.faq?.map((f) => ({
+    const faqItems = localFaq?.map((f) => ({
       '@type': 'Question',
       name: f.pytanie,
       acceptedAnswer: { '@type': 'Answer', text: f.odpowiedz },
