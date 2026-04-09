@@ -342,7 +342,7 @@ export const swietokrzyskieCities: MiastoData[] = [
       {
         "pytanie": "Ile kosztuje szkolenie AI w Staszowie?",
         "odpowiedz": "Dla pojedynczej osoby lub małej grupy (3-5 osób): szkolenie online 1.5-3 tys. zł. Dla grupy 6-10 osób: szkolenie stacjonarne w siedzibie klienta 4-6 tys. zł plus dojazd z Kielc. Szkolenia obejmują 6 godzin intensywnych warsztatów, materiały, praktyczne ćwiczenia oraz miesiąc wsparcia poszkoleniowego."
-      }
+      },
     ]
   },
   {
