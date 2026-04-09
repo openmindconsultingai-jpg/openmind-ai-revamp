@@ -20,6 +20,7 @@ const allCities: MiastoData[] = [
   ...dolnoslaskieCities,
   ...kujawskoPomorskieCities,
   ...lubelskieCities,
+  ...lubuskieCities,
   ...lodzkieCities,
   ...malopolskieCities,
   ...mazowieckieCities,
