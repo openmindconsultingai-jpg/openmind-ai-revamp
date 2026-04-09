@@ -226,7 +226,7 @@ const VideoHero = () => {
         {/* Visually prominent brand name */}
         <div 
           ref={titleRef}
-          className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 leading-none tracking-tight"
+          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold mb-4 leading-none tracking-tight"
           aria-hidden="true"
         >
           <span className="text-foreground" style={{ textShadow: '0 0 60px hsl(176 100% 43% / 0.5)' }}>
@@ -253,7 +253,7 @@ const VideoHero = () => {
         </div>
 
         {/* SEO H1 - visually smaller but semantically the main heading */}
-        <h1 className="hero-subtitle font-heading text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-foreground/90 mb-4 max-w-4xl mx-auto">
+        <h1 className="hero-subtitle font-heading text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-foreground/80 mb-3 max-w-3xl mx-auto">
           {seoH1Text}
         </h1>
 
