@@ -405,5 +405,140 @@ export const lodzkieCities: MiastoData[] = [
           "Pierwsze efekty (oszczędność czasu na konkretnych zadaniach) są widoczne zwykle od razu po szkoleniu — pracownicy zaczynają szybciej pisać oferty, odpowiadać klientom, tworzyć treści marketingowe. Mierzalne efekty biznesowe (redukcja kosztów, wzrost sprzedaży) pojawiają się po 2-4 miesiącach systematycznego używania narzędzi.",
       },
     ],
-  }
+  },
+  {
+    slug: "piotrkow-trybunalski",
+    nazwa: "Piotrków Trybunalski",
+    wojewodztwo: "lodzkie",
+    wojewodztwoNazwa: "łódzkie",
+    populacja: "66 tys.",
+    opisGospodarki:
+      "Piotrków Trybunalski to drugie największe miasto województwa łódzkiego i miasto na prawach powiatu. Historyczna stolica Polski, miejsce pierwszego sejmu i trybunału koronnego. Gospodarka miasta opiera się na logistyce (węzeł autostrad A1 i DK12/DK74), przemyśle (m.in. Allegro otworzyło centrum logistyczne), handlu oraz usługach. Rozwinięty sektor MŚP.",
+    branzeKluczowe: [
+      "logistyka (skrzyżowanie A1/DK12)",
+      "e-commerce (centrum Allegro)",
+      "przemysł i produkcja",
+      "handel regionalny",
+    ],
+    wyzwaniaAI:
+      "W Piotrkowie Trybunalskim typowe obszary zastosowania AI to firmy logistyczne i magazynowe (automatyzacja dokumentów, obsługa wielojęzyczna), firmy e-commerce (opisy produktów, personalizacja), firmy produkcyjne oraz lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Piotrkowa Trybunalskiego.",
+    lokalneKeywordy: [
+      "wdrożenie AI Piotrków Trybunalski",
+      "szkolenia ChatGPT Piotrków",
+      "AI dla logistyki Piotrków",
+      "konsulting AI Piotrków Trybunalski",
+    ],
+    czasDojazdu:
+      "Piotrków Trybunalski obsługiwany z Łodzi lub Warszawy — dojazd ok. 45 min-1.5h przez A1. Szkolenia stacjonarne z 1-2 tygodniowym wyprzedzeniem, wdrożenia w trybie hybrydowym.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla piotrkowskiej firmy logistycznej obsługującej węzeł A1 możliwe jest wdrożenie automatyzacji dokumentów przewozowych (OCR + AI) oraz chatbota obsługującego kierowców w kilku językach, co typowo redukuje obciążenie działu dyspozytorskiego o 30-45%.",
+    najblizszeMiasta: ["belchatow", "tomaszow-mazowiecki", "radomsko", "lodz"],
+    faq: [
+      {
+        pytanie: "Dlaczego Piotrków Trybunalski to ważny rynek dla AI?",
+        odpowiedz:
+          "Piotrków Trybunalski to drugie największe miasto województwa łódzkiego (66 tys.) i ważny węzeł logistyczny na skrzyżowaniu A1 i DK12. Centrum logistyczne Allegro oraz setki firm transportowych i magazynowych tworzą silny popyt na automatyzację AI. Miasto jest też ośrodkiem produkcji i handlu dla całego południa województwa łódzkiego.",
+      },
+      {
+        pytanie: "Jak AI wspiera firmy logistyczne z Piotrkowa?",
+        odpowiedz:
+          "Firmy logistyczne z Piotrkowa wdrażają AI głównie do: automatycznego odczytywania i generowania dokumentów (CMR, faktury, WZ), chatbotów dla kierowców w kilku językach, optymalizacji planowania tras, analizy danych transportowych. Typowy pilot: 15-40 tys. zł, pełne wdrożenie dla średniej firmy: 80-300 tys. zł. ROI zwykle w 4-8 miesięcy.",
+      },
+      {
+        pytanie: "Ile kosztuje wdrożenie AI dla dużej firmy z Piotrkowa?",
+        odpowiedz:
+          "Dla dużej firmy (200+ pracowników): audyt AI 10-30 tys. zł, pilotaż w jednym obszarze 30-100 tys. zł, pełne wdrożenie enterprise 150-500 tys. zł. Plus miesięczne licencje 2000-6000 zł/mc. Każde wdrożenie poprzedzone jest bezpłatną rozmową konsultacyjną i omówieniem priorytetów biznesowych.",
+      },
+    ],
+  },
+  {
+    slug: "tomaszow-mazowiecki",
+    nazwa: "Tomaszów Mazowiecki",
+    wojewodztwo: "lodzkie",
+    wojewodztwoNazwa: "łódzkie",
+    populacja: "57 tys.",
+    opisGospodarki:
+      "Tomaszów Mazowiecki to miasto powiatowe w województwie łódzkim, historyczne centrum przemysłu włókienniczego (tradycyjnie słynął z produkcji jedwabiu i sztucznego jedwabiu). Obecnie gospodarka miasta opiera się na produkcji, przetwórstwie, logistyce oraz turystyce (Spalski Park Krajobrazowy, Niebieskie Źródła). Miasto jest też znane z Aeroklubu Ziemi Piotrkowskiej.",
+    branzeKluczowe: [
+      "przemysł włókienniczy (tradycje)",
+      "produkcja i przetwórstwo",
+      "logistyka",
+      "turystyka (Spalski PK, Niebieskie Źródła)",
+    ],
+    wyzwaniaAI:
+      "W Tomaszowie Mazowieckim typowe obszary zastosowania AI to firmy produkcyjne sektora włókienniczego i przetwórczego (dokumentacja, oferty), firmy logistyczne, obiekty turystyczne regionu oraz lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Tomaszowa Mazowieckiego.",
+    lokalneKeywordy: [
+      "wdrożenie AI Tomaszów Mazowiecki",
+      "szkolenia ChatGPT Tomaszów Mazowiecki",
+      "AI dla produkcji Tomaszów Mazowiecki",
+      "automatyzacja firm Tomaszów Mazowiecki",
+    ],
+    czasDojazdu:
+      "Tomaszów Mazowiecki obsługiwany z Łodzi lub Warszawy — dojazd ok. 1-1.5h. Szkolenia stacjonarne z 1-2 tygodniowym wyprzedzeniem.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla tomaszowskiej firmy produkcyjnej możliwe jest wdrożenie AI do automatyzacji generowania opisów produktów w kilku językach, obsługi zapytań klientów B2B oraz dokumentacji technicznej, co typowo oszczędza dziesiątki godzin pracy działu handlowego miesięcznie.",
+    najblizszeMiasta: ["piotrkow-trybunalski", "belchatow", "lodz", "radomsko"],
+    faq: [
+      {
+        pytanie: "Jakie firmy z Tomaszowa Mazowieckiego najczęściej wdrażają AI?",
+        odpowiedz:
+          "W Tomaszowie Mazowieckim liderami są: firmy produkcyjne (kontynuujące tradycje włókiennicze oraz nowe branże), firmy logistyczne (bliskość Warszawy i Łodzi), obiekty turystyczne regionu Spały, lokalne agencje marketingowe oraz biura rachunkowe. Rosnące zainteresowanie AI widać też wśród firm handlowych.",
+      },
+      {
+        pytanie: "Czy obiekty turystyczne regionu Spały mogą korzystać z AI?",
+        odpowiedz:
+          "Tak — obiekty turystyczne (hotele, pensjonaty, gospodarstwa agroturystyczne w Spalskim Parku Krajobrazowym) zyskują na: wielojęzycznych chatbotach obsługujących zapytania, generowaniu opisów atrakcji (Niebieskie Źródła, Spała), tworzeniu treści marketingowych, obsłudze opinii z Booking. Koszt: 250-500 zł/mc dla małego obiektu.",
+      },
+      {
+        pytanie: "Ile kosztuje szkolenie AI dla zespołu z Tomaszowa Mazowieckiego?",
+        odpowiedz:
+          "Jednodniowe szkolenie dla grupy 8-12 osób: 4-7 tys. zł (z dojazdem z Łodzi lub Warszawy). Obejmuje 6 godzin warsztatów, materiały, praktyczne ćwiczenia na realnych przypadkach z firmy oraz miesiąc wsparcia poszkoleniowego. Dla większych grup rekomendujemy podział na dwie sesje.",
+      },
+    ],
+  },
+  {
+    slug: "belchatow",
+    nazwa: "Bełchatów",
+    wojewodztwo: "lodzkie",
+    wojewodztwoNazwa: "łódzkie",
+    populacja: "52 tys.",
+    opisGospodarki:
+      "Bełchatów to miasto powiatowe w województwie łódzkim, jedno z najmłodszych miast w Polsce, rozbudowane w XX wieku wokół Kopalni Węgla Brunatnego i Elektrowni Bełchatów — największej elektrowni cieplnej w Europie. Gospodarka miasta jest silnie uzależniona od sektora energetycznego, ale przechodzi transformację w związku z planami odchodzenia od węgla.",
+    branzeKluczowe: [
+      "energetyka (Elektrownia Bełchatów)",
+      "górnictwo węgla brunatnego (KWB)",
+      "firmy podwykonawcze dla energetyki",
+      "transformacja energetyczna",
+    ],
+    wyzwaniaAI:
+      "W Bełchatowie typowe obszary zastosowania AI to firmy podwykonawcze sektora energetycznego (dokumentacja techniczna, analizy), firmy związane z transformacją energetyczną (dokumentacja regulacyjna, wnioski UE), lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia z uwzględnieniem wymogów sektora energetycznego.",
+    lokalneKeywordy: [
+      "wdrożenie AI Bełchatów",
+      "szkolenia ChatGPT Bełchatów",
+      "AI dla energetyki Bełchatów",
+      "AI dla transformacji energetycznej",
+    ],
+    czasDojazdu:
+      "Bełchatów obsługiwany z Łodzi — dojazd ok. 1h. Spotkania stacjonarne z 1-2 tygodniowym wyprzedzeniem, wdrożenia w trybie hybrydowym.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla bełchatowskiej firmy podwykonawczej Elektrowni Bełchatów możliwe jest wdrożenie AI do automatyzacji przygotowywania ofert przetargowych i dokumentacji technicznej — z zachowaniem rygorystycznych wymogów bezpieczeństwa, z użyciem narzędzi enterprise z pełną kontrolą danych.",
+    najblizszeMiasta: ["piotrkow-trybunalski", "tomaszow-mazowiecki", "radomsko", "lodz"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy sektora energetycznego w Bełchatowie?",
+        odpowiedz:
+          "Firmy podwykonawcze Elektrowni Bełchatów zyskują głównie na: automatyzacji przygotowywania ofert przetargowych (bardzo szczegółowe wymagania), generowaniu dokumentacji technicznej zgodnej z wymaganiami PGE, analizie raportów, obsłudze korespondencji B2B. Kluczowe są narzędzia enterprise z pełną kontrolą danych — Azure OpenAI EU lub lokalne modele.",
+      },
+      {
+        pytanie: "Jak AI może pomóc w transformacji energetycznej Bełchatowa?",
+        odpowiedz:
+          "Firmy przechodzące transformację (od węgla do OZE) potrzebują wsparcia w: zarządzaniu zmianą, analizie dokumentacji regulacyjnej (przepisy UE, polityka klimatyczna), obsłudze wniosków o dofinansowanie (Fundusz Sprawiedliwej Transformacji), szkoleniu pracowników w nowych technologiach. AI wspiera wszystkie te obszary, szczególnie analizę dokumentów i generowanie raportów.",
+      },
+      {
+        pytanie: "Czy firmy energetyczne mogą bezpiecznie używać ChatGPT?",
+        odpowiedz:
+          "Publiczny ChatGPT NIE jest zalecany do danych wrażliwych sektora energetycznego. Dla tego sektora rekomendujemy: Azure OpenAI w regionach EU West/EU North, Claude przez AWS Bedrock we Frankfurcie, lokalne modele open source. Publiczny ChatGPT Plus/Teams tylko dla niewrażliwych zastosowań (marketing, komunikacja zewnętrzna).",
+      },
+    ],
+  },
 ];

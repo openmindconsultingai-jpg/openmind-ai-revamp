@@ -405,5 +405,140 @@ export const opolskieCities: MiastoData[] = [
             "Tak — organizujemy szkolenia nawet dla grup 3-5 osób. Przy mniejszych grupach rekomendujemy format online lub hybrydowy (tańsze niż stacjonarne). Dla pojedynczych osób dostępny jest format indywidualnego mentoringu (od 400 zł/godz). Szkolenia dla większych grup (8+ osób) realizujemy stacjonarnie w siedzibie klienta.",
         },
       ],
-    }
+    },
+  {
+    slug: "glubczyce",
+    nazwa: "Głubczyce",
+    wojewodztwo: "opolskie",
+    wojewodztwoNazwa: "opolskie",
+    populacja: "12 tys.",
+    opisGospodarki:
+      "Głubczyce to miasto powiatowe na południu województwa opolskiego, blisko granicy z Czechami. Gospodarka miasta opiera się na rolnictwie (region znany z urodzajnych gleb), przetwórstwie rolno-spożywczym, handlu transgranicznym oraz drobnej produkcji.",
+    branzeKluczowe: [
+      "rolnictwo i przetwórstwo",
+      "handel transgraniczny z Czechami",
+      "drobna produkcja",
+      "usługi dla mieszkańców",
+    ],
+    wyzwaniaAI:
+      "W Głubczycach typowe obszary zastosowania AI to firmy rolno-przetwórcze, firmy handlu transgranicznego (tłumaczenia polsko-czeskie), lokalne firmy produkcyjne oraz MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Głubczyc.",
+    lokalneKeywordy: [
+      "wdrożenie AI Głubczyce",
+      "szkolenia ChatGPT Głubczyce",
+      "AI dla handlu z Czechami Głubczyce",
+      "automatyzacja firm Głubczyce",
+    ],
+    czasDojazdu:
+      "Głubczyce obsługiwane w trybie online z Opola (dojazd ok. 1h) lub Katowic (ok. 1.5h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla firmy handlowej z Głubczyc prowadzącej wymianę z Czechami możliwe jest wdrożenie automatycznego tłumaczenia ofert i korespondencji polsko-czeskiej, co oszczędza kilkanaście godzin pracy tygodniowo.",
+    najblizszeMiasta: ["prudnik", "opole", "kedzierzyn-kozle", "nysa"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy handlujące z Czechami?",
+        odpowiedz:
+          "Firmy prowadzące handel z Czechami zyskują głównie na: automatycznych tłumaczeniach polsko-czeskich (GPT-4, Claude, DeepL radzą sobie bardzo dobrze z tą parą językową), obsłudze zapytań czeskich klientów, generowaniu ofert dwujęzycznych, automatyzacji korespondencji. Typowe koszty: 300-600 zł/mc + szkolenie wstępne 2-4 tys. zł.",
+      },
+      {
+        pytanie: "Czy rolnicy z Głubczyckiego mogą używać AI?",
+        odpowiedz:
+          "Tak — AI wspiera rolników w: tworzeniu dokumentacji dla dopłat ARiMR, pisaniu pism urzędowych, analizie danych z gospodarstwa, obsłudze klientów sprzedaży bezpośredniej, tłumaczeniu dokumentów dla kontrahentów zagranicznych. Podstawowy stack: 100-200 zł/mc, szkolenie 1-2 tys. zł.",
+      },
+      {
+        pytanie: "Jak zacząć z AI bez dojazdu do Opola?",
+        odpowiedz:
+          "Rekomendujemy szkolenia online — są tańsze niż stacjonarne, nie wymagają dojazdu, efektywność porównywalna. Nasze szkolenia online to 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł dla pojedynczej osoby.",
+      },
+    ],
+  },
+  {
+    slug: "olesno",
+    nazwa: "Olesno",
+    wojewodztwo: "opolskie",
+    wojewodztwoNazwa: "opolskie",
+    populacja: "9 tys.",
+    opisGospodarki:
+      "Olesno to miasto powiatowe w północno-wschodniej części województwa opolskiego, z gospodarką opartą na drobnej produkcji, rolnictwie, handlu oraz usługach lokalnych. Miasto pełni rolę centrum regionalnego dla okolicznych gmin wiejskich.",
+    branzeKluczowe: [
+      "drobna produkcja",
+      "rolnictwo i przetwórstwo",
+      "handel lokalny",
+      "usługi dla mieszkańców",
+    ],
+    wyzwaniaAI:
+      "W Oleśnie typowe obszary zastosowania AI to małe firmy produkcyjne, gospodarstwa rolne i przetwórcze, lokalne firmy handlowe oraz MŚP usługowe. OpenMind AI oferuje dostępne cenowo wdrożenia dla mikroprzedsiębiorców z Olesna.",
+    lokalneKeywordy: [
+      "wdrożenie AI Olesno",
+      "szkolenia ChatGPT Olesno",
+      "AI dla małych firm Olesno",
+      "automatyzacja Olesno",
+    ],
+    czasDojazdu:
+      "Olesno obsługiwane w trybie online z Opola lub Częstochowy (dojazd ok. 1h). Wizyty stacjonarne przy grupach 6+ osób.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla małej firmy handlowej z Olesna możliwe jest wdrożenie prostych narzędzi AI do automatyzacji pracy biurowej, generowania ofert oraz obsługi zapytań klientów, co oszczędza właścicielowi firmy wiele godzin tygodniowo.",
+    najblizszeMiasta: ["kluczbork", "opole", "czestochowa", "namyslow"],
+    faq: [
+      {
+        pytanie: "Czy mikrofirma z Olesna potrzebuje AI?",
+        odpowiedz:
+          "Tak — mikrofirmy często są największymi beneficjentami AI, bo nie mają budżetu na marketing czy dodatkowych pracowników. Za 100-300 zł miesięcznie uzyskują dostęp do narzędzi, które oszczędzają wiele godzin pracy tygodniowo. Jednodniowe szkolenie wstępne 1-2 tys. zł.",
+      },
+      {
+        pytanie: "Jakie są najprostsze narzędzia AI dla małej firmy?",
+        odpowiedz:
+          "Minimalny stack: ChatGPT (darmowy lub Plus 100 zł/mc) do tekstów i komunikacji, Canva (darmowa lub Pro 55 zł/mc) do grafik. Łącznie 0-200 zł/mc pokrywa 80% potrzeb mikroprzedsiębiorcy. Ważniejsze od narzędzi jest jednorazowe szkolenie wstępne.",
+      },
+      {
+        pytanie: "Gdzie można się nauczyć AI blisko Olesna?",
+        odpowiedz:
+          "Najlepiej online — nasze szkolenia online to 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie po szkoleniu. Koszt: 1.5-3 tys. zł dla pojedynczej osoby. Bez konieczności dojazdu do Opola czy Częstochowy.",
+      },
+    ],
+  },
+  {
+    slug: "grodkow",
+    nazwa: "Grodków",
+    wojewodztwo: "opolskie",
+    wojewodztwoNazwa: "opolskie",
+    populacja: "8 tys.",
+    opisGospodarki:
+      "Grodków to miasto powiatowe w zachodniej części województwa opolskiego, położone blisko granicy z Dolnym Śląskiem. Gospodarka miasta opiera się na rolnictwie, przetwórstwie spożywczym, drobnej produkcji oraz handlu lokalnym.",
+    branzeKluczowe: [
+      "rolnictwo i przetwórstwo",
+      "drobna produkcja",
+      "handel lokalny",
+      "usługi dla mieszkańców",
+    ],
+    wyzwaniaAI:
+      "W Grodkowie typowe obszary zastosowania AI to gospodarstwa rolne i firmy przetwórcze, lokalne firmy handlowe oraz małe MŚP. OpenMind AI oferuje dostępne cenowo wdrożenia dla mikroprzedsiębiorców z Grodkowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Grodków",
+      "szkolenia ChatGPT Grodków",
+      "AI dla małych firm Grodków",
+      "automatyzacja Grodków",
+    ],
+    czasDojazdu:
+      "Grodków obsługiwany w trybie online z Opola lub Wrocławia (dojazd ok. 1h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla małego gospodarstwa rolnego z okolic Grodkowa możliwe jest wdrożenie prostych narzędzi AI do automatyzacji dokumentacji dla dopłat ARiMR, pisania pism urzędowych oraz marketingu sprzedaży bezpośredniej.",
+    najblizszeMiasta: ["brzeg", "opole", "nysa", "olawa"],
+    faq: [
+      {
+        pytanie: "Jak AI pomaga rolnikom z okolic Grodkowa?",
+        odpowiedz:
+          "AI wspiera rolników w: tworzeniu dokumentacji dla dopłat ARiMR i programów unijnych, pisaniu pism urzędowych, obsłudze klientów sprzedaży bezpośredniej, tłumaczeniu dokumentów dla kontrahentów. Podstawowy stack: 100-200 zł/mc, jednodniowe szkolenie wstępne 1-2 tys. zł.",
+      },
+      {
+        pytanie: "Czy warto inwestować w AI w małym mieście?",
+        odpowiedz:
+          "Zdecydowanie tak — dla małych firm z niewielkich miast AI jest szczególnie wartościowe, bo pozwala konkurować z większymi graczami bez dodatkowych pracowników. Za 150-300 zł miesięcznie uzyskujesz narzędzia, które wykonują pracę kilku osób.",
+      },
+      {
+        pytanie: "Jak szybko można zacząć?",
+        odpowiedz:
+          "Bardzo szybko — wystarczy bezpłatna rozmowa wstępna online, jednodniowe szkolenie online (1.5-3 tys. zł) i konfiguracja pierwszych narzędzi. Łączny proces 2-3 tygodnie. Pierwsze efekty od razu po szkoleniu.",
+      },
+    ],
+  },
 ];

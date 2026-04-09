@@ -430,5 +430,95 @@ export const warminskoMazurskieCities: MiastoData[] = [
         "odpowiedz": "Jednodniowe szkolenie dla grupy 6-12 osób w Szczytnie: 4-6 tys. zł (z dojazdem z Olsztyna). Obejmuje 6 godzin warsztatów, materiały, praktyczne ćwiczenia na realnych przypadkach z firmy oraz miesiąc wsparcia poszkoleniowego. Dla pojedynczych osób lub małych grup polecamy format online (1.5-3 tys. zł)."
       }
     ]
-  }
+  },
+  {
+    slug: "dzialdowo",
+    nazwa: "Działdowo",
+    wojewodztwo: "warminsko-mazurskie",
+    wojewodztwoNazwa: "warmińsko-mazurskie",
+    populacja: "21 tys.",
+    opisGospodarki:
+      "Działdowo to miasto powiatowe w południowo-zachodniej części województwa warmińsko-mazurskiego, ważny węzeł kolejowy (linia Warszawa-Gdańsk). Gospodarka miasta opiera się na produkcji przemysłowej, logistyce, handlu oraz usługach lokalnych.",
+    branzeKluczowe: [
+      "produkcja przemysłowa",
+      "logistyka (węzeł kolejowy)",
+      "handel regionalny",
+      "usługi dla mieszkańców",
+    ],
+    wyzwaniaAI:
+      "W Działdowie typowe obszary zastosowania AI to lokalne firmy produkcyjne, firmy logistyczne, firmy handlowe oraz MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Działdowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Działdowo",
+      "szkolenia ChatGPT Działdowo",
+      "AI dla produkcji Działdowo",
+      "automatyzacja firm Działdowo",
+    ],
+    czasDojazdu:
+      "Działdowo obsługiwane z Olsztyna — dojazd ok. 1h. Spotkania stacjonarne z wyprzedzeniem, wdrożenia w trybie hybrydowym.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla działdowskiej firmy produkcyjnej możliwe jest wdrożenie AI do automatyzacji generowania ofert handlowych i dokumentacji technicznej, co oszczędza czas działu handlowego.",
+    najblizszeMiasta: ["nidzica", "ostroda", "olsztyn", "mlawa"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy produkcyjne z Działdowa?",
+        odpowiedz:
+          "Firmy produkcyjne zyskują głównie na: automatyzacji dokumentacji technicznej i ofert, obsłudze zapytań klientów B2B, generowaniu treści marketingowych. Typowe projekty: pilot 15-40 tys. zł, pełne wdrożenie 60-200 tys. zł.",
+      },
+      {
+        pytanie: "Ile kosztuje podstawowe wdrożenie AI?",
+        odpowiedz:
+          "Dla małej firmy: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, licencje 300-600 zł/mc. Łączny start: 6-13 tys. zł + 400 zł/mc.",
+      },
+      {
+        pytanie: "Czy można łączyć szkolenia z innymi firmami z regionu?",
+        odpowiedz:
+          "Tak, często organizujemy szkolenia grupowe dla firm z województwa — koszt na osobę jest wtedy niższy. Szkolenia otwarte w Olsztynie są dostępne dla firm z okolicznych miast.",
+      },
+    ],
+  },
+  {
+    slug: "nidzica",
+    nazwa: "Nidzica",
+    wojewodztwo: "warminsko-mazurskie",
+    wojewodztwoNazwa: "warmińsko-mazurskie",
+    populacja: "13 tys.",
+    opisGospodarki:
+      "Nidzica to miasto powiatowe w południowej części województwa warmińsko-mazurskiego, znane z gotyckiego Zamku Krzyżackiego. Gospodarka miasta opiera się na produkcji, turystyce historycznej, rolnictwie oraz handlu i usługach lokalnych.",
+    branzeKluczowe: [
+      "produkcja i przetwórstwo",
+      "turystyka historyczna (Zamek)",
+      "rolnictwo",
+      "handel lokalny",
+    ],
+    wyzwaniaAI:
+      "W Nidzicy typowe obszary zastosowania AI to lokalne firmy produkcyjne, obiekty turystyczne obsługujące zwiedzających zamek, lokalne firmy handlowe oraz MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Nidzicy.",
+    lokalneKeywordy: [
+      "wdrożenie AI Nidzica",
+      "szkolenia ChatGPT Nidzica",
+      "AI dla turystyki Nidzica",
+      "automatyzacja firm Nidzica",
+    ],
+    czasDojazdu:
+      "Nidzica obsługiwana w trybie online z Olsztyna (dojazd ok. 1h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla obiektu turystycznego w Nidzicy obsługującego zwiedzających zamek możliwe jest wdrożenie wielojęzycznego chatbota informacyjnego oraz automatyzacji rezerwacji.",
+    najblizszeMiasta: ["dzialdowo", "olsztyn", "ostroda", "szczytno"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera turystykę wokół Zamku w Nidzicy?",
+        odpowiedz:
+          "Obiekty turystyczne zyskują na: wielojęzycznej obsłudze zapytań, generowaniu opisów zamku i historii, obsłudze rezerwacji, tworzeniu treści marketingowych. Koszt: 250-500 zł/mc dla średniego obiektu.",
+      },
+      {
+        pytanie: "Czy małe firmy z Nidzicy mogą korzystać z AI?",
+        odpowiedz:
+          "Zdecydowanie tak — koszty są niskie, a efekty widoczne od razu. Podstawowy stack 150-300 zł/mc plus jednorazowe szkolenie 1-3 tys. zł.",
+      },
+      {
+        pytanie: "Jak szybko można zacząć?",
+        odpowiedz:
+          "Bezpłatna rozmowa wstępna online, jednodniowe szkolenie (1.5-3 tys. zł), konfiguracja pierwszych narzędzi. Łączny proces 2-3 tygodnie.",
+      },
+    ],
+  },
 ];

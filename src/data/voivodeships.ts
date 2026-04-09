@@ -33,6 +33,8 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Bolesławiec', slug: toSlug('Bolesławiec'), locative: 'Bolesławcu' },
       { name: 'Oleśnica', slug: toSlug('Oleśnica'), locative: 'Oleśnicy' },
       { name: 'Oława', slug: toSlug('Oława'), locative: 'Oławie' },
+      { name: 'Dzierżoniów', slug: 'dzierzoniow', locative: 'Dzierżoniowie' },
+      { name: 'Zgorzelec', slug: 'zgorzelec', locative: 'Zgorzelcu' },
     ],
   },
   {
@@ -47,6 +49,9 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Świecie', slug: toSlug('Świecie'), locative: 'Świeciu' },
       { name: 'Chełmno', slug: toSlug('Chełmno'), locative: 'Chełmnie' },
       { name: 'Nakło nad Notecią', slug: toSlug('Nakło nad Notecią'), locative: 'Nakle nad Notecią' },
+      { name: 'Rypin', slug: 'rypin', locative: 'Rypinie' },
+      { name: 'Tuchola', slug: 'tuchola', locative: 'Tucholi' },
+      { name: 'Aleksandrów Kujawski', slug: 'aleksandrow-kujawski', locative: 'Aleksandrowie Kujawskim' },
     ],
   },
   {
@@ -61,6 +66,9 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Kraśnik', slug: toSlug('Kraśnik'), locative: 'Kraśniku' },
       { name: 'Łuków', slug: toSlug('Łuków'), locative: 'Łukowie' },
       { name: 'Biłgoraj', slug: toSlug('Biłgoraj'), locative: 'Biłgoraju' },
+      { name: 'Lubartów', slug: 'lubartow', locative: 'Lubartowie' },
+      { name: 'Tomaszów Lubelski', slug: 'tomaszow-lubelski', locative: 'Tomaszowie Lubelskim' },
+      { name: 'Hrubieszów', slug: 'hrubieszow', locative: 'Hrubieszowie' },
     ],
   },
   {
@@ -74,6 +82,10 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Świebodzin', slug: toSlug('Świebodzin'), locative: 'Świebodzinie' },
       { name: 'Kostrzyn nad Odrą', slug: toSlug('Kostrzyn nad Odrą'), locative: 'Kostrzynie nad Odrą' },
       { name: 'Międzyrzecz', slug: toSlug('Międzyrzecz'), locative: 'Międzyrzeczu' },
+      { name: 'Słubice', slug: 'slubice', locative: 'Słubicach' },
+      { name: 'Sulechów', slug: 'sulechow', locative: 'Sulechowie' },
+      { name: 'Gubin', slug: 'gubin', locative: 'Gubinie' },
+      { name: 'Szprotawa', slug: 'szprotawa', locative: 'Szprotawie' },
     ],
   },
   {
@@ -88,6 +100,9 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Głowno', slug: toSlug('Głowno'), locative: 'Głownie' },
       { name: 'Kutno', slug: toSlug('Kutno'), locative: 'Kutnie' },
       { name: 'Sieradz', slug: toSlug('Sieradz'), locative: 'Sieradzu' },
+      { name: 'Piotrków Trybunalski', slug: 'piotrkow-trybunalski', locative: 'Piotrkowie Trybunalskim' },
+      { name: 'Tomaszów Mazowiecki', slug: 'tomaszow-mazowiecki', locative: 'Tomaszowie Mazowieckim' },
+      { name: 'Bełchatów', slug: 'belchatow', locative: 'Bełchatowie' },
     ],
   },
   {
@@ -103,6 +118,8 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Bochnia', slug: toSlug('Bochnia'), locative: 'Bochni' },
       { name: 'Gorlice', slug: toSlug('Gorlice'), locative: 'Gorlicach' },
       { name: 'Zakopane', slug: toSlug('Zakopane'), locative: 'Zakopanem' },
+      { name: 'Wieliczka', slug: 'wieliczka', locative: 'Wieliczce' },
+      { name: 'Andrychów', slug: 'andrychow', locative: 'Andrychowie' },
     ],
   },
   {
@@ -118,6 +135,8 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Piaseczno', slug: toSlug('Piaseczno'), locative: 'Piasecznie' },
       { name: 'Otwock', slug: toSlug('Otwock'), locative: 'Otwocku' },
       { name: 'Ciechanów', slug: toSlug('Ciechanów'), locative: 'Ciechanowie' },
+      { name: 'Mińsk Mazowiecki', slug: 'minsk-mazowiecki', locative: 'Mińsku Mazowieckim' },
+      { name: 'Wyszków', slug: 'wyszkow', locative: 'Wyszkowie' },
     ],
   },
   {
@@ -132,6 +151,9 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Strzelce Opolskie', slug: toSlug('Strzelce Opolskie'), locative: 'Strzelcach Opolskich' },
       { name: 'Namysłów', slug: toSlug('Namysłów'), locative: 'Namysłowie' },
       { name: 'Krapkowice', slug: toSlug('Krapkowice'), locative: 'Krapkowicach' },
+      { name: 'Głubczyce', slug: 'glubczyce', locative: 'Głubczycach' },
+      { name: 'Olesno', slug: 'olesno', locative: 'Oleśnie' },
+      { name: 'Grodków', slug: 'grodkow', locative: 'Grodkowie' },
     ],
   },
   {
@@ -147,6 +169,8 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Jarosław', slug: toSlug('Jarosław'), locative: 'Jarosławiu' },
       { name: 'Sanok', slug: toSlug('Sanok'), locative: 'Sanoku' },
       { name: 'Jasło', slug: toSlug('Jasło'), locative: 'Jaśle' },
+      { name: 'Łańcut', slug: 'lancut', locative: 'Łańcucie' },
+      { name: 'Ropczyce', slug: 'ropczyce', locative: 'Ropczycach' },
     ],
   },
   {
@@ -162,6 +186,8 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Sokółka', slug: toSlug('Sokółka'), locative: 'Sokółce' },
       { name: 'Łapy', slug: toSlug('Łapy'), locative: 'Łapach' },
       { name: 'Siemiatycze', slug: toSlug('Siemiatycze'), locative: 'Siemiatyczach' },
+      { name: 'Bielsk Podlaski', slug: 'bielsk-podlaski', locative: 'Bielsku Podlaskim' },
+      { name: 'Kolno', slug: 'kolno', locative: 'Kolnie' },
     ],
   },
   {
@@ -177,6 +203,8 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Malbork', slug: toSlug('Malbork'), locative: 'Malborku' },
       { name: 'Kwidzyn', slug: toSlug('Kwidzyn'), locative: 'Kwidzynie' },
       { name: 'Słupsk', slug: toSlug('Słupsk'), locative: 'Słupsku' },
+      { name: 'Wejherowo', slug: 'wejherowo', locative: 'Wejherowie' },
+      { name: 'Lębork', slug: 'lebork', locative: 'Lęborku' },
     ],
   },
   {
@@ -192,6 +220,8 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Ruda Śląska', slug: toSlug('Ruda Śląska'), locative: 'Rudzie Śląskiej' },
       { name: 'Rybnik', slug: toSlug('Rybnik'), locative: 'Rybniku' },
       { name: 'Tychy', slug: toSlug('Tychy'), locative: 'Tychach' },
+      { name: 'Dąbrowa Górnicza', slug: 'dabrowa-gornicza', locative: 'Dąbrowie Górniczej' },
+      { name: 'Jastrzębie-Zdrój', slug: 'jastrzebie-zdroj', locative: 'Jastrzębiu-Zdroju' },
     ],
   },
   {
@@ -205,6 +235,10 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Końskie', slug: toSlug('Końskie'), locative: 'Końskich' },
       { name: 'Busko-Zdrój', slug: toSlug('Busko-Zdrój'), locative: 'Busku-Zdroju' },
       { name: 'Staszów', slug: toSlug('Staszów'), locative: 'Staszowie' },
+      { name: 'Jędrzejów', slug: 'jedrzejow', locative: 'Jędrzejowie' },
+      { name: 'Włoszczowa', slug: 'wloszczowa', locative: 'Włoszczowie' },
+      { name: 'Pińczów', slug: 'pinczow', locative: 'Pińczowie' },
+      { name: 'Opatów', slug: 'opatow', locative: 'Opatowie' },
     ],
   },
   {
@@ -220,6 +254,8 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Mrągowo', slug: toSlug('Mrągowo'), locative: 'Mrągowie' },
       { name: 'Bartoszyce', slug: toSlug('Bartoszyce'), locative: 'Bartoszycach' },
       { name: 'Szczytno', slug: toSlug('Szczytno'), locative: 'Szczytnie' },
+      { name: 'Działdowo', slug: 'dzialdowo', locative: 'Działdowie' },
+      { name: 'Nidzica', slug: 'nidzica', locative: 'Nidzicy' },
     ],
   },
   {
@@ -235,6 +271,8 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Luboń', slug: toSlug('Luboń'), locative: 'Luboniu' },
       { name: 'Świdnica', slug: toSlug('Świdnica'), locative: 'Świdnicy' },
       { name: 'Śrem', slug: toSlug('Śrem'), locative: 'Śremie' },
+      { name: 'Swarzędz', slug: 'swarzedz', locative: 'Swarzędzu' },
+      { name: 'Turek', slug: 'turek', locative: 'Turku' },
     ],
   },
   {
@@ -250,6 +288,8 @@ export const voivodeships: VoivodeshipData[] = [
       { name: 'Wałcz', slug: toSlug('Wałcz'), locative: 'Wałczu' },
       { name: 'Białogard', slug: toSlug('Białogard'), locative: 'Białogardzie' },
       { name: 'Goleniów', slug: toSlug('Goleniów'), locative: 'Goleniowie' },
+      { name: 'Gryfino', slug: 'gryfino', locative: 'Gryfinie' },
+      { name: 'Choszczno', slug: 'choszczno', locative: 'Choszcznie' },
     ],
   },
 ];
