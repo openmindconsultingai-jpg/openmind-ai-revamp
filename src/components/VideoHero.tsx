@@ -222,11 +222,11 @@ const VideoHero = () => {
       )}
 
       {/* Hero Content */}
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto -mt-8 md:-mt-8">
+      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto mt-4 sm:mt-0 md:-mt-4">
         {/* Visually prominent brand name */}
         <div 
           ref={titleRef}
-          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold mb-8 leading-none tracking-tight"
+          className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 leading-none tracking-tight"
           aria-hidden="true"
         >
           <span className="text-foreground" style={{ textShadow: '0 0 60px hsl(176 100% 43% / 0.5)' }}>
