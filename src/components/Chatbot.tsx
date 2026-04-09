@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Minimize2, Send, X } from "lucide-react";
+import { Send, X } from "lucide-react";
 import { Button } from "./ui/button";
 import logo from '@/assets/openmind-logo.webp';
 import ReactMarkdown from 'react-markdown';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 type Msg = { role: "user" | "assistant"; content: string };
 
