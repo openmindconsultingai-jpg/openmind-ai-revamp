@@ -405,7 +405,7 @@ export const opolskieCities: MiastoData[] = [
             "Tak — organizujemy szkolenia nawet dla grup 3-5 osób. Przy mniejszych grupach rekomendujemy format online lub hybrydowy (tańsze niż stacjonarne). Dla pojedynczych osób dostępny jest format indywidualnego mentoringu (od 400 zł/godz). Szkolenia dla większych grup (8+ osób) realizujemy stacjonarnie w siedzibie klienta.",
         },
       ],
-    }
+    },
   {
     slug: "glubczyce",
     nazwa: "Głubczyce",

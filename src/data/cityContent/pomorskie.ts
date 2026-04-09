@@ -450,7 +450,7 @@ export const pomorskieCities: MiastoData[] = [
             "Standardowo: bezpłatna rozmowa konsultacyjna online (1-2h), potem jednodniowe szkolenie online (2-3 tys. zł) lub stacjonarne dla grupy 6+ osób (4-7 tys. zł), na końcu konfiguracja pierwszych narzędzi (3-8 tys. zł). Całość: 3-5 tygodni, koszt start: 5-12 tys. zł plus 400-600 zł/mc licencji. Pierwsze efekty od razu po szkoleniu.",
         },
       ],
-    }
+    },
   {
     slug: "wejherowo",
     nazwa: "Wejherowo",

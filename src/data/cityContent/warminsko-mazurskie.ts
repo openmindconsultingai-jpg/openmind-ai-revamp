@@ -430,7 +430,7 @@ export const warminskoMazurskieCities: MiastoData[] = [
         "odpowiedz": "Jednodniowe szkolenie dla grupy 6-12 osób w Szczytnie: 4-6 tys. zł (z dojazdem z Olsztyna). Obejmuje 6 godzin warsztatów, materiały, praktyczne ćwiczenia na realnych przypadkach z firmy oraz miesiąc wsparcia poszkoleniowego. Dla pojedynczych osób lub małych grup polecamy format online (1.5-3 tys. zł)."
       }
     ]
-  }
+  },
   {
     slug: "dzialdowo",
     nazwa: "Działdowo",

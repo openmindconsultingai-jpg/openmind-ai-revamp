@@ -450,7 +450,7 @@ export const podkarpackieCities: MiastoData[] = [
             "Tak — intensywny jednodniowy warsztat (6-8 godzin) wystarczy, żeby nauczyć się podstaw korzystania z ChatGPT, Canva AI i prostych automatyzacji. Dla pojedynczej osoby lub właściciela małej firmy to często wystarczający punkt startowy. Dla pełnej biegłości i bardziej zaawansowanych automatyzacji potrzeba dodatkowego wsparcia po szkoleniu (np. miesięczny mentoring).",
         },
       ],
-    }
+    },
   {
     slug: "lancut",
     nazwa: "Łańcut",

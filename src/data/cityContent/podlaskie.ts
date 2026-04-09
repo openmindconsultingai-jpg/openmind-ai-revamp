@@ -450,7 +450,7 @@ export const podlaskieCities: MiastoData[] = [
             "Rekomendujemy szkolenia online — dostępne z każdego miejsca, tańsze niż stacjonarne, efektywność porównywalna. Nasze szkolenia online to 3-4 godziny intensywnych warsztatów na żywo (ChatGPT, Canva, podstawy automatyzacji) plus tygodniowe wsparcie po szkoleniu. Koszt: 1-2 tys. zł dla pojedynczej osoby, 2-4 tys. zł dla małej grupy.",
         },
       ],
-    }
+    },
   {
     slug: "bielsk-podlaski",
     nazwa: "Bielsk Podlaski",

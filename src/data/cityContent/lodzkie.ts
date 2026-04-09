@@ -405,7 +405,7 @@ export const lodzkieCities: MiastoData[] = [
           "Pierwsze efekty (oszczędność czasu na konkretnych zadaniach) są widoczne zwykle od razu po szkoleniu — pracownicy zaczynają szybciej pisać oferty, odpowiadać klientom, tworzyć treści marketingowe. Mierzalne efekty biznesowe (redukcja kosztów, wzrost sprzedaży) pojawiają się po 2-4 miesiącach systematycznego używania narzędzi.",
       },
     ],
-  }
+  },
   {
     slug: "piotrkow-trybunalski",
     nazwa: "Piotrków Trybunalski",

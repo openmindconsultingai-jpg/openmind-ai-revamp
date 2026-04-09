@@ -450,7 +450,7 @@ export const mazowieckieCities: MiastoData[] = [
           "Trzy najczęstsze: 1) brak jasno zdefiniowanego celu ('chcemy mieć AI, ale nie wiemy po co') — rozwiązanie: audyt i określenie konkretnego problemu; 2) próba wdrożenia wszystkiego naraz zamiast etapowo — rozwiązanie: start od pilotu; 3) brak szkolenia zespołu — narzędzia kupione, ale pracownicy ich nie używają efektywnie. Pracujemy nad wszystkimi trzema.",
       },
     ],
-  }
+  },
   {
     slug: "minsk-mazowiecki",
     nazwa: "Mińsk Mazowiecki",

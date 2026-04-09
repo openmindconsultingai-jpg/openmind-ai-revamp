@@ -430,7 +430,7 @@ export const slaskieCities: MiastoData[] = [
         "odpowiedz": "Dla dużych zespołów (30-100 osób) rekomendujemy podział na sesje: 1 dzień szkolenia dla grupy 12-15 osób. Koszt jednej sesji: 5-8 tys. zł. Dla zespołu 50 osób = 4 sesje, łącznie 20-32 tys. zł. Alternatywnie: 2-dniowe szkolenie głównego zespołu (train-the-trainer), który potem uczy resztę firmy. Koszt: 10-15 tys. zł."
       }
     ]
-  }
+  },
   {
     slug: "dabrowa-gornicza",
     nazwa: "Dąbrowa Górnicza",

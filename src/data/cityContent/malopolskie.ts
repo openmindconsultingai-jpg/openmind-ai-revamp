@@ -450,7 +450,7 @@ export const malopolskieCities: MiastoData[] = [
           "Tak — AI może automatycznie generować odpowiedzi na opinie gości (w odpowiednich językach), analizować trendy w feedback'u (co się podoba, co nie), wyłapywać opinie wymagające pilnej reakcji oraz monitorować opinie konkurencji. To oszczędza wiele godzin tygodniowo i poprawia reputację obiektu, która przekłada się na pozycjonowanie na Booking.",
       },
     ],
-  }
+  },
   {
     slug: "wieliczka",
     nazwa: "Wieliczka",
