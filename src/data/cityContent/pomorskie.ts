@@ -87,7 +87,7 @@ export const pomorskieCities: MiastoData[] = [
         {
           pytanie: "Jak szybko można zacząć z AI w Gdyni?",
           odpowiedz:
-            "Dla firm z Gdyni/Gdańska/Sopotu (Trójmiasto) pierwsze spotkanie konsultacyjne możliwe w ciągu 5-10 dni roboczych od zgłoszenia. Szkolenia dla małych grup realizujemy w ciągu 2-3 tygodni. Proste wdrożenia mogą być uruchomione w 3-5 tygodni. Trójmiasto obsługujemy często jedną wizytą, grupując spotkania w trzech miastach.",
+            "Dla firm z Gdyni/Gdańska/Sopotu (Trójmiasto) pierwsze spotkanie konsultacyjne możliwe w ciągu 5-10 dni roboczych od zgłoszenia. Szkolenia dla małych grup realizujemy w ciągu 2-3 tygodni. Proste wdrożenia mogą być uruchomione w ciągu kilku dni lub tygodni. Trójmiasto obsługujemy często jedną wizytą, grupując spotkania w trzech miastach.",
         },
       ],
     },
@@ -267,7 +267,7 @@ export const pomorskieCities: MiastoData[] = [
         {
           pytanie: "Jak szybko można rozpocząć wdrożenie w Rumi?",
           odpowiedz:
-            "Rumia to część aglomeracji trójmiejskiej — pierwsze spotkanie konsultacyjne możliwe w ciągu 5-10 dni od zgłoszenia. Szkolenia dla małych grup realizujemy w 2-3 tygodnie. Proste wdrożenia uruchamiamy w 3-5 tygodni. Dojazd z Gdyni to ok. 15-20 min, więc spotkania stacjonarne są łatwe do zorganizowania.",
+            "Rumia to część aglomeracji trójmiejskiej — pierwsze spotkanie konsultacyjne możliwe w ciągu 5-10 dni od zgłoszenia. Szkolenia dla małych grup realizujemy w 2-3 tygodnie. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni. Dojazd z Gdyni to ok. 15-20 min, więc spotkania stacjonarne są łatwe do zorganizowania.",
         },
       ],
     },

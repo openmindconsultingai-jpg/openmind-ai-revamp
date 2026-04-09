@@ -127,7 +127,7 @@ export const dolnoslaskieCities: MiastoData[] = [
       {
         pytanie: "Jakie szkolenia AI polecacie dla firm z Legnicy?",
         odpowiedz:
-          "Dla firm z Legnicy najczęściej prowadzimy szkolenia wprowadzające z ChatGPT i Microsoft Copilot dla działów administracyjnych, szkolenia z automatyzacji dokumentów dla księgowości oraz warsztaty z analizy danych przy pomocy AI dla działów kontrolingu.",
+          "Dla firm z Legnicy najczęściej prowadzimy szkolenia wprowadzające z najlepszych narzędzi AI na rynku dla działów administracyjnych, szkolenia z automatyzacji dokumentów dla księgowości oraz warsztaty z analizy danych przy pomocy AI dla działów kontrolingu.",
       },
       {
         pytanie: "Czy można wdrożyć AI z dofinansowaniem unijnym w Legnicy?",

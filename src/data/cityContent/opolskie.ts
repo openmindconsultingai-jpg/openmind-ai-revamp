@@ -167,7 +167,7 @@ export const opolskieCities: MiastoData[] = [
         {
           pytanie: "Jak mała firma z Brzegu może zacząć korzystać z AI?",
           odpowiedz:
-            "Polecamy trzystopniowe podejście: 1) bezpłatna rozmowa wstępna online (1-2h), 2) jednodniowe szkolenie dla właściciela i kluczowych pracowników (2-5 tys. zł), 3) konfiguracja pierwszych 2-3 narzędzi pod specyfikę firmy (3-8 tys. zł). Cały proces to 3-5 tygodni. Pierwsze efekty widoczne od razu po szkoleniu.",
+            "Polecamy trzystopniowe podejście: 1) bezpłatna rozmowa wstępna online (1-2h), 2) jednodniowe szkolenie dla właściciela i kluczowych pracowników (2-5 tys. zł), 3) konfiguracja pierwszych 2-3 narzędzi pod specyfikę firmy (3-8 tys. zł). Cały proces to kilka dni do kilku tygodni. Pierwsze efekty widoczne od razu po szkoleniu.",
         },
         {
           pytanie: "Jakie narzędzia polecacie małym obiektom turystycznym z Brzegu?",

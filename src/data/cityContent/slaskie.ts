@@ -294,7 +294,7 @@ export const slaskieCities: MiastoData[] = [
       },
       {
         "pytanie": "Jak zacząć z AI w MŚP z Bytomia?",
-        "odpowiedz": "Standardowe trzy kroki: 1) bezpłatna rozmowa wstępna online (1-2h) — identyfikacja obszarów z największym potencjałem, 2) jednodniowe szkolenie dla właściciela i kluczowych pracowników (2-5 tys. zł), 3) konfiguracja pierwszych narzędzi pod specyfikę firmy (3-8 tys. zł). Cały proces to 3-5 tygodni, pierwsze efekty widoczne od razu po szkoleniu."
+        "odpowiedz": "Standardowe trzy kroki: 1) bezpłatna rozmowa wstępna online (1-2h) — identyfikacja obszarów z największym potencjałem, 2) jednodniowe szkolenie dla właściciela i kluczowych pracowników (2-5 tys. zł), 3) konfiguracja pierwszych narzędzi pod specyfikę firmy (3-8 tys. zł). Cały proces to kilka dni do kilku tygodni, pierwsze efekty widoczne od razu po szkoleniu."
       },
       {
         "pytanie": "Jakie zastosowania AI są najbardziej przydatne dla sklepu?",

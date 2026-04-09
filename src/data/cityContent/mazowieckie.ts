@@ -492,7 +492,7 @@ export const mazowieckieCities: MiastoData[] = [
       {
         pytanie: "Jak szybko można zacząć z AI w Mińsku Mazowieckim?",
         odpowiedz:
-          "Mińsk Mazowiecki jest blisko Warszawy, więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla grup 6+ osób realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w 3-5 tygodni. Wizyty stacjonarne łączymy często z innymi firmami z okolic Warszawy.",
+          "Mińsk Mazowiecki jest blisko Warszawy, więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla grup 6+ osób realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni. Wizyty stacjonarne łączymy często z innymi firmami z okolic Warszawy.",
       },
     ],
   },

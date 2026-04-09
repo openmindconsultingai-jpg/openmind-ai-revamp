@@ -177,7 +177,7 @@ export const lodzkieCities: MiastoData[] = [
       {
         pytanie: "Ile trwa wdrożenie AI w małej firmie produkcyjnej?",
         odpowiedz:
-          "Podstawowe wdrożenie (szkolenie zespołu + konfiguracja narzędzi + pierwsze automatyzacje) to 3-5 tygodni. Pełniejsza integracja z procesami firmy (automatyzacje w obszarach produkcji, sprzedaży, administracji) to projekt na 2-4 miesiące. Pierwsze oszczędności czasu widoczne od razu po szkoleniu.",
+          "Podstawowe wdrożenie (szkolenie zespołu + konfiguracja narzędzi + pierwsze automatyzacje) to kilka dni do kilku tygodni. Pełniejsza integracja z procesami firmy (automatyzacje w obszarach produkcji, sprzedaży, administracji) to projekt na 2-4 miesiące. Pierwsze oszczędności czasu widoczne od razu po szkoleniu.",
       },
     ],
   },

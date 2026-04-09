@@ -267,7 +267,7 @@ export const wielkopolskieCities: MiastoData[] = [
       {
         pytanie: "Jak szybko można zacząć w Gnieźnie?",
         odpowiedz:
-          "Gniezno jest blisko Poznania (ok. 50 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni od zgłoszenia. Szkolenia dla grup 4+ osób realizujemy w ciągu 1-2 tygodni. Proste wdrożenia uruchamiamy w 3-5 tygodni od pierwszego kontaktu. Wizyty stacjonarne łączymy często z innymi miastami regionu.",
+          "Gniezno jest blisko Poznania (ok. 50 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni od zgłoszenia. Szkolenia dla grup 4+ osób realizujemy w ciągu 1-2 tygodni. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni od pierwszego kontaktu. Wizyty stacjonarne łączymy często z innymi miastami regionu.",
       },
     ],
   },
@@ -352,7 +352,7 @@ export const wielkopolskieCities: MiastoData[] = [
       {
         pytanie: "Jak szybko można wdrożyć AI w firmie z Lubonia?",
         odpowiedz:
-          "Luboń jest bardzo blisko Poznania (15-20 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla małych grup realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w 3-5 tygodni. Wizyty stacjonarne łączymy często z innymi firmami z aglomeracji poznańskiej.",
+          "Luboń jest bardzo blisko Poznania (15-20 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla małych grup realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni. Wizyty stacjonarne łączymy często z innymi firmami z aglomeracji poznańskiej.",
       },
       {
         pytanie: "Ile kosztuje wdrożenie AI w MŚP z Lubonia?",
@@ -492,7 +492,7 @@ export const wielkopolskieCities: MiastoData[] = [
       {
         pytanie: "Jak szybko można wdrożyć AI w firmie ze Swarzędza?",
         odpowiedz:
-          "Swarzędz jest bardzo blisko Poznania (20-30 min), więc pierwsze spotkanie konsultacyjne możliwe w ciągu kilku dni. Szkolenia realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w 3-5 tygodni.",
+          "Swarzędz jest bardzo blisko Poznania (20-30 min), więc pierwsze spotkanie konsultacyjne możliwe w ciągu kilku dni. Szkolenia realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni.",
       },
     ],
   },
