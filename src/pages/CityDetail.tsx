@@ -167,11 +167,11 @@ const CityDetail = () => {
                 <p className="text-base sm:text-lg text-foreground leading-relaxed">
                   {content ? (
                     <>
-                      OpenMind AI Consulting świadczy usługi wdrożeń AI, szkoleń ChatGPT i Copilot oraz konsultingu strategicznego dla firm z {city!.name} ({voivodeship!.name}, {content.populacja} mieszkańców). {content.wyzwaniaAI} Pierwsze konsultacje są bezpłatne, szkolenia dostępne stacjonarnie i online, wdrożenia realizowane etapowo z pierwszymi efektami w 3-5 tygodni.
+                      OpenMind AI Consulting świadczy usługi wdrożeń AI, szkoleń z najlepszych narzędzi AI na rynku oraz konsultingu strategicznego dla firm z {city!.name} ({voivodeship!.name}, {content.populacja} mieszkańców). {content.wyzwaniaAI} Pierwsze konsultacje są bezpłatne, szkolenia dostępne stacjonarnie i online, wdrożenia realizowane etapowo z pierwszymi efektami już w ciągu kilku dni lub tygodni, w zależności od stopnia zaawansowania projektu.
                     </>
                   ) : (
                     <>
-                      OpenMind AI Consulting świadczy usługi wdrożeń AI, szkoleń ChatGPT i Copilot oraz konsultingu strategicznego dla firm w {city!.locative}. Jako regionalny lider transformacji cyfrowej, pomagamy firmom wdrażać technologie jutra. Pierwsze konsultacje są bezpłatne, szkolenia dostępne stacjonarnie i online, wdrożenia realizowane etapowo z pierwszymi efektami w 3-5 tygodni.
+                      OpenMind AI Consulting świadczy usługi wdrożeń AI, szkoleń z najlepszych narzędzi AI na rynku oraz konsultingu strategicznego dla firm w {city!.locative}. Jako regionalny lider transformacji cyfrowej, pomagamy firmom wdrażać technologie jutra. Pierwsze konsultacje są bezpłatne, szkolenia dostępne stacjonarnie i online, wdrożenia realizowane etapowo z pierwszymi efektami już w ciągu kilku dni lub tygodni, w zależności od stopnia zaawansowania projektu.
                     </>
                   )}
                 </p>
