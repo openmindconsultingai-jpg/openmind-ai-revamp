@@ -475,6 +475,18 @@ export const slaskieCities: MiastoData[] = [
           "Dla dużej firmy (500+ pracowników): audyt AI 15-40 tys. zł, pilotaż w jednym obszarze 40-150 tys. zł, pełne wdrożenie enterprise 200-800 tys. zł. Plus infrastruktura i licencje 3000-10000 zł/mc. ROI zwykle w 8-18 miesięcy.",
       },
     ],
+      en: {
+      opisGospodarki: "Dąbrowa Górnicza is a city with county rights, the third-largest city in the Dąbrowa Basin. Historically, it has been a center for metallurgy (ArcelorMittal Poland, formerly Huta Katowice – one of the largest steelworks in Poland) and mining. Currently, the city is undergoing a transformation towards a modern economy while maintaining a strong industrial base.",
+      branzeKluczowe: ["metallurgy (ArcelorMittal Poland)", "heavy industry and metallurgy", "subcontracting companies for industry", "logistics (intersection of A1 and A4 motorways)"],
+      wyzwaniaAI: "In Dąbrowa Górnicza, typical AI application areas include metallurgical companies and their subcontractors (quality documentation, production data analysis), logistics companies (due to proximity to A1 and A4), the metal industry, and local SMEs. OpenMind AI offers implementations and training for companies in Dąbrowa Górnicza.",
+      czasDojazdu: "Dąbrowa Górnicza is served from Katowice – travel time approx. 30 min. On-site training and implementations are available on short notice, in conjunction with the GZM metropolitan area.",
+      przykladZastosowania: "An example implementation scenario for a Dąbrowa-based subcontractor in the metallurgical sector involves deploying AI to automate technical and quality documentation (compliant with ArcelorMittal requirements) and analyze data from production systems. This typically shortens report preparation time by 35-50%.",
+      faq: [
+        { question: "How does AI support metallurgical companies in Dąbrowa Górnicza?", answer: "Metallurgical companies (ArcelorMittal and its subcontractors) primarily implement AI for: automating quality documentation and production reports, analyzing data from SPC/MES systems, predictive maintenance, and handling technical customer inquiries. Enterprise tools with full data control are key." },
+        { question: "Why is Dąbrowa Górnicza an important market for AI?", answer: "Dąbrowa Górnicza is one of the largest cities in the GZM agglomeration (115,000 inhabitants) and one of the largest metallurgical centers in Poland. ArcelorMittal Poland employs thousands of people and creates an extensive network of subcontracting companies. Additionally, its proximity to the A1 and A4 motorway intersection fosters the development of logistics companies." },
+        { question: "How much does AI implementation cost for a large company in Dąbrowa Górnicza?", answer: "For a large company (500+ employees): AI audit 15-40 thousand PLN, pilot in one area 40-150 thousand PLN, full enterprise implementation 200-800 thousand PLN. Plus infrastructure and licenses 3000-10000 PLN/month. ROI typically within 8-18 months." }
+      ],
+    },
   },
   {
     slug: "jastrzebie-zdroj",
@@ -520,5 +532,17 @@ export const slaskieCities: MiastoData[] = [
           "Ze względu na wymogi bezpieczeństwa sektora górniczego, wdrożenia trwają dłużej niż standardowe. Pilot: 8-12 tygodni. Pełne wdrożenie z bezpieczną infrastrukturą: 4-8 miesięcy. Koszty: pilot 25-60 tys. zł, pełne wdrożenie 100-400 tys. zł plus 2000-8000 zł/mc infrastruktury.",
       },
     ],
+      en: {
+      opisGospodarki: "Jastrzębie-Zdrój is a city with county rights in the southwestern part of the Silesian Voivodeship, one of the largest centers for coking coal mining in Europe (Jastrzębska Spółka Węglowa JSW – the largest producer of coking coal in the EU). The city also has historical spa traditions.",
+      branzeKluczowe: ["coking coal mining (JSW)", "coke production", "subcontracting companies for mining", "spa traditions"],
+      wyzwaniaAI: "In Jastrzębie-Zdrój, typical AI application areas include subcontracting companies in the mining sector (technical documentation, analysis), coke production companies, companies involved in energy transformation, and local SMEs. OpenMind AI offers implementations and training for companies in Jastrzębie-Zdrój.",
+      czasDojazdu: "Jastrzębie-Zdrój is served from Katowice – travel time approx. 45 min. On-site meetings and implementations are available on short notice.",
+      przykladZastosowania: "An example implementation scenario for a Jastrzębie-based subcontractor in the mining sector (associated with JSW) involves deploying AI to automate the preparation of tender offers and technical documentation – while adhering to stringent safety requirements, using enterprise tools with full data control.",
+      faq: [
+        { question: "How does AI support mining sector companies in Jastrzębie-Zdrój?", answer: "Subcontracting companies of Jastrzębska Spółka Węglowa (JSW) primarily benefit from: automating the preparation of tender offers, generating technical documentation compliant with JSW requirements, analyzing safety reports, and handling B2B correspondence. Enterprise tools with full data control are key." },
+        { question: "Why is Jastrzębie-Zdrój an important AI market?", answer: "Jastrzębie-Zdrój (87,000 inhabitants) is one of the larger cities in the Silesian Voivodeship and a center for coking coal mining in Europe. JSW, as the largest producer of coking coal in the EU, employs thousands of people and creates a vast ecosystem of subcontracting companies." },
+        { question: "How long does AI implementation take for a mining sector company?", answer: "Due to the safety requirements of the mining sector, implementations take longer than standard. Pilot: 8-12 weeks. Full implementation with secure infrastructure: 4-8 months. Costs: pilot 25-60 thousand PLN, full implementation 100-400 thousand PLN plus 2000-8000 PLN/month for infrastructure." }
+      ],
+    },
   },
 ];

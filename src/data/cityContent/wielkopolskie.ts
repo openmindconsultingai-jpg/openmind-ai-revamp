@@ -45,6 +45,18 @@ export const wielkopolskieCities: MiastoData[] = [
           "Zakresy dla dużej firmy (500+ pracowników): audyt AI 15-40 tys. zł, pilotaż w jednym obszarze 40-150 tys. zł, pełne wdrożenie enterprise 200-800 tys. zł, kompleksowa transformacja AI 1-3 mln zł (rozłożona na 1-2 lata). Każde wdrożenie poprzedzone jest bezpłatną rozmową konsultacyjną, podczas której omawiamy cele biznesowe i priorytety.",
       },
     ],
+      en: {
+      opisGospodarki: "Poznań is the capital of Greater Poland and the fifth-largest city in Poland, one of the country's strongest economic centers. The city is home to many international corporations (Volkswagen Poznań, Allegro, GlaxoSmithKline) and is an important hub for BPO/SSC, IT, and logistics. The famous Poznań International Fair is the second-largest trade fair operator in Poland.",
+      branzeKluczowe: ["automotive (Volkswagen Poznań)", "IT and e-commerce (Allegro)", "BPO/SSC and logistics", "exhibition industry (MTP)"],
+      wyzwaniaAI: "In Poznań, typical areas for AI application include automotive companies and their subcontractors (IATF 16949 quality documentation), IT and e-commerce firms (developer copilots, personalization), the BPO/SSC sector (back-office automation), logistics, and exhibition companies. OpenMind AI offers implementations and training for companies in Poznań.",
+      czasDojazdu: "Poznań is served in a hybrid mode from Warsaw – travel time is approximately 3 hours. On-site meetings and training require 1-2 weeks' notice, with most implementation work done remotely.",
+      przykladZastosowania: "An example implementation scenario: for a Poznań-based e-commerce company, AI can be implemented to automatically generate product descriptions, personalize recommendations, and handle customer inquiries. This typically increases store conversion by 15-25% and significantly reduces the customer service department's workload.",
+      faq: [
+        { question: "Which companies in Poznań most frequently implement AI?", answer: "In Poznań, the leaders are: automotive companies (Volkswagen Poznań and its subcontractors), e-commerce (Allegro and smaller online stores), BPO/SSC firms (GlaxoSmithKline, Franklin Templeton), software houses, marketing agencies, and logistics companies. Growing interest is also seen among medium-sized manufacturing companies, design offices, and law firms." },
+        { question: "How does AI support the e-commerce sector in Poznań?", answer: "E-commerce primarily implements AI for: automatic generation of product descriptions and SEO titles (crucial for catalogs with thousands of products), personalization of product recommendations (10-20% increase in cart value), automated customer inquiry handling (saving customer service time), generating promotional graphics, and analyzing opinions and reviews. Typical implementations: PLN 20-100k with ROI in 3-6 months." },
+        { question: "How much does AI implementation cost for a large company in Poznań?", answer: "For a large company (500+ employees): AI audit PLN 15-40k, pilot in one area PLN 40-150k, full enterprise implementation PLN 200-800k, comprehensive AI transformation PLN 1-3 million (spread over 1-2 years). Each implementation is preceded by a free consultation to discuss business goals and priorities." }
+      ],
+    },
   },
   {
     slug: "kalisz",
@@ -90,6 +102,18 @@ export const wielkopolskieCities: MiastoData[] = [
           "Dla małej firmy: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, miesięczne licencje 300-600 zł/mc. Łączny start: 6-13 tys. zł + 400 zł/mc. Dla średniej firmy: audyt i pilotaż 20-60 tys. zł, pełne wdrożenie 80-250 tys. zł. Zawsze rekomendujemy etapowe podejście.",
       },
     ],
+      en: {
+      opisGospodarki: "Kalisz is the second-largest city in Greater Poland and one of the oldest cities in Poland (with traditions dating back to Roman times). The city's economy is based on the textile industry (tradition), piano manufacturing (Calisia), the aviation industry (WSK PZL Kalisz), and trade and services. The city is an important regional center for southern Greater Poland.",
+      branzeKluczowe: ["aviation industry (WSK PZL Kalisz)", "piano manufacturing (Calisia)", "textile industry", "regional trade"],
+      wyzwaniaAI: "In Kalisz, typical areas for AI application include aviation sector companies and their subcontractors (technical documentation, quality analysis), manufacturing companies (office work automation, offers), local SMEs, and accounting firms. OpenMind AI offers implementations and training for companies in Kalisz.",
+      czasDojazdu: "Kalisz is served from Poznań or Wrocław – travel time is approximately 1.5-2 hours. On-site meetings require advance notice, with most implementations done online.",
+      przykladZastosowania: "An example implementation scenario: for a Kalisz-based aviation company, AI can be implemented to automate quality documentation (AS9100) and analyze inspection reports, which typically shortens documentation preparation time by 40-55% while maintaining industry requirements.",
+      faq: [
+        { question: "How does AI support aviation companies in Kalisz?", answer: "Aviation sector companies (WSK PZL Kalisz and subcontractors) primarily implement AI for: automation of quality documentation (AS9100, PPAP, FAI), analysis of data from control systems, generation of reports for OEM customers, and handling technical inquiries. Enterprise tools with full data control are crucial due to the security requirements of the aviation sector." },
+        { question: "Do you conduct AI training for manufacturing companies in Kalisz?", answer: "Yes, we organize training for both production teams (documentation automation, reporting) and administrative teams (ChatGPT, Copilot, automation basics). A one-day training for a group of 8-12 people in Kalisz: PLN 4-7k (including travel from Poznań). For smaller groups, we recommend the online format." },
+        { question: "How much does a basic AI implementation cost in Kalisz?", answer: "For a small company: one-day training PLN 3-5k, tool configuration PLN 3-8k, monthly licenses PLN 300-600/month. Total start-up: PLN 6-13k + PLN 400/month. For a medium-sized company: audit and pilot PLN 20-60k, full implementation PLN 80-250k. We always recommend a phased approach." }
+      ],
+    },
   },
   {
     slug: "konin",
@@ -135,6 +159,18 @@ export const wielkopolskieCities: MiastoData[] = [
           "Tak — firmy przechodzące transformację energetyczną (od węgla do OZE) potrzebują wsparcia w zarządzaniu zmianą, analizie dokumentacji regulacyjnej (przepisy UE, polityka klimatyczna), obsłudze wniosków o dofinansowanie, szkoleniu pracowników w nowych technologiach. AI wspiera wszystkie te obszary, szczególnie analizę dokumentów i generowanie raportów.",
       },
     ],
+      en: {
+      opisGospodarki: "Konin is a city in central Poland, a historical center for lignite mining and energy production (ZE PAK – Pątnów-Adamów-Konin Power Plant Complex). The city is undergoing an energy transformation, moving away from coal towards renewable energy sources. The local economy is also based on the metal industry, logistics (A2 motorway), and trade.",
+      branzeKluczowe: ["energy (ZE PAK, transformation)", "metal industry", "logistics (A2)", "regional trade"],
+      wyzwaniaAI: "In Konin, typical areas for AI application include energy sector companies and their subcontractors (technical documentation, analysis), logistics companies serving the A2 route, and local SMEs. OpenMind AI offers implementations and training for companies in Konin.",
+      czasDojazdu: "Konin is served from Poznań or Warsaw – travel time is approximately 1.5-2 hours. On-site meetings require 1-2 weeks' notice, with most implementations done online.",
+      przykladZastosowania: "An example implementation scenario: for a logistics company in Konin serving the A2 route, AI can be implemented to automate transport documents (CMR, WZ) and a chatbot to support drivers in several languages, which typically reduces the dispatcher department's workload by 30-45%.",
+      faq: [
+        { question: "How does AI support energy sector companies in Konin?", answer: "Subcontractors in the energy sector (related to ZE PAK and energy transformation) primarily benefit from: automation of tender offer preparation, generation of technical documentation, report analysis, and handling B2B correspondence. For this sector, enterprise tools with full data control are crucial due to obligations to the main client." },
+        { question: "How can logistics companies on the A2 motorway utilize AI?", answer: "Logistics companies on the A2 primarily implement AI for: automatic reading and generation of documents (CMR, invoices), supporting drivers in several languages (Polish, German, Ukrainian, English), optimizing route planning, and analyzing transport data. A typical pilot: PLN 15-40k, full implementation: PLN 60-200k. ROI in 4-8 months." },
+        { question: "Do companies involved in energy transformation have special AI needs?", answer: "Yes – companies undergoing energy transformation (from coal to RES) need support in change management, analysis of regulatory documentation (EU regulations, climate policy), handling grant applications, and training employees in new technologies. AI supports all these areas, especially document analysis and report generation." }
+      ],
+    },
   },
   {
     slug: "pila",
@@ -180,6 +216,18 @@ export const wielkopolskieCities: MiastoData[] = [
           "Jednodniowe szkolenie dla grupy 10-15 osób w Pile: 5-8 tys. zł (z dojazdem z Poznania). Obejmuje 6 godzin warsztatów, materiały, praktyczne ćwiczenia na realnych przypadkach z firmy oraz miesiąc wsparcia poszkoleniowego. Dla większych grup (20+ osób) rekomendujemy podział na dwie sesje.",
       },
     ],
+      en: {
+      opisGospodarki: "Piła is a district town in the northern part of Greater Poland, with a developed manufacturing sector (Philips Lighting, Quad/Graphics) and logistics. The city is an academic center (Państwowa Wyższa Szkoła Zawodowa) and serves as a regional commercial and service hub for northern Greater Poland.",
+      branzeKluczowe: ["lighting manufacturing (Philips Lighting)", "printing (Quad/Graphics)", "logistics and transport", "education (PWSZ)"],
+      wyzwaniaAI: "In Piła, typical areas for AI application include manufacturing companies (quality documentation, reports), logistics companies, the university, and local SMEs. OpenMind AI offers implementations and training for companies in Piła.",
+      czasDojazdu: "Piła is served from Poznań or Bydgoszcz – travel time approx. 1.5 hours. On-site meetings by appointment, hybrid implementations.",
+      przykladZastosowania: "An example implementation scenario: for a manufacturing company in Piła, AI can be implemented to automate quality documentation and generate reports for OEM customers, typically reducing documentation preparation time by 35-50% and minimizing the risk of errors.",
+      faq: [
+        { question: "How does AI support large manufacturing companies in Piła?", answer: "Large manufacturing companies (Philips Lighting, Quad/Graphics) implement AI mainly for: automating quality documentation (ISO 9001, IATF 16949), analyzing production data from MES/SPC systems, generating reports for OEM customers, handling technical inquiries, and automating back-office processes. Enterprise tools with full data control are key." },
+        { question: "Do you conduct AI training for PWSZ in Piła?", answer: "Yes, we offer training for universities – for academic staff (AI use in teaching, identifying AI-generated work, ethics), for administration, and workshops for students. We conduct training on-site in Piła (for groups of 6+ people) or online for greater flexibility." },
+        { question: "How much does training for a medium-sized company in Piła cost?", answer: "A one-day training for a group of 10-15 people in Piła: 5-8 thousand PLN (including travel from Poznań). It includes 6 hours of workshops, materials, practical exercises on real company cases, and one month of post-training support. For larger groups (20+ people), we recommend dividing into two sessions." }
+      ],
+    },
   },
   {
     slug: "ostrow-wielkopolski",
@@ -225,6 +273,18 @@ export const wielkopolskieCities: MiastoData[] = [
           "Dla średniej firmy (50-200 osób): audyt AI 5-15 tys. zł, pilotaż w jednym obszarze 15-50 tys. zł, pełne wdrożenie 60-250 tys. zł. Plus miesięczne licencje: 1000-4000 zł/mc. Pierwsze ROI zwykle w 6-12 miesięcy. Każde wdrożenie poprzedzone jest bezpłatną rozmową konsultacyjną.",
       },
     ],
+      en: {
+      opisGospodarki: "Ostrów Wielkopolski is a district town in the southern part of Greater Poland, an important railway junction and a production center (including Mahle Behr Ostrów Wielkopolski – a manufacturer of heat exchangers for the automotive industry). The city is also developing its service, trade, and food processing sectors.",
+      branzeKluczowe: ["automotive manufacturing (Mahle Behr)", "food processing", "rail logistics", "regional trade"],
+      wyzwaniaAI: "In Ostrów Wielkopolski, typical areas for AI application include companies in the automotive sector (IATF 16949 quality documentation), manufacturing companies (office automation), and local SMEs. OpenMind AI offers implementations and training for companies in Ostrów Wielkopolski.",
+      czasDojazdu: "Ostrów Wielkopolski is served from Poznań or Wrocław – travel time approx. 1.5 hours. On-site meetings by appointment, hybrid implementations.",
+      przykladZastosowania: "An example implementation scenario: for an automotive subcontractor in Ostrów Wielkopolski, AI can be implemented to automate quality documentation (PPAP, FMEA, Control Plan) and reports for OEM customers, typically reducing documentation preparation time by 40-55%.",
+      faq: [
+        { question: "How does AI support automotive companies from Ostrów Wielkopolski?", answer: "Companies in the automotive sector primarily benefit from: automating quality documentation (IATF 16949, PPAP, FMEA), analyzing data from production systems, handling technical inquiries from OEM customers, generating audit reports, and automating 8D reports after complaints. Typical projects: pilot 15-50 thousand PLN, full implementation 80-300 thousand PLN." },
+        { question: "Can food companies from Ostrów benefit from AI?", answer: "Yes – food companies benefit from: automatic generation of product descriptions and labels in several languages, handling B2B customer inquiries, analyzing consumer opinions from portals, and creating marketing content. Typical cost: 400-800 PLN/month + initial implementation 5-15 thousand PLN." },
+        { question: "What are the typical costs of AI implementation in a medium-sized company?", answer: "For a medium-sized company (50-200 people): AI audit 5-15 thousand PLN, pilot in one area 15-50 thousand PLN, full implementation 60-250 thousand PLN. Plus monthly licenses: 1000-4000 PLN/month. The first ROI is usually within 6-12 months. Each implementation is preceded by a free consultation." }
+      ],
+    },
   },
   {
     slug: "gniezno",
@@ -270,6 +330,18 @@ export const wielkopolskieCities: MiastoData[] = [
           "Gniezno jest blisko Poznania (ok. 50 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni od zgłoszenia. Szkolenia dla grup 4+ osób realizujemy w ciągu 1-2 tygodni. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni od pierwszego kontaktu. Wizyty stacjonarne łączymy często z innymi miastami regionu.",
       },
     ],
+      en: {
+      opisGospodarki: "Gniezno is a historic district town, the first capital of Poland, the seat of Polish primates, and an important center for historical tourism. The city's economy combines historical traditions with a developing manufacturing sector (including furniture), trade, and services. The Gniezno Cathedral and the Piast Trail attract tourists from all over the country.",
+      branzeKluczowe: ["historical tourism (first capital of Poland)", "furniture manufacturing", "regional trade", "hospitality and gastronomy"],
+      wyzwaniaAI: "In Gniezno, typical areas for AI application include tourist attractions related to the Piast Trail (multilingual service), furniture manufacturers (product descriptions, export), local restaurants, and SMEs. OpenMind AI offers implementations and training for companies in Gniezno.",
+      czasDojazdu: "Gniezno is served from Poznań – travel time approx. 50 minutes. On-site training and implementations are available on short notice.",
+      przykladZastosowania: "An example implementation scenario: for a hotel in Gniezno serving tourists visiting the Piast Trail, a multilingual informational chatbot (Polish, English, German, French, Italian) can be implemented to handle inquiries about the cathedral, historical attractions, and reservations.",
+      faq: [
+        { question: "How does AI support historical tourism in Gniezno?", answer: "Tourist attractions in Gniezno serve guests from all over Poland and foreign tourists interested in Polish history (especially the Polish diaspora). AI helps with: multilingual inquiry handling, generating descriptions of historical attractions in several languages, creating educational content, and handling reservations for pilgrimage and school groups. Cost: 250-500 PLN/month for a medium-sized facility." },
+        { question: "Can furniture manufacturers from Gniezno benefit from AI?", answer: "Yes – furniture manufacturers benefit from: automatic generation of product descriptions in export languages (German, English, French), creating professional catalog graphics, handling customer inquiries from marketplaces, and analyzing market trends. Typical costs: 400-800 PLN/month + initial implementation 5-15 thousand PLN." },
+        { question: "How quickly can one start in Gniezno?", answer: "Gniezno is close to Poznań (approx. 50 minutes), so the first consultation meeting is possible within a few days of contact. Training for groups of 4+ people is carried out within 1-2 weeks. Simple implementations are launched within a few days or weeks of initial contact. On-site visits are often combined with other cities in the region." }
+      ],
+    },
   },
   {
     slug: "leszno",
@@ -315,6 +387,18 @@ export const wielkopolskieCities: MiastoData[] = [
           "Dla MŚP: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, miesięczne licencje 400-800 zł/mc. Łączny start: 6-13 tys. zł + 600 zł/mc. Pierwsze efekty widoczne w 2-3 tygodnie, pełne korzyści po 3-4 miesiącach używania narzędzi w codziennej pracy firmy.",
       },
     ],
+      en: {
+      opisGospodarki: "Leszno is a district capital in southern Wielkopolska, a center for industrial production, trade, and services. The city hosts the Leszno Special Economic Zone, which attracts investors from the manufacturing, automotive, and logistics sectors. It also has strong academic traditions (Państwowa Wyższa Szkoła Zawodowa).",
+      branzeKluczowe: ["production in the Leszno SEZ", "automotive industry", "logistics", "education (PWSZ)"],
+      wyzwaniaAI: "In Leszno, typical areas for AI application include companies within the Leszno SEZ (documentation automation, international customer service), automotive companies (quality documentation), and local SMEs. OpenMind AI offers implementations and training for companies in Leszno.",
+      czasDojazdu: "Leszno is served from Poznań or Wrocław – travel time is approximately 1-1.5 hours. On-site training requires advance booking, while implementations are conducted in a hybrid mode.",
+      przykladZastosowania: "Example implementation scenario: For a company in the Leszno SEZ, AI can be implemented to automate technical documentation and handle inquiries from international clients in several languages, supporting the company's export expansion.",
+      faq: [
+        { question: "How does AI support companies in the Leszno SEZ?", answer: "Companies in the SEZ most often implement AI for: automating the preparation of offers and documentation for international clients, generating product sheets in several languages, handling B2B inquiries, analyzing production reports, and supporting HR departments in recruitment. Typical projects: PLN 15-60k for a pilot, PLN 80-300k for full implementation." },
+        { question: "What AI training do you recommend for medium-sized companies in Leszno?", answer: "For medium-sized companies (50-200 people), we recommend a phased approach: 1) training for management (to understand AI's potential), 2) training for administrative teams (practical use of ChatGPT, Copilot), 3) workshops for area leaders (identifying specific implementations). Cycle: 2-3 training sessions within a month, total cost PLN 10-20k." },
+        { question: "How much does a basic AI implementation cost for an SME in Leszno?", answer: "For SMEs: one-day training PLN 3-5k, tool configuration PLN 3-8k, monthly licenses PLN 400-800/month. Total startup: PLN 6-13k + PLN 600/month. First effects are visible in 2-3 weeks, full benefits after 3-4 months of using the tools in the company's daily work." }
+      ],
+    },
   },
   {
     slug: "lubon",
@@ -360,6 +444,18 @@ export const wielkopolskieCities: MiastoData[] = [
           "Dla małej firmy: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, miesięczne licencje 300-600 zł/mc. Łączny start: 6-13 tys. zł + 400 zł/mc. Dla firm z wymaganiami bezpieczeństwa (np. chemiczne) dodajemy marżę na narzędzia enterprise (20-30%) oraz bardziej rozbudowane szkolenie z bezpieczeństwa danych.",
       },
     ],
+      en: {
+      opisGospodarki: "Luboń is a city in the Poznań agglomeration, directly bordering Poznań. Its economy is based on chemical production (Luvena – formerly Zakłady Chemiczne Luboń), small-scale manufacturing, trade, and services. The city serves as a bedroom community for Poznań workers but also develops local businesses.",
+      branzeKluczowe: ["chemical production (Luvena)", "small-scale manufacturing", "trade and services", "Poznań's hinterland"],
+      wyzwaniaAI: "In Luboń, typical areas for AI application include companies in the chemical sector (automation of technical documentation while maintaining safety requirements), local manufacturing companies, and service SMEs. OpenMind AI offers implementations and training for companies in Luboń.",
+      czasDojazdu: "Luboń is served from Poznań – travel time is approximately 15-20 minutes. On-site training and implementations are available on short notice.",
+      przykladZastosowania: "Example implementation scenario: For a chemical sector company in Luboń, AI can be implemented to automate the preparation of Safety Data Sheets (SDS) and REACH documentation, which shortens the documentation preparation time from several days to several hours.",
+      faq: [
+        { question: "Can chemical sector companies in Luboń implement AI?", answer: "Yes, while adhering to safety requirements. For the chemical sector, we recommend only enterprise tools with full data control (Azure OpenAI in EU regions, local models). AI can support the automation of SDS sheets, REACH documentation, analysis of laboratory reports, and translation of documentation into export languages. Public ChatGPT is only for non-sensitive marketing applications." },
+        { question: "How quickly can AI be implemented in a company in Luboń?", answer: "Luboń is very close to Poznań (15-20 minutes), so the first consultation meeting can be arranged within a few days. We conduct training for small groups within 1-2 weeks. Simple implementations are launched within a few days or weeks. On-site visits are often combined with other companies in the Poznań agglomeration." },
+        { question: "How much does AI implementation cost for an SME in Luboń?", answer: "For a small company: one-day training PLN 3-5k, tool configuration PLN 3-8k, monthly licenses PLN 300-600/month. Total startup: PLN 6-13k + PLN 400/month. For companies with safety requirements (e.g., chemical), we add a margin for enterprise tools (20-30%) and more extensive data security training." }
+      ],
+    },
   },
   {
     slug: "wrzesnia",
@@ -405,6 +501,18 @@ export const wielkopolskieCities: MiastoData[] = [
           "Specjalistyczne szkolenie dla zespołu jakości (6-12 osób) z użycia AI w dokumentacji IATF 16949: 5-10 tys. zł za dzień. Obejmuje praktyczne ćwiczenia na realnych szablonach PPAP i FMEA, dostosowanie do wymagań konkretnego klienta OEM (np. VW), miesiąc wsparcia poszkoleniowego. Po szkoleniu zespół samodzielnie wykorzystuje AI w codziennej pracy.",
       },
     ],
+      en: {
+      opisGospodarki: "Września is a district capital in central Wielkopolska, home to the Volkswagen Poznań factory (producing VW Crafter). The local economy is based on automotive manufacturing, subcontractors for VW, logistics, and small-scale production and trade. The city is developing dynamically as an industrial center.",
+      branzeKluczowe: ["automotive manufacturing (Volkswagen)", "VW subcontractors", "logistics", "trade and services"],
+      wyzwaniaAI: "In Września, typical areas for AI application include Volkswagen subcontractors (IATF 16949 quality documentation, production analysis), logistics companies, and local SMEs. OpenMind AI offers implementations and training for companies in Września.",
+      czasDojazdu: "Września is served from Poznań – travel time is approximately 40-50 minutes. On-site training and implementations are available on short notice.",
+      przykladZastosowania: "Example implementation scenario: For a Volkswagen subcontractor in Września, AI can be implemented to automate quality documentation required by VW (PPAP, FMEA, Control Plan), which typically shortens documentation preparation time by 40-55% and reduces the risk of errors in the process.",
+      faq: [
+        { question: "How does AI support Volkswagen subcontractors in Września?", answer: "VW subcontractors primarily implement AI for: automating quality documentation (IATF 16949, PPAP, FMEA, Control Plan – Volkswagen has very detailed documentation requirements), analyzing data from production systems, generating reports for clients, and automating 8D reports after complaints. Key are enterprise tools with data control, compliant with VW policies." },
+        { question: "Are AI implementations for VW subcontractors complicated?", answer: "They can be, due to safety requirements and compliance with Volkswagen policies. We recommend: using enterprise tools hosted in the EU, prior agreement with the end client (some tools may require VW approval), and phased implementation (pilot in one area, then expansion). Pilot project: PLN 25-60k." },
+        { question: "How much does training for a quality team in an automotive company cost?", answer: "Specialized training for a quality team (6-12 people) on using AI in IATF 16949 documentation: PLN 5-10k per day. This includes practical exercises on real PPAP and FMEA templates, adaptation to the requirements of a specific OEM client (e.g., VW), and one month of post-training support. After training, the team independently uses AI in their daily work." }
+      ],
+    },
   },
   {
     slug: "srem",
@@ -450,6 +558,18 @@ export const wielkopolskieCities: MiastoData[] = [
           "Trzy najprostsze wdrożenia: 1) ChatGPT do generowania ofert i odpowiedzi na zapytania (start w jeden dzień), 2) Canva AI do tworzenia grafik marketingowych (kilka godzin), 3) Prosty szablon obsługi zapytań mailowych (natychmiast). Te trzy wystarczą dla 60-70% potrzeb małej firmy. Koszt: 150-250 zł/mc + jednodniowe szkolenie 2-3 tys. zł.",
       },
     ],
+      en: {
+      opisGospodarki: "Śrem is a district town in central Greater Poland, with an economy based on manufacturing (Odlewnia Żeliwa Śrem), agriculture, food processing, and trade. The town serves as a local commercial and service hub for surrounding municipalities.",
+      branzeKluczowe: ["foundry industry (Odlewnia Śrem)", "agriculture and processing", "regional trade", "small-scale manufacturing"],
+      wyzwaniaAI: "In Śrem, typical areas for AI application include companies in the foundry sector (technical documentation, offers), agricultural and processing companies, and local SMEs. OpenMind AI offers implementations and training for companies in Śrem.",
+      czasDojazdu: "Śrem is served from Poznań – travel time approx. 1 hour. On-site training for groups of 6+ people; for smaller groups, we recommend the online format.",
+      przykladZastosowania: "Example implementation scenario: for a Śrem-based company in the foundry sector, AI can be implemented to automate the preparation of technical specifications and commercial offers, significantly reducing response times to inquiries from international clients.",
+      faq: [
+        { question: "How does AI support foundry companies in Śrem?", answer: "Foundry companies primarily benefit from: automation of technical documentation and material specifications, analysis of quality reports, handling B2B customer inquiries, generating tender offers, and translating documentation for export markets. Enterprise tools are crucial due to the confidentiality of recipes and commercial data." },
+        { question: "Can farmers and processing companies in Śrem benefit from AI?", answer: "Yes – AI supports agricultural and processing companies in: creating documentation for subsidies and aid programs, drafting official letters, generating product descriptions for online stores and export, handling direct sales customers, and translating documents for contractors. Basic stack: PLN 150-300/month, initial training: PLN 1,000-3,000." },
+        { question: "What are the simplest AI implementations for a company in Śrem?", answer: "The three simplest implementations are: 1) ChatGPT for generating offers and responding to inquiries (starts in one day), 2) Canva AI for creating marketing graphics (a few hours), 3) A simple template for handling email inquiries (immediate). These three are sufficient for 60-70% of a small company's needs. Cost: PLN 150-250/month + one-day training PLN 2,000-3,000." }
+      ],
+    },
   },
   {
     slug: "swarzedz",
@@ -495,6 +615,18 @@ export const wielkopolskieCities: MiastoData[] = [
           "Swarzędz jest bardzo blisko Poznania (20-30 min), więc pierwsze spotkanie konsultacyjne możliwe w ciągu kilku dni. Szkolenia realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni.",
       },
     ],
+      en: {
+      opisGospodarki: "Swarzędz is a town in Poznań County, located in the eastern part of the Poznań agglomeration. It has been a historical center of furniture production (since the 19th century, Swarzędz furniture traditions are nationwide). Currently, the town's economy is based on furniture manufacturing, logistics, trade, and serving as a business hinterland for Poznań.",
+      branzeKluczowe: ["furniture production (Swarzędz tradition)", "logistics for Poznań", "trade and services", "business hinterland for the agglomeration"],
+      wyzwaniaAI: "In Swarzędz, typical areas for AI application include furniture companies (a traditional regional industry), logistics companies serving Poznań, local SMEs, and companies serving the Poznań agglomeration. OpenMind AI offers implementations and training for companies in Swarzędz.",
+      czasDojazdu: "Swarzędz is served from Poznań – travel time approx. 20-30 minutes. On-site training and implementations are available at short notice.",
+      przykladZastosowania: "Example implementation scenario: for a Swarzędz-based furniture company exporting to Germany and Scandinavia, AI can be implemented to automate the generation of product cards in several languages, handle B2B customer inquiries, and manage technical documentation for furniture.",
+      faq: [
+        { question: "How does AI support the furniture industry in Swarzędz?", answer: "Furniture companies (Swarzędz tradition) primarily benefit from: automation of product cards in export languages, generation of technical specifications, handling B2B inquiries (Germany, Scandinavia, UK), and creating marketing content with visualizations. Typical costs: PLN 500-1200/month + implementation PLN 10,000-30,000." },
+        { question: "How much does AI implementation cost for a furniture company?", answer: "For a medium-sized furniture company (20-80 people): audit PLN 5,000-15,000, pilot in one area (e.g., product descriptions) PLN 15,000-40,000, full implementation PLN 50,000-200,000. Plus licenses PLN 1,000-3,000/month." },
+        { question: "How quickly can AI be implemented in a company in Swarzędz?", answer: "Swarzędz is very close to Poznań (20-30 min), so the first consultation meeting is possible within a few days. We conduct training within 1-2 weeks. Simple implementations are launched within a few days or weeks." }
+      ],
+    },
   },
   {
     slug: "turek",
@@ -540,5 +672,17 @@ export const wielkopolskieCities: MiastoData[] = [
           "Rekomendujemy szkolenia online — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł. Bez konieczności dojazdu.",
       },
     ],
+      en: {
+      opisGospodarki: "Turek is a district town in the eastern part of the Greater Poland Voivodeship, historically associated with the textile industry and brown coal mining (KWB Adamów). Currently, the town's economy is undergoing transformation after the closure of the mine, relying on manufacturing, agriculture, and trade and services.",
+      branzeKluczowe: ["industrial production", "post-mining transformation", "agriculture and processing", "regional trade"],
+      wyzwaniaAI: "In Turek, typical areas for AI application include manufacturing companies, companies involved in post-mining transformation (project documentation, EU applications), local trading companies, and SMEs. OpenMind AI offers implementations and training for companies in Turek.",
+      czasDojazdu: "Turek is served online from Konin (travel time approx. 40 min) or Poznań (approx. 1.5 hours). On-site visits for larger projects.",
+      przykladZastosowania: "Example implementation scenario: for a Turek-based manufacturing company, AI can be implemented to automate the generation of commercial offers and handle customer inquiries, significantly saving time for the sales department.",
+      faq: [
+        { question: "How does AI support companies in Turek during the regional transformation?", answer: "Companies undergoing transformation after the closure of KWB Adamów benefit from: analysis of regulatory documentation, handling funding applications (Just Transition Fund), employee training, and change management. AI supports all these areas, especially document analysis and report generation." },
+        { question: "How much does AI implementation cost for a company in Turek?", answer: "For a small company: one-day training PLN 3,000-5,000, tool configuration PLN 3,000-8,000, licenses PLN 300-600/month. Total start-up cost: PLN 6,000-13,000 + PLN 400/month." },
+        { question: "How to start without traveling to Poznań?", answer: "We recommend online training – 3-4 hours of intensive live workshops plus a week of support. Cost: PLN 1,500-3,000. No travel required." }
+      ],
+    },
   },
 ];

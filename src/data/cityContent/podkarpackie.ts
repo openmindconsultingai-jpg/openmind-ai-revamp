@@ -45,7 +45,19 @@ export const podkarpackieCities: MiastoData[] = [
             "Dwudniowe intensywne szkolenie dla 20 deweloperów z GitHub Copilot, Claude Code, Cursor oraz best practices code review z AI: 12-25 tys. zł. Obejmuje praktyczne ćwiczenia na realnym kodbasie firmy, przegląd bezpieczeństwa, miesiąc wsparcia poszkoleniowego. Licencje na narzędzia dodatkowo: 80-150 zł/mc na deweloper.",
         },
       ],
+        en: {
+      opisGospodarki: "Rzeszów is the capital of the Podkarpackie Voivodeship, a dynamically developing IT and aviation industry hub. The city is part of Aviation Valley, which brings together companies producing parts for Boeing, Airbus, and Pratt & Whitney. It boasts a strong academic sector (Rzeszów University of Technology, University of Rzeszów).",
+      branzeKluczowe: ["aviation industry (Aviation Valley)", "IT and software", "education (Rzeszów University of Technology, University of Rzeszów)", "trade and services"],
+      wyzwaniaAI: "In Rzeszów, typical areas for AI application include aviation sector companies (automation of technical documentation, analysis of production data — with stringent safety requirements), IT companies (coding copilots, code review), technical universities, and local agencies and SMEs. OpenMind AI offers implementations and training for companies in Rzeszów.",
+      czasDojazdu: "Rzeszów is served in a hybrid mode. On-site meetings and training require 1-2 weeks' notice, while most implementations are carried out remotely.",
+      przykladZastosowania: "Example implementation scenario: For a Rzeszów-based IT company developing software for the aviation sector, it is possible to implement dedicated AI copilots for code review and technical documentation generation, which typically increases the productivity of the development team by 25-35%.",
+      faq: [
+        { question: "Why is Rzeszów an important market for AI?", answer: "Rzeszów is a dynamically developing IT and aviation industry hub. Aviation Valley brings together over 150 companies, many of which are intensively implementing automation and AI. A strong academic sector (Rzeszów University of Technology) ensures a supply of specialists, and the growing number of software houses creates demand for enterprise implementations." },
+        { question: "What are the safety requirements for AI in the aviation sector?", answer: "The aviation sector has stringent requirements due to commitments to clients (Boeing, Airbus, P&W) and certifications (AS9100, EASA). We recommend: exclusively enterprise tools with full data control (Azure OpenAI EU, local models), formal procedures for classifying data uploaded to AI, and access audits. Public ChatGPT is excluded for classified data." },
+        { question: "How much does training for a team of 20 developers from Rzeszów cost?", answer: "A two-day intensive training for 20 developers on GitHub Copilot, Claude Code, Cursor, and best practices for AI-powered code review: 12,000-25,000 PLN. This includes practical exercises on the company's real codebase, a security review, and one month of post-training support. Tool licenses are additional: 80-150 PLN/month per developer." }
+      ],
     },
+  },
   {
       slug: "przemysl",
       nazwa: "Przemyśl",
@@ -90,7 +102,19 @@ export const podkarpackieCities: MiastoData[] = [
             "Dla małej firmy handlowej: ChatGPT Plus lub Claude Pro do komunikacji i tłumaczeń (100 zł/mc), DeepL Pro do profesjonalnych tłumaczeń dokumentów (140 zł/mc), Canva AI do materiałów marketingowych (55 zł/mc), automatyzacje Make.com dla powtarzalnych procesów. Łączny koszt: 300-500 zł/mc. Szkolenie wstępne: 2-4 tys. zł.",
         },
       ],
+        en: {
+      opisGospodarki: "Przemyśl is a historic border city with Ukraine, boasting a rich history and a developing sector of services, cross-border logistics, and tourism. After 2022, the city's importance significantly increased in the context of handling traffic at the Ukrainian-Polish border, as well as serving refugees and fostering economic cooperation with Ukraine.",
+      branzeKluczowe: ["cross-border logistics (UA border)", "historical tourism", "cross-border trade", "services for residents and visitors"],
+      wyzwaniaAI: "In Przemyśl, typical areas for AI application include logistics companies serving the Ukrainian border (automation of customs documents, Polish-Ukrainian translations), tourist and hospitality facilities, and local SMEs. OpenMind AI offers implementations and training for companies in Przemyśl.",
+      czasDojazdu: "Przemyśl is served from Rzeszów – travel time approximately 1 hour 15 minutes. On-site meetings require advance notice, most implementations are online.",
+      przykladZastosowania: "Example implementation scenario: For a Przemyśl-based logistics company handling traffic at the Ukrainian border, it is possible to implement automatic translation of transport documentation into Ukrainian and a chatbot serving drivers in several languages, which significantly reduces the administrative department's workload.",
+      faq: [
+        { question: "How does AI support companies at the Ukrainian border?", answer: "Companies at the Polish-Ukrainian border primarily implement AI for: automatic translation of documents into Ukrainian (GPT-4, Claude, DeepL perform very well), customer and driver support in three languages (Polish, Ukrainian, English), automation of customs documents and CMRs, and analysis of transport reports. Typical savings: 20-35% of administrative department time." },
+        { question: "Is ChatGPT good for Ukrainian translations?", answer: "Yes, modern models (GPT-4, Claude 4, Gemini 2.5) handle Polish-Ukrainian translations very well, especially in a business and commercial context. For documents requiring strict legal compliance, we recommend verification by a translator, but in 90% of business cases, AI is sufficient and significantly faster and cheaper." },
+        { question: "What tools do you recommend for a small trading company in Przemyśl?", answer: "For a small trading company: ChatGPT Plus or Claude Pro for communication and translations (100 PLN/month), DeepL Pro for professional document translations (140 PLN/month), Canva AI for marketing materials (55 PLN/month), Make.com automations for repetitive processes. Total cost: 300-500 PLN/month. Initial training: 2,000-4,000 PLN." }
+      ],
     },
+  },
   {
       slug: "stalowa-wola",
       nazwa: "Stalowa Wola",
@@ -135,7 +159,19 @@ export const podkarpackieCities: MiastoData[] = [
             "Zależy od tego, jakie dane będą do niego wprowadzane. Do niewrażliwych zastosowań (marketing, komunikacja zewnętrzna, ogólne zapytania) — tak, publiczny ChatGPT Plus/Teams wystarczy. Do danych klientów, dokumentacji technicznej, receptur — NIE, potrzebne są narzędzia enterprise. Najlepszym rozwiązaniem jest jasna polityka firmowa określająca co wolno, a czego nie.",
         },
       ],
+        en: {
+      opisGospodarki: "Stalowa Wola is an industrial city, built around Huta Stalowa Wola (HSW) – a renowned manufacturer of military equipment and construction machinery. The city is developing within the Central Industrial Region, and the local economy focuses on the metal, armaments, and subcontracting sectors.",
+      branzeKluczowe: ["armaments industry (HSW)", "metallurgy and metal processing", "construction machinery", "subcontracting companies"],
+      wyzwaniaAI: "In Stalowa Wola, typical areas for AI application include subcontracting companies in the defense and metal sectors (automation of technical documentation with stringent safety requirements), local service companies, and the administration of manufacturing companies. OpenMind AI offers implementations and training, taking into account the sector's security requirements.",
+      czasDojazdu: "Stalowa Wola is served from Rzeszów or Lublin – travel time approximately 1.5 hours. On-site meetings require advance notice, implementations are online.",
+      przykladZastosowania: "Example implementation scenario: For a metal sector subcontracting company from Stalowa Wola, it is possible to implement AI to automate the preparation of tender offers and technical documentation, which shortens the response time to complex RFQ inquiries from several days to several hours.",
+      faq: [
+        { question: "Can defense sector companies from Stalowa Wola implement AI?", answer: "Yes, with strict adherence to security rules. For companies working for HSW and other defense sector entities, we recommend: exclusively enterprise tools with full data control (Azure OpenAI EU, local Llama/Mistral models), formal information classification procedures, and compliance with NATO requirements and client policies. Public ChatGPT is excluded for classified data." },
+        { question: "What are the costs of secure AI implementation for a defense company?", answer: "A secure enterprise implementation with full data control typically costs 80,000-300,000 PLN for the implementation project, plus 2,000-8,000 PLN/month for infrastructure and licenses. Smaller companies can start with a pilot in a single area (e.g., technical documentation automation) for 30,000-80,000 PLN. It is crucial to agree in advance with the end client on which tools are permitted." },
+        { question: "Can ChatGPT be used in a manufacturing company?", answer: "It depends on the data that will be entered into it. For non-sensitive applications (marketing, external communication, general inquiries) – yes, public ChatGPT Plus/Teams is sufficient. For customer data, technical documentation, recipes – NO, enterprise tools are needed. The best solution is a clear company policy defining what is allowed and what is not." }
+      ],
     },
+  },
   {
       slug: "mielec",
       nazwa: "Mielec",
@@ -180,7 +216,19 @@ export const podkarpackieCities: MiastoData[] = [
             "Prosty pilot w jednym obszarze (np. automatyzacja raportów jakościowych) to 6-10 tygodni od rozmowy wstępnej do uruchomienia. Pełne wdrożenie obejmujące kilka działów z integracją z systemami ERP/MES to projekt na 4-8 miesięcy. Zawsze rekomendujemy etapowe podejście, zaczynając od jednego, wyraźnego celu biznesowego.",
         },
       ],
+        en: {
+      opisGospodarki: "Mielec is an industrial city, home to PZL Mielec (now Sikorsky/Lockheed Martin) and the Euro-Park Mielec Special Economic Zone. The city is an important center for the aerospace industry, as well as automotive and machinery production. The Aviation Valley attracts investors from all over the world.",
+      branzeKluczowe: ["aerospace industry (PZL Mielec/Sikorsky)", "automotive production", "Euro-Park Mielec Special Economic Zone", "machinery production"],
+      wyzwaniaAI: "In Mielec, typical areas for AI application include aerospace companies and their subcontractors (automation of technical documentation, analysis of quality data), automotive companies from the SSE, and local service companies. OpenMind AI offers implementations and training for companies in Mielec, taking into account industry requirements.",
+      czasDojazdu: "Mielec is served from Rzeszów – travel time approximately 1 hour. On-site meetings and implementations are available with 1-2 weeks' notice.",
+      przykladZastosowania: "Example implementation scenario: for an aerospace subcontractor in Mielec, AI can be implemented to automate quality documentation (8D, PPAP, FMEA) and inspection reports, typically shortening the preparation time for AS9100 client documentation by 40-60%.",
+      faq: [
+        { question: "How does AI support aerospace companies in Mielec?", answer: "Aerospace companies implement AI in areas such as: automation of quality documentation (crucial for AS9100 certification), analysis of data from SPC and MES systems, automation of PPAP and FMEA reports, generation of offers for international clients, and handling B2B correspondence. Enterprise tools with full data control are key due to client requirements (Sikorsky, Boeing, Airbus)." },
+        { question: "Do companies in the Mielec SSE have special AI needs?", answer: "Yes – companies in the SSE often have obligations towards international clients (quality, data security, compliance with industry standards). For them, we recommend enterprise tools, prior agreement on policies with clients, and phased implementations where each stage is audited. Typical projects: PLN 60-250k for a pilot in one area." },
+        { question: "How long does AI implementation take in a manufacturing company in Mielec?", answer: "A simple pilot in one area (e.g., automation of quality reports) takes 6-10 weeks from initial discussion to launch. A full implementation covering several departments with integration with ERP/MES systems is a 4-8 month project. We always recommend a phased approach, starting with one clear business objective." }
+      ],
     },
+  },
   {
       slug: "tarnobrzeg",
       nazwa: "Tarnobrzeg",
@@ -225,7 +273,19 @@ export const podkarpackieCities: MiastoData[] = [
             "Tak — małe firmy usługowe często są największymi beneficjentami AI, bo nie mają budżetu na zatrudnianie specjalistów od marketingu, księgowości czy tłumaczeń. Za 300-500 zł miesięcznie uzyskują dostęp do narzędzi, które wykonują pracę kilku osób. Jednodniowe szkolenie wstępne (1.5-3 tys. zł) wystarczy na start.",
         },
       ],
+        en: {
+      opisGospodarki: "Tarnobrzeg is a historic district town, a former center of sulfur mining, now with an economy based on manufacturing, trade, and services. The city is part of the Tarnobrzeg Special Economic Zone EURO-PARK WISŁOSAN, attracting investments in the manufacturing and logistics sectors.",
+      branzeKluczowe: ["industrial production (TSSE Wisłosan)", "logistics", "processing", "trade and services"],
+      wyzwaniaAI: "In Tarnobrzeg, typical areas for AI application include companies from the TSSE (documentation automation, B2B customer service), logistics companies, and local SMEs. OpenMind AI offers implementations and training for companies in Tarnobrzeg and the surrounding area.",
+      czasDojazdu: "Tarnobrzeg is served from Rzeszów – travel time approximately 1 hour. On-site training and implementations are available with 1-2 weeks' notice.",
+      przykladZastosowania: "Example implementation scenario: for a manufacturing company in the Tarnobrzeg Special Economic Zone, it is possible to implement automation for generating technical documentation and commercial offers in several languages, which supports international customer service.",
+      faq: [
+        { question: "How does AI support companies from TSSE Wisłosan?", answer: "Companies from the TSSE most often implement AI for: automating the preparation of offers and documentation for international clients, generating product cards in several languages, handling B2B inquiries, analyzing production reports, and supporting HR departments in recruitment. Typical projects: PLN 15-60k for a pilot, PLN 80-300k for full implementation." },
+        { question: "What AI training do you recommend for medium-sized companies in Tarnobrzeg?", answer: "For medium-sized companies (50-200 people), we recommend a phased approach: 1) training for management (to understand AI's potential), 2) training for administrative teams (practical use of ChatGPT, Copilot), 3) workshops for area leaders (identifying specific implementations). Cycle: 2-3 training sessions within a month, cost: PLN 10-20k." },
+        { question: "Do small service companies in Tarnobrzeg need AI?", answer: "Yes – small service companies are often the biggest beneficiaries of AI because they don't have the budget to hire specialists for marketing, accounting, or translation. For PLN 300-500 per month, they gain access to tools that perform the work of several people. A one-day introductory training (PLN 1.5-3k) is enough to get started." }
+      ],
     },
+  },
   {
       slug: "krosno",
       nazwa: "Krosno",
@@ -270,7 +330,19 @@ export const podkarpackieCities: MiastoData[] = [
             "Jednodniowe szkolenie dla grupy 6-10 osób w Krośnie: 4-6 tys. zł. Obejmuje 6 godzin warsztatów, materiały, praktyczne ćwiczenia. Dojazd z Rzeszowa wliczony w cenę. Dla mniejszych grup rekomendujemy format online (tańszy, 2-3 tys. zł) lub dołączenie do szkoleń otwartych w Rzeszowie.",
         },
       ],
+        en: {
+      opisGospodarki: "Krosno is an industrial city in the southern part of Podkarpacie, known for its tradition of glass production (Krosno Glass) and a developed aerospace and machinery sector. Picturesquely located at the foot of the Low Beskids, it also develops regional and cultural tourism. The State Higher Vocational School operates here.",
+      branzeKluczowe: ["glass production (Krosno Glass)", "aerospace industry (surrounding area)", "machinery industry", "regional tourism"],
+      wyzwaniaAI: "In Krosno, typical areas for AI application include companies producing glass products (product descriptions, marketing, export), machinery companies (documentation, offers), and tourist facilities in the Low Beskids region. OpenMind AI offers implementations and training for companies in Krosno.",
+      czasDojazdu: "Krosno is served from Rzeszów – travel time approximately 1 hour. On-site meetings and implementations are available with 1-2 weeks' notice.",
+      przykladZastosowania: "Example implementation scenario: for a Krosno-based glass product manufacturer exporting abroad, it is possible to implement automation for creating product catalogs in several languages and handling B2B customer inquiries, which streamlines the export department's work without needing to increase the team.",
+      faq: [
+        { question: "How does AI support glass product manufacturers in Krosno?", answer: "Glass manufacturers primarily benefit from: automatic generation of product descriptions for online stores and export catalogs, creation of arrangement photos (Midjourney, Flux) for marketing, handling wholesale customer inquiries in various languages, and analysis of reviews from marketplaces (Amazon, Etsy, Wayfair). Typical costs: PLN 400-800/month + initial implementation PLN 5-15k." },
+        { question: "Can tourist facilities in the Low Beskids region use AI?", answer: "Yes – tourist facilities (guesthouses, agritourism farms, regional museums) benefit from AI in areas such as: multilingual guest inquiry handling, generating attraction descriptions in various languages, automatic translations, and creating marketing content for social media. Cost: PLN 200-400/month for a small facility." },
+        { question: "How much does basic AI training cost in Krosno?", answer: "A one-day training for a group of 6-10 people in Krosno: PLN 4-6k. It includes 6 hours of workshops, materials, and practical exercises. Travel from Rzeszów is included in the price. For smaller groups, we recommend an online format (cheaper, PLN 2-3k) or joining open training sessions in Rzeszów." }
+      ],
     },
+  },
   {
       slug: "debica",
       nazwa: "Dębica",
@@ -315,7 +387,19 @@ export const podkarpackieCities: MiastoData[] = [
             "AI może automatycznie generować raporty PPAP, karty FMEA, raporty SPC na podstawie danych z systemów produkcyjnych, tworzyć dokumentację kontrolną na podstawie zdefiniowanych szablonów oraz pomagać w odpowiadaniu na audyty klientów. Typowa oszczędność: 30-50% czasu inżynierów jakości. Wdrożenie: 30-100 tys. zł.",
         },
       ],
+        en: {
+      opisGospodarki: "Dębica is an industrial city, known for tire production (Firma Oponiarska Dębica, part of the Goodyear group), one of the largest tire factories in Poland. The city's economy is also based on manufacturing, logistics, and trade. Its location near the A4 motorway encourages investment.",
+      branzeKluczowe: ["tire manufacturing (Goodyear Dębica)", "manufacturing industry", "logistics (A4 motorway)", "trade and services"],
+      wyzwaniaAI: "In Dębica, typical areas for AI application include subcontractors for the tire and automotive sectors (technical documentation, quality reports), logistics companies operating along the A4 route, and local SMEs. OpenMind AI offers implementations and training for companies in Dębica.",
+      czasDojazdu: "Dębica is served from Rzeszów or Kraków — travel time is approximately 50 minutes to 1 hour via the A4 motorway. On-site training is available with 1-2 weeks' notice.",
+      przykladZastosowania: "Example implementation scenario: For a Dębica-based subcontractor in the tire sector, it's possible to implement automation for generating quality reports and control documentation compliant with IATF 16949 requirements, reducing documentation preparation time by 35-50%.",
+      faq: [
+        { question: "What are the applications of AI in the automotive sector?", answer: "In the automotive sector, AI is most commonly implemented for: automating quality documentation (IATF 16949), analyzing production data from machines, supporting R&D departments, handling complaints and 8D reports, and generating documentation for clients (OEMs). Key considerations are data security requirements and rigorous quality standards — we use enterprise-grade tools." },
+        { question: "Can logistics companies in Dębica start using AI?", answer: "Absolutely — the A4 motorway is one of the busiest in Poland, and logistics companies benefit from AI in document automation (CMR, invoices), multilingual support (Polish, German, Ukrainian, English), and route optimization. A pilot project costs 15-35 thousand PLN, with full implementation ranging from 60-200 thousand PLN. ROI is typically achieved within 6-9 months." },
+        { question: "How does AI support technical documentation in automotive companies?", answer: "AI can automatically generate PPAP reports, FMEA sheets, and SPC reports based on data from production systems, create control documentation from defined templates, and assist in responding to customer audits. Typical savings: 30-50% of quality engineers' time. Implementation cost: 30-100 thousand PLN." }
+      ],
     },
+  },
   {
       slug: "jaroslaw",
       nazwa: "Jarosław",
@@ -360,7 +444,19 @@ export const podkarpackieCities: MiastoData[] = [
             "Podstawowy stack: ChatGPT Plus lub Claude Pro (100 zł/mc), Canva AI (55 zł/mc), DeepL Free lub Pro. Łącznie 150-300 zł/mc dla małej firmy. Plus jednodniowe szkolenie wstępne (2-4 tys. zł), dzięki któremu właściciel i kluczowi pracownicy potrafią efektywnie korzystać z narzędzi od pierwszego dnia.",
         },
       ],
+        en: {
+      opisGospodarki: "Jarosław is a historic district town in southeastern Poland, with a rich Old Town (Jarosław Market Square) and a developed furniture, food processing, and machinery manufacturing sector. Its proximity to Ukraine and Slovakia influences the development of cross-border trade.",
+      branzeKluczowe: ["furniture manufacturing", "food processing", "cross-border trade", "historical tourism"],
+      wyzwaniaAI: "In Jarosław, typical areas for AI application include furniture manufacturers (description automation, export, customer service), food companies, Old Town tourist attractions, and cross-border trade. OpenMind AI offers implementations and training for companies in Jarosław.",
+      czasDojazdu: "Jarosław is served from Rzeszów — travel time is approximately 45 minutes. On-site training is available on short notice.",
+      przykladZastosowania: "Example implementation scenario: For a Jarosław-based furniture manufacturer exporting to Germany and the Czech Republic, it's possible to implement automation for creating product catalogs in multiple languages and handling customer inquiries from marketplaces, significantly boosting international sales.",
+      faq: [
+        { question: "How does AI help furniture manufacturers exporting from Jarosław?", answer: "Furniture manufacturers primarily benefit from: automatic generation of product descriptions in export languages (German, Czech, English, French), creation of professional catalog graphics using AI, handling B2B customer inquiries on marketplaces like Amazon, Otto, Wayfair, and analysis of reviews and purchasing trends. Typical costs: 400-900 PLN/month + implementation 5-15 thousand PLN." },
+        { question: "Can tourist attractions in Jarosław's Old Town use AI?", answer: "Yes — establishments in the historic Jarosław Market Square (hotels, restaurants, museums) can use AI for: serving tourists in multiple languages, generating descriptions of historical attractions, creating marketing content for social media, and handling online reservations. Cost: 200-400 PLN/month, initial training: 1.5-3 thousand PLN." },
+        { question: "How much does a basic AI stack cost for a small company in Jarosław?", answer: "A basic stack includes: ChatGPT Plus or Claude Pro (100 PLN/month), Canva AI (55 PLN/month), DeepL Free or Pro. Totaling 150-300 PLN/month for a small company. Plus a one-day introductory training (2-4 thousand PLN), enabling the owner and key employees to effectively use the tools from day one." }
+      ],
     },
+  },
   {
       slug: "sanok",
       nazwa: "Sanok",
@@ -405,7 +501,19 @@ export const podkarpackieCities: MiastoData[] = [
             "Dosłownie od razu — wystarczy założyć konto w ChatGPT (darmowe lub płatne) i zacząć używać. Bardziej efektywnie jednak po jednodniowym szkoleniu wstępnym, podczas którego uczymy: jak pisać skuteczne polecenia (prompty), jakie zadania oddelegować AI, jak weryfikować wyniki. Szkolenie online lub stacjonarne: 1.5-4 tys. zł.",
         },
       ],
+        en: {
+      opisGospodarki: "Sanok is a city in the Bieszczady Mountains, a historic center for the bus industry (Autosan) and vehicle manufacturing. Currently, the city's economy combines industrial traditions with developing mountain tourism (the gateway to the Bieszczady) and the timber and manufacturing sectors.",
+      branzeKluczowe: ["vehicle manufacturing (Autosan)", "mountain tourism (Bieszczady)", "timber industry", "local trade"],
+      wyzwaniaAI: "In Sanok, typical areas for AI application include manufacturing companies in the transport sector (technical documentation, offers), tourist facilities in the Bieszczady Mountains (multilingual guest service), and local timber and service companies. OpenMind AI offers implementations and training for companies in Sanok.",
+      czasDojazdu: "Sanok is served from Rzeszów — travel time is approximately 1.5 hours. On-site meetings require advance notice; most implementations are online.",
+      przykladZastosowania: "Example implementation scenario: For a guesthouse or agritourism farm in the Bieszczady Mountains, it's possible to implement a multilingual chatbot to handle guest inquiries (Polish, English, German, Slovak, Hungarian), significantly easing the burden on owners during the tourist season.",
+      faq: [
+        { question: "How does AI help guesthouses in the Bieszczady Mountains?", answer: "Bieszczady guesthouses serve guests from Poland, Slovakia, Hungary, Ukraine, Germany — AI radically simplifies multilingual communication. A single chatbot handles inquiries in several languages, automatically generates answers to frequently asked questions (location, availability, prices, attractions), and supports social media marketing. Typical cost: 250-500 PLN/month." },
+        { question: "Do agritourism farms need special AI tools?", answer: "No — for small farms, a simple stack is sufficient: ChatGPT Plus for communication and translations, Canva AI for graphics, and free tools (Google Translate, Grammarly) to support daily work. The key is good initial training (1-2 thousand PLN) so that the owner knows how to effectively use the tools in daily operations." },
+        { question: "How quickly can a small company start using AI?", answer: "Literally immediately — just create an account in ChatGPT (free or paid) and start using it. However, it's more effective after a one-day introductory training, during which we teach: how to write effective prompts, what tasks to delegate to AI, and how to verify results. Online or on-site training: 1.5-4 thousand PLN." }
+      ],
     },
+  },
   {
       slug: "jaslo",
       nazwa: "Jasło",
@@ -450,7 +558,19 @@ export const podkarpackieCities: MiastoData[] = [
             "Tak — intensywny jednodniowy warsztat (6-8 godzin) wystarczy, żeby nauczyć się podstaw korzystania z ChatGPT, Canva AI i prostych automatyzacji. Dla pojedynczej osoby lub właściciela małej firmy to często wystarczający punkt startowy. Dla pełnej biegłości i bardziej zaawansowanych automatyzacji potrzeba dodatkowego wsparcia po szkoleniu (np. miesięczny mentoring).",
         },
       ],
+        en: {
+      opisGospodarki: "Jasło is a district town in the southern part of Podkarpacie, a historical center of the oil industry (with traditions dating back to Ignacy Łukasiewicz). Currently, its economy is based on manufacturing, trade, and services. Regional tourism, linked to the Low Beskids, is also developing in the area.",
+      branzeKluczowe: ["oil industry (traditions)", "manufacturing and processing", "regional trade", "Low Beskids tourism"],
+      wyzwaniaAI: "In Jasło, typical areas for AI application include small and medium-sized manufacturing companies (office automation), local retail businesses, tourist facilities in the Low Beskids region, and agritourism farms. OpenMind AI offers implementations and training for companies in Jasło.",
+      czasDojazdu: "Jasło is served from Rzeszów or Krakow – travel time approximately 1.5 hours. On-site training and hybrid implementations are available.",
+      przykladZastosowania: "Example implementation scenario: For a small retail company in Jasło, it's possible to implement simple AI tools for generating product descriptions, handling customer inquiries, and creating marketing content, typically saving the business owner 10-15 hours of work per week.",
+      faq: [
+        { question: "Can small businesses in Jasło afford AI implementation?", answer: "Absolutely – costs start from very low amounts. A minimal stack (ChatGPT + Canva + basic tools) is 150-300 PLN per month, plus a one-time initial training of 1-3 thousand PLN. For a small business, this means the investment pays for itself in the first month through saved working hours." },
+        { question: "What are the most useful AI applications for an SME owner?", answer: "The five most useful applications are: 1) writing offers and responding to customer inquiries, 2) creating posts for Facebook and Instagram, 3) writing product descriptions for an online store, 4) translating correspondence into foreign languages, 5) generating advertising graphics. These five areas cover 80% of a small company's marketing and communication needs." },
+        { question: "Can I learn AI in one day?", answer: "Yes – an intensive one-day workshop (6-8 hours) is enough to learn the basics of using ChatGPT, Canva AI, and simple automations. For an individual or a small business owner, this is often a sufficient starting point. For full proficiency and more advanced automations, additional post-training support (e.g., monthly mentoring) is needed." }
+      ],
     },
+  },
   {
     slug: "lancut",
     nazwa: "Łańcut",
@@ -495,6 +615,18 @@ export const podkarpackieCities: MiastoData[] = [
           "Łańcut jest blisko Rzeszowa (20-30 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla małych grup realizujemy w 1-2 tygodnie. Proste wdrożenia w ciągu kilku dni lub tygodni.",
       },
     ],
+      en: {
+      opisGospodarki: "Łańcut is a district town known for the Łańcut Castle Museum, one of Poland's most valuable aristocratic residences. The town's economy is based on historical tourism, food production (famous Łańcut vodkas), trade, and local services.",
+      branzeKluczowe: ["historical tourism (Łańcut Castle)", "food production", "trade and services", "hospitality and catering"],
+      wyzwaniaAI: "In Łańcut, typical areas for AI application include tourist facilities serving castle visitors (multilingual service), food companies (product descriptions, export), hotels and restaurants, and local SMEs. OpenMind AI offers implementations and training for companies in Łańcut.",
+      czasDojazdu: "Łańcut is served from Rzeszów – travel time approximately 20-30 minutes. On-site training and implementations are available on short notice.",
+      przykladZastosowania: "Example implementation scenario: For a hotel or guesthouse in Łańcut serving tourists visiting the castle, it's possible to implement a multilingual informational chatbot (Polish, English, German, French, Italian) handling inquiries about the castle and accommodation.",
+      faq: [
+        { question: "How does AI support tourism around Łańcut Castle?", answer: "Tourist facilities in Łańcut serve guests from dozens of countries – AI radically simplifies multilingual service. One chatbot handles inquiries in several languages, generates descriptions of the castle and its history, creates marketing content, and manages TripAdvisor reviews. Typical cost: 250-500 PLN/month." },
+        { question: "Can food companies from Łańcut benefit from AI?", answer: "Yes – food companies (famous Łańcut vodkas and others) benefit from: automatic generation of product descriptions in export languages, creating labels for different markets, handling B2B customer inquiries, and analyzing consumer feedback. Typical cost: 400-800 PLN/month + implementation 5-15 thousand PLN." },
+        { question: "How quickly can AI be implemented in a company in Łańcut?", answer: "Łańcut is close to Rzeszów (20-30 minutes), so the first consultation meeting can be arranged within a few days. We conduct training for small groups within 1-2 weeks. Simple implementations can be done within a few days or weeks." }
+      ],
+    },
   },
   {
     slug: "ropczyce",
@@ -540,5 +672,17 @@ export const podkarpackieCities: MiastoData[] = [
           "Dla firm przemysłowych rekomendujemy etapowe podejście: 1) szkolenie dla kadry kierowniczej, 2) szkolenie dla zespołów administracyjnych, 3) warsztaty dla liderów obszarów. Cykl 2-3 szkoleń w ciągu miesiąca, koszt 10-20 tys. zł.",
       },
     ],
+      en: {
+      opisGospodarki: "Ropczyce is a district town in the central part of Podkarpacie, known for Zakłady Magnezytowe Ropczyce (one of the largest producers of refractory materials in Central Europe). The town's economy is based on the refractory materials industry, subcontracting companies, and local trade and services.",
+      branzeKluczowe: ["refractory materials industry (ZM Ropczyce)", "subcontracting companies for industry", "manufacturing and processing", "local trade"],
+      wyzwaniaAI: "In Ropczyce, typical areas for AI application include subcontracting companies in the refractory materials sector (technical documentation, offers), manufacturing companies, and local SMEs. OpenMind AI offers implementations and training for companies in Ropczyce.",
+      czasDojazdu: "Ropczyce is served from Rzeszów – travel time approximately 30-40 minutes. On-site meetings and implementations are available on short notice.",
+      przykladZastosowania: "Example implementation scenario: For a subcontracting company in the refractory materials sector from Ropczyce, it's possible to implement AI to automate the preparation of technical specifications and offers for international clients, which shortens response times to inquiries.",
+      faq: [
+        { question: "How does AI support companies in the refractory materials sector?", answer: "Refractory materials companies primarily implement AI for: automating technical documentation and material specifications, analyzing quality reports, handling B2B customer inquiries in several languages, and generating tender offers. Enterprise tools are crucial due to the confidentiality of formulations." },
+        { question: "How much does AI implementation cost for a medium-sized company in Ropczyce?", answer: "For a medium-sized company (50-200 people): audit 5-15 thousand PLN, pilot project 15-50 thousand PLN, full implementation 60-250 thousand PLN. Plus monthly licenses 1000-4000 PLN/month. First ROI typically within 6-12 months." },
+        { question: "What AI training do you recommend for industrial companies?", answer: "For industrial companies, we recommend a phased approach: 1) training for management staff, 2) training for administrative teams, 3) workshops for area leaders. A cycle of 2-3 training sessions within a month, cost 10-20 thousand PLN." }
+      ],
+    },
   },
 ];

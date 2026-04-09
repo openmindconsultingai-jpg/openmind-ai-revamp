@@ -45,6 +45,18 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "Tak, regularnie szkolimy firmy zlokalizowane w BPPT. Oferujemy szkolenia dedykowane dla pojedynczych firm oraz udział w szkoleniach otwartych dla mniejszych zespołów. Możliwa jest też formuła online dla osób, które nie mogą dojechać.",
       },
     ],
+      en: {
+      opisGospodarki: "Bydgoszcz is the largest city in the Kuyavian-Pomeranian Voivodeship and an important industrial and logistics hub. It boasts a strong chemical, electromechanical, and food processing industry, as well as a growing IT and BPO/SSC sector. The Bydgoszcz Industrial and Technological Park attracts investors in new technologies.",
+      branzeKluczowe: ["chemical and pharmaceutical industry", "IT and BPO/SSC", "electromechanical", "logistics and transport"],
+      wyzwaniaAI: "In Bydgoszcz, AI finds applications in BPO companies (back-office process automation), in HR departments of medium-sized enterprises (CV analysis, recruitment automation), and in manufacturing (analysis of data from production lines). OpenMind AI offers implementations in these areas and supports local marketing agencies in content generation.",
+      czasDojazdu: "We serve Bydgoszcz in a hybrid mode – on-site meetings are scheduled 1-2 weeks in advance. Most implementation work is carried out remotely.",
+      przykladZastosowania: "An example implementation scenario: for a Bydgoszcz marketing agency, it is possible to build an automated workflow for generating advertising campaigns in several languages, which typically shortens campaign preparation time from several days to several hours.",
+      faq: [
+        { question: "Which companies in Bydgoszcz most frequently implement AI?", answer: "In Bydgoszcz, leaders in AI implementations are BPO/SSC companies, marketing agencies, and medium-sized manufacturing enterprises. We also see growing interest in the professional services sector: law firms, accounting offices, and consulting firms. The most common areas of implementation include document automation, customer service, and content generation." },
+        { question: "How much does it cost to implement an AI chatbot for a company in Bydgoszcz?", answer: "Chatbots are divided into three price categories. A simple chatbot based on ready-made platforms: PLN 5,000-15,000. A chatbot integrated with a company's knowledge base (RAG): PLN 25,000-70,000. An advanced system with CRM, Teams, Slack integration, and full access control: PLN 80,000-250,000. Each implementation is preceded by a needs audit." },
+        { question: "Do you conduct AI training for companies in the Bydgoszcz Technology Park?", answer: "Yes, we regularly train companies located in BPPT. We offer dedicated training for individual companies and participation in open training for smaller teams. Online format is also available for those who cannot travel." }
+      ],
+    },
   },
   {
     slug: "torun",
@@ -90,6 +102,18 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "Tak — większość naszych szkoleń nie wymaga wiedzy technicznej. Pracujemy z nauczycielami, urzędnikami, sprzedawcami, właścicielami małych firm. Zaczynamy od podstaw: co to jest ChatGPT, jak pisać skuteczne polecenia (prompty), jakie zadania można oddelegować AI. Pełny kurs dla początkujących to 6-8 godzin warsztatów.",
       },
     ],
+      en: {
+      opisGospodarki: "Toruń is one of Poland's most beautiful cities (UNESCO), an academic center (UMK), and a hub for the electronics, food processing, and tourism industries. The presence of Nicolaus Copernicus University ensures a supply of young IT specialists, and the city is developing its digital services and e-commerce sectors.",
+      branzeKluczowe: ["electronics industry", "tourism (UNESCO, Old Town)", "education and science (UMK)", "food processing (gingerbread, confectioneries)"],
+      wyzwaniaAI: "In Toruń, typical areas for AI application include education (tools for schools and universities), tourist service in hotels and guesthouses (multilingual chatbots), marketing content for the confectionery sector, and automation in e-commerce. OpenMind AI offers implementations and training for Toruń schools, tourist facilities, law firms, and accounting offices.",
+      czasDojazdu: "We serve Toruń in a hybrid mode. On-site meetings are scheduled 1-2 weeks in advance, and implementations are often carried out entirely online.",
+      przykladZastosowania: "An example implementation scenario: for a Toruń hotel in the Old Town, it is possible to implement a multilingual booking chatbot that handles most repetitive inquiries without reception involvement and increases inquiry conversion by approximately 30-40%.",
+      faq: [
+        { question: "How can AI support hotels and tourist facilities in Toruń?", answer: "Hotels in Toruń primarily benefit from three AI applications: multilingual booking chatbots (serving tourists from Germany, the Netherlands, the UK), automatic generation of special offer descriptions and social media posts, and analysis of guest reviews from booking.com and Google. The typical implementation cost is PLN 8,000-20,000 for a full stack." },
+        { question: "Do you conduct AI training for schools and teachers in Toruń?", answer: "Yes, we have a dedicated 'AI for Schools' program aimed at teachers and administration of educational institutions. The training covers ethical use of ChatGPT in teaching, creating didactic materials, detecting AI-generated work, and practical tools for teachers of various subjects." },
+        { question: "Can one learn AI in Toruń without a technical background?", answer: "Yes – most of our training does not require technical knowledge. We work with teachers, civil servants, salespeople, and small business owners. We start with the basics: what ChatGPT is, how to write effective prompts, and what tasks can be delegated to AI. A full beginner's course consists of 6-8 hours of workshops." }
+      ],
+    },
   },
   {
     slug: "wloclawek",
@@ -135,6 +159,18 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "W województwie kujawsko-pomorskim dostępne są programy cyfrowej transformacji MŚP w ramach FENG i programów regionalnych. Nie prowadzimy aplikowania o dotacje, ale pomagamy klientom przygotować specyfikację techniczną i uzasadnienie biznesowe projektu, które są wykorzystywane we wnioskach.",
       },
     ],
+      en: {
+      opisGospodarki: "Włocławek is one of the larger cities in the region, with traditions in the chemical (Anwil), ceramic, and food processing industries. Located on the Vistula River, it serves as an important logistics hub for central Poland. The local economy is gradually diversifying towards services and trade.",
+      branzeKluczowe: ["chemical industry (Anwil)", "ceramics and glass", "food processing industry", "logistics and transport"],
+      wyzwaniaAI: "In Włocławek, typical AI applications in industrial companies include automation of technical documentation and analysis of production data. In the service sector, AI supports local retail companies, accounting offices, and law firms in increasing office work efficiency. OpenMind AI offers these implementations for companies in Włocławek.",
+      czasDojazdu: "We serve Włocławek in a hybrid mode. On-site meetings are scheduled 2 weeks in advance, and most work is carried out remotely.",
+      przykladZastosowania: "An example implementation scenario: for a Włocławek accounting office serving dozens of clients, it is possible to implement AI tools for preliminary classification and description of accounting documents, which typically shortens their preparation time by 30-45%.",
+      faq: [
+        { question: "Do small businesses in Włocławek need AI?", answer: "Small businesses often benefit most from simple implementations: ChatGPT for customer communication and offers, Canva AI for graphics and posts, Copilot in Excel for data analysis. Costs are PLN 200-500 per month, and time savings are usually 5-15 hours per week for the owner. No technical knowledge is required." },
+        { question: "How to start with AI without hiring an IT specialist?", answer: "We recommend a two-step approach. Step 1: a one-day training for the owner and 2-3 key employees (PLN 4,000-6,000), during which we teach how to use ready-made tools. Step 2: monthly support (PLN 600-1,200/month), during which we answer questions, configure specific automations, and adapt tools to the company's processes." },
+        { question: "Can AI implementations in Włocławek be combined with subsidies?", answer: "In the Kuyavian-Pomeranian Voivodeship, digital transformation programs for SMEs are available under FENG and regional programs. We do not handle grant applications, but we help clients prepare technical specifications and business justifications for projects, which are used in applications." }
+      ],
+    },
   },
   {
     slug: "grudziadz",
@@ -180,6 +216,18 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "Trzy najczęstsze błędy: 1) próba wdrożenia AI 'wszędzie naraz' bez zdefiniowanego celu biznesowego, 2) brak szkolenia zespołu — narzędzia AI bez umiejętności użytkowników nie dają efektów, 3) zakup drogich rozwiązań enterprise przed sprawdzeniem prostszych, tańszych narzędzi. Zawsze zaczynamy od pilota w jednym obszarze.",
       },
     ],
+      en: {
+      opisGospodarki: "Grudziądz is the third-largest city in the Kuyavian-Pomeranian Voivodeship, a historic garrison city with developed industrial production, food processing, and a service sector. Subzones of the Pomeranian Special Economic Zone operate in Grudziądz, attracting investors.",
+      branzeKluczowe: ["industrial production", "food processing", "logistics", "local services"],
+      wyzwaniaAI: "In Grudziądz, typical AI applications in small and medium-sized manufacturing companies and the service sector include the implementation of ChatGPT and Copilot in administrative departments, automation of customer inquiry handling, and creation of marketing content. OpenMind AI offers these implementations to Grudziądz companies and also runs an AI training program for schools.",
+      czasDojazdu: "We serve Grudziądz online and in a hybrid mode. On-site visits are planned 2 weeks in advance, grouping meetings in the area.",
+      przykladZastosowania: "Example implementation scenario: for a manufacturing company in Grudziądz, it is possible to automate the generation of commercial offers in several languages based on a product sheet in Excel, which reduces the time to prepare an offer from several hours to several minutes.",
+      faq: [
+        { question: "What AI tools do you recommend for SMEs in Grudziądz?", answer: "For SMEs in Grudziądz, we recommend: ChatGPT Plus (100 PLN/month) or Claude Pro for communication and documents, Microsoft Copilot (130 PLN/month/user) for teams working in Office 365, Canva AI for graphics (55 PLN/month), and n8n or Make automations for repetitive processes. This is a solid start for 300-600 PLN per month." },
+        { question: "Do you conduct AI training in schools in Grudziądz?", answer: "Yes, we have a dedicated offer for primary and secondary schools. Training for teaching staff covers the ethical use of AI in a teacher's work, creating educational materials, recognizing AI-generated work, and conducting lessons using AI tools. Implementation is possible on non-school days." },
+        { question: "What are the most common mistakes when implementing AI in a company?", answer: "Three most common mistakes: 1) trying to implement AI 'everywhere at once' without a defined business goal, 2) lack of team training — AI tools without user skills do not yield results, 3) purchasing expensive enterprise solutions before testing simpler, cheaper tools. We always start with a pilot in one area." }
+      ],
+    },
   },
   {
     slug: "inowroclaw",
@@ -225,6 +273,18 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "Prosty chatbot dla małego hotelu SPA to 4-10 tys. zł za wdrożenie plus 100-300 zł miesięcznie za utrzymanie. Zaawansowany chatbot z integracją z systemem rezerwacji, obsługą płatności i personalizacją dla stałych gości to 20-60 tys. zł. Zwykle pierwsza wersja zwraca się w 3-6 miesięcy.",
       },
     ],
+      en: {
+      opisGospodarki: "Inowrocław is one of the largest health resorts in Poland (Solanki Inowrocławskie) and a center for the chemical and food industries. The local economy combines health tourism, production (Ciech Soda Polska), healthcare services, and trade. The SPA & wellness sector is developing.",
+      branzeKluczowe: ["health resorts and wellness", "chemical industry (Ciech Soda)", "food industry", "health tourism"],
+      wyzwaniaAI: "In Inowrocław, the main recipients of AI solutions are health resorts, SPA hotels, and healthcare facilities. Typical implementations include chatbots for booking treatments, multi-language patient service systems, and automation of medical documentation compliant with GDPR. OpenMind AI offers these implementations to Inowrocław facilities and supports local retail companies.",
+      czasDojazdu: "We serve Inowrocław from Bydgoszcz/Toruń in a hybrid mode. On-site meetings are scheduled in advance.",
+      przykladZastosowania: "Example implementation scenario: for a SPA hotel in Inowrocław, it is possible to implement a booking chatbot for wellness treatments that handles inquiries in several languages, which typically increases the number of online bookings by 30-50% within a few months of implementation.",
+      faq: [
+        { question: "How can AI support a health resort in Inowrocław?", answer: "Health resorts primarily implement AI in three areas: automation of patient service (multi-language booking and information chatbots), generation of marketing content (treatment descriptions, social media posts, newsletters), and analysis of guest reviews from Google, Booking, and TripAdvisor for improvement recommendations." },
+        { question: "Are AI implementations in healthcare facilities compliant with GDPR?", answer: "Yes, but it requires particular care. For healthcare facilities, we recommend tools with data hosting options in the EU (Azure OpenAI with EU region, Claude via Bedrock in Frankfurt), concluding appropriate data processing agreements, and limiting data sent to AI to the minimum necessary. We always conduct a DPIA analysis before implementation." },
+        { question: "How much does it cost to implement a chatbot in a SPA hotel?", answer: "A basic chatbot for a small SPA hotel costs 4-10 thousand PLN for implementation plus 100-300 PLN per month for maintenance. An advanced chatbot with integration with a booking system, payment processing, and personalization for regular guests costs 20-60 thousand PLN. Typically, the first version pays for itself in 3-6 months." }
+      ],
+    },
   },
   {
     slug: "brodnica",
@@ -270,6 +330,18 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "Podstawowe wdrożenie (ChatGPT Plus lub DeepL Pro + szkolenie + glosariusz) to koszt 3-6 tys. zł na start plus 200-400 zł miesięcznie. Bardziej zaawansowane rozwiązanie z automatycznym workflow (nowe opisy produktów automatycznie tłumaczone i publikowane w sklepie) to 10-30 tys. zł, ale daje oszczędności rzędu kilkudziesięciu godzin miesięcznie.",
       },
     ],
+      en: {
+      opisGospodarki: "Brodnica is a picturesque town located in the Brodnica Lake District region, with a strong furniture manufacturing, wood processing, and tourism sector. Local furniture companies export their products mainly to Germany and Scandinavia, creating a need for multilingual customer service.",
+      branzeKluczowe: ["furniture manufacturing (export)", "wood processing", "tourism and agritourism", "agriculture and processing"],
+      wyzwaniaAI: "In Brodnica, typical AI applications for furniture manufacturers include automatic translation of offers, product description generators for Amazon and Otto, and chatbots serving German-speaking customers. OpenMind AI offers implementations for Brodnica furniture manufacturers and supports local agritourism farms in online marketing.",
+      czasDojazdu: "We serve Brodnica online and in a hybrid mode. On-site visits are planned 2-3 weeks in advance.",
+      przykladZastosowania: "Example implementation scenario: for a Brodnica furniture manufacturer exporting to Germany, it is possible to implement a system for automatic generation of product descriptions in German and a chatbot serving inquiries from German-speaking customers, which typically reduces the workload of the sales department by 30-40%.",
+      faq: [
+        { question: "How does AI help furniture exporters from Brodnica?", answer: "Furniture exporters from Brodnica primarily benefit from three applications: automatic translation of offers and catalogs into German/English/Swedish (saving on translation agencies), generating unique product descriptions for marketplaces (Amazon, Otto, Wayfair), and chatbots handling common B2B customer questions in their languages." },
+        { question: "Can AI handle specialized furniture vocabulary?", answer: "Yes, but it requires proper preparation. We create a glossary (a dictionary of industry terms in several languages) for the client and add it to the AI tool's context. This ensures that ChatGPT or Claude consistently use correct terminology – for upholstery as well as wood processing techniques. This is a one-time effort that benefits us for years." },
+        { question: "How much does translation automation cost for a small furniture company?", answer: "A basic implementation (ChatGPT Plus or DeepL Pro + training + glossary) costs 3-6 thousand PLN to start, plus 200-400 PLN per month. A more advanced solution with an automated workflow (new product descriptions automatically translated and published in the store) costs 10-30 thousand PLN, but yields savings of several dozen hours per month." }
+      ],
+    },
   },
   {
     slug: "swiecie",
@@ -315,6 +387,18 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "Cztery kluczowe zasady: 1) nie wrzucaj do publicznych AI danych poufnych klientów, dokumentów objętych NDA ani danych osobowych, 2) zawsze weryfikuj wyniki AI — mogą zawierać błędy (tzw. halucynacje), 3) używaj narzędzi z opcją 'nie uczyć się z moich danych' (w ChatGPT Plus/Teams to domyślne), 4) ustal z zespołem politykę firmową dotyczącą AI.",
       },
     ],
+      en: {
+      opisGospodarki: "Świecie is a city on the Vistula River, known for its large paper mill (Mondi Świecie) — one of the biggest employers in the region. The local economy is centered around the pulp and paper industry, industrial services, and small-scale trade and crafts.",
+      branzeKluczowe: ["paper industry (Mondi)", "subcontracting companies for industry", "logistics", "local trade"],
+      wyzwaniaAI: "In Świecie, the main beneficiaries of AI solutions are Mondi's subcontractors, as well as local accounting firms and trading companies. Typical implementations include AI tools for automating office work, generating offers, and customer service. OpenMind AI offers these implementations and training for administrative staff in Świecie's companies.",
+      czasDojazdu: "We serve Świecie online. On-site visits from our Bydgoszcz/Toruń base are scheduled in advance.",
+      przykladZastosowania: "Example implementation scenario: for a local service provider to the paper industry in Świecie, it is possible to automate the generation of technical documentation and offers based on customer inquiries, saving several dozen hours of work per week.",
+      faq: [
+        { question: "How can small businesses in Świecie benefit from AI?", answer: "Small businesses in Świecie primarily benefit from simple implementations: ChatGPT for writing offers and customer communication, Copilot for working in Excel and Word, Canva AI for graphics and local advertising. These cost around 200-500 PLN per month and typically save 8-15 hours per week for office workers." },
+        { question: "Is it worth learning AI if I work in industry?", answer: "Absolutely – AI is transforming work in every sector, including industry. For administrative staff in factories, AI automates reports, documentation, and communication with suppliers. For engineers, it assists with data analysis, creating technical drawings, and documentation. A basic 1-day training provides skills for immediate application." },
+        { question: "What are the most important rules for safe AI use in a company?", answer: "Four key rules: 1) do not upload confidential customer data, NDA-protected documents, or personal data to public AI tools, 2) always verify AI results – they may contain errors (so-called hallucinations), 3) use tools with a 'do not learn from my data' option (this is default in ChatGPT Plus/Teams), 4) establish a company AI policy with your team." }
+      ],
+    },
   },
   {
     slug: "chelmno",
@@ -360,6 +444,18 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "Tak — intensywny jednodniowy warsztat (6-8 godzin) wystarczy, żeby nauczyć się podstaw korzystania z ChatGPT, Canva AI i prostych automatyzacji. Dla pojedynczej osoby lub właściciela małej firmy to często wystarczający punkt startowy. Dla pełnej biegłości i zaawansowanych automatyzacji potrzeba dodatkowego wsparcia po szkoleniu.",
       },
     ],
+      en: {
+      opisGospodarki: "Chełmno is the 'City of Lovers' with a beautifully preserved medieval Old Town, an important center for historical and cultural tourism. The local economy is based on tourism, trade, small industry, and agriculture. The city promotes itself as a destination for couples and weekend tourism.",
+      branzeKluczowe: ["historical tourism", "local trade and services", "crafts", "agriculture and processing"],
+      wyzwaniaAI: "In Chełmno, typical AI applications for guesthouses, restaurants, and tourism companies include online marketing, multilingual content generation, and guest service. For local entrepreneurs, simple AI tools supporting office work and small business operations are valuable. OpenMind AI offers implementations and training tailored to the needs of Chełmno's businesses.",
+      czasDojazdu: "We serve Chełmno online and in a hybrid mode. On-site visits from our Toruń/Bydgoszcz base.",
+      przykladZastosowania: "Example implementation scenario: for a small guesthouse in Chełmno, it is possible to implement a package of AI tools for generating Facebook posts, writing descriptions for Booking.com, and responding to guest inquiries – eliminating the need to hire additional marketing staff.",
+      faq: [
+        { question: "Does the owner of a small guesthouse in Chełmno need AI?", answer: "Yes – AI is precisely for small businesses that cannot afford a full-time marketer. For 100-300 PLN per month, you can have tools that help with writing posts, responding to inquiries in several languages, and creating promotional graphics. A basic 1-day training is enough for the owner to use them independently." },
+        { question: "What are the simplest AI tools you recommend for a restaurant in Chełmno?", answer: "For a small restaurant, we recommend a minimal stack: ChatGPT Plus (100 PLN/month) for writing posts, menus in foreign languages, and responding to Google reviews; Canva AI (55 PLN/month) for promotional graphics and print materials; DeepL for professional translations. Totaling approximately 200 PLN per month." },
+        { question: "Can I learn to use AI in one day?", answer: "Yes – an intensive one-day workshop (6-8 hours) is sufficient to learn the basics of using ChatGPT, Canva AI, and simple automations. For an individual or a small business owner, this is often a sufficient starting point. For full proficiency and advanced automations, additional support after training is needed." }
+      ],
+    },
   },
   {
     slug: "naklo-nad-notecia",
@@ -405,6 +501,18 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "Tak, prowadzimy dedykowane warsztaty dla sektora rolniczego i agroturystyki. Skupiają się na praktycznych zastosowaniach: marketing, obsługa klienta, dokumentacja. Szkolenia realizujemy zarówno dla pojedynczych gospodarstw, jak i grup (np. organizacje rolnicze, lokalne grupy działania, LGD). Możliwa realizacja z dofinansowaniem KSOW.",
       },
     ],
+      en: {
+      opisGospodarki: "Nakło nad Notecią is a district town with agricultural traditions, food processing, and a service sector for the local community. Located on the Noteć River, it is also developing as a center for water tourism and agritourism, attracting investments in small accommodation facilities and gastronomy.",
+      branzeKluczowe: ["agriculture and processing", "water tourism and agritourism", "local trade", "services for agriculture"],
+      wyzwaniaAI: "In Nakło nad Notecią, typical AI applications include agritourism farms, local trade, and service companies – in the areas of online marketing, content generation, booking management, and customer communication. OpenMind AI offers implementations and training for small entrepreneurs from Nakło and its surroundings.",
+      czasDojazdu: "We serve Nakło nad Notecią online. On-site meetings from our Bydgoszcz base – travel time approx. 40 min.",
+      przykladZastosowania: "Example implementation scenario: for an agritourism farm near Nakło, it is possible to implement automation for responding to booking inquiries from Booking and Airbnb, and generating Instagram posts, allowing owners to focus on guest service instead of marketing.",
+      faq: [
+        { question: "How can AI help an agritourism farm?", answer: "Agritourism farms near Nakło primarily benefit from: automated responses to repetitive booking inquiries, generating attractive descriptions for Booking/Airbnb, creating regular social media posts, and translating communication with foreign guests. The cost is 150-300 PLN per month." },
+        { question: "Do small retail businesses in Nakło need AI?", answer: "Small retail businesses often see the greatest impact when implementing AI for writing offers, product descriptions for online stores, and communication with suppliers. ChatGPT in its basic (also free) version is often sufficient to start. After 2-3 months, most companies decide on the paid version for better quality and greater capabilities." },
+        { question: "Do you organize training for farmers and agritourism owners?", answer: "Yes, we conduct dedicated workshops for the agricultural and agritourism sector. They focus on practical applications: marketing, customer service, documentation. We conduct training for individual farms as well as groups (e.g., agricultural organizations, local action groups, LAGs). Implementation with KSOW co-financing is possible." }
+      ],
+    },
   },
   {
     slug: "rypin",
@@ -450,6 +558,18 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "Najprostsze: ChatGPT Plus (100 zł/mc) do pisania wniosków o dopłaty ARiMR, korespondencji urzędowej, ofert dla klientów sprzedaży bezpośredniej; Canva AI (55 zł/mc) do grafik; darmowy DeepL do tłumaczeń. Łącznie 150 zł/mc + 1-2 tys. zł za szkolenie wstępne.",
       },
     ],
+      en: {
+      opisGospodarki: "Rypin is a district town in the northeastern part of the Kuyavian-Pomeranian Voivodeship, with an economy based on agriculture, agri-food processing, small-scale production, and trade. The town serves as a local center for surrounding rural municipalities.",
+      branzeKluczowe: ["agriculture and processing", "small-scale production", "local trade", "services for residents"],
+      wyzwaniaAI: "In Rypin, typical areas for AI application include small processing companies, farms, local retail businesses, and service-oriented SMEs. OpenMind AI offers affordable implementations for micro-entrepreneurs in Rypin.",
+      czasDojazdu: "Rypin is served online from Toruń or Bydgoszcz (travel time approx. 1-1.5 hours). On-site visits for groups of 6+ people.",
+      przykladZastosowania: "Example implementation scenario: For a small processing company in Rypin, it's possible to implement simple AI tools for generating product descriptions, handling customer inquiries, and automating official correspondence, saving the owner 8-15 hours of work per week.",
+      faq: [
+        { question: "Does a micro-company in Rypin need AI?", answer: "Yes – micro-companies are often the biggest beneficiaries of AI because they don't have the budget for marketing or additional staff. For 100-300 PLN per month, they gain access to tools that save many hours of work per week. The key is good initial training (1-2 thousand PLN)." },
+        { question: "Where can one learn AI near Rypin?", answer: "Online is best – online training is cheaper than in-person, requires no travel, and effectiveness is comparable. Our online training consists of 3-4 hours of intensive live workshops plus weekly support. Cost: 1.5-3 thousand PLN for a single person." },
+        { question: "What are the simplest AI implementations for a farmer?", answer: "The simplest: ChatGPT Plus (100 PLN/month) for writing ARiMR subsidy applications, official correspondence, offers for direct sales customers; Canva AI (55 PLN/month) for graphics; free DeepL for translations. Total 150 PLN/month + 1-2 thousand PLN for initial training." }
+      ],
+    },
   },
   {
     slug: "tuchola",
@@ -495,6 +615,18 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "Najprostsze: ChatGPT Plus (100 zł/mc) do komunikacji z gośćmi i tłumaczeń, Canva AI (55 zł/mc) do grafik promocyjnych, darmowy DeepL do szybkich tłumaczeń. Łącznie 150-200 zł/mc pokrywa 90% potrzeb małego pensjonatu. Ważne: jeden dzień szkolenia wystarczy żeby zacząć efektywnie korzystać.",
       },
     ],
+      en: {
+      opisGospodarki: "Tuchola is a district town located in the heart of Tuchola Forest, one of the largest forest complexes in Poland. The town's economy is based on tourism (Tuchola Forest UNESCO region), timber industry, agriculture, and local trade and services.",
+      branzeKluczowe: ["tourism (Tuchola Forest UNESCO)", "timber industry", "agriculture and agritourism", "local trade"],
+      wyzwaniaAI: "In Tuchola, typical areas for AI application include tourist and agritourist facilities in Tuchola Forest (multilingual guest service), timber companies, and local SMEs. OpenMind AI offers implementations and training for companies in Tuchola.",
+      czasDojazdu: "Tuchola is served online from Bydgoszcz (travel time approx. 1 hour) or Gdańsk (approx. 1.5 hours). On-site visits for larger projects.",
+      przykladZastosowania: "Example implementation scenario: For an agritourism farm in Tuchola Forest, it's possible to implement a multilingual booking chatbot and generate descriptions of attractions (trails, Brda river rafting) in several languages, supporting guest service for visitors from Poland, Germany, and Scandinavia.",
+      faq: [
+        { question: "How does AI help agritourism in Tuchola Forest?", answer: "Agritourism farms in Tuchola Forest (UNESCO) primarily benefit from: multilingual guest inquiry handling, generating descriptions of regional attractions (trails, Brda river, lakes), creating marketing content for social media, and reservation management. Typical cost: 200-400 PLN/month for a small facility + 1.5-3 thousand PLN for one-day initial training." },
+        { question: "Can timber companies from Tuchola use AI?", answer: "Yes – timber companies benefit from: automation of technical documentation and specifications, generating offers for B2B clients, handling inquiries from trading partners (often in foreign languages), and production data analysis. Typical cost: 300-600 PLN/month + initial implementation 5-12 thousand PLN." },
+        { question: "What are the simplest AI tools for a guesthouse owner?", answer: "The simplest: ChatGPT Plus (100 PLN/month) for guest communication and translations, Canva AI (55 PLN/month) for promotional graphics, free DeepL for quick translations. A total of 150-200 PLN/month covers 90% of a small guesthouse's needs. Important: one day of training is enough to start using them effectively." }
+      ],
+    },
   },
   {
     slug: "aleksandrow-kujawski",
@@ -540,5 +672,17 @@ export const kujawskoPomorskieCities: MiastoData[] = [
           "Minimalny stack: ChatGPT (darmowy lub Plus 100 zł/mc) do tekstów i komunikacji, Canva (darmowa lub Pro 55 zł/mc) do grafik. Łącznie 0-200 zł/mc pokrywa 80% potrzeb mikroprzedsiębiorcy. Ważniejsze od narzędzi jest jednorazowe szkolenie wstępne (1-2 tys. zł).",
       },
     ],
+      en: {
+      opisGospodarki: "Aleksandrów Kujawski is a district town in the central part of the Kuyavian-Pomeranian Voivodeship, a historic railway junction and former border town between partitions. The town's economy is based on food processing, small-scale production, trade, and services for residents.",
+      branzeKluczowe: ["food processing", "small-scale production", "rail logistics", "local trade"],
+      wyzwaniaAI: "In Aleksandrów Kujawski, typical areas for AI application include local food and production companies, small retail businesses, and farms. OpenMind AI offers affordable implementations for micro-entrepreneurs in Aleksandrów Kujawski.",
+      czasDojazdu: "Aleksandrów Kujawski is served from Toruń – travel time approx. 30 min. In-person training for groups of 6+ people, online format for smaller groups.",
+      przykladZastosowania: "Example implementation scenario: For a small food company in Aleksandrów Kujawski, it's possible to implement automation for generating product descriptions, labels in several languages, and handling customer inquiries, which supports sales and saves the company owner's time.",
+      faq: [
+        { question: "Do small companies from Aleksandrów Kujawski need AI?", answer: "Yes – small companies are often the biggest beneficiaries of AI. For 150-300 PLN per month, they gain access to tools that perform the work of several people. One day of initial training for 1-2 thousand PLN is enough to get started. The first results are visible immediately after training." },
+        { question: "How to start with AI without traveling to Toruń?", answer: "We recommend online training – it's cheaper than in-person, requires no travel, and effectiveness is comparable. Our online training consists of 3-4 hours of intensive live workshops plus weekly post-training support. Cost: 1.5-3 thousand PLN for a single person." },
+        { question: "What tools do you recommend for a micro-entrepreneur?", answer: "Minimum stack: ChatGPT (free or Plus 100 PLN/month) for texts and communication, Canva (free or Pro 55 PLN/month) for graphics. A total of 0-200 PLN/month covers 80% of a micro-entrepreneur's needs. More important than the tools is one-time initial training (1-2 thousand PLN)." }
+      ],
+    },
   },
 ];

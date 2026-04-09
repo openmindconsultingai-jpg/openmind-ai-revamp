@@ -475,6 +475,17 @@ export const warminskoMazurskieCities: MiastoData[] = [
           "Tak, często organizujemy szkolenia grupowe dla firm z województwa — koszt na osobę jest wtedy niższy. Szkolenia otwarte w Olsztynie są dostępne dla firm z okolicznych miast.",
       },
     ],
+      en: {
+      opisGospodarki: "Działdowo is a district town in the southwestern part of the Warmian-Masurian Voivodeship, an important railway hub (Warsaw-Gdańsk line). The city's economy is based on industrial production, logistics, trade, and local services.",
+      branzeKluczowe: ["industrial production", "logistics (railway hub)", "regional trade", "local services"],
+      wyzwaniaAI: "In Działdowo, typical areas for AI application include local manufacturing companies, logistics firms, trading companies, and SMEs. OpenMind AI offers implementations and training for businesses in Działdowo.",
+      czasDojazdu: "Działdowo is served from Olsztyn — travel time approximately 1 hour. On-site meetings require advance notice, implementations are conducted in a hybrid mode.",
+      przykladZastosowania: "An example implementation scenario: for a manufacturing company in Działdowo, AI can be implemented to automate the generation of commercial offers and technical documentation, saving time for the sales department.",
+      faq: [
+        { question: "How much does a basic AI implementation cost?", answer: "For a small business: one-day training 3-5 thousand PLN, tool configuration 3-8 thousand PLN, licenses 300-600 PLN/month. Total start-up cost: 6-13 thousand PLN + 400 PLN/month." },
+        { question: "Is it possible to combine training with other companies from the region?", answer: "Yes, we often organize group training sessions for companies from the voivodeship — the cost per person is then lower. Open training sessions in Olsztyn are available for companies from surrounding cities." }
+      ],
+    },
   },
   {
     slug: "nidzica",
@@ -520,5 +531,17 @@ export const warminskoMazurskieCities: MiastoData[] = [
           "Bezpłatna rozmowa wstępna online, jednodniowe szkolenie (1.5-3 tys. zł), konfiguracja pierwszych narzędzi. Łączny proces 2-3 tygodnie.",
       },
     ],
+      en: {
+      opisGospodarki: "Nidzica is a district town in the southern part of the Warmian-Masurian Voivodeship, known for its Gothic Teutonic Castle. The city's economy is based on production, historical tourism, agriculture, and local trade and services.",
+      branzeKluczowe: ["production and processing", "historical tourism (Castle)", "agriculture", "local trade"],
+      wyzwaniaAI: "In Nidzica, typical areas for AI application include local manufacturing companies, tourist facilities serving castle visitors, local trading companies, and SMEs. OpenMind AI offers implementations and training for businesses in Nidzica.",
+      czasDojazdu: "Nidzica is served online from Olsztyn (travel time approximately 1 hour). On-site visits for larger projects.",
+      przykladZastosowania: "An example implementation scenario: for a tourist facility in Nidzica serving castle visitors, it is possible to implement a multilingual informational chatbot and automate reservations.",
+      faq: [
+        { question: "How does AI support tourism around Nidzica Castle?", answer: "Tourist facilities benefit from: multilingual inquiry handling, generating castle descriptions and history, reservation management, and creating marketing content. Cost: 250-500 PLN/month for a medium-sized facility." },
+        { question: "Can small businesses in Nidzica use AI?", answer: "Absolutely — costs are low, and results are immediately visible. A basic stack costs 150-300 PLN/month plus a one-time training session for 1-3 thousand PLN." },
+        { question: "How quickly can one start?", answer: "Free initial online consultation, one-day training (1.5-3 thousand PLN), configuration of initial tools. The entire process takes 2-3 weeks." }
+      ],
+    },
   },
 ];
