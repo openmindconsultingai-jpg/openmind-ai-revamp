@@ -258,12 +258,12 @@ const VideoHero = () => {
         </h1>
 
         {/* Subtitle */}
-        <div className="hero-subtitle font-sans max-w-3xl mx-auto mb-10 space-y-3" style={{ textAlign: 'center' }}>
-          <p className="text-base sm:text-lg md:text-xl text-foreground/70" style={{ textAlign: 'center' }}>
+        <div className="hero-subtitle font-sans max-w-3xl mx-auto mb-8 space-y-2" style={{ textAlign: 'center' }}>
+          <p className="text-sm sm:text-base md:text-lg text-foreground/60" style={{ textAlign: 'center' }}>
             {heroDescriptionText}
           </p>
           {heroDescription2Text && (
-            <p className="text-base sm:text-lg md:text-xl text-foreground/70" style={{ textAlign: 'center' }}>
+            <p className="text-sm sm:text-base md:text-lg text-foreground/60" style={{ textAlign: 'center' }}>
               {heroDescription2Text}
             </p>
           )}
