@@ -31,8 +31,8 @@ const translations: Translations = {
     'hero.cta': 'Wkrocz w technologię jutra już dziś',
     'hero.cta.consultation': 'Umów bezpłatną konsultację',
     'hero.seo.h1': 'Sztuczna Inteligencja (AI) dla firm, agencji i szkół — wdrożenia, szkolenia, konsulting',
-    'hero.seo.description': 'Jesteśmy polskim liderem wdrożeń sztucznej inteligencji dla biznesu, agencji i\u00a0edukacji. Od\u00a02023 roku pomagamy organizacjom w\u00a0całej Polsce przejść od chaotycznego eksperymentowania z\u00a0ChatGPT do realnych, mierzalnych wdrożeń AI, które oszczędzają czas, obniżają koszty i\u00a0zwiększają przewagę konkurencyjną.',
-    'hero.seo.description2': 'Oferujemy konsulting strategiczny, szkolenia z\u00a0najlepszych narzędzi AI na rynku (ChatGPT, Claude, Gemini, Microsoft Copilot, Midjourney, ElevenLabs, Runway i\u00a0innych), automatyzację procesów biznesowych oraz dedykowane wdrożenia enterprise. Pierwsze konsultacje są bezpłatne, a\u00a0pierwsze efekty pojawiają się już w\u00a0kilka dni od rozpoczęcia współpracy.',
+    'hero.seo.description': 'OpenMind AI Consulting to polski lider wdrożeń sztucznej inteligencji dla biznesu i\u00a0edukacji. Pomagamy firmom, agencjom marketingowym i\u00a0szkołom w\u00a0całej Polsce praktycznie wykorzystać możliwości AI — od bezpłatnych konsultacji i\u00a0audytu, przez szkolenia z\u00a0najlepszych narzędzi AI na rynku (ChatGPT, Claude, Gemini, Copilot, Midjourney i\u00a0innych), po kompleksowe wdrożenia i\u00a0gotowe automatyzacje dopasowane do Twojej branży.',
+    'hero.seo.description2': 'Pierwsze efekty widoczne w\u00a0kilka dni, pełna transformacja cyfrowa rozłożona na tygodnie lub miesiące — w\u00a0zależności od skali projektu.',
     
     // Mission Section
     'mission.title': 'Nasza Misja',
