@@ -129,6 +129,7 @@ const VideoHero = () => {
   const aiText = "AI";
   const seoH1Text = t('hero.seo.h1');
   const heroDescriptionText = t('hero.seo.description');
+  const heroDescription2Text = t('hero.seo.description2');
 
   return (
     <section 
@@ -261,6 +262,11 @@ const VideoHero = () => {
           <p className="text-base sm:text-lg md:text-xl text-foreground/70" style={{ textAlign: 'center' }}>
             {heroDescriptionText}
           </p>
+          {heroDescription2Text && (
+            <p className="text-base sm:text-lg md:text-xl text-foreground/70" style={{ textAlign: 'center' }}>
+              {heroDescription2Text}
+            </p>
+          )}
         </div>
 
         {/* CTA Button with glass effect and artistic animation */}

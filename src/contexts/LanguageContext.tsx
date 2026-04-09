@@ -30,8 +30,9 @@ const translations: Translations = {
     'hero.description3': 'Dostarczamy rozwiązania AI, które adaptują się szybciej niż Twoja konkurencja.',
     'hero.cta': 'Wkrocz w technologię jutra już dziś',
     'hero.cta.consultation': 'Umów bezpłatną konsultację',
-    'hero.seo.h1': 'Sztuczna Inteligencja (AI/SI) dla Twojej Firmy i Szkoły',
-    'hero.seo.description': 'OpenMind AI to polski lider wdrożeń sztucznej inteligencji. Pomagamy firmom, agencjom i\u00a0szkołom w\u00a0całej Polsce wykorzystać moc AI i\u00a0SI – od konsultingu po gotowe rozwiązania.',
+    'hero.seo.h1': 'Wdrożenia AI dla firm i szkół w Polsce — OpenMind AI Consulting',
+    'hero.seo.description': 'Jesteśmy polskim liderem wdrożeń sztucznej inteligencji dla biznesu, agencji i\u00a0edukacji. Od\u00a02023 roku pomagamy organizacjom w\u00a0całej Polsce przejść od chaotycznego eksperymentowania z\u00a0ChatGPT do realnych, mierzalnych wdrożeń AI, które oszczędzają czas, obniżają koszty i\u00a0zwiększają przewagę konkurencyjną.',
+    'hero.seo.description2': 'Oferujemy konsulting strategiczny, szkolenia z\u00a0najlepszych narzędzi AI na rynku (ChatGPT, Claude, Gemini, Microsoft Copilot, Midjourney, ElevenLabs, Runway i\u00a0innych), automatyzację procesów biznesowych oraz dedykowane wdrożenia enterprise. Pierwsze konsultacje są bezpłatne, a\u00a0pierwsze efekty pojawiają się już w\u00a0kilka dni od rozpoczęcia współpracy.',
     
     // Mission Section
     'mission.title': 'Nasza Misja',
