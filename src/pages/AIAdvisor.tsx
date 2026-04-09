@@ -6,13 +6,19 @@ import useCanonical from '@/hooks/useCanonical';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const AIAdvisorPage = () => {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   useCanonical();
 
   usePageMeta({
-    title: 'Wirtualny Doradca AI – Darmowy Doradca Sztucznej Inteligencji | OpenMind AI',
-    description: 'Bezpłatny wirtualny doradca AI. Odpowiedz na kilka pytań, a nasz inteligentny doradca zaproponuje optymalne rozwiązania AI dla Twojego biznesu, edukacji lub życia codziennego. Odkryj potencjał sztucznej inteligencji.',
-    keywords: 'wirtualny doradca AI, doradca AI, zastosowania sztucznej inteligencji, AI dla biznesu, AI dla edukacji, darmowe narzędzie AI, chatbot doradczy, automatyzacja, optymalizacja procesów',
+    title: language === 'pl'
+      ? 'Wirtualny Doradca AI – Darmowy Doradca Sztucznej Inteligencji | OpenMind AI'
+      : 'AI Advisor – Free Artificial Intelligence Advisor | OpenMind AI',
+    description: language === 'pl'
+      ? 'Bezpłatny wirtualny doradca AI. Odpowiedz na kilka pytań, a nasz inteligentny doradca zaproponuje optymalne rozwiązania AI dla Twojego biznesu, edukacji lub życia codziennego. Odkryj potencjał sztucznej inteligencji.'
+      : 'Free virtual AI advisor. Answer a few questions and our intelligent advisor will suggest optimal AI solutions for your business, education or everyday life. Discover the potential of artificial intelligence.',
+    keywords: language === 'pl'
+      ? 'wirtualny doradca AI, doradca AI, zastosowania sztucznej inteligencji, AI dla biznesu, AI dla edukacji, darmowe narzędzie AI, chatbot doradczy, automatyzacja, optymalizacja procesów'
+      : 'virtual AI advisor, AI advisor, artificial intelligence applications, AI for business, AI for education, free AI tool, advisory chatbot, automation, process optimization',
     path: '/ai-advisor',
   });
 

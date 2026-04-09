@@ -41,15 +41,21 @@ const CityDetail = () => {
   }, [content, voivodeship]);
 
   const seoTitle = city
-    ? `Szkolenia AI ${city.name} – Wdrożenia, Automatyzacja, Agencja Kreatywna | OpenMind AI`
+    ? language === 'pl'
+      ? `Szkolenia AI ${city.name} – Wdrożenia, Automatyzacja, Agencja Kreatywna | OpenMind AI`
+      : `AI Training ${city.name} – Implementation, Automation, Creative Agency | OpenMind AI`
     : 'OpenMind AI';
 
   const seoDescription = city && voivodeship
-    ? `Szkolenia AI w ${city.locative} ✓ Wdrożenia sztucznej inteligencji ✓ Automatyzacja procesów ✓ Produkcja wideo i grafik AI ✓ Chatboty ✓ Doradztwo strategiczne. Bezpłatna konsultacja. Woj. ${voivodeship.name.toLowerCase()}.`
+    ? language === 'pl'
+      ? `Szkolenia AI w ${city.locative} ✓ Wdrożenia sztucznej inteligencji ✓ Automatyzacja procesów ✓ Produkcja wideo i grafik AI ✓ Chatboty ✓ Doradztwo strategiczne. Bezpłatna konsultacja. Woj. ${voivodeship.name.toLowerCase()}.`
+      : `AI Training in ${city.name} ✓ Artificial intelligence implementation ✓ Process automation ✓ AI video & graphics production ✓ Chatbots ✓ Strategic consulting. Free consultation. ${voivodeship.name} voivodeship.`
     : '';
 
   const seoKeywords = city && voivodeship
-    ? (content?.lokalneKeywordy?.join(', ') || `szkolenia AI ${city.name}, wdrożenia AI ${city.name}, kurs sztucznej inteligencji ${city.name}, automatyzacja procesów ${city.name}, agencja kreatywna AI ${city.name}, chatbot ${city.name}, produkcja wideo AI ${city.name}, tworzenie grafik AI ${city.name}, reklamy AI ${city.name}, filmy AI ${city.name}, zdjęcia AI ${city.name}, konsulting AI ${city.name}, transformacja cyfrowa ${city.name}, szkolenie ChatGPT ${city.name}, generatywna AI ${city.name}, ${voivodeship.name.toLowerCase()}`)
+    ? language === 'pl'
+      ? (content?.lokalneKeywordy?.join(', ') || `szkolenia AI ${city.name}, wdrożenia AI ${city.name}, kurs sztucznej inteligencji ${city.name}, automatyzacja procesów ${city.name}`)
+      : `AI training ${city.name}, AI implementation ${city.name}, artificial intelligence course ${city.name}, process automation ${city.name}`
     : '';
 
   const jsonLd = useMemo(() => {
@@ -132,9 +138,9 @@ const CityDetail = () => {
 
             {/* Visual Breadcrumbs */}
             <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-sm text-muted-foreground flex-wrap">
-              <Link to="/" className="hover:text-foreground transition-colors">Strona główna</Link>
+              <Link to="/" className="hover:text-foreground transition-colors">{language === 'pl' ? 'Strona główna' : 'Home'}</Link>
               <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-              <Link to="/#gdzie-dzialamy" className="hover:text-foreground transition-colors">Gdzie działamy</Link>
+              <Link to="/#gdzie-dzialamy" className="hover:text-foreground transition-colors">{language === 'pl' ? 'Gdzie działamy' : 'Where We Operate'}</Link>
               <ChevronRight className="w-3.5 h-3.5 shrink-0" />
               <Link to={`/gdzie-dzialamy/${slug}`} className="hover:text-foreground transition-colors">{voivodeship!.name}</Link>
               <ChevronRight className="w-3.5 h-3.5 shrink-0" />
@@ -154,7 +160,7 @@ const CityDetail = () => {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <span className="text-sm font-medium text-primary tracking-wider uppercase">
-                  {city!.name}{content ? ` · ${content.populacja} mieszkańców` : ''}
+                  {city!.name}{content ? ` · ${content.populacja} ${language === 'pl' ? 'mieszkańców' : 'residents'}` : ''}
                 </span>
               </div>
 
@@ -163,16 +169,28 @@ const CityDetail = () => {
               </h1>
 
               {/* Quick Answer Block — optimized for GEO/AEO (AI citation) */}
-              <div className="mb-10 p-6 rounded-xl border border-primary/20 bg-primary/5" role="region" aria-label="Podsumowanie usług">
+              <div className="mb-10 p-6 rounded-xl border border-primary/20 bg-primary/5" role="region" aria-label={language === 'pl' ? 'Podsumowanie usług' : 'Service summary'}>
                 <p className="text-base sm:text-lg text-foreground leading-relaxed">
                   {content ? (
-                    <>
-                      OpenMind AI Consulting świadczy usługi wdrożeń AI, szkoleń z najlepszych narzędzi AI na rynku oraz konsultingu strategicznego dla firm z {city!.name} ({voivodeship!.name}, {content.populacja} mieszkańców). {content.wyzwaniaAI} Pierwsze konsultacje są bezpłatne, szkolenia dostępne stacjonarnie i online, wdrożenia realizowane etapowo z pierwszymi efektami już w ciągu kilku dni lub tygodni, w zależności od stopnia zaawansowania projektu.
-                    </>
+                    language === 'pl' ? (
+                      <>
+                        OpenMind AI Consulting świadczy usługi wdrożeń AI, szkoleń z najlepszych narzędzi AI na rynku oraz konsultingu strategicznego dla firm z {city!.name} ({voivodeship!.name}, {content.populacja} mieszkańców). {content.wyzwaniaAI} Pierwsze konsultacje są bezpłatne, szkolenia dostępne stacjonarnie i online, wdrożenia realizowane etapowo z pierwszymi efektami już w ciągu kilku dni lub tygodni, w zależności od stopnia zaawansowania projektu.
+                      </>
+                    ) : (
+                      <>
+                        OpenMind AI Consulting provides AI implementation services, training with the best AI tools on the market, and strategic consulting for businesses in {city!.name} ({voivodeship!.name}, {content.populacja} residents). {content.wyzwaniaAI} First consultations are free, training available on-site and online, implementations delivered in stages with first results within days or weeks, depending on project complexity.
+                      </>
+                    )
                   ) : (
-                    <>
-                      OpenMind AI Consulting świadczy usługi wdrożeń AI, szkoleń z najlepszych narzędzi AI na rynku oraz konsultingu strategicznego dla firm w {city!.locative}. Jako regionalny lider transformacji cyfrowej, pomagamy firmom wdrażać technologie jutra. Pierwsze konsultacje są bezpłatne, szkolenia dostępne stacjonarnie i online, wdrożenia realizowane etapowo z pierwszymi efektami już w ciągu kilku dni lub tygodni, w zależności od stopnia zaawansowania projektu.
-                    </>
+                    language === 'pl' ? (
+                      <>
+                        OpenMind AI Consulting świadczy usługi wdrożeń AI, szkoleń z najlepszych narzędzi AI na rynku oraz konsultingu strategicznego dla firm w {city!.locative}. Jako regionalny lider transformacji cyfrowej, pomagamy firmom wdrażać technologie jutra. Pierwsze konsultacje są bezpłatne, szkolenia dostępne stacjonarnie i online, wdrożenia realizowane etapowo z pierwszymi efektami już w ciągu kilku dni lub tygodni, w zależności od stopnia zaawansowania projektu.
+                      </>
+                    ) : (
+                      <>
+                        OpenMind AI Consulting provides AI implementation services, training with the best AI tools on the market, and strategic consulting for businesses in {city!.name}. As a regional leader in digital transformation, we help businesses implement tomorrow&apos;s technologies. First consultations are free, training available on-site and online, implementations delivered in stages with first results within days or weeks, depending on project complexity.
+                      </>
+                    )
                   )}
                 </p>
               </div>

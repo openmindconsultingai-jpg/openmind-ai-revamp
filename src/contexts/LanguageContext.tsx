@@ -950,9 +950,9 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     'hero.description3': 'We deliver AI solutions that adapt faster than your competition.',
     'hero.cta': "Step into tomorrow's technology today",
     'hero.cta.consultation': 'Book a free consultation',
-    'hero.seo.h1': 'AI Implementation for Businesses and Schools in Poland — OpenMind AI Consulting',
-    'hero.seo.description': 'We are the Polish leader in AI implementation for business, agencies, and education. Since 2023, we help organizations across Poland transition from chaotic ChatGPT experimentation to real, measurable AI deployments that save time, reduce costs, and increase competitive advantage.',
-    'hero.seo.description2': 'We offer strategic consulting, training with the best AI tools on the market (ChatGPT, Claude, Gemini, Microsoft Copilot, Midjourney, ElevenLabs, Runway and more), business process automation, and dedicated enterprise implementations. First consultations are free, and first results appear within days of starting cooperation.',
+    'hero.seo.h1': 'Artificial Intelligence (AI) for businesses, agencies and schools — implementation, training, consulting',
+    'hero.seo.description': 'OpenMind AI Consulting is the Polish leader in artificial intelligence implementation for business and\u00a0education. We help companies, marketing agencies and\u00a0schools across Poland practically leverage AI capabilities — from free consultations and\u00a0audits, through training with the\u00a0best AI tools on the market (ChatGPT, Claude, Gemini, Copilot, Midjourney and\u00a0others), to comprehensive implementations and\u00a0ready-made automations tailored to your industry.',
+    'hero.seo.description2': 'First results visible within\u00a0days, full digital transformation spread over weeks or months — depending on\u00a0the project scale.',
     
     // Mission Section
     'mission.title': 'Our Mission',
