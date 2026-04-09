@@ -12,6 +12,8 @@ interface PageMetaOptions {
   path?: string;
   ogImage?: string;
   ogType?: string;
+  ogTitle?: string;
+  ogDescription?: string;
   jsonLd?: Record<string, unknown>;
 }
 
@@ -30,6 +32,8 @@ const usePageMeta = ({
   path,
   ogImage = DEFAULT_IMAGE,
   ogType = 'website',
+  ogTitle,
+  ogDescription,
   jsonLd,
 }: PageMetaOptions) => {
   const { pathname } = useLocation();
@@ -81,8 +85,8 @@ const usePageMeta = ({
     if (keywords) setMeta('name', 'keywords', keywords);
 
     // Open Graph
-    setMeta('property', 'og:title', title);
-    setMeta('property', 'og:description', description);
+    setMeta('property', 'og:title', ogTitle || title);
+    setMeta('property', 'og:description', ogDescription || description);
     setMeta('property', 'og:url', ogUrl);
     setMeta('property', 'og:image', ogImage);
     setMeta('property', 'og:type', ogType);
