@@ -2,6 +2,7 @@ import type { MiastoData } from './types';
 import { dolnoslaskieCities } from './dolnoslaskie';
 import { kujawskoPomorskieCities } from './kujawsko-pomorskie';
 import { lubelskieCities } from './lubelskie';
+import { lubuskieCities } from './lubuskie';
 import { lodzkieCities } from './lodzkie';
 import { malopolskieCities } from './malopolskie';
 import { mazowieckieCities } from './mazowieckie';
