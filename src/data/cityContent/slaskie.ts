@@ -341,7 +341,7 @@ export const slaskieCities: MiastoData[] = [
       },
       {
         "pytanie": "Czy można łączyć szkolenia z wdrożeniami?",
-        "odpowiedz": "Tak, i jest to nasze standardowe podejście. Zaczynamy od szkolenia wprowadzającego (1 dzień), które daje zespołowi solidną bazę. Potem następuje konfiguracja pierwszych narzędzi z udziałem przeszkolonych pracowników, dzięki czemu od razu widzą oni praktyczne zastosowanie. Pełna ścieżka: szkolenie + wdrożenie podstawowe = 3-5 tygodni."
+        "odpowiedz": "Tak, i jest to nasze standardowe podejście. Zaczynamy od szkolenia wprowadzającego (1 dzień), które daje zespołowi solidną bazę. Potem następuje konfiguracja pierwszych narzędzi z udziałem przeszkolonych pracowników, dzięki czemu od razu widzą oni praktyczne zastosowanie. Pełna ścieżka: szkolenie + wdrożenie podstawowe = od kilku dni do kilku tygodni."
       }
     ]
   },

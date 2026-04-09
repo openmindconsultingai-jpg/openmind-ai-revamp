@@ -392,7 +392,7 @@ export const opolskieCities: MiastoData[] = [
         {
           pytanie: "Jak małe firmy produkcyjne z Krapkowic mogą zacząć z AI?",
           odpowiedz:
-            "Proponujemy zaczynać od bezpłatnej rozmowy wstępnej (1-2h online), podczas której identyfikujemy największe bóle w pracy firmy. Potem jednodniowe szkolenie (3-5 tys. zł) dla właściciela i kluczowych pracowników. Na koniec konfiguracja pierwszych narzędzi pod specyfikę firmy (3-8 tys. zł). Proces 3-5 tygodni.",
+            "Proponujemy zaczynać od bezpłatnej rozmowy wstępnej (1-2h online), podczas której identyfikujemy największe bóle w pracy firmy. Potem jednodniowe szkolenie (3-5 tys. zł) dla właściciela i kluczowych pracowników. Na koniec konfiguracja pierwszych narzędzi pod specyfikę firmy (3-8 tys. zł). Proces trwa od kilku dni do kilku tygodni.",
         },
         {
           pytanie: "Ile kosztuje prosta automatyzacja ofert handlowych?",

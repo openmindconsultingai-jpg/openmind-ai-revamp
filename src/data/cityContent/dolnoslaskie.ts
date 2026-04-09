@@ -537,7 +537,7 @@ export const dolnoslaskieCities: MiastoData[] = [
       {
         pytanie: "Ile trwa wdrożenie AI dla firmy ze Zgorzelca?",
         odpowiedz:
-          "Proste wdrożenie (szkolenie + konfiguracja narzędzi do tłumaczeń i obsługi dokumentów): 3-5 tygodni. Większość prac realizujemy zdalnie, co jest efektywne dla firmy z mniejszego miasta. Pierwsze efekty widoczne od razu po szkoleniu, pełne korzyści po 2-3 miesiącach używania narzędzi w codziennej pracy.",
+          "Proste wdrożenie (szkolenie + konfiguracja narzędzi do tłumaczeń i obsługi dokumentów): kilka dni do kilku tygodni. Większość prac realizujemy zdalnie, co jest efektywne dla firmy z mniejszego miasta. Pierwsze efekty widoczne od razu po szkoleniu, pełne korzyści po 2-3 miesiącach używania narzędzi w codziennej pracy.",
       },
     ],
   },
