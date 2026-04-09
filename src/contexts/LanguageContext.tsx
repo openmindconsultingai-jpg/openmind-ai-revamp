@@ -870,7 +870,7 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     'services.tab.automation.item1': 'Budowa Dedykowanych Aplikacji AI dla Firm',
     'services.tab.automation.item2': 'Automatyzacja Workflow i Integracja (Make/n8n)',
     'services.tab.automation.item3': 'Analityka Danych i Raportowanie AI',
-    'services.tab.automation.item4': 'Wdrożenia ChatGPT / Copilot w Organizacjach',
+    'services.tab.automation.item4': 'Wdrożenia najlepszych narzędzi AI w Organizacjach',
     'services.tab.automation.item5': 'Doradztwo Strategiczne i Audyt Procesów',
 
     'services.tab.education.label': 'Szkolenia AI',
@@ -1797,7 +1797,7 @@ In this reality, the creator's role will undergo profound redefinition. The futu
     'services.tab.automation.item1': 'Building Dedicated AI Applications for Companies',
     'services.tab.automation.item2': 'Workflow Automation & Integration (Make/n8n)',
     'services.tab.automation.item3': 'Data Analytics & AI Reporting',
-    'services.tab.automation.item4': 'ChatGPT / Copilot Deployments in Organizations',
+    'services.tab.automation.item4': 'AI Tools Deployment in Organizations',
     'services.tab.automation.item5': 'Strategic Consulting & Process Audit',
 
     'services.tab.education.label': 'AI Training',

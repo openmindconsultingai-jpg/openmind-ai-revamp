@@ -126,7 +126,7 @@ export const swietokrzyskieCities: MiastoData[] = [
       },
       {
         "pytanie": "Jak rozpocząć z AI w firmie z Ostrowca?",
-        "odpowiedz": "Standardowo: bezpłatna rozmowa wstępna online (1-2h), potem jednodniowe szkolenie online (2-3 tys. zł) lub stacjonarne dla grupy 6+ osób (4-7 tys. zł), na końcu konfiguracja pierwszych narzędzi (3-8 tys. zł). Proces 3-5 tygodni, koszt start: 5-12 tys. zł plus 400 zł/mc licencji. Pierwsze efekty od razu po szkoleniu."
+        "odpowiedz": "Standardowo: bezpłatna rozmowa wstępna online (1-2h), potem jednodniowe szkolenie online (2-3 tys. zł) lub stacjonarne dla grupy 6+ osób (4-7 tys. zł), na końcu konfiguracja pierwszych narzędzi (3-8 tys. zł). Proces trwa od kilku dni do kilku tygodni, koszt start: 5-12 tys. zł plus 400 zł/mc licencji. Pierwsze efekty od razu po szkoleniu."
       }
     ]
   },

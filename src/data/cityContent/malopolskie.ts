@@ -492,7 +492,7 @@ export const malopolskieCities: MiastoData[] = [
       {
         pytanie: "Jak szybko można wdrożyć AI w firmie z Wieliczki?",
         odpowiedz:
-          "Wieliczka jest bardzo blisko Krakowa (20-30 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla małych grup realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w 3-5 tygodni. Wizyty stacjonarne łączymy często z innymi firmami z aglomeracji krakowskiej.",
+          "Wieliczka jest bardzo blisko Krakowa (20-30 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla małych grup realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni. Wizyty stacjonarne łączymy często z innymi firmami z aglomeracji krakowskiej.",
       },
     ],
   },

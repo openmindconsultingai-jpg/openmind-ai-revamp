@@ -392,7 +392,7 @@ export const podlaskieCities: MiastoData[] = [
         {
           pytanie: "Jak rozpocząć wdrażanie AI w małej firmie z Łap?",
           odpowiedz:
-            "Standardowe trzy kroki: 1) bezpłatna rozmowa wstępna online (1-2h) — identyfikacja obszarów z największym potencjałem, 2) jednodniowe szkolenie dla zespołu (3-5 tys. zł), 3) konfiguracja pierwszych narzędzi pod specyfikę firmy (3-8 tys. zł). Proces trwa 3-5 tygodni. Pierwsze efekty widoczne od razu po szkoleniu.",
+            "Standardowe trzy kroki: 1) bezpłatna rozmowa wstępna online (1-2h) — identyfikacja obszarów z największym potencjałem, 2) jednodniowe szkolenie dla zespołu (3-5 tys. zł), 3) konfiguracja pierwszych narzędzi pod specyfikę firmy (3-8 tys. zł). Proces trwa od kilku dni do kilku tygodni. Pierwsze efekty widoczne od razu po szkoleniu.",
         },
         {
           pytanie: "Jakie narzędzia polecacie firmom z Łap?",

@@ -132,7 +132,7 @@ export const zachodniopomorskieCities: MiastoData[] = [
       {
         pytanie: "Ile trwa wdrożenie AI dla firmy logistycznej ze Stargardu?",
         odpowiedz:
-          "Proste wdrożenie (szkolenie zespołu + konfiguracja narzędzi do tłumaczeń i obsługi dokumentów): 3-5 tygodni. Pełne wdrożenie z integracją z systemami firmy (TMS, fakturowanie): 2-4 miesiące. Zawsze rekomendujemy etapowe podejście zaczynając od pilotu w jednym obszarze z największym potencjałem szybkiego ROI.",
+          "Proste wdrożenie (szkolenie zespołu + konfiguracja narzędzi do tłumaczeń i obsługi dokumentów): kilku dni do kilku tygodni. Pełne wdrożenie z integracją z systemami firmy (TMS, fakturowanie): 2-4 miesiące. Zawsze rekomendujemy etapowe podejście zaczynając od pilotu w jednym obszarze z największym potencjałem szybkiego ROI.",
       },
     ],
   },
@@ -447,7 +447,7 @@ export const zachodniopomorskieCities: MiastoData[] = [
       {
         pytanie: "Jak szybko można wdrożyć AI w firmie z Goleniowa?",
         odpowiedz:
-          "Goleniów jest blisko Szczecina (30 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla grup 6+ osób realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w 3-5 tygodni od pierwszego kontaktu. Wizyty stacjonarne łączymy często z innymi firmami z aglomeracji szczecińskiej.",
+          "Goleniów jest blisko Szczecina (30 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla grup 6+ osób realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni od pierwszego kontaktu. Wizyty stacjonarne łączymy często z innymi firmami z aglomeracji szczecińskiej.",
       },
     ],
   },
@@ -492,7 +492,7 @@ export const zachodniopomorskieCities: MiastoData[] = [
       {
         pytanie: "Jak szybko można wdrożyć AI w firmie z Gryfina?",
         odpowiedz:
-          "Gryfino jest blisko Szczecina (30 min), więc pierwsze spotkanie konsultacyjne możliwe w ciągu kilku dni. Szkolenia realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w 3-5 tygodni.",
+          "Gryfino jest blisko Szczecina (30 min), więc pierwsze spotkanie konsultacyjne możliwe w ciągu kilku dni. Szkolenia realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w ciągu kilku dni lub tygodni.",
       },
     ],
   },

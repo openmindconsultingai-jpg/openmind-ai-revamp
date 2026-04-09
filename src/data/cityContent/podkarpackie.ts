@@ -492,7 +492,7 @@ export const podkarpackieCities: MiastoData[] = [
       {
         pytanie: "Jak szybko można wdrożyć AI w firmie z Łańcuta?",
         odpowiedz:
-          "Łańcut jest blisko Rzeszowa (20-30 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla małych grup realizujemy w 1-2 tygodnie. Proste wdrożenia w 3-5 tygodni.",
+          "Łańcut jest blisko Rzeszowa (20-30 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla małych grup realizujemy w 1-2 tygodnie. Proste wdrożenia w ciągu kilku dni lub tygodni.",
       },
     ],
   },

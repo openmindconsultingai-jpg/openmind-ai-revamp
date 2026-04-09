@@ -127,7 +127,7 @@ export const dolnoslaskieCities: MiastoData[] = [
       {
         pytanie: "Jakie szkolenia AI polecacie dla firm z Legnicy?",
         odpowiedz:
-          "Dla firm z Legnicy najczęściej prowadzimy szkolenia wprowadzające z ChatGPT i Microsoft Copilot dla działów administracyjnych, szkolenia z automatyzacji dokumentów dla księgowości oraz warsztaty z analizy danych przy pomocy AI dla działów kontrolingu.",
+          "Dla firm z Legnicy najczęściej prowadzimy szkolenia wprowadzające z najlepszych narzędzi AI na rynku dla działów administracyjnych, szkolenia z automatyzacji dokumentów dla księgowości oraz warsztaty z analizy danych przy pomocy AI dla działów kontrolingu.",
       },
       {
         pytanie: "Czy można wdrożyć AI z dofinansowaniem unijnym w Legnicy?",
@@ -537,7 +537,7 @@ export const dolnoslaskieCities: MiastoData[] = [
       {
         pytanie: "Ile trwa wdrożenie AI dla firmy ze Zgorzelca?",
         odpowiedz:
-          "Proste wdrożenie (szkolenie + konfiguracja narzędzi do tłumaczeń i obsługi dokumentów): 3-5 tygodni. Większość prac realizujemy zdalnie, co jest efektywne dla firmy z mniejszego miasta. Pierwsze efekty widoczne od razu po szkoleniu, pełne korzyści po 2-3 miesiącach używania narzędzi w codziennej pracy.",
+          "Proste wdrożenie (szkolenie + konfiguracja narzędzi do tłumaczeń i obsługi dokumentów): kilka dni do kilku tygodni. Większość prac realizujemy zdalnie, co jest efektywne dla firmy z mniejszego miasta. Pierwsze efekty widoczne od razu po szkoleniu, pełne korzyści po 2-3 miesiącach używania narzędzi w codziennej pracy.",
       },
     ],
   },

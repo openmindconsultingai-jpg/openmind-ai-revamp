@@ -167,7 +167,7 @@ export const opolskieCities: MiastoData[] = [
         {
           pytanie: "Jak mała firma z Brzegu może zacząć korzystać z AI?",
           odpowiedz:
-            "Polecamy trzystopniowe podejście: 1) bezpłatna rozmowa wstępna online (1-2h), 2) jednodniowe szkolenie dla właściciela i kluczowych pracowników (2-5 tys. zł), 3) konfiguracja pierwszych 2-3 narzędzi pod specyfikę firmy (3-8 tys. zł). Cały proces to 3-5 tygodni. Pierwsze efekty widoczne od razu po szkoleniu.",
+            "Polecamy trzystopniowe podejście: 1) bezpłatna rozmowa wstępna online (1-2h), 2) jednodniowe szkolenie dla właściciela i kluczowych pracowników (2-5 tys. zł), 3) konfiguracja pierwszych 2-3 narzędzi pod specyfikę firmy (3-8 tys. zł). Cały proces to kilka dni do kilku tygodni. Pierwsze efekty widoczne od razu po szkoleniu.",
         },
         {
           pytanie: "Jakie narzędzia polecacie małym obiektom turystycznym z Brzegu?",
@@ -392,7 +392,7 @@ export const opolskieCities: MiastoData[] = [
         {
           pytanie: "Jak małe firmy produkcyjne z Krapkowic mogą zacząć z AI?",
           odpowiedz:
-            "Proponujemy zaczynać od bezpłatnej rozmowy wstępnej (1-2h online), podczas której identyfikujemy największe bóle w pracy firmy. Potem jednodniowe szkolenie (3-5 tys. zł) dla właściciela i kluczowych pracowników. Na koniec konfiguracja pierwszych narzędzi pod specyfikę firmy (3-8 tys. zł). Proces 3-5 tygodni.",
+            "Proponujemy zaczynać od bezpłatnej rozmowy wstępnej (1-2h online), podczas której identyfikujemy największe bóle w pracy firmy. Potem jednodniowe szkolenie (3-5 tys. zł) dla właściciela i kluczowych pracowników. Na koniec konfiguracja pierwszych narzędzi pod specyfikę firmy (3-8 tys. zł). Proces trwa od kilku dni do kilku tygodni.",
         },
         {
           pytanie: "Ile kosztuje prosta automatyzacja ofert handlowych?",

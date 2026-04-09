@@ -294,7 +294,7 @@ export const slaskieCities: MiastoData[] = [
       },
       {
         "pytanie": "Jak zacząć z AI w MŚP z Bytomia?",
-        "odpowiedz": "Standardowe trzy kroki: 1) bezpłatna rozmowa wstępna online (1-2h) — identyfikacja obszarów z największym potencjałem, 2) jednodniowe szkolenie dla właściciela i kluczowych pracowników (2-5 tys. zł), 3) konfiguracja pierwszych narzędzi pod specyfikę firmy (3-8 tys. zł). Cały proces to 3-5 tygodni, pierwsze efekty widoczne od razu po szkoleniu."
+        "odpowiedz": "Standardowe trzy kroki: 1) bezpłatna rozmowa wstępna online (1-2h) — identyfikacja obszarów z największym potencjałem, 2) jednodniowe szkolenie dla właściciela i kluczowych pracowników (2-5 tys. zł), 3) konfiguracja pierwszych narzędzi pod specyfikę firmy (3-8 tys. zł). Cały proces to kilka dni do kilku tygodni, pierwsze efekty widoczne od razu po szkoleniu."
       },
       {
         "pytanie": "Jakie zastosowania AI są najbardziej przydatne dla sklepu?",
@@ -341,7 +341,7 @@ export const slaskieCities: MiastoData[] = [
       },
       {
         "pytanie": "Czy można łączyć szkolenia z wdrożeniami?",
-        "odpowiedz": "Tak, i jest to nasze standardowe podejście. Zaczynamy od szkolenia wprowadzającego (1 dzień), które daje zespołowi solidną bazę. Potem następuje konfiguracja pierwszych narzędzi z udziałem przeszkolonych pracowników, dzięki czemu od razu widzą oni praktyczne zastosowanie. Pełna ścieżka: szkolenie + wdrożenie podstawowe = 3-5 tygodni."
+        "odpowiedz": "Tak, i jest to nasze standardowe podejście. Zaczynamy od szkolenia wprowadzającego (1 dzień), które daje zespołowi solidną bazę. Potem następuje konfiguracja pierwszych narzędzi z udziałem przeszkolonych pracowników, dzięki czemu od razu widzą oni praktyczne zastosowanie. Pełna ścieżka: szkolenie + wdrożenie podstawowe = od kilku dni do kilku tygodni."
       }
     ]
   },
