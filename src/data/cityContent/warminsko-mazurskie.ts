@@ -42,7 +42,19 @@ export const warminskoMazurskieCities: MiastoData[] = [
         "pytanie": "Czy prowadzicie szkolenia AI dla Uniwersytetu Warmińsko-Mazurskiego?",
         "odpowiedz": "Tak, oferujemy szkolenia dla uczelni wyższych — zarówno dla kadry akademickiej (wykorzystanie AI w dydaktyce, rozpoznawanie prac generowanych przez AI, etyka), jak i dla administracji uczelni. Warsztaty dla studentów również są dostępne. Szkolenia realizujemy stacjonarnie w Olsztynie lub online dla większej elastyczności."
       }
-    ]
+    ],
+      en: {
+        opisGospodarki: "Olsztyn is the capital of the Warmian-Masurian Voivodeship, an academic center (University of Warmia and Mazury), an administrative center, and a hub for tire manufacturing (Michelin Polska), food processing, and timber industries. The city also serves as a gateway to Masurian tourism and is one of the main centers in northern Poland.",
+        branzeKluczowe: ["tire manufacturing (Michelin)", "food and timber industry", "education (UWM)", "tourism (Masuria)"],
+        wyzwaniaAI: "In Olsztyn, typical areas for AI application include manufacturing companies in the tire and automotive sectors (quality documentation), food and timber companies (export, marketing), universities, and tourist facilities in the Masurian region. OpenMind AI offers implementations and training for companies and institutions in Olsztyn.",
+        czasDojazdu: "Olsztyn is served in a hybrid mode from Warsaw – travel time approx. 2.5 hours. On-site training with 1-2 weeks' notice, implementations mainly remote.",
+        przykladZastosowania: "Example implementation scenario: for an Olsztyn-based subcontractor in the tire sector, AI can be implemented to automate quality documentation (IATF 16999) and analyze production data from SPC systems, which typically shortens report preparation time by 35-50%.",
+        faq: [
+          { question: "Which companies in Olsztyn most frequently implement AI?", answer: "In Olsztyn, the leaders are: companies in the tire and automotive sectors (Michelin and their subcontractors – quality documentation), food and timber companies (marketing, export), the university (UWM – use of AI in teaching), and local marketing agencies. Growing interest is also observed among accounting firms and law offices." },
+          { question: "How does AI support the tire industry in Olsztyn?", answer: "Companies in the tire sector (Michelin and subcontractors) mainly implement AI for: automating quality documentation (IATF 16949, PPAP, FMEA), analyzing production data from MES/SPC systems, generating reports for clients, handling technical inquiries, and automating 8D reports. Key are enterprise tools with full data control." },
+          { question: "Do you provide AI training for the University of Warmia and Mazury?", answer: "Yes, we offer training for universities – both for academic staff (use of AI in teaching, recognizing AI-generated works, ethics) and for university administration. Workshops for students are also available. We conduct training on-site in Olsztyn or online for greater flexibility." }
+        ]
+      }
   },
   {
     "slug": "elblag",
@@ -85,7 +97,19 @@ export const warminskoMazurskieCities: MiastoData[] = [
         "pytanie": "Ile kosztuje wdrożenie AI dla średniej firmy z Elbląga?",
         "odpowiedz": "Dla średniej firmy (50-200 osób): audyt AI 5-15 tys. zł, pilotaż w jednym obszarze 15-50 tys. zł, pełne wdrożenie 60-250 tys. zł. Plus miesięczne koszty licencji: 1000-4000 zł/mc. Pierwsze ROI typowo w 6-12 miesięcy. Każde wdrożenie poprzedzone jest bezpłatną rozmową konsultacyjną."
       }
-    ]
+    ],
+      en: {
+        opisGospodarki: "Elbląg is the second largest city in the Warmian-Masurian Voivodeship, a historic port on the Elbląg Canal. The city's economy is based on food processing (Browar Elbląg), manufacturing (Alstom – locomotive production), processing, and tourism (Żuławy, Vistula Spit).",
+        branzeKluczowe: ["railway rolling stock production (Alstom)", "food industry (Browar Elbląg)", "processing and logistics", "regional tourism"],
+        wyzwaniaAI: "In Elbląg, typical areas for AI application include manufacturing companies (technical documentation, tenders), food companies (labels, export), logistics companies, and tourist facilities in Żuławy and the Vistula Spit. OpenMind AI offers implementations and training for companies in Elbląg.",
+        czasDojazdu: "Elbląg is served from Gdańsk – travel time approx. 1 hour. On-site meetings with advance notice, hybrid mode implementations.",
+        przykladZastosowania: "Example implementation scenario: for an Elbląg-based manufacturing company, AI can be implemented to automate technical documentation and tender offers, significantly shortening response time to international client inquiries.",
+        faq: [
+          { question: "How does AI support manufacturing companies from Elbląg?", answer: "Manufacturing companies (including the railway sector – Alstom and its subcontractors) benefit from: automation of technical documentation, analysis of data from production systems, generation of offers for international clients, and handling of technical inquiries in multiple languages. For companies working for the railway sector, enterprise tools with full data control are crucial due to OEM client requirements." },
+          { question: "Can tourist facilities in Żuławy and the Vistula Spit benefit from AI?", answer: "Yes – tourist facilities in the region (hotels, guesthouses, agritourism farms) serve guests from Poland, Germany, and Scandinavian countries. AI helps with: multilingual handling of booking inquiries, generating descriptions of regional attractions, creating marketing content, and managing Booking reviews. Cost: 250-500 PLN/month for a small facility." },
+          { question: "How much does AI implementation cost for a medium-sized company in Elbląg?", answer: "For a medium-sized company (50-200 people): AI audit 5-15k PLN, pilot in one area 15-50k PLN, full implementation 60-250k PLN. Plus monthly license costs: 1000-4000 PLN/month. First ROI typically in 6-12 months. Each implementation is preceded by a free consultation." }
+        ]
+      }
   },
   {
     "slug": "elk",
@@ -128,7 +152,19 @@ export const warminskoMazurskieCities: MiastoData[] = [
         "pytanie": "Jakie są koszty wdrożenia chatbota dla średniego hotelu nad jeziorem?",
         "odpowiedz": "Prosty chatbot oparty na gotowych platformach (Tidio, Voiceflow): 5-15 tys. zł jednorazowo + 100-300 zł/mc. Bardziej zaawansowany chatbot z integracją systemu rezerwacji i obsługą wielu języków: 20-50 tys. zł + 300-700 zł/mc. Zwrot zwykle w 4-8 miesięcy dzięki wzrostowi rezerwacji bezpośrednich i odciążeniu recepcji."
       }
-    ]
+    ],
+      en: {
+        opisGospodarki: "Ełk is a county town in the eastern part of Masuria, called 'the capital of Humpback Masuria'. The city's economy is mainly based on tourism (Masurian lakes), regional trade, small-scale production, and services for residents and tourists. Its proximity to the Lithuanian border favors cross-border contacts.",
+        branzeKluczowe: ["tourism (Masurian lakes)", "regional trade", "small-scale production", "services for residents"],
+        wyzwaniaAI: "In Ełk, typical areas for AI application include hotels and guesthouses on the Masurian lakes (multilingual guest service), local trade and service companies, agritourism farms, and small manufacturing companies. OpenMind AI offers implementations and training for companies in Ełk.",
+        czasDojazdu: "Ełk is served online (travel time from Warsaw approx. 3.5 hours). On-site visits for larger projects with advance notice.",
+        przykladZastosowania: "Example implementation scenario: for a resort on the Masurian lakes near Ełk, a multilingual booking chatbot (Polish, English, German, Lithuanian, Ukrainian) and automation of seasonal offer publishing can be implemented, significantly relieving owners during the peak summer season.",
+        faq: [
+          { question: "How does AI help resorts on the Masurian lakes?", answer: "Resorts in Masuria serve guests from Poland, Germany, Lithuania, Ukraine – AI radically simplifies multilingual communication. One chatbot handles inquiries in several languages, automatically generates seasonal offers (summer, winter, weekends), creates marketing content promoting the region, and manages reviews from Booking. Typical cost: 300-600 PLN/month." },
+          { question: "Can AI implementation for a tourist facility be done remotely?", answer: "Yes – practically the entire implementation process for a tourist facility can be done remotely: initial online discussions, webinar training, tool configuration via remote access. For larger projects, we plan 1-2 on-site visits. Most of the work (80-90%) is carried out remotely, which is important for facilities in hard-to-reach locations." },
+          { question: "What are the costs of implementing a chatbot for a medium-sized hotel by the lake?", answer: "A simple chatbot based on ready-made platforms (Tidio, Voiceflow): 5-15k PLN one-time + 100-300 PLN/month. A more advanced chatbot with reservation system integration and multi-language support: 20-50k PLN + 300-700 PLN/month. Return on investment typically in 4-8 months due to increased direct bookings and reduced reception workload." }
+        ]
+      }
   },
   {
     "slug": "ilawa",
@@ -171,7 +207,19 @@ export const warminskoMazurskieCities: MiastoData[] = [
         "pytanie": "Jakie narzędzia polecacie małej firmie z Iławy?",
         "odpowiedz": "Dla małej firmy: ChatGPT Plus (100 zł/mc) do komunikacji, Canva AI (55 zł/mc) do grafik, DeepL do tłumaczeń. Plus jednorazowe szkolenie wstępne: 2-4 tys. zł (online). Łączny koszt startu: 2-5 tys. zł plus 200 zł/mc. Po szkoleniu firma samodzielnie korzysta z narzędzi w codziennej pracy."
       }
-    ]
+    ],
+      en: {
+        opisGospodarki: "Iława is a county town on the largest lake in Poland (Lake Jeziorak), with an economy based on tourism, small-scale production, trade, and services. The city hosts, among others, the Paged Meble factory, and the region is famous for sailing and water tourism.",
+        branzeKluczowe: ["water tourism and sailing", "furniture production (Paged)", "small industry", "local trade"],
+        wyzwaniaAI: "In Iława, typical areas for AI application include tourist facilities on Lake Jeziorak (hotels, marina, equipment rentals), furniture manufacturers (product descriptions, export), and local SMEs. OpenMind AI offers implementations and training for companies in Iława.",
+        czasDojazdu: "Iława is served online from Gdańsk or Warsaw (travel time approx. 1.5-2.5 hours). On-site training for groups of 6+ people.",
+        przykladZastosowania: "Example implementation scenario: for a furniture manufacturer from Iława exporting to Germany and Scandinavia, automation of creating product catalogs in several languages and handling customer inquiries from marketplaces can be implemented, significantly supporting export sales without increasing staff.",
+        faq: [
+          { question: "How does AI support furniture manufacturers from Iława?", answer: "Furniture manufacturers benefit mainly from: automatic generation of product descriptions in export languages (German, Swedish, English), creation of professional catalog graphics, handling B2B inquiries from marketplaces (Amazon, Otto, Wayfair), and analysis of market trends. Typical costs: 400-900 PLN/month + initial implementation 5-15k PLN." },
+          { question: "Can tourist facilities on Lake Jeziorak benefit from AI?", answer: "Yes – the Jeziorak region attracts sailors and tourists from all over Poland and Germany. AI helps with: multilingual booking management, generating descriptions of offers (cruises, rentals, accommodation), creating content about regional attractions, and managing Booking reviews. Cost: 250-500 PLN/month for a small facility." },
+          { question: "What tools do you recommend for a small company from Iława?", answer: "For a small company: ChatGPT Plus (100 PLN/month) for communication, Canva AI (55 PLN/month) for graphics, DeepL for translations. Plus one-time initial training: 2-4k PLN (online). Total start-up cost: 2-5k PLN plus 200 PLN/month. After training, the company independently uses the tools in daily work." }
+        ]
+      }
   },
   {
     "slug": "ostroda",
@@ -214,7 +262,19 @@ export const warminskoMazurskieCities: MiastoData[] = [
         "pytanie": "Jak zacząć korzystać z AI bez dojazdu do dużego miasta?",
         "odpowiedz": "Rekomendujemy szkolenia online — nasze szkolenia online to 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie po szkoleniu. Koszt: 1.5-3 tys. zł dla pojedynczej osoby, 3-5 tys. zł dla grupy do 5 osób. Efektywność porównywalna z szkoleniami stacjonarnymi, bez konieczności dojazdu do Olsztyna czy Gdańska."
       }
-    ]
+    ],
+      en: {
+        opisGospodarki: "Ostróda is a county town on Lake Drwęckie, an important center of Masurian tourism. The economy is based on tourism (Elbląg Canal, lakes), small-scale production, trade, and services. The city is known for its Reggae Festival and cruises on the Elbląg Canal.",
+        branzeKluczowe: ["tourism (Elbląg Canal)", "small-scale production", "local trade", "gastronomy and hospitality"],
+        wyzwaniaAI: "In Ostróda, typical areas for AI application include hotels and guesthouses on Lake Drwęckie, companies organizing cruises on the Elbląg Canal, restaurants, and local SMEs. OpenMind AI offers implementations and training for companies in Ostróda.",
+        czasDojazdu: "Ostróda is served from Olsztyn or Gdańsk – travel time approx. 1-1.5 hours. Implementations mainly online, on-site training for groups.",
+        przykladZastosowania: "Example implementation scenario: for a hotel in Ostróda on Lake Drwęckie, a multilingual booking chatbot and automation of seasonal offer generation can be implemented, significantly supporting guest service from various countries and increasing the number of direct bookings.",
+        faq: [
+          { question: "How does AI help hotels in Ostróda?", answer: "Hotels mainly benefit from: multilingual chatbots handling guest inquiries (Polish, English, German, Ukrainian), automatic generation of seasonal offers, creation of marketing content about regional attractions (Elbląg Canal, Reggae Festival), and managing reviews from portals. Typical cost: 300-600 PLN/month for a medium-sized hotel." },
+          { question: "Can companies organizing cruises on the Elbląg Canal benefit from AI?", answer: "Yes – companies organizing cruises benefit from: generating route descriptions in several languages (this unique canal with inclined planes attracts tourists from all over the world), automating reservations, creating marketing content, and handling group inquiries. Cost: 200-450 PLN/month for a small company + 1-3k PLN for a one-day introductory training." },
+          { question: "How to start using AI without traveling to a big city?", answer: "We recommend online training – our online training consists of 3-4 hours of intensive live workshops plus a week of post-training support. Cost: 1.5-3k PLN for an individual, 3-5k PLN for a group of up to 5 people. Effectiveness is comparable to on-site training, without the need to travel to Olsztyn or Gdańsk." }
+        ]
+      }
   },
   {
     "slug": "gizycko",
@@ -257,7 +317,19 @@ export const warminskoMazurskieCities: MiastoData[] = [
         "pytanie": "Czy wdrożenie AI ma sens dla firmy działającej tylko sezonowo?",
         "odpowiedz": "Tak — firmy sezonowe często najbardziej zyskują na AI, bo w szczycie sezonu są przeciążone, a poza sezonem mają czas na wdrożenie nowych narzędzi. Warto wdrożyć AI w okresie zimowym, żeby od wiosny móc z niej korzystać. Licencje miesięczne można na okres poza sezonem zawiesić lub downgradować, płacąc mniej przez 6-7 miesięcy w roku."
       }
-    ]
+    ],
+      en: {
+        opisGospodarki: "Giżycko is the heart of the Great Masurian Lakes, one of the most popular places for sailing tourism in Poland. The city's economy is based almost exclusively on water tourism – marinas, yacht charter, sailing schools, hotels, restaurants, sailing shops. During peak season, the number of tourists often far exceeds the number of residents.",
+        branzeKluczowe: ["sailing tourism", "yacht charter and marinas", "hospitality and gastronomy", "trade for tourists"],
+        wyzwaniaAI: "In Giżycko, typical areas for AI application include charter companies (multilingual booking service), hotels and guesthouses (multilingual guest service), sailing schools, restaurants, and sailing shops. OpenMind AI offers implementations and training for the tourism industry in the Great Lakes region.",
+        czasDojazdu: "Giżycko is served online (travel time from Warsaw approx. 3.5 hours). On-site visits for larger projects during the off-peak season.",
+        przykladZastosowania: "Example implementation scenario: for a charter company from Giżycko, a multilingual booking chatbot can be implemented to handle inquiries from sailors from Poland, Germany, the Czech Republic, Scandinavia, and automation of seasonal offer publishing, significantly relieving the office during peak season.",
+        faq: [
+          { question: "How does AI support charter companies from Giżycko?", answer: "Charter companies mainly benefit from: multilingual chatbots handling inquiries about yacht availability (Polish, German, English, Czech, Swedish), automation of the booking process, generation of yacht descriptions and seasonal offers, handling inquiries from individual clients and groups, and analysis of reviews from portals. Cost: 400-900 PLN/month + implementation 10-25k PLN." },
+          { question: "Can sailing schools from Masuria use AI?", answer: "Yes – sailing schools can use AI for: generating training materials and course descriptions in several languages, automating communication with students, creating marketing content, and handling inquiries about courses and schedules. Cost: 250-500 PLN/month for a medium-sized school + one-day introductory training 1.5-3k PLN." },
+          { question: "Does AI implementation make sense for a seasonal business?", answer: "Yes – seasonal businesses often benefit most from AI, because they are overloaded during peak season, and have time to implement new tools during the off-season. It is worth implementing AI in winter to be able to use it from spring. Monthly licenses can be suspended or downgraded during the off-season, paying less for 6-7 months of the year." }
+        ]
+      }
   },
   {
     "slug": "ketrzyn",
@@ -300,7 +372,19 @@ export const warminskoMazurskieCities: MiastoData[] = [
         "pytanie": "Ile kosztuje podstawowe wdrożenie AI dla małego obiektu turystycznego?",
         "odpowiedz": "Dla małego obiektu (pensjonat 10-25 pokoi): jednorazowe szkolenie 1.5-3 tys. zł, konfiguracja narzędzi 2-5 tys. zł, miesięczne licencje 200-400 zł/mc. Łączny start: 3.5-8 tys. zł + 300 zł/mc. Pierwsze efekty widoczne od razu po szkoleniu, pełne korzyści po 2-3 miesiącach używania narzędzi w codziennej pracy."
       }
-    ]
+    ],
+      en: {
+        opisGospodarki: "Kętrzyn is a county town in Masuria, known for its proximity to Wolf's Lair (Hitler's former headquarters) and Święta Lipka (Marian sanctuary). The city's economy is based on historical and religious tourism, agriculture, small-scale production, and trade.",
+        branzeKluczowe: ["historical tourism (Wolf's Lair)", "religious tourism (Święta Lipka)", "agriculture", "local trade"],
+        wyzwaniaAI: "In Kętrzyn, typical areas for AI application include tourist facilities serving visitors to Wolf's Lair and pilgrims to Święta Lipka (multilingual service), hotels and guesthouses, and local SMEs. OpenMind AI offers implementations and training for companies in Kętrzyn.",
+        czasDojazdu: "Kętrzyn is served online from Warsaw (travel time approx. 3.5 hours) or Olsztyn (approx. 1.5 hours). On-site visits for larger projects.",
+        przykladZastosowania: "Example implementation scenario: for a hotel or guesthouse in Kętrzyn serving tourists visiting Wolf's Lair, a multilingual chatbot (Polish, German, English, Hebrew, Russian) can be implemented to handle inquiries about the history of memorial sites and reservations.",
+        faq: [
+          { question: "How does AI help tourist facilities around Wolf's Lair?", answer: "Tourist facilities around Wolf's Lair serve guests from a dozen countries (Germany, USA, Israel, Great Britain) – AI radically simplifies multilingual service. One chatbot handles inquiries in several languages, automatically generates descriptions of the place and history, and creates marketing content in various languages. This is particularly valuable for small facilities without permanent multilingual staff." },
+          { question: "Is pilgrimages to Święta Lipka a market for AI?", answer: "Yes – facilities serving pilgrims (hotels, guesthouses, transport companies) can use AI for: handling inquiries in several languages (especially German and Ukrainian – a frequent direction of pilgrimages), generating offers for pilgrimage groups, automating communication with pilgrimage organizers, and creating content about the history of the sanctuary. Cost: 200-450 PLN/month for a small facility." },
+          { question: "How much does basic AI implementation cost for a small tourist facility?", answer: "For a small facility (guesthouse 10-25 rooms): one-time training 1.5-3k PLN, tool configuration 2-5k PLN, monthly licenses 200-400 PLN/month. Total start-up: 3.5-8k PLN + 300 PLN/month. First effects are visible immediately after training, full benefits after 2-3 months of using the tools in daily work." }
+        ]
+      }
   },
   {
     "slug": "mragowo",
@@ -343,7 +427,19 @@ export const warminskoMazurskieCities: MiastoData[] = [
         "pytanie": "Czy warto wdrażać AI w sezonowej firmie turystycznej?",
         "odpowiedz": "Tak — firmy sezonowe często najbardziej zyskują na AI, bo w szczycie sezonu są przeciążone. Najlepiej wdrażać AI poza sezonem (jesień, zima), żeby od wiosny mieć gotowe narzędzia. Inwestycja zwraca się zwykle już w pierwszym sezonie przez wzrost rezerwacji bezpośrednich oraz oszczędność czasu obsługi."
       }
-    ]
+    ],
+      en: {
+        opisGospodarki: "Mrągowo is a county town in Masuria, known for its Country Picnic and water tourism on Lake Czos. The city's economy is based on tourism, trade, small-scale production, and services. The city is a popular holiday destination for tourists from Poland and abroad.",
+        branzeKluczowe: ["water tourism", "event organization (Country Picnic)", "hospitality and gastronomy", "trade for tourists"],
+        wyzwaniaAI: "In Mrągowo, typical areas for AI application include hotels and guesthouses on Lake Czos, event organizers, restaurants, and shops for tourists. OpenMind AI offers implementations and training for the tourism industry and companies in Mrągowo.",
+        czasDojazdu: "Mrągowo is served online from Olsztyn (travel time approx. 1 hour) or Warsaw (approx. 3 hours). On-site visits for larger projects during the off-season.",
+        przykladZastosowania: "Example implementation scenario: for a hotel in Mrągowo, a multilingual booking chatbot and automation of publishing offers for events (Country Picnic and others) can be implemented, significantly relieving the reception during peak season and increasing the number of direct bookings.",
+        faq: [
+          { question: "How does AI support the tourism industry in Mrągowo?", answer: "Tourist facilities in Mrągowo serve guests from Poland, Germany, the Czech Republic, Lithuania – AI simplifies multilingual service. Typical applications: multilingual chatbots, automatic generation of offers for events (Country Picnic attracts thousands of guests), creation of marketing content about regional attractions, and managing reviews from Booking. Cost: 250-500 PLN/month for a small facility." },
+          { question: "Can event organizers in Mrągowo use AI?", answer: "Yes – organizers of large events (festivals, concerts, conferences) benefit from: automating the handling of inquiries from participants, generating marketing content in several languages, managing social media, and creating promotional materials. For larger events, we recommend dedicated implementations: 15-50k PLN per seasonal project." },
+          { question: "Is it worth implementing AI in a seasonal tourism company?", answer: "Yes – seasonal companies often benefit most from AI, because they are overloaded during peak season. It is best to implement AI during the off-season (autumn, winter), so that tools are ready from spring. The investment usually pays for itself in the first season through increased direct bookings and saved service time." }
+        ]
+      }
   },
   {
     "slug": "bartoszyce",
@@ -386,7 +482,19 @@ export const warminskoMazurskieCities: MiastoData[] = [
         "pytanie": "Jakie narzędzia AI polecacie na start dla mikrofirmy?",
         "odpowiedz": "Minimalny stack: ChatGPT (darmowy lub Plus 100 zł/mc) do tekstów i komunikacji, Canva (darmowa lub Pro 55 zł/mc) do grafik. Łącznie: 0-200 zł/mc pokrywa 80% potrzeb mikroprzedsiębiorcy. Ważniejsze od narzędzi jest jednorazowe szkolenie wstępne (1-2 tys. zł), żeby nauczyć się efektywnego korzystania z AI w codziennej pracy."
       }
-    ]
+    ],
+      en: {
+        opisGospodarki: "Bartoszyce is a county town in the northern part of Warmia, close to the border with the Kaliningrad Oblast (currently closed). The city's economy is based on agriculture, agri-food processing, small-scale production, and trade. After the border closure, the city is undergoing economic transformation.",
+        branzeKluczowe: ["agriculture and processing", "small-scale production", "local trade", "services for residents"],
+        wyzwaniaAI: "In Bartoszyce, typical areas for AI application include farms and processing companies (documentation, marketing), local trading companies, and service SMEs. OpenMind AI offers affordable implementations and training for micro-entrepreneurs from Bartoszyce.",
+        czasDojazdu: "Bartoszyce is served online from Olsztyn (travel time approx. 1 hour). On-site visits for groups of 6+ people.",
+        przykladZastosowania: "Example implementation scenario: for a small processing company from Bartoszyce, simple AI tools can be implemented to generate product descriptions, handle customer inquiries, and automate official correspondence, typically saving the owner 8-15 hours of work per week.",
+        faq: [
+          { question: "Can small businesses from Bartoszyce afford AI?", answer: "Yes – costs are low. A basic stack (ChatGPT Plus + Canva AI + free tools) is 150-300 PLN per month, plus a one-time introductory training of 1-2k PLN. For a small company, this means the investment pays for itself in the first month by saving working time. Learning to use it: a one-day online training is enough." },
+          { question: "Can farmers from Bartoszyce county use AI?", answer: "Yes – AI supports farmers in: creating documentation for ARiMR subsidies, writing official letters, analyzing farm data (if collected), serving direct sales customers, and marketing agritourism. Basic stack: 100-200 PLN/month, one-day introductory training 1-2k PLN. Effects: saving several hours of work per week." },
+          { question: "What AI tools do you recommend for a micro-business to start with?", answer: "Minimal stack: ChatGPT (free or Plus 100 PLN/month) for texts and communication, Canva (free or Pro 55 PLN/month) for graphics. Total: 0-200 PLN/month covers 80% of a micro-entrepreneur's needs. More important than the tools is a one-time introductory training (1-2k PLN) to learn how to effectively use AI in daily work." }
+        ]
+      }
   },
   {
     "slug": "szczytno",
