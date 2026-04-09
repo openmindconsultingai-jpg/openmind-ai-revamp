@@ -3,11 +3,18 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import PageLayout from '@/components/PageLayout';
 import ContactForm from '@/components/ContactForm';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MapPin, ArrowLeft } from 'lucide-react';
+import { MapPin, ArrowLeft, Building2, Lightbulb, Clock, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { findCity } from '@/data/voivodeships';
+import { findCityContent } from '@/data/cityContent';
 import usePageMeta from '@/hooks/usePageMeta';
 import useCanonical from '@/hooks/useCanonical';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 const CityDetail = () => {
   const { slug, citySlug } = useParams<{ slug: string; citySlug: string }>();
@@ -16,6 +23,7 @@ const CityDetail = () => {
   const result = slug && citySlug ? findCity(slug, citySlug) : null;
   const city = result?.city;
   const voivodeship = result?.voivodeship;
+  const content = slug && citySlug ? findCityContent(slug, citySlug) : undefined;
 
   const seoTitle = city
     ? `Szkolenia AI ${city.name} – Wdrożenia, Automatyzacja, Agencja Kreatywna | OpenMind AI`
@@ -26,31 +34,44 @@ const CityDetail = () => {
     : '';
 
   const seoKeywords = city && voivodeship
-    ? `szkolenia AI ${city.name}, wdrożenia AI ${city.name}, kurs sztucznej inteligencji ${city.name}, automatyzacja procesów ${city.name}, agencja kreatywna AI ${city.name}, chatbot ${city.name}, produkcja wideo AI ${city.name}, tworzenie grafik AI ${city.name}, reklamy AI ${city.name}, filmy AI ${city.name}, zdjęcia AI ${city.name}, konsulting AI ${city.name}, transformacja cyfrowa ${city.name}, szkolenie ChatGPT ${city.name}, generatywna AI ${city.name}, ${voivodeship.name.toLowerCase()}`
+    ? (content?.lokalneKeywordy?.join(', ') || `szkolenia AI ${city.name}, wdrożenia AI ${city.name}, kurs sztucznej inteligencji ${city.name}, automatyzacja procesów ${city.name}, agencja kreatywna AI ${city.name}, chatbot ${city.name}, produkcja wideo AI ${city.name}, tworzenie grafik AI ${city.name}, reklamy AI ${city.name}, filmy AI ${city.name}, zdjęcia AI ${city.name}, konsulting AI ${city.name}, transformacja cyfrowa ${city.name}, szkolenie ChatGPT ${city.name}, generatywna AI ${city.name}, ${voivodeship.name.toLowerCase()}`)
     : '';
 
   const jsonLd = useMemo(() => {
     if (!city || !voivodeship) return undefined;
+    const faqItems = content?.faq?.map((f) => ({
+      '@type': 'Question',
+      name: f.pytanie,
+      acceptedAnswer: { '@type': 'Answer', text: f.odpowiedz },
+    }));
     return {
       '@context': 'https://schema.org',
-      '@type': 'LocalBusiness',
-      name: `OpenMind AI – ${city.name}`,
-      description: seoDescription,
-      url: `https://www.openmindai.pl/gdzie-dzialamy/${slug}/${citySlug}`,
-      areaServed: { '@type': 'City', name: city.name },
-      provider: { '@type': 'Organization', name: 'OpenMind AI Consulting', url: 'https://www.openmindai.pl' },
-      address: { '@type': 'PostalAddress', addressLocality: city.name, addressRegion: voivodeship.name, addressCountry: 'PL' },
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: 'Usługi AI',
-        itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: `Szkolenia AI w ${city.locative}` } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: `Wdrożenia AI w ${city.locative}` } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: `Agencja Kreatywna AI w ${city.locative}` } },
-        ],
-      },
+      '@graph': [
+        {
+          '@type': 'LocalBusiness',
+          name: `OpenMind AI – ${city.name}`,
+          description: seoDescription,
+          url: `https://www.openmindai.pl/gdzie-dzialamy/${slug}/${citySlug}`,
+          areaServed: { '@type': 'City', name: city.name },
+          provider: { '@type': 'Organization', name: 'OpenMind AI Consulting', url: 'https://www.openmindai.pl' },
+          address: { '@type': 'PostalAddress', addressLocality: city.name, addressRegion: voivodeship.name, addressCountry: 'PL' },
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: 'Usługi AI',
+            itemListElement: [
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: `Szkolenia AI w ${city.locative}` } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: `Wdrożenia AI w ${city.locative}` } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: `Agencja Kreatywna AI w ${city.locative}` } },
+            ],
+          },
+        },
+        ...(faqItems?.length ? [{
+          '@type': 'FAQPage',
+          mainEntity: faqItems,
+        }] : []),
+      ],
     };
-  }, [city, voivodeship, slug, citySlug, seoDescription]);
+  }, [city, voivodeship, slug, citySlug, seoDescription, content]);
 
   useCanonical();
 
@@ -67,14 +88,6 @@ const CityDetail = () => {
   const heading = language === 'pl'
     ? `Szkolenia, wdrażanie i agencja kreatywna AI w ${city!.locative}`
     : `AI Training, Implementation & Creative Agency in ${city!.name}`;
-
-  const paragraph1 = language === 'pl'
-    ? `Szkolenia, wdrażanie i agencja kreatywna AI w ${city!.locative}. Jako regionalny lider transformacji cyfrowej, pomagamy firmom wdrażać technologie jutra, zapewniając realną oszczędność czasu, redukcję kosztów oraz pełne bezpieczeństwo danych w zgodzie z RODO. Nasz zespół ekspertów łączy strategiczne doradztwo z innowacyjną produkcją wizualną, budując przewagę konkurencyjną lokalnych przedsiębiorstw już dziś.`
-    : `AI training, implementation, and creative agency in ${city!.name}. As a regional leader in digital transformation, we help businesses implement tomorrow's technologies, ensuring real time savings, cost reduction, and full GDPR-compliant data security. Our team of experts combines strategic consulting with innovative visual production, building competitive advantage for local businesses today.`;
-
-  const paragraph2 = language === 'pl'
-    ? `Oferujemy kompleksowe usługi sztucznej inteligencji dla firm w ${city!.locative}. Szkolenia AI, automatyzacja procesów, generatywne media i doradztwo strategiczne – zdalnie lub stacjonarnie w Twoim mieście.`
-    : `We offer comprehensive AI services for businesses in ${city!.name}. AI training, process automation, generative media, and strategic consulting – remotely or on-site in your city.`;
 
   return (
     <PageLayout>
@@ -94,7 +107,7 @@ const CityDetail = () => {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <span className="text-sm font-medium text-primary tracking-wider uppercase">
-                  {city!.name}
+                  {city!.name}{content ? ` · ${content.populacja} mieszkańców` : ''}
                 </span>
               </div>
 
@@ -102,10 +115,74 @@ const CityDetail = () => {
                 <span className="text-gradient">{heading}</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mb-4">{paragraph1}</p>
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">{paragraph2}</p>
+              {content ? (
+                <>
+                  {/* Opis gospodarki */}
+                  <div className="mb-8">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Building2 className="w-5 h-5 text-primary" />
+                      <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground">
+                        {language === 'pl' ? `Gospodarka i biznes w ${city!.locative}` : `Economy & Business in ${city!.name}`}
+                      </h2>
+                    </div>
+                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                      {content.opisGospodarki}
+                    </p>
+                  </div>
+
+                  {/* Kluczowe branże */}
+                  <div className="mb-8 grid sm:grid-cols-2 gap-3">
+                    {content.branzeKluczowe.map((branza) => (
+                      <div key={branza} className="flex items-center gap-2 p-3 rounded-lg border border-border bg-card/50">
+                        <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
+                        <span className="text-sm text-foreground">{branza}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Wyzwania AI */}
+                  <div className="mb-8">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Lightbulb className="w-5 h-5 text-primary" />
+                      <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground">
+                        {language === 'pl' ? `Zastosowania AI w ${city!.locative}` : `AI Applications in ${city!.name}`}
+                      </h2>
+                    </div>
+                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                      {content.wyzwaniaAI}
+                    </p>
+                  </div>
+
+                  {/* Przykład zastosowania */}
+                  <div className="mb-8 p-5 rounded-xl border border-primary/20 bg-primary/5">
+                    <p className="text-base text-foreground leading-relaxed">
+                      {content.przykladZastosowania}
+                    </p>
+                  </div>
+
+                  {/* Czas dojazdu */}
+                  <div className="mb-8 flex items-start gap-3">
+                    <Clock className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                    <p className="text-sm text-muted-foreground">{content.czasDojazdu}</p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mb-4">
+                    {language === 'pl'
+                      ? `Szkolenia, wdrażanie i agencja kreatywna AI w ${city!.locative}. Jako regionalny lider transformacji cyfrowej, pomagamy firmom wdrażać technologie jutra, zapewniając realną oszczędność czasu, redukcję kosztów oraz pełne bezpieczeństwo danych w zgodzie z RODO. Nasz zespół ekspertów łączy strategiczne doradztwo z innowacyjną produkcją wizualną, budując przewagę konkurencyjną lokalnych przedsiębiorstw już dziś.`
+                      : `AI training, implementation, and creative agency in ${city!.name}. As a regional leader in digital transformation, we help businesses implement tomorrow's technologies, ensuring real time savings, cost reduction, and full GDPR-compliant data security.`}
+                  </p>
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                    {language === 'pl'
+                      ? `Oferujemy kompleksowe usługi sztucznej inteligencji dla firm w ${city!.locative}. Szkolenia AI, automatyzacja procesów, generatywne media i doradztwo strategiczne – zdalnie lub stacjonarnie w Twoim mieście.`
+                      : `We offer comprehensive AI services for businesses in ${city!.name}. AI training, process automation, generative media, and strategic consulting – remotely or on-site in your city.`}
+                  </p>
+                </>
+              )}
             </div>
 
+            {/* Service cards */}
             <div className="mb-14 md:mb-20 grid sm:grid-cols-3 gap-4">
               {[
                 {
@@ -128,6 +205,33 @@ const CityDetail = () => {
               ))}
             </div>
 
+            {/* FAQ */}
+            {content?.faq && content.faq.length > 0 && (
+              <div className="mb-14 md:mb-20">
+                <div className="flex items-center gap-2 mb-6">
+                  <HelpCircle className="w-5 h-5 text-primary" />
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold">
+                    <span className="text-gradient">
+                      {language === 'pl' ? 'Najczęściej zadawane pytania' : 'Frequently Asked Questions'}
+                    </span>
+                  </h2>
+                </div>
+                <Accordion type="single" collapsible className="space-y-3">
+                  {content.faq.map((item, i) => (
+                    <AccordionItem key={i} value={`faq-${i}`} className="border border-border rounded-xl px-5">
+                      <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline">
+                        {item.pytanie}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed">
+                        {item.odpowiedz}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            )}
+
+            {/* Contact form */}
             <div className="max-w-2xl mx-auto">
               <h2 className="font-heading text-2xl md:text-3xl font-bold mb-2 text-center">
                 <span className="text-gradient">
