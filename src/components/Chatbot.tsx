@@ -166,7 +166,7 @@ const Chatbot = () => {
             <img src={logo} alt="OpenMind AI" className="w-8 h-8 object-contain" />
             <div className="flex-1 min-w-0">
               <p className="font-heading text-sm font-semibold text-foreground">OpenMind AI</p>
-              <p className="text-xs text-muted-foreground">Doradca AI • Online</p>
+              <p className="text-xs text-muted-foreground">AI Advisor • Online</p>
             </div>
             <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setIsOpen(false)}>
               <X className="w-4 h-4" />
@@ -179,8 +179,8 @@ const Chatbot = () => {
               <div className="text-center py-8 space-y-3">
                 <img src={logo} alt="" className="w-12 h-12 mx-auto opacity-60" />
                 <p className="text-sm text-muted-foreground">
-                  Cześć! 👋 Jestem doradcą AI od OpenMind.<br />
-                  Jak mogę Ci pomóc?
+                  Hi! 👋 I'm the AI advisor from OpenMind.<br />
+                  How can I help you?
                 </p>
               </div>
             )}
@@ -224,7 +224,7 @@ const Chatbot = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Napisz wiadomość..."
+                placeholder="Type a message..."
                 rows={1}
                 className="flex-1 resize-none bg-muted/40 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/50 max-h-24 scrollbar-thin"
                 style={{ minHeight: "40px" }}
