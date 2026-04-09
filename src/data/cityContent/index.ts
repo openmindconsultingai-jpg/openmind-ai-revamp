@@ -12,6 +12,8 @@ import { pomorskieCities } from './pomorskie';
 import { slaskieCities } from './slaskie';
 import { swietokrzyskieCities } from './swietokrzyskie';
 import { warminskoMazurskieCities } from './warminsko-mazurskie';
+import { wielkopolskieCities } from './wielkopolskie';
+import { zachodniopomorskieCities } from './zachodniopomorskie';
 
 const allCities: MiastoData[] = [
   ...dolnoslaskieCities,
@@ -27,6 +29,8 @@ const allCities: MiastoData[] = [
   ...slaskieCities,
   ...swietokrzyskieCities,
   ...warminskoMazurskieCities,
+  ...wielkopolskieCities,
+  ...zachodniopomorskieCities,
 ];
 
 const cityMap = new Map<string, MiastoData>();
