@@ -253,7 +253,7 @@ const VideoHero = () => {
         </div>
 
         {/* SEO H1 - visually smaller but semantically the main heading */}
-        <h1 className="hero-subtitle font-heading text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-foreground/80 mb-3 max-w-3xl mx-auto">
+        <h1 className="hero-subtitle font-heading text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-foreground/85 mb-4 max-w-4xl mx-auto">
           {seoH1Text}
         </h1>
 
