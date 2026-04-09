@@ -122,7 +122,7 @@ const CityDetail = () => {
         },
       ],
     };
-  }, [city, voivodeship, slug, citySlug, seoDescription, content]);
+  }, [city, voivodeship, slug, citySlug, seoDescription, localFaq]);
 
   useCanonical();
 
