@@ -45,6 +45,18 @@ export const lodzkieCities: MiastoData[] = [
           "Tak, OpenMind AI prowadzi szkolenia stacjonarne w Łodzi — zarówno w siedzibie klienta, jak i w wynajmowanych salach konferencyjnych. Minimalna grupa to 4-5 osób, optymalna 8-15. Jednodniowe szkolenie dla grupy to koszt od 4-8 tys. zł zależnie od zakresu tematycznego.",
       },
     ],
+      en: {
+      opisGospodarki: "Łódź is Poland's third-largest city and a major BPO/SSC hub. From its industrial past (textiles), the city has transformed into a modern center for business services, e-commerce, and the creative industry. Companies such as mBank, Infosys, Rossmann, Ericsson, and Accenture have their offices in Łódź.",
+      branzeKluczowe: ["BPO/SSC and shared service centers", "e-commerce (Rossmann, Answear)", "creative and film industry", "logistics and manufacturing"],
+      wyzwaniaAI: "In Łódź, typical areas for AI application include BPO/SSC companies (back-office process automation, multilingual customer service), e-commerce (personalization, product description generation, after-sales support), and the creative industry (content creation, visualizations, marketing campaigns). OpenMind AI offers implementations and training for companies in Łódź.",
+      czasDojazdu: "Łódź is served in a hybrid mode. On-site meetings require 1-2 weeks' notice, with most implementations conducted remotely with periodic on-site visits.",
+      przykladZastosowania: "Example implementation scenario: For an e-commerce company in Łódź, AI can be implemented to automatically generate product descriptions in several languages and handle customer inquiries, typically reducing the time to prepare a new product offering by 60-70%.",
+      faq: [
+        { question: "Which companies in Łódź most frequently implement AI?", answer: "In Łódź, leaders include BPO/SSC companies (mBank, Infosys, Accenture), large e-commerce businesses (Answear, Rossmann Online), and creative agencies. Growing interest in AI is also observed among medium-sized manufacturing companies, law firms, and accounting offices. The most common implementation areas are document automation, multilingual chatbots, and e-commerce personalization." },
+        { question: "How much does it cost to implement an AI chatbot for a company in Łódź?", answer: "The cost of a chatbot depends on its complexity. A simple chatbot based on ready-made platforms: 5-15 thousand PLN. A RAG chatbot integrated with the company's knowledge base: 25-80 thousand PLN. An advanced system with CRM, Teams, Slack integration, and full permission management: 100-300 thousand PLN. We always recommend a phased implementation." },
+        { question: "Do you conduct on-site AI training in Łódź?", answer: "Yes, OpenMind AI conducts on-site training in Łódź — both at the client's premises and in rented conference rooms. The minimum group size is 4-5 people, with an optimal size of 8-15. A one-day training session for a group costs from 4-8 thousand PLN, depending on the thematic scope." }
+      ],
+    },
   },
   {
     slug: "pabianice",
@@ -90,6 +102,18 @@ export const lodzkieCities: MiastoData[] = [
           "Jednodniowe szkolenie dla grupy 10 osób w siedzibie klienta w Pabianicach: 4-7 tys. zł. Obejmuje 6 godzin warsztatów, materiały, praktyczne ćwiczenia na przypadkach z danej firmy oraz miesiąc wsparcia poszkoleniowego przez Slack lub e-mail.",
       },
     ],
+      en: {
+      opisGospodarki: "Pabianice is a city with textile traditions, currently featuring a dynamically developing pharmaceutical sector (Polpharma) and logistics. Its proximity to Łódź means many companies locate warehouses and distribution centers here, benefiting from lower costs than in the agglomeration.",
+      branzeKluczowe: ["pharmaceutical industry (Polpharma)", "logistics and warehousing", "textile production", "local trade"],
+      wyzwaniaAI: "In Pabianice, typical areas for AI application include pharmaceutical companies (regulatory documentation, research data analysis — while adhering to strict standards), logistics centers (document automation, route planning), and local SMEs (office work, customer service). OpenMind AI offers implementations and training for companies in Pabianice.",
+      czasDojazdu: "Pabianice is served from Łódź — travel time is approximately 20-30 minutes. Training and on-site implementations are available on short notice.",
+      przykladZastosowania: "Example implementation scenario: For a logistics company in Pabianice, AI can be implemented for automatic reading of transport documents and classification of shipments, typically reducing document handling time by 35-50%.",
+      faq: [
+        { question: "Can pharmaceutical companies in Pabianice safely use AI?", answer: "Yes, but this requires enterprise tools with full data control (Azure OpenAI with an EU region, local open-source models). The pharmaceutical sector has stringent GMP and GDP requirements — AI can be used for documentation analysis, research support, and report automation, but with a full audit trail and compliance with regulations." },
+        { question: "How can AI improve warehouse operations in Pabianice?", answer: "In warehouses, AI is most often implemented for: automatic reading of documents (CMR, WZ, invoices), classification of incoming shipments, optimization of order picking, and chatbots handling inquiries from drivers and forwarders. A typical pilot project in a warehouse costs 15-40 thousand PLN, with ROI visible within 6-12 months." },
+        { question: "How much does AI training for a team of 10 people in Pabianice cost?", answer: "A one-day training session for a group of 10 people at the client's premises in Pabianice costs 4-7 thousand PLN. It includes 6 hours of workshops, materials, practical exercises based on the company's specific cases, and one month of post-training support via Slack or email." }
+      ],
+    },
   },
   {
     slug: "zgierz",
@@ -135,6 +159,18 @@ export const lodzkieCities: MiastoData[] = [
           "Nie — większość nowoczesnych narzędzi AI została zaprojektowana dla osób nietechnicznych. ChatGPT czy Claude działają jak rozmowa z asystentem po polsku. Szkolenie wprowadzające 1-dniowe wystarczy, żeby właściciel firmy i pracownicy biurowi zaczęli efektywnie korzystać z AI w codziennej pracy.",
       },
     ],
+      en: {
+      opisGospodarki: "Zgierz is a city in the Łódź agglomeration with a developed sector of production, trade, and services. Textile traditions have given way to modern manufacturing, logistics, and business services. Its proximity to Łódź provides access to a large labor market and customers.",
+      branzeKluczowe: ["industrial production", "logistics", "local trade and services", "service companies for Łódź"],
+      wyzwaniaAI: "In Zgierz, typical areas for AI application include small and medium-sized manufacturing companies (document automation, customer service), service and trade companies, and local accounting offices and law firms. OpenMind AI offers implementations and training for companies in Zgierz and the surrounding area.",
+      czasDojazdu: "Zgierz is served from Łódź — travel time is approximately 20 minutes. On-site training and implementations are available on short notice.",
+      przykladZastosowania: "Example implementation scenario: For a trading company in Zgierz, AI can be implemented to automate the generation of commercial offers based on customer inquiries, typically reducing the time to prepare an offer from 1-2 hours to several minutes.",
+      faq: [
+        { question: "How can a small company in Zgierz start using AI?", answer: "We recommend starting with three steps: 1) A 2-hour initial consultation (free of charge) to identify the biggest 'pain points' in the company's daily work; 2) A one-day training session for the owner and 2-3 employees (3-5 thousand PLN) on basic tools; 3) Implementation of the first automation in a selected area (5-12 thousand PLN). The entire process takes 4-6 weeks." },
+        { question: "What AI tools are best for companies in Zgierz?", answer: "For companies in Zgierz, we recommend a simple stack: ChatGPT Plus or Claude Pro for communication and documents, Microsoft Copilot (if the company uses Office 365), Canva AI for marketing graphics, Make.com or n8n for automating repetitive processes. The total monthly cost is 300-700 PLN." },
+        { question: "Is technical knowledge required to use AI?", answer: "No — most modern AI tools are designed for non-technical users. ChatGPT or Claude work like talking to an assistant in Polish. A 1-day introductory training is sufficient for a company owner and office employees to start effectively using AI in their daily work." }
+      ],
+    },
   },
   {
     slug: "aleksandrow-lodzki",
@@ -180,6 +216,18 @@ export const lodzkieCities: MiastoData[] = [
           "Podstawowe wdrożenie (szkolenie zespołu + konfiguracja narzędzi + pierwsze automatyzacje) to kilka dni do kilku tygodni. Pełniejsza integracja z procesami firmy (automatyzacje w obszarach produkcji, sprzedaży, administracji) to projekt na 2-4 miesiące. Pierwsze oszczędności czasu widoczne od razu po szkoleniu.",
       },
     ],
+      en: {
+      opisGospodarki: "Aleksandrów Łódzki is a city located in the Łódź agglomeration, with strong textile, furniture, and food production sectors. Its proximity to Łódź and good road connections favor the establishment of small and medium-sized manufacturing companies and logistics centers.",
+      branzeKluczowe: ["textile and apparel production", "furniture manufacturing", "food processing", "logistics"],
+      wyzwaniaAI: "In Aleksandrów Łódzki, typical areas for AI application include textile and apparel companies (description generation, e-commerce), furniture manufacturers (serving export clients, foreign language catalogs), and local logistics companies (documentation automation). OpenMind AI offers implementations and training for SMEs in Aleksandrów.",
+      czasDojazdu: "Aleksandrów Łódzki is served from Łódź – travel time approx. 15-20 min. On-site training available with a few days' notice.",
+      przykladZastosowania: "An example implementation scenario: for an apparel manufacturer in Aleksandrów Łódzki, it is possible to implement automation for creating product descriptions for online stores in several languages, which typically shortens the time for cataloging a new collection from several weeks to a few days.",
+      faq: [
+        { question: "How does AI support apparel manufacturers in Aleksandrów?", answer: "Apparel manufacturers benefit mainly from: automatic generation of product descriptions in export languages, creating lookbook photos using AI (e.g., Midjourney, Flux), optimizing content for online stores and marketplaces, and handling customer inquiries. Typical savings amount to 15-30 marketing hours per week." },
+        { question: "Can small furniture manufacturers in Aleksandrów use AI?", answer: "Yes – small manufacturers are often the quickest beneficiaries of AI. For 200-500 PLN per month, they gain access to tools that help with: writing furniture descriptions for online stores, creating promotional graphics, responding to customer inquiries (including foreign ones), and automating invoices. Initial training: 2-4 thousand PLN." },
+        { question: "How long does AI implementation take in a small manufacturing company?", answer: "Basic implementation (team training + tool configuration + initial automations) takes a few days to several weeks. Fuller integration with company processes (automations in production, sales, administration) is a project lasting 2-4 months. The first time savings are visible immediately after training." }
+      ],
+    },
   },
   {
     slug: "konstantynow-lodzki",
@@ -225,6 +273,18 @@ export const lodzkieCities: MiastoData[] = [
           "OpenMind AI prowadzi szkolenia w Łodzi (15-20 min od Konstantynowa) oraz na zamówienie w siedzibie klienta. Dostępne są też szkolenia online. Dla grup 4+ osób organizujemy szkolenia stacjonarne bezpośrednio w Konstantynowie — wystarczy sala szkoleniowa lub większe pomieszczenie w firmie.",
       },
     ],
+      en: {
+      opisGospodarki: "Konstantynów Łódzki is a city in the Łódź agglomeration with textile traditions, now developing as a production and service base for Łódź. The local economy is based on small and medium-sized businesses from various industries and residents commuting to work in Łódź.",
+      branzeKluczowe: ["textile production", "small service businesses", "local trade", "craftsmanship"],
+      wyzwaniaAI: "In Konstantynów Łódzki, typical areas for AI application include small manufacturing and service companies – automating office work, generating offers, customer service, and creating marketing content. OpenMind AI offers simple, affordable implementations for micro-entrepreneurs.",
+      czasDojazdu: "Konstantynów Łódzki is served from Łódź – travel time approx. 20 min. Individual and group training available on-site.",
+      przykladZastosowania: "An example implementation scenario: for a small service company in Konstantynów Łódzki, it is possible to implement AI tools for creating offers, handling email inquiries, and generating social media posts, which typically saves the owner several hours of work per week.",
+      faq: [
+        { question: "Does a micro-company in Konstantynów need AI?", answer: "Yes – micro-companies are often the biggest beneficiaries of AI because they don't have the budget for marketing, accounting, or translations. For 100-300 PLN per month, they gain access to tools that perform the work of several people. Key is good initial training (1-2 thousand PLN) so the owner knows how to use these tools effectively." },
+        { question: "What are the simplest AI tools to start with for a micro-company?", answer: "The minimum stack for a micro-company: ChatGPT (free version is enough to start, Plus for 100 PLN/month gives more) for texts and communication, Canva (free or Pro for 55 PLN/month) for graphics, possibly Notion AI (40 PLN/month) for organization. Total: 0-200 PLN/month. This is enough for 80% of a micro-entrepreneur's needs." },
+        { question: "Where can I learn to use AI near Konstantynów?", answer: "OpenMind AI conducts training in Łódź (15-20 min from Konstantynów) and on-demand at the client's premises. Online training is also available. For groups of 4+ people, we organize on-site training directly in Konstantynów – a training room or a larger company space is sufficient." }
+      ],
+    },
   },
   {
     slug: "ozorkow",
@@ -270,6 +330,18 @@ export const lodzkieCities: MiastoData[] = [
           "Tak — prowadzimy szkolenia dla osób w każdym wieku, w tym dla właścicieli firm 50+, którzy chcą nauczyć się korzystać z nowych narzędzi. Tempo dostosowujemy do grupy, a materiały są w języku zrozumiałym, bez niepotrzebnego żargonu technicznego. Nie wymagamy żadnego wcześniejszego doświadczenia z technologią.",
       },
     ],
+      en: {
+      opisGospodarki: "Ozorków is a district town with industrial traditions (textile, furniture production), currently with a developing logistics and light manufacturing sector. Its location near Łódź and Płock provides access to larger markets and attracts investments in local factories and warehouses.",
+      branzeKluczowe: ["furniture manufacturing", "logistics", "light industry", "local trade"],
+      wyzwaniaAI: "In Ozorków, typical areas for AI application include furniture manufacturers (marketing, export, product descriptions), logistics companies (documentation automation), and local SMEs. OpenMind AI offers implementations and training for companies in Ozorków and the surrounding area.",
+      czasDojazdu: "Ozorków is served from Łódź – travel time approx. 30-40 min. Implementations and training are conducted on-site or online.",
+      przykladZastosowania: "An example implementation scenario: for an Ozorków furniture manufacturer, it is possible to implement automation for creating product catalogs in several languages, which supports export sales without the need to hire additional translators or copywriters.",
+      faq: [
+        { question: "How does AI help furniture manufacturers in Ozorków?", answer: "Furniture manufacturers primarily benefit from: automatic generation of product descriptions in multiple languages (Polish, German, English, French), creating arrangement photos using tools like Midjourney or Flux, handling inquiries from foreign customers, and generating marketing content. Typical cost: 300-800 PLN/month for a medium-sized company." },
+        { question: "How much does document automation cost in a logistics company?", answer: "Basic automation (reading CMRs, generating invoices based on scans) is a project costing 15-40 thousand PLN, plus 500-1500 PLN/month for maintenance. Return on investment is typically within 6-9 months for a company processing several hundred documents daily." },
+        { question: "Is AI training in Ozorków suitable for older people?", answer: "Yes – we conduct training for people of all ages, including business owners over 50 who want to learn how to use new tools. The pace is adapted to the group, and materials are in understandable language, without unnecessary technical jargon. No prior experience with technology is required." }
+      ],
+    },
   },
   {
     slug: "glowno",
@@ -315,6 +387,18 @@ export const lodzkieCities: MiastoData[] = [
           "Tak — AI może wspierać rolników w: tworzeniu dokumentacji dla dopłat i programów pomocowych, pisaniu pism urzędowych, analizie danych z gospodarstwa, obsłudze zapytań klientów (np. dla agroturystyki lub sprzedaży bezpośredniej), tłumaczeniu dokumentów jeśli ktoś sprzedaje za granicę. Podstawowy stack to 100-200 zł/mc.",
       },
     ],
+      en: {
+      opisGospodarki: "Głowno is a small district town in the Łódź Voivodeship, with a local economy based on agriculture, small-scale production, and trade. Located near Łódź, it serves as a service hub for surrounding rural municipalities. The local service sector for residents and agriculture is developing.",
+      branzeKluczowe: ["agriculture and processing", "local trade", "small services", "crafts"],
+      wyzwaniaAI: "In Głowno, typical areas for AI application include local retail and service businesses (customer service, online marketing), farms (documentation, subsidy management), and small entrepreneurs. OpenMind AI offers simple, affordable implementations tailored for micro-enterprises.",
+      czasDojazdu: "Głowno is served from Łódź – travel time approx. 40 min. Individual and small group training sessions are available on-site or online.",
+      przykladZastosowania: "Example implementation scenario: for a local online store in Głowno, it's possible to implement a package of AI tools for generating product descriptions, social media posts, and customer inquiry responses, allowing the owner to manage marketing independently without hiring an agency.",
+      faq: [
+        { question: "Is a small town like Głowno a good place for AI implementation?", answer: "Location doesn't matter for most AI implementations – tools operate via the internet and don't require specialized infrastructure. In fact, for small businesses in smaller towns, AI is particularly valuable because it allows them to compete with companies from large urban areas without the need to hire expensive specialists." },
+        { question: "How much does an AI introduction cost for a store owner in Głowno?", answer: "A basic course for a small business owner costs 1,000-2,000 PLN for a one-day training session (online or on-site in Łódź). It covers the basics of using ChatGPT, creating posts, writing offers, and generating graphics. After the training, many people independently implement initial solutions in their company." },
+        { question: "Can a farmer use AI in Głowno?", answer: "Yes – AI can support farmers in: creating documentation for subsidies and aid programs, writing official letters, analyzing farm data, handling customer inquiries (e.g., for agritourism or direct sales), and translating documents if someone sells abroad. A basic stack costs 100-200 PLN/month." }
+      ],
+    },
   },
   {
     slug: "kutno",
@@ -360,6 +444,18 @@ export const lodzkieCities: MiastoData[] = [
           "Prosty pilot (np. automatyzacja generowania dokumentów CMR) to 4-6 tygodni od rozmowy wstępnej do uruchomienia. Pełne wdrożenie w firmie spedycyjnej z integracją z TMS i systemami fakturowania to projekt na 3-6 miesięcy. Zawsze rekomendujemy etapowe podejście zaczynając od jednego, wyraźnego celu biznesowego.",
       },
     ],
+      en: {
+      opisGospodarki: "Kutno is an important logistics hub in central Poland – located at the intersection of the A1 and A2 motorways and major railway lines. The city is developing as a logistics center, with large terminals and warehouses. The pharmaceutical (Polfa Kutno/Adamed) and food industries also operate here.",
+      branzeKluczowe: ["logistics and warehousing", "pharmaceutical industry (Adamed)", "food industry", "transport"],
+      wyzwaniaAI: "In Kutno, typical areas for AI application include logistics centers (document automation, route planning, customer service), pharmaceutical companies (regulatory documentation, data analysis – while adhering to industry standards), and food processing. OpenMind AI offers implementations and training for companies in Kutno.",
+      czasDojazdu: "Kutno is served from Łódź – travel time approx. 1 hour. Implementations and training are available on-site with 1-2 weeks' notice.",
+      przykladZastosowania: "Example implementation scenario: for a logistics center in Kutno, it's possible to implement AI for automatic classification of incoming transport documents and generating responses to repetitive customer inquiries, which typically relieves the customer service department by 40-50%.",
+      faq: [
+        { question: "How can AI optimize a logistics center in Kutno?", answer: "Logistics centers implement AI in four main areas: automatic reading and classification of documents (CMR, WZ, invoices), route optimization and loading planning, chatbots for drivers and forwarders, and warehouse data analysis (forecasts, inventory optimization). A typical pilot costs 20,000-60,000 PLN, a full implementation: 150,000-400,000 PLN." },
+        { question: "Can the pharmaceutical sector in Kutno use AI?", answer: "Yes, but with strict adherence to GMP, GDP, and Annex 11 requirements. We recommend enterprise tools (Azure OpenAI in EU regions, local models) with full data control and an audit trail. AI can support: regulatory documentation, analysis of research reports, translation of technical documentation, and internal employee training." },
+        { question: "How long does it take to implement AI in a forwarding company?", answer: "A simple pilot (e.g., automation of CMR document generation) takes 4-6 weeks from initial discussion to launch. A full implementation in a forwarding company with integration with TMS and invoicing systems is a project lasting 3-6 months. We always recommend a phased approach starting with one clear business objective." }
+      ],
+    },
   },
   {
     slug: "sieradz",
@@ -405,6 +501,18 @@ export const lodzkieCities: MiastoData[] = [
           "Pierwsze efekty (oszczędność czasu na konkretnych zadaniach) są widoczne zwykle od razu po szkoleniu — pracownicy zaczynają szybciej pisać oferty, odpowiadać klientom, tworzyć treści marketingowe. Mierzalne efekty biznesowe (redukcja kosztów, wzrost sprzedaży) pojawiają się po 2-4 miesiącach systematycznego używania narzędzi.",
       },
     ],
+      en: {
+      opisGospodarki: "Sieradz is a city with a rich history (one of the oldest in Poland), today with an economy based on production, trade, and services. Companies from various industries operate here: from food processing, through building materials production, to small-scale industry. The city is also developing as a regional trade center.",
+      branzeKluczowe: ["production and industry", "food processing", "regional trade", "services for residents and businesses"],
+      wyzwaniaAI: "In Sieradz, typical areas for AI application include manufacturing SMEs (office automation, customer service, sales offers), retail companies (content marketing, e-commerce), and local accounting firms and law offices. OpenMind AI offers implementations and training for companies in Sieradz.",
+      czasDojazdu: "Sieradz is served from Łódź – travel time approx. 1 hour. On-site training and implementations are available with a few days' notice.",
+      przykladZastosowania: "Example implementation scenario: for a Sieradz trading company, it's possible to implement AI for automatic generation of product descriptions and handling customer inquiries, which typically saves 10-20 hours of work per week in the marketing department.",
+      faq: [
+        { question: "What AI tools do you recommend for trading companies in Sieradz?", answer: "For trading companies, we recommend: ChatGPT Plus (100 PLN/month) or Claude Pro for writing descriptions and communication, Canva AI for graphics and advertising materials, and automations in Make.com for repetitive processes (e.g., answering frequently asked questions). Plus a one-time introductory training: 3,000-5,000 PLN. Total monthly cost: 300-600 PLN." },
+        { question: "Are AI training sessions in Sieradz available for sole proprietorships?", answer: "Yes – training for individuals is conducted online (cheaper, from 800-1,500 PLN) or on-site in Łódź. Individual mentoring is also possible, where we work directly with the business owner on specific problems they want to solve with AI (prices from 400 PLN/hour)." },
+        { question: "How quickly are the effects of AI implementation visible in SMEs?", answer: "The first effects (time savings on specific tasks) are usually visible immediately after training – employees start writing offers, responding to customers, and creating marketing content faster. Measurable business effects (cost reduction, sales increase) appear after 2-4 months of systematic use of the tools." }
+      ],
+    },
   },
   {
     slug: "piotrkow-trybunalski",
@@ -450,6 +558,18 @@ export const lodzkieCities: MiastoData[] = [
           "Dla dużej firmy (200+ pracowników): audyt AI 10-30 tys. zł, pilotaż w jednym obszarze 30-100 tys. zł, pełne wdrożenie enterprise 150-500 tys. zł. Plus miesięczne licencje 2000-6000 zł/mc. Każde wdrożenie poprzedzone jest bezpłatną rozmową konsultacyjną i omówieniem priorytetów biznesowych.",
       },
     ],
+      en: {
+      opisGospodarki: "Piotrków Trybunalski is the second-largest city in the Łódź Voivodeship and a city with county rights. It was a historic capital of Poland and the site of the first Sejm and Crown Tribunal. The city's economy is based on logistics (a hub for A1 and DK12/DK74 motorways), industry (e.g., Allegro opened a logistics center here), trade, and services. The SME sector is well-developed.",
+      branzeKluczowe: ["logistics (A1/DK12 intersection)", "e-commerce (Allegro center)", "industry and manufacturing", "regional trade"],
+      wyzwaniaAI: "In Piotrków Trybunalski, typical areas for AI application include logistics and warehousing companies (document automation, multilingual support), e-commerce companies (product descriptions, personalization), manufacturing companies, and local SMEs. OpenMind AI offers implementations and training for companies in Piotrków Trybunalski.",
+      czasDojazdu: "Piotrków Trybunalski is served from Łódź or Warsaw – travel time is approximately 45 minutes to 1.5 hours via the A1 motorway. On-site training requires 1-2 weeks' notice, and implementations are conducted in a hybrid mode.",
+      przykladZastosowania: "Example implementation scenario: For a Piotrków-based logistics company operating at the A1 hub, it's possible to implement automation of transport documents (OCR + AI) and a chatbot to assist drivers in several languages, which typically reduces the dispatcher department's workload by 30-45%.",
+      faq: [
+        { question: "Why is Piotrków Trybunalski an important market for AI?", answer: "Piotrków Trybunalski is the second-largest city in the Łódź Voivodeship (66,000 inhabitants) and a crucial logistics hub at the intersection of the A1 and DK12. The Allegro logistics center and hundreds of transport and warehousing companies create strong demand for AI automation. The city is also a center for production and trade for the entire southern part of the Łódź Voivodeship." },
+        { question: "How does AI support logistics companies in Piotrków?", answer: "Logistics companies in Piotrków primarily implement AI for: automatic reading and generation of documents (CMR, invoices, WZ), multilingual chatbots for drivers, route planning optimization, and analysis of transport data. A typical pilot project costs 15,000-40,000 PLN, while a full implementation for a medium-sized company ranges from 80,000-300,000 PLN. ROI is usually achieved within 4-8 months." },
+        { question: "How much does AI implementation cost for a large company in Piotrków?", answer: "For a large company (200+ employees): an AI audit costs 10,000-30,000 PLN, a pilot project in one area costs 30,000-100,000 PLN, and a full enterprise implementation costs 150,000-500,000 PLN. Additionally, there are monthly license fees of 2,000-6,000 PLN/month. Every implementation is preceded by a free consultation and discussion of business priorities." }
+      ],
+    },
   },
   {
     slug: "tomaszow-mazowiecki",
@@ -495,6 +615,18 @@ export const lodzkieCities: MiastoData[] = [
           "Jednodniowe szkolenie dla grupy 8-12 osób: 4-7 tys. zł (z dojazdem z Łodzi lub Warszawy). Obejmuje 6 godzin warsztatów, materiały, praktyczne ćwiczenia na realnych przypadkach z firmy oraz miesiąc wsparcia poszkoleniowego. Dla większych grup rekomendujemy podział na dwie sesje.",
       },
     ],
+      en: {
+      opisGospodarki: "Tomaszów Mazowiecki is a county town in the Łódź Voivodeship, a historic center of the textile industry (traditionally famous for producing silk and artificial silk). Currently, the city's economy is based on manufacturing, processing, logistics, and tourism (Spalski Landscape Park, Niebieskie Źródła). The city is also known for the Aeroklub Ziemi Piotrkowskiej.",
+      branzeKluczowe: ["textile industry (traditions)", "manufacturing and processing", "logistics", "tourism (Spalski Landscape Park, Niebieskie Źródła)"],
+      wyzwaniaAI: "In Tomaszów Mazowiecki, typical areas for AI application include manufacturing companies in the textile and processing sectors (documentation, offers), logistics companies, regional tourist facilities, and local SMEs. OpenMind AI offers implementations and training for companies in Tomaszów Mazowiecki.",
+      czasDojazdu: "Tomaszów Mazowiecki is served from Łódź or Warsaw – travel time is approximately 1-1.5 hours. On-site training requires 1-2 weeks' notice.",
+      przykladZastosowania: "Example implementation scenario: For a Tomaszów-based manufacturing company, it's possible to implement AI to automate the generation of product descriptions in several languages, handle B2B customer inquiries, and manage technical documentation, which typically saves dozens of hours of work for the sales department each month.",
+      faq: [
+        { question: "Which companies in Tomaszów Mazowiecki most frequently implement AI?", answer: "In Tomaszów Mazowiecki, the leaders are: manufacturing companies (continuing textile traditions and new industries), logistics companies (due to proximity to Warsaw and Łódź), tourist facilities in the Spała region, local marketing agencies, and accounting firms. Growing interest in AI is also observed among trading companies." },
+        { question: "Can tourist facilities in the Spała region benefit from AI?", answer: "Yes – tourist facilities (hotels, guesthouses, agritourism farms in the Spalski Landscape Park) benefit from: multilingual chatbots handling inquiries, generating descriptions of attractions (Niebieskie Źródła, Spała), creating marketing content, and managing Booking reviews. Cost: 250-500 PLN/month for a small facility." },
+        { question: "How much does AI training cost for a team from Tomaszów Mazowiecki?", answer: "A one-day training session for a group of 8-12 people costs 4,000-7,000 PLN (including travel from Łódź or Warsaw). It includes 6 hours of workshops, materials, practical exercises based on real company cases, and one month of post-training support. For larger groups, we recommend dividing into two sessions." }
+      ],
+    },
   },
   {
     slug: "belchatow",
@@ -540,5 +672,17 @@ export const lodzkieCities: MiastoData[] = [
           "Publiczny ChatGPT NIE jest zalecany do danych wrażliwych sektora energetycznego. Dla tego sektora rekomendujemy: Azure OpenAI w regionach EU West/EU North, Claude przez AWS Bedrock we Frankfurcie, lokalne modele open source. Publiczny ChatGPT Plus/Teams tylko dla niewrażliwych zastosowań (marketing, komunikacja zewnętrzna).",
       },
     ],
+      en: {
+      opisGospodarki: "Bełchatów is a county town in the Łódź Voivodeship, one of the youngest cities in Poland, developed in the 20th century around the Brown Coal Mine and the Bełchatów Power Plant – the largest thermal power plant in Europe. The city's economy is heavily dependent on the energy sector but is undergoing transformation due to plans to phase out coal.",
+      branzeKluczowe: ["energy (Bełchatów Power Plant)", "brown coal mining (KWB)", "subcontractors for the energy sector", "energy transformation"],
+      wyzwaniaAI: "In Bełchatów, typical areas for AI application include subcontractors in the energy sector (technical documentation, analysis), companies involved in energy transformation (regulatory documentation, EU applications), and local SMEs. OpenMind AI offers implementations and training tailored to the requirements of the energy sector.",
+      czasDojazdu: "Bełchatów is served from Łódź – travel time is approximately 1 hour. On-site meetings require 1-2 weeks' notice, and implementations are conducted in a hybrid mode.",
+      przykladZastosowania: "Example implementation scenario: For a Bełchatów-based subcontractor of the Bełchatów Power Plant, it's possible to implement AI to automate the preparation of tender offers and technical documentation – while adhering to stringent security requirements, using enterprise tools with full data control.",
+      faq: [
+        { question: "How does AI support energy sector companies in Bełchatów?", answer: "Subcontractors of the Bełchatów Power Plant primarily benefit from: automation of tender offer preparation (very detailed requirements), generation of technical documentation compliant with PGE requirements, analysis of reports, and handling B2B correspondence. Key are enterprise tools with full data control – Azure OpenAI EU or local open-source models." },
+        { question: "How can AI help with Bełchatów's energy transformation?", answer: "Companies undergoing transformation (from coal to RES) need support in: change management, analysis of regulatory documentation (EU regulations, climate policy), handling applications for funding (Just Transition Fund), and training employees in new technologies. AI supports all these areas, especially document analysis and report generation." },
+        { question: "Can energy companies safely use ChatGPT?", answer: "Public ChatGPT is NOT recommended for sensitive data in the energy sector. For this sector, we recommend: Azure OpenAI in EU West/EU North regions, Claude via AWS Bedrock in Frankfurt, or local open-source models. Public ChatGPT Plus/Teams is only suitable for non-sensitive applications (marketing, external communication)." }
+      ],
+    },
   },
 ];
