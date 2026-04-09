@@ -222,7 +222,7 @@ const VideoHero = () => {
       )}
 
       {/* Hero Content */}
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto mt-4 sm:mt-0 md:-mt-4">
+      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto mt-16 sm:mt-12 md:mt-8">
         {/* Visually prominent brand name */}
         <div 
           ref={titleRef}
@@ -258,12 +258,12 @@ const VideoHero = () => {
         </h1>
 
         {/* Subtitle */}
-        <div className="hero-subtitle font-sans max-w-3xl mx-auto mb-8 space-y-2" style={{ textAlign: 'center' }}>
-          <p className="text-sm sm:text-base md:text-lg text-foreground/60" style={{ textAlign: 'center' }}>
+        <div className="hero-subtitle font-sans max-w-3xl mx-auto mb-8 space-y-1" style={{ textAlign: 'center' }}>
+          <p className="text-sm sm:text-base md:text-lg leading-snug text-foreground/60" style={{ textAlign: 'center' }}>
             {heroDescriptionText}
           </p>
           {heroDescription2Text && (
-            <p className="text-sm sm:text-base md:text-lg text-foreground/60" style={{ textAlign: 'center' }}>
+            <p className="text-sm sm:text-base md:text-lg leading-snug text-foreground/60" style={{ textAlign: 'center' }}>
               {heroDescription2Text}
             </p>
           )}
