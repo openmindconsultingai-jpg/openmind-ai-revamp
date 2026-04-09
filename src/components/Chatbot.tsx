@@ -130,7 +130,7 @@ const Chatbot = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [input, isLoading, messages, conversationId]);
+  }, [input, isLoading, messages, conversationId, language]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
