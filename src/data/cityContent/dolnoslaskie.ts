@@ -45,6 +45,18 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Największy potencjał widzimy w firmach z sektora BPO/SSC, software house'ach, agencjach marketingowych oraz średnich firmach produkcyjnych z Wrocławia i okolic. OpenMind AI oferuje bezpłatną rozmowę wstępną, podczas której omawiamy konkretne obszary, w których AI może przynieść firmie wymierną wartość.",
       },
     ],
+      en: {
+      opisGospodarki: "Wrocław is one of the largest IT and outsourcing hubs in Central Europe. It hosts the headquarters of over 200 technology companies, including Nokia, IBM, Google, Credit Suisse, and Capgemini. The strong BPO/SSC sector employs over 60,000 specialists, and local AI startups regularly secure funding in international markets.",
+      branzeKluczowe: ["IT and software houses", "BPO/SSC and shared service centers", "Automotive and manufacturing (LG, Volvo, Whirlpool)", "Fintech and banking"],
+      wyzwaniaAI: "In Wrocław, typical areas for AI application include HR departments of large service centers (recruitment automation, CV analysis), software houses (copilots for code review, documentation generation), and banking (GDPR-compliant RAG chatbots, credit document analysis). OpenMind AI offers implementation and training in each of these areas to companies in Wrocław.",
+      czasDojazdu: "We operate locally in Wrocław and its surroundings — on-site training at the client's premises can be arranged within 48-72 hours of notification.",
+      przykladZastosowania: "Example implementation scenario: For a Wrocław-based BPO company, it's possible to automate initial CV screening, which typically shortens recruiter's work time by approximately 60% and allows processing a significantly larger number of applications.",
+      faq: [
+        { question: "How much does it cost to implement AI in a company in Wrocław?", answer: "The cost of AI implementation in Wrocław depends on the project scope. Small implementations (training + tool configuration) start from PLN 3-8k, medium projects with system integration are PLN 15-40k, and full RAG chatbot implementations for BPO companies range from PLN 50-150k. We offer a free quote after the initial meeting." },
+        { question: "Do you conduct on-site AI training in Wrocław?", answer: "Yes, we conduct on-site training at the client's premises in Wrocław and in training rooms in the city center. Hybrid and fully online formats are also available. Training covers ChatGPT, Claude, Gemini, Midjourney, n8n automations, and industry-specific tools." },
+        { question: "What types of companies in Wrocław can benefit from AI implementations?", answer: "We see the greatest potential in companies from the BPO/SSC sector, software houses, marketing agencies, and medium-sized manufacturing companies in Wrocław and its surroundings. OpenMind AI offers a free initial consultation to discuss specific areas where AI can bring tangible value to a company." }
+      ],
+    },
   },
   {
     slug: "walbrzych",
@@ -90,6 +102,18 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Tak, prowadzimy dedykowane szkolenia dla firm działających w Wałbrzyskiej Specjalnej Strefie Ekonomicznej. Obejmują one zarówno narzędzia biurowe (ChatGPT, Copilot dla inżynierów), jak i wprowadzenie do AI w produkcji.",
       },
     ],
+      en: {
+      opisGospodarki: "Wałbrzych is one of the largest industrial centers in Lower Silesia with a strong automotive and manufacturing sector. The Wałbrzych Special Economic Zone has attracted global investors such as Toyota, NSK, and Faurecia, creating a foundation for the development of automation and AI in industrial production.",
+      branzeKluczowe: ["Automotive manufacturing", "Machinery industry", "Logistics and warehousing", "Tourism (Książ Castle, Wałbrzych Mountains area)"],
+      wyzwaniaAI: "In Wałbrzych, AI is primarily applied in manufacturing companies — quality control systems based on computer vision, predictive maintenance, and automation of production reporting. OpenMind AI supports Wałbrzych companies in these implementations, as well as local translation agencies and tourism companies.",
+      czasDojazdu: "We serve Wałbrzych from our base in Wrocław — travel time is approximately 1 hour. On-site training is available within a week of notification.",
+      przykladZastosowania: "Example implementation scenario: For a Wałbrzych-based automotive manufacturing company, it's possible to prepare a proof-of-concept for an AI system for automated quality control on the assembly line, achieving high accuracy in defect detection.",
+      faq: [
+        { question: "Does AI make sense for a manufacturing company in Wałbrzych?", answer: "Absolutely. Manufacturing companies in the Wałbrzych Special Economic Zone implement AI mainly in three areas: quality control (computer vision), maintenance (machine failure prediction), and documentation automation. Returns on investment are visible within 6-12 months." },
+        { question: "How much does it cost to implement AI in a factory?", answer: "Industrial AI implementations in Wałbrzych start from PLN 20-50k for a pilot in one area (e.g., quality control of a single product). Full implementations with integration with MES/ERP systems range from PLN 100-500k, usually carried out in stages." },
+        { question: "Is AI training available for companies in the WSSE?", answer: "Yes, we conduct dedicated training for companies operating in the Wałbrzych Special Economic Zone. This includes both office tools (ChatGPT, Copilot for engineers) and an introduction to AI in production." }
+      ],
+    },
   },
   {
     slug: "legnica",
@@ -135,6 +159,18 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Tak, w 2026 roku dostępne są programy regionalne dla Dolnego Śląska wspierające cyfrową transformację MŚP, w tym wdrożenia AI. Pomagamy klientom w przygotowaniu dokumentacji projektowej pod dofinansowanie, choć sam proces aplikacji prowadzą wyspecjalizowane firmy doradcze.",
       },
     ],
+      en: {
+      opisGospodarki: "Legnica is a historic center of the copper industry and one of the headquarters of KGHM Polska Miedź — Poland's largest mining and metallurgical company. The Legnica Special Economic Zone gathers investors from the automotive, home appliance, and logistics industries, creating an ecosystem for digital transformation.",
+      branzeKluczowe: ["Mining and metallurgy (KGHM)", "Automotive manufacturing", "Logistics", "Home appliance manufacturing"],
+      wyzwaniaAI: "In Legnica, companies in the industrial sector most often use AI for production data analysis, automation of technical documentation, and implementation of internal chatbots to handle employee inquiries. OpenMind AI offers these implementations to Legnica companies, including accounting firms and law offices serving local industry.",
+      czasDojazdu: "We serve Legnica from our base in Wrocław — travel time is approximately 1 hour. Training and consultations are available in on-site and hybrid modes.",
+      przykladZastosowania: "Example implementation scenario: For an accounting firm in Legnica serving companies from the LSSE, it's possible to implement automation of initial analysis of accounting documents, which can shorten the time to prepare a monthly declaration by approximately 40-50%.",
+      faq: [
+        { question: "Can AI support companies associated with KGHM in Legnica?", answer: "Yes, AI is used by many subcontractors and partners of KGHM — from automating technical documentation, through analyzing sensor data, to chatbots for handling internal health and safety and technical inquiries. Implementations must comply with the security policies of the mining sector." },
+        { question: "What AI training do you recommend for companies in Legnica?", answer: "For companies in Legnica, we most often conduct introductory training on the best AI tools on the market for administrative departments, training on document automation for accounting, and workshops on data analysis using AI for controlling departments." },
+        { question: "Is it possible to implement AI with EU funding in Legnica?", answer: "Yes, in 2026, regional programs for Lower Silesia will be available to support the digital transformation of SMEs, including AI implementations. We assist clients in preparing project documentation for funding, although the application process itself is handled by specialized consulting firms." }
+      ],
+    },
   },
   {
     slug: "jelenia-gora",
@@ -180,6 +216,18 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Dla małego pensjonatu rekomendujemy prosty stack: ChatGPT Plus do komunikacji z gośćmi i tłumaczeń, Canva AI do grafik marketingowych, DeepL do profesjonalnych tłumaczeń oraz prosty chatbot oparty na Voiceflow lub podobnym narzędziu. Łączny koszt to ok. 200-400 zł miesięcznie.",
       },
     ],
+      en: {
+      opisGospodarki: "Jelenia Góra is the main city of the Jelenia Góra Valley and the Karkonosze region – a center for mountain tourism, health resorts (Cieplice), and the paper industry. Its economy combines tourism, hospitality, manufacturing, and a growing sector of online services for small and medium-sized businesses.",
+      branzeKluczowe: ["tourism and hospitality", "health resorts (Cieplice Śląskie-Zdrój)", "paper industry", "local trade and crafts"],
+      wyzwaniaAI: "In Jelenia Góra, typical AI applications include reservation chatbots for hotels and guesthouses, automation of guest inquiry responses in multiple languages, and marketing content generators. OpenMind AI supports Jelenia Góra's tourist facilities, hotels, and travel agencies in these areas.",
+      czasDojazdu: "Jelenia Góra is served from Wrocław – travel time is approximately 1.5 hours. We conduct training and implementations in a hybrid or on-site mode.",
+      przykladZastosowania: "An example implementation scenario: for a hotel in the Karkonosze mountains, it's possible to implement a multilingual reservation chatbot that handles inquiries in several languages, which typically increases the conversion of inquiries to bookings by 25-35%.",
+      faq: [
+        { question: "How can AI help hotels in the Karkonosze mountains?", answer: "Hotels and guesthouses in Jelenia Góra and the Karkonosze mountains primarily use AI for three things: automated guest inquiry handling (multilingual chatbots), generating offer descriptions and social media posts, and personalizing recommendations for returning guests. The typical cost of chatbot implementation starts from 4,000-10,000 PLN." },
+        { question: "Do you provide AI training for the tourism industry?", answer: "Yes, we have a dedicated training program for the hospitality and tourism industry. It covers generating marketing content, translating offers, online guest service, and creating property visualizations using AI. We conduct training on-site in Jelenia Góra or online." },
+        { question: "What AI tools do you recommend for a small guesthouse?", answer: "For a small guesthouse, we recommend a simple stack: ChatGPT Plus for guest communication and translations, Canva AI for marketing graphics, DeepL for professional translations, and a simple chatbot based on Voiceflow or a similar tool. The total cost is approximately 200-400 PLN per month." }
+      ],
+    },
   },
   {
     slug: "lubin",
@@ -225,6 +273,18 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Podstawowe wdrożenie ChatGPT w małej firmie (do 20 osób) wraz ze szkoleniem zespołu trwa zwykle 2-3 tygodnie: tydzień na audyt procesów, tydzień na konfigurację i tydzień na szkolenia i wsparcie startowe. Koszt takiego wdrożenia to 5-12 tys. zł.",
       },
     ],
+      en: {
+      opisGospodarki: "Lubin is one of the main cities in the Copper Basin, home to the KGHM mine and a center for many companies related to mining and industrial production. The local economy is heavily dependent on the extractive industry, but the service and trade sectors are also developing.",
+      branzeKluczowe: ["copper mining (KGHM)", "subcontracting companies for mining", "industrial production", "logistics and transport"],
+      wyzwaniaAI: "In Lubin, the main recipients of AI solutions are mining-related companies – typical areas include automation of technical documentation, data analysis systems from measurements, and training for administrative departments on ChatGPT and Copilot. OpenMind AI also supports local accounting firms and law offices in Lubin.",
+      czasDojazdu: "Lubin is served from Wrocław – travel time is approximately 1 hour 20 minutes. We conduct on-site and online implementations.",
+      przykladZastosowania: "An example implementation scenario: for a company providing services to KGHM, it's possible to implement an AI system for automatic generation of technical reports from Excel and PDF files, which can save up to 20 hours of work per week in the technical team.",
+      faq: [
+        { question: "What companies in Lubin can benefit from AI?", answer: "The greatest potential lies with mining-related companies providing services to KGHM – from design offices to transport companies and parts suppliers. AI streamlines technical documentation, reporting, and customer service. Local accounting firms, law offices, and trading companies also benefit." },
+        { question: "Do AI implementations in Lubin require on-site presence?", answer: "Some projects can be carried out 100% online, especially implementations of office tools and basic training. More complex integrations with existing company systems require 2-5 on-site visits – we travel from Wrocław." },
+        { question: "How long does it take to implement ChatGPT in a small company in Lubin?", answer: "A basic ChatGPT implementation in a small company (up to 20 people), including team training, usually takes 2-3 weeks: one week for process audit, one week for configuration, and one week for training and initial support. The cost of such an implementation is 5,000-12,000 PLN." }
+      ],
+    },
   },
   {
     slug: "glogow",
@@ -270,6 +330,18 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Małe firmy produkcyjne często zaczynają od prostych wdrożeń: ChatGPT do ofert handlowych, Copilot w Excelu do analizy danych produkcyjnych, Canva AI do materiałów marketingowych. To niski koszt (300-600 zł/mc) i szybki efekt. Bardziej zaawansowane rzeczy jak computer vision wchodzą dopiero przy większej skali.",
       },
     ],
+      en: {
+      opisGospodarki: "Głogów is one of Poland's oldest cities and an important center of the Copper Basin – home to the KGHM copper smelter. The local economy combines heavy industry, manufacturing, logistics, and a growing SME service sector supporting the industrial base.",
+      branzeKluczowe: ["metallurgy (KGHM smelter)", "industrial production", "logistics", "trade and services"],
+      wyzwaniaAI: "In Głogów, AI is mainly applied in manufacturing and logistics companies – typical areas include automation of shipping documents, generation of commercial offers, and chatbots for B2B customer service. OpenMind AI offers these implementations and training for local company administrations on using ChatGPT and AI office tools.",
+      czasDojazdu: "Głogów is served from Wrocław – travel time is approximately 1.5 hours. Training is available on-site and online.",
+      przykladZastosowania: "An example implementation scenario: for a Głogów transport company, it's possible to implement a system for automatic reading of CMR documents and generating invoices based on them, which typically reduces the accounting department's work time by 30-40%.",
+      faq: [
+        { question: "How can AI support transport companies from Głogów?", answer: "Transport companies in Głogów most often implement AI for document automation (CMR, waybills), route optimization, handling customer inquiries in multiple languages, and automatic invoice generation. A typical return on investment is seen within 3-6 months." },
+        { question: "Do you conduct AI training on-site in Głogów?", answer: "Yes, we organize on-site training in Głogów for groups of 5 people or more. A standard 1-day training on ChatGPT and AI office tools costs from 3,000 PLN for the entire group. For smaller companies, we recommend the online format or joining open training sessions in Wrocław." },
+        { question: "Do small manufacturing companies in Głogów need AI?", answer: "Small manufacturing companies often start with simple implementations: ChatGPT for commercial offers, Copilot in Excel for production data analysis, Canva AI for marketing materials. This involves low cost (300-600 PLN/month) and quick results. More advanced things like computer vision only come into play at a larger scale." }
+      ],
+    },
   },
   {
     slug: "swidnica",
@@ -315,6 +387,16 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Pilotaż w jednym obszarze (np. raportowanie zmian produkcyjnych) trwa 4-8 tygodni. Pełne wdrożenie obejmujące kilka działów to projekt na 3-6 miesięcy. Kluczowe jest rozpoczęcie od jednego, wyraźnego problemu biznesowego, zamiast prób wdrożenia AI 'wszędzie naraz'.",
       },
     ],
+      en: {
+      opisGospodarki: "Świdnica is a historic Lower Silesian city with a rich heritage (the Church of Peace, a UNESCO World Heritage site) and a strong industrial sector. It hosts factories for Electrolux, Colgate-Palmolive, and numerous companies within the Wałbrzych Special Economic Zone – Świdnica subzone.",
+      branzeKluczowe: ["household appliance manufacturing (Electrolux)", "chemical industry (Colgate-Palmolive)", "metallurgy and metal processing", "tourism (UNESCO, historical sites)"],
+      wyzwaniaAI: "In Świdnica, AI is primarily applied in manufacturing companies within the WSSE – typical areas include reporting automation, AI systems for quality data analysis, and chatbots for supplier support. OpenMind AI offers implementations for Świdnica-based companies and supports local translation agencies, hotels, and tourism service providers.",
+      czasDojazdu: "Świdnica is served from Wrocław – travel time approx. 1 hour. Training and consultations are available on-site.",
+      przykladZastosowania: "Example implementation scenario: For a medium-sized manufacturing company in the WSSE Świdnica subzone, an AI automation process audit can be conducted, typically identifying several areas with potential savings of hundreds of work hours annually. FAQ1_Q: Which companies in Świdnica implement AI? FAQ1_A: In Świdnica, AI is mainly implemented by medium and large manufacturing companies from the WSSE subzone – primarily in quality control, report automation, and production data analysis. Interest is also growing among local service providers: accounting firms, law offices, and marketing companies. FAQ2_Q: Do you offer AI audits for companies in Świdnica? FAQ2_A: Yes, we offer an AI readiness audit. It includes a process review, identification of areas with the greatest automation potential, an estimated ROI calculation, and tool recommendations. The cost of an audit for a medium-sized company is 5-15 thousand PLN, and its results are often sufficient for independent implementation of initial solutions. FAQ3_Q: How long does AI implementation take in a manufacturing company? FAQ3_A: A pilot in one area (e.g., production shift reporting) takes 4-8 weeks. Full implementation covering several departments is a 3-6 month project. The key is to start with one clear business problem, rather than trying to implement AI 'everywhere at once'.",
+      faq: [
+
+      ],
+    },
   },
   {
     slug: "boleslawiec",
@@ -360,6 +442,16 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Tak, nasze podstawowe szkolenia są zaprojektowane dla osób bez wykształcenia technicznego — sprzedawców, marketingowców, pracowników biurowych. Uczymy od zera: jak pisać promptu, jak korzystać z ChatGPT, Claude i narzędzi graficznych. Nie trzeba znać kodowania ani teorii AI.",
       },
     ],
+      en: {
+      opisGospodarki: "Bolesławiec is world-renowned for its ceramics, exported to the USA, Japan, and Western Europe. The city is also an important center for ceramic and glass production, as well as the craft trade sector. The local economy combines traditional manufactures with growing e-commerce.",
+      branzeKluczowe: ["artistic ceramics (export)", "glass production", "e-commerce and craft trade", "cross-border logistics"],
+      wyzwaniaAI: "In Bolesławiec, the main challenge for ceramic manufactures is serving foreign customers – typical AI implementations include multilingual chatbots, product description generators in foreign languages, and automated correspondence translation systems. OpenMind AI supports Bolesławiec manufactures and online stores in these areas.",
+      czasDojazdu: "Bolesławiec is served from Wrocław – travel time approx. 1.5 hours. On-site and online consultations are available.",
+      przykladZastosowania: "Example implementation scenario: For a Bolesławiec ceramic manufacturer exporting abroad, it is possible to implement an AI system that automatically generates product descriptions in several languages and handles customer inquiries on platforms such as Amazon or Etsy. FAQ1_Q: How can AI help a ceramic manufacture from Bolesławiec? FAQ1_A: Ceramic manufactures in Bolesławiec primarily use AI in international sales: automatic generation of product descriptions in various languages, chatbots serving customers from the USA and Western Europe, correspondence translation, and generating product photos for online catalogs. Costs start from 500 PLN per month for a basic tool stack. FAQ2_Q: Can an online ceramic store be optimized with AI? FAQ2_A: Yes – this is one of the most popular use cases. AI helps with: generating unique descriptions for hundreds of products, creating SEO-friendly titles, writing newsletters, creating graphics for social media, and automatically handling common customer inquiries. The effect is usually visible within 2-3 months. FAQ3_Q: Are AI trainings in Bolesławiec for non-technical people? FAQ3_A: Yes, our basic trainings are designed for people without technical education – salespeople, marketers, office workers. We teach from scratch: how to write prompts, how to use ChatGPT, Claude, and graphic tools. No coding or AI theory knowledge is required.",
+      faq: [
+
+      ],
+    },
   },
   {
     slug: "olesnica",
@@ -405,6 +497,16 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Tak, dojeżdżamy z Wrocławia i prowadzimy szkolenia w siedzibie klienta w Oleśnicy. Minimalna grupa to 4-5 osób, czas szkolenia 1 dzień (6 godzin), koszt od 3-5 tys. zł za całą grupę. Obejmuje materiały, praktyczne ćwiczenia i miesiąc wsparcia poszkoleniowego.",
       },
     ],
+      en: {
+      opisGospodarki: "Oleśnica is a district town located near Wrocław, with a well-developed manufacturing, logistics, and trade sector. Thanks to its proximity to the Wrocław agglomeration, it attracts companies looking for a cheaper location for warehouses and production centers. Residents often commute to work in Wrocław.",
+      branzeKluczowe: ["logistics and warehousing", "machinery and electronics manufacturing", "local trade and services", "agriculture and processing"],
+      wyzwaniaAI: "In Oleśnica, AI is primarily applied in logistics centers – typical areas include automation of transport documentation, chatbots for B2B customer service, and warehouse data analysis. OpenMind AI offers implementations for Oleśnica-based companies, including accounting firms, craft businesses, and traders.",
+      czasDojazdu: "Oleśnica is served from Wrocław – travel time approx. 30-40 minutes. We conduct on-site implementations and trainings.",
+      przykladZastosowania: "Example implementation scenario: For a logistics center in Oleśnica, it is possible to implement AI to automatically classify incoming customer inquiries and redirect them to appropriate departments, typically reducing the initial response time by more than half. FAQ1_Q: Is it worth implementing AI in a company from Oleśnica, given its proximity to Wrocław? FAQ1_A: Absolutely – Wrocław's proximity is an asset, not a problem. Many AI implementations are carried out in a hybrid model: most work online, key meetings on-site. The location in Oleśnica means lower operating costs and access to the Wrocław market simultaneously. FAQ2_Q: What AI tools are best for SMEs in Oleśnica? FAQ2_A: For small and medium-sized companies in Oleśnica, we recommend a simple stack: ChatGPT Plus or Claude Pro for communication and documents, Copilot in Microsoft 365 for office work, Canva AI for graphics, and n8n or Make automations for repetitive processes. The total cost is 300-800 PLN per month per company. FAQ3_Q: Do you conduct training at company premises in Oleśnica? FAQ3_A: Yes, we travel from Wrocław and conduct training at the client's premises in Oleśnica. The minimum group size is 4-5 people, training duration is 1 day (6 hours), cost from 3-5 thousand PLN for the entire group. It includes materials, practical exercises, and one month of post-training support.",
+      faq: [
+
+      ],
+    },
   },
   {
     slug: "olawa",
@@ -450,6 +552,18 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Nie, i to jest najczęstsza obawa klientów, której nie potwierdzają doświadczenia. AI odciąża pracowników od powtarzalnych zadań administracyjnych, dzięki czemu mogą skupić się na rzeczach wymagających myślenia i relacji z klientami. W praktyce firmy wdrażające AI częściej rozwijają zatrudnienie niż redukują, bo zwiększa się ich zdolność obsługi klientów.",
       },
     ],
+      en: {
+      opisGospodarki: "Oława is a city located east of Wrocław, with strong metalworking, chemical, and food processing sectors. Many smaller manufacturers and subcontractors for Wrocław factories operate in the area, and the local economy benefits from excellent connectivity to the A4 motorway.",
+      branzeKluczowe: ["metal production", "food processing", "services for Wrocław industry", "logistics and freight forwarding"],
+      wyzwaniaAI: "In Oława, typical AI applications for small and medium-sized manufacturing companies include office automation, sales proposal generation, and customer service. For food companies, AI supports marketing content creation, and for freight forwarding companies, it automates shipping documentation. OpenMind AI offers implementations in each of these areas for companies in Oława.",
+      czasDojazdu: "Oława is served from Wrocław – travel time approx. 30 min via A4. On-site training and consultations are available within 2-3 days of inquiry.",
+      przykladZastosowania: "Example implementation scenario: for an Oława-based freight forwarding company, it's possible to implement AI to automate the issuance of CMR documents and invoices based on scanned orders, saving several hours of work per week in the accounting department.",
+      faq: [
+        { question: "What are the first steps to implementing AI in a small company in Oława?", answer: "We usually start with a 2-3 hour conversation with the owner to understand the company's daily operations. Then, we propose a pilot project in one area (e.g., automating offers or invoices), which can be implemented in 2-4 weeks to verify the effects. Only after a successful pilot do we expand the implementation to other areas." },
+        { question: "How much does ChatGPT training cost for a team of 10 people in Oława?", answer: "A one-day training session for a group of 10 people at the client's premises in Oława costs 4-6 thousand PLN. This includes materials, access to tools during workshops, specific exercises based on the company's cases, and one month of post-training support via a dedicated Slack group." },
+        { question: "Will AI replace employees in a small company?", answer: "No, and this is the most common concern among clients, which experience does not confirm. AI relieves employees of repetitive administrative tasks, allowing them to focus on things that require critical thinking and customer relations. In practice, companies implementing AI more often increase employment rather than reduce it, as their capacity to serve customers expands." }
+      ],
+    },
   },
   {
     slug: "dzierzoniow",
@@ -495,6 +609,18 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Jednodniowe szkolenie dla grupy 6-10 osób: 4-6 tys. zł (z dojazdem z Wrocławia). Obejmuje 6 godzin warsztatów, materiały, praktyczne ćwiczenia na realnych przypadkach oraz miesiąc wsparcia poszkoleniowego. Dla mniejszych grup rekomendujemy format online (1.5-3 tys. zł).",
       },
     ],
+      en: {
+      opisGospodarki: "Dzierżoniów is a district town in the southern part of Lower Silesia, a historical center of the radio industry (former Diora) and textile industry. Currently, the economy is based on industrial production, companies from the Wałbrzych Special Economic Zone (Dzierżoniów Subzone), and local trade and services.",
+      branzeKluczowe: ["production in WSSE (Dzierżoniów Subzone)", "electronics industry (Diora traditions)", "manufacturing and processing", "regional trade"],
+      wyzwaniaAI: "In Dzierżoniów, typical areas for AI application include companies within the WSSE (documentation automation, international customer service), manufacturing companies, and local SMEs. OpenMind AI offers implementations and training for companies in Dzierżoniów.",
+      czasDojazdu: "Dzierżoniów is served from Wrocław – travel time approx. 1 hour. On-site training with 1-2 weeks' notice, hybrid implementations.",
+      przykladZastosowania: "Example implementation scenario: for a Dzierżoniów-based company in the WSSE, it's possible to implement AI to automate technical documentation and handle inquiries from international clients in several languages, supporting the company's export expansion.",
+      faq: [
+        { question: "How does AI support companies from the Wałbrzych SEZ in Dzierżoniów?", answer: "Companies from the WSSE primarily implement AI for: automating documentation for international clients, generating offers in multiple languages, handling B2B inquiries, analyzing production reports, and supporting HR in recruitment. Typical projects: pilot 15-50 thousand PLN, full implementation 80-300 thousand PLN." },
+        { question: "Can local electronics companies benefit from AI?", answer: "Yes – companies in the electronics sector (continuing Diora's traditions and new players) benefit from: automating quality documentation, analyzing production data, handling technical inquiries, and generating reports for clients. Enterprise tools with full data control are key." },
+        { question: "How much does AI training cost for a small company in Dzierżoniów?", answer: "A one-day training session for a group of 6-10 people: 4-6 thousand PLN (including travel from Wrocław). It includes 6 hours of workshops, materials, practical exercises on real cases, and one month of post-training support. For smaller groups, we recommend an online format (1.5-3 thousand PLN)." }
+      ],
+    },
   },
   {
     slug: "zgorzelec",
@@ -540,5 +666,17 @@ export const dolnoslaskieCities: MiastoData[] = [
           "Proste wdrożenie (szkolenie + konfiguracja narzędzi do tłumaczeń i obsługi dokumentów): kilka dni do kilku tygodni. Większość prac realizujemy zdalnie, co jest efektywne dla firmy z mniejszego miasta. Pierwsze efekty widoczne od razu po szkoleniu, pełne korzyści po 2-3 miesiącach używania narzędzi w codziennej pracy.",
       },
     ],
+      en: {
+      opisGospodarki: "Zgorzelec is a border town on the Lusatian Neisse, forming the so-called Europa-Stadt with German Görlitz. The city's economy is based on cross-border trade with Germany, logistics (proximity to A4), the energy industry (nearby Turów power plants), and services. The proximity to the border fosters Polish-German cooperation.",
+      branzeKluczowe: ["cross-border trade with Germany", "logistics and transport (A4)", "energy (Turów area)", "cross-border services"],
+      wyzwaniaAI: "In Zgorzelec, typical areas for AI application include companies engaged in cross-border trade and services (Polish-German translations, DE customer service), logistics companies on the A4, and local SMEs. OpenMind AI offers implementations and training for companies in Zgorzelec.",
+      czasDojazdu: "Zgorzelec is served from Wrocław – travel time approx. 2 hours. On-site meetings by appointment, most implementations online.",
+      przykladZastosowania: "Example implementation scenario: for a Zgorzelec-based trading company serving German clients, it's possible to implement automatic translation of offers, invoices, and Polish-German correspondence, as well as a chatbot serving clients from Görlitz, significantly accelerating cross-border service.",
+      faq: [
+        { question: "How does AI support Polish-German companies from Zgorzelec?", answer: "Polish-German companies primarily benefit from: automatic Polish-German translations (excellent quality for this language pair), serving German clients in their language, generating bilingual offers, and analyzing legal and commercial documents. Zgorzelec and Görlitz form Europa-Stadt, so cooperation is intense. Typical cost: 300-600 PLN/month + initial training 2-4 thousand PLN." },
+        { question: "What are the best tools for German translations?", answer: "For Polish-German business translations: DeepL Pro (140 PLN/month) – highest quality for commercial documents, ChatGPT Plus (100 PLN/month) – good for contextual translations, Claude Pro (100 PLN/month) – good for long legal documents. A stack of DeepL Pro + ChatGPT Plus (240 PLN/month) covers 95% of the needs of a company operating across the border." },
+        { question: "How long does AI implementation take for a company in Zgorzelec?", answer: "Simple implementation (training + configuration of tools for translations and document handling): a few days to a few weeks. Most work is done remotely, which is efficient for a company in a smaller city. The first effects are visible immediately after training, full benefits after 2-3 months of using the tools in daily work." }
+      ],
+    },
   },
 ];
