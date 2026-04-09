@@ -451,4 +451,94 @@ export const podlaskieCities: MiastoData[] = [
         },
       ],
     }
+  {
+    slug: "bielsk-podlaski",
+    nazwa: "Bielsk Podlaski",
+    wojewodztwo: "podlaskie",
+    wojewodztwoNazwa: "podlaskie",
+    populacja: "25 tys.",
+    opisGospodarki:
+      "Bielsk Podlaski to miasto powiatowe w południowej części Podlasia, historyczne centrum kulturowe z silną społecznością białoruską i ukraińską. Gospodarka miasta opiera się na produkcji przemysłowej, rolnictwie, przetwórstwie spożywczym oraz handlu i usługach lokalnych.",
+    branzeKluczowe: [
+      "produkcja przemysłowa",
+      "rolnictwo i przetwórstwo",
+      "handel regionalny",
+      "drobna produkcja",
+    ],
+    wyzwaniaAI:
+      "W Bielsku Podlaskim typowe obszary zastosowania AI to lokalne firmy produkcyjne, firmy przetwórstwa spożywczego, firmy handlowe oraz MŚP usługowe. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Bielska Podlaskiego.",
+    lokalneKeywordy: [
+      "wdrożenie AI Bielsk Podlaski",
+      "szkolenia ChatGPT Bielsk Podlaski",
+      "AI dla produkcji Bielsk Podlaski",
+      "automatyzacja firm Bielsk Podlaski",
+    ],
+    czasDojazdu:
+      "Bielsk Podlaski obsługiwany z Białegostoku — dojazd ok. 40 min. Szkolenia stacjonarne i wdrożenia dostępne w krótkim terminie.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla bielskiej firmy produkcyjnej możliwe jest wdrożenie AI do automatyzacji generowania ofert handlowych, obsługi zapytań klientów w kilku językach oraz dokumentacji technicznej, co oszczędza znaczną część czasu działu handlowego.",
+    najblizszeMiasta: ["bialystok", "hajnowka", "siemiatycze", "lapy"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera lokalne firmy produkcyjne z Bielska Podlaskiego?",
+        odpowiedz:
+          "Firmy produkcyjne zyskują głównie na: automatyzacji dokumentacji technicznej i ofert handlowych, obsłudze zapytań klientów B2B w kilku językach (polski, białoruski, rosyjski), generowaniu treści marketingowych, analizie danych produkcyjnych. Typowe projekty: pilot 15-40 tys. zł, pełne wdrożenie 60-200 tys. zł.",
+      },
+      {
+        pytanie: "Ile kosztuje podstawowe wdrożenie AI w Bielsku Podlaskim?",
+        odpowiedz:
+          "Dla małej firmy: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, miesięczne licencje 300-600 zł/mc. Łączny start: 6-13 tys. zł + 400 zł/mc. Pierwsze efekty widoczne w 2-3 tygodnie.",
+      },
+      {
+        pytanie: "Czy można łączyć szkolenia dla Bielska i Białegostoku?",
+        odpowiedz:
+          "Tak, często organizujemy szkolenia grupowe dla firm z Podlasia — koszt na osobę jest wtedy niższy. Szkolenia otwarte w Białymstoku są dostępne dla firm z okolicznych miast. Dojazd z Bielska Podlaskiego do Białegostoku to ok. 40 min.",
+      },
+    ],
+  },
+  {
+    slug: "kolno",
+    nazwa: "Kolno",
+    wojewodztwo: "podlaskie",
+    wojewodztwoNazwa: "podlaskie",
+    populacja: "10 tys.",
+    opisGospodarki:
+      "Kolno to miasto powiatowe w zachodniej części województwa podlaskiego, z gospodarką opartą na rolnictwie, przetwórstwie rolno-spożywczym, drobnej produkcji oraz handlu lokalnym. Miasto pełni rolę lokalnego centrum dla okolicznych gmin wiejskich.",
+    branzeKluczowe: [
+      "rolnictwo i przetwórstwo",
+      "drobna produkcja",
+      "handel lokalny",
+      "usługi dla mieszkańców",
+    ],
+    wyzwaniaAI:
+      "W Kolnie typowe obszary zastosowania AI to małe firmy przetwórcze, gospodarstwa rolne, lokalne firmy handlowe oraz MŚP usługowe. OpenMind AI oferuje dostępne cenowo wdrożenia dla mikroprzedsiębiorców z Kolna.",
+    lokalneKeywordy: [
+      "wdrożenie AI Kolno",
+      "szkolenia ChatGPT Kolno",
+      "AI dla małych firm Kolno",
+      "automatyzacja Kolno",
+    ],
+    czasDojazdu:
+      "Kolno obsługiwane w trybie online z Łomży (dojazd ok. 30 min) lub Białegostoku (ok. 1.5h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla małej firmy przetwórczej z Kolna możliwe jest wdrożenie prostych narzędzi AI do generowania opisów produktów, obsługi zapytań klientów oraz automatyzacji pism urzędowych.",
+    najblizszeMiasta: ["lomza", "grajewo", "zambrow", "bialystok"],
+    faq: [
+      {
+        pytanie: "Czy mikrofirma z Kolna potrzebuje AI?",
+        odpowiedz:
+          "Tak — mikrofirmy są często największymi beneficjentami AI, bo nie mają budżetu na marketing czy dodatkowych pracowników. Za 100-300 zł miesięcznie uzyskują dostęp do narzędzi, które oszczędzają wiele godzin pracy tygodniowo.",
+      },
+      {
+        pytanie: "Jak nauczyć się AI bez dojazdu do Białegostoku?",
+        odpowiedz:
+          "Szkolenia online są dostępne z każdego miejsca — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie po szkoleniu. Koszt: 1.5-3 tys. zł dla pojedynczej osoby.",
+      },
+      {
+        pytanie: "Jakie są najprostsze wdrożenia dla rolnika?",
+        odpowiedz:
+          "Najprostsze: ChatGPT Plus do pisania wniosków o dopłaty ARiMR, korespondencji urzędowej, ofert dla klientów (100 zł/mc); Canva AI do grafik (55 zł/mc); darmowy DeepL. Łącznie 150 zł/mc + 1-2 tys. zł za szkolenie wstępne.",
+      },
+    ],
+  },
 ];

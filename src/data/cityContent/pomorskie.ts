@@ -451,4 +451,94 @@ export const pomorskieCities: MiastoData[] = [
         },
       ],
     }
+  {
+    slug: "wejherowo",
+    nazwa: "Wejherowo",
+    wojewodztwo: "pomorskie",
+    wojewodztwoNazwa: "pomorskie",
+    populacja: "49 tys.",
+    opisGospodarki:
+      "Wejherowo to miasto powiatowe w aglomeracji trójmiejskiej, historyczna stolica Kaszub. Gospodarka miasta opiera się na produkcji, handlu, usługach oraz roli centrum regionalnego dla Kaszub. Miasto jest siedzibą wielu instytucji kulturalnych związanych z kaszubską tradycją.",
+    branzeKluczowe: [
+      "produkcja i przetwórstwo",
+      "handel regionalny",
+      "zaplecze dla Trójmiasta",
+      "kultura kaszubska",
+    ],
+    wyzwaniaAI:
+      "W Wejherowie typowe obszary zastosowania AI to lokalne firmy produkcyjne, firmy handlowe i usługowe oraz MŚP obsługujące aglomerację trójmiejską. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Wejherowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Wejherowo",
+      "szkolenia ChatGPT Wejherowo",
+      "AI dla firm Wejherowo",
+      "automatyzacja firm Wejherowo",
+    ],
+    czasDojazdu:
+      "Wejherowo obsługiwane z Gdyni — dojazd ok. 30-40 min. Szkolenia stacjonarne i wdrożenia dostępne wspólnie z innymi firmami Trójmiasta.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla wejherowskiej firmy produkcyjnej obsługującej klientów z Trójmiasta i zagranicy możliwe jest wdrożenie AI do automatyzacji ofert handlowych i obsługi zapytań B2B w kilku językach.",
+    najblizszeMiasta: ["gdynia", "rumia", "lebork", "gdansk"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy z aglomeracji trójmiejskiej?",
+        odpowiedz:
+          "Firmy z aglomeracji Trójmiasta zyskują głównie na: automatyzacji dokumentacji, obsłudze klientów w kilku językach, generowaniu ofert, wsparciu marketingowym, analizie danych. Typowe projekty: pilot 15-50 tys. zł, pełne wdrożenie 60-250 tys. zł.",
+      },
+      {
+        pytanie: "Ile kosztuje szkolenie AI w Wejherowie?",
+        odpowiedz:
+          "Jednodniowe szkolenie dla grupy 8-12 osób: 4-7 tys. zł (z dojazdem z Gdyni). Obejmuje 6 godzin warsztatów, materiały, praktyczne ćwiczenia. Często łączymy szkolenia dla firm z różnych miast Trójmiasta.",
+      },
+      {
+        pytanie: "Jak szybko można wdrożyć AI w firmie z Wejherowa?",
+        odpowiedz:
+          "Wejherowo jest blisko Gdyni (30-40 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla grup 6+ osób realizujemy w 1-2 tygodnie.",
+      },
+    ],
+  },
+  {
+    slug: "lebork",
+    nazwa: "Lębork",
+    wojewodztwo: "pomorskie",
+    wojewodztwoNazwa: "pomorskie",
+    populacja: "35 tys.",
+    opisGospodarki:
+      "Lębork to miasto powiatowe w północnej części województwa pomorskiego, położone ok. 25 km od wybrzeża Bałtyku. Gospodarka miasta opiera się na produkcji, turystyce (bliskość wybrzeża i Słowińskiego Parku Narodowego), handlu oraz usługach lokalnych.",
+    branzeKluczowe: [
+      "produkcja i przetwórstwo",
+      "turystyka (wybrzeże, Słowiński PN)",
+      "handel regionalny",
+      "usługi dla mieszkańców",
+    ],
+    wyzwaniaAI:
+      "W Lęborku typowe obszary zastosowania AI to firmy produkcyjne, obiekty turystyczne obsługujące turystów zmierzających na wybrzeże, lokalne MŚP oraz firmy handlowe. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Lęborka.",
+    lokalneKeywordy: [
+      "wdrożenie AI Lębork",
+      "szkolenia ChatGPT Lębork",
+      "AI dla turystyki Lębork",
+      "automatyzacja firm Lębork",
+    ],
+    czasDojazdu:
+      "Lębork obsługiwany z Gdańska — dojazd ok. 1.5h. Spotkania stacjonarne z wyprzedzeniem, większość wdrożeń online.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla obiektu turystycznego w okolicach Lęborka (pensjonat, gospodarstwo agroturystyczne) możliwe jest wdrożenie wielojęzycznego chatbota rezerwacyjnego oraz generowania opisów atrakcji regionu w kilku językach.",
+    najblizszeMiasta: ["slupsk", "gdynia", "wejherowo", "chojnice"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera turystykę w okolicach Lęborka?",
+        odpowiedz:
+          "Obiekty turystyczne (hotele, pensjonaty, agroturystyka) w okolicach wybrzeża i Słowińskiego PN obsługują gości z Polski, Niemiec, Skandynawii — AI upraszcza wielojęzyczną obsługę. Chatbot w kilku językach, generowanie opisów ofert, obsługa opinii z Booking. Koszt: 250-500 zł/mc.",
+      },
+      {
+        pytanie: "Ile kosztuje wdrożenie AI dla firmy produkcyjnej z Lęborka?",
+        odpowiedz:
+          "Dla małej firmy: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, miesięczne licencje 300-600 zł/mc. Łączny start: 6-13 tys. zł + 400 zł/mc.",
+      },
+      {
+        pytanie: "Jak zacząć z AI bez dojazdu do Trójmiasta?",
+        odpowiedz:
+          "Rekomendujemy szkolenia online — są tańsze, nie wymagają dojazdu, efektywność porównywalna. Nasze szkolenia online to 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł.",
+      },
+    ],
+  },
 ];

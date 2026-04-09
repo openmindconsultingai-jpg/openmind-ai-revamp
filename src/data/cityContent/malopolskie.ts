@@ -451,4 +451,94 @@ export const malopolskieCities: MiastoData[] = [
       },
     ],
   }
+  {
+    slug: "wieliczka",
+    nazwa: "Wieliczka",
+    wojewodztwo: "malopolskie",
+    wojewodztwoNazwa: "małopolskie",
+    populacja: "28 tys.",
+    opisGospodarki:
+      "Wieliczka to miasto powiatowe w aglomeracji krakowskiej, słynne z Kopalni Soli Wieliczka (UNESCO), jednej z najstarszych kopalń soli na świecie. Gospodarka miasta opiera się na turystyce (miliony turystów rocznie odwiedzają kopalnię), hotelarstwie, gastronomii oraz usługach dla mieszkańców i turystów. Bliskość Krakowa sprzyja rozwojowi firm.",
+    branzeKluczowe: [
+      "turystyka (Kopalnia Soli UNESCO)",
+      "hotelarstwo i gastronomia",
+      "handel dla turystów",
+      "zaplecze biznesowe dla Krakowa",
+    ],
+    wyzwaniaAI:
+      "W Wieliczce typowe obszary zastosowania AI to hotele i restauracje obsługujące turystów zwiedzających kopalnię (wielojęzyczna obsługa), firmy usługowe dla turystów, lokalne MŚP oraz firmy obsługujące mieszkańców aglomeracji krakowskiej. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Wieliczki.",
+    lokalneKeywordy: [
+      "wdrożenie AI Wieliczka",
+      "AI dla turystyki Wieliczka",
+      "szkolenia ChatGPT Wieliczka",
+      "chatbot hotel Wieliczka",
+    ],
+    czasDojazdu:
+      "Wieliczka obsługiwana z Krakowa — dojazd ok. 20-30 min. Szkolenia stacjonarne i wdrożenia dostępne w krótkim terminie.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla hotelu lub restauracji w Wieliczce obsługującej turystów zwiedzających kopalnię możliwe jest wdrożenie wielojęzycznego chatbota (polski, angielski, niemiecki, hiszpański, japoński, chiński) obsługującego zapytania o Kopalnię Soli oraz automatyzacji generowania ofert dla grup zorganizowanych.",
+    najblizszeMiasta: ["krakow", "bochnia", "oswiecim", "chrzanow"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera turystykę wokół Kopalni Soli Wieliczka?",
+        odpowiedz:
+          "Obiekty turystyczne w Wieliczce obsługują turystów z kilkudziesięciu krajów — AI radykalnie upraszcza wielojęzyczną obsługę. Jeden chatbot obsługuje zapytania w 10+ językach, automatycznie generuje oferty dla grup zorganizowanych, tworzy treści o kopalni w różnych językach, obsługuje opinie z TripAdvisor i Google. Typowy koszt: 300-700 zł/mc dla średniego hotelu.",
+      },
+      {
+        pytanie: "Czy małe restauracje z Wieliczki mogą używać AI?",
+        odpowiedz:
+          "Tak — restauracje obsługujące turystów zyskują na: automatycznym tłumaczeniu menu w kilku językach, generowaniu opisów dań dla gości z alergiami, obsłudze zapytań o rezerwacje, odpowiadaniu na opinie z Google i TripAdvisor, tworzeniu treści marketingowych. Koszt: 250-500 zł/mc + jednodniowe szkolenie 1.5-3 tys. zł.",
+      },
+      {
+        pytanie: "Jak szybko można wdrożyć AI w firmie z Wieliczki?",
+        odpowiedz:
+          "Wieliczka jest bardzo blisko Krakowa (20-30 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla małych grup realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w 3-5 tygodni. Wizyty stacjonarne łączymy często z innymi firmami z aglomeracji krakowskiej.",
+      },
+    ],
+  },
+  {
+    slug: "andrychow",
+    nazwa: "Andrychów",
+    wojewodztwo: "malopolskie",
+    wojewodztwoNazwa: "małopolskie",
+    populacja: "20 tys.",
+    opisGospodarki:
+      "Andrychów to miasto w powiecie wadowickim, z historycznym przemysłem włókienniczym (dawne Zakłady Przemysłu Bawełnianego Andropol). Obecnie gospodarka miasta opiera się na produkcji, przetwórstwie, handlu oraz turystyce (brama do Beskidu Małego). Miasto pełni rolę lokalnego centrum regionalnego.",
+    branzeKluczowe: [
+      "produkcja i przetwórstwo",
+      "przemysł włókienniczy (tradycje)",
+      "turystyka (Beskid Mały)",
+      "handel regionalny",
+    ],
+    wyzwaniaAI:
+      "W Andrychowie typowe obszary zastosowania AI to lokalne firmy produkcyjne (dokumentacja, oferty), firmy handlowe, obiekty turystyczne Beskidu Małego oraz MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Andrychowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Andrychów",
+      "szkolenia ChatGPT Andrychów",
+      "AI dla produkcji Andrychów",
+      "automatyzacja firm Andrychów",
+    ],
+    czasDojazdu:
+      "Andrychów obsługiwany z Krakowa lub Bielska-Białej — dojazd ok. 1-1.5h. Spotkania stacjonarne z wyprzedzeniem, wdrożenia w trybie hybrydowym.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla andrychowskiej firmy produkcyjnej możliwe jest wdrożenie AI do automatyzacji generowania ofert handlowych oraz obsługi zapytań klientów w kilku językach, co wspiera sprzedaż eksportową i oszczędza czas działu handlowego.",
+    najblizszeMiasta: ["oswiecim", "bielsko-biala", "chrzanow", "krakow"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy produkcyjne z Andrychowa?",
+        odpowiedz:
+          "Firmy produkcyjne zyskują głównie na: automatyzacji dokumentacji technicznej i ofert handlowych, obsłudze zapytań klientów B2B w kilku językach, generowaniu treści marketingowych, analizie danych produkcyjnych. Typowe koszty: 400-800 zł/mc + wdrożenie 10-30 tys. zł.",
+      },
+      {
+        pytanie: "Czy obiekty turystyczne w Beskidzie Małym mogą korzystać z AI?",
+        odpowiedz:
+          "Tak — pensjonaty i gospodarstwa agroturystyczne w Beskidzie Małym (okolice Andrychowa i Wadowic) zyskują na: wielojęzycznej obsłudze zapytań, generowaniu opisów atrakcji regionu, tworzeniu treści na social media. Koszt: 200-400 zł/mc dla małego obiektu + szkolenie wstępne 1-2 tys. zł.",
+      },
+      {
+        pytanie: "Ile kosztuje podstawowe wdrożenie AI w Andrychowie?",
+        odpowiedz:
+          "Dla małej firmy: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, miesięczne licencje 300-600 zł/mc. Łączny start: 6-13 tys. zł + 400 zł/mc. Pierwsze efekty widoczne w 2-3 tygodnie, pełne korzyści po 3-4 miesiącach używania narzędzi.",
+      },
+    ],
+  },
 ];

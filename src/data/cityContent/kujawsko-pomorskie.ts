@@ -406,4 +406,139 @@ export const kujawskoPomorskieCities: MiastoData[] = [
       },
     ],
   },
+  {
+    slug: "rypin",
+    nazwa: "Rypin",
+    wojewodztwo: "kujawsko-pomorskie",
+    wojewodztwoNazwa: "kujawsko-pomorskie",
+    populacja: "15 tys.",
+    opisGospodarki:
+      "Rypin to miasto powiatowe w północno-wschodniej części województwa kujawsko-pomorskiego, z gospodarką opartą na rolnictwie, przetwórstwie rolno-spożywczym, drobnej produkcji oraz handlu. Miasto pełni rolę lokalnego centrum dla okolicznych gmin wiejskich.",
+    branzeKluczowe: [
+      "rolnictwo i przetwórstwo",
+      "drobna produkcja",
+      "handel lokalny",
+      "usługi dla mieszkańców",
+    ],
+    wyzwaniaAI:
+      "W Rypinie typowe obszary zastosowania AI to małe firmy przetwórcze, gospodarstwa rolne, lokalne firmy handlowe oraz MŚP usługowe. OpenMind AI oferuje dostępne cenowo wdrożenia dla mikroprzedsiębiorców z Rypina.",
+    lokalneKeywordy: [
+      "wdrożenie AI Rypin",
+      "szkolenia ChatGPT Rypin",
+      "AI dla małych firm Rypin",
+      "automatyzacja Rypin",
+    ],
+    czasDojazdu:
+      "Rypin obsługiwany w trybie online z Torunia lub Bydgoszczy (dojazd ok. 1h-1.5h). Wizyty stacjonarne przy grupach 6+ osób.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla małej firmy przetwórczej z Rypina możliwe jest wdrożenie prostych narzędzi AI do generowania opisów produktów, obsługi zapytań klientów oraz automatyzacji pism urzędowych, co oszczędza właścicielowi 8-15 godzin pracy tygodniowo.",
+    najblizszeMiasta: ["brodnica", "wloclawek", "torun", "chelmno"],
+    faq: [
+      {
+        pytanie: "Czy mikrofirma z Rypina potrzebuje AI?",
+        odpowiedz:
+          "Tak — mikrofirmy często są największymi beneficjentami AI, bo nie mają budżetu na marketing czy dodatkowych pracowników. Za 100-300 zł miesięcznie uzyskują dostęp do narzędzi, które oszczędzają wiele godzin pracy tygodniowo. Kluczem jest dobre szkolenie wstępne (1-2 tys. zł).",
+      },
+      {
+        pytanie: "Gdzie można nauczyć się AI blisko Rypina?",
+        odpowiedz:
+          "Najlepiej online — szkolenia online są tańsze niż stacjonarne, nie wymagają dojazdu, a efektywność jest porównywalna. Nasze szkolenia online to 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł dla pojedynczej osoby.",
+      },
+      {
+        pytanie: "Jakie są najprostsze wdrożenia AI dla rolnika?",
+        odpowiedz:
+          "Najprostsze: ChatGPT Plus (100 zł/mc) do pisania wniosków o dopłaty ARiMR, korespondencji urzędowej, ofert dla klientów sprzedaży bezpośredniej; Canva AI (55 zł/mc) do grafik; darmowy DeepL do tłumaczeń. Łącznie 150 zł/mc + 1-2 tys. zł za szkolenie wstępne.",
+      },
+    ],
+  },
+  {
+    slug: "tuchola",
+    nazwa: "Tuchola",
+    wojewodztwo: "kujawsko-pomorskie",
+    wojewodztwoNazwa: "kujawsko-pomorskie",
+    populacja: "13 tys.",
+    opisGospodarki:
+      "Tuchola to miasto powiatowe położone w samym sercu Borów Tucholskich, jednego z największych kompleksów leśnych w Polsce. Gospodarka miasta opiera się na turystyce (region Borów Tucholskich UNESCO), przemyśle drzewnym, rolnictwie oraz handlu i usługach lokalnych.",
+    branzeKluczowe: [
+      "turystyka (Bory Tucholskie UNESCO)",
+      "przemysł drzewny",
+      "rolnictwo i agroturystyka",
+      "handel lokalny",
+    ],
+    wyzwaniaAI:
+      "W Tucholi typowe obszary zastosowania AI to obiekty turystyczne i agroturystyczne Borów Tucholskich (wielojęzyczna obsługa gości), firmy drzewne oraz lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Tucholi.",
+    lokalneKeywordy: [
+      "wdrożenie AI Tuchola",
+      "AI dla turystyki Bory Tucholskie",
+      "szkolenia ChatGPT Tuchola",
+      "chatbot agroturystyka Bory Tucholskie",
+    ],
+    czasDojazdu:
+      "Tuchola obsługiwana w trybie online z Bydgoszczy (dojazd ok. 1h) lub Gdańska (ok. 1.5h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla gospodarstwa agroturystycznego w Borach Tucholskich możliwe jest wdrożenie wielojęzycznego chatbota rezerwacyjnego oraz generowania opisów atrakcji (szlaki, spływy Brdą) w kilku językach, co wspiera obsługę gości z Polski, Niemiec i Skandynawii.",
+    najblizszeMiasta: ["chojnice", "swiecie", "bydgoszcz", "chelmno"],
+    faq: [
+      {
+        pytanie: "Jak AI pomaga agroturystyce w Borach Tucholskich?",
+        odpowiedz:
+          "Gospodarstwa agroturystyczne w Borach Tucholskich (UNESCO) zyskują głównie na: wielojęzycznej obsłudze zapytań gości, generowaniu opisów atrakcji regionu (szlaki, rzeka Brda, jeziora), tworzeniu treści marketingowych na social media, obsłudze rezerwacji. Typowy koszt: 200-400 zł/mc dla małego obiektu + 1.5-3 tys. zł za jednodniowe szkolenie wstępne.",
+      },
+      {
+        pytanie: "Czy firmy drzewne z Tucholi mogą korzystać z AI?",
+        odpowiedz:
+          "Tak — firmy drzewne zyskują na: automatyzacji dokumentacji technicznej i specyfikacji, generowaniu ofert dla klientów B2B, obsłudze zapytań partnerów handlowych (często w językach obcych), analizie danych produkcyjnych. Typowy koszt: 300-600 zł/mc + wdrożenie wstępne 5-12 tys. zł.",
+      },
+      {
+        pytanie: "Jakie są najprostsze narzędzia AI dla właściciela pensjonatu?",
+        odpowiedz:
+          "Najprostsze: ChatGPT Plus (100 zł/mc) do komunikacji z gośćmi i tłumaczeń, Canva AI (55 zł/mc) do grafik promocyjnych, darmowy DeepL do szybkich tłumaczeń. Łącznie 150-200 zł/mc pokrywa 90% potrzeb małego pensjonatu. Ważne: jeden dzień szkolenia wystarczy żeby zacząć efektywnie korzystać.",
+      },
+    ],
+  },
+  {
+    slug: "aleksandrow-kujawski",
+    nazwa: "Aleksandrów Kujawski",
+    wojewodztwo: "kujawsko-pomorskie",
+    wojewodztwoNazwa: "kujawsko-pomorskie",
+    populacja: "12 tys.",
+    opisGospodarki:
+      "Aleksandrów Kujawski to miasto powiatowe w centralnej części województwa kujawsko-pomorskiego, historyczny węzeł kolejowy oraz dawne miasto graniczne między zaborami. Gospodarka miasta opiera się na przetwórstwie spożywczym, drobnej produkcji, handlu oraz usługach dla mieszkańców.",
+    branzeKluczowe: [
+      "przetwórstwo spożywcze",
+      "drobna produkcja",
+      "logistyka kolejowa",
+      "handel lokalny",
+    ],
+    wyzwaniaAI:
+      "W Aleksandrowie Kujawskim typowe obszary zastosowania AI to lokalne firmy spożywcze i produkcyjne, małe firmy handlowe oraz gospodarstwa rolne. OpenMind AI oferuje dostępne cenowo wdrożenia dla mikroprzedsiębiorców z Aleksandrowa Kujawskiego.",
+    lokalneKeywordy: [
+      "wdrożenie AI Aleksandrów Kujawski",
+      "szkolenia ChatGPT Aleksandrów Kujawski",
+      "AI dla małych firm Aleksandrów",
+      "automatyzacja Aleksandrów Kujawski",
+    ],
+    czasDojazdu:
+      "Aleksandrów Kujawski obsługiwany z Torunia — dojazd ok. 30 min. Szkolenia stacjonarne dla grup 6+ osób, dla mniejszych grup format online.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla małej firmy spożywczej z Aleksandrowa Kujawskiego możliwe jest wdrożenie automatyzacji generowania opisów produktów, etykiet w kilku językach oraz obsługi zapytań klientów, co wspiera sprzedaż i oszczędza czas właściciela firmy.",
+    najblizszeMiasta: ["torun", "wloclawek", "inowroclaw", "brodnica"],
+    faq: [
+      {
+        pytanie: "Czy małe firmy z Aleksandrowa Kujawskiego potrzebują AI?",
+        odpowiedz:
+          "Tak — małe firmy często są największymi beneficjentami AI. Za 150-300 zł miesięcznie uzyskują dostęp do narzędzi, które wykonują pracę kilku osób. Jednodniowe szkolenie wstępne 1-2 tys. zł wystarczy na start. Pierwsze efekty widoczne od razu po szkoleniu.",
+      },
+      {
+        pytanie: "Jak zacząć z AI bez dojazdu do Torunia?",
+        odpowiedz:
+          "Rekomendujemy szkolenia online — są tańsze niż stacjonarne, nie wymagają dojazdu, efektywność porównywalna. Nasze szkolenia online to 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie po szkoleniu. Koszt: 1.5-3 tys. zł dla pojedynczej osoby.",
+      },
+      {
+        pytanie: "Jakie narzędzia polecacie mikroprzedsiębiorcy?",
+        odpowiedz:
+          "Minimalny stack: ChatGPT (darmowy lub Plus 100 zł/mc) do tekstów i komunikacji, Canva (darmowa lub Pro 55 zł/mc) do grafik. Łącznie 0-200 zł/mc pokrywa 80% potrzeb mikroprzedsiębiorcy. Ważniejsze od narzędzi jest jednorazowe szkolenie wstępne (1-2 tys. zł).",
+      },
+    ],
+  },
 ];

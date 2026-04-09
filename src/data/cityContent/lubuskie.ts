@@ -361,4 +361,184 @@ export const lubuskieCities: MiastoData[] = [
       },
     ],
   },
+  {
+    slug: "slubice",
+    nazwa: "Słubice",
+    wojewodztwo: "lubuskie",
+    wojewodztwoNazwa: "lubuskie",
+    populacja: "15 tys.",
+    opisGospodarki:
+      "Słubice to miasto powiatowe na granicy polsko-niemieckiej nad Odrą, tworzące wraz z niemieckim Frankfurtem nad Odrą tzw. Doppelstadt. Siedziba Collegium Polonicum (wspólnej jednostki UAM Poznań i Uniwersytetu Europejskiego Viadrina). Gospodarka miasta opiera się na handlu transgranicznym, logistyce, usługach oraz edukacji.",
+    branzeKluczowe: [
+      "handel transgraniczny z Niemcami",
+      "edukacja (Collegium Polonicum)",
+      "logistyka transgraniczna",
+      "usługi polsko-niemieckie",
+    ],
+    wyzwaniaAI:
+      "W Słubicach typowe obszary zastosowania AI to firmy handlu transgranicznego (tłumaczenia polsko-niemieckie), firmy logistyczne, uczelnia wyższa oraz lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm ze Słubic.",
+    lokalneKeywordy: [
+      "wdrożenie AI Słubice",
+      "AI dla handlu transgranicznego Słubice",
+      "tłumaczenia niemiecki AI Słubice",
+      "szkolenia ChatGPT Słubice",
+    ],
+    czasDojazdu:
+      "Słubice obsługiwane w trybie online z Zielonej Góry lub Gorzowa (dojazd ok. 1.5h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla słubickiej firmy handlowej obsługującej klientów z Frankfurtu nad Odrą możliwe jest wdrożenie automatycznego tłumaczenia ofert i dokumentacji polsko-niemieckiej oraz chatbota dwujęzycznego, co znacząco przyspiesza obsługę transgraniczną.",
+    najblizszeMiasta: ["gorzow-wielkopolski", "zielona-gora", "kostrzyn-nad-odra", "miedzyrzecz"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy polsko-niemieckie ze Słubic?",
+        odpowiedz:
+          "Słubice wraz z Frankfurtem nad Odrą tworzą Doppelstadt — codzienna współpraca polsko-niemiecka. AI wspiera w: automatycznych tłumaczeniach polsko-niemieckich, obsłudze klientów niemieckich w ich języku, generowaniu ofert dwujęzycznych, analizie dokumentów prawnych i handlowych. Typowy koszt: 300-600 zł/mc.",
+      },
+      {
+        pytanie: "Czy Collegium Polonicum może korzystać z AI?",
+        odpowiedz:
+          "Tak, oferujemy szkolenia dla uczelni wyższych — dla kadry akademickiej, administracji oraz warsztaty dla studentów. Dla uczelni polsko-niemieckich dodatkowo wsparcie w bilingwalnym kontekście akademickim, w tym wykorzystanie AI w dydaktyce, rozpoznawanie prac generowanych przez AI, etyka.",
+      },
+      {
+        pytanie: "Jakie narzędzia polecacie do tłumaczeń polsko-niemieckich?",
+        odpowiedz:
+          "Dla codziennej pracy: DeepL Pro (140 zł/mc) — najwyższa jakość dla standardowych dokumentów, ChatGPT Plus (100 zł/mc) — dobry do kontekstowych tłumaczeń, Claude Pro (100 zł/mc) — dobry do długich dokumentów prawnych. Stack DeepL Pro + ChatGPT Plus (240 zł/mc) pokrywa 95% potrzeb.",
+      },
+    ],
+  },
+  {
+    slug: "sulechow",
+    nazwa: "Sulechów",
+    wojewodztwo: "lubuskie",
+    wojewodztwoNazwa: "lubuskie",
+    populacja: "17 tys.",
+    opisGospodarki:
+      "Sulechów to miasto w powiecie zielonogórskim, blisko Zielonej Góry. Gospodarka miasta opiera się na produkcji przemysłowej (firmy z Kostrzyńsko-Słubickiej Specjalnej Strefy Ekonomicznej — Podstrefa Sulechów), rolnictwie, handlu i usługach. Silne tradycje edukacyjne (dawna PWSZ, obecnie część Uniwersytetu Zielonogórskiego).",
+    branzeKluczowe: [
+      "produkcja w K-S SSE (Podstrefa Sulechów)",
+      "rolnictwo i przetwórstwo",
+      "edukacja wyższa",
+      "handel lokalny",
+    ],
+    wyzwaniaAI:
+      "W Sulechowie typowe obszary zastosowania AI to firmy z podstrefy ekonomicznej (automatyzacja dokumentacji, obsługa klientów międzynarodowych), lokalne firmy produkcyjne oraz MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Sulechowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Sulechów",
+      "szkolenia ChatGPT Sulechów",
+      "AI dla SSE Sulechów",
+      "automatyzacja firm Sulechów",
+    ],
+    czasDojazdu:
+      "Sulechów obsługiwany z Zielonej Góry — dojazd ok. 30 min. Szkolenia stacjonarne i wdrożenia dostępne w krótkim terminie.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla sulechowskiej firmy z K-S SSE możliwe jest wdrożenie AI do automatyzacji dokumentacji technicznej oraz obsługi zapytań od klientów międzynarodowych (niemieckich, skandynawskich), co wspiera ekspansję eksportową firmy.",
+    najblizszeMiasta: ["zielona-gora", "swiebodzin", "nowa-sol", "miedzyrzecz"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy z Podstrefy Sulechów?",
+        odpowiedz:
+          "Firmy z K-S SSE najczęściej wdrażają AI do: automatyzacji przygotowywania ofert i dokumentacji dla klientów międzynarodowych, generowania kart produktów w kilku językach, obsługi zapytań B2B, analizy raportów produkcyjnych. Typowe projekty: 15-60 tys. zł za pilot.",
+      },
+      {
+        pytanie: "Ile kosztuje szkolenie dla firmy z Sulechowa?",
+        odpowiedz:
+          "Jednodniowe szkolenie dla grupy 6-12 osób: 4-6 tys. zł (z dojazdem z Zielonej Góry). Obejmuje 6 godzin warsztatów, materiały, praktyczne ćwiczenia oraz miesiąc wsparcia poszkoleniowego. Dla mniejszych grup polecamy format online.",
+      },
+      {
+        pytanie: "Czy uczelnia w Sulechowie może korzystać z AI?",
+        odpowiedz:
+          "Tak, oferujemy szkolenia dla uczelni wyższych — dla kadry akademickiej, administracji oraz warsztaty dla studentów. Dla pracowników akademickich szczególnie ważne są tematy: wykorzystanie AI w dydaktyce, rozpoznawanie prac generowanych przez AI, etyka.",
+      },
+    ],
+  },
+  {
+    slug: "gubin",
+    nazwa: "Gubin",
+    wojewodztwo: "lubuskie",
+    wojewodztwoNazwa: "lubuskie",
+    populacja: "15 tys.",
+    opisGospodarki:
+      "Gubin to miasto graniczne nad Nysą Łużycką, tworzące wraz z niemieckim Guben tzw. miasto podwójne. Gospodarka miasta opiera się na handlu transgranicznym z Niemcami, drobnej produkcji, usługach oraz logistyce. Bliskość granicy sprzyja współpracy polsko-niemieckiej.",
+    branzeKluczowe: [
+      "handel transgraniczny z Niemcami",
+      "drobna produkcja",
+      "usługi polsko-niemieckie",
+      "logistyka transgraniczna",
+    ],
+    wyzwaniaAI:
+      "W Gubinie typowe obszary zastosowania AI to firmy prowadzące handel transgraniczny (tłumaczenia polsko-niemieckie), lokalne firmy produkcyjne, usługowe oraz MŚP obsługujące klientów z Guben. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Gubina.",
+    lokalneKeywordy: [
+      "wdrożenie AI Gubin",
+      "AI dla handlu transgranicznego Gubin",
+      "tłumaczenia niemiecki AI Gubin",
+      "szkolenia ChatGPT Gubin",
+    ],
+    czasDojazdu:
+      "Gubin obsługiwany w trybie online z Zielonej Góry (dojazd ok. 1h). Wizyty stacjonarne przy większych projektach z wyprzedzeniem.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla gubińskiej firmy handlowej obsługującej klientów z Guben możliwe jest wdrożenie automatycznego tłumaczenia ofert i korespondencji polsko-niemieckiej oraz prostego chatbota dwujęzycznego, co znacząco przyspiesza obsługę klientów niemieckich.",
+    najblizszeMiasta: ["zielona-gora", "zary", "nowa-sol", "krosno-odrzanskie"],
+    faq: [
+      {
+        pytanie: "Jak AI pomaga firmom na granicy polsko-niemieckiej?",
+        odpowiedz:
+          "Firmy na granicy zyskują głównie na: automatycznych tłumaczeniach polsko-niemieckich, obsłudze klientów niemieckich w ich języku, generowaniu ofert dwujęzycznych, analizie dokumentów handlowych. Gubin z Guben tworzą miasto podwójne, więc współpraca jest intensywna. Typowy koszt: 250-500 zł/mc.",
+      },
+      {
+        pytanie: "Czy małe firmy z Gubina mogą sobie pozwolić na AI?",
+        odpowiedz:
+          "Zdecydowanie tak — koszty są niskie. Podstawowy stack (ChatGPT Plus + DeepL Pro) to 240 zł miesięcznie plus jednorazowe szkolenie 1-3 tys. zł. Dla małej firmy inwestycja zwraca się w pierwszym miesiącu oszczędności czasu na obsłudze klientów niemieckich.",
+      },
+      {
+        pytanie: "Jak zacząć z AI w firmie z Gubina?",
+        odpowiedz:
+          "Rekomendujemy: 1) bezpłatna rozmowa wstępna online, 2) jednodniowe szkolenie online (1.5-3 tys. zł), 3) konfiguracja pierwszych narzędzi (2-5 tys. zł). Łączny start: 3.5-8 tys. zł + 300 zł/mc. Pierwsze efekty od razu po szkoleniu.",
+      },
+    ],
+  },
+  {
+    slug: "szprotawa",
+    nazwa: "Szprotawa",
+    wojewodztwo: "lubuskie",
+    wojewodztwoNazwa: "lubuskie",
+    populacja: "11 tys.",
+    opisGospodarki:
+      "Szprotawa to miasto powiatowe w południowej części województwa lubuskiego, blisko Legnicko-Głogowskiego Okręgu Miedziowego. Gospodarka miasta opiera się na drobnej produkcji, rolnictwie, handlu i usługach dla mieszkańców.",
+    branzeKluczowe: [
+      "drobna produkcja",
+      "firmy podwykonawcze dla górnictwa",
+      "rolnictwo",
+      "handel lokalny",
+    ],
+    wyzwaniaAI:
+      "W Szprotawie typowe obszary zastosowania AI to małe firmy produkcyjne, firmy podwykonawcze dla sektora górniczego, lokalne firmy handlowe oraz MŚP. OpenMind AI oferuje dostępne cenowo wdrożenia i szkolenia dla firm ze Szprotawy.",
+    lokalneKeywordy: [
+      "wdrożenie AI Szprotawa",
+      "szkolenia ChatGPT Szprotawa",
+      "AI dla małych firm Szprotawa",
+      "automatyzacja Szprotawa",
+    ],
+    czasDojazdu:
+      "Szprotawa obsługiwana w trybie online z Zielonej Góry lub Legnicy (dojazd ok. 1h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla małej firmy produkcyjnej ze Szprotawy możliwe jest wdrożenie podstawowych narzędzi AI do automatyzacji pracy biurowej, generowania ofert oraz obsługi zapytań klientów, co oszczędza właścicielowi firmy wiele godzin tygodniowo.",
+    najblizszeMiasta: ["zagan", "glogow", "zielona-gora", "boleslawiec"],
+    faq: [
+      {
+        pytanie: "Czy mała firma ze Szprotawy potrzebuje AI?",
+        odpowiedz:
+          "Tak — małe firmy często są największymi beneficjentami AI, bo każda osoba w zespole ma więcej obowiązków. Za 200-400 zł miesięcznie uzyskują narzędzia, które odciążają cały zespół. Jednodniowe szkolenie wstępne 1-3 tys. zł wystarczy na start.",
+      },
+      {
+        pytanie: "Jakie są najprostsze wdrożenia AI dla mikrofirmy?",
+        odpowiedz:
+          "Trzy najprostsze: 1) ChatGPT do generowania ofert i odpowiedzi na zapytania (start w jeden dzień), 2) Canva AI do tworzenia grafik marketingowych (kilka godzin), 3) Proste szablony mailowe w ChatGPT. Te trzy wystarczą dla 60-70% potrzeb małej firmy. Koszt: 150-200 zł/mc.",
+      },
+      {
+        pytanie: "Jak zacząć bez dojazdu do większego miasta?",
+        odpowiedz:
+          "Szkolenia online są dostępne z każdego miejsca — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie po szkoleniu. Koszt: 1.5-3 tys. zł dla pojedynczej osoby. Bez konieczności dojazdu, efektywność porównywalna ze szkoleniami stacjonarnymi.",
+      },
+    ],
+  },
 ];

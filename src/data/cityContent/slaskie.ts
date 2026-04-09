@@ -431,4 +431,94 @@ export const slaskieCities: MiastoData[] = [
       }
     ]
   }
+  {
+    slug: "dabrowa-gornicza",
+    nazwa: "Dąbrowa Górnicza",
+    wojewodztwo: "slaskie",
+    wojewodztwoNazwa: "śląskie",
+    populacja: "115 tys.",
+    opisGospodarki:
+      "Dąbrowa Górnicza to miasto na prawach powiatu, trzecie największe miasto Zagłębia Dąbrowskiego. Historycznie ośrodek hutnictwa (ArcelorMittal Poland, dawna Huta Katowice — jedna z największych hut w Polsce) oraz górnictwa. Obecnie miasto przechodzi transformację w kierunku nowoczesnej gospodarki, zachowując silną bazę przemysłową.",
+    branzeKluczowe: [
+      "hutnictwo (ArcelorMittal Poland)",
+      "przemysł ciężki i metalurgiczny",
+      "firmy podwykonawcze dla przemysłu",
+      "logistyka (skrzyżowanie A1 i A4)",
+    ],
+    wyzwaniaAI:
+      "W Dąbrowie Górniczej typowe obszary zastosowania AI to firmy hutnicze i ich podwykonawcy (dokumentacja jakościowa, analiza danych produkcyjnych), firmy logistyczne (bliskość A1 i A4), przemysł metalowy oraz lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Dąbrowy Górniczej.",
+    lokalneKeywordy: [
+      "wdrożenie AI Dąbrowa Górnicza",
+      "szkolenia ChatGPT Dąbrowa Górnicza",
+      "AI dla hutnictwa Dąbrowa Górnicza",
+      "konsulting AI Dąbrowa Górnicza",
+    ],
+    czasDojazdu:
+      "Dąbrowa Górnicza obsługiwana z Katowic — dojazd ok. 30 min. Szkolenia stacjonarne i wdrożenia dostępne w krótkim terminie wspólnie z aglomeracją GZM.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla dąbrowskiej firmy podwykonawczej sektora hutniczego możliwe jest wdrożenie AI do automatyzacji dokumentacji technicznej i jakościowej (zgodnej z wymaganiami ArcelorMittal) oraz analizy danych z systemów produkcyjnych, co typowo skraca czas przygotowania raportów o 35-50%.",
+    najblizszeMiasta: ["sosnowiec", "katowice", "czestochowa", "bytom"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy hutnicze w Dąbrowie Górniczej?",
+        odpowiedz:
+          "Firmy hutnicze (ArcelorMittal i jego podwykonawcy) wdrażają AI głównie do: automatyzacji dokumentacji jakościowej i raportów produkcyjnych, analizy danych z systemów SPC/MES, predykcyjnego utrzymania ruchu, obsługi zapytań technicznych klientów. Kluczowe są narzędzia enterprise z pełną kontrolą danych.",
+      },
+      {
+        pytanie: "Dlaczego Dąbrowa Górnicza to ważny rynek dla AI?",
+        odpowiedz:
+          "Dąbrowa Górnicza to jedno z największych miast aglomeracji GZM (115 tys. mieszkańców) i jeden z największych ośrodków hutnictwa w Polsce. ArcelorMittal Poland zatrudnia tysiące osób i tworzy rozległą sieć firm podwykonawczych. Do tego bliskość skrzyżowania A1 i A4 sprzyja rozwojowi firm logistycznych.",
+      },
+      {
+        pytanie: "Ile kosztuje wdrożenie AI dla dużej firmy z Dąbrowy Górniczej?",
+        odpowiedz:
+          "Dla dużej firmy (500+ pracowników): audyt AI 15-40 tys. zł, pilotaż w jednym obszarze 40-150 tys. zł, pełne wdrożenie enterprise 200-800 tys. zł. Plus infrastruktura i licencje 3000-10000 zł/mc. ROI zwykle w 8-18 miesięcy.",
+      },
+    ],
+  },
+  {
+    slug: "jastrzebie-zdroj",
+    nazwa: "Jastrzębie-Zdrój",
+    wojewodztwo: "slaskie",
+    wojewodztwoNazwa: "śląskie",
+    populacja: "87 tys.",
+    opisGospodarki:
+      "Jastrzębie-Zdrój to miasto na prawach powiatu w południowo-zachodniej części województwa śląskiego, jeden z największych ośrodków górnictwa węgla koksowego w Europie (Jastrzębska Spółka Węglowa JSW — największy producent węgla koksowego w UE). Miasto ma również historyczne tradycje uzdrowiskowe.",
+    branzeKluczowe: [
+      "górnictwo węgla koksowego (JSW)",
+      "koksownictwo",
+      "firmy podwykonawcze dla górnictwa",
+      "tradycje uzdrowiskowe",
+    ],
+    wyzwaniaAI:
+      "W Jastrzębiu-Zdroju typowe obszary zastosowania AI to firmy podwykonawcze sektora górniczego (dokumentacja techniczna, analizy), firmy koksownicze, firmy związane z transformacją energetyczną oraz lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Jastrzębia-Zdroju.",
+    lokalneKeywordy: [
+      "wdrożenie AI Jastrzębie-Zdrój",
+      "szkolenia ChatGPT Jastrzębie-Zdrój",
+      "AI dla górnictwa Jastrzębie-Zdrój",
+      "konsulting AI Jastrzębie",
+    ],
+    czasDojazdu:
+      "Jastrzębie-Zdrój obsługiwane z Katowic — dojazd ok. 45 min. Spotkania stacjonarne i wdrożenia dostępne w krótkim terminie.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla jastrzębskiej firmy podwykonawczej sektora górniczego (związanej z JSW) możliwe jest wdrożenie AI do automatyzacji przygotowywania ofert przetargowych oraz dokumentacji technicznej — z zachowaniem rygorystycznych wymogów bezpieczeństwa, z użyciem narzędzi enterprise z pełną kontrolą danych.",
+    najblizszeMiasta: ["rybnik", "katowice", "tychy", "bielsko-biala"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy sektora górniczego w Jastrzębiu-Zdroju?",
+        odpowiedz:
+          "Firmy podwykonawcze Jastrzębskiej Spółki Węglowej (JSW) zyskują głównie na: automatyzacji przygotowywania ofert przetargowych, generowaniu dokumentacji technicznej zgodnej z wymaganiami JSW, analizie raportów bezpieczeństwa, obsłudze korespondencji B2B. Kluczowe są narzędzia enterprise z pełną kontrolą danych.",
+      },
+      {
+        pytanie: "Dlaczego Jastrzębie-Zdrój jest ważnym rynkiem AI?",
+        odpowiedz:
+          "Jastrzębie-Zdrój (87 tys. mieszkańców) to jedno z większych miast województwa śląskiego i centrum górnictwa węgla koksowego w Europie. JSW jako największy producent węgla koksowego w UE zatrudnia tysiące osób i tworzy ogromny ekosystem firm podwykonawczych.",
+      },
+      {
+        pytanie: "Ile trwa wdrożenie AI dla firmy sektora górniczego?",
+        odpowiedz:
+          "Ze względu na wymogi bezpieczeństwa sektora górniczego, wdrożenia trwają dłużej niż standardowe. Pilot: 8-12 tygodni. Pełne wdrożenie z bezpieczną infrastrukturą: 4-8 miesięcy. Koszty: pilot 25-60 tys. zł, pełne wdrożenie 100-400 tys. zł plus 2000-8000 zł/mc infrastruktury.",
+      },
+    ],
+  },
 ];

@@ -451,4 +451,94 @@ export const wielkopolskieCities: MiastoData[] = [
       },
     ],
   },
+  {
+    slug: "swarzedz",
+    nazwa: "Swarzędz",
+    wojewodztwo: "wielkopolskie",
+    wojewodztwoNazwa: "wielkopolskie",
+    populacja: "30 tys.",
+    opisGospodarki:
+      "Swarzędz to miasto w powiecie poznańskim, położone we wschodniej części aglomeracji poznańskiej. Historyczne centrum produkcji mebli (od XIX wieku, tradycje meblarstwa swarzędzkiego są ogólnopolskie). Obecnie gospodarka miasta opiera się na produkcji mebli, logistyce, handlu oraz roli zaplecza biznesowego Poznania.",
+    branzeKluczowe: [
+      "produkcja mebli (tradycja swarzędzka)",
+      "logistyka dla Poznania",
+      "handel i usługi",
+      "zaplecze biznesowe aglomeracji",
+    ],
+    wyzwaniaAI:
+      "W Swarzędzu typowe obszary zastosowania AI to firmy meblowe (tradycyjna branża regionu), firmy logistyczne obsługujące Poznań, lokalne MŚP oraz firmy obsługujące aglomerację poznańską. OpenMind AI oferuje wdrożenia i szkolenia dla firm ze Swarzędza.",
+    lokalneKeywordy: [
+      "wdrożenie AI Swarzędz",
+      "AI dla branży meblarskiej Swarzędz",
+      "szkolenia ChatGPT Swarzędz",
+      "automatyzacja firm Swarzędz",
+    ],
+    czasDojazdu:
+      "Swarzędz obsługiwany z Poznania — dojazd ok. 20-30 min. Szkolenia stacjonarne i wdrożenia dostępne w krótkim terminie.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla swarzędzkiej firmy meblarskiej eksportującej do Niemiec i Skandynawii możliwe jest wdrożenie AI do automatyzacji generowania kart produktów w kilku językach, obsługi zapytań klientów B2B oraz dokumentacji technicznej mebli.",
+    najblizszeMiasta: ["poznan", "srem", "wrzesnia", "gniezno"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera branżę meblarską w Swarzędzu?",
+        odpowiedz:
+          "Firmy meblarskie (tradycja swarzędzka) zyskują głównie na: automatyzacji kart produktów w językach eksportowych, generowaniu specyfikacji technicznych, obsłudze zapytań B2B (Niemcy, Skandynawia, UK), tworzeniu treści marketingowych z wizualizacjami. Typowe koszty: 500-1200 zł/mc + wdrożenie 10-30 tys. zł.",
+      },
+      {
+        pytanie: "Ile kosztuje wdrożenie AI dla firmy meblarskiej?",
+        odpowiedz:
+          "Dla średniej firmy meblarskiej (20-80 osób): audyt 5-15 tys. zł, pilotaż w jednym obszarze (np. opisy produktów) 15-40 tys. zł, pełne wdrożenie 50-200 tys. zł. Plus licencje 1000-3000 zł/mc.",
+      },
+      {
+        pytanie: "Jak szybko można wdrożyć AI w firmie ze Swarzędza?",
+        odpowiedz:
+          "Swarzędz jest bardzo blisko Poznania (20-30 min), więc pierwsze spotkanie konsultacyjne możliwe w ciągu kilku dni. Szkolenia realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w 3-5 tygodni.",
+      },
+    ],
+  },
+  {
+    slug: "turek",
+    nazwa: "Turek",
+    wojewodztwo: "wielkopolskie",
+    wojewodztwoNazwa: "wielkopolskie",
+    populacja: "29 tys.",
+    opisGospodarki:
+      "Turek to miasto powiatowe we wschodniej części województwa wielkopolskiego, historycznie związane z przemysłem włókienniczym oraz górnictwem węgla brunatnego (KWB Adamów). Obecnie gospodarka miasta przechodzi transformację po wygaszaniu kopalni, opiera się na produkcji, rolnictwie oraz handlu i usługach.",
+    branzeKluczowe: [
+      "produkcja przemysłowa",
+      "transformacja po górnictwie",
+      "rolnictwo i przetwórstwo",
+      "handel regionalny",
+    ],
+    wyzwaniaAI:
+      "W Turku typowe obszary zastosowania AI to firmy produkcyjne, firmy związane z transformacją po górnictwie (dokumentacja projektów, wnioski UE), lokalne firmy handlowe oraz MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Turku.",
+    lokalneKeywordy: [
+      "wdrożenie AI Turek",
+      "szkolenia ChatGPT Turek",
+      "AI dla produkcji Turek",
+      "automatyzacja firm Turek",
+    ],
+    czasDojazdu:
+      "Turek obsługiwany w trybie online z Konina (dojazd ok. 40 min) lub Poznania (ok. 1.5h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla turkowskiej firmy produkcyjnej możliwe jest wdrożenie AI do automatyzacji generowania ofert handlowych oraz obsługi zapytań klientów, co oszczędza znaczną część czasu działu handlowego.",
+    najblizszeMiasta: ["konin", "kalisz", "wrzesnia", "kolo"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy z Turku w transformacji regionu?",
+        odpowiedz:
+          "Firmy przechodzące transformację po wygaszaniu KWB Adamów zyskują na: analizie dokumentacji regulacyjnej, obsłudze wniosków o dofinansowanie (Fundusz Sprawiedliwej Transformacji), szkoleniu pracowników, zarządzaniu zmianą. AI wspiera wszystkie te obszary, szczególnie analizę dokumentów i generowanie raportów.",
+      },
+      {
+        pytanie: "Ile kosztuje wdrożenie AI dla firmy z Turku?",
+        odpowiedz:
+          "Dla małej firmy: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, licencje 300-600 zł/mc. Łączny start: 6-13 tys. zł + 400 zł/mc.",
+      },
+      {
+        pytanie: "Jak zacząć bez dojazdu do Poznania?",
+        odpowiedz:
+          "Rekomendujemy szkolenia online — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł. Bez konieczności dojazdu.",
+      },
+    ],
+  },
 ];

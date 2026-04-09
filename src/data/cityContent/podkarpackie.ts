@@ -451,4 +451,94 @@ export const podkarpackieCities: MiastoData[] = [
         },
       ],
     }
+  {
+    slug: "lancut",
+    nazwa: "Łańcut",
+    wojewodztwo: "podkarpackie",
+    wojewodztwoNazwa: "podkarpackie",
+    populacja: "17 tys.",
+    opisGospodarki:
+      "Łańcut to miasto powiatowe znane z Muzeum-Zamku w Łańcucie, jednej z najcenniejszych rezydencji arystokratycznych w Polsce. Gospodarka miasta opiera się na turystyce historycznej, produkcji spożywczej (słynne wódki z Łańcuta), handlu oraz usługach lokalnych.",
+    branzeKluczowe: [
+      "turystyka historyczna (Zamek w Łańcucie)",
+      "produkcja spożywcza",
+      "handel i usługi",
+      "hotelarstwo i gastronomia",
+    ],
+    wyzwaniaAI:
+      "W Łańcucie typowe obszary zastosowania AI to obiekty turystyczne obsługujące zwiedzających zamek (wielojęzyczna obsługa), firmy spożywcze (opisy produktów, eksport), hotele i restauracje oraz lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Łańcuta.",
+    lokalneKeywordy: [
+      "wdrożenie AI Łańcut",
+      "AI dla turystyki Łańcut",
+      "szkolenia ChatGPT Łańcut",
+      "chatbot hotel Łańcut",
+    ],
+    czasDojazdu:
+      "Łańcut obsługiwany z Rzeszowa — dojazd ok. 20-30 min. Szkolenia stacjonarne i wdrożenia dostępne w krótkim terminie.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla hotelu lub pensjonatu w Łańcucie obsługującego turystów zwiedzających zamek możliwe jest wdrożenie wielojęzycznego chatbota informacyjnego (polski, angielski, niemiecki, francuski, włoski) obsługującego zapytania o zamek i noclegi.",
+    najblizszeMiasta: ["rzeszow", "jaroslaw", "przemysl", "debica"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera turystykę wokół Zamku w Łańcucie?",
+        odpowiedz:
+          "Obiekty turystyczne w Łańcucie obsługują gości z kilkudziesięciu krajów — AI radykalnie upraszcza wielojęzyczną obsługę. Jeden chatbot obsługuje zapytania w kilku językach, generuje opisy zamku i historii, tworzy treści marketingowe, obsługuje opinie z TripAdvisor. Typowy koszt: 250-500 zł/mc.",
+      },
+      {
+        pytanie: "Czy firmy spożywcze z Łańcuta mogą korzystać z AI?",
+        odpowiedz:
+          "Tak — firmy spożywcze (słynne wódki z Łańcuta i inne) zyskują na: automatycznym generowaniu opisów produktów w językach eksportowych, tworzeniu etykiet dla różnych rynków, obsłudze zapytań klientów B2B, analizie opinii konsumentów. Typowy koszt: 400-800 zł/mc + wdrożenie 5-15 tys. zł.",
+      },
+      {
+        pytanie: "Jak szybko można wdrożyć AI w firmie z Łańcuta?",
+        odpowiedz:
+          "Łańcut jest blisko Rzeszowa (20-30 min), więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla małych grup realizujemy w 1-2 tygodnie. Proste wdrożenia w 3-5 tygodni.",
+      },
+    ],
+  },
+  {
+    slug: "ropczyce",
+    nazwa: "Ropczyce",
+    wojewodztwo: "podkarpackie",
+    wojewodztwoNazwa: "podkarpackie",
+    populacja: "16 tys.",
+    opisGospodarki:
+      "Ropczyce to miasto powiatowe w środkowej części Podkarpacia, znane z Zakładów Magnezytowych Ropczyce (jeden z największych producentów materiałów ogniotrwałych w Europie Środkowej). Gospodarka miasta opiera się na przemyśle materiałów ogniotrwałych, firmach podwykonawczych oraz lokalnym handlu i usługach.",
+    branzeKluczowe: [
+      "przemysł materiałów ogniotrwałych (ZM Ropczyce)",
+      "firmy podwykonawcze dla przemysłu",
+      "produkcja i przetwórstwo",
+      "handel lokalny",
+    ],
+    wyzwaniaAI:
+      "W Ropczycach typowe obszary zastosowania AI to firmy podwykonawcze sektora materiałów ogniotrwałych (dokumentacja techniczna, oferty), firmy produkcyjne oraz lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Ropczyc.",
+    lokalneKeywordy: [
+      "wdrożenie AI Ropczyce",
+      "szkolenia ChatGPT Ropczyce",
+      "AI dla przemysłu Ropczyce",
+      "automatyzacja firm Ropczyce",
+    ],
+    czasDojazdu:
+      "Ropczyce obsługiwane z Rzeszowa — dojazd ok. 30-40 min. Spotkania stacjonarne i wdrożenia dostępne w krótkim terminie.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla firmy podwykonawczej sektora materiałów ogniotrwałych z Ropczyc możliwe jest wdrożenie AI do automatyzacji przygotowywania specyfikacji technicznych i ofert dla klientów międzynarodowych, co skraca czas reakcji na zapytania.",
+    najblizszeMiasta: ["debica", "rzeszow", "mielec", "jaslo"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy sektora materiałów ogniotrwałych?",
+        odpowiedz:
+          "Firmy materiałów ogniotrwałych wdrażają AI głównie do: automatyzacji dokumentacji technicznej i specyfikacji materiałowych, analizie raportów jakościowych, obsłudze zapytań klientów B2B w kilku językach, generowaniu ofert przetargowych. Kluczowe są narzędzia enterprise ze względu na poufność receptur.",
+      },
+      {
+        pytanie: "Ile kosztuje wdrożenie AI dla średniej firmy z Ropczyc?",
+        odpowiedz:
+          "Dla średniej firmy (50-200 osób): audyt 5-15 tys. zł, pilotaż 15-50 tys. zł, pełne wdrożenie 60-250 tys. zł. Plus miesięczne licencje 1000-4000 zł/mc. Pierwsze ROI typowo w 6-12 miesięcy.",
+      },
+      {
+        pytanie: "Jakie szkolenia AI polecacie firmom przemysłowym?",
+        odpowiedz:
+          "Dla firm przemysłowych rekomendujemy etapowe podejście: 1) szkolenie dla kadry kierowniczej, 2) szkolenie dla zespołów administracyjnych, 3) warsztaty dla liderów obszarów. Cykl 2-3 szkoleń w ciągu miesiąca, koszt 10-20 tys. zł.",
+      },
+    ],
+  },
 ];

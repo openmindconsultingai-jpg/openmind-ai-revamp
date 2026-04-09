@@ -406,4 +406,139 @@ export const lubelskieCities: MiastoData[] = [
       },
     ],
   },
+  {
+    slug: "lubartow",
+    nazwa: "Lubartów",
+    wojewodztwo: "lubelskie",
+    wojewodztwoNazwa: "lubelskie",
+    populacja: "21 tys.",
+    opisGospodarki:
+      "Lubartów to miasto powiatowe w środkowej części Lubelszczyzny, położone blisko Lublina. Gospodarka miasta opiera się na produkcji przemysłowej, przetwórstwie, handlu oraz usługach. Miasto pełni rolę lokalnego centrum regionalnego.",
+    branzeKluczowe: [
+      "produkcja przemysłowa",
+      "przetwórstwo i logistyka",
+      "handel regionalny",
+      "usługi dla mieszkańców",
+    ],
+    wyzwaniaAI:
+      "W Lubartowie typowe obszary zastosowania AI to firmy produkcyjne (dokumentacja techniczna, oferty), lokalne firmy handlowe oraz MŚP usługowe. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Lubartowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Lubartów",
+      "szkolenia ChatGPT Lubartów",
+      "AI dla produkcji Lubartów",
+      "automatyzacja firm Lubartów",
+    ],
+    czasDojazdu:
+      "Lubartów obsługiwany z Lublina — dojazd ok. 30-40 min. Szkolenia stacjonarne i wdrożenia dostępne w krótkim terminie.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla lubartowskiej firmy produkcyjnej możliwe jest wdrożenie AI do automatyzacji generowania ofert handlowych oraz dokumentacji technicznej, co znacząco skraca czas reakcji na zapytania ofertowe od klientów.",
+    najblizszeMiasta: ["lublin", "pulawy", "swidnik", "lukow"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy produkcyjne z Lubartowa?",
+        odpowiedz:
+          "Firmy produkcyjne zyskują głównie na: automatyzacji dokumentacji technicznej, generowaniu ofert dla klientów B2B, obsłudze zapytań w kilku językach, analizie danych produkcyjnych. Typowe projekty: pilot 15-40 tys. zł, pełne wdrożenie 60-200 tys. zł.",
+      },
+      {
+        pytanie: "Ile kosztuje podstawowe wdrożenie AI w Lubartowie?",
+        odpowiedz:
+          "Dla małej firmy: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, miesięczne licencje 300-600 zł/mc. Łączny start: 6-13 tys. zł + 400 zł/mc. Pierwsze efekty widoczne w 2-3 tygodnie.",
+      },
+      {
+        pytanie: "Czy można łączyć szkolenia dla Lubartowa i Lublina?",
+        odpowiedz:
+          "Tak, często organizujemy szkolenia grupowe dla firm z aglomeracji lubelskiej — koszt na osobę jest wtedy niższy niż w szkoleniu dedykowanym. Szkolenia otwarte w Lublinie odbywają się regularnie i są dostępne dla firm z okolicznych miast.",
+      },
+    ],
+  },
+  {
+    slug: "tomaszow-lubelski",
+    nazwa: "Tomaszów Lubelski",
+    wojewodztwo: "lubelskie",
+    wojewodztwoNazwa: "lubelskie",
+    populacja: "19 tys.",
+    opisGospodarki:
+      "Tomaszów Lubelski to miasto powiatowe w południowo-wschodniej Lubelszczyźnie, blisko granicy z Ukrainą. Gospodarka miasta opiera się na handlu transgranicznym, logistyce (bliskość przejścia granicznego Hrebenne), rolnictwie, przetwórstwie oraz handlu i usługach lokalnych.",
+    branzeKluczowe: [
+      "handel transgraniczny z Ukrainą",
+      "logistyka (przejście Hrebenne)",
+      "rolnictwo i przetwórstwo",
+      "handel regionalny",
+    ],
+    wyzwaniaAI:
+      "W Tomaszowie Lubelskim typowe obszary zastosowania AI to firmy logistyczne obsługujące granicę z Ukrainą (tłumaczenia, dokumentacja celna), firmy handlowe transgraniczne oraz lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Tomaszowa Lubelskiego.",
+    lokalneKeywordy: [
+      "wdrożenie AI Tomaszów Lubelski",
+      "AI dla logistyki Tomaszów Lubelski",
+      "tłumaczenia ukraiński AI Tomaszów",
+      "szkolenia ChatGPT Tomaszów Lubelski",
+    ],
+    czasDojazdu:
+      "Tomaszów Lubelski obsługiwany z Lublina lub Zamościa — dojazd ok. 1-1.5h. Spotkania stacjonarne z wyprzedzeniem, większość wdrożeń online.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla tomaszowskiej firmy logistycznej obsługującej przejście Hrebenne możliwe jest wdrożenie automatyzacji dokumentów celnych oraz chatbota obsługującego kierowców i klientów w kilku językach (polski, ukraiński, angielski), co odciąża dział administracji.",
+    najblizszeMiasta: ["zamosc", "hrubieszow", "bilgoraj", "lublin"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy na granicy z Ukrainą?",
+        odpowiedz:
+          "Firmy na granicy polsko-ukraińskiej wdrażają AI głównie do: automatycznego tłumaczenia dokumentów na ukraiński, obsługi klientów i kierowców w trzech językach (polski, ukraiński, angielski), automatyzacji dokumentów celnych i CMR, analizy raportów. Typowe oszczędności: 20-35% czasu działów administracyjnych.",
+      },
+      {
+        pytanie: "Czy ChatGPT jest dobry do tłumaczeń ukraińskich?",
+        odpowiedz:
+          "Tak, współczesne modele (GPT-4, Claude 4) bardzo dobrze radzą sobie z tłumaczeniami polsko-ukraińskimi, szczególnie w kontekście biznesowym. Dla dokumentów wymagających ścisłej zgodności prawnej rekomendujemy weryfikację przez tłumacza, ale w 90% przypadków biznesowych AI jest wystarczające.",
+      },
+      {
+        pytanie: "Ile kosztuje wdrożenie AI dla małej firmy transgranicznej?",
+        odpowiedz:
+          "Dla małej firmy: ChatGPT Plus lub Claude Pro (100 zł/mc) + DeepL Pro (140 zł/mc) + jednodniowe szkolenie (2-4 tys. zł). Łączny koszt startu: 3-5 tys. zł + 250 zł/mc. Po szkoleniu firma samodzielnie korzysta z narzędzi w codziennej pracy.",
+      },
+    ],
+  },
+  {
+    slug: "hrubieszow",
+    nazwa: "Hrubieszów",
+    wojewodztwo: "lubelskie",
+    wojewodztwoNazwa: "lubelskie",
+    populacja: "16 tys.",
+    opisGospodarki:
+      "Hrubieszów to miasto powiatowe najbardziej na wschód wysunięte w Polsce, blisko granicy z Ukrainą. Gospodarka miasta opiera się głównie na rolnictwie (region słynie z żyznych czarnoziemów), przetwórstwie rolno-spożywczym, handlu oraz drobnej produkcji.",
+    branzeKluczowe: [
+      "rolnictwo (czarnoziemy)",
+      "przetwórstwo spożywcze",
+      "handel lokalny",
+      "usługi dla mieszkańców",
+    ],
+    wyzwaniaAI:
+      "W Hrubieszowie typowe obszary zastosowania AI to gospodarstwa rolne i firmy przetwórcze (dokumentacja, marketing, eksport), lokalne firmy handlowe oraz MŚP usługowe. OpenMind AI oferuje dostępne cenowo wdrożenia dla mikroprzedsiębiorców z Hrubieszowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Hrubieszów",
+      "szkolenia ChatGPT Hrubieszów",
+      "AI dla rolnictwa Hrubieszów",
+      "automatyzacja firm Hrubieszów",
+    ],
+    czasDojazdu:
+      "Hrubieszów obsługiwany w trybie online z Lublina lub Zamościa (dojazd ok. 1-1.5h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla firmy rolno-przetwórczej z Hrubieszowa możliwe jest wdrożenie AI do automatyzacji dokumentacji dla dopłat ARiMR oraz generowania opisów produktów w kilku językach, co wspiera sprzedaż eksportową produktów z regionu.",
+    najblizszeMiasta: ["zamosc", "tomaszow-lubelski", "chelm", "bilgoraj"],
+    faq: [
+      {
+        pytanie: "Jak AI może pomóc rolnikom z Hrubieszowskiego?",
+        odpowiedz:
+          "AI wspiera rolników w: tworzeniu dokumentacji dla dopłat ARiMR i programów unijnych, pisaniu pism urzędowych, analizie danych z gospodarstwa, obsłudze klientów sprzedaży bezpośredniej, tłumaczeniu dokumentów. Podstawowy stack: 100-200 zł/mc, szkolenie 1-2 tys. zł.",
+      },
+      {
+        pytanie: "Czy małe firmy spożywcze mogą eksportować z AI?",
+        odpowiedz:
+          "Tak — AI radykalnie upraszcza eksport dla małych firm. Automatyczne generowanie opisów produktów w językach eksportowych, etykiet zgodnych z wymaganiami różnych rynków, obsługa klientów B2B. Typowy koszt: 300-500 zł/mc + szkolenie wstępne 2-3 tys. zł.",
+      },
+      {
+        pytanie: "Jak nauczyć się AI bez dojazdu do Lublina?",
+        odpowiedz:
+          "Szkolenia online są dostępne z Hrubieszowa bez problemu — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł dla pojedynczej osoby. Efektywność porównywalna ze szkoleniami stacjonarnymi, bez konieczności jechania 1.5h do Lublina.",
+      },
+    ],
+  },
 ];

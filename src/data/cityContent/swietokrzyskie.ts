@@ -345,4 +345,184 @@ export const swietokrzyskieCities: MiastoData[] = [
       }
     ]
   }
+  {
+    slug: "jedrzejow",
+    nazwa: "Jędrzejów",
+    wojewodztwo: "swietokrzyskie",
+    wojewodztwoNazwa: "świętokrzyskie",
+    populacja: "14 tys.",
+    opisGospodarki:
+      "Jędrzejów to miasto powiatowe w południowej części województwa świętokrzyskiego, przy drodze E77. Gospodarka miasta opiera się na przemyśle cementowym (tradycje cementowni), rolnictwie, drobnej produkcji i handlu. Miasto jest znane ze światowej klasy Muzeum im. Przypkowskich (trzecia w świecie kolekcja zegarów słonecznych).",
+    branzeKluczowe: [
+      "przemysł cementowy",
+      "rolnictwo i przetwórstwo",
+      "drobna produkcja",
+      "handel i usługi",
+    ],
+    wyzwaniaAI:
+      "W Jędrzejowie typowe obszary zastosowania AI to firmy przemysłowe (dokumentacja), rolnictwo i przetwórstwo, lokalne firmy handlowe oraz MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Jędrzejowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Jędrzejów",
+      "szkolenia ChatGPT Jędrzejów",
+      "AI dla małych firm Jędrzejów",
+      "automatyzacja Jędrzejów",
+    ],
+    czasDojazdu:
+      "Jędrzejów obsługiwany w trybie online z Kielc (dojazd ok. 45 min) lub Krakowa (ok. 1.5h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla jędrzejowskiej firmy produkcyjnej możliwe jest wdrożenie AI do automatyzacji generowania ofert i dokumentacji technicznej, co oszczędza wiele godzin pracy działu handlowego.",
+    najblizszeMiasta: ["kielce", "busko-zdroj", "pinczow", "wloszczowa"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy z Jędrzejowa?",
+        odpowiedz:
+          "Firmy zyskują głównie na: automatyzacji dokumentacji, generowaniu ofert, obsłudze zapytań klientów, tworzeniu treści marketingowych. Typowe koszty: 300-600 zł/mc + szkolenie wstępne 2-4 tys. zł.",
+      },
+      {
+        pytanie: "Ile kosztuje podstawowe wdrożenie AI?",
+        odpowiedz:
+          "Dla małej firmy: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, miesięczne licencje 300-600 zł/mc. Łączny start: 6-13 tys. zł + 400 zł/mc.",
+      },
+      {
+        pytanie: "Jak zacząć bez dojazdu do Kielc?",
+        odpowiedz:
+          "Rekomendujemy szkolenia online — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł dla pojedynczej osoby.",
+      },
+    ],
+  },
+  {
+    slug: "wloszczowa",
+    nazwa: "Włoszczowa",
+    wojewodztwo: "swietokrzyskie",
+    wojewodztwoNazwa: "świętokrzyskie",
+    populacja: "9 tys.",
+    opisGospodarki:
+      "Włoszczowa to miasto powiatowe w zachodniej części województwa świętokrzyskiego, węzeł kolejowy na linii CMK (Centralna Magistrala Kolejowa). Gospodarka miasta opiera się na rolnictwie, drobnej produkcji, handlu oraz logistyce kolejowej.",
+    branzeKluczowe: [
+      "rolnictwo i przetwórstwo",
+      "logistyka kolejowa (CMK)",
+      "drobna produkcja",
+      "handel lokalny",
+    ],
+    wyzwaniaAI:
+      "We Włoszczowie typowe obszary zastosowania AI to małe firmy produkcyjne, gospodarstwa rolne i przetwórcze, lokalne firmy handlowe oraz MŚP. OpenMind AI oferuje dostępne cenowo wdrożenia dla mikroprzedsiębiorców z Włoszczowy.",
+    lokalneKeywordy: [
+      "wdrożenie AI Włoszczowa",
+      "szkolenia ChatGPT Włoszczowa",
+      "AI dla małych firm Włoszczowa",
+      "automatyzacja Włoszczowa",
+    ],
+    czasDojazdu:
+      "Włoszczowa obsługiwana w trybie online z Kielc lub Częstochowy (dojazd ok. 1h). Wizyty stacjonarne przy grupach 6+ osób.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla małej firmy handlowej z Włoszczowy możliwe jest wdrożenie prostych narzędzi AI do automatyzacji pracy biurowej i obsługi klientów.",
+    najblizszeMiasta: ["jedrzejow", "kielce", "czestochowa", "konskie"],
+    faq: [
+      {
+        pytanie: "Czy mikrofirma z Włoszczowy potrzebuje AI?",
+        odpowiedz:
+          "Tak — za 100-300 zł miesięcznie uzyskujesz dostęp do narzędzi, które oszczędzają wiele godzin pracy tygodniowo. Jednodniowe szkolenie wstępne 1-2 tys. zł.",
+      },
+      {
+        pytanie: "Jakie są najprostsze narzędzia AI dla małej firmy?",
+        odpowiedz:
+          "Minimalny stack: ChatGPT Plus (100 zł/mc) + Canva Pro (55 zł/mc). Łącznie 155 zł/mc pokrywa 80% potrzeb mikroprzedsiębiorcy.",
+      },
+      {
+        pytanie: "Gdzie można się nauczyć AI blisko Włoszczowy?",
+        odpowiedz:
+          "Najlepiej online — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł dla pojedynczej osoby.",
+      },
+    ],
+  },
+  {
+    slug: "pinczow",
+    nazwa: "Pińczów",
+    wojewodztwo: "swietokrzyskie",
+    wojewodztwoNazwa: "świętokrzyskie",
+    populacja: "9 tys.",
+    opisGospodarki:
+      "Pińczów to miasto powiatowe na Ponidziu, historyczne centrum renesansu (Akademia Pińczowska). Gospodarka miasta opiera się na rolnictwie, turystyce (Nadnidziański Park Krajobrazowy), drobnej produkcji oraz handlu lokalnym.",
+    branzeKluczowe: [
+      "rolnictwo i przetwórstwo",
+      "turystyka (Nadnidziański PK)",
+      "drobna produkcja",
+      "handel lokalny",
+    ],
+    wyzwaniaAI:
+      "W Pińczowie typowe obszary zastosowania AI to gospodarstwa rolne, obiekty agroturystyczne, lokalne firmy handlowe oraz MŚP. OpenMind AI oferuje dostępne cenowo wdrożenia dla firm z Pińczowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Pińczów",
+      "szkolenia ChatGPT Pińczów",
+      "AI dla agroturystyki Pińczów",
+      "automatyzacja Pińczów",
+    ],
+    czasDojazdu:
+      "Pińczów obsługiwany w trybie online z Kielc (dojazd ok. 45 min) lub Krakowa (ok. 1.5h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla gospodarstwa agroturystycznego z okolic Pińczowa możliwe jest wdrożenie wielojęzycznego chatbota rezerwacyjnego oraz generowania opisów atrakcji Ponidzia.",
+    najblizszeMiasta: ["jedrzejow", "busko-zdroj", "kielce", "sandomierz"],
+    faq: [
+      {
+        pytanie: "Jak AI pomaga agroturystyce na Ponidziu?",
+        odpowiedz:
+          "Gospodarstwa agroturystyczne zyskują na: wielojęzycznej obsłudze zapytań gości, generowaniu opisów atrakcji regionu, tworzeniu treści na social media, obsłudze rezerwacji. Koszt: 200-400 zł/mc dla małego obiektu + szkolenie 1.5-3 tys. zł.",
+      },
+      {
+        pytanie: "Czy rolnicy z okolic Pińczowa mogą używać AI?",
+        odpowiedz:
+          "Tak — AI wspiera w: dokumentacji dla dopłat ARiMR, pismach urzędowych, obsłudze klientów sprzedaży bezpośredniej. Podstawowy stack: 100-200 zł/mc, szkolenie 1-2 tys. zł.",
+      },
+      {
+        pytanie: "Jakie są najprostsze wdrożenia dla małej firmy?",
+        odpowiedz:
+          "Minimalny stack: ChatGPT Plus + Canva Pro (155 zł/mc). Pokrywa 80% potrzeb mikroprzedsiębiorcy. Jednodniowe szkolenie wstępne 1-2 tys. zł.",
+      },
+    ],
+  },
+  {
+    slug: "opatow",
+    nazwa: "Opatów",
+    wojewodztwo: "swietokrzyskie",
+    wojewodztwoNazwa: "świętokrzyskie",
+    populacja: "6 tys.",
+    opisGospodarki:
+      "Opatów to miasto powiatowe w północno-wschodniej części województwa świętokrzyskiego, jedno z najstarszych miast regionu (prawa miejskie już w XI wieku). Gospodarka miasta opiera się na rolnictwie, drobnej produkcji, handlu oraz turystyce historycznej.",
+    branzeKluczowe: [
+      "rolnictwo i przetwórstwo",
+      "turystyka historyczna",
+      "drobna produkcja",
+      "handel lokalny",
+    ],
+    wyzwaniaAI:
+      "W Opatowie typowe obszary zastosowania AI to małe firmy przetwórcze, gospodarstwa rolne, lokalne firmy handlowe oraz MŚP. OpenMind AI oferuje dostępne cenowo wdrożenia dla mikroprzedsiębiorców z Opatowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Opatów",
+      "szkolenia ChatGPT Opatów",
+      "AI dla małych firm Opatów",
+      "automatyzacja Opatów",
+    ],
+    czasDojazdu:
+      "Opatów obsługiwany w trybie online z Kielc lub Sandomierza (dojazd ok. 1h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla małej firmy z Opatowa możliwe jest wdrożenie prostych narzędzi AI do automatyzacji pracy biurowej, generowania ofert oraz obsługi zapytań klientów.",
+    najblizszeMiasta: ["sandomierz", "ostrowiec-swietokrzyski", "staszow", "kielce"],
+    faq: [
+      {
+        pytanie: "Czy mikrofirma z Opatowa potrzebuje AI?",
+        odpowiedz:
+          "Tak — za 100-300 zł miesięcznie uzyskujesz narzędzia oszczędzające wiele godzin pracy tygodniowo. Jednodniowe szkolenie wstępne 1-2 tys. zł.",
+      },
+      {
+        pytanie: "Jak zacząć z AI bez dojazdu do Kielc?",
+        odpowiedz:
+          "Szkolenia online są dostępne z każdego miejsca — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł.",
+      },
+      {
+        pytanie: "Jakie są najprostsze wdrożenia dla małej firmy?",
+        odpowiedz:
+          "Minimalny stack: ChatGPT Plus + Canva Pro (155 zł/mc). Pokrywa 80% potrzeb mikroprzedsiębiorcy. Szkolenie 1-2 tys. zł.",
+      },
+    ],
+  },
 ];

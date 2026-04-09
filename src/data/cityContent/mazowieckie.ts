@@ -451,4 +451,94 @@ export const mazowieckieCities: MiastoData[] = [
       },
     ],
   }
+  {
+    slug: "minsk-mazowiecki",
+    nazwa: "Mińsk Mazowiecki",
+    wojewodztwo: "mazowieckie",
+    wojewodztwoNazwa: "mazowieckie",
+    populacja: "41 tys.",
+    opisGospodarki:
+      "Mińsk Mazowiecki to miasto powiatowe na wschód od Warszawy, ważny węzeł komunikacyjny (autostrada A2, DK2, linia kolejowa Warszawa-Terespol). Gospodarka miasta opiera się na produkcji, logistyce, handlu oraz usługach. Bliskość Warszawy (ok. 40 km) sprzyja rozwojowi firm obsługujących stolicę oraz sypialni dla pracowników Warszawy.",
+    branzeKluczowe: [
+      "produkcja przemysłowa",
+      "logistyka (A2, linia kolejowa)",
+      "handel i usługi",
+      "zaplecze dla Warszawy",
+    ],
+    wyzwaniaAI:
+      "W Mińsku Mazowieckim typowe obszary zastosowania AI to firmy produkcyjne, firmy logistyczne obsługujące trasy Warszawa-Terespol, lokalne MŚP oraz firmy obsługujące mieszkańców aglomeracji warszawskiej. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Mińska Mazowieckiego.",
+    lokalneKeywordy: [
+      "wdrożenie AI Mińsk Mazowiecki",
+      "szkolenia ChatGPT Mińsk Mazowiecki",
+      "AI dla logistyki Mińsk Mazowiecki",
+      "automatyzacja firm Mińsk Mazowiecki",
+    ],
+    czasDojazdu:
+      "Mińsk Mazowiecki obsługiwany z Warszawy — dojazd ok. 40-50 min. Szkolenia stacjonarne i wdrożenia dostępne w krótkim terminie.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla firmy logistycznej z Mińska Mazowieckiego obsługującej trasę A2 Warszawa-Moskwa możliwe jest wdrożenie automatyzacji dokumentów przewozowych oraz chatbota obsługującego kierowców w kilku językach, co typowo redukuje obciążenie działu dyspozytorskiego o 30-40%.",
+    najblizszeMiasta: ["warszawa", "siedlce", "otwock", "legionowo"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy logistyczne z Mińska Mazowieckiego?",
+        odpowiedz:
+          "Firmy logistyczne z trasy A2 zyskują głównie na: automatycznym odczytywaniu i generowaniu dokumentów (CMR, faktury, WZ), chatbotach dla kierowców w kilku językach (polski, rosyjski, białoruski, angielski), optymalizacji planowania tras, analizie danych transportowych. Typowy pilot: 15-40 tys. zł, pełne wdrożenie 60-200 tys. zł.",
+      },
+      {
+        pytanie: "Czy firmy z Mińska mogą korzystać z otwartych szkoleń w Warszawie?",
+        odpowiedz:
+          "Tak, często organizujemy szkolenia grupowe dla firm z aglomeracji warszawskiej — koszt na osobę jest wtedy niższy niż w szkoleniu dedykowanym. Szkolenia otwarte w Warszawie odbywają się regularnie i są dostępne dla firm z okolicznych miast. Koszt: 800-1500 zł/osoba. Dojazd z Mińska to ok. 40-50 min.",
+      },
+      {
+        pytanie: "Jak szybko można zacząć z AI w Mińsku Mazowieckim?",
+        odpowiedz:
+          "Mińsk Mazowiecki jest blisko Warszawy, więc pierwsze spotkanie konsultacyjne możliwe jest w ciągu kilku dni. Szkolenia dla grup 6+ osób realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w 3-5 tygodni. Wizyty stacjonarne łączymy często z innymi firmami z okolic Warszawy.",
+      },
+    ],
+  },
+  {
+    slug: "wyszkow",
+    nazwa: "Wyszków",
+    wojewodztwo: "mazowieckie",
+    wojewodztwoNazwa: "mazowieckie",
+    populacja: "27 tys.",
+    opisGospodarki:
+      "Wyszków to miasto powiatowe nad Bugiem, ok. 60 km na północny wschód od Warszawy. Gospodarka miasta opiera się na produkcji, logistyce (DK8 Warszawa-Białystok), handlu oraz usługach lokalnych. Miasto pełni rolę lokalnego centrum dla okolicznych gmin wiejskich i jest popularnym miejscem wypoczynku weekendowego warszawiaków.",
+    branzeKluczowe: [
+      "produkcja i przetwórstwo",
+      "logistyka (DK8)",
+      "turystyka weekendowa (Bug)",
+      "handel regionalny",
+    ],
+    wyzwaniaAI:
+      "W Wyszkowie typowe obszary zastosowania AI to lokalne firmy produkcyjne, firmy logistyczne obsługujące trasę DK8, obiekty turystyczne nad Bugiem oraz MŚP handlowe. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Wyszkowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Wyszków",
+      "szkolenia ChatGPT Wyszków",
+      "AI dla produkcji Wyszków",
+      "automatyzacja firm Wyszków",
+    ],
+    czasDojazdu:
+      "Wyszków obsługiwany z Warszawy — dojazd ok. 1h przez DK8. Szkolenia stacjonarne i wdrożenia dostępne w krótkim terminie.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla wyszkowskiej firmy produkcyjnej możliwe jest wdrożenie AI do automatyzacji generowania ofert handlowych i dokumentacji technicznej, co znacząco skraca czas reakcji na zapytania ofertowe od klientów.",
+    najblizszeMiasta: ["warszawa", "ostroleka", "legionowo", "ciechanow"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera lokalne firmy produkcyjne z Wyszkowa?",
+        odpowiedz:
+          "Firmy produkcyjne zyskują głównie na: automatyzacji dokumentacji technicznej i ofert, obsłudze zapytań klientów B2B, generowaniu treści marketingowych, analizie danych produkcyjnych. Typowe projekty: pilot 15-40 tys. zł, pełne wdrożenie 60-200 tys. zł dla średniej firmy.",
+      },
+      {
+        pytanie: "Ile kosztuje podstawowe wdrożenie AI w Wyszkowie?",
+        odpowiedz:
+          "Dla małej firmy: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, miesięczne licencje 300-600 zł/mc. Łączny start: 6-13 tys. zł + 400 zł/mc. Pierwsze efekty widoczne w 2-3 tygodnie.",
+      },
+      {
+        pytanie: "Czy obiekty turystyczne nad Bugiem mogą korzystać z AI?",
+        odpowiedz:
+          "Tak — obiekty agroturystyczne i pensjonaty nad Bugiem zyskują na: obsłudze rezerwacji w kilku językach, generowaniu opisów oferty, tworzeniu treści marketingowych dla warszawiaków szukających weekendowego wypoczynku, obsłudze opinii z Booking. Koszt: 200-400 zł/mc.",
+      },
+    ],
+  },
 ];

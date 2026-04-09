@@ -451,4 +451,94 @@ export const zachodniopomorskieCities: MiastoData[] = [
       },
     ],
   },
+  {
+    slug: "gryfino",
+    nazwa: "Gryfino",
+    wojewodztwo: "zachodniopomorskie",
+    wojewodztwoNazwa: "zachodniopomorskie",
+    populacja: "20 tys.",
+    opisGospodarki:
+      "Gryfino to miasto powiatowe w zachodniej części województwa zachodniopomorskiego, blisko Szczecina i granicy z Niemcami. Gospodarka miasta opiera się na energetyce (Elektrownia Dolna Odra — jedna z największych elektrowni w Polsce północnej), przemyśle, handlu transgranicznym oraz usługach dla aglomeracji szczecińskiej.",
+    branzeKluczowe: [
+      "energetyka (Elektrownia Dolna Odra)",
+      "handel transgraniczny z Niemcami",
+      "przemysł i produkcja",
+      "zaplecze dla Szczecina",
+    ],
+    wyzwaniaAI:
+      "W Gryfinie typowe obszary zastosowania AI to firmy podwykonawcze sektora energetycznego (Elektrownia Dolna Odra), firmy handlu transgranicznego (tłumaczenia polsko-niemieckie), lokalne MŚP oraz firmy obsługujące aglomerację szczecińską. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Gryfina.",
+    lokalneKeywordy: [
+      "wdrożenie AI Gryfino",
+      "szkolenia ChatGPT Gryfino",
+      "AI dla energetyki Gryfino",
+      "automatyzacja firm Gryfino",
+    ],
+    czasDojazdu:
+      "Gryfino obsługiwane z Szczecina — dojazd ok. 30 min. Szkolenia stacjonarne i wdrożenia dostępne w krótkim terminie wspólnie z firmami Szczecina.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla gryfińskiej firmy podwykonawczej Elektrowni Dolna Odra możliwe jest wdrożenie AI do automatyzacji przygotowywania ofert przetargowych i dokumentacji technicznej zgodnej z wymaganiami PGE.",
+    najblizszeMiasta: ["szczecin", "police", "stargard", "swinoujscie"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy sektora energetycznego w Gryfinie?",
+        odpowiedz:
+          "Firmy podwykonawcze Elektrowni Dolna Odra wdrażają AI głównie do: automatyzacji przygotowywania ofert przetargowych, generowania dokumentacji technicznej zgodnej z wymaganiami PGE, analizy raportów, obsługi korespondencji B2B. Kluczowe są narzędzia enterprise z pełną kontrolą danych.",
+      },
+      {
+        pytanie: "Jak AI pomaga firmom na granicy z Niemcami?",
+        odpowiedz:
+          "Firmy transgraniczne zyskują na: automatycznych tłumaczeniach polsko-niemieckich, obsłudze klientów niemieckich, generowaniu ofert dwujęzycznych, analizie dokumentów handlowych. Typowy koszt: 300-600 zł/mc.",
+      },
+      {
+        pytanie: "Jak szybko można wdrożyć AI w firmie z Gryfina?",
+        odpowiedz:
+          "Gryfino jest blisko Szczecina (30 min), więc pierwsze spotkanie konsultacyjne możliwe w ciągu kilku dni. Szkolenia realizujemy w 1-2 tygodnie. Proste wdrożenia uruchamiamy w 3-5 tygodni.",
+      },
+    ],
+  },
+  {
+    slug: "choszczno",
+    nazwa: "Choszczno",
+    wojewodztwo: "zachodniopomorskie",
+    wojewodztwoNazwa: "zachodniopomorskie",
+    populacja: "15 tys.",
+    opisGospodarki:
+      "Choszczno to miasto powiatowe w środkowej części województwa zachodniopomorskiego, otoczone malowniczymi jeziorami. Gospodarka miasta opiera się na rolnictwie, przetwórstwie spożywczym, turystyce (jeziora, Drawieński Park Narodowy nieopodal) oraz drobnej produkcji i handlu lokalnym.",
+    branzeKluczowe: [
+      "rolnictwo i przetwórstwo",
+      "turystyka (jeziora, DPN)",
+      "drobna produkcja",
+      "handel lokalny",
+    ],
+    wyzwaniaAI:
+      "W Choszcznie typowe obszary zastosowania AI to firmy rolno-przetwórcze, obiekty turystyczne (hotele, pensjonaty, gospodarstwa agroturystyczne), lokalne firmy handlowe oraz MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Choszczna.",
+    lokalneKeywordy: [
+      "wdrożenie AI Choszczno",
+      "szkolenia ChatGPT Choszczno",
+      "AI dla turystyki Choszczno",
+      "automatyzacja firm Choszczno",
+    ],
+    czasDojazdu:
+      "Choszczno obsługiwane w trybie online z Szczecina (dojazd ok. 1h) lub Gorzowa (ok. 1h). Wizyty stacjonarne przy większych projektach.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla obiektu agroturystycznego nad jeziorem w okolicach Choszczna możliwe jest wdrożenie wielojęzycznego chatbota rezerwacyjnego (polski, niemiecki, angielski) oraz generowania opisów atrakcji regionu.",
+    najblizszeMiasta: ["stargard", "gorzow-wielkopolski", "walcz", "szczecin"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera turystykę w okolicach Choszczna?",
+        odpowiedz:
+          "Obiekty turystyczne (hotele, pensjonaty, gospodarstwa agroturystyczne nad jeziorami) obsługują gości z Polski, Niemiec i Skandynawii. AI upraszcza wielojęzyczną obsługę, generowanie opisów oferty, tworzenie treści na social media. Koszt: 200-500 zł/mc dla małego obiektu.",
+      },
+      {
+        pytanie: "Ile kosztuje podstawowe wdrożenie AI w Choszcznie?",
+        odpowiedz:
+          "Dla małej firmy: jednodniowe szkolenie 3-5 tys. zł, konfiguracja narzędzi 3-8 tys. zł, licencje 300-600 zł/mc. Łączny start: 6-13 tys. zł + 400 zł/mc.",
+      },
+      {
+        pytanie: "Jak zacząć bez dojazdu do Szczecina?",
+        odpowiedz:
+          "Rekomendujemy szkolenia online — 3-4 godziny intensywnych warsztatów na żywo plus tygodniowe wsparcie. Koszt: 1.5-3 tys. zł. Bez konieczności dojazdu.",
+      },
+    ],
+  },
 ];

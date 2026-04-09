@@ -451,4 +451,94 @@ export const dolnoslaskieCities: MiastoData[] = [
       },
     ],
   },
+  {
+    slug: "dzierzoniow",
+    nazwa: "Dzierżoniów",
+    wojewodztwo: "dolnoslaskie",
+    wojewodztwoNazwa: "dolnośląskie",
+    populacja: "32 tys.",
+    opisGospodarki:
+      "Dzierżoniów to miasto powiatowe w południowej części Dolnego Śląska, historyczne centrum przemysłu radiowego (dawne Diora) oraz tekstylnego. Obecnie gospodarka opiera się na produkcji przemysłowej, firmach z Wałbrzyskiej Specjalnej Strefy Ekonomicznej (Dzierżoniów Podstrefa) oraz handlu i usługach lokalnych.",
+    branzeKluczowe: [
+      "produkcja w WSSE (Podstrefa Dzierżoniów)",
+      "przemysł elektroniczny (tradycje Diora)",
+      "produkcja i przetwórstwo",
+      "handel regionalny",
+    ],
+    wyzwaniaAI:
+      "W Dzierżoniowie typowe obszary zastosowania AI to firmy z WSSE (automatyzacja dokumentacji, obsługa klientów międzynarodowych), firmy produkcyjne oraz lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm z Dzierżoniowa.",
+    lokalneKeywordy: [
+      "wdrożenie AI Dzierżoniów",
+      "szkolenia ChatGPT Dzierżoniów",
+      "AI dla WSSE Dzierżoniów",
+      "automatyzacja firm Dzierżoniów",
+    ],
+    czasDojazdu:
+      "Dzierżoniów obsługiwany z Wrocławia — dojazd ok. 1h. Szkolenia stacjonarne z 1-2 tygodniowym wyprzedzeniem, wdrożenia w trybie hybrydowym.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla dzierżoniowskiej firmy z WSSE możliwe jest wdrożenie AI do automatyzacji dokumentacji technicznej i obsługi zapytań od klientów międzynarodowych w kilku językach, co wspiera ekspansję eksportową firmy.",
+    najblizszeMiasta: ["swidnica", "walbrzych", "wroclaw", "boleslawiec"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy z Wałbrzyskiej SSE w Dzierżoniowie?",
+        odpowiedz:
+          "Firmy z WSSE wdrażają AI głównie do: automatyzacji dokumentacji dla klientów międzynarodowych, generowania ofert w kilku językach, obsługi zapytań B2B, analizy raportów produkcyjnych, wsparcia HR w rekrutacji. Typowe projekty: pilot 15-50 tys. zł, pełne wdrożenie 80-300 tys. zł.",
+      },
+      {
+        pytanie: "Czy lokalne firmy elektroniczne mogą korzystać z AI?",
+        odpowiedz:
+          "Tak — firmy sektora elektronicznego (kontynuujące tradycje Diory oraz nowi gracze) zyskują na: automatyzacji dokumentacji jakościowej, analizie danych produkcyjnych, obsłudze zapytań technicznych, generowaniu raportów dla klientów. Kluczowe są narzędzia enterprise z pełną kontrolą danych.",
+      },
+      {
+        pytanie: "Ile kosztuje szkolenie AI dla małej firmy z Dzierżoniowa?",
+        odpowiedz:
+          "Jednodniowe szkolenie dla grupy 6-10 osób: 4-6 tys. zł (z dojazdem z Wrocławia). Obejmuje 6 godzin warsztatów, materiały, praktyczne ćwiczenia na realnych przypadkach oraz miesiąc wsparcia poszkoleniowego. Dla mniejszych grup rekomendujemy format online (1.5-3 tys. zł).",
+      },
+    ],
+  },
+  {
+    slug: "zgorzelec",
+    nazwa: "Zgorzelec",
+    wojewodztwo: "dolnoslaskie",
+    wojewodztwoNazwa: "dolnośląskie",
+    populacja: "29 tys.",
+    opisGospodarki:
+      "Zgorzelec to miasto graniczne nad Nysą Łużycką, tworzące wraz z niemieckim Görlitz tzw. Europa-Stadt. Gospodarka miasta opiera się na handlu transgranicznym z Niemcami, logistyce (bliskość A4), przemyśle energetycznym (okoliczne elektrownie Turów) oraz usługach. Bliskość granicy sprzyja współpracy polsko-niemieckiej.",
+    branzeKluczowe: [
+      "handel transgraniczny z Niemcami",
+      "logistyka i transport (A4)",
+      "energetyka (okolice Turów)",
+      "usługi transgraniczne",
+    ],
+    wyzwaniaAI:
+      "W Zgorzelcu typowe obszary zastosowania AI to firmy prowadzące handel i usługi transgraniczne (tłumaczenia polsko-niemieckie, obsługa klientów DE), firmy logistyczne na A4 oraz lokalne MŚP. OpenMind AI oferuje wdrożenia i szkolenia dla firm ze Zgorzelca.",
+    lokalneKeywordy: [
+      "wdrożenie AI Zgorzelec",
+      "AI dla handlu transgranicznego Zgorzelec",
+      "tłumaczenia niemiecki AI Zgorzelec",
+      "szkolenia ChatGPT Zgorzelec",
+    ],
+    czasDojazdu:
+      "Zgorzelec obsługiwany z Wrocławia — dojazd ok. 2h. Spotkania stacjonarne z wyprzedzeniem, większość wdrożeń online.",
+    przykladZastosowania:
+      "Przykładowy scenariusz wdrożenia: dla zgorzeleckiej firmy handlowej obsługującej klientów niemieckich możliwe jest wdrożenie automatycznego tłumaczenia ofert, faktur i korespondencji polsko-niemieckiej oraz chatbota obsługującego klientów z Görlitz, co znacząco przyspiesza obsługę transgraniczną.",
+    najblizszeMiasta: ["boleslawiec", "jelenia-gora", "legnica", "lubin"],
+    faq: [
+      {
+        pytanie: "Jak AI wspiera firmy polsko-niemieckie ze Zgorzelca?",
+        odpowiedz:
+          "Firmy polsko-niemieckie zyskują głównie na: automatycznych tłumaczeniach polsko-niemieckich (świetna jakość dla tej pary językowej), obsłudze klientów niemieckich w ich języku, generowaniu ofert dwujęzycznych, analizie dokumentów prawnych i handlowych. Zgorzelec z Görlitz tworzą Europa-Stadt, więc współpraca jest intensywna. Typowy koszt: 300-600 zł/mc + szkolenie wstępne 2-4 tys. zł.",
+      },
+      {
+        pytanie: "Jakie narzędzia są najlepsze do tłumaczeń na niemiecki?",
+        odpowiedz:
+          "Dla polsko-niemieckich tłumaczeń biznesowych: DeepL Pro (140 zł/mc) — najwyższa jakość dla dokumentów handlowych, ChatGPT Plus (100 zł/mc) — dobry do kontekstowych tłumaczeń, Claude Pro (100 zł/mc) — dobry do długich dokumentów prawnych. Stack DeepL Pro + ChatGPT Plus (240 zł/mc) pokrywa 95% potrzeb firmy działającej na pograniczu.",
+      },
+      {
+        pytanie: "Ile trwa wdrożenie AI dla firmy ze Zgorzelca?",
+        odpowiedz:
+          "Proste wdrożenie (szkolenie + konfiguracja narzędzi do tłumaczeń i obsługi dokumentów): 3-5 tygodni. Większość prac realizujemy zdalnie, co jest efektywne dla firmy z mniejszego miasta. Pierwsze efekty widoczne od razu po szkoleniu, pełne korzyści po 2-3 miesiącach używania narzędzi w codziennej pracy.",
+      },
+    ],
+  },
 ];
