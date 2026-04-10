@@ -188,7 +188,7 @@ const CityDetail = () => {
                       </>
                     ) : (
                       <>
-                        OpenMind AI Consulting provides AI implementation services, training with the best AI tools on the market, and strategic consulting for businesses in {city!.name} ({voivodeship!.name}, {content.populacja} residents). {content.wyzwaniaAI} First consultations are free, training available on-site and online, implementations delivered in stages with first results within days or weeks, depending on project complexity.
+                        OpenMind AI Consulting provides AI implementation services, training with the best AI tools on the market, and strategic consulting for businesses in {city!.name} ({voivodeship!.name}, {content.populacja} residents). {localWyzwaniaAI} First consultations are free, training available on-site and online, implementations delivered in stages with first results within days or weeks, depending on project complexity.
                       </>
                     )
                   ) : (
