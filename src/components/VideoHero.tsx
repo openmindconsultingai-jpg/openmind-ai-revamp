@@ -356,6 +356,14 @@ const VideoHero = () => {
           />
         </button>
 
+        {/* Scroll indicator - inline, between CTA and LogoTicker */}
+        <div className="mt-6 mb-4 flex flex-col items-center gap-2">
+          <span className="font-sans text-xs text-foreground/50 uppercase tracking-[0.3em]">
+            Scroll
+          </span>
+          <div className="w-px h-8 bg-gradient-to-b from-primary/60 to-transparent animate-pulse" />
+        </div>
+
         {/* Logo Ticker */}
         <Suspense fallback={null}>
           <LogoTicker />
@@ -367,16 +375,6 @@ const VideoHero = () => {
             <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
           </Suspense>
         )}
-      </div>
-
-      {/* Scroll indicator - positioned below CTA button */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-sans text-xs text-foreground/50 uppercase tracking-[0.3em]">
-            Scroll
-          </span>
-          <div className="w-px h-12 bg-gradient-to-b from-primary/60 to-transparent animate-pulse" />
-        </div>
       </div>
     </section>
   );
