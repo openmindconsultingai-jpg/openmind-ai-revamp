@@ -134,7 +134,7 @@ const VideoHero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative h-screen flex items-center justify-center overflow-hidden" style={{ maxWidth: '100vw' }}
+      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden py-24 sm:py-28 md:py-32" style={{ maxWidth: '100vw' }}
     >
       {/* Video Background - deferred loading for better FCP */}
       <div className="absolute inset-0 overflow-hidden">
@@ -222,7 +222,7 @@ const VideoHero = () => {
       )}
 
       {/* Hero Content */}
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto mt-24 sm:mt-20 md:mt-16 pb-8">
+      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto w-full">
         {/* Visually prominent brand name */}
         <div 
           ref={titleRef}
@@ -258,7 +258,7 @@ const VideoHero = () => {
         </h1>
 
         {/* Subtitle */}
-        <div className="hero-subtitle font-sans max-w-3xl mx-auto mb-8 space-y-1" style={{ textAlign: 'center' }}>
+        <div className="hero-subtitle font-sans max-w-3xl mx-auto mb-6 sm:mb-8 space-y-1" style={{ textAlign: 'center' }}>
           <p className="text-sm sm:text-base md:text-lg leading-snug text-foreground/60" style={{ textAlign: 'center' }}>
             {heroDescriptionText}
           </p>
@@ -357,7 +357,7 @@ const VideoHero = () => {
         </button>
 
         {/* Scroll indicator - inline, between CTA and LogoTicker */}
-        <div className="mt-6 mb-4 flex flex-col items-center gap-2">
+        <div className="mt-5 mb-3 sm:mt-6 sm:mb-4 flex flex-col items-center gap-2">
           <span className="font-sans text-xs text-foreground/50 uppercase tracking-[0.3em]">
             Scroll
           </span>
