@@ -183,7 +183,7 @@ const CityDetail = () => {
               {/* Quick Answer Block — optimized for GEO/AEO (AI citation) */}
               <div className="mb-10 p-6 rounded-xl border border-primary/20 bg-primary/5" role="region" aria-label={language === 'pl' ? 'Podsumowanie usług' : 'Service summary'}>
                 <p className="text-base sm:text-lg text-foreground leading-relaxed">
-                  {content ? (
+                  {hasLocalizedContent ? (
                     language === 'pl' ? (
                       <>
                         OpenMind AI Consulting świadczy usługi wdrożeń AI, szkoleń z najlepszych narzędzi AI na rynku oraz konsultingu strategicznego dla firm z {city!.name} ({voivodeship!.name}, {content.populacja} mieszkańców). {content.wyzwaniaAI} Pierwsze konsultacje są bezpłatne, szkolenia dostępne stacjonarnie i online, wdrożenia realizowane etapowo z pierwszymi efektami już w ciągu kilku dni lub tygodni, w zależności od stopnia zaawansowania projektu.
@@ -207,7 +207,7 @@ const CityDetail = () => {
                 </p>
               </div>
 
-              {content ? (
+              {hasLocalizedContent ? (
                 <>
                   {/* Opis gospodarki */}
                   <div className="mb-8">
