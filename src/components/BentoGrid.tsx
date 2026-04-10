@@ -124,16 +124,16 @@ const BentoGrid = () => {
               />
 
               {/* Content */}
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <h3 className="relative z-10 font-heading text-2xl md:text-3xl mb-4 text-foreground font-semibold">
+              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                <h3 className="relative z-10 font-heading text-xl md:text-3xl mb-2 md:mb-4 text-foreground font-semibold">
                   {t('bento.contact.title')}
                 </h3>
-                <p className="relative z-10 font-sans text-base text-muted-foreground leading-relaxed mb-6">
+                <p className="relative z-10 font-sans text-sm md:text-base text-muted-foreground leading-relaxed mb-4 md:mb-6 line-clamp-3 md:line-clamp-none">
                   {t('bento.contact.desc')}
                 </p>
 
                 {/* CTA */}
-                <div className="relative z-10 inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
+                <div className="relative z-10 inline-flex items-center gap-2 text-cyan-400 font-medium group-hover:gap-3 transition-all">
                   <span>{t('bento.contact.cta')}</span>
                   <span className="transition-transform group-hover:translate-x-1">→</span>
                 </div>
