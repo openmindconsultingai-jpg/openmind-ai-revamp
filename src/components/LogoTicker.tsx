@@ -35,26 +35,20 @@ const allLogos = [...logos, ...logos];
 const LogoTicker = () => {
   const { t } = useLanguage();
   return (
-    <div
-      className="hero-cta mt-10 w-full max-w-4xl mx-auto"
-      style={{ overflow: 'hidden', maxWidth: '100vw' }}
-    >
+    <div className="hero-cta mt-10 w-full max-w-5xl mx-auto px-4 sm:px-6">
       {/* Label */}
-      <p
-        className="font-sans text-xs uppercase tracking-[0.25em] text-center mb-6"
-        style={{ color: 'hsl(176 100% 43% / 0.5)' }}
-      >
+      <p className="font-sans text-xs uppercase tracking-[0.25em] text-center mb-6 text-primary/60">
         {t('logoticker.label')}
       </p>
 
       {/* Ticker wrapper */}
       <div
-        className="relative overflow-hidden"
+        className="relative overflow-hidden py-2"
         style={{
           maskImage:
-            'linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)',
+            'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
           WebkitMaskImage:
-            'linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)',
+            'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
         }}
       >
         <div
@@ -62,23 +56,23 @@ const LogoTicker = () => {
           style={{
             animation: 'ticker-scroll 32s linear infinite',
             width: 'max-content',
-            gap: '40px',
+            gap: 'clamp(1.5rem, 3vw, 2.5rem)',
           }}
         >
           {allLogos.map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex items-center justify-center"
+              className="flex-shrink-0 flex items-center justify-center px-2 sm:px-3"
               style={{
-                width: '120px',
-                height: '56px',
+                width: 'clamp(120px, 14vw, 160px)',
+                height: 'clamp(56px, 6vw, 72px)',
               }}
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
                 loading="lazy"
-                className="w-full h-full object-contain"
+                className="max-w-full max-h-full object-contain"
                 style={{
                   opacity: 0.4,
                   transition: 'opacity 0.3s ease',
