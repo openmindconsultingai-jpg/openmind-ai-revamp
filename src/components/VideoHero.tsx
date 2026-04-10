@@ -222,7 +222,7 @@ const VideoHero = () => {
       )}
 
       {/* Hero Content */}
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto mt-24 sm:mt-20 md:mt-16">
+      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto mt-24 sm:mt-20 md:mt-16 pb-8">
         {/* Visually prominent brand name */}
         <div 
           ref={titleRef}
