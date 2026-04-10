@@ -61,12 +61,14 @@ const CityDetail = () => {
   // Resolve localized content fields
   const enData = content?.en;
   const isEn = language === 'en';
+  // When EN is selected but no en translations exist, treat detailed content as unavailable
+  const hasLocalizedContent = content && (!isEn || !!enData);
   const localOpisGospodarki = isEn && enData?.opisGospodarki ? enData.opisGospodarki : content?.opisGospodarki;
   const localBranzeKluczowe = isEn && enData?.branzeKluczowe ? enData.branzeKluczowe : content?.branzeKluczowe;
   const localWyzwaniaAI = isEn && enData?.wyzwaniaAI ? enData.wyzwaniaAI : content?.wyzwaniaAI;
   const localCzasDojazdu = isEn && enData?.czasDojazdu ? enData.czasDojazdu : content?.czasDojazdu;
   const localPrzykladZastosowania = isEn && enData?.przykladZastosowania ? enData.przykladZastosowania : content?.przykladZastosowania;
-  const localFaq = isEn && enData?.faq ? enData.faq.map(f => ({ pytanie: f.question, odpowiedz: f.answer })) : content?.faq;
+  const localFaq = isEn && enData?.faq ? enData.faq.map(f => ({ pytanie: f.question, odpowiedz: f.answer })) : (!isEn ? content?.faq : undefined);
 
   const jsonLd = useMemo(() => {
     if (!city || !voivodeship) return undefined;
