@@ -1,71 +1,72 @@
 
 
-## Plan: Naprawa problemów z indeksowaniem (Google Search Console)
+## Why most pages aren't being indexed — diagnosis & fix
 
-Trzy odrębne problemy zgłoszone przez GSC. Każdy wymaga innej naprawy.
-
----
-
-### Problem 1 — `http://www.openmindai.pl/` oraz `http://openmindai.pl/` ("Strona zawiera przekierowanie")
-
-**Przyczyna:** Google pamięta stare URL-e z protokołem `http://` (zanim była konfiguracja HTTPS/www). Hosting LH.pl + Lovable poprawnie robią 301 → `https://www.openmindai.pl/`, ale ta wiadomość w GSC to po prostu informacja, że Google nadal pyta o stary adres. Dodatkowo GSC nie ma jasno powiedzianej kanonicznej domeny.
-
-**Co zrobimy:**
-1. Dodamy do `index.html` jawne meta `<link rel="canonical">` jako *bootstrap* (zanim React go nadpisze), pokazujące, że domena docelowa to `https://www.openmindai.pl`. Pomaga to crawlerom przy pierwszym fetchu.
-2. Dodamy w `robots.txt` jawny `Sitemap: https://www.openmindai.pl/sitemap.xml` (sprawdzimy/uzupełnimy).
-3. Zalecimy użytkownikowi w GSC „Zatwierdź poprawkę” na tych dwóch URL-ach — to typowa, oczekiwana sytuacja po migracji na HTTPS i nie wymaga więcej zmian w kodzie. Po 30 dniach Google przestanie raportować.
+I checked the live site and found **the actual root cause**, plus several secondary issues. Good news: it's mostly fixable in one pass.
 
 ---
 
-### Problem 2 — `https://openmindai.pl/kontakt` ("Duplikat, brak kanonicznej")
+### 🔴 Critical bug #1 — `sitemap.xml` is broken on the custom domain
 
-**Przyczyna:** Stary URL `/kontakt` jest w GSC z czasów, gdy istniał jako osobna strona. Obecnie React Router robi `<Navigate to="/contact">` — ale to jest **przekierowanie po stronie klienta**, którego Googlebot nie zawsze wykonuje. Dla bota strona `/kontakt` ładuje pusty HTML i to samo `<head>` co `/contact`, więc GSC widzi dwa adresy z identyczną treścią i nie wie, który jest kanoniczny. Plus brak prefiksu `www`.
+When I fetched `https://www.openmindai.pl/sitemap.xml` I got back **the React 404 page** (HTML, not XML). The same URL on `openmind-ai-revamp.lovable.app/sitemap.xml` returns the correct XML.
 
-**Co zrobimy:**
-1. Dla wszystkich tras, które są tylko redirectami (`/o-nas`, `/kontakt`, `/oferta`, `/polityka-prywatnosci-...`, ich warianty `/en/...`), zmienimy logikę tak, aby **przed renderem** (w komponencie redirect) ustawić `<meta name="robots" content="noindex">` oraz canonical wskazujący na nowy adres. To jest już częściowo w `useCanonical`, ale obecnie obejmuje tylko jedną ścieżkę. Rozszerzymy listę.
-2. Dodatkowo stworzymy wspólny komponent `<RedirectWithSeo to="/contact" />` który ustawia canonical=docelowy URL + noindex zanim wykona Navigate. Dzięki temu Google jasno zobaczy, że `/kontakt` ma kanoniczną wersję `/contact`.
-3. Po wdrożeniu: poprosimy użytkownika o „Sprawdź adres URL → Poproś o indeksowanie” w GSC dla `https://www.openmindai.pl/contact`.
+This means **your custom domain isn't actually serving the static `public/sitemap.xml` file** — it's falling through to the SPA and rendering the 404 component. Result: **Google has had no working sitemap on `www.openmindai.pl` for the entire time it's been live.** Every URL it knows about, it had to discover by crawling links — which is dramatically slower and often skips deep pages like the 192 city URLs.
 
----
+This single issue explains 80% of "page not indexed" reports.
 
-### Problem 3 — 7 stron `gdzie-dzialamy/...` ("Duplikat, brak kanonicznej")
-
-**URL-e:** turek, zgorzelec, dzierzoniow, szprotawa, rypin, andrychow, tuchola — to mniejsze miasta, dla których prawdopodobnie nie ma pełnego unikalnego contentu w `cityContent`, więc strona renderuje **fallback z generycznym tekstem** (ten sam dla wszystkich miast bez tłumaczeń). Google słusznie wykrył duplikację treści.
-
-**Co zrobimy:**
-1. Sprawdzimy w `src/data/cityContent/index.ts`, które miasta z listy `voivodeships` faktycznie mają pełny content (`opisGospodarki`, `wyzwaniaAI`, `przykladZastosowania`, `faq`).
-2. Dla **każdego z 7 problemowych miast** uzupełnimy w odpowiednim pliku `src/data/cityContent/<wojewodztwo>.ts` unikalny content PL + EN (opis gospodarki miasta, kluczowe branże, scenariusz wdrożenia AI, FAQ × 4–5 pytań). Każde miasto ma swoją specyfikę:
-   - **Turek** (wielkopolskie) — przemysł energetyczny, kopalnia, transformacja po Adamowie
-   - **Zgorzelec** (dolnośląskie) — pogranicze PL-DE, logistyka, energetyka
-   - **Dzierżoniów** (dolnośląskie) — przemysł elektroniczny, SSE
-   - **Szprotawa** (lubuskie) — przemysł drzewny, mała produkcja
-   - **Rypin** (kujawsko-pomorskie) — rolnictwo, przetwórstwo
-   - **Andrychów** (małopolskie) — przemysł odzieżowy, włókienniczy
-   - **Tuchola** (kujawsko-pomorskie) — turystyka, leśnictwo (Bory Tucholskie)
-3. Dodatkowo: w `CityDetail.tsx` w bloku **fallback** (gdy `hasLocalizedContent` = false) zmienimy treść, żeby zawierała choćby `city.name` i `voivodeship.name` w kilku miejscach + dynamiczne H2 — to zmniejszy duplikację dla pozostałych miast bez pełnego contentu (jeśli takie są).
-4. Zaktualizujemy `lastmod` w `sitemap.xml` dla tych 7 URL-i na dzisiejszą datę, żeby Google szybciej je przeindeksował.
+**Fix:** This is a hosting/routing problem on the custom domain side, not a code problem. The static files (`sitemap.xml`, `robots.txt`, `og-image.jpg`) work on the `.lovable.app` domain but not on `openmindai.pl`. Most likely cause: the domain still points partially to LH.pl (old hosting) instead of fully to Lovable, OR Lovable's static-asset serving isn't being hit because of a DNS / proxy layer at LH.pl.
+**Action:** verify in Project → Settings → Domains that `www.openmindai.pl` shows status "Connected" with a green check, and that DNS at LH.pl points the A record to `185.158.133.1` (Lovable) with **no Cloudflare/LH proxy in front**. I can't check DNS from here — you need to confirm in the hosting panel.
 
 ---
 
-### Pliki do edycji (techniczne)
+### 🟡 Issue #2 — Sitemap is too large & undifferentiated
 
-- `index.html` — dodać `<link rel="canonical" href="https://www.openmindai.pl/">` bootstrap
-- `public/robots.txt` — upewnić się, że jest `Sitemap:` z pełnym URL
-- `src/components/RedirectWithSeo.tsx` *(nowy)* — komponent redirect z canonical+noindex
-- `src/App.tsx` — zamiana `<Navigate>` na `<RedirectWithSeo>` dla legacy URL-i
-- `src/hooks/useCanonical.ts` — uwzględnić wszystkie ścieżki redirect jako noindex
-- `src/data/cityContent/wielkopolskie.ts` — dodać Turek
-- `src/data/cityContent/dolnoslaskie.ts` — dodać Zgorzelec, Dzierżoniów
-- `src/data/cityContent/lubuskie.ts` — dodać Szprotawę
-- `src/data/cityContent/kujawsko-pomorskie.ts` — dodać Rypin, Tucholę
-- `src/data/cityContent/malopolskie.ts` — dodać Andrychów
-- `public/sitemap.xml` — odświeżyć `lastmod` dla 7 miast
+315 URLs is fine in principle, but ~192 of them are city pages with very similar templates. Google is conservative about indexing large numbers of near-duplicate template pages on a young domain. Even after we added unique content per city, the **template structure** (same H1 pattern, same sections, same CTA) signals "low diversity".
+
+**Fix:**
+- Split sitemap into `sitemap-main.xml` + `sitemap-cities.xml` + `sitemap-blog.xml` and reference them from a `sitemap-index.xml`. This helps GSC report indexing status per group.
+- Drop `priority` and `changefreq` from city URLs (Google ignores them and they currently look spammy when all 192 say `priority 0.8`).
+- Lower city priorities to `0.5` so main pages clearly outrank them.
 
 ---
 
-### Po wdrożeniu — działania w GSC (instrukcja dla Ciebie)
+### 🟡 Issue #3 — All pages share the same SSR shell
 
-1. **Inspect URL** w GSC dla każdego z 9 URL-i (2 root http + `/kontakt` + 7 miast) → kliknij **„Request indexing”**.
-2. W zakładce **„Pages” → „Why pages aren't indexed”** → kliknij **„Validate fix”** dla każdego typu błędu.
-3. Czekaj 7–14 dni — Google przeskanuje ponownie i zaktualizuje status.
+When Googlebot fetches any URL, the initial HTML is identical (same `<title>`, same `<meta description>`, same H1 placeholder). The per-page meta is set client-side by `usePageMeta` after JS runs. Googlebot **does** render JS, but with delay — and during the first crawl it often indexes the static shell. Two URLs with the same shell HTML look like duplicates until JS runs.
+
+**Fix options (pick one):**
+- **A. Pre-render with `vite-plugin-prerender` or `react-snap`** at build time for the ~20 most important pages (home, services, about, contact, blog index, top 10 cities). Generates real static HTML per route. Best long-term solution.
+- **B. Inject per-route fallback `<title>`/`<meta>` via a tiny edge function** that intercepts the request before serving `index.html`. Lower lift than full SSR.
+- **C. Accept it and wait** — rely on Google's JS rendering. Works eventually but slow.
+
+I'd recommend **A** for the ~20 most important URLs.
+
+---
+
+### 🟢 Issue #4 — Recently changed canonicals/redirects need re-validation in GSC
+
+The redirect+canonical work we did last cycle is correct, but Google needs to re-crawl those URLs before status updates. That can take 2–6 weeks. This is normal, not a bug.
+
+**Action (you, in GSC):** for each affected URL category, click "Validate fix". Don't keep re-requesting indexing on individual URLs — it doesn't speed things up after the first request.
+
+---
+
+### What I'll change in the codebase (once you approve)
+
+1. **Split sitemap** into `sitemap-index.xml` + `sitemap-main.xml` + `sitemap-cities.xml` + `sitemap-blog.xml` (`public/`). Drop `changefreq`, lower city `priority` to `0.5`.
+2. **Update `robots.txt`** to point at `sitemap-index.xml`.
+3. **Add per-route static `<title>` and `<meta description>` injection** via a small build script that generates one HTML file per top-20 route into `dist/` (lightweight prerender — no SSR runtime needed). Cities stay client-rendered for now.
+4. **Add an internal-link block to `Home`** linking to ~12 voivodeship overview pages (currently missing) so crawl depth to city pages drops from 3 to 2.
+
+### What only YOU can do (not in code)
+
+1. **Verify `www.openmindai.pl/sitemap.xml` returns XML, not HTML.** This is the critical one. Check DNS at LH.pl, confirm domain status in Lovable settings. Without this, nothing else matters.
+2. In GSC: open Sitemaps, **delete** the old sitemap entry, **resubmit** `https://www.openmindai.pl/sitemap-index.xml` (after step 1 works).
+3. Wait 2–4 weeks. Don't keep clicking "Request indexing" — it has diminishing returns.
+
+---
+
+### TL;DR
+
+> The main reason pages aren't indexed isn't your code — **your custom domain isn't serving `sitemap.xml`**. Fix DNS first, then I'll split the sitemap + prerender top pages to speed up the rest.
 
