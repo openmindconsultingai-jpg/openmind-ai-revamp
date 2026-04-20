@@ -16,8 +16,18 @@ const useCanonical = () => {
 
     // --- Robots ---
     const isProduction = PRODUCTION_HOSTS.includes(window.location.hostname);
+    const LEGACY_REDIRECT_PATHS = new Set([
+      '/polityka-prywatnosci-i-bezpieczenstwo-danych',
+      '/polityka-prywatnosci-i-bezpieczenstwa-danych',
+      '/o-nas',
+      '/kontakt',
+      '/oferta',
+      '/en/o-nas-en',
+      '/en/kontakt-en',
+      '/en/oferta-en',
+    ]);
     const isRedirectSourcePath =
-      normalizedPath === '/polityka-prywatnosci-i-bezpieczenstwo-danych' ||
+      LEGACY_REDIRECT_PATHS.has(normalizedPath) ||
       /^\/gdzie-dzialamy\/[^/]+$/.test(normalizedPath);
 
     let robotsMeta = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
