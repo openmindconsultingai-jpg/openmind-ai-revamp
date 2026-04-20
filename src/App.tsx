@@ -3,10 +3,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { VideoProvider } from "@/contexts/VideoContext";
 import ScrollToTop from "@/components/ScrollToTop";
+import RedirectWithSeo from "@/components/RedirectWithSeo";
 
 // Critical: Home page loaded immediately
 import Home from "./pages/Home";
@@ -50,15 +51,15 @@ const App = () => (
             <Route path="/blog/:id" element={<Suspense fallback={<PageLoader />}><BlogArticlePage /></Suspense>} />
             <Route path="/contact" element={<Suspense fallback={<PageLoader />}><ContactPage /></Suspense>} />
             <Route path="/privacy" element={<Suspense fallback={<PageLoader />}><PrivacyPage /></Suspense>} />
-            {/* 301 redirects from old site URLs */}
-            <Route path="/polityka-prywatnosci-i-bezpieczenstwo-danych" element={<Navigate to="/privacy" replace />} />
-            <Route path="/polityka-prywatnosci-i-bezpieczenstwa-danych" element={<Navigate to="/privacy" replace />} />
-            <Route path="/o-nas" element={<Navigate to="/about" replace />} />
-            <Route path="/kontakt" element={<Navigate to="/contact" replace />} />
-            <Route path="/oferta" element={<Navigate to="/services" replace />} />
-            <Route path="/en/o-nas-en" element={<Navigate to="/about" replace />} />
-            <Route path="/en/kontakt-en" element={<Navigate to="/contact" replace />} />
-            <Route path="/en/oferta-en" element={<Navigate to="/services" replace />} />
+            {/* 301-style redirects from legacy URLs — RedirectWithSeo sets noindex + canonical for crawlers */}
+            <Route path="/polityka-prywatnosci-i-bezpieczenstwo-danych" element={<RedirectWithSeo to="/privacy" />} />
+            <Route path="/polityka-prywatnosci-i-bezpieczenstwa-danych" element={<RedirectWithSeo to="/privacy" />} />
+            <Route path="/o-nas" element={<RedirectWithSeo to="/about" />} />
+            <Route path="/kontakt" element={<RedirectWithSeo to="/contact" />} />
+            <Route path="/oferta" element={<RedirectWithSeo to="/services" />} />
+            <Route path="/en/o-nas-en" element={<RedirectWithSeo to="/about" />} />
+            <Route path="/en/kontakt-en" element={<RedirectWithSeo to="/contact" />} />
+            <Route path="/en/oferta-en" element={<RedirectWithSeo to="/services" />} />
             <Route path="/ai-advisor" element={<Suspense fallback={<PageLoader />}><AIAdvisorPage /></Suspense>} />
             <Route path="/gdzie-dzialamy/:slug" element={<Suspense fallback={<PageLoader />}><VoivodeshipDetail /></Suspense>} />
             <Route path="/gdzie-dzialamy/:slug/:citySlug" element={<Suspense fallback={<PageLoader />}><CityDetail /></Suspense>} />
