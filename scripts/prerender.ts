@@ -419,7 +419,10 @@ biuro@openmindai.pl • ${SITE}/contact
 `;
 fs.writeFileSync(path.join(DIST, 'llms.txt'), llmsTxt, 'utf8');
 
-console.log(`[prerender] wrote ${written} static HTML files + llms.txt (skipped: ${skipped}, missing: ${missing.length})`);
+const htmlSitemapXml = buildHtmlSitemapXml();
+fs.writeFileSync(path.join(DIST, 'sitemap-html.xml'), htmlSitemapXml, 'utf8');
+
+console.log(`[prerender] wrote ${written} static HTML files + llms.txt + sitemap-html.xml (skipped: ${skipped}, missing: ${missing.length})`);
 if (missing.length) {
   console.log('[prerender] no metadata for:\n' + missing.slice(0, 10).map((p) => '  ' + p).join('\n'));
 }
