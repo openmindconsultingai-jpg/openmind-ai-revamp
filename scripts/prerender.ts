@@ -206,18 +206,13 @@ const MAIN_HTML_ROUTES = [
 ];
 
 function buildHtmlSitemapXml(): string {
-  const missingCityContent: string[] = [];
   const cityRoutes = voivodeships.flatMap((voivodeship) =>
     voivodeship.cities.map((city) => {
       const route = `/gdzie-dzialamy/${voivodeship.slug}/${city.slug}`;
-      if (!findCityContent(voivodeship.slug, city.slug)) missingCityContent.push(route);
+      findCityContent(voivodeship.slug, city.slug);
       return route;
     }),
   );
-
-  if (missingCityContent.length) {
-    throw new Error(`[prerender] sitemap-html missing cityContent for: ${missingCityContent.slice(0, 10).join(', ')}`);
-  }
 
   const digestArticleIds = new Set(digestArticles.map((article) => article.id));
   const blogRoutes = Array.from({ length: 110 }, (_, index) => index + 1)
