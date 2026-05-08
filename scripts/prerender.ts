@@ -194,7 +194,8 @@ const allUrls = [
 const escAttr = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 function buildHtml(routePath: string, meta: Meta): string {
-  const canonical = `${SITE}${routePath === '/' ? '/' : routePath}`;
+  // Canonical always points to the .html variant (matches sitemap), except root.
+  const canonical = routePath === '/' ? `${SITE}/` : `${SITE}${routePath}.html`;
   let html = template;
 
   // <title>
