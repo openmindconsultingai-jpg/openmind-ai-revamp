@@ -114,9 +114,33 @@ const CATEGORY_LABEL: Record<number, { pl: string }> = Object.fromEntries(
   digestArticles.map((a) => [a.id, { pl: a.category.pl }]),
 );
 
+// Parse PL translations directly from LanguageContext.tsx.
+// First occurrence wins (PL block precedes EN block in the file).
+const langSrc = fs.readFileSync(path.join(ROOT, 'src/contexts/LanguageContext.tsx'), 'utf8');
+const PL_TRANSLATIONS: Record<string, string> = {};
+// Match 'key': '...single-quoted value...' (no escaped quotes inside our blog title/excerpt entries)
+for (const m of langSrc.matchAll(/'(blog\.article\d+\.(?:title|excerpt))'\s*:\s*'([^']*)'/g)) {
+  if (!(m[1] in PL_TRANSLATIONS)) PL_TRANSLATIONS[m[1]] = m[2];
+}
+
+function clip(s: string, n: number): string {
+  if (s.length <= n) return s;
+  return s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…';
+}
+
 function blogMeta(id: number): Meta {
   const cat = CATEGORY_LABEL[id]?.pl;
+  const realTitle = PL_TRANSLATIONS[`blog.article${id}.title`];
+  const realExcerpt = PL_TRANSLATIONS[`blog.article${id}.excerpt`];
   const catLabel = cat ? ` – ${cat}` : '';
+  if (realTitle && realExcerpt) {
+    return {
+      title: `${realTitle} | Baza Wiedzy AI – OpenMind AI`,
+      description: clip(realExcerpt, 155),
+      h1: realTitle,
+      body: `<p>${realExcerpt}</p><p>Artykuł z bazy wiedzy OpenMind AI${cat ? ` w kategorii <strong>${cat}</strong>` : ''}. Praktyczna wiedza o sztucznej inteligencji, modelach językowych, automatyzacji i wdrożeniach AI w polskich firmach.</p>`,
+    };
+  }
   return {
     title: `Artykuł ${id}${catLabel} – Baza Wiedzy AI | OpenMind AI`,
     description: `Artykuł nr ${id} z bazy wiedzy OpenMind AI${cat ? ` w kategorii ${cat}` : ''}. Praktyczne informacje o sztucznej inteligencji, wdrożeniach i trendach AI.`,
