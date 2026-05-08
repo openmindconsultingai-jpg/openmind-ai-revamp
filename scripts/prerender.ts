@@ -194,7 +194,8 @@ const allUrls = [
 const escAttr = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 function buildHtml(routePath: string, meta: Meta): string {
-  const canonical = `${SITE}${routePath === '/' ? '/' : routePath}`;
+  // Canonical always points to the .html variant (matches sitemap), except root.
+  const canonical = routePath === '/' ? `${SITE}/` : `${SITE}${routePath}.html`;
   let html = template;
 
   // <title>
@@ -265,6 +266,12 @@ function buildHtml(routePath: string, meta: Meta): string {
   // The SEO snippet has <section> but no nested <div>, so non-greedy </div> matches the root close.
   html = html.replace(/<div id="root">[\s\S]*?<\/div>/, newRoot);
 
+  // Inject URL-cleanup script: after first paint, strip ".html" from the URL
+  // so users see a clean path in the address bar; React Router handles bare paths.
+  const cleanupScript =
+    `<script>(function(){try{var p=location.pathname;if(p.endsWith('.html')){history.replaceState(null,'',p.slice(0,-5)+location.search+location.hash);}}catch(e){}})();</script>`;
+  html = html.replace('</head>', `${cleanupScript}</head>`);
+
   return html;
 }
 
@@ -295,7 +302,10 @@ const missing: string[] = [];
 
 for (const url of allUrls) {
   const u = new URL(url);
-  const routePath = u.pathname.replace(/\/+$/, '') || '/';
+  // Sitemap URLs end with ".html" (except root). Strip it for meta lookup
+  // and route matching; canonical/file-write will re-add it.
+  let routePath = u.pathname.replace(/\/+$/, '') || '/';
+  if (routePath.endsWith('.html')) routePath = routePath.slice(0, -5) || '/';
 
   if (routePath === '/') {
     // Home is already correct in dist/index.html
