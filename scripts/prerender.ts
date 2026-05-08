@@ -302,7 +302,10 @@ const missing: string[] = [];
 
 for (const url of allUrls) {
   const u = new URL(url);
-  const routePath = u.pathname.replace(/\/+$/, '') || '/';
+  // Sitemap URLs end with ".html" (except root). Strip it for meta lookup
+  // and route matching; canonical/file-write will re-add it.
+  let routePath = u.pathname.replace(/\/+$/, '') || '/';
+  if (routePath.endsWith('.html')) routePath = routePath.slice(0, -5) || '/';
 
   if (routePath === '/') {
     // Home is already correct in dist/index.html
