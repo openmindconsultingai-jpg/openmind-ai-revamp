@@ -114,9 +114,33 @@ const CATEGORY_LABEL: Record<number, { pl: string }> = Object.fromEntries(
   digestArticles.map((a) => [a.id, { pl: a.category.pl }]),
 );
 
+// Parse PL translations directly from LanguageContext.tsx.
+// First occurrence wins (PL block precedes EN block in the file).
+const langSrc = fs.readFileSync(path.join(ROOT, 'src/contexts/LanguageContext.tsx'), 'utf8');
+const PL_TRANSLATIONS: Record<string, string> = {};
+// Match 'key': '...single-quoted value...' (no escaped quotes inside our blog title/excerpt entries)
+for (const m of langSrc.matchAll(/'(blog\.article\d+\.(?:title|excerpt))'\s*:\s*'([^']*)'/g)) {
+  if (!(m[1] in PL_TRANSLATIONS)) PL_TRANSLATIONS[m[1]] = m[2];
+}
+
+function clip(s: string, n: number): string {
+  if (s.length <= n) return s;
+  return s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…';
+}
+
 function blogMeta(id: number): Meta {
   const cat = CATEGORY_LABEL[id]?.pl;
+  const realTitle = PL_TRANSLATIONS[`blog.article${id}.title`];
+  const realExcerpt = PL_TRANSLATIONS[`blog.article${id}.excerpt`];
   const catLabel = cat ? ` – ${cat}` : '';
+  if (realTitle && realExcerpt) {
+    return {
+      title: `${realTitle} | Baza Wiedzy AI – OpenMind AI`,
+      description: clip(realExcerpt, 155),
+      h1: realTitle,
+      body: `<p>${realExcerpt}</p><p>Artykuł z bazy wiedzy OpenMind AI${cat ? ` w kategorii <strong>${cat}</strong>` : ''}. Praktyczna wiedza o sztucznej inteligencji, modelach językowych, automatyzacji i wdrożeniach AI w polskich firmach.</p>`,
+    };
+  }
   return {
     title: `Artykuł ${id}${catLabel} – Baza Wiedzy AI | OpenMind AI`,
     description: `Artykuł nr ${id} z bazy wiedzy OpenMind AI${cat ? ` w kategorii ${cat}` : ''}. Praktyczne informacje o sztucznej inteligencji, wdrożeniach i trendach AI.`,
@@ -293,7 +317,38 @@ for (const url of allUrls) {
   written++;
 }
 
-console.log(`[prerender] wrote ${written} static HTML files (skipped: ${skipped}, missing: ${missing.length})`);
+// Write llms.txt for AI crawlers (LLM-friendly site map)
+const llmsTxt = `# OpenMind AI Consulting
+
+OpenMind AI Consulting — polski lider wdrożeń sztucznej inteligencji dla firm, agencji i szkół. Konsulting strategiczny, szkolenia AI z ChatGPT/Claude/Gemini/Copilot, automatyzacja procesów, agencja kreatywna AI (wideo i obrazy generowane przez AI), AI dla edukacji.
+
+## Najważniejsze
+- Strona główna: ${SITE}/
+- Wszystkie usługi: ${SITE}/services
+- Konsulting AI: ${SITE}/services/konsulting-ai
+- Szkolenia AI: ${SITE}/services/szkolenia-ai
+- Automatyzacja AI: ${SITE}/services/automatyzacja-ai
+- Agencja kreatywna AI: ${SITE}/services/agencja-kreatywna-ai
+- AI dla szkół: ${SITE}/services/ai-dla-szkol
+- Baza wiedzy AI (110 artykułów): ${SITE}/blog
+- O nas: ${SITE}/about
+- Kontakt: ${SITE}/contact
+
+## Sitemapy
+- ${SITE}/sitemap-index.xml
+- ${SITE}/sitemap-main.xml
+- ${SITE}/sitemap-cities.xml
+- ${SITE}/sitemap-blog.xml
+
+## Zasięg geograficzny
+192 miasta w 16 województwach Polski. Pełna lista w sitemap-cities.xml.
+
+## Kontakt
+biuro@openmindai.pl • ${SITE}/contact
+`;
+fs.writeFileSync(path.join(DIST, 'llms.txt'), llmsTxt, 'utf8');
+
+console.log(`[prerender] wrote ${written} static HTML files + llms.txt (skipped: ${skipped}, missing: ${missing.length})`);
 if (missing.length) {
   console.log('[prerender] no metadata for:\n' + missing.slice(0, 10).map((p) => '  ' + p).join('\n'));
 }
