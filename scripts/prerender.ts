@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { voivodeships } from '../src/data/voivodeships';
+import { findCityContent } from '../src/data/cityContent/index';
 import { digestArticles } from '../src/data/blogArticlesDigest';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -187,6 +188,51 @@ const allUrls = [
   ...readSitemap('sitemap-blog.xml'),
   ...readSitemap('sitemap-cities.xml'),
 ];
+
+const HTML_SITEMAP_LASTMOD = '2026-05-08';
+const MAIN_HTML_ROUTES = [
+  '/services',
+  '/services/konsulting-ai',
+  '/services/szkolenia-ai',
+  '/services/automatyzacja-ai',
+  '/services/agencja-kreatywna-ai',
+  '/services/ai-dla-szkol',
+  '/services/tworzenie-stron-www',
+  '/about',
+  '/contact',
+  '/blog',
+  '/ai-advisor',
+  '/privacy',
+];
+
+function buildHtmlSitemapXml(): string {
+  const cityRoutes = voivodeships.flatMap((voivodeship) =>
+    voivodeship.cities.map((city) => {
+      const route = `/gdzie-dzialamy/${voivodeship.slug}/${city.slug}`;
+      findCityContent(voivodeship.slug, city.slug);
+      return route;
+    }),
+  );
+
+  const digestArticleIds = new Set(digestArticles.map((article) => article.id));
+  const blogRoutes = Array.from({ length: 110 }, (_, index) => index + 1)
+    .filter((id) => id <= 60 || digestArticleIds.has(id))
+    .map((id) => `/blog/${id}`);
+
+  const entries = [
+    ...cityRoutes.map((route) => ({ route, priority: '0.7' })),
+    ...blogRoutes.map((route) => ({ route, priority: '0.6' })),
+    ...MAIN_HTML_ROUTES.map((route) => ({ route, priority: '0.8' })),
+  ];
+
+  if (cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 12 || entries.length !== 314) {
+    throw new Error(`[prerender] sitemap-html invalid counts: cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
+  }
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
+    .map(({ route, priority }) => `  <url><loc>${SITE}${route}.html</loc><lastmod>${HTML_SITEMAP_LASTMOD}</lastmod><priority>${priority}</priority></url>`)
+    .join('\n')}\n</urlset>\n`;
+}
 
 // ---------------------------------------------------------------------------
 // HTML transform
@@ -368,7 +414,10 @@ biuro@openmindai.pl • ${SITE}/contact
 `;
 fs.writeFileSync(path.join(DIST, 'llms.txt'), llmsTxt, 'utf8');
 
-console.log(`[prerender] wrote ${written} static HTML files + llms.txt (skipped: ${skipped}, missing: ${missing.length})`);
+const htmlSitemapXml = buildHtmlSitemapXml();
+fs.writeFileSync(path.join(DIST, 'sitemap-html.xml'), htmlSitemapXml, 'utf8');
+
+console.log(`[prerender] wrote ${written} static HTML files + llms.txt + sitemap-html.xml (skipped: ${skipped}, missing: ${missing.length})`);
 if (missing.length) {
   console.log('[prerender] no metadata for:\n' + missing.slice(0, 10).map((p) => '  ' + p).join('\n'));
 }
