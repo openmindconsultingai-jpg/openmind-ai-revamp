@@ -238,7 +238,8 @@ function buildHtml(routePath: string, meta: Meta): string {
     `        <a href="/contact">Kontakt</a>\n` +
     `      </nav>\n` +
     `    </div>`;
-  html = html.replace(/<div id="root">[\s\S]*?<\/div>\s*<script type="module"/, newRoot + '\n    <script type="module"');
+  // The SEO snippet has <section> but no nested <div>, so non-greedy </div> matches the root close.
+  html = html.replace(/<div id="root">[\s\S]*?<\/div>/, newRoot);
 
   return html;
 }
