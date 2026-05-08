@@ -317,7 +317,38 @@ for (const url of allUrls) {
   written++;
 }
 
-console.log(`[prerender] wrote ${written} static HTML files (skipped: ${skipped}, missing: ${missing.length})`);
+// Write llms.txt for AI crawlers (LLM-friendly site map)
+const llmsTxt = `# OpenMind AI Consulting
+
+OpenMind AI Consulting — polski lider wdrożeń sztucznej inteligencji dla firm, agencji i szkół. Konsulting strategiczny, szkolenia AI z ChatGPT/Claude/Gemini/Copilot, automatyzacja procesów, agencja kreatywna AI (wideo i obrazy generowane przez AI), AI dla edukacji.
+
+## Najważniejsze
+- Strona główna: ${SITE}/
+- Wszystkie usługi: ${SITE}/services
+- Konsulting AI: ${SITE}/services/konsulting-ai
+- Szkolenia AI: ${SITE}/services/szkolenia-ai
+- Automatyzacja AI: ${SITE}/services/automatyzacja-ai
+- Agencja kreatywna AI: ${SITE}/services/agencja-kreatywna-ai
+- AI dla szkół: ${SITE}/services/ai-dla-szkol
+- Baza wiedzy AI (110 artykułów): ${SITE}/blog
+- O nas: ${SITE}/about
+- Kontakt: ${SITE}/contact
+
+## Sitemapy
+- ${SITE}/sitemap-index.xml
+- ${SITE}/sitemap-main.xml
+- ${SITE}/sitemap-cities.xml
+- ${SITE}/sitemap-blog.xml
+
+## Zasięg geograficzny
+192 miasta w 16 województwach Polski. Pełna lista w sitemap-cities.xml.
+
+## Kontakt
+biuro@openmindai.pl • ${SITE}/contact
+`;
+fs.writeFileSync(path.join(DIST, 'llms.txt'), llmsTxt, 'utf8');
+
+console.log(`[prerender] wrote ${written} static HTML files + llms.txt (skipped: ${skipped}, missing: ${missing.length})`);
 if (missing.length) {
   console.log('[prerender] no metadata for:\n' + missing.slice(0, 10).map((p) => '  ' + p).join('\n'));
 }
