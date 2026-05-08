@@ -188,6 +188,10 @@ const allUrls = [
   ...readSitemap('sitemap-cities.xml'),
 ];
 
+function copyPublicAsset(file: string) {
+  fs.copyFileSync(path.join(ROOT, 'public', file), path.join(DIST, file));
+}
+
 // ---------------------------------------------------------------------------
 // HTML transform
 // ---------------------------------------------------------------------------
@@ -368,7 +372,11 @@ biuro@openmindai.pl • ${SITE}/contact
 `;
 fs.writeFileSync(path.join(DIST, 'llms.txt'), llmsTxt, 'utf8');
 
-console.log(`[prerender] wrote ${written} static HTML files + llms.txt (skipped: ${skipped}, missing: ${missing.length})`);
+for (const file of ['sitemap.xml', 'sitemap-index.xml', 'sitemap-main.xml', 'sitemap-blog.xml', 'sitemap-cities.xml']) {
+  copyPublicAsset(file);
+}
+
+console.log(`[prerender] wrote ${written} static HTML files + llms.txt + sitemap XML files (skipped: ${skipped}, missing: ${missing.length})`);
 if (missing.length) {
   console.log('[prerender] no metadata for:\n' + missing.slice(0, 10).map((p) => '  ' + p).join('\n'));
 }
