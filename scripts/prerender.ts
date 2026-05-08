@@ -269,11 +269,21 @@ function buildHtml(routePath: string, meta: Meta): string {
 }
 
 function writeRoute(routePath: string, html: string) {
-  // routePath like "/services/konsulting-ai" → dist/services/konsulting-ai/index.html
+  // routePath like "/services/konsulting-ai"
+  // Write BOTH variants so Lovable hosting can match the exact request path:
+  //   1) dist/services/konsulting-ai/index.html  (for trailing-slash URLs)
+  //   2) dist/services/konsulting-ai.html        (for clean URLs without slash)
+  // Lovable hosting serves the file matching the request path verbatim and
+  // only falls back to root index.html if no file matches — so we need both.
   const rel = routePath.replace(/^\/+/, '');
   const dir = path.join(DIST, rel);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
+
+  // Flat sibling .html — most static hosts map "/foo/bar" → "/foo/bar.html"
+  const parent = path.join(DIST, path.dirname(rel));
+  fs.mkdirSync(parent, { recursive: true });
+  fs.writeFileSync(path.join(DIST, rel + '.html'), html, 'utf8');
 }
 
 // ---------------------------------------------------------------------------
