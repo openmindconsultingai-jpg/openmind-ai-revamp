@@ -16,3 +16,4 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
+// build-id: 2026-05-09-sitemap-cachebust-a7f3k9
