@@ -34,13 +34,22 @@ const generatePublishDate = (articleId: number) => {
   }
 };
 
-const articles = Array.from({ length: 110 }, (_, i) => ({
-  id: i + 1,
-  titleKey: `blog.article${i + 1}.title`,
-  excerptKey: `blog.article${i + 1}.excerpt`,
-  contentKey: `blog.article${i + 1}.content`,
-  publishDate: generatePublishDate(i + 1),
-}));
+const articles = [
+  ...Array.from({ length: 60 }, (_, i) => ({
+    id: i + 1,
+    titleKey: `blog.article${i + 1}.title`,
+    excerptKey: `blog.article${i + 1}.excerpt`,
+    contentKey: `blog.article${i + 1}.content`,
+    publishDate: generatePublishDate(i + 1),
+  })),
+  ...digestArticles.map((article) => ({
+    id: article.id,
+    titleKey: `blog.article${article.id}.title`,
+    excerptKey: `blog.article${article.id}.excerpt`,
+    contentKey: `blog.article${article.id}.content`,
+    publishDate: new Date(article.date),
+  })),
+];
 
 const BlogArticlePage = () => {
   const { id } = useParams<{ id: string }>();
