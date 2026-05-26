@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useHeroVideos } from '@/hooks/useHeroVideos';
+import { supabase } from '@/integrations/supabase/client';
 import { noWidows } from '@/lib/typography';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -11,12 +11,13 @@ const LogoTicker = lazy(() => import('@/components/LogoTicker'));
 
 gsap.registerPlugin(ScrollTrigger);
 
+const HERO_VIDEO_URL = supabase.storage.from('hero').getPublicUrl('Nowy projekt.mp4').data.publicUrl;
+
 const VideoHero = () => {
   const { t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const { currentVideo, getNextVideo } = useHeroVideos();
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [animationStarted, setAnimationStarted] = useState(false);
@@ -117,10 +118,6 @@ const VideoHero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [isMobile]);
 
-  const handleVideoEnded = () => {
-    getNextVideo();
-  };
-
   const handleVideoCanPlay = () => {
     setIsVideoReady(true);
   };
@@ -144,15 +141,15 @@ const VideoHero = () => {
           style={{ opacity: isVideoReady ? 0 : 1, transition: 'opacity 1s ease-out' }}
         />
         
-        {!videoLoadDeferred && currentVideo && (
+        {!videoLoadDeferred && (
           <video
             ref={videoRef}
-            key={currentVideo.url}
+            key={HERO_VIDEO_URL}
             autoPlay
             muted
+            loop
             playsInline
             preload="metadata"
-            onEnded={handleVideoEnded}
             onCanPlay={handleVideoCanPlay}
             className="absolute inset-0 w-full h-full object-cover"
             style={{
@@ -161,7 +158,7 @@ const VideoHero = () => {
               willChange: isMobile ? 'auto' : 'transform, filter',
             }}
           >
-            <source src={currentVideo.url} type="video/mp4" />
+            <source src={HERO_VIDEO_URL} type="video/mp4" />
           </video>
         )}
 
