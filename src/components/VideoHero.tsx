@@ -163,7 +163,7 @@ const VideoHero = () => {
         )}
 
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-background/50" />
+        <div className="absolute inset-0 bg-background/25" />
         
         {/* Noise overlay for cinematic effect */}
         <div 
