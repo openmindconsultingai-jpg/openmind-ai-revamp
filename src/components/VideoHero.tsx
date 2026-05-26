@@ -18,6 +18,7 @@ const VideoHero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [animationStarted, setAnimationStarted] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
