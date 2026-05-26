@@ -141,15 +141,15 @@ const VideoHero = () => {
           style={{ opacity: isVideoReady ? 0 : 1, transition: 'opacity 1s ease-out' }}
         />
         
-        {!videoLoadDeferred && currentVideo && (
+        {!videoLoadDeferred && (
           <video
             ref={videoRef}
-            key={currentVideo.url}
+            key={HERO_VIDEO_URL}
             autoPlay
             muted
+            loop
             playsInline
             preload="metadata"
-            onEnded={handleVideoEnded}
             onCanPlay={handleVideoCanPlay}
             className="absolute inset-0 w-full h-full object-cover"
             style={{
@@ -158,7 +158,7 @@ const VideoHero = () => {
               willChange: isMobile ? 'auto' : 'transform, filter',
             }}
           >
-            <source src={currentVideo.url} type="video/mp4" />
+            <source src={HERO_VIDEO_URL} type="video/mp4" />
           </video>
         )}
 
