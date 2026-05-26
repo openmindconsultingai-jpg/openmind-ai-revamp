@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useHeroVideos } from '@/hooks/useHeroVideos';
+import { supabase } from '@/integrations/supabase/client';
 import { noWidows } from '@/lib/typography';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -10,6 +10,8 @@ const BookingModal = lazy(() => import('@/components/BookingModal'));
 const LogoTicker = lazy(() => import('@/components/LogoTicker'));
 
 gsap.registerPlugin(ScrollTrigger);
+
+const HERO_VIDEO_URL = supabase.storage.from('hero').getPublicUrl('Nowy projekt.mp4').data.publicUrl;
 
 const VideoHero = () => {
   const { t } = useLanguage();
