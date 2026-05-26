@@ -92,8 +92,8 @@ const VideoHero = () => {
         scrub: 1,
         onUpdate: (self) => {
           if (videoRef.current) {
-            const blur = self.progress * 30;
-            const scale = 1 + self.progress * 0.3;
+            const blur = self.progress * 8;
+            const scale = 1 + self.progress * 0.15;
             videoRef.current.style.filter = `blur(${blur}px)`;
             videoRef.current.style.transform = `scale(${scale})`;
           }
@@ -163,7 +163,7 @@ const VideoHero = () => {
         )}
 
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-background/50" />
+        <div className="absolute inset-0 bg-background/25" />
         
         {/* Noise overlay for cinematic effect */}
         <div 
