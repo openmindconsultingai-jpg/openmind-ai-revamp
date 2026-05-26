@@ -118,10 +118,6 @@ const VideoHero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [isMobile]);
 
-  const handleVideoEnded = () => {
-    getNextVideo();
-  };
-
   const handleVideoCanPlay = () => {
     setIsVideoReady(true);
   };
