@@ -107,7 +107,7 @@ const ServiceAreas = () => {
                 className="absolute inset-0"
                 style={{
                   background:
-                    'linear-gradient(145deg, hsl(220 15% 8% / 0.86) 0%, hsl(220 15% 5% / 0.94) 100%)',
+                    'linear-gradient(145deg, hsl(220 15% 8% / 0.68) 0%, hsl(220 15% 5% / 0.82) 100%)',
                 }}
                 aria-hidden="true"
               />
