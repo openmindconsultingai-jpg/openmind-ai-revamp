@@ -92,8 +92,8 @@ const VideoHero = () => {
         scrub: 1,
         onUpdate: (self) => {
           if (videoRef.current) {
-            const blur = self.progress * 30;
-            const scale = 1 + self.progress * 0.3;
+            const blur = self.progress * 8;
+            const scale = 1 + self.progress * 0.15;
             videoRef.current.style.filter = `blur(${blur}px)`;
             videoRef.current.style.transform = `scale(${scale})`;
           }
