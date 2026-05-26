@@ -6,6 +6,42 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, ChevronRight } from 'lucide-react';
 import { voivodeships } from '@/data/voivodeships';
 
+import imgDolnoslaskie from '@/assets/voivodeship-dolnoslaskie.jpg';
+import imgKujawskoPomorskie from '@/assets/voivodeship-kujawsko-pomorskie.jpg';
+import imgLubelskie from '@/assets/voivodeship-lubelskie.jpg';
+import imgLubuskie from '@/assets/voivodeship-lubuskie.jpg';
+import imgLodzkie from '@/assets/voivodeship-lodzkie.jpg';
+import imgMalopolskie from '@/assets/voivodeship-malopolskie.jpg';
+import imgMazowieckie from '@/assets/voivodeship-mazowieckie.jpg';
+import imgOpolskie from '@/assets/voivodeship-opolskie.jpg';
+import imgPodkarpackie from '@/assets/voivodeship-podkarpackie.jpg';
+import imgPodlaskie from '@/assets/voivodeship-podlaskie.jpg';
+import imgPomorskie from '@/assets/voivodeship-pomorskie.jpg';
+import imgSlaskie from '@/assets/voivodeship-slaskie.jpg';
+import imgSwietokrzyskie from '@/assets/voivodeship-swietokrzyskie.jpg';
+import imgWarminskoMazurskie from '@/assets/voivodeship-warminsko-mazurskie.jpg';
+import imgWielkopolskie from '@/assets/voivodeship-wielkopolskie.jpg';
+import imgZachodniopomorskie from '@/assets/voivodeship-zachodniopomorskie.jpg';
+
+const voivodeshipImages: Record<string, string> = {
+  'dolnoslaskie': imgDolnoslaskie,
+  'kujawsko-pomorskie': imgKujawskoPomorskie,
+  'lubelskie': imgLubelskie,
+  'lubuskie': imgLubuskie,
+  'lodzkie': imgLodzkie,
+  'malopolskie': imgMalopolskie,
+  'mazowieckie': imgMazowieckie,
+  'opolskie': imgOpolskie,
+  'podkarpackie': imgPodkarpackie,
+  'podlaskie': imgPodlaskie,
+  'pomorskie': imgPomorskie,
+  'slaskie': imgSlaskie,
+  'swietokrzyskie': imgSwietokrzyskie,
+  'warminsko-mazurskie': imgWarminskoMazurskie,
+  'wielkopolskie': imgWielkopolskie,
+  'zachodniopomorskie': imgZachodniopomorskie,
+};
+
 gsap.registerPlugin(ScrollTrigger);
 
 const ServiceAreas = () => {
@@ -58,17 +94,28 @@ const ServiceAreas = () => {
               key={v.slug}
               className="area-card group relative rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02]"
               style={{
-                background:
-                  'linear-gradient(145deg, hsl(220 15% 10% / 0.8) 0%, hsl(220 15% 6% / 0.9) 100%)',
                 border: '1px solid hsl(176 100% 43% / 0.12)',
                 boxShadow: '0 4px 30px hsl(0 0% 0% / 0.3)',
               }}
             >
               <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{ backgroundImage: `url(${voivodeshipImages[v.slug]})` }}
+                aria-hidden="true"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'linear-gradient(145deg, hsl(220 15% 8% / 0.86) 0%, hsl(220 15% 5% / 0.94) 100%)',
+                }}
+                aria-hidden="true"
+              />
+              <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   background:
-                    'radial-gradient(300px circle at 50% 0%, hsl(176 100% 43% / 0.15), transparent 60%)',
+                    'radial-gradient(300px circle at 50% 0%, hsl(176 100% 43% / 0.18), transparent 60%)',
                 }}
               />
 
