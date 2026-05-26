@@ -399,7 +399,10 @@ function buildHtml(routePath: string, meta: Meta): string {
   // so users see a clean path in the address bar; React Router handles bare paths.
   const cleanupScript =
     `<script>(function(){try{var p=location.pathname;if(p.endsWith('.html')){history.replaceState(null,'',p.slice(0,-5)+location.search+location.hash);}}catch(e){}})();</script>`;
-  html = html.replace('</head>', `${cleanupScript}</head>`);
+  const jsonLdTag = meta.jsonLd
+    ? `<script type="application/ld+json" data-page-jsonld>${JSON.stringify(meta.jsonLd).replace(/</g, '\\u003c')}</script>`
+    : '';
+  html = html.replace('</head>', `${jsonLdTag}${cleanupScript}</head>`);
 
   return html;
 }
