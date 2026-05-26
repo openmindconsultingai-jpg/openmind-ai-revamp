@@ -34,7 +34,11 @@ type Meta = {
   description: string;
   h1: string;
   body: string; // HTML inside #root, replaces the default home snippet
+  jsonLd?: object; // optional per-route JSON-LD injected into <head>
 };
+
+const esc = (s: unknown) =>
+  String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
 
 const STATIC_META: Record<string, Meta> = {
   '/services': {
