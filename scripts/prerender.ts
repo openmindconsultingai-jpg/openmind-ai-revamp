@@ -359,24 +359,68 @@ function clip(s: string, n: number): string {
   return s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…';
 }
 
+function blogPublishDate(id: number): string {
+  const digest = digestArticles.find((a) => a.id === id);
+  if (digest) return new Date(digest.date).toISOString();
+  if (id >= 31 && id <= 60) {
+    const start = new Date('2025-11-27').getTime();
+    const total = (new Date('2025-12-22').getTime() - start) / 86400000;
+    const step = total / 29;
+    const d = new Date(start);
+    d.setDate(d.getDate() + Math.floor((id - 31) * step));
+    return d.toISOString();
+  }
+  const start = new Date('2025-09-01').getTime();
+  const total = (new Date('2025-11-26').getTime() - start) / 86400000;
+  const step = total / 29;
+  const d = new Date(start);
+  d.setDate(d.getDate() + Math.floor((id - 1) * step));
+  return d.toISOString();
+}
+
 function blogMeta(id: number): Meta {
   const cat = CATEGORY_LABEL[id]?.pl;
   const realTitle = PL_TRANSLATIONS[`blog.article${id}.title`];
   const realExcerpt = PL_TRANSLATIONS[`blog.article${id}.excerpt`];
   const catLabel = cat ? ` – ${cat}` : '';
-  if (realTitle && realExcerpt) {
-    return {
-      title: `${realTitle} | Baza Wiedzy AI – OpenMind AI`,
-      description: clip(realExcerpt, 155),
-      h1: realTitle,
-      body: `<p>${realExcerpt}</p><p>Artykuł z bazy wiedzy OpenMind AI${cat ? ` w kategorii <strong>${cat}</strong>` : ''}. Praktyczna wiedza o sztucznej inteligencji, modelach językowych, automatyzacji i wdrożeniach AI w polskich firmach.</p>`,
-    };
-  }
+  const title = realTitle || `Artykuł ${id}${catLabel} – Baza Wiedzy AI`;
+  const excerpt = realExcerpt || `Artykuł nr ${id} z bazy wiedzy OpenMind AI${cat ? ` w kategorii ${cat}` : ''}. Praktyczne informacje o sztucznej inteligencji.`;
+  const datePub = blogPublishDate(id);
+  const url = `${SITE}/blog/${id}.html`;
+
+  const body = `<p><strong>${esc(excerpt)}</strong></p>
+<h2>O artykule</h2>
+<p>Ten materiał należy do <a href="/blog">Bazy Wiedzy OpenMind AI</a>${cat ? ` w kategorii <strong>${esc(cat)}</strong>` : ''} i porusza praktyczne aspekty wykorzystania sztucznej inteligencji w polskich firmach, instytucjach edukacyjnych i pracy codziennej. Publikujemy regularne analizy modeli językowych, narzędzi generatywnych, automatyzacji procesów oraz przeglądy najważniejszych trendów branżowych.</p>
+<h2>Dlaczego warto śledzić Bazę Wiedzy AI</h2>
+<p>OpenMind AI Consulting publikuje materiały skierowane do osób decyzyjnych — przedsiębiorców, menedżerów, marketerów, dyrektorów szkół oraz specjalistów IT. Każdy artykuł jest tworzony z myślą o praktycznym zastosowaniu: zamiast teoretycznych rozważań pokazujemy konkretne narzędzia, przepływy pracy oraz mierzalne korzyści biznesowe.</p>
+<h2>Powiązane usługi</h2>
+<p>Jeśli temat Cię zainteresował i chcesz wdrożyć podobne rozwiązania w swojej organizacji, sprawdź nasze usługi: <a href="/services/konsulting-ai">konsulting AI</a>, <a href="/services/szkolenia-ai">szkolenia AI</a>, <a href="/services/automatyzacja-ai">automatyzacja procesów</a>, <a href="/services/agencja-kreatywna-ai">agencja kreatywna AI</a> oraz <a href="/services/ai-dla-szkol">AI dla szkół</a>.</p>
+<h2>Bezpłatna konsultacja</h2>
+<p>Chcesz omówić wdrożenie AI w swojej firmie? Umów bezpłatną i niezobowiązującą rozmowę z naszym ekspertem przez <a href="/contact">formularz kontaktowy</a> lub mailowo: biuro@openmindai.pl. Odpowiadamy w ciągu 24 godzin.</p>
+<h2>Więcej artykułów</h2>
+<p>Zobacz pełną listę 110 artykułów w <a href="/blog">Bazie Wiedzy OpenMind AI</a> — od podstaw machine learning po najnowsze premiery modeli i narzędzi generatywnych.</p>`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: excerpt,
+    author: { '@type': 'Person', name: 'Łukasz Czarnecki' },
+    publisher: ORG_JSONLD,
+    datePublished: datePub,
+    dateModified: datePub,
+    mainEntityOfPage: url,
+    url,
+    articleSection: cat || 'Sztuczna inteligencja',
+    inLanguage: 'pl-PL',
+  };
+
   return {
-    title: `Artykuł ${id}${catLabel} – Baza Wiedzy AI | OpenMind AI`,
-    description: `Artykuł nr ${id} z bazy wiedzy OpenMind AI${cat ? ` w kategorii ${cat}` : ''}. Praktyczne informacje o sztucznej inteligencji, wdrożeniach i trendach AI.`,
-    h1: `Artykuł ${id}${catLabel} – Baza Wiedzy o Sztucznej Inteligencji`,
-    body: `<p>Artykuł z bazy wiedzy OpenMind AI${cat ? ` w kategorii <strong>${cat}</strong>` : ''}. Praktyczna treść o sztucznej inteligencji, modelach językowych, automatyzacji i wdrożeniach AI w polskich firmach.</p>`,
+    title: `${title} | Baza Wiedzy AI – OpenMind AI`,
+    description: clip(excerpt, 155),
+    h1: title,
+    body,
+    jsonLd,
   };
 }
 
