@@ -1,7 +1,9 @@
-import { ReactNode, memo } from 'react';
+import { ReactNode, memo, lazy, Suspense, useEffect, useState } from 'react';
 import FloatingNav from '@/components/FloatingNav';
 import ParticleBackground from '@/components/ParticleBackground';
-import Chatbot from '@/components/Chatbot';
+
+// Lazy load chatbot — it's not needed for initial paint and adds significant JS
+const Chatbot = lazy(() => import('@/components/Chatbot'));
 import useSmoothScroll from '@/hooks/useSmoothScroll';
 import useCanonical from '@/hooks/useCanonical';
 
@@ -14,6 +16,29 @@ interface PageLayoutProps {
 const PageLayout = memo(({ children }: PageLayoutProps) => {
   useSmoothScroll();
   useCanonical();
+
+  // Defer chatbot mount until after first interaction or idle — keeps JS off the critical path
+  const [chatbotReady, setChatbotReady] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    const arm = () => { if (!cancelled) setChatbotReady(true); };
+    const idle = (window as any).requestIdleCallback as
+      | ((cb: () => void, opts?: { timeout: number }) => number)
+      | undefined;
+    const handle = idle
+      ? idle(arm, { timeout: 3500 })
+      : window.setTimeout(arm, 3000);
+    const onInteract = () => arm();
+    window.addEventListener('pointerdown', onInteract, { once: true, passive: true });
+    window.addEventListener('keydown', onInteract, { once: true });
+    return () => {
+      cancelled = true;
+      if (idle && (window as any).cancelIdleCallback) (window as any).cancelIdleCallback(handle);
+      else clearTimeout(handle as number);
+      window.removeEventListener('pointerdown', onInteract);
+      window.removeEventListener('keydown', onInteract);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -56,7 +81,11 @@ const PageLayout = memo(({ children }: PageLayoutProps) => {
         {children}
       </main>
       
-      <Chatbot />
+      {chatbotReady && (
+        <Suspense fallback={null}>
+          <Chatbot />
+        </Suspense>
+      )}
     </div>
   );
 });

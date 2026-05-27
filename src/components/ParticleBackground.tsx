@@ -10,7 +10,11 @@ const ParticleBackground = memo(() => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Respect user accessibility preference — no animation if reduced motion is requested
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     let animId = 0;
+    let isPaused = document.hidden;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -24,7 +28,11 @@ const ParticleBackground = memo(() => {
       size: number; alpha: number;
     }> = [];
 
-    const count = Math.min(200, Math.floor(window.innerWidth * window.innerHeight / 8000));
+    // Keep desktop density identical (~200). Reduce only on small mobile screens where
+    // the visual difference is imperceptible but CPU savings are large.
+    const isMobile = window.innerWidth < 768;
+    const baseCap = isMobile ? 60 : 200;
+    const count = Math.min(baseCap, Math.floor(window.innerWidth * window.innerHeight / 8000));
 
     for (let i = 0; i < count; i++) {
       particles.push({
@@ -37,7 +45,18 @@ const ParticleBackground = memo(() => {
       });
     }
 
+    const drawStatic = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(176, 100%, 43%, ${p.alpha})`;
+        ctx.fill();
+      });
+    };
+
     const animate = () => {
+      if (isPaused) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p) => {
@@ -58,15 +77,29 @@ const ParticleBackground = memo(() => {
       animId = requestAnimationFrame(animate);
     };
 
-    animate();
+    if (prefersReducedMotion) {
+      drawStatic();
+    } else {
+      animId = requestAnimationFrame(animate);
+    }
 
-    // Resize observer for dynamic content height changes
+    const handleVisibility = () => {
+      isPaused = document.hidden;
+      if (!isPaused && !prefersReducedMotion) {
+        cancelAnimationFrame(animId);
+        animId = requestAnimationFrame(animate);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibility);
+
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(document.body);
     window.addEventListener('resize', resize);
 
     return () => {
       cancelAnimationFrame(animId);
+      document.removeEventListener('visibilitychange', handleVisibility);
       window.removeEventListener('resize', resize);
       resizeObserver.disconnect();
     };
