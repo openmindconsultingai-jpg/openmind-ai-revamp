@@ -54,14 +54,23 @@ const LogoTicker = () => {
             <feComposite in="SourceGraphic" in2="alpha" operator="in" />
           </filter>
           {/* For dark/black-background logos: alpha = luminance (black -> transparent),
-              then brighten/invert content toward white so the logo reads on dark UI */}
+              then keep a subtle hint of original colors (mostly desaturated + whitened) */}
           <filter id="remove-black-bg" colorInterpolationFilters="sRGB">
             <feColorMatrix in="SourceGraphic" type="luminanceToAlpha" result="alpha" />
             <feComponentTransfer in="alpha" result="alpha2">
               <feFuncA type="linear" slope="1.4" intercept="0" />
             </feComponentTransfer>
-            <feFlood floodColor="#ffffff" result="white" />
-            <feComposite in="white" in2="alpha2" operator="in" />
+            {/* Desaturate ~75% and lift toward white so original colors only whisper through */}
+            <feColorMatrix
+              in="SourceGraphic"
+              type="matrix"
+              result="tinted"
+              values="0.55 0.18 0.12 0 0.30
+                      0.12 0.55 0.18 0 0.30
+                      0.18 0.12 0.55 0 0.30
+                      0    0    0    1 0"
+            />
+            <feComposite in="tinted" in2="alpha2" operator="in" />
           </filter>
         </defs>
       </svg>
