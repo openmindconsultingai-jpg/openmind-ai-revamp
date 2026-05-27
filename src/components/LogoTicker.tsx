@@ -62,23 +62,17 @@ const LogoTicker = () => {
           {allLogos.map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex items-center justify-center px-2 sm:px-3"
+              className="flex-shrink-0 flex items-center justify-center"
               style={{
-                width: 'clamp(120px, 14vw, 160px)',
-                height: 'clamp(56px, 6vw, 72px)',
+                width: 'clamp(110px, 12vw, 140px)',
+                height: 'clamp(50px, 5.5vw, 64px)',
               }}
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
                 loading="lazy"
-                className="max-w-full max-h-full object-contain"
-                style={{
-                  opacity: 0.4,
-                  transition: 'opacity 0.3s ease',
-                }}
-                onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.opacity = '1'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.opacity = '0.4'; }}
+                className="logo-mono max-w-[80%] max-h-[80%] object-contain"
               />
             </div>
           ))}
