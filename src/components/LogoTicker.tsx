@@ -23,7 +23,7 @@ const logos = [
   { src: swiadomo, alt: 'Świadomo – szkolenia SI' },
   { src: djsSkrobj, alt: "DJ's Skrobj Agency – klient AI", darkBg: true },
   { src: zenGarden, alt: 'Zen Garden – klient sztucznej inteligencji', darkBg: true, scale: 1.15 },
-  { src: michalowski, alt: 'Usługi Księgowe Michałowski – automatyzacja AI', scale: 1.65 },
+  { src: michalowski, alt: 'Usługi Księgowe Michałowski – automatyzacja AI', scale: 1.6 },
   { src: tissese, alt: 'Cooperativa Tissese – klient AI' },
 
   { src: corallo, alt: 'V&E Corallo – klient AI', darkBg: true },
