@@ -84,6 +84,11 @@ const LogoTicker = () => {
                 alt={logo.alt}
                 loading="lazy"
                 className="logo-img"
+                style={{
+                  filter: logo.noFilter ? 'none' : undefined,
+                  mixBlendMode: logo.noFilter ? 'normal' : undefined,
+                  transform: logo.scale ? `scale(${logo.scale})` : undefined,
+                }}
               />
             </div>
           ))}
