@@ -11,7 +11,7 @@ const LogoTicker = lazy(() => import('@/components/LogoTicker'));
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HERO_VIDEO_URL = supabase.storage.from('hero').getPublicUrl('Nowy projekt.mp4').data.publicUrl;
+const HERO_VIDEO_URL = supabase.storage.from('hero').getPublicUrl('HERO OPENMIND 2.mp4').data.publicUrl;
 
 const VideoHero = () => {
   const { t } = useLanguage();
