@@ -41,6 +41,19 @@ const LogoTicker = () => {
         {t('logoticker.label')}
       </p>
 
+      {/* SVG filter: removes white/light backgrounds while preserving original logo colors */}
+      <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+        <defs>
+          <filter id="remove-white-bg" colorInterpolationFilters="sRGB">
+            <feColorMatrix in="SourceGraphic" type="luminanceToAlpha" result="lum" />
+            <feComponentTransfer in="lum" result="alpha">
+              <feFuncA type="linear" slope="-1.15" intercept="1.05" />
+            </feComponentTransfer>
+            <feComposite in="SourceGraphic" in2="alpha" operator="in" />
+          </filter>
+        </defs>
+      </svg>
+
       {/* Ticker wrapper */}
       <div
         className="relative overflow-hidden py-2"
