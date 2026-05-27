@@ -68,7 +68,7 @@ const LogoTicker = () => {
                 src={logo.src}
                 alt={logo.alt}
                 loading="lazy"
-                className="logo-img max-w-[75%] max-h-[70%] object-contain"
+                className="logo-img"
               />
             </div>
           ))}
