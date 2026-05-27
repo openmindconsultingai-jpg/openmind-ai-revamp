@@ -62,17 +62,13 @@ const LogoTicker = () => {
           {allLogos.map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex items-center justify-center"
-              style={{
-                width: 'clamp(110px, 12vw, 140px)',
-                height: 'clamp(50px, 5.5vw, 64px)',
-              }}
+              className="logo-card flex-shrink-0 flex items-center justify-center"
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
                 loading="lazy"
-                className="logo-mono max-w-[80%] max-h-[80%] object-contain"
+                className="logo-img max-w-[75%] max-h-[70%] object-contain"
               />
             </div>
           ))}
