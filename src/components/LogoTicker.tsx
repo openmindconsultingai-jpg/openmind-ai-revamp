@@ -29,7 +29,7 @@ const logos = [
   { src: corallo, alt: 'V&E Corallo – klient AI', darkBg: true },
   { src: fabrykaTekstow, alt: 'Fabryka Tekstów – content AI' },
   { src: impuls, alt: 'Impuls – klient sztucznej inteligencji', darkBg: true },
-] as Array<{ src: string; alt: string; noFilter?: boolean; scale?: number; darkBg?: boolean }>;
+].map((l) => ({ ...l, darkBg: true })) as Array<{ src: string; alt: string; noFilter?: boolean; scale?: number; darkBg?: boolean }>;
 
 // Duplicate for seamless infinite loop
 const allLogos = [...logos, ...logos];
