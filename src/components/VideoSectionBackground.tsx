@@ -17,7 +17,21 @@ const VideoSectionBackground = memo(({
   const { currentVideo, isLoading, nextVideo } = useVideoContext();
   const [isReady, setIsReady] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Only mount/play video when the section is in viewport — saves bandwidth + GPU
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { rootMargin: '200px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Reset readiness when video changes
   useEffect(() => {
@@ -32,28 +46,32 @@ const VideoSectionBackground = memo(({
     }, 1500);
   };
 
-  if (isLoading || !currentVideo) return null;
+  if (isLoading || !currentVideo) return <div ref={containerRef} className={`absolute inset-0 ${className}`} />;
 
   return (
-    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
-      <video
-        ref={videoRef}
-        key={currentVideo.url}
-        autoPlay
-        muted
-        playsInline
-        onCanPlay={() => setIsReady(true)}
-        onEnded={handleVideoEnd}
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{
-          opacity: isFadingOut ? 0 : (isReady ? opacity : 0),
-          filter: `blur(${blurPx}px)`,
-          transform: 'scale(1.1)',
-          transition: 'opacity 1.5s ease-out',
-        }}
-      >
-        <source src={currentVideo.url} type="video/mp4" />
-      </video>
+    <div ref={containerRef} className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+      {isInView && (
+        <video
+          ref={videoRef}
+          key={currentVideo.url}
+          autoPlay
+          muted
+          playsInline
+          preload="metadata"
+          onCanPlay={() => setIsReady(true)}
+          onEnded={handleVideoEnd}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            opacity: isFadingOut ? 0 : (isReady ? opacity : 0),
+            filter: `blur(${blurPx}px)`,
+            transform: 'scale(1.1)',
+            transition: 'opacity 1.5s ease-out',
+            willChange: 'opacity',
+          }}
+        >
+          <source src={currentVideo.url} type="video/mp4" />
+        </video>
+      )}
 
       {/* Dark overlay */}
       <div 

@@ -1,7 +1,9 @@
-import { ReactNode, memo } from 'react';
+import { ReactNode, memo, lazy, Suspense, useEffect, useState } from 'react';
 import FloatingNav from '@/components/FloatingNav';
 import ParticleBackground from '@/components/ParticleBackground';
-import Chatbot from '@/components/Chatbot';
+
+// Lazy load chatbot — it's not needed for initial paint and adds significant JS
+const Chatbot = lazy(() => import('@/components/Chatbot'));
 import useSmoothScroll from '@/hooks/useSmoothScroll';
 import useCanonical from '@/hooks/useCanonical';
 

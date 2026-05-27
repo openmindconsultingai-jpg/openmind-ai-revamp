@@ -5,6 +5,11 @@ const useSmoothScroll = () => {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Respect accessibility preference — skip smooth scroll entirely
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
     // Faster, more responsive smooth scroll
     const lenis = new Lenis({
       duration: 0.8,
