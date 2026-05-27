@@ -401,15 +401,29 @@ html.lenis, html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
-/* Logo ticker: unified monochrome treatment (white default, brand teal on hover) */
-.logo-mono {
-  filter: grayscale(100%) brightness(0) invert(1);
-  opacity: 0.55;
-  transition: filter 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+/* Logo ticker: unified frosted card treatment (Linear / Notion style) */
+.logo-card {
+  width: clamp(130px, 13vw, 160px);
+  height: clamp(64px, 7vw, 80px);
+  border-radius: 14px;
+  background: hsl(0 0% 100% / 0.04);
+  border: 1px solid hsl(0 0% 100% / 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
 }
-.logo-mono:hover {
-  /* Tint to brand primary (hsl 176 100% 43%) */
-  filter: brightness(0) saturate(100%) invert(62%) sepia(95%) saturate(2100%) hue-rotate(135deg) brightness(95%) contrast(101%);
+.logo-card:hover {
+  background: hsl(0 0% 100% / 0.08);
+  border-color: hsl(var(--primary) / 0.4);
+  transform: translateY(-2px);
+}
+.logo-img {
+  filter: grayscale(100%) contrast(0.95);
+  opacity: 0.75;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+.logo-card:hover .logo-img {
+  filter: grayscale(0%) contrast(1);
   opacity: 1;
-  transform: scale(1.05);
 }
+
