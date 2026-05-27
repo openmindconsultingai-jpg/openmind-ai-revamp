@@ -219,7 +219,7 @@ serve(async (req) => {
     });
   } catch (error) {
     console.error("AI Advisor error:", error);
-    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : "Nieznany błąd" }), {
+    return new Response(JSON.stringify({ error: "Usługa AI chwilowo niedostępna. Spróbuj ponownie." }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });

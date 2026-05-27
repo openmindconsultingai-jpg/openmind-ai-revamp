@@ -5,9 +5,39 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// Rate limit: 10 calls/hour per IP — translate-cities is expensive (max_tokens=8000)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_MAX = 10;
+const RATE_LIMIT_WINDOW = 3600000;
+const MAX_CITIES_PER_REQUEST = 10;
+const MAX_FIELD_LENGTH = 2000;
+
+function getClientIP(req: Request): string {
+  return req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+         req.headers.get('x-real-ip') || 'unknown';
+}
+
+function checkRateLimit(id: string): boolean {
+  const now = Date.now();
+  const rec = rateLimitMap.get(id);
+  if (!rec || now > rec.resetTime) {
+    rateLimitMap.set(id, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
+    return true;
+  }
+  if (rec.count >= RATE_LIMIT_MAX) return false;
+  rec.count++;
+  return true;
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  if (!checkRateLimit(getClientIP(req))) {
+    return new Response(JSON.stringify({ error: "Rate limit exceeded. Try again in 1 hour." }), {
+      status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 
   try {
@@ -18,6 +48,21 @@ serve(async (req) => {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
+    }
+
+    if (cities.length > MAX_CITIES_PER_REQUEST) {
+      return new Response(JSON.stringify({ error: `Max ${MAX_CITIES_PER_REQUEST} cities per request` }), {
+        status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    for (const c of cities) {
+      const fields = [c?.opisGospodarki, c?.wyzwaniaAI, c?.czasDojazdu, c?.przykladZastosowania];
+      if (fields.some((f) => typeof f === "string" && f.length > MAX_FIELD_LENGTH)) {
+        return new Response(JSON.stringify({ error: "Field too long" }), {
+          status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
     }
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");

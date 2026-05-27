@@ -1,17 +1,47 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// Dane OpenMind AI Consulting
-const OWNER_EMAIL = "openmindconsultingai@gmail.com"; // Email powiązany z kontem Resend
+const OWNER_EMAIL = "openmindconsultingai@gmail.com";
 const COMPANY_NAME = "OpenMind AI Consulting";
-// Użyj domeny testowej Resend - zmień na własną po weryfikacji w https://resend.com/domains
 const SENDER_EMAIL = "onboarding@resend.dev";
+
+// In-memory booking rate limit (defense in depth)
+const bookingRateLimit = new Map<string, { count: number; resetTime: number }>();
+const BOOKING_MAX = 3;
+const BOOKING_WINDOW = 86400000;
+
+function checkBookingLimit(email: string): boolean {
+  const now = Date.now();
+  const rec = bookingRateLimit.get(email);
+  if (!rec || now > rec.resetTime) {
+    bookingRateLimit.set(email, { count: 1, resetTime: now + BOOKING_WINDOW });
+    return true;
+  }
+  if (rec.count >= BOOKING_MAX) return false;
+  rec.count++;
+  return true;
+}
+
+const VALID_TIME_SLOTS = new Set([
+  "09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30",
+  "13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30",
+]);
+
+function isValidDate(s: string): boolean {
+  return /^\d{4}-\d{2}-\d{2}$/.test(s) && !isNaN(new Date(s).getTime());
+}
+function isValidEmail(s: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s) && s.length <= 255;
+}
 
 function escapeHtml(text: string): string {
   if (!text) return '';
@@ -242,28 +272,112 @@ serve(async (req: Request): Promise<Response> => {
 
   try {
     const booking: BookingConfirmationRequest = await req.json();
-    
-    console.log('Sending booking confirmation for:', booking.clientEmail);
-    
-    if (!booking.clientEmail || !booking.clientName || !booking.bookingDate || !booking.bookingTime) {
-      return new Response(
-        JSON.stringify({ error: "Missing required booking fields" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+
+    // ── Strict input validation ──
+    if (!booking.clientEmail || !booking.clientName || !booking.clientPhone || !booking.bookingDate || !booking.bookingTime) {
+      return new Response(JSON.stringify({ error: "Missing required booking fields" }), {
+        status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    if (typeof booking.clientName !== "string" || booking.clientName.trim().length < 2 || booking.clientName.length > 100) {
+      return new Response(JSON.stringify({ error: "Invalid name" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+    if (!isValidEmail(booking.clientEmail)) {
+      return new Response(JSON.stringify({ error: "Invalid email" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+    if (typeof booking.clientPhone !== "string" || booking.clientPhone.length < 9 || booking.clientPhone.length > 20) {
+      return new Response(JSON.stringify({ error: "Invalid phone" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+    if (!isValidDate(booking.bookingDate)) {
+      return new Response(JSON.stringify({ error: "Invalid date" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+    if (!VALID_TIME_SLOTS.has(booking.bookingTime)) {
+      return new Response(JSON.stringify({ error: "Invalid time slot" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+    if (booking.notes && (typeof booking.notes !== "string" || booking.notes.length > 1000)) {
+      return new Response(JSON.stringify({ error: "Invalid notes" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+
+    const dateObj = new Date(booking.bookingDate + "T00:00:00");
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    if (dateObj < today) {
+      return new Response(JSON.stringify({ error: "Date in the past" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+    const dow = dateObj.getDay();
+    if (dow === 0 || dow === 6) {
+      return new Response(JSON.stringify({ error: "Weekend not allowed" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+
+    const normalizedEmail = booking.clientEmail.toLowerCase().trim();
+
+    if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+      console.error("Supabase env not configured");
+      return new Response(JSON.stringify({ error: "Service unavailable" }), {
+        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+
+    // ── In-memory rate limit ──
+    if (!checkBookingLimit(normalizedEmail)) {
+      return new Response(JSON.stringify({ error: "Booking limit reached. Try again in 24h." }), {
+        status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // ── Persistent rate limit ──
+    const oneDayAgo = new Date(Date.now() - BOOKING_WINDOW).toISOString();
+    const { count: recentCount } = await supabase
+      .from("bookings")
+      .select("*", { count: "exact", head: true })
+      .eq("client_email", normalizedEmail)
+      .gte("created_at", oneDayAgo);
+    if (recentCount !== null && recentCount >= BOOKING_MAX) {
+      return new Response(JSON.stringify({ error: "Booking limit reached. Try again in 24h." }), {
+        status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // ── Slot availability ──
+    const { data: existingSlot } = await supabase
+      .from("bookings")
+      .select("id")
+      .eq("booking_date", booking.bookingDate)
+      .eq("booking_time", booking.bookingTime)
+      .neq("status", "cancelled")
+      .maybeSingle();
+    if (existingSlot) {
+      return new Response(JSON.stringify({ error: "Slot already booked" }), {
+        status: 409, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // ── Insert booking (service role; bypasses RLS) ──
+    const { error: insertError } = await supabase.from("bookings").insert({
+      client_name: booking.clientName.trim(),
+      client_email: normalizedEmail,
+      client_phone: booking.clientPhone.trim(),
+      booking_date: booking.bookingDate,
+      booking_time: booking.bookingTime,
+      notes: booking.notes?.trim() || null,
+      status: "confirmed",
+    });
+    if (insertError) {
+      console.error("Booking insert error:", insertError);
+      return new Response(JSON.stringify({ error: "Could not save booking" }), {
+        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
     if (!RESEND_API_KEY) {
       console.error("RESEND_API_KEY not configured");
-      return new Response(
-        JSON.stringify({ error: "Email service not configured" }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+      return new Response(JSON.stringify({ success: true, emailSent: false }), {
+        status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
-    // W trybie testowym Resend (bez zweryfikowanej domeny) wysyłaj tylko do właściciela
     const isTestMode = SENDER_EMAIL === "onboarding@resend.dev";
-    
-    // Email do właściciela (zawsze działa)
+
     try {
       await sendEmail(
         OWNER_EMAIL,
@@ -271,13 +385,11 @@ serve(async (req: Request): Promise<Response> => {
         generateOwnerEmailHtml(booking),
         `${COMPANY_NAME} System <${SENDER_EMAIL}>`
       );
-      console.log('Owner email sent successfully');
     } catch (ownerEmailError) {
       console.error('Owner email error:', ownerEmailError);
     }
 
-    // Email do klienta (tylko jeśli nie tryb testowy lub email klienta = email właściciela)
-    if (!isTestMode || booking.clientEmail.toLowerCase() === OWNER_EMAIL.toLowerCase()) {
+    if (!isTestMode || normalizedEmail === OWNER_EMAIL.toLowerCase()) {
       try {
         await sendEmail(
           booking.clientEmail,
@@ -285,24 +397,18 @@ serve(async (req: Request): Promise<Response> => {
           generateClientEmailHtml(booking),
           `${COMPANY_NAME} <${SENDER_EMAIL}>`
         );
-        console.log('Client email sent successfully');
       } catch (clientEmailError) {
-        console.error('Client email error (test mode restriction):', clientEmailError);
-        // W trybie testowym to jest oczekiwane - kontynuuj
+        console.error('Client email error:', clientEmailError);
       }
-    } else {
-      console.log('Test mode: skipping client email (domain not verified)');
     }
 
-    return new Response(
-      JSON.stringify({ success: true }),
-      { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
-    );
-  } catch (error: any) {
-    console.error("Error sending confirmation:", error);
-    return new Response(
-      JSON.stringify({ error: "Unable to send confirmation email" }),
-      { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
-    );
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200, headers: { "Content-Type": "application/json", ...corsHeaders },
+    });
+  } catch (error) {
+    console.error("Error processing booking:", error);
+    return new Response(JSON.stringify({ error: "Unable to process booking" }), {
+      status: 500, headers: { "Content-Type": "application/json", ...corsHeaders },
+    });
   }
 });

@@ -152,61 +152,9 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
     const dateStr = selectedDate.toISOString().split('T')[0];
     
     try {
-      // Sprawdź rate limit
-      const { data: rateLimitData, error: rateLimitError } = await supabase.functions.invoke('check-booking-rate-limit', {
-        body: { clientEmail: data.clientEmail },
-      });
-
-      if (rateLimitError) throw rateLimitError;
-      
-      if (!rateLimitData.allowed) {
-        toast({
-          title: language === 'pl' ? 'Limit przekroczony' : 'Limit exceeded',
-          description: rateLimitData.message,
-          variant: 'destructive',
-        });
-        setIsSubmitting(false);
-        return;
-      }
-
-      // Sprawdź dostępność slotu (double-check)
-      const { data: availabilityData, error: availabilityError } = await supabase.functions.invoke('booking-availability', {
-        body: { action: 'check_availability', date: dateStr, time: selectedTime },
-      });
-
-      if (availabilityError) throw availabilityError;
-      
-      if (!availabilityData.available) {
-        toast({
-          title: language === 'pl' ? 'Termin zajęty' : 'Slot taken',
-          description: language === 'pl' 
-            ? 'Ten termin został właśnie zarezerwowany. Wybierz inny.' 
-            : 'This slot was just booked. Please choose another.',
-          variant: 'destructive',
-        });
-        setStep('time');
-        fetchTimeSlots(selectedDate);
-        setIsSubmitting(false);
-        return;
-      }
-
-      // Zapisz rezerwację w bazie
-      const { error: insertError } = await supabase
-        .from('bookings')
-        .insert({
-          client_name: data.clientName,
-          client_email: data.clientEmail,
-          client_phone: data.clientPhone,
-          booking_date: dateStr,
-          booking_time: selectedTime,
-          notes: data.notes || null,
-          status: 'confirmed',
-        });
-
-      if (insertError) throw insertError;
-
-      // Wyślij potwierdzenie email
-      const { error: emailError } = await supabase.functions.invoke('send-booking-confirmation', {
+      // Wszystko (rate limit, dostępność, insert, email) załatwia edge function po stronie serwera.
+      // Bookings nie można już wstawiać bezpośrednio przez RLS — to znacznie zwiększa bezpieczeństwo.
+      const { data: result, error } = await supabase.functions.invoke('send-booking-confirmation', {
         body: {
           clientName: data.clientName,
           clientEmail: data.clientEmail,
@@ -217,9 +165,33 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         },
       });
 
-      if (emailError) {
-        console.error('Email error:', emailError);
-        // Kontynuuj mimo błędu email
+      const errMsg = (result as any)?.error || (error as any)?.message || '';
+      const status = (error as any)?.context?.status || (error as any)?.status;
+
+      if (error || (result as any)?.error) {
+        if (status === 429 || /limit/i.test(errMsg)) {
+          toast({
+            title: language === 'pl' ? 'Limit przekroczony' : 'Limit exceeded',
+            description: language === 'pl'
+              ? 'Przekroczono dzienny limit rezerwacji dla tego adresu email.'
+              : 'Daily booking limit reached for this email.',
+            variant: 'destructive',
+          });
+        } else if (status === 409 || /slot/i.test(errMsg)) {
+          toast({
+            title: language === 'pl' ? 'Termin zajęty' : 'Slot taken',
+            description: language === 'pl'
+              ? 'Ten termin został właśnie zarezerwowany. Wybierz inny.'
+              : 'This slot was just booked. Please choose another.',
+            variant: 'destructive',
+          });
+          setStep('time');
+          fetchTimeSlots(selectedDate);
+        } else {
+          throw error || new Error(errMsg);
+        }
+        setIsSubmitting(false);
+        return;
       }
 
       setStep('success');
