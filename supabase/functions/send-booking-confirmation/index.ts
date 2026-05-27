@@ -12,7 +12,7 @@ const corsHeaders = {
 
 const OWNER_EMAIL = "openmindconsultingai@gmail.com";
 const COMPANY_NAME = "OpenMind AI Consulting";
-const SENDER_EMAIL = "onboarding@resend.dev";
+const SENDER_EMAIL = "biuro@openmindai.pl";
 
 // In-memory booking rate limit (defense in depth)
 const bookingRateLimit = new Map<string, { count: number; resetTime: number }>();
