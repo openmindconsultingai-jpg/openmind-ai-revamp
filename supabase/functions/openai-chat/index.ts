@@ -268,7 +268,7 @@ serve(async (req) => {
     });
   } catch (error) {
     console.error("Chat error:", error);
-    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : "Nieznany błąd" }), {
+    return new Response(JSON.stringify({ error: "Usługa chwilowo niedostępna. Spróbuj ponownie." }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
