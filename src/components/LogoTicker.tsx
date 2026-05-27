@@ -19,17 +19,17 @@ const logos = [
   { src: rzeczpospolita, alt: 'Rzeczpospolita – klient OpenMind AI sztuczna inteligencja' },
   { src: pivotExpo, alt: 'Pivot Expo – klient wdrożeń AI' },
   { src: podatkowyInfo, alt: 'Podatkowy.info – automatyzacja AI' },
-  { src: detektyw, alt: 'Detektyw z Służb – klient AI', scale: 1.45 },
+  { src: detektyw, alt: 'Detektyw z Służb – klient AI', scale: 1.45, darkBg: true },
   { src: swiadomo, alt: 'Świadomo – szkolenia SI' },
-  { src: djsSkrobj, alt: "DJ's Skrobj Agency – klient AI" },
-  { src: zenGarden, alt: 'Zen Garden – klient sztucznej inteligencji', noFilter: true, scale: 1.15 },
-  { src: michalowski, alt: 'Usługi Księgowe Michałowski – automatyzacja AI', scale: 1.4 },
+  { src: djsSkrobj, alt: "DJ's Skrobj Agency – klient AI", darkBg: true },
+  { src: zenGarden, alt: 'Zen Garden – klient sztucznej inteligencji', darkBg: true, scale: 1.15 },
+  { src: michalowski, alt: 'Usługi Księgowe Michałowski – automatyzacja AI', scale: 1.65 },
   { src: tissese, alt: 'Cooperativa Tissese – klient AI' },
 
-  { src: corallo, alt: 'V&E Corallo – klient AI' },
+  { src: corallo, alt: 'V&E Corallo – klient AI', darkBg: true },
   { src: fabrykaTekstow, alt: 'Fabryka Tekstów – content AI' },
-  { src: impuls, alt: 'Impuls – klient sztucznej inteligencji' },
-] as Array<{ src: string; alt: string; noFilter?: boolean; scale?: number }>;
+  { src: impuls, alt: 'Impuls – klient sztucznej inteligencji', darkBg: true },
+] as Array<{ src: string; alt: string; noFilter?: boolean; scale?: number; darkBg?: boolean }>;
 
 // Duplicate for seamless infinite loop
 const allLogos = [...logos, ...logos];
@@ -43,7 +43,7 @@ const LogoTicker = () => {
         {t('logoticker.label')}
       </p>
 
-      {/* SVG filter: removes white/light backgrounds while preserving original logo colors */}
+      {/* SVG filters: knock out white OR black backgrounds while keeping logo colors */}
       <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
         <defs>
           <filter id="remove-white-bg" colorInterpolationFilters="sRGB">
@@ -52,6 +52,16 @@ const LogoTicker = () => {
               <feFuncA type="linear" slope="-1.15" intercept="1.05" />
             </feComponentTransfer>
             <feComposite in="SourceGraphic" in2="alpha" operator="in" />
+          </filter>
+          {/* For dark/black-background logos: alpha = luminance (black -> transparent),
+              then brighten/invert content toward white so the logo reads on dark UI */}
+          <filter id="remove-black-bg" colorInterpolationFilters="sRGB">
+            <feColorMatrix in="SourceGraphic" type="luminanceToAlpha" result="alpha" />
+            <feComponentTransfer in="alpha" result="alpha2">
+              <feFuncA type="linear" slope="1.4" intercept="0" />
+            </feComponentTransfer>
+            <feFlood floodColor="#ffffff" result="white" />
+            <feComposite in="white" in2="alpha2" operator="in" />
           </filter>
         </defs>
       </svg>
@@ -85,7 +95,11 @@ const LogoTicker = () => {
                 loading="lazy"
                 className="logo-img"
                 style={{
-                  filter: logo.noFilter ? 'none' : undefined,
+                  filter: logo.noFilter
+                    ? 'none'
+                    : logo.darkBg
+                    ? 'url(#remove-black-bg)'
+                    : undefined,
                   mixBlendMode: logo.noFilter ? 'normal' : undefined,
                   transform: logo.scale ? `scale(${logo.scale})` : undefined,
                 }}
