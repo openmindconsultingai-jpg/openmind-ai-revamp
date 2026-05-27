@@ -19,17 +19,17 @@ const logos = [
   { src: rzeczpospolita, alt: 'Rzeczpospolita – klient OpenMind AI sztuczna inteligencja' },
   { src: pivotExpo, alt: 'Pivot Expo – klient wdrożeń AI' },
   { src: podatkowyInfo, alt: 'Podatkowy.info – automatyzacja AI' },
-  { src: detektyw, alt: 'Detektyw z Służb – klient AI' },
+  { src: detektyw, alt: 'Detektyw z Służb – klient AI', scale: 1.45 },
   { src: swiadomo, alt: 'Świadomo – szkolenia SI' },
   { src: djsSkrobj, alt: "DJ's Skrobj Agency – klient AI" },
-  { src: zenGarden, alt: 'Zen Garden – klient sztucznej inteligencji' },
-  { src: michalowski, alt: 'Usługi Księgowe Michałowski – automatyzacja AI' },
+  { src: zenGarden, alt: 'Zen Garden – klient sztucznej inteligencji', noFilter: true, scale: 1.15 },
+  { src: michalowski, alt: 'Usługi Księgowe Michałowski – automatyzacja AI', scale: 1.4 },
   { src: tissese, alt: 'Cooperativa Tissese – klient AI' },
-  
+
   { src: corallo, alt: 'V&E Corallo – klient AI' },
   { src: fabrykaTekstow, alt: 'Fabryka Tekstów – content AI' },
   { src: impuls, alt: 'Impuls – klient sztucznej inteligencji' },
-];
+] as Array<{ src: string; alt: string; noFilter?: boolean; scale?: number }>;
 
 // Duplicate for seamless infinite loop
 const allLogos = [...logos, ...logos];
