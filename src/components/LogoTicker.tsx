@@ -1,4 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
+import santander from '@/assets/logos/santander.png';
 import rzeczpospolita from '@/assets/logos/rzeczpospolita.png';
 import pivotExpo from '@/assets/logos/pivot-expo.png';
 import podatkowyInfo from '@/assets/logos/podatkowy-info.png';
@@ -14,6 +15,7 @@ import fabrykaTekstow from '@/assets/logos/fabryka-tekstow.png';
 import impuls from '@/assets/logos/impuls.png';
 
 const logos = [
+  { src: santander, alt: 'Santander Consumer Bank – klient OpenMind AI' },
   { src: rzeczpospolita, alt: 'Rzeczpospolita – klient OpenMind AI sztuczna inteligencja' },
   { src: pivotExpo, alt: 'Pivot Expo – klient wdrożeń AI' },
   { src: podatkowyInfo, alt: 'Podatkowy.info – automatyzacja AI' },
