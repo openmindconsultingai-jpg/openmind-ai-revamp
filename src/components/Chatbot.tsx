@@ -201,6 +201,7 @@ const Chatbot = () => {
         >
           <img src={logo} alt="OpenMind AI Chat" className="w-full h-full object-contain p-3 relative z-10" />
         </Button>
+        </div>
       ) : (
         <div className="w-[380px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-7rem)] flex flex-col rounded-2xl overflow-hidden border border-border/60 shadow-2xl bg-card/95 backdrop-blur-xl"
           style={{ boxShadow: '0 0 60px rgba(0, 223, 217, 0.15), 0 25px 50px rgba(0,0,0,0.5)' }}
