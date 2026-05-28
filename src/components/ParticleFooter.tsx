@@ -116,7 +116,7 @@ const ParticleFooter = () => {
         <div className="flex items-center justify-center gap-8 md:gap-10 mb-16">
           {/* LinkedIn */}
           <a
-            href="https://linkedin.com/company/openmind-ai"
+            href="https://www.linkedin.com/company/openmind-ai-consulting/"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative p-5 md:p-6 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-110"
@@ -150,7 +150,7 @@ const ParticleFooter = () => {
           
           {/* Facebook */}
           <a
-            href="https://facebook.com/openmindai"
+            href="https://www.facebook.com/profile.php?id=61578557207265"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative p-5 md:p-6 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-110"
@@ -182,7 +182,7 @@ const ParticleFooter = () => {
           
           {/* Instagram */}
           <a
-            href="https://instagram.com/openmindai"
+            href="https://www.instagram.com/openmind_aiconsulting/"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative p-5 md:p-6 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-110"
@@ -214,7 +214,7 @@ const ParticleFooter = () => {
           
           {/* X (Twitter) */}
           <a
-            href="https://x.com/openmindai"
+            href="https://x.com/LukaszOpenMind"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative p-5 md:p-6 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-110"

@@ -219,7 +219,13 @@ const Chatbot = () => {
           </div>
 
           {/* Messages */}
-          <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+          <div
+            ref={scrollRef}
+            data-lenis-prevent
+            className="flex-1 overflow-y-auto overscroll-contain px-4 py-4 space-y-4"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+          >
             {messages.length === 0 && (
               <div className="text-center py-8 space-y-3">
                 <img src={logo} alt="" className="w-12 h-12 mx-auto opacity-60" />
