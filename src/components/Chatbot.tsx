@@ -21,6 +21,7 @@ function getSessionId(): string {
 const Chatbot = () => {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -40,6 +41,24 @@ const Chatbot = () => {
       return () => clearTimeout(timer);
     }
   }, []);
+
+  // Show greeting bubble when chatbot is closed
+  useEffect(() => {
+    if (isOpen) {
+      setShowBubble(false);
+      return;
+    }
+    const dismissed = sessionStorage.getItem("chatbot-bubble-dismissed");
+    if (dismissed) return;
+    const timer = setTimeout(() => setShowBubble(true), 2500);
+    return () => clearTimeout(timer);
+  }, [isOpen]);
+
+  const dismissBubble = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setShowBubble(false);
+    sessionStorage.setItem("chatbot-bubble-dismissed", "1");
+  };
 
   // Scroll to bottom on new messages
   useEffect(() => {
