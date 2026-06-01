@@ -57,10 +57,19 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
     },
   });
 
+  // Format daty w lokalnej strefie czasowej (uniknięcie przesunięcia UTC o 1 dzień)
+  const formatLocalDate = (date: Date): string => {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  };
+
   // Pobierz dostępne sloty dla wybranej daty
   const fetchTimeSlots = useCallback(async (date: Date) => {
     setIsLoadingSlots(true);
-    const dateStr = date.toISOString().split('T')[0];
+    const dateStr = formatLocalDate(date);
+    
     
     try {
       const { data, error } = await supabase.functions.invoke('booking-availability', {
