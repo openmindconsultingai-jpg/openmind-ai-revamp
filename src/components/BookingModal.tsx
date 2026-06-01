@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -241,7 +242,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
 
   if (!isOpen) return null;
 
-  return (
+  const modalContent = (
     <div 
       className="fixed inset-0 z-[120] flex items-center justify-center p-3 sm:p-4"
       style={{ paddingBottom: 'env(safe-area-inset-bottom, 12px)' }}
@@ -586,6 +587,8 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 };
 
 export default BookingModal;
