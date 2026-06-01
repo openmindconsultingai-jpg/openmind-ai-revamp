@@ -175,10 +175,12 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         },
       });
 
-      const errMsg = (result as any)?.error || (error as any)?.message || '';
-      const status = (error as any)?.context?.status || (error as any)?.status;
+      const bookingResult = result as { error?: string } | null;
+      const bookingError = error as { message?: string; status?: number; context?: { status?: number } } | null;
+      const errMsg = bookingResult?.error || bookingError?.message || '';
+      const status = bookingError?.context?.status || bookingError?.status;
 
-      if (error || (result as any)?.error) {
+      if (error || bookingResult?.error) {
         if (status === 429 || /limit/i.test(errMsg)) {
           toast({
             title: language === 'pl' ? 'Limit przekroczony' : 'Limit exceeded',
@@ -241,7 +243,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4"
+      className="fixed inset-0 z-[120] flex items-center justify-center p-3 sm:p-4"
       style={{ paddingBottom: 'env(safe-area-inset-bottom, 12px)' }}
       onClick={onClose}
     >
@@ -250,7 +252,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       
       {/* Modal */}
       <div 
-        className="relative w-full max-w-lg glass rounded-2xl sm:rounded-3xl overflow-hidden animate-scale-in max-h-[85svh] sm:max-h-[80svh] flex flex-col"
+        className="relative w-full max-w-lg glass rounded-2xl sm:rounded-3xl overflow-hidden animate-scale-in max-h-[calc(100svh-1.5rem)] sm:max-h-[calc(100svh-2rem)] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -272,7 +274,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         </div>
 
         {/* Content */}
-        <div data-lenis-prevent className="p-3 sm:p-5 overflow-y-auto overscroll-contain flex-1 min-h-0" style={{ WebkitOverflowScrolling: 'touch' }}>
+        <div data-lenis-prevent className="p-3 pb-6 sm:p-5 sm:pb-7 overflow-y-auto overscroll-contain flex-1 min-h-0" style={{ WebkitOverflowScrolling: 'touch' }}>
           
           {/* Step: Date Selection */}
           {step === 'date' && (
