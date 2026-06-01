@@ -250,7 +250,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       
       {/* Modal */}
       <div 
-        className="relative w-full max-w-lg glass rounded-2xl sm:rounded-3xl overflow-hidden animate-scale-in max-h-[90vh] sm:max-h-[85vh] flex flex-col"
+        className="relative w-full max-w-lg glass rounded-2xl sm:rounded-3xl overflow-hidden animate-scale-in max-h-[85svh] sm:max-h-[80svh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -262,8 +262,8 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         </button>
 
         {/* Header */}
-        <div className="p-4 sm:p-6 border-b border-border/30 flex-shrink-0">
-          <h3 className="font-heading text-lg sm:text-xl md:text-2xl text-gradient font-semibold pr-8">
+        <div className="p-3 sm:p-5 border-b border-border/30 flex-shrink-0">
+          <h3 className="font-heading text-base sm:text-lg md:text-xl text-gradient font-semibold pr-8">
             {language === 'pl' ? 'Zarezerwuj bezpłatną konsultację' : 'Book a free consultation'}
           </h3>
           <p className="text-muted-foreground text-xs sm:text-sm mt-1">
@@ -272,7 +272,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-6 overflow-y-auto flex-1" style={{ WebkitOverflowScrolling: 'touch' }}>
+        <div data-lenis-prevent className="p-3 sm:p-5 overflow-y-auto overscroll-contain flex-1 min-h-0" style={{ WebkitOverflowScrolling: 'touch' }}>
           
           {/* Step: Date Selection */}
           {step === 'date' && (
