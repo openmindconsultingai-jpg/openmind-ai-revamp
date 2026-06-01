@@ -62,13 +62,22 @@ interface BookingConfirmationRequest {
   notes?: string;
 }
 
+// Parsujemy YYYY-MM-DD jawnie i wymuszamy strefę Europe/Warsaw,
+// żeby dzień tygodnia/miesiąca nigdy nie "przeskoczył" niezależnie
+// od regionu, w którym działa edge function.
 const formatDate = (dateStr: string): string => {
-  const date = new Date(dateStr);
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr);
+  if (!m) return dateStr;
+  const [, y, mo, d] = m;
+  // Południe UTC zapewnia, że w każdej strefie czasowej (w tym Warszawie)
+  // wciąż jesteśmy tego samego dnia kalendarzowego.
+  const date = new Date(Date.UTC(Number(y), Number(mo) - 1, Number(d), 12, 0, 0));
   return date.toLocaleDateString('pl-PL', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
+    timeZone: 'Europe/Warsaw',
   });
 };
 
