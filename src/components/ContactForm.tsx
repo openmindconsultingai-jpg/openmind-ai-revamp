@@ -61,8 +61,8 @@ const ContactForm = () => {
     try {
       console.log("Wysyłanie wiadomości...");
       
-      // Wysłanie emaila
-      const emailPromise = supabase.functions.invoke('send-contact-email', {
+      // Email jest krytyczny — CRM jest dodatkowy i nie może blokować formularza.
+      const emailResult = await supabase.functions.invoke('send-contact-email', {
         body: {
           name: data.name,
           email: data.email,
@@ -71,26 +71,26 @@ const ContactForm = () => {
         }
       });
 
-      // Wysłanie do CRM przez proxy Edge Function
-      const crmPromise = supabase.functions.invoke('forward-to-crm', {
+      if (emailResult.error || (emailResult.data as any)?.error) {
+        console.error("Błąd wysyłania emaila:", emailResult.error || (emailResult.data as any)?.error);
+        throw emailResult.error || new Error((emailResult.data as any)?.error);
+      }
+
+      // CRM działa w tle — awaria zewnętrznego webhooka nie powinna pokazywać klientowi błędu wysyłki.
+      supabase.functions.invoke('forward-to-crm', {
         body: {
           name: data.name,
           email: data.email,
           phone: data.phone,
           message: data.message
         }
+      }).then((crmResult) => {
+        if (crmResult.error || (crmResult.data as any)?.error) {
+          console.error("Błąd wysyłania do CRM:", crmResult.error || (crmResult.data as any)?.error);
+        }
+      }).catch((crmError) => {
+        console.error("Błąd wysyłania do CRM:", crmError);
       });
-
-      const [emailResult, crmResult] = await Promise.all([emailPromise, crmPromise]);
-
-      if (emailResult.error) {
-        console.error("Błąd wysyłania emaila:", emailResult.error);
-        throw emailResult.error;
-      }
-
-      if (crmResult.error) {
-        console.error("Błąd wysyłania do CRM:", crmResult.error);
-      }
       
       toast({
         title: t('contact.form.success'),
