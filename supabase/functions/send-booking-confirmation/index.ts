@@ -185,8 +185,8 @@ const generateClientEmailHtml = (booking: BookingConfirmationRequest): string =>
                     <!-- Contact -->
                     <p style="margin: 0; font-size: 14px; color: rgba(229, 247, 247, 0.6); line-height: 1.6;">
                       W razie pytań skontaktuj się z nami:<br>
-                      📧 <a href="mailto:biuro@openmind.biz.pl" style="color: #00d9b1; text-decoration: none;">biuro@openmind.biz.pl</a><br>
-                      📞 <a href="tel:+48668386730" style="color: #00d9b1; text-decoration: none;">+48 668 386 730</a>
+                      📧 <a href="mailto:biuro@openmindai.pl" style="color: #00d9b1; text-decoration: none;">biuro@openmindai.pl</a><br>
+                      📞 <a href="tel:+48693016974" style="color: #00d9b1; text-decoration: none;">+48 693 016 974</a>
                     </p>
                     
                   </td>
