@@ -10,7 +10,7 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const OWNER_EMAIL = "openmindconsultingai@gmail.com";
+const OWNER_EMAILS = ["openmindconsultingai@gmail.com", "biuro@openmindai.pl"];
 const COMPANY_NAME = "OpenMind AI Consulting";
 const SENDER_EMAIL = "biuro@openmindai.pl";
 
@@ -256,14 +256,14 @@ const generateOwnerEmailHtml = (booking: BookingConfirmationRequest): string => 
   `;
 };
 
-async function sendEmail(to: string, subject: string, html: string, from: string) {
+async function sendEmail(to: string | string[], subject: string, html: string, from: string) {
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${RESEND_API_KEY}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ from, to: [to], subject, html }),
+    body: JSON.stringify({ from, to: Array.isArray(to) ? to : [to], subject, html }),
   });
 
   if (!response.ok) {
@@ -389,7 +389,7 @@ serve(async (req: Request): Promise<Response> => {
 
     try {
       await sendEmail(
-        OWNER_EMAIL,
+        OWNER_EMAILS,
         `🔔 Nowa konsultacja: ${booking.clientName} - ${formatDate(booking.bookingDate)} ${booking.bookingTime}`,
         generateOwnerEmailHtml(booking),
         `${COMPANY_NAME} System <${SENDER_EMAIL}>`
@@ -398,7 +398,7 @@ serve(async (req: Request): Promise<Response> => {
       console.error('Owner email error:', ownerEmailError);
     }
 
-    if (!isTestMode || normalizedEmail === OWNER_EMAIL.toLowerCase()) {
+    if (!isTestMode || OWNER_EMAILS.map((email) => email.toLowerCase()).includes(normalizedEmail)) {
       try {
         await sendEmail(
           booking.clientEmail,

@@ -2,7 +2,8 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@4.0.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const resend = new Resend(RESEND_API_KEY);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -85,10 +86,18 @@ const handler = async (req: Request): Promise<Response> => {
     const safePhone = escapeHtml(phone || '');
     const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
 
-    // Wysyłka emaila do firmy
+    if (!RESEND_API_KEY) {
+      console.error("RESEND_API_KEY not configured");
+      return new Response(
+        JSON.stringify({ error: "Email service unavailable" }),
+        { status: 503, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Wysyłka emaila do firmy + kopia na skrzynkę właściciela jako fallback dostarczenia
     const emailResponse = await resend.emails.send({
       from: "OpenMind AI <biuro@openmindai.pl>",
-      to: ["biuro@openmindai.pl"],
+      to: ["biuro@openmindai.pl", "openmindconsultingai@gmail.com"],
       replyTo: email,
       subject: `Nowa wiadomość od ${safeName}`,
       html: `
