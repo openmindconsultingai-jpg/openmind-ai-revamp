@@ -175,10 +175,12 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         },
       });
 
-      const errMsg = (result as any)?.error || (error as any)?.message || '';
-      const status = (error as any)?.context?.status || (error as any)?.status;
+      const bookingResult = result as { error?: string } | null;
+      const bookingError = error as { message?: string; status?: number; context?: { status?: number } } | null;
+      const errMsg = bookingResult?.error || bookingError?.message || '';
+      const status = bookingError?.context?.status || bookingError?.status;
 
-      if (error || (result as any)?.error) {
+      if (error || bookingResult?.error) {
         if (status === 429 || /limit/i.test(errMsg)) {
           toast({
             title: language === 'pl' ? 'Limit przekroczony' : 'Limit exceeded',
