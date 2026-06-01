@@ -84,28 +84,44 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Forwarding lead to CRM for:", data.email);
 
-    // Forward to CRM webhook
-    const crmResponse = await fetch(CRM_WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: data.name,
-        email: data.email,
-        phone: data.phone || '',
-        company: '',
-        source: 'website_form',
-        message: data.message || ''
-      })
-    });
+    // Forward to CRM webhook with a short timeout so an external DNS/webhook issue
+    // never keeps the website request hanging for long.
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3500);
+    let crmResponse: Response;
+
+    try {
+      crmResponse = await fetch(CRM_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        signal: controller.signal,
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone || '',
+          company: '',
+          source: 'website_form',
+          message: data.message || ''
+        })
+      });
+    } catch (error: any) {
+      console.error("CRM webhook unavailable:", error?.message || error);
+      return new Response(
+        JSON.stringify({ success: false, queued: false, error: "CRM webhook unavailable" }),
+        { status: 202, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    } finally {
+      clearTimeout(timeoutId);
+    }
 
     if (!crmResponse.ok) {
       const errorText = await crmResponse.text();
       console.error("CRM webhook error:", errorText);
       return new Response(
-        JSON.stringify({ error: "Failed to forward to CRM" }),
-        { status: 502, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        JSON.stringify({ success: false, error: "Failed to forward to CRM" }),
+        { status: 202, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
