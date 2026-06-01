@@ -158,7 +158,8 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
     if (!selectedDate || !selectedTime) return;
     
     setIsSubmitting(true);
-    const dateStr = selectedDate.toISOString().split('T')[0];
+    const dateStr = formatLocalDate(selectedDate);
+    
     
     try {
       // Wszystko (rate limit, dostępność, insert, email) załatwia edge function po stronie serwera.
