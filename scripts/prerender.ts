@@ -542,7 +542,7 @@ const allUrls = [
   ...readSitemap('sitemap-cities.xml'),
 ];
 
-const HTML_SITEMAP_LASTMOD = '2026-05-08';
+const HTML_SITEMAP_LASTMOD = '2026-06-12';
 const MAIN_HTML_ROUTES = [
   '/services',
   '/services/konsulting-ai',
@@ -773,36 +773,12 @@ fs.writeFileSync(path.join(DIST, 'llms.txt'), llmsTxt, 'utf8');
 const htmlSitemapXml = buildHtmlSitemapXml();
 fs.writeFileSync(path.join(DIST, 'sitemap-html.xml'), htmlSitemapXml, 'utf8');
 
-// ---------------------------------------------------------------------------
-// Post-process: convert LEAF directories (containing only index.html) into
-// extensionless sibling files. Lovable static hosting does NOT auto-serve
-// `dist/foo/index.html` for bare `/foo` requests — it falls through to the
-// SPA shell with a homepage canonical (logged in GSC as "Page with redirect",
-// 56 such URLs as of 2026-06-01). Writing `dist/foo` (extensionless, served
-// as text/html via content sniffing) makes the bare URL return the prerendered
-// HTML with the correct canonical pointing at the .html sibling.
-// We only do this for LEAF routes — if the directory has children we leave
-// it alone, because a file and a directory cannot share a name.
-// ---------------------------------------------------------------------------
-let extensionlessWritten = 0;
-function convertLeafDirs(dir: string) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const entry of entries) {
-    if (!entry.isDirectory()) continue;
-    const sub = path.join(dir, entry.name);
-    const subEntries = fs.readdirSync(sub);
-    if (subEntries.length === 1 && subEntries[0] === 'index.html') {
-      const html = fs.readFileSync(path.join(sub, 'index.html'), 'utf8');
-      fs.rmSync(sub, { recursive: true, force: true });
-      fs.writeFileSync(sub, html, 'utf8');
-      extensionlessWritten++;
-    } else {
-      convertLeafDirs(sub);
-    }
-  }
-}
-convertLeafDirs(DIST);
-console.log(`[prerender] wrote ${extensionlessWritten} extensionless leaf files for bare-URL SEO`);
+// NOTE (2026-06-12): the former "extensionless leaf files" post-processing
+// pass was ROLLED BACK. Lovable CDN serves extensionless files as
+// application/octet-stream with `x-content-type-options: nosniff`, so Google
+// treated bare URLs as binary downloads and de-indexed them. We now ship ONLY
+// dist/{route}.html and dist/{route}/index.html; bare URLs fall through to the
+// SPA shell and canonicals/sitemaps point at the .html variants.
 
 console.log(`[prerender] wrote ${written} static HTML files + llms.txt + sitemap-html.xml (skipped: ${skipped}, missing: ${missing.length})`);
 if (missing.length) {
