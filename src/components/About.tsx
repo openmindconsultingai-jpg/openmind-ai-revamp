@@ -177,7 +177,7 @@ const About = () => {
               <h2 className="font-heading text-3xl md:text-4xl font-bold mb-8">
                 <span className="text-gradient text-glow-subtle">Gotowy na przyspieszenie?</span>
               </h2>
-              <Link to="/contact">
+              <Link to="/contact.html">
                 <Button variant="glass" size="lg" className="text-base px-10 py-6 font-semibold tracking-wide">
                   ROZPOCZNIJ WSPÓŁPRACĘ
                   <ArrowRight size={20} />

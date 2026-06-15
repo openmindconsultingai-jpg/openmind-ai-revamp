@@ -531,7 +531,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                               ? 'Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji rezerwacji zgodnie z ' 
                               : 'I consent to the processing of my personal data for the booking purpose in accordance with the '}
                             <a 
-                              href="/privacy" 
+                              href="/privacy.html" 
                               target="_blank" 
                               className="text-primary hover:underline"
                             >

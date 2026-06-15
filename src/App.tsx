@@ -45,12 +45,17 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Suspense fallback={<PageLoader />}><ServicesPage /></Suspense>} />
+            <Route path="/services.html" element={<Suspense fallback={<PageLoader />}><ServicesPage /></Suspense>} />
             <Route path="/services/:serviceSlug" element={<Suspense fallback={<PageLoader />}><ServicesPage /></Suspense>} />
             <Route path="/about" element={<Suspense fallback={<PageLoader />}><AboutPage /></Suspense>} />
+            <Route path="/about.html" element={<Suspense fallback={<PageLoader />}><AboutPage /></Suspense>} />
             <Route path="/blog" element={<Suspense fallback={<PageLoader />}><BlogPage /></Suspense>} />
+            <Route path="/blog.html" element={<Suspense fallback={<PageLoader />}><BlogPage /></Suspense>} />
             <Route path="/blog/:id" element={<Suspense fallback={<PageLoader />}><BlogArticlePage /></Suspense>} />
             <Route path="/contact" element={<Suspense fallback={<PageLoader />}><ContactPage /></Suspense>} />
+            <Route path="/contact.html" element={<Suspense fallback={<PageLoader />}><ContactPage /></Suspense>} />
             <Route path="/privacy" element={<Suspense fallback={<PageLoader />}><PrivacyPage /></Suspense>} />
+            <Route path="/privacy.html" element={<Suspense fallback={<PageLoader />}><PrivacyPage /></Suspense>} />
             {/* 301-style redirects from legacy URLs — RedirectWithSeo sets noindex + canonical for crawlers */}
             <Route path="/polityka-prywatnosci-i-bezpieczenstwo-danych" element={<RedirectWithSeo to="/privacy" />} />
             <Route path="/polityka-prywatnosci-i-bezpieczenstwa-danych" element={<RedirectWithSeo to="/privacy" />} />
@@ -61,8 +66,11 @@ const App = () => (
             <Route path="/en/kontakt-en" element={<RedirectWithSeo to="/contact" />} />
             <Route path="/en/oferta-en" element={<RedirectWithSeo to="/services" />} />
             <Route path="/ai-advisor" element={<Suspense fallback={<PageLoader />}><AIAdvisorPage /></Suspense>} />
+            <Route path="/ai-advisor.html" element={<Suspense fallback={<PageLoader />}><AIAdvisorPage /></Suspense>} />
             <Route path="/gdzie-dzialamy/:slug" element={<Suspense fallback={<PageLoader />}><VoivodeshipDetail /></Suspense>} />
+            <Route path="/gdzie-dzialamy/:slug.html" element={<Suspense fallback={<PageLoader />}><VoivodeshipDetail /></Suspense>} />
             <Route path="/gdzie-dzialamy/:slug/:citySlug" element={<Suspense fallback={<PageLoader />}><CityDetail /></Suspense>} />
+            <Route path="/gdzie-dzialamy/:slug/:citySlug.html" element={<Suspense fallback={<PageLoader />}><CityDetail /></Suspense>} />
             <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
           </Routes>
         </BrowserRouter>

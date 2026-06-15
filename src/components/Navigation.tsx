@@ -46,30 +46,30 @@ const Navigation = () => {
               {t('nav.home')}
             </Link>
             <Link
-              to="/services"
+              to="/services.html"
               className={`text-foreground hover:text-primary transition-colors font-medium ${
-                location.pathname === '/services' ? 'text-primary' : ''
+                location.pathname === '/services' || location.pathname === '/services.html' ? 'text-primary' : ''
               }`}
             >
               {t('nav.services')}
             </Link>
             <Link
-              to="/about"
+              to="/about.html"
               className={`text-foreground hover:text-primary transition-colors font-medium ${
-                location.pathname === '/about' ? 'text-primary' : ''
+                location.pathname === '/about' || location.pathname === '/about.html' ? 'text-primary' : ''
               }`}
             >
               {t('nav.about')}
             </Link>
             <Link
-              to="/blog"
+              to="/blog.html"
               className={`text-foreground hover:text-primary transition-colors font-medium ${
-                location.pathname === '/blog' ? 'text-primary' : ''
+                location.pathname === '/blog' || location.pathname === '/blog.html' ? 'text-primary' : ''
               }`}
             >
               {t('nav.blog')}
             </Link>
-            <Link to="/contact">
+            <Link to="/contact.html">
               <Button
                 variant="glass"
                 className="font-semibold"
@@ -121,33 +121,33 @@ const Navigation = () => {
               {t('nav.home')}
             </Link>
             <Link
-              to="/services"
+              to="/services.html"
               onClick={closeMobileMenu}
               className={`block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 ${
-                location.pathname === '/services' ? 'text-primary' : ''
+                location.pathname === '/services' || location.pathname === '/services.html' ? 'text-primary' : ''
               }`}
             >
               {t('nav.services')}
             </Link>
             <Link
-              to="/about"
+              to="/about.html"
               onClick={closeMobileMenu}
               className={`block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 ${
-                location.pathname === '/about' ? 'text-primary' : ''
+                location.pathname === '/about' || location.pathname === '/about.html' ? 'text-primary' : ''
               }`}
             >
               {t('nav.about')}
             </Link>
             <Link
-              to="/blog"
+              to="/blog.html"
               onClick={closeMobileMenu}
               className={`block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 ${
-                location.pathname === '/blog' ? 'text-primary' : ''
+                location.pathname === '/blog' || location.pathname === '/blog.html' ? 'text-primary' : ''
               }`}
             >
               {t('nav.blog')}
             </Link>
-            <Link to="/contact" onClick={closeMobileMenu}>
+            <Link to="/contact.html" onClick={closeMobileMenu}>
               <Button
                 variant="glass"
                 className="w-full font-semibold"

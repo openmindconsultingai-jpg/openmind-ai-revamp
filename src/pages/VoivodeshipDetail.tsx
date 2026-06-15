@@ -12,7 +12,7 @@ const VoivodeshipDetail = () => {
   const firstCitySlug = data?.cities?.[0]?.slug;
   if (!data || !firstCitySlug) return <Navigate to="/" replace />;
 
-  return <Navigate to={`/gdzie-dzialamy/${data.slug}/${firstCitySlug}`} replace />;
+  return <Navigate to={`/gdzie-dzialamy/${data.slug}/${firstCitySlug}.html`} replace />;
 };
 
 export default VoivodeshipDetail;

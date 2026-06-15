@@ -14,7 +14,7 @@ const Footer = () => {
           
           <div className="flex items-center gap-6">
             <Link 
-              to="/privacy"
+              to="/privacy.html"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               {t('footer.privacy')}

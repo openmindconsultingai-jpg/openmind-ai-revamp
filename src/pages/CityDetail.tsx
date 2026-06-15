@@ -154,7 +154,7 @@ const CityDetail = () => {
               <ChevronRight className="w-3.5 h-3.5 shrink-0" />
               <Link to="/#gdzie-dzialamy" className="hover:text-foreground transition-colors">{language === 'pl' ? 'Gdzie działamy' : 'Where We Operate'}</Link>
               <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-              <Link to={`/gdzie-dzialamy/${slug}`} className="hover:text-foreground transition-colors">{voivodeship!.name}</Link>
+              <Link to={`/gdzie-dzialamy/${slug}.html`} className="hover:text-foreground transition-colors">{voivodeship!.name}</Link>
               <ChevronRight className="w-3.5 h-3.5 shrink-0" />
               <span className="text-foreground font-medium">{city!.name}</span>
             </nav>
@@ -352,7 +352,7 @@ const CityDetail = () => {
                   {nearbyCities.map((nearby) => (
                     <Link
                       key={nearby.city!.slug}
-                      to={`/gdzie-dzialamy/${nearby.voivodeship!.slug}/${nearby.city!.slug}`}
+                      to={`/gdzie-dzialamy/${nearby.voivodeship!.slug}/${nearby.city!.slug}.html`}
                       className="px-4 py-2 rounded-lg border border-border bg-card hover:border-primary/40 hover:bg-primary/5 transition-colors text-sm font-medium text-foreground"
                     >
                       {nearby.city!.name}
@@ -374,7 +374,7 @@ const CityDetail = () => {
                   ? 'Pierwsza rozmowa konsultacyjna jest bezpłatna. Skontaktuj się i sprawdź, co AI może zrobić dla Twojego biznesu.'
                   : 'The first consultation is free. Get in touch and find out what AI can do for your business.'}
               </p>
-              <Link to="/contact">
+              <Link to="/contact.html">
                 <Button size="lg" className="px-8">
                   {language === 'pl' ? 'Umów bezpłatną rozmowę' : 'Schedule a free call'}
                 </Button>
