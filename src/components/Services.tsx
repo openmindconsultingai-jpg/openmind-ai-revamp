@@ -285,7 +285,7 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
             {/* CTA Button */}
             <div className="mt-10 flex justify-center">
               <Link
-                to="/contact"
+                to="/contact.html"
                 className="group/cta relative inline-flex items-center gap-3 px-8 py-4 rounded-xl font-heading font-semibold text-base md:text-lg
                   bg-primary/10 border border-primary/40 text-primary backdrop-blur-sm
                   hover:bg-primary/20 hover:border-primary/60 hover:shadow-[0_0_40px_hsl(var(--primary)/0.2)]

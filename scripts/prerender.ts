@@ -677,6 +677,33 @@ function buildHtml(routePath: string, meta: Meta): string {
   return html;
 }
 
+/**
+ * Post-process every prerendered HTML file to rewrite internal links that
+ * point to bare section paths (no .html suffix) → .html variant. This catches
+ * links coming from markdown-derived content, FAQ blocks, JSON-LD body text
+ * or any future component that forgets the suffix.
+ *
+ * Rules:
+ * - Only href values are touched (text content is left alone).
+ * - Only the 6 SPA sections + city tree are normalized.
+ * - Skips: paths already ending in .html, root paths ("/services"-style that
+ *   end with "/" before query/hash), fragments-only, query-only.
+ * - Preserves optional https://www.openmindai.pl/ prefix, query string, hash.
+ */
+const INTERNAL_LINK_RE =
+  /href="((?:https:\/\/www\.openmindai\.pl)?)\/(services|about|contact|blog|ai-advisor|privacy|gdzie-dzialamy)((?:\/[^"#?\s]*)?)((?:[?#][^"\s]*)?)"/g;
+
+function fixInternalLinks(html: string): string {
+  return html.replace(INTERNAL_LINK_RE, (match, prefix, root, rest, query) => {
+    // rest is "" or "/segment[/segment...]"
+    if (rest.endsWith('.html')) return match;          // already correct
+    if (rest.endsWith('/')) return match;              // trailing slash variant — leave alone
+    // Build canonical .html path
+    const fixedPath = '/' + root + rest + '.html';
+    return `href="${prefix}${fixedPath}${query}"`;
+  });
+}
+
 function writeRoute(routePath: string, html: string) {
   // routePath like "/services/konsulting-ai"
   // Write BOTH variants so Lovable hosting can match the exact request path:
@@ -684,15 +711,27 @@ function writeRoute(routePath: string, html: string) {
   //   2) dist/services/konsulting-ai.html        (for clean URLs without slash)
   // Lovable hosting serves the file matching the request path verbatim and
   // only falls back to root index.html if no file matches — so we need both.
+  const finalHtml = fixInternalLinks(html);
   const rel = routePath.replace(/^\/+/, '');
   const dir = path.join(DIST, rel);
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
+  fs.writeFileSync(path.join(dir, 'index.html'), finalHtml, 'utf8');
 
   // Flat sibling .html — most static hosts map "/foo/bar" → "/foo/bar.html"
   const parent = path.join(DIST, path.dirname(rel));
   fs.mkdirSync(parent, { recursive: true });
-  fs.writeFileSync(path.join(DIST, rel + '.html'), html, 'utf8');
+  fs.writeFileSync(path.join(DIST, rel + '.html'), finalHtml, 'utf8');
+}
+
+// Also normalize the homepage HTML (links in default index.html body)
+try {
+  const homePath = path.join(DIST, 'index.html');
+  if (fs.existsSync(homePath)) {
+    const homeHtml = fs.readFileSync(homePath, 'utf8');
+    fs.writeFileSync(homePath, fixInternalLinks(homeHtml), 'utf8');
+  }
+} catch (e) {
+  console.warn('[prerender] could not normalize home index.html links', e);
 }
 
 // ---------------------------------------------------------------------------
