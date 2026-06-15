@@ -57,14 +57,14 @@ const App = () => (
             <Route path="/privacy" element={<Suspense fallback={<PageLoader />}><PrivacyPage /></Suspense>} />
             <Route path="/privacy.html" element={<Suspense fallback={<PageLoader />}><PrivacyPage /></Suspense>} />
             {/* 301-style redirects from legacy URLs — RedirectWithSeo sets noindex + canonical for crawlers */}
-            <Route path="/polityka-prywatnosci-i-bezpieczenstwo-danych" element={<RedirectWithSeo to="/privacy" />} />
-            <Route path="/polityka-prywatnosci-i-bezpieczenstwa-danych" element={<RedirectWithSeo to="/privacy" />} />
-            <Route path="/o-nas" element={<RedirectWithSeo to="/about" />} />
-            <Route path="/kontakt" element={<RedirectWithSeo to="/contact" />} />
-            <Route path="/oferta" element={<RedirectWithSeo to="/services" />} />
-            <Route path="/en/o-nas-en" element={<RedirectWithSeo to="/about" />} />
-            <Route path="/en/kontakt-en" element={<RedirectWithSeo to="/contact" />} />
-            <Route path="/en/oferta-en" element={<RedirectWithSeo to="/services" />} />
+            <Route path="/polityka-prywatnosci-i-bezpieczenstwo-danych" element={<RedirectWithSeo to="/privacy.html" />} />
+            <Route path="/polityka-prywatnosci-i-bezpieczenstwa-danych" element={<RedirectWithSeo to="/privacy.html" />} />
+            <Route path="/o-nas" element={<RedirectWithSeo to="/about.html" />} />
+            <Route path="/kontakt" element={<RedirectWithSeo to="/contact.html" />} />
+            <Route path="/oferta" element={<RedirectWithSeo to="/services.html" />} />
+            <Route path="/en/o-nas-en" element={<RedirectWithSeo to="/about.html" />} />
+            <Route path="/en/kontakt-en" element={<RedirectWithSeo to="/contact.html" />} />
+            <Route path="/en/oferta-en" element={<RedirectWithSeo to="/services.html" />} />
             <Route path="/ai-advisor" element={<Suspense fallback={<PageLoader />}><AIAdvisorPage /></Suspense>} />
             <Route path="/ai-advisor.html" element={<Suspense fallback={<PageLoader />}><AIAdvisorPage /></Suspense>} />
             <Route path="/gdzie-dzialamy/:slug" element={<Suspense fallback={<PageLoader />}><VoivodeshipDetail /></Suspense>} />
