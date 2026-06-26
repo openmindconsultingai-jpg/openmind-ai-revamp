@@ -225,7 +225,7 @@ const VideoHero = () => {
           left: 'clamp(0.25rem, 1.4vw, 1.75rem)',
           top: '49%',
           transform: 'translateY(-50%)',
-          width: 'clamp(430px, 48vw, 760px)',
+          width: 'clamp(440px, 48vw, 760px)',
           height: 'min(76svh, 720px)',
         }}
         aria-hidden="true"
@@ -251,13 +251,13 @@ const VideoHero = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto w-full lg:max-w-[48rem] lg:ml-auto lg:mr-[2.5vw] lg:pl-4 lg:pr-8 xl:max-w-[50rem] 2xl:mr-[5vw]">
+      <div className="relative z-20 text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[38rem] lg:ml-auto lg:mr-[2vw] lg:pl-3 lg:pr-5 xl:max-w-[38rem] 2xl:max-w-[44rem] 2xl:mr-[5vw]">
 
 
         {/* Visually prominent brand name */}
         <div 
           ref={titleRef}
-          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] 2xl:text-[9.25rem] font-bold mb-4 leading-none tracking-tight"
+          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-[6.4rem] xl:text-[7.15rem] 2xl:text-[8.2rem] font-bold mb-4 leading-none tracking-tight"
           aria-hidden="true"
         >
           <span className="text-foreground" style={{ textShadow: '0 0 60px hsl(176 100% 43% / 0.5)' }}>
