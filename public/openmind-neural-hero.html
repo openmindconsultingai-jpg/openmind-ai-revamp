@@ -262,7 +262,7 @@ const bloomRenderPass = new RenderPass(scene, camera);
 bloomRenderPass.clear = true;
 bloomRenderPass.clearAlpha = 0;
 bloomComposer.addPass(bloomRenderPass);
-const bloomPass = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 1.05, 0.55, 0.18);
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 1.75, 0.85, 0.05);
 bloomComposer.addPass(bloomPass);
 
 // Fullscreen quad that additively blits the bloom RT over the live canvas.
