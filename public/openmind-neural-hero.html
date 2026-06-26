@@ -235,9 +235,10 @@ const camera = new THREE.PerspectiveCamera(48, innerWidth / innerHeight, 0.1, 30
 camera.position.set(0, 0, 32);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, premultipliedAlpha: false });
-const PR = Math.min(devicePixelRatio, 2);
+const PR = Math.min(devicePixelRatio || 1, 3);
 renderer.setPixelRatio(PR);
 renderer.setSize(innerWidth, innerHeight);
+renderer.capabilities.getMaxAnisotropy && (renderer.maxAnisotropy = renderer.capabilities.getMaxAnisotropy());
 renderer.setClearColor(0x000000, 0);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
