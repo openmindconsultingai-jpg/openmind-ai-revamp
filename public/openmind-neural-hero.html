@@ -279,6 +279,9 @@ const blitMaterial = new THREE.ShaderMaterial({
 });
 const blitQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), blitMaterial);
 blitScene.add(blitQuad);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
 controls.dampingFactor = .05;
 controls.rotateSpeed = .45;
 controls.enablePan = false;
