@@ -115,9 +115,26 @@
     pointer-events: none;
     transform: translate(0, 0) scale(.96);
     transition: opacity .24s ease, transform .24s ease;
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
   }
 
-  #tip.show { opacity: 1; }
+  #tip.show { opacity: 1; pointer-events: auto; }
+
+  #tip-cta {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 223, 217, 0.55);
+    background: rgba(0, 223, 217, 0.12);
+    color: var(--teal);
+    font-family: "Outfit", "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .02em;
+  }
 
   .bubble {
     position: relative;
@@ -174,13 +191,14 @@
 <body>
   <div id="stage"></div>
   <div id="vignette"></div>
-  <aside id="tip" aria-hidden="true">
+  <a id="tip" href="#" target="_top" aria-hidden="true">
     <div class="bubble">
       <span id="tip-ic">-</span>
       <h2 id="tip-title">-</h2>
       <p id="tip-body">-</p>
+      <span id="tip-cta">Zobacz więcej →</span>
     </div>
-  </aside>
+  </a>
 <script type="importmap">
 {
   "imports": {
@@ -594,25 +612,33 @@ renderer.domElement.addEventListener("pointerup", (event) => {
   // Force raycast at tap position
   raycaster.setFromCamera(mouse, camera);
   const hits = raycaster.intersectObjects(nodeCores, false);
-  const node = hits.length ? hits[0].object : null;
-  if (!node) {
+  const wrapper = hits.length ? nodes[nodeCores.indexOf(hits[0].object)] : null;
+  if (!wrapper) {
     if (event.pointerType !== "mouse") setHover(null);
     return;
   }
+  const url = wrapper.data?.url;
   if (event.pointerType === "mouse") {
-    if (node.data?.url) window.top.location.href = node.data.url;
+    if (url) window.top.location.href = url;
     return;
   }
-  // Touch: first tap shows bubble, second tap on same node navigates
-  setHover(node);
+  // Touch: first tap shows bubble (with clickable CTA), second tap on same node navigates
+  setHover(wrapper);
   const now = Date.now();
-  if (lastTapNode === node && now - lastTapTime < 2500) {
-    if (node.data?.url) window.top.location.href = node.data.url;
+  if (lastTapNode === wrapper && now - lastTapTime < 2500) {
+    if (url) window.top.location.href = url;
     lastTapNode = null;
   } else {
-    lastTapNode = node;
+    lastTapNode = wrapper;
     lastTapTime = now;
   }
+});
+
+// Tip bubble itself is clickable — works on both desktop and touch.
+tip.addEventListener("click", (event) => {
+  event.preventDefault();
+  const url = tip.getAttribute("href");
+  if (url && url !== "#") window.top.location.href = url;
 });
 
 function setHover(node) {
@@ -634,11 +660,13 @@ function setHover(node) {
     tipIcon.textContent = node.data.ic;
     tipTitle.textContent = node.data.title;
     tipBody.textContent = node.data.body;
+    if (node.data.url) tip.setAttribute("href", node.data.url);
     tip.classList.add("show");
     tip.setAttribute("aria-hidden", "false");
   } else {
     tip.classList.remove("show");
     tip.setAttribute("aria-hidden", "true");
+    tip.setAttribute("href", "#");
   }
 }
 
