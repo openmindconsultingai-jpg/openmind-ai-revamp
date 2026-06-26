@@ -190,9 +190,6 @@
 <script type="module">
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
-import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
-import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 
 const NODES = [
   { ic: "🧭", title: "Doradztwo strategiczne", body: "Wskazujemy, gdzie AI realnie zwiększy zyski. Mapa wdrożeń, priorytety i ROI dopasowane do Twojej branży." },
@@ -247,14 +244,6 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.08;
 stage.appendChild(renderer.domElement);
 renderer.domElement.style.cursor = "grab";
-
-const composer = new EffectComposer(renderer);
-composer.renderTarget1.texture.format = THREE.RGBAFormat;
-composer.renderTarget2.texture.format = THREE.RGBAFormat;
-const renderPass = new RenderPass(scene, camera);
-renderPass.clearAlpha = 0;
-composer.addPass(renderPass);
-composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), .92, .42, .16));
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -638,7 +627,8 @@ function animate() {
   const hits = raycaster.intersectObjects(nodeCores, false);
   setHover(hits.length ? nodes[nodeCores.indexOf(hits[0].object)] : null);
   placeTip();
-  composer.render();
+  renderer.clear(true, true, true);
+  renderer.render(scene, camera);
   const previousAutoClear = renderer.autoClear;
   renderer.autoClear = false;
   renderer.clearDepth();
@@ -650,7 +640,6 @@ addEventListener("resize", () => {
   camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(innerWidth, innerHeight);
-  composer.setSize(innerWidth, innerHeight);
 });
 
 animate();
