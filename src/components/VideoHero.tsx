@@ -390,18 +390,11 @@ const VideoHero = () => {
           style={{ height: 'min(46svh, 360px)' }}
           aria-hidden="true"
         >
-          <div
-            className="absolute inset-0 rounded-2xl pointer-events-none"
-            style={{
-              border: '1px solid hsl(176 100% 43% / 0.08)',
-              boxShadow: '0 0 40px hsl(176 100% 43% / 0.05)',
-            }}
-          />
           <iframe
             src="/openmind-neural-hero.html?v=9"
             title="OpenMind AI – interaktywna sieć neuronowa"
             loading="lazy"
-            className="absolute inset-0 w-full h-full rounded-2xl"
+            className="absolute inset-0 w-full h-full"
             style={{ border: 'none', background: 'transparent', pointerEvents: 'none' }}
             allow="autoplay"
           />
