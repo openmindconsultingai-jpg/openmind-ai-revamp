@@ -560,10 +560,18 @@ let dragged = false;
 let time = 0;
 let intro = 0;
 
+let lastTapNode = null;
+let lastTapTime = 0;
+
 renderer.domElement.addEventListener("pointerdown", (event) => {
   pointerDownX = event.clientX;
   pointerDownY = event.clientY;
   dragged = false;
+  // For touch: update mouse coords on tap so raycaster can pick the node
+  mouse.x = (event.clientX / innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / innerHeight) * 2 + 1;
+  mouseX = event.clientX;
+  mouseY = event.clientY;
 });
 
 renderer.domElement.addEventListener("pointermove", (event) => {
@@ -574,13 +582,37 @@ renderer.domElement.addEventListener("pointermove", (event) => {
   if (Math.hypot(event.clientX - pointerDownX, event.clientY - pointerDownY) > 6) dragged = true;
 });
 
-renderer.domElement.addEventListener("pointerleave", () => {
-  mouse.set(-2, -2);
-  setHover(null);
+renderer.domElement.addEventListener("pointerleave", (event) => {
+  if (event.pointerType === "mouse") {
+    mouse.set(-2, -2);
+    setHover(null);
+  }
 });
 
-renderer.domElement.addEventListener("click", () => {
-  if (!dragged && hovered?.data?.url) window.top.location.href = hovered.data.url;
+renderer.domElement.addEventListener("pointerup", (event) => {
+  if (dragged) return;
+  // Force raycast at tap position
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(nodeCores, false);
+  const node = hits.length ? hits[0].object : null;
+  if (!node) {
+    if (event.pointerType !== "mouse") setHover(null);
+    return;
+  }
+  if (event.pointerType === "mouse") {
+    if (node.data?.url) window.top.location.href = node.data.url;
+    return;
+  }
+  // Touch: first tap shows bubble, second tap on same node navigates
+  setHover(node);
+  const now = Date.now();
+  if (lastTapNode === node && now - lastTapTime < 2500) {
+    if (node.data?.url) window.top.location.href = node.data.url;
+    lastTapNode = null;
+  } else {
+    lastTapNode = node;
+    lastTapTime = now;
+  }
 });
 
 function setHover(node) {
