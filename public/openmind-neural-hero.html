@@ -665,10 +665,21 @@ function animate() {
   const hits = raycaster.intersectObjects(nodeCores, false);
   setHover(hits.length ? nodes[nodeCores.indexOf(hits[0].object)] : null);
   placeTip();
+  // 1) Base scene → canvas with full transparency.
+  renderer.setRenderTarget(null);
+  renderer.setClearColor(0x000000, 0);
   renderer.clear(true, true, true);
   renderer.render(scene, camera);
+
+  // 2) Bloom-only pass → offscreen RT (clears to fully transparent black).
+  bloomComposer.render();
+
+  // 3) Additively blit bloom RT on top of the canvas (no alpha overwrite).
   const previousAutoClear = renderer.autoClear;
   renderer.autoClear = false;
+  renderer.render(blitScene, blitCamera);
+
+  // 4) Logo overlay on top, keeping depth cleared so it always wins.
   renderer.clearDepth();
   renderer.render(logoScene, camera);
   renderer.autoClear = previousAutoClear;
@@ -678,6 +689,9 @@ addEventListener("resize", () => {
   camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(innerWidth, innerHeight);
+  bloomComposer.setSize(innerWidth, innerHeight);
+  bloomPass.setSize(innerWidth, innerHeight);
+  blitMaterial.uniforms.tDiffuse.value = bloomComposer.renderTarget2.texture;
 });
 
 animate();
