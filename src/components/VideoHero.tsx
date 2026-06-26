@@ -131,8 +131,9 @@ const VideoHero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden py-24 sm:py-28 md:py-32" style={{ maxWidth: '100vw' }}
+      className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden py-24 sm:py-28 md:py-32" style={{ maxWidth: '100vw' }}
     >
+
       {/* Video Background - deferred loading for better FCP */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Placeholder gradient shown immediately */}
@@ -218,26 +219,25 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* Interactive 3D Neural Model — left side on desktop screens */}
+      {/* Interactive 3D Neural Model — left side on desktop screens, top-aligned with title */}
       <div
         className="hidden lg:block absolute z-[15] pointer-events-none"
         style={{
           left: 'clamp(0.5rem, 2vw, 2rem)',
-          top: '50%',
-          transform: 'translateY(-50%)',
+          top: 'clamp(5.5rem, 12vh, 9rem)',
           width: 'clamp(360px, 36vw, 560px)',
-          height: 'min(62svh, 560px)',
+          height: 'min(50svh, 460px)',
         }}
         aria-hidden="true"
       >
-        {/* Minimal translucent contrast layer — video remains visible behind the model */}
+        {/* Slightly more visible translucent contrast layer — video still passes through */}
         <div
           className="absolute inset-0 rounded-[2rem] pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at center, hsl(220 30% 6% / 0.10) 0%, hsl(220 30% 6% / 0.045) 54%, hsl(220 30% 6% / 0) 100%)',
-            border: '1px solid hsl(176 100% 43% / 0.07)',
-            boxShadow: '0 0 46px hsl(176 100% 43% / 0.045)',
+              'radial-gradient(ellipse at center, hsl(220 30% 6% / 0.22) 0%, hsl(220 30% 6% / 0.12) 55%, hsl(220 30% 6% / 0) 100%)',
+            border: '1px solid hsl(176 100% 43% / 0.10)',
+            boxShadow: '0 0 60px hsl(176 100% 43% / 0.06)',
           }}
         />
         <iframe
@@ -250,57 +250,61 @@ const VideoHero = () => {
         />
       </div>
 
-      {/* Hero Content */}
-      <div className="relative z-20 text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[34rem] lg:ml-auto lg:mr-[3vw] lg:pl-3 lg:pr-5 xl:max-w-[40rem] xl:mr-[4vw] 2xl:max-w-[46rem] 2xl:mr-[6vw]">
+      {/* Hero Text Content — right column on lg+ */}
+      <div className="relative z-20 w-full lg:flex lg:justify-end">
+        <div className="text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[34rem] lg:mx-0 lg:mr-[3vw] lg:pl-3 lg:pr-5 xl:max-w-[40rem] xl:mr-[4vw] 2xl:max-w-[46rem] 2xl:mr-[6vw]">
 
 
-        {/* Visually prominent brand name */}
-        <div 
-          ref={titleRef}
-          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-[4.5rem] xl:text-[5.25rem] 2xl:text-[6.25rem] font-bold mb-4 leading-none tracking-tight"
-          aria-hidden="true"
-        >
-          <span className="text-foreground" style={{ textShadow: '0 0 60px hsl(176 100% 43% / 0.5)' }}>
-            {titleText.split('').map((letter, i) => (
-              <span key={i} className="hero-letter inline-block">
-                {letter}
-              </span>
-            ))}
-          </span>
-          <span className="ml-4">
-            {aiText.split('').map((letter, i) => (
-              <span 
-                key={i} 
-                className="hero-letter inline-block text-gradient"
-                style={{ 
-                  textShadow: '0 0 80px hsl(176 100% 43% / 0.8), 0 0 160px hsl(176 100% 43% / 0.5)',
-                  ...(i === 1 ? { marginLeft: '-0.15em' } : {}),
-                }}
-              >
-                {letter}
-              </span>
-            ))}
-          </span>
-        </div>
+          {/* Visually prominent brand name */}
+          <div 
+            ref={titleRef}
+            className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-[4.5rem] xl:text-[5.25rem] 2xl:text-[6.25rem] font-bold mb-4 leading-none tracking-tight"
+            aria-hidden="true"
+          >
+            <span className="text-foreground" style={{ textShadow: '0 0 60px hsl(176 100% 43% / 0.5)' }}>
+              {titleText.split('').map((letter, i) => (
+                <span key={i} className="hero-letter inline-block">
+                  {letter}
+                </span>
+              ))}
+            </span>
+            <span className="ml-4">
+              {aiText.split('').map((letter, i) => (
+                <span 
+                  key={i} 
+                  className="hero-letter inline-block text-gradient"
+                  style={{ 
+                    textShadow: '0 0 80px hsl(176 100% 43% / 0.8), 0 0 160px hsl(176 100% 43% / 0.5)',
+                    ...(i === 1 ? { marginLeft: '-0.15em' } : {}),
+                  }}
+                >
+                  {letter}
+                </span>
+              ))}
+            </span>
+          </div>
 
+          {/* SEO H1 - visually smaller but semantically the main heading */}
+          <h1 className="hero-subtitle font-heading text-base sm:text-lg md:text-xl lg:text-[1.35rem] font-semibold text-foreground/85 mb-4 max-w-3xl mx-auto">
+            {seoH1Text}
+          </h1>
 
-        {/* SEO H1 - visually smaller but semantically the main heading */}
-        <h1 className="hero-subtitle font-heading text-base sm:text-lg md:text-xl lg:text-[1.35rem] font-semibold text-foreground/85 mb-4 max-w-3xl mx-auto">
-          {seoH1Text}
-        </h1>
-
-        {/* Subtitle */}
-        <div className="hero-subtitle font-sans max-w-2xl mx-auto mb-6 sm:mb-8 space-y-1" style={{ textAlign: 'center' }}>
-          <p className="text-sm sm:text-base md:text-lg leading-snug text-foreground/60" style={{ textAlign: 'center' }}>
-            {heroDescriptionText}
-          </p>
-          {heroDescription2Text && (
+          {/* Subtitle */}
+          <div className="hero-subtitle font-sans max-w-2xl mx-auto mb-6 sm:mb-8 space-y-1" style={{ textAlign: 'center' }}>
             <p className="text-sm sm:text-base md:text-lg leading-snug text-foreground/60" style={{ textAlign: 'center' }}>
-              {heroDescription2Text}
+              {heroDescriptionText}
             </p>
-          )}
+            {heroDescription2Text && (
+              <p className="text-sm sm:text-base md:text-lg leading-snug text-foreground/60" style={{ textAlign: 'center' }}>
+                {heroDescription2Text}
+              </p>
+            )}
+          </div>
         </div>
+      </div>
 
+      {/* CTA + Scroll indicator + Logo Ticker — centered full-width below hero columns */}
+      <div className="relative z-20 w-full max-w-6xl mx-auto px-5 mt-8 lg:mt-12 flex flex-col items-center">
         {/* CTA Button with glass effect and artistic animation */}
         <button 
           onClick={() => setIsBookingOpen(true)}
@@ -388,7 +392,7 @@ const VideoHero = () => {
           />
         </button>
 
-        {/* Scroll indicator - inline, between CTA and LogoTicker */}
+        {/* Scroll indicator */}
         <div className="mt-5 mb-3 sm:mt-6 sm:mb-4 flex flex-col items-center gap-2">
           <span className="font-sans text-xs text-foreground/50 uppercase tracking-[0.3em]">
             Scroll
@@ -408,6 +412,7 @@ const VideoHero = () => {
           </Suspense>
         )}
       </div>
+
     </section>
   );
 };
