@@ -115,9 +115,26 @@
     pointer-events: none;
     transform: translate(0, 0) scale(.96);
     transition: opacity .24s ease, transform .24s ease;
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
   }
 
-  #tip.show { opacity: 1; }
+  #tip.show { opacity: 1; pointer-events: auto; }
+
+  #tip-cta {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 223, 217, 0.55);
+    background: rgba(0, 223, 217, 0.12);
+    color: var(--teal);
+    font-family: "Outfit", "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .02em;
+  }
 
   .bubble {
     position: relative;
