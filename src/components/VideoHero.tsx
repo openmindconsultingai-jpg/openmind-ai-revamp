@@ -131,8 +131,9 @@ const VideoHero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden py-24 sm:py-28 md:py-32" style={{ maxWidth: '100vw' }}
+      className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden py-24 sm:py-28 md:py-32" style={{ maxWidth: '100vw' }}
     >
+
       {/* Video Background - deferred loading for better FCP */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Placeholder gradient shown immediately */}
