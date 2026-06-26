@@ -392,6 +392,29 @@ const VideoHero = () => {
           />
         </button>
 
+        {/* Mobile-only 3D model — placed under the CTA, non-intrusive (pointer-events disabled so swipe scroll passes through) */}
+        <div
+          className="lg:hidden relative w-full mt-8 mb-2"
+          style={{ height: 'min(46svh, 360px)' }}
+          aria-hidden="true"
+        >
+          <div
+            className="absolute inset-0 rounded-2xl pointer-events-none"
+            style={{
+              border: '1px solid hsl(176 100% 43% / 0.08)',
+              boxShadow: '0 0 40px hsl(176 100% 43% / 0.05)',
+            }}
+          />
+          <iframe
+            src="/openmind-neural-hero.html?v=9"
+            title="OpenMind AI – interaktywna sieć neuronowa"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full rounded-2xl"
+            style={{ border: 'none', background: 'transparent', pointerEvents: 'none' }}
+            allow="autoplay"
+          />
+        </div>
+
         {/* Scroll indicator */}
         <div className="mt-5 mb-3 sm:mt-6 sm:mb-4 flex flex-col items-center gap-2">
           <span className="font-sans text-xs text-foreground/50 uppercase tracking-[0.3em]">
