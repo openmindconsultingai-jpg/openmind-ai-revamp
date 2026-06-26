@@ -644,9 +644,12 @@ function animate() {
     node.core.scale.setScalar(pulse);
     node.core.material.emissiveIntensity += (node.targetEmissive - node.core.material.emissiveIntensity) * .12;
 
-    const targetScale = (hovered === node ? 4.4 : 3) * pulse;
+    const targetScale = (hovered === node ? 9 : 6.5) * pulse;
     node.glow.scale.setScalar(node.glow.scale.x + (targetScale - node.glow.scale.x) * .12);
     node.glow.material.opacity += (node.targetGlow - node.glow.material.opacity) * .12;
+    const haloScale = (hovered === node ? 14 : 11) * pulse;
+    node.halo.scale.setScalar(node.halo.scale.x + (haloScale - node.halo.scale.x) * .12);
+    node.halo.material.opacity += (node.targetHalo - node.halo.material.opacity) * .12;
     node.ring.material.opacity += (node.targetRing - node.ring.material.opacity) * .12;
     node.ring.rotation.x += .02;
     node.ring.rotation.y += .015;
