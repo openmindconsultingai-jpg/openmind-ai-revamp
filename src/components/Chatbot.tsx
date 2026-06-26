@@ -166,22 +166,22 @@ const Chatbot = () => {
             <button
               type="button"
               onClick={() => { setIsOpen(true); setShowBubble(false); }}
-              className="relative group max-w-[240px] rounded-2xl rounded-br-sm bg-card/95 backdrop-blur-xl border border-primary/40 px-4 py-2.5 pr-8 text-sm text-foreground shadow-xl animate-in fade-in slide-in-from-bottom-2 duration-500 hover:border-primary/70 transition-colors"
-              style={{ boxShadow: '0 0 30px rgba(0, 223, 217, 0.18), 0 10px 25px rgba(0,0,0,0.4)' }}
+              className="relative group max-w-[240px] rounded-2xl rounded-br-sm bg-background/30 backdrop-blur-xl border border-primary/40 px-4 py-2.5 pr-8 text-sm font-sans text-foreground shadow-xl animate-in fade-in slide-in-from-bottom-2 duration-500 hover:border-primary/70 transition-colors"
+              style={{ boxShadow: '0 0 24px rgba(0, 223, 217, 0.18), 0 10px 25px rgba(0,0,0,0.25)' }}
             >
-              <span className="block text-left leading-snug">
+              <span className="block text-left leading-snug font-sans">
                 {language === 'pl' ? 'W czym mogę Ci pomóc? 👋' : 'How can I help you? 👋'}
               </span>
               <span
                 onClick={dismissBubble}
                 role="button"
                 aria-label={language === 'pl' ? 'Zamknij' : 'Close'}
-                className="absolute top-1.5 right-1.5 w-5 h-5 flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
+                className="absolute top-1.5 right-1.5 w-5 h-5 flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-muted/40 transition-colors"
               >
                 <X className="w-3 h-3" />
               </span>
               {/* tail */}
-              <span className="absolute -bottom-1.5 right-4 w-3 h-3 bg-card/95 border-r border-b border-primary/40 rotate-45" />
+              <span className="absolute -bottom-1.5 right-4 w-3 h-3 bg-background/30 backdrop-blur-xl border-r border-b border-primary/40 rotate-45" />
             </button>
           )}
         <Button
@@ -241,14 +241,19 @@ const Chatbot = () => {
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
-                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed font-sans backdrop-blur-md ${
                     msg.role === "user"
-                      ? "bg-primary text-primary-foreground rounded-br-md"
-                      : "bg-muted/60 text-foreground rounded-bl-md"
+                      ? "rounded-br-md text-foreground border border-primary/40 bg-primary/15"
+                      : "rounded-bl-md text-foreground border border-border/40 bg-card/30"
                   }`}
+                  style={
+                    msg.role === "user"
+                      ? { boxShadow: '0 0 18px rgba(0, 223, 217, 0.18)' }
+                      : { boxShadow: '0 0 14px rgba(0, 223, 217, 0.06)' }
+                  }
                 >
                   {msg.role === "assistant" ? (
-                    <div className="prose prose-sm prose-invert max-w-none [&_a]:text-primary [&_a]:underline [&_p]:mb-2 [&_p:last-child]:mb-0">
+                    <div className="prose prose-sm prose-invert max-w-none font-sans [&_*]:font-sans [&_a]:text-primary [&_a]:underline [&_p]:mb-2 [&_p:last-child]:mb-0 [&_strong]:text-foreground">
                       <ReactMarkdown>{msg.content}</ReactMarkdown>
                     </div>
                   ) : (
@@ -259,7 +264,7 @@ const Chatbot = () => {
             ))}
             {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
               <div className="flex justify-start">
-                <div className="bg-muted/60 rounded-2xl rounded-bl-md px-4 py-3">
+                <div className="rounded-2xl rounded-bl-md px-4 py-3 border border-border/40 bg-card/30 backdrop-blur-md">
                   <div className="flex gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: "0ms" }} />
                     <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: "150ms" }} />
