@@ -219,11 +219,11 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* Interactive 3D Neural Model — left side on desktop screens, top-aligned with title */}
+      {/* Interactive 3D Neural Model — right side on desktop screens, top-aligned with title */}
       <div
         className="hidden lg:block absolute z-[25]"
         style={{
-          left: 'clamp(0.5rem, 2vw, 2.5rem)',
+          right: 'clamp(0.5rem, 2vw, 2.5rem)',
           top: 'clamp(5rem, 11vh, 8.5rem)',
           width: 'clamp(480px, 46vw, 760px)',
           height: 'min(68svh, 660px)',
@@ -231,27 +231,19 @@ const VideoHero = () => {
         }}
         aria-hidden="true"
       >
-        {/* Very subtle border-only frame — fully transparent so video shows through */}
-        <div
-          className="absolute inset-0 rounded-[2rem] pointer-events-none"
-          style={{
-            border: '1px solid hsl(176 100% 43% / 0.08)',
-            boxShadow: '0 0 60px hsl(176 100% 43% / 0.05)',
-          }}
-        />
         <iframe
           src="/openmind-neural-hero.html?v=9"
           title="OpenMind AI – interaktywna sieć neuronowa"
           loading="lazy"
-          className="absolute inset-0 w-full h-full rounded-[2rem]"
+          className="absolute inset-0 w-full h-full"
           style={{ border: 'none', background: 'transparent', pointerEvents: 'auto' }}
           allow="autoplay"
         />
       </div>
 
-      {/* Hero Text Content — right column on lg+; pointer-events scoped so model stays clickable */}
-      <div className="relative z-20 w-full lg:flex lg:justify-end pointer-events-none">
-        <div className="text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[34rem] lg:mx-0 lg:mr-[3vw] lg:pl-3 lg:pr-5 xl:max-w-[40rem] xl:mr-[4vw] 2xl:max-w-[46rem] 2xl:mr-[6vw] pointer-events-auto">
+      {/* Hero Text Content — left column on lg+; pointer-events scoped so model stays clickable */}
+      <div className="relative z-20 w-full lg:flex lg:justify-start pointer-events-none">
+        <div className="text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[34rem] lg:mx-0 lg:ml-[3vw] lg:pr-3 lg:pl-5 xl:max-w-[40rem] xl:ml-[4vw] 2xl:max-w-[46rem] 2xl:ml-[6vw] pointer-events-auto">
 
 
 
