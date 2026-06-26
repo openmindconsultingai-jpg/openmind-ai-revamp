@@ -585,9 +585,9 @@ renderer.domElement.addEventListener("click", () => {
 function setHover(node) {
   if (hovered === node) return;
   if (hovered) {
-    hovered.targetEmissive = 3.6;
-    hovered.targetGlow = 1;
-    hovered.targetHalo = .55;
+    hovered.targetEmissive = 2.8;
+    hovered.targetGlow = .9;
+    hovered.targetHalo = .28;
     hovered.targetRing = 0;
   }
 
@@ -596,9 +596,9 @@ function setHover(node) {
   renderer.domElement.style.cursor = node ? "pointer" : "grab";
 
   if (node) {
-    node.targetEmissive = 6;
-    node.targetGlow = 1.4;
-    node.targetHalo = .9;
+    node.targetEmissive = 5;
+    node.targetGlow = 1.3;
+    node.targetHalo = .55;
     node.targetRing = .9;
     tipIcon.textContent = node.data.ic;
     tipTitle.textContent = node.data.title;
