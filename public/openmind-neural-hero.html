@@ -14,16 +14,16 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; overflow: hidden; background: transparent; }
+  html, body { height: 100%; overflow: hidden; background: transparent !important; }
   body {
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
-    background: transparent;
+    background: transparent !important;
   }
 
-  #stage { position: fixed; inset: 0; touch-action: none; }
-  canvas { display: block; background: transparent; }
+  #stage { position: fixed; inset: 0; touch-action: none; background: transparent !important; }
+  canvas { display: block; background: transparent !important; }
 
   /* Hide vignette/brand/hint — only the 3D model + hover tip are kept */
   #vignette, #brand, #hint { display: none !important; }
@@ -231,15 +231,17 @@ const tipTitle = document.getElementById("tip-title");
 const tipBody = document.getElementById("tip-body");
 
 const scene = new THREE.Scene();
-// Fog wyciszone, by model nie tworzył ciemnej poświaty na przezroczystym tle
-scene.fog = new THREE.FogExp2(0x0a1828, 0.006);
+scene.background = null;
+scene.fog = null;
 
-const camera = new THREE.PerspectiveCamera(48, innerWidth / innerHeight, 0.1, 300);
-camera.position.set(0, 0, 32);
+const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, 0.1, 300);
+camera.position.set(0, 0, 27);
 
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, premultipliedAlpha: false });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 renderer.setSize(innerWidth, innerHeight);
+renderer.setClearColor(0x000000, 0);
+renderer.autoClearColor = false;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.08;
@@ -247,15 +249,19 @@ stage.appendChild(renderer.domElement);
 renderer.domElement.style.cursor = "grab";
 
 const composer = new EffectComposer(renderer);
-composer.addPass(new RenderPass(scene, camera));
-composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 1.08, .55, .18));
+composer.renderTarget1.texture.format = THREE.RGBAFormat;
+composer.renderTarget2.texture.format = THREE.RGBAFormat;
+const renderPass = new RenderPass(scene, camera);
+renderPass.clearAlpha = 0;
+composer.addPass(renderPass);
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), .92, .42, .16));
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = .05;
 controls.rotateSpeed = .45;
 controls.enablePan = false;
-controls.minDistance = 20;
+controls.minDistance = 17;
 controls.maxDistance = 48;
 controls.autoRotate = true;
 controls.autoRotateSpeed = .55;
@@ -289,22 +295,22 @@ const core1 = new THREE.Sprite(new THREE.SpriteMaterial({
   map: DOT,
   color: 0x7ff0e6,
   transparent: true,
-  opacity: .14,
+  opacity: .11,
   blending: THREE.AdditiveBlending,
   depthWrite: false
 }));
-core1.scale.setScalar(15);
+core1.scale.setScalar(13.5);
 root.add(core1);
 
 const core2 = new THREE.Sprite(new THREE.SpriteMaterial({
   map: DOT,
   color: 0x6aa8ff,
   transparent: true,
-  opacity: .11,
+  opacity: .075,
   blending: THREE.AdditiveBlending,
   depthWrite: false
 }));
-core2.scale.setScalar(28);
+core2.scale.setScalar(22);
 root.add(core2);
 
 const logoPlane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({
@@ -583,12 +589,12 @@ function animate() {
 
   if (intro < 1) {
     intro += .014;
-    root.scale.setScalar(.7 + intro * .3);
+    root.scale.setScalar(.78 + intro * .22);
   }
 
   const corePulse = 1 + Math.sin(time * 1.2) * .05;
-  core1.scale.setScalar(15 * corePulse);
-  core2.scale.setScalar(28 * corePulse);
+  core1.scale.setScalar(13.5 * corePulse);
+  core2.scale.setScalar(22 * corePulse);
   logoPlane.material.opacity += (1 - logoPlane.material.opacity) * .04;
   const logoPulse = 1 + Math.sin(time * 1.1) * .02;
   logoPlane.scale.set(logoPlane.userData.baseWidth * logoPulse, logoPlane.userData.baseHeight * logoPulse, 1);
