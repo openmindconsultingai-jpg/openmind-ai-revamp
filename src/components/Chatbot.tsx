@@ -241,14 +241,19 @@ const Chatbot = () => {
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
-                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed font-sans backdrop-blur-md ${
                     msg.role === "user"
-                      ? "bg-primary text-primary-foreground rounded-br-md"
-                      : "bg-muted/60 text-foreground rounded-bl-md"
+                      ? "rounded-br-md text-foreground border border-primary/40 bg-primary/15"
+                      : "rounded-bl-md text-foreground border border-border/40 bg-card/30"
                   }`}
+                  style={
+                    msg.role === "user"
+                      ? { boxShadow: '0 0 18px rgba(0, 223, 217, 0.18)' }
+                      : { boxShadow: '0 0 14px rgba(0, 223, 217, 0.06)' }
+                  }
                 >
                   {msg.role === "assistant" ? (
-                    <div className="prose prose-sm prose-invert max-w-none [&_a]:text-primary [&_a]:underline [&_p]:mb-2 [&_p:last-child]:mb-0">
+                    <div className="prose prose-sm prose-invert max-w-none font-sans [&_*]:font-sans [&_a]:text-primary [&_a]:underline [&_p]:mb-2 [&_p:last-child]:mb-0 [&_strong]:text-foreground">
                       <ReactMarkdown>{msg.content}</ReactMarkdown>
                     </div>
                   ) : (
@@ -259,7 +264,7 @@ const Chatbot = () => {
             ))}
             {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
               <div className="flex justify-start">
-                <div className="bg-muted/60 rounded-2xl rounded-bl-md px-4 py-3">
+                <div className="rounded-2xl rounded-bl-md px-4 py-3 border border-border/40 bg-card/30 backdrop-blur-md">
                   <div className="flex gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: "0ms" }} />
                     <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: "150ms" }} />
