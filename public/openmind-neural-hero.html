@@ -244,8 +244,17 @@ renderer.toneMappingExposure = 1.08;
 stage.appendChild(renderer.domElement);
 renderer.domElement.style.cursor = "grab";
 
-const composer = new EffectComposer(renderer);
-composer.addPass(new RenderPass(scene, camera));
+// Alpha-aware render target so EffectComposer preserves transparency
+const composerRT = new THREE.WebGLRenderTarget(innerWidth, innerHeight, {
+  format: THREE.RGBAFormat,
+  type: THREE.HalfFloatType,
+  samples: 4,
+});
+const composer = new EffectComposer(renderer, composerRT);
+const renderPass = new RenderPass(scene, camera);
+renderPass.clearColor = new THREE.Color(0x000000);
+renderPass.clearAlpha = 0;
+composer.addPass(renderPass);
 composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 1.08, .55, .18));
 
 const controls = new OrbitControls(camera, renderer.domElement);
