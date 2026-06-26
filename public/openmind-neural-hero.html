@@ -14,15 +14,15 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; overflow: hidden; background: transparent; }
+  html, body { height: 100%; overflow: hidden; background: transparent !important; background-color: transparent !important; }
   body {
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
   }
 
-  #stage { position: fixed; inset: 0; touch-action: none; }
-  canvas { display: block; }
+  #stage { position: fixed; inset: 0; touch-action: none; background: transparent !important; }
+  canvas { display: block; background: transparent !important; }
 
   #vignette { display: none; }
 
@@ -188,9 +188,6 @@
 <script type="module">
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
-import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
-import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 
 const NODES = [
   { ic: "🧭", title: "Doradztwo strategiczne", body: "Wskazujemy, gdzie AI realnie zwiększy zyski. Mapa wdrożeń, priorytety i ROI dopasowane do Twojej branży." },
@@ -243,19 +240,6 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.08;
 stage.appendChild(renderer.domElement);
 renderer.domElement.style.cursor = "grab";
-
-// Alpha-aware render target so EffectComposer preserves transparency
-const composerRT = new THREE.WebGLRenderTarget(innerWidth, innerHeight, {
-  format: THREE.RGBAFormat,
-  type: THREE.HalfFloatType,
-  samples: 4,
-});
-const composer = new EffectComposer(renderer, composerRT);
-const renderPass = new RenderPass(scene, camera);
-renderPass.clearColor = new THREE.Color(0x000000);
-renderPass.clearAlpha = 0;
-composer.addPass(renderPass);
-composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 1.08, .55, .18));
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -642,7 +626,8 @@ function animate() {
   const hits = raycaster.intersectObjects(nodeCores, false);
   setHover(hits.length ? nodes[nodeCores.indexOf(hits[0].object)] : null);
   placeTip();
-  composer.render();
+  renderer.clear(true, true, true);
+  renderer.render(scene, camera);
   const previousAutoClear = renderer.autoClear;
   renderer.autoClear = false;
   renderer.clearDepth();
@@ -654,7 +639,6 @@ addEventListener("resize", () => {
   camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(innerWidth, innerHeight);
-  composer.setSize(innerWidth, innerHeight);
 });
 
 animate();
