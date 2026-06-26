@@ -240,7 +240,7 @@ const VideoHero = () => {
           }}
         />
         <iframe
-          src="/openmind-neural-hero.html?v=3"
+          src="/openmind-neural-hero.html?v=4"
           title="OpenMind AI – interaktywna sieć neuronowa"
           loading="lazy"
           className="absolute inset-0 w-full h-full rounded-[2rem]"
