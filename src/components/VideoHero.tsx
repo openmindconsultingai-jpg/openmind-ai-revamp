@@ -221,38 +221,38 @@ const VideoHero = () => {
 
       {/* Interactive 3D Neural Model — left side on desktop screens, top-aligned with title */}
       <div
-        className="hidden lg:block absolute z-[15] pointer-events-none"
+        className="hidden lg:block absolute z-[25]"
         style={{
-          left: 'clamp(0.5rem, 2vw, 2rem)',
-          top: 'clamp(5.5rem, 12vh, 9rem)',
-          width: 'clamp(360px, 36vw, 560px)',
-          height: 'min(50svh, 460px)',
+          left: 'clamp(0.5rem, 2vw, 2.5rem)',
+          top: 'clamp(5rem, 11vh, 8.5rem)',
+          width: 'clamp(480px, 46vw, 760px)',
+          height: 'min(68svh, 660px)',
+          pointerEvents: 'none',
         }}
         aria-hidden="true"
       >
-        {/* Slightly more visible translucent contrast layer — video still passes through */}
+        {/* Very subtle border-only frame — fully transparent so video shows through */}
         <div
           className="absolute inset-0 rounded-[2rem] pointer-events-none"
           style={{
-            background:
-              'radial-gradient(ellipse at center, hsl(220 30% 6% / 0.22) 0%, hsl(220 30% 6% / 0.12) 55%, hsl(220 30% 6% / 0) 100%)',
-            border: '1px solid hsl(176 100% 43% / 0.10)',
-            boxShadow: '0 0 60px hsl(176 100% 43% / 0.06)',
+            border: '1px solid hsl(176 100% 43% / 0.08)',
+            boxShadow: '0 0 60px hsl(176 100% 43% / 0.05)',
           }}
         />
         <iframe
-          src="/openmind-neural-hero.html"
+          src="/openmind-neural-hero.html?v=3"
           title="OpenMind AI – interaktywna sieć neuronowa"
           loading="lazy"
-          className="absolute inset-0 w-full h-full rounded-[2rem] pointer-events-auto"
-          style={{ border: 'none', background: 'transparent' }}
+          className="absolute inset-0 w-full h-full rounded-[2rem]"
+          style={{ border: 'none', background: 'transparent', pointerEvents: 'auto' }}
           allow="autoplay"
         />
       </div>
 
-      {/* Hero Text Content — right column on lg+ */}
-      <div className="relative z-20 w-full lg:flex lg:justify-end">
-        <div className="text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[34rem] lg:mx-0 lg:mr-[3vw] lg:pl-3 lg:pr-5 xl:max-w-[40rem] xl:mr-[4vw] 2xl:max-w-[46rem] 2xl:mr-[6vw]">
+      {/* Hero Text Content — right column on lg+; pointer-events scoped so model stays clickable */}
+      <div className="relative z-20 w-full lg:flex lg:justify-end pointer-events-none">
+        <div className="text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[34rem] lg:mx-0 lg:mr-[3vw] lg:pl-3 lg:pr-5 xl:max-w-[40rem] xl:mr-[4vw] 2xl:max-w-[46rem] 2xl:mr-[6vw] pointer-events-auto">
+
 
 
           {/* Visually prominent brand name */}
