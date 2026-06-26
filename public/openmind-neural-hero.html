@@ -258,12 +258,14 @@ const bloomRT = new THREE.WebGLRenderTarget(innerWidth * PR, innerHeight * PR, {
   stencilBuffer: false
 });
 const bloomComposer = new EffectComposer(renderer, bloomRT);
+bloomComposer.setPixelRatio(PR);
+bloomComposer.setSize(innerWidth, innerHeight);
 bloomComposer.renderToScreen = false;
 const bloomRenderPass = new RenderPass(scene, camera);
 bloomRenderPass.clear = true;
 bloomRenderPass.clearAlpha = 0;
 bloomComposer.addPass(bloomRenderPass);
-const bloomPass = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 1.05, 0.55, 0.18);
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(innerWidth * PR, innerHeight * PR), 1.05, 0.55, 0.18);
 bloomComposer.addPass(bloomPass);
 
 // Fullscreen quad that additively blits the bloom RT over the live canvas.
