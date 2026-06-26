@@ -188,6 +188,9 @@
 <script type="module">
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 
 const NODES = [
   { ic: "🧭", title: "Doradztwo strategiczne", body: "Wskazujemy, gdzie AI realnie zwiększy zyski. Mapa wdrożeń, priorytety i ROI dopasowane do Twojej branży." },
@@ -232,14 +235,50 @@ const camera = new THREE.PerspectiveCamera(48, innerWidth / innerHeight, 0.1, 30
 camera.position.set(0, 0, 32);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, premultipliedAlpha: false });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const PR = Math.min(devicePixelRatio, 2);
+renderer.setPixelRatio(PR);
 renderer.setSize(innerWidth, innerHeight);
 renderer.setClearColor(0x000000, 0);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.08;
+renderer.toneMappingExposure = 1.18;
 stage.appendChild(renderer.domElement);
 renderer.domElement.style.cursor = "grab";
+
+// --- Selective additive bloom (transparency-preserving) -----------------
+// Render scene directly to the canvas (transparent), then render a bloom
+// pass to an offscreen RGBA render target with a fully transparent clear,
+// and additively blit it on top of the canvas via a fullscreen quad.
+const bloomRT = new THREE.WebGLRenderTarget(innerWidth * PR, innerHeight * PR, {
+  type: THREE.HalfFloatType,
+  format: THREE.RGBAFormat,
+  colorSpace: THREE.LinearSRGBColorSpace,
+  depthBuffer: false,
+  stencilBuffer: false
+});
+const bloomComposer = new EffectComposer(renderer, bloomRT);
+bloomComposer.renderToScreen = false;
+const bloomRenderPass = new RenderPass(scene, camera);
+bloomRenderPass.clear = true;
+bloomRenderPass.clearAlpha = 0;
+bloomComposer.addPass(bloomRenderPass);
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 1.05, 0.55, 0.18);
+bloomComposer.addPass(bloomPass);
+
+// Fullscreen quad that additively blits the bloom RT over the live canvas.
+const blitScene = new THREE.Scene();
+const blitCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const blitMaterial = new THREE.ShaderMaterial({
+  uniforms: { tDiffuse: { value: bloomComposer.renderTarget2.texture } },
+  vertexShader: "varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }",
+  fragmentShader: "uniform sampler2D tDiffuse; varying vec2 vUv; void main(){ vec4 c = texture2D(tDiffuse, vUv); float a = clamp(max(c.r, max(c.g, c.b)), 0.0, 1.0); gl_FragColor = vec4(c.rgb, a); }",
+  transparent: true,
+  blending: THREE.AdditiveBlending,
+  depthTest: false,
+  depthWrite: false
+});
+const blitQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), blitMaterial);
+blitScene.add(blitQuad);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -626,10 +665,21 @@ function animate() {
   const hits = raycaster.intersectObjects(nodeCores, false);
   setHover(hits.length ? nodes[nodeCores.indexOf(hits[0].object)] : null);
   placeTip();
+  // 1) Base scene → canvas with full transparency.
+  renderer.setRenderTarget(null);
+  renderer.setClearColor(0x000000, 0);
   renderer.clear(true, true, true);
   renderer.render(scene, camera);
+
+  // 2) Bloom-only pass → offscreen RT (clears to fully transparent black).
+  bloomComposer.render();
+
+  // 3) Additively blit bloom RT on top of the canvas (no alpha overwrite).
   const previousAutoClear = renderer.autoClear;
   renderer.autoClear = false;
+  renderer.render(blitScene, blitCamera);
+
+  // 4) Logo overlay on top, keeping depth cleared so it always wins.
   renderer.clearDepth();
   renderer.render(logoScene, camera);
   renderer.autoClear = previousAutoClear;
@@ -639,6 +689,9 @@ addEventListener("resize", () => {
   camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(innerWidth, innerHeight);
+  bloomComposer.setSize(innerWidth, innerHeight);
+  bloomPass.setSize(innerWidth, innerHeight);
+  blitMaterial.uniforms.tDiffuse.value = bloomComposer.renderTarget2.texture;
 });
 
 animate();
