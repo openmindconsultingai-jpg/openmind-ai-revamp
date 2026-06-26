@@ -218,43 +218,43 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* Interactive 3D Neural Model — left side on lg+ screens */}
+      {/* Interactive 3D Neural Model — left side on xl+ screens (≥1280px) */}
       <div
-        className="hidden lg:block absolute z-[15] pointer-events-none"
+        className="hidden xl:block absolute z-[15] pointer-events-none"
         style={{
-          left: '0',
+          left: '1.5%',
           top: '50%',
           transform: 'translateY(-50%)',
-          width: '46%',
-          height: '82vh',
-          maxHeight: '780px',
+          width: '38%',
+          maxWidth: '560px',
+          height: '70vh',
+          maxHeight: '640px',
         }}
         aria-hidden="true"
       >
-        {/* Semi-transparent dark backdrop — model stays readable, hero video bleeds through */}
+        {/* Very light backdrop — just enough contrast so the model reads, hero video bleeds through */}
         <div
-          className="absolute inset-4 rounded-3xl pointer-events-none"
+          className="absolute inset-2 rounded-[2rem] pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at center, hsl(220 30% 4% / 0.55) 0%, hsl(220 30% 4% / 0.35) 60%, hsl(220 30% 4% / 0.1) 100%)',
-            backdropFilter: 'blur(2px)',
-            WebkitBackdropFilter: 'blur(2px)',
-            border: '1px solid hsl(176 100% 43% / 0.12)',
-            boxShadow: '0 0 80px hsl(176 100% 43% / 0.08), inset 0 0 60px hsl(220 30% 4% / 0.3)',
+              'radial-gradient(ellipse at center, hsl(220 30% 6% / 0.28) 0%, hsl(220 30% 6% / 0.14) 55%, hsl(220 30% 6% / 0) 100%)',
+            border: '1px solid hsl(176 100% 43% / 0.10)',
+            boxShadow: '0 0 60px hsl(176 100% 43% / 0.06)',
           }}
         />
         <iframe
           src="/openmind-neural-hero.html"
           title="OpenMind AI – interaktywna sieć neuronowa"
           loading="lazy"
-          className="absolute inset-0 w-full h-full rounded-3xl pointer-events-auto"
+          className="absolute inset-0 w-full h-full rounded-[2rem] pointer-events-auto"
           style={{ border: 'none', background: 'transparent' }}
           allow="autoplay"
         />
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto w-full lg:max-w-none lg:ml-[46%] lg:mr-0 lg:pl-8 lg:pr-12 lg:text-left">
+      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto w-full xl:max-w-none xl:ml-[40%] xl:mr-0 xl:pl-6 xl:pr-10">
+
 
         {/* Visually prominent brand name */}
         <div 
