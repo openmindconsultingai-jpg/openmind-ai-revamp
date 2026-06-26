@@ -166,22 +166,22 @@ const Chatbot = () => {
             <button
               type="button"
               onClick={() => { setIsOpen(true); setShowBubble(false); }}
-              className="relative group max-w-[240px] rounded-2xl rounded-br-sm bg-card/95 backdrop-blur-xl border border-primary/40 px-4 py-2.5 pr-8 text-sm text-foreground shadow-xl animate-in fade-in slide-in-from-bottom-2 duration-500 hover:border-primary/70 transition-colors"
-              style={{ boxShadow: '0 0 30px rgba(0, 223, 217, 0.18), 0 10px 25px rgba(0,0,0,0.4)' }}
+              className="relative group max-w-[240px] rounded-2xl rounded-br-sm bg-background/30 backdrop-blur-xl border border-primary/40 px-4 py-2.5 pr-8 text-sm font-sans text-foreground shadow-xl animate-in fade-in slide-in-from-bottom-2 duration-500 hover:border-primary/70 transition-colors"
+              style={{ boxShadow: '0 0 24px rgba(0, 223, 217, 0.18), 0 10px 25px rgba(0,0,0,0.25)' }}
             >
-              <span className="block text-left leading-snug">
+              <span className="block text-left leading-snug font-sans">
                 {language === 'pl' ? 'W czym mogę Ci pomóc? 👋' : 'How can I help you? 👋'}
               </span>
               <span
                 onClick={dismissBubble}
                 role="button"
                 aria-label={language === 'pl' ? 'Zamknij' : 'Close'}
-                className="absolute top-1.5 right-1.5 w-5 h-5 flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
+                className="absolute top-1.5 right-1.5 w-5 h-5 flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-muted/40 transition-colors"
               >
                 <X className="w-3 h-3" />
               </span>
               {/* tail */}
-              <span className="absolute -bottom-1.5 right-4 w-3 h-3 bg-card/95 border-r border-b border-primary/40 rotate-45" />
+              <span className="absolute -bottom-1.5 right-4 w-3 h-3 bg-background/30 backdrop-blur-xl border-r border-b border-primary/40 rotate-45" />
             </button>
           )}
         <Button
