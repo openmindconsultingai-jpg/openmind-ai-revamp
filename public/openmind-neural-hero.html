@@ -660,11 +660,13 @@ function setHover(node) {
     tipIcon.textContent = node.data.ic;
     tipTitle.textContent = node.data.title;
     tipBody.textContent = node.data.body;
+    if (node.data.url) tip.setAttribute("href", node.data.url);
     tip.classList.add("show");
     tip.setAttribute("aria-hidden", "false");
   } else {
     tip.classList.remove("show");
     tip.setAttribute("aria-hidden", "true");
+    tip.setAttribute("href", "#");
   }
 }
 
