@@ -612,25 +612,33 @@ renderer.domElement.addEventListener("pointerup", (event) => {
   // Force raycast at tap position
   raycaster.setFromCamera(mouse, camera);
   const hits = raycaster.intersectObjects(nodeCores, false);
-  const node = hits.length ? hits[0].object : null;
-  if (!node) {
+  const wrapper = hits.length ? nodes[nodeCores.indexOf(hits[0].object)] : null;
+  if (!wrapper) {
     if (event.pointerType !== "mouse") setHover(null);
     return;
   }
+  const url = wrapper.data?.url;
   if (event.pointerType === "mouse") {
-    if (node.data?.url) window.top.location.href = node.data.url;
+    if (url) window.top.location.href = url;
     return;
   }
-  // Touch: first tap shows bubble, second tap on same node navigates
-  setHover(node);
+  // Touch: first tap shows bubble (with clickable CTA), second tap on same node navigates
+  setHover(wrapper);
   const now = Date.now();
-  if (lastTapNode === node && now - lastTapTime < 2500) {
-    if (node.data?.url) window.top.location.href = node.data.url;
+  if (lastTapNode === wrapper && now - lastTapTime < 2500) {
+    if (url) window.top.location.href = url;
     lastTapNode = null;
   } else {
-    lastTapNode = node;
+    lastTapNode = wrapper;
     lastTapTime = now;
   }
+});
+
+// Tip bubble itself is clickable — works on both desktop and touch.
+tip.addEventListener("click", (event) => {
+  event.preventDefault();
+  const url = tip.getAttribute("href");
+  if (url && url !== "#") window.top.location.href = url;
 });
 
 function setHover(node) {
