@@ -235,17 +235,50 @@ const camera = new THREE.PerspectiveCamera(48, innerWidth / innerHeight, 0.1, 30
 camera.position.set(0, 0, 32);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, premultipliedAlpha: false });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const PR = Math.min(devicePixelRatio, 2);
+renderer.setPixelRatio(PR);
 renderer.setSize(innerWidth, innerHeight);
 renderer.setClearColor(0x000000, 0);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.08;
+renderer.toneMappingExposure = 1.18;
 stage.appendChild(renderer.domElement);
 renderer.domElement.style.cursor = "grab";
 
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
+// --- Selective additive bloom (transparency-preserving) -----------------
+// Render scene directly to the canvas (transparent), then render a bloom
+// pass to an offscreen RGBA render target with a fully transparent clear,
+// and additively blit it on top of the canvas via a fullscreen quad.
+const bloomRT = new THREE.WebGLRenderTarget(innerWidth * PR, innerHeight * PR, {
+  type: THREE.HalfFloatType,
+  format: THREE.RGBAFormat,
+  colorSpace: THREE.LinearSRGBColorSpace,
+  depthBuffer: false,
+  stencilBuffer: false
+});
+const bloomComposer = new EffectComposer(renderer, bloomRT);
+bloomComposer.renderToScreen = false;
+const bloomRenderPass = new RenderPass(scene, camera);
+bloomRenderPass.clear = true;
+bloomRenderPass.clearAlpha = 0;
+bloomComposer.addPass(bloomRenderPass);
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 1.05, 0.55, 0.18);
+bloomComposer.addPass(bloomPass);
+
+// Fullscreen quad that additively blits the bloom RT over the live canvas.
+const blitScene = new THREE.Scene();
+const blitCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const blitMaterial = new THREE.ShaderMaterial({
+  uniforms: { tDiffuse: { value: bloomComposer.renderTarget2.texture } },
+  vertexShader: "varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }",
+  fragmentShader: "uniform sampler2D tDiffuse; varying vec2 vUv; void main(){ vec4 c = texture2D(tDiffuse, vUv); gl_FragColor = vec4(c.rgb, c.a); }",
+  transparent: true,
+  blending: THREE.AdditiveBlending,
+  depthTest: false,
+  depthWrite: false
+});
+const blitQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), blitMaterial);
+blitScene.add(blitQuad);
 controls.dampingFactor = .05;
 controls.rotateSpeed = .45;
 controls.enablePan = false;
