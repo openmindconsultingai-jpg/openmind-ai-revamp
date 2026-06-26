@@ -222,11 +222,11 @@ const VideoHero = () => {
       <div
         className="hidden lg:block absolute z-[15] pointer-events-none"
         style={{
-          left: 'clamp(0.25rem, 1.4vw, 1.75rem)',
-          top: '49%',
+          left: 'clamp(0.5rem, 2vw, 2rem)',
+          top: '50%',
           transform: 'translateY(-50%)',
-          width: 'clamp(440px, 48vw, 760px)',
-          height: 'min(76svh, 720px)',
+          width: 'clamp(360px, 36vw, 560px)',
+          height: 'min(62svh, 560px)',
         }}
         aria-hidden="true"
       >
@@ -251,13 +251,13 @@ const VideoHero = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-20 text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[38rem] lg:ml-auto lg:mr-[2vw] lg:pl-3 lg:pr-5 xl:max-w-[38rem] 2xl:max-w-[44rem] 2xl:mr-[5vw]">
+      <div className="relative z-20 text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[34rem] lg:ml-auto lg:mr-[3vw] lg:pl-3 lg:pr-5 xl:max-w-[40rem] xl:mr-[4vw] 2xl:max-w-[46rem] 2xl:mr-[6vw]">
 
 
         {/* Visually prominent brand name */}
         <div 
           ref={titleRef}
-          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-[6.4rem] xl:text-[7.15rem] 2xl:text-[8.2rem] font-bold mb-4 leading-none tracking-tight"
+          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-[4.5rem] xl:text-[5.25rem] 2xl:text-[6.25rem] font-bold mb-4 leading-none tracking-tight"
           aria-hidden="true"
         >
           <span className="text-foreground" style={{ textShadow: '0 0 60px hsl(176 100% 43% / 0.5)' }}>
@@ -282,6 +282,7 @@ const VideoHero = () => {
             ))}
           </span>
         </div>
+
 
         {/* SEO H1 - visually smaller but semantically the main heading */}
         <h1 className="hero-subtitle font-heading text-base sm:text-lg md:text-xl lg:text-[1.35rem] font-semibold text-foreground/85 mb-4 max-w-3xl mx-auto">
