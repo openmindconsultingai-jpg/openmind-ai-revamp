@@ -395,7 +395,7 @@ const VideoHero = () => {
             title="OpenMind AI – interaktywna sieć neuronowa"
             loading="lazy"
             className="absolute inset-0 w-full h-full"
-            style={{ border: 'none', background: 'transparent', pointerEvents: 'none' }}
+            style={{ border: 'none', background: 'transparent', pointerEvents: 'auto', touchAction: 'pan-y' }}
             allow="autoplay"
           />
         </div>
