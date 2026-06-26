@@ -218,28 +218,26 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* Interactive 3D Neural Model — left side on xl+ screens (≥1280px) */}
+      {/* Interactive 3D Neural Model — left side on desktop screens */}
       <div
-        className="hidden xl:block absolute z-[15] pointer-events-none"
+        className="hidden lg:block absolute z-[15] pointer-events-none"
         style={{
-          left: '1.5%',
-          top: '50%',
+          left: 'clamp(0.25rem, 1.4vw, 1.75rem)',
+          top: '49%',
           transform: 'translateY(-50%)',
-          width: '38%',
-          maxWidth: '560px',
-          height: '70vh',
-          maxHeight: '640px',
+          width: 'clamp(440px, 48vw, 760px)',
+          height: 'min(76svh, 720px)',
         }}
         aria-hidden="true"
       >
-        {/* Very light backdrop — just enough contrast so the model reads, hero video bleeds through */}
+        {/* Minimal translucent contrast layer — video remains visible behind the model */}
         <div
-          className="absolute inset-2 rounded-[2rem] pointer-events-none"
+          className="absolute inset-0 rounded-[2rem] pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at center, hsl(220 30% 6% / 0.28) 0%, hsl(220 30% 6% / 0.14) 55%, hsl(220 30% 6% / 0) 100%)',
-            border: '1px solid hsl(176 100% 43% / 0.10)',
-            boxShadow: '0 0 60px hsl(176 100% 43% / 0.06)',
+              'radial-gradient(ellipse at center, hsl(220 30% 6% / 0.10) 0%, hsl(220 30% 6% / 0.045) 54%, hsl(220 30% 6% / 0) 100%)',
+            border: '1px solid hsl(176 100% 43% / 0.07)',
+            boxShadow: '0 0 46px hsl(176 100% 43% / 0.045)',
           }}
         />
         <iframe
@@ -253,13 +251,13 @@ const VideoHero = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto w-full xl:max-w-none xl:ml-[40%] xl:mr-0 xl:pl-6 xl:pr-10">
+      <div className="relative z-20 text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[38rem] lg:ml-auto lg:mr-[2vw] lg:pl-3 lg:pr-5 xl:max-w-[38rem] 2xl:max-w-[44rem] 2xl:mr-[5vw]">
 
 
         {/* Visually prominent brand name */}
         <div 
           ref={titleRef}
-          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold mb-4 leading-none tracking-tight"
+          className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-[6.4rem] xl:text-[7.15rem] 2xl:text-[8.2rem] font-bold mb-4 leading-none tracking-tight"
           aria-hidden="true"
         >
           <span className="text-foreground" style={{ textShadow: '0 0 60px hsl(176 100% 43% / 0.5)' }}>
@@ -286,12 +284,12 @@ const VideoHero = () => {
         </div>
 
         {/* SEO H1 - visually smaller but semantically the main heading */}
-        <h1 className="hero-subtitle font-heading text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-foreground/85 mb-4 max-w-4xl mx-auto">
+        <h1 className="hero-subtitle font-heading text-base sm:text-lg md:text-xl lg:text-[1.35rem] font-semibold text-foreground/85 mb-4 max-w-3xl mx-auto">
           {seoH1Text}
         </h1>
 
         {/* Subtitle */}
-        <div className="hero-subtitle font-sans max-w-3xl mx-auto mb-6 sm:mb-8 space-y-1" style={{ textAlign: 'center' }}>
+        <div className="hero-subtitle font-sans max-w-2xl mx-auto mb-6 sm:mb-8 space-y-1" style={{ textAlign: 'center' }}>
           <p className="text-sm sm:text-base md:text-lg leading-snug text-foreground/60" style={{ textAlign: 'center' }}>
             {heroDescriptionText}
           </p>
