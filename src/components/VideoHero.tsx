@@ -224,9 +224,9 @@ const VideoHero = () => {
         className="hidden lg:block absolute z-[25]"
         style={{
           right: 'clamp(0.5rem, 2vw, 2.5rem)',
-          top: 'clamp(2rem, 5vh, 4.5rem)',
-          bottom: 'clamp(2rem, 5vh, 4.5rem)',
-          width: 'clamp(520px, 50vw, 880px)',
+          top: 'clamp(4rem, 9vh, 7rem)',
+          width: 'clamp(440px, 40vw, 680px)',
+          height: 'min(72svh, 640px)',
           pointerEvents: 'none',
         }}
         aria-hidden="true"
