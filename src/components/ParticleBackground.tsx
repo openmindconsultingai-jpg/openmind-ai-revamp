@@ -94,8 +94,9 @@ const ParticleCanvas = memo(() => {
       animId = requestAnimationFrame(animate);
     }
 
+    let inViewport = true;
     const handleVisibility = () => {
-      isPaused = document.hidden;
+      isPaused = document.hidden || !inViewport;
       if (!isPaused && !prefersReducedMotion) {
         cancelAnimationFrame(animId);
         animId = requestAnimationFrame(animate);
@@ -104,17 +105,26 @@ const ParticleCanvas = memo(() => {
 
     document.addEventListener('visibilitychange', handleVisibility);
 
+    const io = new IntersectionObserver((entries) => {
+      inViewport = entries[0]?.isIntersecting ?? true;
+      handleVisibility();
+    });
+    io.observe(canvas);
+
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(document.body);
     window.addEventListener('resize', resize);
+
 
     return () => {
       cancelAnimationFrame(animId);
       document.removeEventListener('visibilitychange', handleVisibility);
       window.removeEventListener('resize', resize);
       resizeObserver.disconnect();
+      io.disconnect();
     };
   }, []);
+
 
   return (
     <canvas
