@@ -102,6 +102,9 @@ const LogoTicker = () => {
                 src={logo.src}
                 alt={logo.alt}
                 loading="lazy"
+                decoding="async"
+                width="160"
+                height="80"
                 className="logo-img"
                 style={{
                   filter: logo.noFilter
