@@ -51,8 +51,6 @@ export default defineConfig(({ mode }) => ({
           "query-vendor": ["@tanstack/react-query"],
           "form-vendor": ["react-hook-form", "zod", "@hookform/resolvers"],
           "utils-vendor": ["date-fns", "clsx", "tailwind-merge", "class-variance-authority"],
-          "supabase-vendor": ["@supabase/supabase-js"],
-          "markdown-vendor": ["react-markdown", "dompurify"],
           "pdf-vendor": ["jspdf"],
           "carousel-vendor": ["embla-carousel-react"],
           "chart-vendor": ["recharts"],
