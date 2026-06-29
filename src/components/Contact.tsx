@@ -90,7 +90,7 @@ const Contact = () => {
         <div className="max-w-6xl mx-auto">
           <div ref={headerRef} className="text-center mb-16">
             <div className="flex justify-center mb-6">
-              <img src={logo} alt="OpenMind AI" width="180" height="64" className="h-16 opacity-80" />
+              <img src={logo} alt="OpenMind AI" width="220" height="80" className="h-20 w-auto object-contain" />
             </div>
             <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6">
               <span className="text-gradient text-glow">{t('contact.title')}</span>
