@@ -103,7 +103,7 @@ const FloatingNav = memo(() => {
               aria-label="OpenMind AI Consulting – strona główna"
             >
               <img
-                src={openmindLogo.url}
+                src={openmindLogo}
                 alt="OpenMind AI Consulting"
                 className="h-11 w-auto md:h-14 object-contain"
                 style={{ filter: 'drop-shadow(0 0 12px hsl(176 100% 43% / 0.25))' }}
