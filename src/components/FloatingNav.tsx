@@ -2,7 +2,7 @@ import { memo, useState, useCallback, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
-import openmindLogo from '@/assets/openmind-logo.png.asset.json';
+import openmindLogo from '@/assets/openmind-logo-nobg.png';
 
 const FloatingNav = memo(() => {
   const { language, setLanguage, t } = useLanguage();
