@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import ContactForm from './ContactForm';
-import logo from '@/assets/openmind-logo.webp';
+import logo from '@/assets/openmind-logo-nobg.webp';
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import gsap from 'gsap';
