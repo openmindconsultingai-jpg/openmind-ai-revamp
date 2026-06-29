@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Lazy load BookingModal - not needed for initial render
 const BookingModal = lazy(() => import('@/components/BookingModal'));
 const LogoTicker = lazy(() => import('@/components/LogoTicker'));
+const LazyNeuralIframe = lazy(() => import('@/components/LazyNeuralIframe'));
 
 gsap.registerPlugin(ScrollTrigger);
 
