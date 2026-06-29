@@ -228,7 +228,7 @@ const Chatbot = () => {
           >
             {messages.length === 0 && (
               <div className="text-center py-8 space-y-3">
-                <img src={logo} alt="" className="w-12 h-12 mx-auto opacity-60" />
+                <img src={logo} alt="" width="48" height="48" className="w-12 h-12 mx-auto opacity-60" />
                 <p className="text-sm text-muted-foreground">
                   {language === 'pl' ? (
                     <>Cześć! 👋 Jestem doradcą AI od OpenMind.<br />Jak mogę Ci pomóc?</>
