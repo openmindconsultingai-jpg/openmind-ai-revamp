@@ -254,7 +254,9 @@ const Chatbot = () => {
                 >
                   {msg.role === "assistant" ? (
                     <div className="prose prose-sm prose-invert max-w-none font-sans [&_*]:font-sans [&_a]:text-primary [&_a]:underline [&_p]:mb-2 [&_p:last-child]:mb-0 [&_strong]:text-foreground">
-                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      <Suspense fallback={<div className="whitespace-pre-wrap">{msg.content}</div>}>
+                        <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      </Suspense>
                     </div>
                   ) : (
                     msg.content
