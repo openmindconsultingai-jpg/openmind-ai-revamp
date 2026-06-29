@@ -4,52 +4,64 @@ interface Props {
   className?: string;
   style?: React.CSSProperties;
   title?: string;
+  src?: string;
 }
 
 /**
- * Defers loading of the heavy /openmind-neural-recreated.html iframe
- * until the wrapper enters (or nearly enters) the viewport.
- * Placeholder keeps layout stable and visually matches the dark hero background.
+ * Loads the heavy /openmind-neural-recreated.html iframe.
+ * Hero is above-the-fold, so we GUARANTEE load via a 100ms timeout,
+ * with IntersectionObserver as an early-trigger fallback.
  */
-const LazyNeuralIframe = ({ className, style, title = 'OpenMind AI – interaktywna sieć neuronowa' }: Props) => {
+const LazyNeuralIframe = ({
+  className,
+  style,
+  title = 'OpenMind AI – interaktywna sieć neuronowa',
+  src = '/openmind-neural-recreated.html?v=5',
+}: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
-    if (shouldLoad) return;
-    if (typeof IntersectionObserver === 'undefined') {
-      setShouldLoad(true);
-      return;
+    // Guaranteed load — hero is above the fold
+    const timer = setTimeout(() => setShouldLoad(true), 100);
+
+    let observer: IntersectionObserver | undefined;
+    if (typeof IntersectionObserver !== 'undefined' && ref.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
+            setShouldLoad(true);
+            observer?.disconnect();
+          }
+        },
+        { rootMargin: '500px', threshold: 0 }
+      );
+      observer.observe(ref.current);
     }
-    const obs = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShouldLoad(true);
-          obs.disconnect();
-        }
-      },
-      { rootMargin: '200px', threshold: 0.1 }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [shouldLoad]);
+
+    return () => {
+      clearTimeout(timer);
+      observer?.disconnect();
+    };
+  }, []);
 
   return (
-    <div ref={ref} className={className} style={style}>
+    <div ref={ref} className={className} style={{ minHeight: '100%', ...style }}>
       {shouldLoad ? (
         <iframe
-          src="/openmind-neural-recreated.html?v=5"
+          src={src}
           title={title}
-          loading="lazy"
+          loading="eager"
           className="absolute inset-0 w-full h-full"
-          style={{ border: 'none', background: 'transparent', pointerEvents: 'auto', touchAction: 'pan-y' }}
+          style={{ border: 'none', background: 'transparent', pointerEvents: 'auto', touchAction: 'pan-y', minHeight: '400px' }}
           allow="autoplay"
         />
       ) : (
         <div
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full rounded-2xl"
+          className="absolute inset-0 w-full h-full rounded-2xl animate-pulse"
           style={{
+            minHeight: '400px',
             background:
               'radial-gradient(ellipse at center, hsl(176 100% 43% / 0.12) 0%, hsl(220 15% 5% / 0.6) 70%, transparent 100%)',
           }}
