@@ -120,7 +120,7 @@ const FloatingNav = memo(() => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className="relative px-4 py-2 font-sans text-sm transition-colors duration-200"
+                    className="group relative px-4 py-2 font-sans text-sm transition-colors duration-200 hover:!text-[hsl(176_100%_65%)]"
                     style={{
                       color: active
                         ? 'hsl(176 100% 65%)'
@@ -130,15 +130,13 @@ const FloatingNav = memo(() => {
                     <span className="relative z-10">{item.label}</span>
                     <span
                       aria-hidden
-                      className="absolute left-3 right-3 -bottom-0.5 h-px transition-all duration-300"
+                      className={`pointer-events-none absolute left-3 right-3 -bottom-0.5 h-px transition-all duration-300 ${
+                        active ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                      }`}
                       style={{
-                        background: active
-                          ? 'linear-gradient(90deg, transparent, hsl(176 100% 55%), transparent)'
-                          : 'transparent',
-                        opacity: active ? 1 : 0,
-                        boxShadow: active
-                          ? '0 0 10px hsl(176 100% 55% / 0.7)'
-                          : 'none',
+                        background:
+                          'linear-gradient(90deg, transparent, hsl(176 100% 55%), transparent)',
+                        boxShadow: '0 0 10px hsl(176 100% 55% / 0.7)',
                       }}
                     />
                   </Link>
