@@ -40,9 +40,9 @@ const LazyNeuralIframe = ({
       cancelIdleCallback?: (id: number) => void;
     };
     if (typeof w.requestIdleCallback === 'function') {
-      idleHandle = w.requestIdleCallback(triggerLoad, { timeout: 4000 });
+      idleHandle = w.requestIdleCallback(triggerLoad, { timeout: 8000 });
     } else {
-      fallbackTimer = setTimeout(triggerLoad, 2500);
+      fallbackTimer = setTimeout(triggerLoad, 8000);
     }
 
     // 2. User interaction → load immediately
