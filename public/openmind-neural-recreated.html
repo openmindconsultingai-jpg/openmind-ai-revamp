@@ -206,13 +206,14 @@
   #tip-link:hover { color: #79fff2; }  #node-nav {
     position: fixed;
     z-index: 8;
-    left: clamp(14px, 3.2vw, 44px);
+    left: 50%;
+    transform: translateX(-50%);
     bottom: clamp(14px, 3.6vh, 34px);
     display: grid;
-    grid-template-columns: 42px minmax(160px, 230px) 42px 42px;
+    grid-template-columns: 36px minmax(120px, 170px) 36px 36px;
     align-items: stretch;
-    gap: 8px;
-    padding: 8px;
+    gap: 6px;
+    padding: 6px;
     border: 1px solid rgba(79, 224, 212, .22);
     border-radius: 999px;
     background: rgba(5, 13, 24, .18);
