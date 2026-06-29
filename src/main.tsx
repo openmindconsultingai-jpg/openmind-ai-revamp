@@ -1,4 +1,4 @@
-// build 2026-06-15-links-fix — internal links now end with .html to match sitemap/canonical (prevent Google canonical-mismatch de-indexing)
+// build 2026-06-29-image-optimization — heavy PNG/JPG → WebP, voivodeship JPGs recompressed (saved ~8.5 MB)
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
