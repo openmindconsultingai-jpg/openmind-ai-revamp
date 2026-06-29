@@ -227,7 +227,7 @@ const VideoHero = () => {
         <div
           className="hidden lg:block absolute z-[25] pointer-events-none"
           style={{
-            right: 'clamp(0.5rem, 2vw, 2.5rem)',
+            right: '0',
             top: '50%',
             transform: 'translateY(-50%)',
             width: 'clamp(640px, 63vw, 880px)',
