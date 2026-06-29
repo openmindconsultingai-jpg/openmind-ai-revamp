@@ -389,20 +389,22 @@ const VideoHero = () => {
         </button>
 
         {/* Mobile-only 3D model — placed under the CTA, non-intrusive (pointer-events disabled so swipe scroll passes through) */}
-        <div
-          className="lg:hidden relative w-full mt-8 mb-2"
-          style={{ height: 'min(46svh, 360px)' }}
-          aria-hidden="true"
-        >
-          <iframe
-            src="/openmind-neural-recreated.html?v=5"
-            title="OpenMind AI – interaktywna sieć neuronowa"
-            loading="lazy"
-            className="absolute inset-0 w-full h-full"
-            style={{ border: 'none', background: 'transparent', pointerEvents: 'auto', touchAction: 'pan-y' }}
-            allow="autoplay"
-          />
-        </div>
+        {!isDesktop && (
+          <div
+            className="lg:hidden relative w-full mt-8 mb-2"
+            style={{ height: 'min(46svh, 360px)' }}
+            aria-hidden="true"
+          >
+            <iframe
+              src="/openmind-neural-recreated.html?v=5"
+              title="OpenMind AI – interaktywna sieć neuronowa"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full"
+              style={{ border: 'none', background: 'transparent', pointerEvents: 'auto', touchAction: 'pan-y' }}
+              allow="autoplay"
+            />
+          </div>
+        )}
 
         {/* Scroll indicator */}
         <div className="mt-5 mb-3 sm:mt-6 sm:mb-4 flex flex-col items-center gap-2">
