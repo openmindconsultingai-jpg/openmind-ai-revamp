@@ -2,6 +2,7 @@ import { memo, useState, useCallback, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
+import openmindLogo from '@/assets/openmind-logo.png.asset.json';
 
 const FloatingNav = memo(() => {
   const { language, setLanguage, t } = useLanguage();
@@ -98,29 +99,17 @@ const FloatingNav = memo(() => {
             <Link
               to="/"
               onClick={closeMenu}
-              className="group flex items-center gap-2.5"
-              aria-label="OpenMind AI – strona główna"
+              className="group flex items-center"
+              aria-label="OpenMind AI Consulting – strona główna"
             >
-              <span
-                className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl"
-                style={{
-                  background:
-                    'linear-gradient(135deg, hsl(176 100% 43% / 0.18), hsl(176 100% 43% / 0.04))',
-                  border: '1px solid hsl(176 100% 43% / 0.35)',
-                  boxShadow:
-                    '0 0 18px hsl(176 100% 43% / 0.25), inset 0 0 12px hsl(176 100% 43% / 0.12)',
-                }}
-              >
-                <span
-                  className="font-heading text-base font-bold tracking-tight"
-                  style={{ color: 'hsl(176 100% 65%)' }}
-                >
-                  O
-                </span>
-              </span>
-              <span className="hidden font-heading text-base font-semibold tracking-tight text-foreground sm:inline-block">
-                OpenMind<span style={{ color: 'hsl(176 100% 55%)' }}> AI</span>
-              </span>
+              <img
+                src={openmindLogo.url}
+                alt="OpenMind AI Consulting"
+                className="h-11 w-auto md:h-14 object-contain"
+                style={{ filter: 'drop-shadow(0 0 12px hsl(176 100% 43% / 0.25))' }}
+                loading="eager"
+                decoding="async"
+              />
             </Link>
 
             {/* Desktop nav */}
