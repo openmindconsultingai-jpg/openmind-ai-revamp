@@ -224,15 +224,15 @@ const VideoHero = () => {
         className="hidden lg:block absolute z-[25]"
         style={{
           right: 'clamp(0.5rem, 2vw, 2.5rem)',
-          top: 'clamp(4rem, 9vh, 7rem)',
+          top: 'clamp(7rem, 14vh, 11rem)',
           width: 'clamp(520px, 50vw, 820px)',
-          height: 'min(78svh, 720px)',
+          height: 'min(74svh, 700px)',
           pointerEvents: 'none',
         }}
         aria-hidden="true"
       >
         <iframe
-          src="/openmind-neural-recreated.html?v=3"
+          src="/openmind-neural-recreated.html?v=4"
           title="OpenMind AI – interaktywna sieć neuronowa"
           loading="lazy"
           className="absolute inset-0 w-full h-full"
