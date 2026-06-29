@@ -199,7 +199,7 @@ const Chatbot = () => {
             boxShadow: '0 0 25px rgba(0, 223, 217, 0.4), 0 0 50px rgba(0, 223, 217, 0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
           }}
         >
-          <img src={logo} alt="OpenMind AI Chat" className="w-full h-full object-contain p-3 relative z-10" />
+          <img src={logo} alt="OpenMind AI Chat" width="64" height="64" className="w-full h-full object-contain p-3 relative z-10" />
         </Button>
         </div>
       ) : (
