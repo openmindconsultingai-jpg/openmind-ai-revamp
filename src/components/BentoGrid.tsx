@@ -109,6 +109,9 @@ const BentoGrid = () => {
                 src={bentoContactImg} 
                 alt="Kontakt – konsulting sztucznej inteligencji AI OpenMind" 
                 loading="lazy"
+                width="800"
+                height="600"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               
