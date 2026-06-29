@@ -706,12 +706,16 @@ let intro = 0;
 let lastTapNode = null;
 let lastTapTime = 0;
 
+let lastPointerType = "mouse";
+let suppressNextClick = false;
+
 renderer.domElement.addEventListener("pointerdown", (event) => {
   pointerDownX = event.clientX;
   pointerDownY = event.clientY;
   dragged = false;
   cameraGuided = false;
   controls.autoRotate = false;
+  lastPointerType = event.pointerType || "mouse";
   // Ensure raycaster picks up the node on touch taps (no prior pointermove).
   mouse.x = (event.clientX / innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / innerHeight) * 2 + 1;
@@ -737,9 +741,11 @@ renderer.domElement.addEventListener("pointerup", (event) => {
   if (event.pointerType !== "mouse" && !dragged && pointerHovered?.data?.url) {
     const now = Date.now();
     if (lastTapNode === pointerHovered && now - lastTapTime < 2500) {
-      window.top.location.href = pointerHovered.data.url;
+      // Second tap: allow the synthesized click to navigate.
       lastTapNode = null;
     } else {
+      // First tap: show tip + suppress the synthesized click so we don't navigate yet.
+      suppressNextClick = true;
       lastTapNode = pointerHovered;
       lastTapTime = now;
       selectedNode = pointerHovered;
@@ -760,7 +766,10 @@ renderer.domElement.addEventListener("pointerleave", (event) => {
 });
 
 renderer.domElement.addEventListener("click", (event) => {
-  // Mouse only — touch handled in pointerup.
+  if (suppressNextClick) {
+    suppressNextClick = false;
+    return;
+  }
   if (!dragged && pointerHovered?.data?.url) window.top.location.href = pointerHovered.data.url;
 });
 
