@@ -174,6 +174,9 @@ const Services = memo(({ serviceSlug }: ServicesProps) => {
                   src={SERVICE_IMAGES[id]}
                   alt={`${t(`services.tab.${id}.label`)} – usługi sztucznej inteligencji AI OpenMind`}
                   loading="lazy"
+                  width="400"
+                  height="300"
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className={`absolute inset-0 transition-opacity duration-300 ${
