@@ -49,13 +49,19 @@ const FloatingNav = memo(() => {
   }, [isMenuOpen]);
 
   const navItems = [
-    { path: '/', label: t('nav.home') },
-    { path: '/services', label: t('nav.services') },
-    { path: '/ai-advisor', label: t('nav.aiAdvisor') || 'AI Advisor' },
-    { path: '/about', label: t('nav.about') },
-    { path: '/blog', label: t('nav.blog') },
-    { path: '/contact', label: t('nav.contact') },
+    { path: '/', label: t('nav.home'), prefetch: () => import('@/pages/Home') },
+    { path: '/services', label: t('nav.services'), prefetch: () => import('@/pages/Services') },
+    { path: '/ai-advisor', label: t('nav.aiAdvisor') || 'AI Advisor', prefetch: () => import('@/pages/AIAdvisor') },
+    { path: '/about', label: t('nav.about'), prefetch: () => import('@/pages/About') },
+    { path: '/blog', label: t('nav.blog'), prefetch: () => import('@/pages/Blog') },
+    { path: '/contact', label: t('nav.contact'), prefetch: () => import('@/pages/Contact') },
   ];
+  const prefetched = useRef(new Set<string>());
+  const handlePrefetch = (path: string, fn: () => Promise<unknown>) => {
+    if (prefetched.current.has(path)) return;
+    prefetched.current.add(path);
+    fn().catch(() => prefetched.current.delete(path));
+  };
 
   const isActive = (path: string) =>
     path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
@@ -122,6 +128,8 @@ const FloatingNav = memo(() => {
                   <Link
                     key={item.path}
                     to={item.path}
+                    onMouseEnter={() => handlePrefetch(item.path, item.prefetch)}
+                    onFocus={() => handlePrefetch(item.path, item.prefetch)}
                     className="group relative px-4 py-2 font-sans text-sm transition-colors duration-200 hover:!text-[hsl(176_100%_65%)]"
                     style={{
                       color: active
@@ -167,6 +175,8 @@ const FloatingNav = memo(() => {
                   <img
                     src="https://flagcdn.com/w40/pl.png"
                     alt="Polski"
+                    width="28"
+                    height="28"
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
@@ -183,6 +193,8 @@ const FloatingNav = memo(() => {
                   <img
                     src="https://flagcdn.com/w40/gb.png"
                     alt="English"
+                    width="28"
+                    height="28"
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
@@ -245,6 +257,8 @@ const FloatingNav = memo(() => {
                 <img
                   src="https://flagcdn.com/w80/pl.png"
                   alt="Polski"
+                  width="48"
+                  height="48"
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />
@@ -259,6 +273,8 @@ const FloatingNav = memo(() => {
                 <img
                   src="https://flagcdn.com/w80/gb.png"
                   alt="English"
+                  width="48"
+                  height="48"
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />

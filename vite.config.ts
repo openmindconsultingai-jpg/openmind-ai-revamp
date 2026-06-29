@@ -52,7 +52,7 @@ export default defineConfig(({ mode }) => ({
           "form-vendor": ["react-hook-form", "zod", "@hookform/resolvers"],
           "utils-vendor": ["date-fns", "clsx", "tailwind-merge", "class-variance-authority"],
           "supabase-vendor": ["@supabase/supabase-js"],
-          "markdown-vendor": ["react-markdown", "dompurify"],
+          // markdown removed from manualChunks — bundled with lazy Chatbot chunk
           "pdf-vendor": ["jspdf"],
           "carousel-vendor": ["embla-carousel-react"],
           "chart-vendor": ["recharts"],

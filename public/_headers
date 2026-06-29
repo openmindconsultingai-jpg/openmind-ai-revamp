@@ -1,0 +1,20 @@
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate
+
+/openmind-neural-recreated.html
+  Cache-Control: public, max-age=86400
+
+/*.webp
+  Cache-Control: public, max-age=2592000
+
+/*.jpg
+  Cache-Control: public, max-age=2592000
+
+/*.png
+  Cache-Control: public, max-age=2592000
+
+/*.mp4
+  Cache-Control: public, max-age=2592000

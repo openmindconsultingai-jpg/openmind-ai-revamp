@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, lazy, Suspense } from "react";
 import { Send, X } from "lucide-react";
 import { Button } from "./ui/button";
 import logo from '@/assets/openmind-logo.webp';
-import ReactMarkdown from 'react-markdown';
+const ReactMarkdown = lazy(() => import('react-markdown'));
 import { useLanguage } from '@/contexts/LanguageContext';
 
 type Msg = { role: "user" | "assistant"; content: string };
@@ -199,7 +199,7 @@ const Chatbot = () => {
             boxShadow: '0 0 25px rgba(0, 223, 217, 0.4), 0 0 50px rgba(0, 223, 217, 0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
           }}
         >
-          <img src={logo} alt="OpenMind AI Chat" className="w-full h-full object-contain p-3 relative z-10" />
+          <img src={logo} alt="OpenMind AI Chat" width="64" height="64" className="w-full h-full object-contain p-3 relative z-10" />
         </Button>
         </div>
       ) : (
@@ -208,7 +208,7 @@ const Chatbot = () => {
         >
           {/* Header */}
           <div className="flex items-center gap-3 px-4 py-3 border-b border-border/40 bg-card">
-            <img src={logo} alt="OpenMind AI" className="w-8 h-8 object-contain" />
+            <img src={logo} alt="OpenMind AI" width="32" height="32" className="w-8 h-8 object-contain" />
             <div className="flex-1 min-w-0">
               <p className="font-heading text-sm font-semibold text-foreground">OpenMind AI</p>
               <p className="text-xs text-muted-foreground">{language === 'pl' ? 'Doradca AI • Online' : 'AI Advisor • Online'}</p>
@@ -228,7 +228,7 @@ const Chatbot = () => {
           >
             {messages.length === 0 && (
               <div className="text-center py-8 space-y-3">
-                <img src={logo} alt="" className="w-12 h-12 mx-auto opacity-60" />
+                <img src={logo} alt="" width="48" height="48" className="w-12 h-12 mx-auto opacity-60" />
                 <p className="text-sm text-muted-foreground">
                   {language === 'pl' ? (
                     <>Cześć! 👋 Jestem doradcą AI od OpenMind.<br />Jak mogę Ci pomóc?</>
@@ -254,7 +254,9 @@ const Chatbot = () => {
                 >
                   {msg.role === "assistant" ? (
                     <div className="prose prose-sm prose-invert max-w-none font-sans [&_*]:font-sans [&_a]:text-primary [&_a]:underline [&_p]:mb-2 [&_p:last-child]:mb-0 [&_strong]:text-foreground">
-                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      <Suspense fallback={<div className="whitespace-pre-wrap">{msg.content}</div>}>
+                        <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      </Suspense>
                     </div>
                   ) : (
                     msg.content
