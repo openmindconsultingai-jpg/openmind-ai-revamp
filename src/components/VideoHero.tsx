@@ -391,44 +391,19 @@ const VideoHero = () => {
           />
         </button>
 
-        {/* Mobile-only static neural placeholder — NO iframe (PSI mobile critical) */}
+        {/* Mobile-only 3D Neural iframe — full model, auto-load after 5s */}
         {!isDesktop && (
           <div
             className="lg:hidden relative w-full mt-8 mb-2"
-            style={{ height: 'min(46svh, 360px)' }}
-            aria-hidden="true"
+            style={{ minHeight: '60vh', aspectRatio: '4 / 5' }}
           >
-            <svg
-              viewBox="0 0 800 600"
-              xmlns="http://www.w3.org/2000/svg"
-              width="800"
-              height="600"
-              preserveAspectRatio="xMidYMid slice"
-              className="absolute inset-0 w-full h-full object-cover rounded-2xl"
-              style={{ background: 'radial-gradient(ellipse at center, hsl(220 60% 12%) 0%, hsl(220 15% 5%) 100%)' }}
-            >
-              <defs>
-                <radialGradient id="neuronGlowTeal">
-                  <stop offset="0%" stopColor="hsl(176 100% 55%)" stopOpacity="0.85" />
-                  <stop offset="100%" stopColor="hsl(176 100% 55%)" stopOpacity="0" />
-                </radialGradient>
-                <radialGradient id="neuronGlowCyan">
-                  <stop offset="0%" stopColor="hsl(190 100% 60%)" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="hsl(190 100% 60%)" stopOpacity="0" />
-                </radialGradient>
-              </defs>
-              <line x1="200" y1="150" x2="400" y2="300" stroke="hsl(176 100% 55%)" strokeOpacity="0.3" strokeWidth="2" />
-              <line x1="400" y1="300" x2="600" y2="200" stroke="hsl(176 100% 55%)" strokeOpacity="0.3" strokeWidth="2" />
-              <line x1="400" y1="300" x2="300" y2="450" stroke="hsl(176 100% 55%)" strokeOpacity="0.3" strokeWidth="2" />
-              <line x1="400" y1="300" x2="550" y2="450" stroke="hsl(176 100% 55%)" strokeOpacity="0.3" strokeWidth="2" />
-              <line x1="200" y1="150" x2="300" y2="450" stroke="hsl(190 100% 60%)" strokeOpacity="0.25" strokeWidth="2" />
-              <line x1="600" y1="200" x2="550" y2="450" stroke="hsl(190 100% 60%)" strokeOpacity="0.25" strokeWidth="2" />
-              <circle cx="200" cy="150" r="55" fill="url(#neuronGlowTeal)" />
-              <circle cx="400" cy="300" r="80" fill="url(#neuronGlowCyan)" />
-              <circle cx="600" cy="200" r="65" fill="url(#neuronGlowTeal)" />
-              <circle cx="300" cy="450" r="55" fill="url(#neuronGlowCyan)" />
-              <circle cx="550" cy="450" r="70" fill="url(#neuronGlowTeal)" />
-            </svg>
+            <Suspense fallback={null}>
+              <LazyNeuralIframe
+                src="/openmind-neural-recreated.html?v=5"
+                className="absolute inset-0 w-full h-full rounded-2xl"
+                style={{ pointerEvents: 'auto' } as React.CSSProperties}
+              />
+            </Suspense>
           </div>
         )}
 
