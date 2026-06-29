@@ -139,5 +139,6 @@ const ParticleCanvas = memo(() => {
 });
 
 ParticleBackground.displayName = 'ParticleBackground';
+ParticleCanvas.displayName = 'ParticleCanvas';
 
 export default ParticleBackground;
