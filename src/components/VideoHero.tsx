@@ -227,12 +227,12 @@ const VideoHero = () => {
         <div
           className="hidden lg:block absolute z-[25]"
           style={{
-            right: '2%',
-            top: '8rem',
-            width: 'clamp(640px, 62.5vw, 880px)',
-            aspectRatio: '16 / 11',
-            minHeight: '443px',
-            maxHeight: '70svh',
+            top: 'clamp(4rem, 12vh, 8rem)',
+            right: 'clamp(1rem, 4vw, 4rem)',
+            width: 'clamp(700px, 55vw, 1100px)',
+            aspectRatio: '4 / 3',
+            minHeight: '500px',
+            maxHeight: '80svh',
             pointerEvents: 'auto',
           }}
         >
