@@ -140,7 +140,7 @@ const About = () => {
               style={{ maxWidth: '880px', height: 'min(70svh, 620px)' }}
             >
               <Suspense fallback={null}>
-                <LazyNeuralIframe className="absolute inset-0 w-full h-full" />
+                <LazyNeuralIframe className="absolute inset-0 w-full h-full" src="/openmind-neural-recreated.html?v=5" loadStrategy="viewport" />
               </Suspense>
             </div>
           </div>
