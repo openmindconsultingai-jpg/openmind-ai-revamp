@@ -225,8 +225,8 @@ const VideoHero = () => {
         style={{
           right: 'clamp(0.5rem, 2vw, 2.5rem)',
           top: 'clamp(4rem, 9vh, 7rem)',
-          width: 'clamp(440px, 40vw, 680px)',
-          height: 'min(72svh, 640px)',
+          width: 'clamp(520px, 50vw, 820px)',
+          height: 'min(78svh, 720px)',
           pointerEvents: 'none',
         }}
         aria-hidden="true"
