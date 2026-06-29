@@ -131,6 +131,21 @@ const About = () => {
                 W OpenMindAI wierzymy, że sztuczna inteligencja to nie tylko narzędzie – to nowy system operacyjny dla biznesu, kreatywności i edukacji. Nasza misja jest prosta: przekształcić technologiczny chaos w Twoją konkretną przewagę rynkową. Nie jesteśmy teoretykami. Jesteśmy praktykami, którzy budują milionowe zasięgi i automatyzują całe działy firm.
               </p>
             </div>
+
+            {/* 3D Neural Model — mirrors Hero showcase */}
+            <div
+              className="relative mx-auto mt-10 md:mt-14 w-full"
+              style={{ maxWidth: '880px', height: 'min(70svh, 620px)' }}
+            >
+              <iframe
+                src="/openmind-neural-recreated.html?v=5"
+                title="OpenMind AI – interaktywna sieć neuronowa"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full"
+                style={{ border: 'none', background: 'transparent', pointerEvents: 'auto', touchAction: 'pan-y' }}
+                allow="autoplay"
+              />
+            </div>
           </div>
 
           {/* ═══ BLOCK 3: OUR DNA – 2×2 BENTO ═══ */}
