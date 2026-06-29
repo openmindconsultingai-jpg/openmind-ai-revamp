@@ -232,7 +232,7 @@ const VideoHero = () => {
         aria-hidden="true"
       >
         <iframe
-          src="/openmind-neural-recreated.html?v=2"
+          src="/openmind-neural-recreated.html?v=3"
           title="OpenMind AI – interaktywna sieć neuronowa"
           loading="lazy"
           className="absolute inset-0 w-full h-full"
@@ -391,7 +391,7 @@ const VideoHero = () => {
           aria-hidden="true"
         >
           <iframe
-            src="/openmind-neural-recreated.html?v=2"
+            src="/openmind-neural-recreated.html?v=3"
             title="OpenMind AI – interaktywna sieć neuronowa"
             loading="lazy"
             className="absolute inset-0 w-full h-full"
