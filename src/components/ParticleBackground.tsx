@@ -66,8 +66,15 @@ const ParticleCanvas = memo(() => {
       });
     };
 
-    const animate = () => {
+    const FRAME_DURATION = 1000 / 30; // throttle to 30 FPS
+    let lastFrameTime = 0;
+
+    const animate = (currentTime: number) => {
       if (isPaused) return;
+      animId = requestAnimationFrame(animate);
+      if (currentTime - lastFrameTime < FRAME_DURATION) return;
+      lastFrameTime = currentTime;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p) => {
@@ -84,8 +91,6 @@ const ParticleCanvas = memo(() => {
         ctx.fillStyle = `hsla(176, 100%, 43%, ${p.alpha})`;
         ctx.fill();
       });
-
-      animId = requestAnimationFrame(animate);
     };
 
     if (prefersReducedMotion) {
