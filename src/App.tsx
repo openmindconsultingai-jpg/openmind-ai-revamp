@@ -9,8 +9,8 @@ import { VideoProvider } from "@/contexts/VideoContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import RedirectWithSeo from "@/components/RedirectWithSeo";
 
-// Critical: Home page loaded immediately
-import Home from "./pages/Home";
+// Home page also lazy-loaded for code splitting (was eager)
+const Home = lazy(() => import("./pages/Home"));
 
 // Lazy load all other pages for code splitting
 const ServicesPage = lazy(() => import("./pages/Services"));
@@ -43,7 +43,7 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
             <Route path="/services" element={<Suspense fallback={<PageLoader />}><ServicesPage /></Suspense>} />
             <Route path="/services.html" element={<Suspense fallback={<PageLoader />}><ServicesPage /></Suspense>} />
             <Route path="/services/:serviceSlug" element={<Suspense fallback={<PageLoader />}><ServicesPage /></Suspense>} />

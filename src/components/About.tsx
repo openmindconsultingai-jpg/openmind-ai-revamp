@@ -1,10 +1,12 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, lazy, Suspense } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import { Sparkles, Cpu, GraduationCap, Globe, CheckCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+const LazyNeuralIframe = lazy(() => import('@/components/LazyNeuralIframe'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -137,14 +139,9 @@ const About = () => {
               className="relative mx-auto mt-10 md:mt-14 w-full"
               style={{ maxWidth: '880px', height: 'min(70svh, 620px)' }}
             >
-              <iframe
-                src="/openmind-neural-recreated.html?v=5"
-                title="OpenMind AI – interaktywna sieć neuronowa"
-                loading="lazy"
-                className="absolute inset-0 w-full h-full"
-                style={{ border: 'none', background: 'transparent', pointerEvents: 'auto', touchAction: 'pan-y' }}
-                allow="autoplay"
-              />
+              <Suspense fallback={null}>
+                <LazyNeuralIframe className="absolute inset-0 w-full h-full" />
+              </Suspense>
             </div>
           </div>
 

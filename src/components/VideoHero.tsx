@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Lazy load BookingModal - not needed for initial render
 const BookingModal = lazy(() => import('@/components/BookingModal'));
 const LogoTicker = lazy(() => import('@/components/LogoTicker'));
+const LazyNeuralIframe = lazy(() => import('@/components/LazyNeuralIframe'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -234,14 +235,12 @@ const VideoHero = () => {
           }}
           aria-hidden="true"
         >
-          <iframe
-            src="/openmind-neural-recreated.html?v=5"
-            title="OpenMind AI – interaktywna sieć neuronowa"
-            loading="lazy"
-            className="absolute inset-0 w-full h-full"
-            style={{ border: 'none', background: 'transparent', pointerEvents: 'auto' }}
-            allow="autoplay"
-          />
+          <Suspense fallback={null}>
+            <LazyNeuralIframe
+              className="absolute inset-0 w-full h-full"
+              style={{ pointerEvents: 'auto' } as React.CSSProperties}
+            />
+          </Suspense>
         </div>
       )}
 
@@ -395,14 +394,9 @@ const VideoHero = () => {
             style={{ height: 'min(46svh, 360px)' }}
             aria-hidden="true"
           >
-            <iframe
-              src="/openmind-neural-recreated.html?v=5"
-              title="OpenMind AI – interaktywna sieć neuronowa"
-              loading="lazy"
-              className="absolute inset-0 w-full h-full"
-              style={{ border: 'none', background: 'transparent', pointerEvents: 'auto', touchAction: 'pan-y' }}
-              allow="autoplay"
-            />
+            <Suspense fallback={null}>
+              <LazyNeuralIframe className="absolute inset-0 w-full h-full" />
+            </Suspense>
           </div>
         )}
 
