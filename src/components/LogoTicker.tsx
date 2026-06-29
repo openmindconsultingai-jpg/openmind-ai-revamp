@@ -1,18 +1,18 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import santander from '@/assets/logos/santander.png';
-import rzeczpospolita from '@/assets/logos/rzeczpospolita.png';
-import pivotExpo from '@/assets/logos/pivot-expo.png';
-import podatkowyInfo from '@/assets/logos/podatkowy-info.png';
-import detektyw from '@/assets/logos/detektyw.png';
-import swiadomo from '@/assets/logos/swiadomo.png';
-import djsSkrobj from '@/assets/logos/djs-skrobj.jpg';
-import zenGarden from '@/assets/logos/zen-garden.png';
-import michalowski from '@/assets/logos/michalowski.png';
-import tissese from '@/assets/logos/tissese.png';
+import santander from '@/assets/logos/santander.webp';
+import rzeczpospolita from '@/assets/logos/rzeczpospolita.webp';
+import pivotExpo from '@/assets/logos/pivot-expo.webp';
+import podatkowyInfo from '@/assets/logos/podatkowy-info.webp';
+import detektyw from '@/assets/logos/detektyw.webp';
+import swiadomo from '@/assets/logos/swiadomo.webp';
+import djsSkrobj from '@/assets/logos/djs-skrobj.webp';
+import zenGarden from '@/assets/logos/zen-garden.webp';
+import michalowski from '@/assets/logos/michalowski.webp';
+import tissese from '@/assets/logos/tissese.webp';
 
-import corallo from '@/assets/logos/corallo.png';
-import fabrykaTekstow from '@/assets/logos/fabryka-tekstow.png';
-import impuls from '@/assets/logos/impuls.png';
+import corallo from '@/assets/logos/corallo.webp';
+import fabrykaTekstow from '@/assets/logos/fabryka-tekstow.webp';
+import impuls from '@/assets/logos/impuls.webp';
 
 const logos = [
   { src: santander, alt: 'Santander Consumer Bank – klient OpenMind AI' },
