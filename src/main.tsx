@@ -1,4 +1,4 @@
-// build 2026-06-29-image-optimization — heavy PNG/JPG → WebP, voivodeship JPGs recompressed (saved ~8.5 MB)
+// build 2026-06-29-js-split — manualChunks split monolithic bundle, terser drop_console, iframe IntersectionObserver lazy
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
