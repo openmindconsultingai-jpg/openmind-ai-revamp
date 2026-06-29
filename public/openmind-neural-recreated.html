@@ -896,19 +896,33 @@ function animate() {
   pointerHovered = hits.length ? nodes[nodeCores.indexOf(hits[0].object)] : null;
   setHover(pointerHovered);
   placeTip(Boolean(pointerHovered));
-  composer.render();
+  // 1) Base scene → canvas with full transparency.
+  renderer.setRenderTarget(null);
+  renderer.setClearColor(0x000000, 0);
+  renderer.clear(true, true, true);
+  renderer.render(scene, camera);
+  // 2) Bloom-only pass → offscreen RT.
+  bloomComposer.render();
+  // 3) Additively blit bloom on top.
   const previousAutoClear = renderer.autoClear;
   renderer.autoClear = false;
+  renderer.render(blitScene, blitCamera);
+  // 4) Logo overlay on top.
   renderer.clearDepth();
   renderer.render(logoScene, camera);
   renderer.autoClear = previousAutoClear;
 }
 
 addEventListener("resize", () => {
+  const pr = Math.min(devicePixelRatio || 1, 3);
+  renderer.setPixelRatio(pr);
   camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(innerWidth, innerHeight);
-  composer.setSize(innerWidth, innerHeight);
+  bloomComposer.setPixelRatio(pr);
+  bloomComposer.setSize(innerWidth, innerHeight);
+  bloomPass.setSize(innerWidth * pr, innerHeight * pr);
+  blitMaterial.uniforms.tDiffuse.value = bloomComposer.renderTarget2.texture;
 });
 
 animate();
