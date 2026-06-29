@@ -1,15 +1,10 @@
 import { useEffect, useRef, memo } from 'react';
-import { useLocation } from 'react-router-dom';
-
-const SKIP_PATHS = ['/about', '/contact'];
 
 const ParticleBackground = memo(() => {
-  const location = useLocation();
-  const path = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
-  const skip = SKIP_PATHS.some((p) => path === p || path.startsWith(p + '/'));
-  if (skip) return null;
   return <ParticleCanvas />;
 });
+
+
 
 const ParticleCanvas = memo(() => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -99,8 +94,9 @@ const ParticleCanvas = memo(() => {
       animId = requestAnimationFrame(animate);
     }
 
+    let inViewport = true;
     const handleVisibility = () => {
-      isPaused = document.hidden;
+      isPaused = document.hidden || !inViewport;
       if (!isPaused && !prefersReducedMotion) {
         cancelAnimationFrame(animId);
         animId = requestAnimationFrame(animate);
@@ -109,17 +105,26 @@ const ParticleCanvas = memo(() => {
 
     document.addEventListener('visibilitychange', handleVisibility);
 
+    const io = new IntersectionObserver((entries) => {
+      inViewport = entries[0]?.isIntersecting ?? true;
+      handleVisibility();
+    });
+    io.observe(canvas);
+
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(document.body);
     window.addEventListener('resize', resize);
+
 
     return () => {
       cancelAnimationFrame(animId);
       document.removeEventListener('visibilitychange', handleVisibility);
       window.removeEventListener('resize', resize);
       resizeObserver.disconnect();
+      io.disconnect();
     };
   }, []);
+
 
   return (
     <canvas

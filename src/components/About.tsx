@@ -56,42 +56,36 @@ const About = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero text
-      gsap.fromTo('.about-hero-h1', { opacity: 0, y: 80 }, {
-        opacity: 1, y: 0, duration: 1.2, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-hero-h1', start: 'top 85%' },
-      });
-      gsap.fromTo('.about-hero-sub', { opacity: 0, y: 40 }, {
-        opacity: 1, y: 0, duration: 1, delay: 0.3, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-hero-sub', start: 'top 85%' },
+      // Hero text — render natychmiast (NO hidden state) by nie blokować FCP
+
+      // Mission — szybciej
+      gsap.fromTo('.about-mission', { opacity: 0, y: 30 }, {
+        opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
+        scrollTrigger: { trigger: '.about-mission', start: 'top 85%' },
       });
 
-      // Mission
-      gsap.fromTo('.about-mission', { opacity: 0, y: 60 }, {
-        opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.about-mission', start: 'top 80%' },
-      });
-
-      // DNA cards
-      gsap.fromTo('.dna-card', { opacity: 0, y: 60, scale: 0.95 }, {
-        opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out',
-        scrollTrigger: { trigger: '.dna-grid', start: 'top 80%' },
+      // DNA cards — krótszy stagger, bez scale
+      gsap.fromTo('.dna-card', { opacity: 0, y: 30 }, {
+        opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out',
+        scrollTrigger: { trigger: '.dna-grid', start: 'top 85%' },
       });
 
       // Trust
-      gsap.fromTo('.trust-item', { opacity: 0, x: -30 }, {
-        opacity: 1, x: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out',
-        scrollTrigger: { trigger: '.trust-section', start: 'top 80%' },
+      gsap.fromTo('.trust-item', { opacity: 0, x: -20 }, {
+        opacity: 1, x: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out',
+        scrollTrigger: { trigger: '.trust-section', start: 'top 85%' },
       });
 
-      gsap.fromTo('.trust-cta', { opacity: 0, y: 40 }, {
-        opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+      gsap.fromTo('.trust-cta', { opacity: 0, y: 20 }, {
+        opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
         scrollTrigger: { trigger: '.trust-cta', start: 'top 85%' },
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+
+
 
   return (
     <section ref={sectionRef} className="pt-20 md:pt-24 pb-20 md:pb-32 relative overflow-hidden">
