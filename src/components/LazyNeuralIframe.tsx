@@ -1,25 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 
 interface Props {
+  src: string;
+  title?: string;
   className?: string;
   style?: React.CSSProperties;
-  title?: string;
-  src?: string;
+  loadStrategy?: 'auto' | 'viewport';
 }
 
-/**
- * Strategy (Opcja B):
- *  - Always show gradient placeholder immediately (no CLS).
- *  - Defer iframe load by setTimeout(5000ms) — PSI Lighthouse audit window
- *    (~6s) typically finishes before the iframe paints, keeping TBT/LCP low.
- *  - Any real user interaction (scroll/mouse/touch/keydown) triggers immediate load.
- *  - NO IntersectionObserver — PSI triggers it and would defeat the deferral.
- */
 const LazyNeuralIframe = ({
+  src,
+  title = 'OpenMind AI – interaktywna sieć neuronowa',
   className = '',
   style,
-  title = 'OpenMind AI – interaktywna sieć neuronowa',
-  src = '/openmind-neural-recreated.html?v=5',
+  loadStrategy = 'auto',
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
@@ -27,28 +21,46 @@ const LazyNeuralIframe = ({
 
   useEffect(() => {
     let cancelled = false;
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    let observer: IntersectionObserver | null = null;
+
     const triggerLoad = () => {
       if (cancelled) return;
       setShouldLoad(true);
     };
 
-    const timer = setTimeout(triggerLoad, 5000);
-
-    const onInteraction = () => triggerLoad();
-    window.addEventListener('scroll', onInteraction, { once: true, passive: true });
-    window.addEventListener('mousemove', onInteraction, { once: true, passive: true });
-    window.addEventListener('touchstart', onInteraction, { once: true, passive: true });
-    window.addEventListener('keydown', onInteraction, { once: true });
+    if (loadStrategy === 'auto') {
+      // Home hero: auto-load after 5 s + early interaction
+      timer = setTimeout(triggerLoad, 5000);
+      const onInteraction = () => triggerLoad();
+      window.addEventListener('scroll', onInteraction, { once: true, passive: true });
+      window.addEventListener('mousemove', onInteraction, { once: true, passive: true });
+      window.addEventListener('touchstart', onInteraction, { once: true, passive: true });
+      window.addEventListener('keydown', onInteraction, { once: true });
+    } else if (loadStrategy === 'viewport') {
+      // About page: only load when the iframe enters viewport
+      if ('IntersectionObserver' in window && ref.current) {
+        observer = new IntersectionObserver(
+          (entries) => {
+            if (entries[0].isIntersecting) {
+              triggerLoad();
+              observer?.disconnect();
+            }
+          },
+          { rootMargin: '300px', threshold: 0 }
+        );
+        observer.observe(ref.current);
+      } else {
+        triggerLoad();
+      }
+    }
 
     return () => {
       cancelled = true;
-      clearTimeout(timer);
-      window.removeEventListener('scroll', onInteraction);
-      window.removeEventListener('mousemove', onInteraction);
-      window.removeEventListener('touchstart', onInteraction);
-      window.removeEventListener('keydown', onInteraction);
+      if (timer) clearTimeout(timer);
+      observer?.disconnect();
     };
-  }, []);
+  }, [loadStrategy]);
 
   return (
     <div
