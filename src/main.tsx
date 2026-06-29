@@ -1,4 +1,4 @@
-// build 2026-06-29-fix-iframe-size — restored full-size responsive desktop neural iframe
+// build 2026-06-29-finalB — auto-load iframe after 5s + dns-prefetch + responsive home iframe
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
