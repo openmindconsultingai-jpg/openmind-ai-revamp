@@ -47,7 +47,7 @@ const LazyNeuralIframe = ({
               observer?.disconnect();
             }
           },
-          { rootMargin: '300px', threshold: 0 }
+          { rootMargin: '0px', threshold: 0 }
         );
         observer.observe(ref.current);
       } else {
