@@ -16,6 +16,7 @@ const HERO_VIDEO_URL = supabase.storage.from('hero').getPublicUrl('HERO OPENMIND
 
 const VideoHero = () => {
   const { t } = useLanguage();
+  const isDesktop = useIsDesktop();
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
