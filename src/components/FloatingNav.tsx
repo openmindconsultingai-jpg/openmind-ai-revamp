@@ -128,6 +128,8 @@ const FloatingNav = memo(() => {
                   <Link
                     key={item.path}
                     to={item.path}
+                    onMouseEnter={() => handlePrefetch(item.path, item.prefetch)}
+                    onFocus={() => handlePrefetch(item.path, item.prefetch)}
                     className="group relative px-4 py-2 font-sans text-sm transition-colors duration-200 hover:!text-[hsl(176_100%_65%)]"
                     style={{
                       color: active
