@@ -59,17 +59,22 @@ const LazyNeuralIframe = ({
       {/* Instant gradient placeholder — no layout shift */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full rounded-2xl transition-opacity duration-700"
+        className="absolute inset-0 w-full h-full transition-opacity duration-700"
         style={{
           opacity: loaded ? 0 : 1,
           background:
-            'radial-gradient(ellipse at center, hsl(176 100% 43% / 0.18) 0%, hsl(220 60% 12% / 0.55) 45%, hsl(220 15% 5% / 0.85) 100%)',
-          backgroundImage:
-            'radial-gradient(circle at 30% 40%, hsl(176 100% 43% / 0.28) 0%, transparent 35%), radial-gradient(circle at 70% 60%, hsl(190 100% 50% / 0.22) 0%, transparent 35%)',
+            'radial-gradient(ellipse at center, rgba(59, 130, 246, 0.2) 0%, rgba(30, 58, 138, 0.3) 40%, rgba(0, 0, 0, 0.6) 100%)',
         }}
       >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-3 h-3 rounded-full bg-primary/40 animate-pulse" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+          <div className="flex gap-2">
+            <div className="w-2.5 h-2.5 rounded-full bg-blue-400/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0s' }} />
+            <div className="w-2.5 h-2.5 rounded-full bg-blue-400/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0.2s' }} />
+            <div className="w-2.5 h-2.5 rounded-full bg-blue-400/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0.4s' }} />
+          </div>
+          <p className="text-sm md:text-base font-medium text-blue-200/80 tracking-wider uppercase">
+            Ładowanie modelu AI
+          </p>
         </div>
       </div>
 
