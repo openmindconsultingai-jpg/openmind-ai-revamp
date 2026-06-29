@@ -1,4 +1,4 @@
-// build 2026-06-29-hotfix-iframe — guarantee LazyNeuralIframe load (100ms timeout)
+// build 2026-06-29-final — idle-callback iframe load + instant gradient placeholder
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
