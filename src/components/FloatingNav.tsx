@@ -49,13 +49,19 @@ const FloatingNav = memo(() => {
   }, [isMenuOpen]);
 
   const navItems = [
-    { path: '/', label: t('nav.home') },
-    { path: '/services', label: t('nav.services') },
-    { path: '/ai-advisor', label: t('nav.aiAdvisor') || 'AI Advisor' },
-    { path: '/about', label: t('nav.about') },
-    { path: '/blog', label: t('nav.blog') },
-    { path: '/contact', label: t('nav.contact') },
+    { path: '/', label: t('nav.home'), prefetch: () => import('@/pages/Home') },
+    { path: '/services', label: t('nav.services'), prefetch: () => import('@/pages/Services') },
+    { path: '/ai-advisor', label: t('nav.aiAdvisor') || 'AI Advisor', prefetch: () => import('@/pages/AIAdvisor') },
+    { path: '/about', label: t('nav.about'), prefetch: () => import('@/pages/About') },
+    { path: '/blog', label: t('nav.blog'), prefetch: () => import('@/pages/Blog') },
+    { path: '/contact', label: t('nav.contact'), prefetch: () => import('@/pages/Contact') },
   ];
+  const prefetched = useRef(new Set<string>());
+  const handlePrefetch = (path: string, fn: () => Promise<unknown>) => {
+    if (prefetched.current.has(path)) return;
+    prefetched.current.add(path);
+    fn().catch(() => prefetched.current.delete(path));
+  };
 
   const isActive = (path: string) =>
     path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
