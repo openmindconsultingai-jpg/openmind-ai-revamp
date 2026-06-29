@@ -106,6 +106,8 @@ const FloatingNav = memo(() => {
                 src={openmindLogo}
                 alt="OpenMind AI Consulting"
                 className="h-12 w-auto md:h-14 object-contain"
+                width="120"
+                height="144"
                 style={{ filter: 'drop-shadow(0 0 12px hsl(176 100% 43% / 0.25))' }}
                 loading="eager"
                 decoding="async"
