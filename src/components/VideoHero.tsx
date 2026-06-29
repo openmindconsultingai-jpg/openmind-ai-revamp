@@ -219,14 +219,14 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* Interactive 3D Neural Model — right side on desktop screens, top-aligned with title */}
+      {/* Interactive 3D Neural Model — right side on desktop screens, large and filling vertical space */}
       <div
         className="hidden lg:block absolute z-[25]"
         style={{
           right: 'clamp(0.5rem, 2vw, 2.5rem)',
-          top: 'clamp(5rem, 11vh, 8.5rem)',
-          width: 'clamp(480px, 46vw, 760px)',
-          height: 'min(68svh, 660px)',
+          top: 'clamp(2rem, 5vh, 4.5rem)',
+          bottom: 'clamp(2rem, 5vh, 4.5rem)',
+          width: 'clamp(520px, 50vw, 880px)',
           pointerEvents: 'none',
         }}
         aria-hidden="true"
