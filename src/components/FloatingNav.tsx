@@ -2,7 +2,7 @@ import { memo, useState, useCallback, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
-import openmindLogo from '@/assets/openmind-logo.png.asset.json';
+import openmindLogo from '@/assets/openmind-logo-nobg.png';
 
 const FloatingNav = memo(() => {
   const { language, setLanguage, t } = useLanguage();
@@ -103,7 +103,7 @@ const FloatingNav = memo(() => {
               aria-label="OpenMind AI Consulting – strona główna"
             >
               <img
-                src={openmindLogo.url}
+                src={openmindLogo}
                 alt="OpenMind AI Consulting"
                 className="h-11 w-auto md:h-14 object-contain"
                 style={{ filter: 'drop-shadow(0 0 12px hsl(176 100% 43% / 0.25))' }}
