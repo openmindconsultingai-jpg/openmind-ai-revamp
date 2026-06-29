@@ -131,7 +131,7 @@
     padding: 15px 16px 14px;
     border: 1px solid rgba(29, 214, 198, .34);
     border-radius: 18px;
-    background: linear-gradient(145deg, rgba(8, 22, 30, .76), rgba(4, 12, 18, .58));
+    background: linear-gradient(145deg, rgba(8, 22, 30, .22), rgba(4, 12, 18, .14));
     box-shadow: 0 18px 54px rgba(0, 0, 0, .38), inset 0 1px 0 rgba(255, 255, 255, .08);
     backdrop-filter: blur(18px) saturate(1.35);
   }
@@ -215,7 +215,7 @@
     padding: 8px;
     border: 1px solid rgba(79, 224, 212, .22);
     border-radius: 999px;
-    background: rgba(5, 13, 24, .68);
+    background: rgba(5, 13, 24, .18);
     box-shadow: 0 18px 48px rgba(0, 0, 0, .38), inset 0 1px 0 rgba(255, 255, 255, .06);
     backdrop-filter: blur(14px) saturate(1.25);
   }
@@ -226,7 +226,7 @@
     border: 1px solid rgba(79, 224, 212, .22);
     border-radius: 50%;
     color: rgba(234, 242, 255, .88);
-    background: rgba(10, 24, 42, .8);
+    background: rgba(10, 24, 42, .18);
     font-size: 21px;
     line-height: 1;
     cursor: pointer;
@@ -379,13 +379,13 @@ const navTitle = document.getElementById("node-active-title");
 const navProgress = document.getElementById("node-progress");
 
 const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x04070f, 0.018);
+// fog removed for transparency
 
 const camera = new THREE.PerspectiveCamera(48, innerWidth / innerHeight, 0.1, 300);
 camera.position.set(0, 0, 32);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setPixelRatio(Math.min(devicePixelRatio, 3));
 renderer.setSize(innerWidth, innerHeight);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
