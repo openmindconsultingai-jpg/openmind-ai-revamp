@@ -249,7 +249,7 @@ const VideoHero = () => {
 
       {/* Hero Text Content — left column on lg+; pointer-events scoped so model stays clickable */}
       <div className="relative z-20 w-full lg:flex lg:justify-start pointer-events-none">
-        <div className="text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[34rem] lg:mx-0 lg:ml-[3vw] lg:pr-3 lg:pl-5 xl:max-w-[40rem] xl:ml-[4vw] 2xl:max-w-[46rem] 2xl:ml-[6vw] pointer-events-auto">
+        <div className="text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[28rem] lg:mx-0 lg:ml-0 lg:pr-3 lg:pl-5 xl:max-w-[34rem] xl:ml-[2vw] 2xl:max-w-[40rem] 2xl:ml-[4vw] pointer-events-auto">
 
 
 
