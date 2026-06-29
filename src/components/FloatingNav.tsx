@@ -249,6 +249,8 @@ const FloatingNav = memo(() => {
                 <img
                   src="https://flagcdn.com/w80/pl.png"
                   alt="Polski"
+                  width="48"
+                  height="48"
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />
