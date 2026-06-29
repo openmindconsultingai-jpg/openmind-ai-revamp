@@ -222,26 +222,28 @@ const VideoHero = () => {
       )}
 
       {/* Interactive 3D Neural Model — right side on desktop screens, large and filling vertical space */}
-      <div
-        className="hidden lg:block absolute z-[25]"
-        style={{
-          right: 'clamp(0.5rem, 2vw, 2.5rem)',
-          top: 'clamp(7rem, 14vh, 11rem)',
-          width: 'clamp(520px, 50vw, 820px)',
-          height: 'min(74svh, 700px)',
-          pointerEvents: 'none',
-        }}
-        aria-hidden="true"
-      >
-        <iframe
-          src="/openmind-neural-recreated.html?v=5"
-          title="OpenMind AI – interaktywna sieć neuronowa"
-          loading="lazy"
-          className="absolute inset-0 w-full h-full"
-          style={{ border: 'none', background: 'transparent', pointerEvents: 'auto' }}
-          allow="autoplay"
-        />
-      </div>
+      {isDesktop && (
+        <div
+          className="hidden lg:block absolute z-[25]"
+          style={{
+            right: 'clamp(0.5rem, 2vw, 2.5rem)',
+            top: 'clamp(7rem, 14vh, 11rem)',
+            width: 'clamp(520px, 50vw, 820px)',
+            height: 'min(74svh, 700px)',
+            pointerEvents: 'none',
+          }}
+          aria-hidden="true"
+        >
+          <iframe
+            src="/openmind-neural-recreated.html?v=5"
+            title="OpenMind AI – interaktywna sieć neuronowa"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full"
+            style={{ border: 'none', background: 'transparent', pointerEvents: 'auto' }}
+            allow="autoplay"
+          />
+        </div>
+      )}
 
       {/* Hero Text Content — left column on lg+; pointer-events scoped so model stays clickable */}
       <div className="relative z-20 w-full lg:flex lg:justify-start pointer-events-none">
