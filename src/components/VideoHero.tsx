@@ -230,7 +230,7 @@ const VideoHero = () => {
             right: '0',
             top: '50%',
             transform: 'translateY(-50%)',
-            width: 'clamp(640px, 63vw, 880px)',
+            width: 'clamp(640px, 62.5vw, 880px)',
             height: 'min(74svh, 700px)',
             minHeight: '443px',
           }}
