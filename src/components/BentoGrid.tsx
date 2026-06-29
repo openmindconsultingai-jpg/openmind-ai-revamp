@@ -161,6 +161,9 @@ const BentoGrid = () => {
                 src={bentoAdvisorImg} 
                 alt="Wirtualny Doradca AI – sztuczna inteligencja SI dla biznesu" 
                 loading="lazy"
+                width="800"
+                height="600"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               
