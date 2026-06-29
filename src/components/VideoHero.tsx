@@ -222,17 +222,18 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* Interactive 3D Neural Model — right side on desktop screens, full-size responsive */}
+      {/* Interactive 3D Neural Model — right side on desktop, top-aligned with hero text */}
       {isDesktop && (
         <div
-          className="hidden lg:block absolute z-[25] pointer-events-none"
+          className="hidden lg:block absolute z-[25]"
           style={{
-            right: '0',
-            top: '50%',
-            transform: 'translateY(-50%)',
+            right: '2%',
+            top: '8rem',
             width: 'clamp(640px, 62.5vw, 880px)',
-            height: 'min(74svh, 700px)',
+            aspectRatio: '16 / 11',
             minHeight: '443px',
+            maxHeight: '70svh',
+            pointerEvents: 'auto',
           }}
         >
           <Suspense fallback={null}>
