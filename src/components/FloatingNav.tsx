@@ -1,4 +1,4 @@
-import { memo, useState, useCallback } from 'react';
+import { memo, useState, useCallback, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
@@ -6,15 +6,46 @@ import { Menu, X } from 'lucide-react';
 const FloatingNav = memo(() => {
   const { language, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const lastScrollY = useRef(0);
   const location = useLocation();
 
-  const toggleMenu = useCallback(() => {
-    setIsMenuOpen(prev => !prev);
-  }, []);
+  const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), []);
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
 
-  const closeMenu = useCallback(() => {
-    setIsMenuOpen(false);
-  }, []);
+  // Hide on scroll down, show on scroll up
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const diff = currentY - lastScrollY.current;
+
+      setScrolled(currentY > 24);
+
+      if (isMenuOpen) {
+        setHidden(false);
+      } else if (currentY < 80) {
+        setHidden(false);
+      } else if (diff > 6) {
+        setHidden(true);
+      } else if (diff < -6) {
+        setHidden(false);
+      }
+
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMenuOpen]);
+
+  // Lock body scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   const navItems = [
     { path: '/', label: t('nav.home') },
@@ -25,138 +56,221 @@ const FloatingNav = memo(() => {
     { path: '/contact', label: t('nav.contact') },
   ];
 
+  const isActive = (path: string) =>
+    path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
+
   return (
     <>
-      {/* Floating Pill Navigation - Bottom Center */}
-      <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transition-transform duration-300">
-        {/* Desktop Navigation - Minimalist Pill */}
-        <div 
-          className="hidden md:flex items-center gap-0.5 rounded-full px-1.5 py-1.5"
+      <header
+        className="fixed top-0 left-0 right-0 z-50 transition-transform duration-500 ease-out"
+        style={{
+          transform: hidden ? 'translateY(-110%)' : 'translateY(0)',
+        }}
+      >
+        {/* Brand glow line */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-60"
           style={{
-            background: 'hsl(220 15% 8% / 0.85)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid hsl(0 0% 100% / 0.06)',
-            boxShadow: '0 8px 32px hsl(220 15% 0% / 0.4), 0 0 0 1px hsl(0 0% 100% / 0.02) inset',
+            background:
+              'linear-gradient(90deg, transparent 0%, hsl(176 100% 43% / 0.6) 50%, transparent 100%)',
+          }}
+        />
+
+        <div
+          className="w-full transition-all duration-300"
+          style={{
+            background: scrolled
+              ? 'hsl(220 15% 6% / 0.78)'
+              : 'hsl(220 15% 6% / 0.45)',
+            backdropFilter: 'blur(18px) saturate(140%)',
+            WebkitBackdropFilter: 'blur(18px) saturate(140%)',
+            borderBottom: scrolled
+              ? '1px solid hsl(176 100% 43% / 0.12)'
+              : '1px solid hsl(0 0% 100% / 0.04)',
+            boxShadow: scrolled
+              ? '0 8px 32px hsl(220 15% 0% / 0.45)'
+              : 'none',
           }}
         >
-          {navItems.map((item) => (
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-[72px] md:px-8">
+            {/* Logo */}
             <Link
-              key={item.path}
-              to={item.path}
-              className={`
-                px-4 py-2 rounded-full font-sans text-sm transition-colors duration-200
-                ${location.pathname === item.path 
-                  ? 'bg-primary text-primary-foreground' 
-                  : 'text-foreground/60 hover:text-foreground hover:bg-muted/30'
-                }
-              `}
-              style={{
-                boxShadow: location.pathname === item.path 
-                  ? '0 0 20px hsl(176 100% 43% / 0.4)' 
-                  : 'none'
-              }}
+              to="/"
+              onClick={closeMenu}
+              className="group flex items-center gap-2.5"
+              aria-label="OpenMind AI – strona główna"
             >
-              {item.label}
+              <span
+                className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl"
+                style={{
+                  background:
+                    'linear-gradient(135deg, hsl(176 100% 43% / 0.18), hsl(176 100% 43% / 0.04))',
+                  border: '1px solid hsl(176 100% 43% / 0.35)',
+                  boxShadow:
+                    '0 0 18px hsl(176 100% 43% / 0.25), inset 0 0 12px hsl(176 100% 43% / 0.12)',
+                }}
+              >
+                <span
+                  className="font-heading text-base font-bold tracking-tight"
+                  style={{ color: 'hsl(176 100% 65%)' }}
+                >
+                  O
+                </span>
+              </span>
+              <span className="hidden font-heading text-base font-semibold tracking-tight text-foreground sm:inline-block">
+                OpenMind<span style={{ color: 'hsl(176 100% 55%)' }}> AI</span>
+              </span>
             </Link>
-          ))}
-          
-          {/* Language Switcher */}
-          <div className="flex items-center gap-1 ml-1.5 pl-1.5 border-l border-border/30">
-            <button
-              onClick={() => setLanguage('pl')}
-              className={`w-8 h-8 rounded-full overflow-hidden flex items-center justify-center transition-opacity duration-200 ${
-                language === 'pl' ? 'ring-2 ring-primary ring-offset-1 ring-offset-background' : 'opacity-60 hover:opacity-100'
-              }`}
-              aria-label="Polski"
-            >
-              <img 
-                src="https://flagcdn.com/w40/pl.png" 
-                alt="Polski" 
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </button>
-            <button
-              onClick={() => setLanguage('en')}
-              className={`w-8 h-8 rounded-full overflow-hidden flex items-center justify-center transition-opacity duration-200 ${
-                language === 'en' ? 'ring-2 ring-primary ring-offset-1 ring-offset-background' : 'opacity-60 hover:opacity-100'
-              }`}
-              aria-label="English"
-            >
-              <img 
-                src="https://flagcdn.com/w40/gb.png" 
-                alt="English" 
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </button>
+
+            {/* Desktop nav */}
+            <nav className="hidden items-center gap-1 md:flex">
+              {navItems.map((item) => {
+                const active = isActive(item.path);
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className="relative px-4 py-2 font-sans text-sm transition-colors duration-200"
+                    style={{
+                      color: active
+                        ? 'hsl(176 100% 65%)'
+                        : 'hsl(0 0% 100% / 0.72)',
+                    }}
+                  >
+                    <span className="relative z-10">{item.label}</span>
+                    <span
+                      aria-hidden
+                      className="absolute left-3 right-3 -bottom-0.5 h-px transition-all duration-300"
+                      style={{
+                        background: active
+                          ? 'linear-gradient(90deg, transparent, hsl(176 100% 55%), transparent)'
+                          : 'transparent',
+                        opacity: active ? 1 : 0,
+                        boxShadow: active
+                          ? '0 0 10px hsl(176 100% 55% / 0.7)'
+                          : 'none',
+                      }}
+                    />
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Right cluster: lang + mobile trigger */}
+            <div className="flex items-center gap-2">
+              <div
+                className="hidden items-center gap-1 rounded-full p-1 md:flex"
+                style={{
+                  background: 'hsl(0 0% 100% / 0.04)',
+                  border: '1px solid hsl(0 0% 100% / 0.06)',
+                }}
+              >
+                <button
+                  onClick={() => setLanguage('pl')}
+                  className={`flex h-7 w-7 items-center justify-center overflow-hidden rounded-full transition ${
+                    language === 'pl'
+                      ? 'ring-2 ring-primary ring-offset-1 ring-offset-background'
+                      : 'opacity-55 hover:opacity-100'
+                  }`}
+                  aria-label="Polski"
+                >
+                  <img
+                    src="https://flagcdn.com/w40/pl.png"
+                    alt="Polski"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </button>
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`flex h-7 w-7 items-center justify-center overflow-hidden rounded-full transition ${
+                    language === 'en'
+                      ? 'ring-2 ring-primary ring-offset-1 ring-offset-background'
+                      : 'opacity-55 hover:opacity-100'
+                  }`}
+                  aria-label="English"
+                >
+                  <img
+                    src="https://flagcdn.com/w40/gb.png"
+                    alt="English"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </button>
+              </div>
+
+              <button
+                onClick={toggleMenu}
+                className="flex h-11 w-11 items-center justify-center rounded-full text-foreground transition md:hidden"
+                style={{
+                  background: 'hsl(220 15% 8% / 0.6)',
+                  border: '1px solid hsl(176 100% 43% / 0.25)',
+                  boxShadow: '0 0 14px hsl(176 100% 43% / 0.18)',
+                }}
+                aria-label="Toggle menu"
+                aria-expanded={isMenuOpen}
+              >
+                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
           </div>
         </div>
+      </header>
 
-        {/* Mobile Navigation Trigger - Floating Pill */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden rounded-full p-3.5 text-foreground transition-colors duration-200"
-          style={{
-            background: 'hsl(220 15% 8% / 0.85)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid hsl(0 0% 100% / 0.06)',
-            boxShadow: '0 8px 32px hsl(220 15% 0% / 0.4)',
-          }}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </nav>
-
-      {/* Mobile Full-screen Menu */}
+      {/* Mobile full-screen menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl flex items-center justify-center md:hidden">
-          <nav className="flex flex-col items-center gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={closeMenu}
-                className={`
-                  font-heading text-3xl transition-colors duration-200 font-semibold
-                  ${location.pathname === item.path 
-                    ? 'text-gradient' 
-                    : 'text-foreground/70 hover:text-foreground'
-                  }
-                `}
-              >
-                {item.label}
-              </Link>
-            ))}
-            
-            {/* Language Switcher */}
-            <div className="flex items-center gap-4 mt-4">
+        <div
+          className="fixed inset-0 z-40 flex items-center justify-center md:hidden"
+          style={{
+            background: 'hsl(220 15% 4% / 0.96)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+          }}
+        >
+          <nav className="flex flex-col items-center gap-7">
+            {navItems.map((item) => {
+              const active = isActive(item.path);
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={closeMenu}
+                  className={`font-heading text-3xl font-semibold transition-colors duration-200 ${
+                    active ? 'text-gradient' : 'text-foreground/75 hover:text-foreground'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+
+            <div className="mt-4 flex items-center gap-4">
               <button
                 onClick={() => setLanguage('pl')}
-                className={`w-12 h-12 rounded-full overflow-hidden transition-opacity duration-200 ${
-                  language === 'pl' ? 'ring-2 ring-primary scale-110' : 'opacity-50'
+                className={`h-12 w-12 overflow-hidden rounded-full transition ${
+                  language === 'pl' ? 'scale-110 ring-2 ring-primary' : 'opacity-50'
                 }`}
+                aria-label="Polski"
               >
-                <img 
-                  src="https://flagcdn.com/w80/pl.png" 
-                  alt="Polski" 
-                  className="w-full h-full object-cover"
+                <img
+                  src="https://flagcdn.com/w80/pl.png"
+                  alt="Polski"
+                  className="h-full w-full object-cover"
                   loading="lazy"
                 />
               </button>
               <button
                 onClick={() => setLanguage('en')}
-                className={`w-12 h-12 rounded-full overflow-hidden transition-opacity duration-200 ${
-                  language === 'en' ? 'ring-2 ring-primary scale-110' : 'opacity-50'
+                className={`h-12 w-12 overflow-hidden rounded-full transition ${
+                  language === 'en' ? 'scale-110 ring-2 ring-primary' : 'opacity-50'
                 }`}
+                aria-label="English"
               >
-                <img 
-                  src="https://flagcdn.com/w80/gb.png" 
-                  alt="English" 
-                  className="w-full h-full object-cover"
+                <img
+                  src="https://flagcdn.com/w80/gb.png"
+                  alt="English"
+                  className="h-full w-full object-cover"
                   loading="lazy"
                 />
               </button>
