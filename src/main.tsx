@@ -1,4 +1,4 @@
-// build 2026-06-29-about-lazy — About neural iframe loads only on viewport
+// build 2026-06-29-canvas-perf — ParticleBackground throttled to 30 FPS + skipped on /about & /contact
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";

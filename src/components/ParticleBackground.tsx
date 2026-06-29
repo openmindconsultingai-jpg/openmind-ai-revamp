@@ -1,6 +1,17 @@
 import { useEffect, useRef, memo } from 'react';
+import { useLocation } from 'react-router-dom';
+
+const SKIP_PATHS = ['/about', '/contact'];
 
 const ParticleBackground = memo(() => {
+  const location = useLocation();
+  const path = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+  const skip = SKIP_PATHS.some((p) => path === p || path.startsWith(p + '/'));
+  if (skip) return null;
+  return <ParticleCanvas />;
+});
+
+const ParticleCanvas = memo(() => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -55,8 +66,15 @@ const ParticleBackground = memo(() => {
       });
     };
 
-    const animate = () => {
+    const FRAME_DURATION = 1000 / 30; // throttle to 30 FPS
+    let lastFrameTime = 0;
+
+    const animate = (currentTime: number) => {
       if (isPaused) return;
+      animId = requestAnimationFrame(animate);
+      if (currentTime - lastFrameTime < FRAME_DURATION) return;
+      lastFrameTime = currentTime;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p) => {
@@ -73,8 +91,6 @@ const ParticleBackground = memo(() => {
         ctx.fillStyle = `hsla(176, 100%, 43%, ${p.alpha})`;
         ctx.fill();
       });
-
-      animId = requestAnimationFrame(animate);
     };
 
     if (prefersReducedMotion) {
@@ -123,5 +139,6 @@ const ParticleBackground = memo(() => {
 });
 
 ParticleBackground.displayName = 'ParticleBackground';
+ParticleCanvas.displayName = 'ParticleCanvas';
 
 export default ParticleBackground;
