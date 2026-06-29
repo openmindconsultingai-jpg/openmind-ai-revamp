@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
 import { noWidows } from '@/lib/typography';
+import { useIsDesktop } from '@/hooks/useIsDesktop';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -15,6 +16,7 @@ const HERO_VIDEO_URL = supabase.storage.from('hero').getPublicUrl('HERO OPENMIND
 
 const VideoHero = () => {
   const { t } = useLanguage();
+  const isDesktop = useIsDesktop();
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -220,26 +222,28 @@ const VideoHero = () => {
       )}
 
       {/* Interactive 3D Neural Model — right side on desktop screens, large and filling vertical space */}
-      <div
-        className="hidden lg:block absolute z-[25]"
-        style={{
-          right: 'clamp(0.5rem, 2vw, 2.5rem)',
-          top: 'clamp(7rem, 14vh, 11rem)',
-          width: 'clamp(520px, 50vw, 820px)',
-          height: 'min(74svh, 700px)',
-          pointerEvents: 'none',
-        }}
-        aria-hidden="true"
-      >
-        <iframe
-          src="/openmind-neural-recreated.html?v=5"
-          title="OpenMind AI – interaktywna sieć neuronowa"
-          loading="lazy"
-          className="absolute inset-0 w-full h-full"
-          style={{ border: 'none', background: 'transparent', pointerEvents: 'auto' }}
-          allow="autoplay"
-        />
-      </div>
+      {isDesktop && (
+        <div
+          className="hidden lg:block absolute z-[25]"
+          style={{
+            right: 'clamp(0.5rem, 2vw, 2.5rem)',
+            top: 'clamp(7rem, 14vh, 11rem)',
+            width: 'clamp(520px, 50vw, 820px)',
+            height: 'min(74svh, 700px)',
+            pointerEvents: 'none',
+          }}
+          aria-hidden="true"
+        >
+          <iframe
+            src="/openmind-neural-recreated.html?v=5"
+            title="OpenMind AI – interaktywna sieć neuronowa"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full"
+            style={{ border: 'none', background: 'transparent', pointerEvents: 'auto' }}
+            allow="autoplay"
+          />
+        </div>
+      )}
 
       {/* Hero Text Content — left column on lg+; pointer-events scoped so model stays clickable */}
       <div className="relative z-20 w-full lg:flex lg:justify-start pointer-events-none">
@@ -385,20 +389,22 @@ const VideoHero = () => {
         </button>
 
         {/* Mobile-only 3D model — placed under the CTA, non-intrusive (pointer-events disabled so swipe scroll passes through) */}
-        <div
-          className="lg:hidden relative w-full mt-8 mb-2"
-          style={{ height: 'min(46svh, 360px)' }}
-          aria-hidden="true"
-        >
-          <iframe
-            src="/openmind-neural-recreated.html?v=5"
-            title="OpenMind AI – interaktywna sieć neuronowa"
-            loading="lazy"
-            className="absolute inset-0 w-full h-full"
-            style={{ border: 'none', background: 'transparent', pointerEvents: 'auto', touchAction: 'pan-y' }}
-            allow="autoplay"
-          />
-        </div>
+        {!isDesktop && (
+          <div
+            className="lg:hidden relative w-full mt-8 mb-2"
+            style={{ height: 'min(46svh, 360px)' }}
+            aria-hidden="true"
+          >
+            <iframe
+              src="/openmind-neural-recreated.html?v=5"
+              title="OpenMind AI – interaktywna sieć neuronowa"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full"
+              style={{ border: 'none', background: 'transparent', pointerEvents: 'auto', touchAction: 'pan-y' }}
+              allow="autoplay"
+            />
+          </div>
+        )}
 
         {/* Scroll indicator */}
         <div className="mt-5 mb-3 sm:mt-6 sm:mb-4 flex flex-col items-center gap-2">
