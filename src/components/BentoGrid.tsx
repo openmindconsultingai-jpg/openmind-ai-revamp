@@ -159,7 +159,7 @@ const BentoGrid = () => {
               {/* Background Image */}
               <img 
                 src={bentoAdvisorImg} 
-                alt="Wirtualny Doradca AI – sztuczna inteligencja SI dla biznesu" 
+                alt="Wirtualny Doradca AI – sztuczna inteligencja dla biznesu" 
                 loading="lazy"
                 width="800"
                 height="600"

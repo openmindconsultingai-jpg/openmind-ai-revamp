@@ -61,11 +61,11 @@ const servicesMeta: Record<string, { title: string; titleEn: string; description
     keywordsEn: 'AI consulting, AI advisory, AI audit, AI strategy, artificial intelligence consulting, AI business implementation, AI process optimization',
   },
   'ai-dla-szkol': {
-    title: 'AI dla Szkół – Szkolenia, Warsztaty, Wdrożenia SI w Edukacji | OpenMind AI',
+    title: 'AI dla Szkół – Szkolenia, Warsztaty, Wdrożenia AI w Edukacji | OpenMind AI',
     titleEn: 'AI for Schools – Training, Workshops, AI in Education | OpenMind AI',
     description: 'Kompleksowe wsparcie szkół we wdrożeniu sztucznej inteligencji. Szkolenia dla nauczycieli, warsztaty dla uczniów, narzędzia AI w edukacji.',
     descriptionEn: 'Comprehensive support for schools in implementing AI. Teacher training, student workshops, AI tools in education.',
-    keywords: 'AI dla szkół, sztuczna inteligencja w edukacji, szkolenia AI nauczyciele, warsztaty AI uczniowie, SI w szkole, edukacja AI, ChatGPT dla szkół',
+    keywords: 'AI dla szkół, sztuczna inteligencja w edukacji, szkolenia AI nauczyciele, warsztaty AI uczniowie, AI w szkole, edukacja AI, ChatGPT dla szkół',
     keywordsEn: 'AI for schools, artificial intelligence in education, AI teacher training, AI student workshops, AI in school, AI education, ChatGPT for schools',
   },
 };

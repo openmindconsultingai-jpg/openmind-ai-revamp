@@ -20,7 +20,7 @@ const logos = [
   { src: pivotExpo, alt: 'Pivot Expo – klient wdrożeń AI' },
   { src: podatkowyInfo, alt: 'Podatkowy.info – automatyzacja AI' },
   { src: detektyw, alt: 'Detektyw z Służb – klient AI', scale: 1.45, darkBg: true },
-  { src: swiadomo, alt: 'Świadomo – szkolenia SI' },
+  { src: swiadomo, alt: 'Świadomo – szkolenia AI' },
   { src: djsSkrobj, alt: "DJ's Skrobj Agency – klient AI", darkBg: true },
   { src: zenGarden, alt: 'Zen Garden – klient sztucznej inteligencji', darkBg: true, scale: 1.15 },
   { src: michalowski, alt: 'Usługi Księgowe Michałowski – automatyzacja AI', scale: 1.35 },
