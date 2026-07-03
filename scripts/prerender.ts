@@ -615,6 +615,8 @@ const MAIN_HTML_ROUTES = [
 ];
 
 function buildHtmlSitemapXml(): string {
+  const voivRoutes = voivodeships.map((v) => `/gdzie-dzialamy/${v.slug}`);
+
   const cityRoutes = voivodeships.flatMap((voivodeship) =>
     voivodeship.cities.map((city) => {
       const route = `/gdzie-dzialamy/${voivodeship.slug}/${city.slug}`;
@@ -629,13 +631,14 @@ function buildHtmlSitemapXml(): string {
     .map((id) => `/blog/${id}`);
 
   const entries = [
-    ...cityRoutes.map((route) => ({ route, priority: '0.7' })),
+    ...voivRoutes.map((route) => ({ route, priority: '0.6' })),
+    ...cityRoutes.map((route) => ({ route, priority: '0.5' })),
     ...blogRoutes.map((route) => ({ route, priority: '0.6' })),
     ...MAIN_HTML_ROUTES.map((route) => ({ route, priority: '0.8' })),
   ];
 
-  if (cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 12 || entries.length !== 314) {
-    throw new Error(`[prerender] sitemap-html invalid counts: cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
+  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 12 || entries.length !== 330) {
+    throw new Error(`[prerender] sitemap-html invalid counts: voiv=${voivRoutes.length}, cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
