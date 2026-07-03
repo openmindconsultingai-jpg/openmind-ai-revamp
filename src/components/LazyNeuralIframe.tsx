@@ -80,11 +80,11 @@ const LazyNeuralIframe = ({
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
           <div className="flex gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-primary/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0s' }} />
-            <div className="w-2.5 h-2.5 rounded-full bg-primary/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0.2s' }} />
-            <div className="w-2.5 h-2.5 rounded-full bg-primary/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0.4s' }} />
+            <div className="w-2.5 h-2.5 rounded-full bg-blue-400/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0s' }} />
+            <div className="w-2.5 h-2.5 rounded-full bg-blue-400/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0.2s' }} />
+            <div className="w-2.5 h-2.5 rounded-full bg-blue-400/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0.4s' }} />
           </div>
-          <p className="text-sm md:text-base font-medium text-primary/80 tracking-wider uppercase">
+          <p className="text-sm md:text-base font-medium text-blue-200/80 tracking-wider uppercase">
             Ładowanie modelu AI
           </p>
         </div>
