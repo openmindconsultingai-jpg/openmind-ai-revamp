@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/kujawsko-pomorskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubelskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lubuskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/lodzkie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/malopolskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/mazowieckie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/opolskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podkarpackie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/podlaskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/pomorskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/slaskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/swietokrzyskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/warminsko-mazurskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/wielkopolskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.openmindai.pl/gdzie-dzialamy/zachodniopomorskie.html</loc><lastmod>2026-06-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/wroclaw.html</loc><lastmod>2026-04-20</lastmod><priority>0.5</priority></url>
   <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/walbrzych.html</loc><lastmod>2026-04-20</lastmod><priority>0.5</priority></url>
   <url><loc>https://www.openmindai.pl/gdzie-dzialamy/dolnoslaskie/legnica.html</loc><lastmod>2026-04-20</lastmod><priority>0.5</priority></url>

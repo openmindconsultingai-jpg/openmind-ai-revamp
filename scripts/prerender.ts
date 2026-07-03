@@ -427,12 +427,68 @@ function blogMeta(id: number): Meta {
 function voivMeta(slug: string): Meta | null {
   const v = voivodeships.find((x) => x.slug === slug);
   if (!v) return null;
-  const cityNames = v.cities.map((c) => c.name).join(', ');
+  const cityCount = v.cities.length;
+  const firstFour = v.cities.slice(0, 4).map((c) => c.name).join(', ');
+  const canonical = `${SITE}/gdzie-dzialamy/${v.slug}.html`;
+
+  const cityLinks = v.cities
+    .map(
+      (c) =>
+        `<li><a href="/gdzie-dzialamy/${v.slug}/${c.slug}.html">AI w ${esc(c.locative)} – wdrożenia, szkolenia, konsulting</a></li>`,
+    )
+    .join('');
+
+  const body = `<p>OpenMind AI Consulting świadczy pełen zakres usług z obszaru sztucznej inteligencji dla firm, instytucji publicznych, agencji marketingowych oraz placówek edukacyjnych z województwa ${esc(v.locativeName)}. Obsługujemy ${cityCount} miast regionu — od największych ośrodków (${esc(firstFour)}) po miejscowości powiatowe. Działamy zarówno zdalnie, jak i stacjonarnie na miejscu u klienta.</p>
+<p>W województwie ${esc(v.locativeName)} wdrażamy modele językowe (ChatGPT, Claude, Gemini, Microsoft Copilot), automatyzujemy procesy w Make/n8n/Zapier, projektujemy asystentów AI dla obsługi klienta oraz produkujemy materiały reklamowe z wykorzystaniem generatywnej sztucznej inteligencji (wideo AI, obrazy AI, voice-over). Prowadzimy praktyczne szkolenia z prompt engineeringu dla pracowników biurowych, zespołów sprzedażowych, marketingu, HR oraz zarządów.</p>
+
+<h2>Miasta obsługiwane w województwie ${esc(v.name)}</h2>
+<p>Pełna lista miast, dla których przygotowaliśmy dedykowane strony z opisem lokalnej gospodarki, kluczowych branż i przykładów wdrożeń sztucznej inteligencji:</p>
+<ul>${cityLinks}</ul>
+
+<h2>Zastosowania AI dla firm z województwa ${esc(v.name)}</h2>
+<p>Najczęstsze scenariusze wdrożeń w regionie ${esc(v.locativeName)} obejmują: automatyzację obsługi zapytań mailowych i czatów, generowanie ofert handlowych i dokumentów, ekstrakcję danych z faktur i umów, kwalifikację leadów sprzedażowych, raportowanie zarządcze, tworzenie treści marketingowych i social media, wewnętrzne bazy wiedzy oparte o wyszukiwanie semantyczne, a także asystentów AI dla działów HR i obsługi klienta.</p>
+<p>Dla przedsiębiorstw produkcyjnych oferujemy analizę danych operacyjnych i predykcyjne utrzymanie ruchu; dla e-commerce – personalizację rekomendacji i automatyczne opisy produktów; dla kancelarii prawnych – analizę umów; dla klinik medycznych – wsparcie dokumentacji. Wszystkie wdrożenia projektujemy zgodnie z RODO, z opcją self-hosted dla danych wrażliwych.</p>
+
+<h2>Szkolenia AI w województwie ${esc(v.name)}</h2>
+<p>Prowadzimy szkolenia z ChatGPT, Claude, Gemini i Microsoft Copilot dla firm, instytucji oraz szkół w miastach: ${esc(v.cities.map((c) => c.name).join(', '))}. Warsztaty realizujemy w formatach 4-godzinnych, całodniowych i wielodniowych – online, stacjonarnie w siedzibie klienta lub hybrydowo.</p>
+
+<h2>Skontaktuj się z nami</h2>
+<p>Pierwsza konsultacja dla firm z województwa ${esc(v.locativeName)} jest bezpłatna i niezobowiązująca. Napisz na biuro@openmindai.pl lub wypełnij <a href="/contact.html">formularz kontaktowy</a>, a my przygotujemy propozycję dopasowaną do Twojej organizacji.</p>`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': `${canonical}#service`,
+        name: `Sztuczna inteligencja (AI) w województwie ${v.name}`,
+        description: `Wdrożenia, szkolenia i konsulting AI w województwie ${v.locativeName}. Obsługujemy ${cityCount} miast regionu.`,
+        url: canonical,
+        provider: ORG_JSONLD,
+        serviceType: ['Konsulting AI', 'Szkolenia AI', 'Wdrożenia AI', 'Automatyzacja procesów', 'Agencja Kreatywna AI'],
+        areaServed: {
+          '@type': 'AdministrativeArea',
+          name: `Województwo ${v.name}`,
+          containedInPlace: { '@type': 'Country', name: 'Polska' },
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Strona główna', item: SITE + '/' },
+          { '@type': 'ListItem', position: 2, name: 'Gdzie działamy', item: SITE + '/#gdzie-dzialamy' },
+          { '@type': 'ListItem', position: 3, name: `Województwo ${v.name}`, item: canonical },
+        ],
+      },
+    ],
+  };
+
   return {
-    title: `Sztuczna Inteligencja w województwie ${v.name} – Wdrożenia i Szkolenia AI | OpenMind AI`,
-    description: `OpenMind AI – wdrożenia, szkolenia i konsulting sztucznej inteligencji w województwie ${v.locativeName}. Obsługujemy m.in. ${v.cities.slice(0, 4).map((c) => c.name).join(', ')}.`,
-    h1: `Sztuczna inteligencja (AI) w województwie ${v.name}`,
-    body: `<p>OpenMind AI realizuje wdrożenia, szkolenia i konsulting AI dla firm i instytucji w województwie ${v.locativeName}. Obsługujemy m.in.: ${cityNames}.</p>`,
+    title: `AI w województwie ${v.name} – Wdrożenia, Szkolenia i Konsulting Sztucznej Inteligencji | OpenMind AI`,
+    description: `Sztuczna inteligencja w województwie ${v.locativeName}. Wdrożenia AI, szkolenia z ChatGPT, automatyzacja procesów. Konsulting dla firm z ${cityCount} miast regionu ${v.name}.`.slice(0, 158),
+    h1: `AI w województwie ${v.name}`,
+    body,
+    jsonLd,
   };
 }
 
@@ -559,6 +615,8 @@ const MAIN_HTML_ROUTES = [
 ];
 
 function buildHtmlSitemapXml(): string {
+  const voivRoutes = voivodeships.map((v) => `/gdzie-dzialamy/${v.slug}`);
+
   const cityRoutes = voivodeships.flatMap((voivodeship) =>
     voivodeship.cities.map((city) => {
       const route = `/gdzie-dzialamy/${voivodeship.slug}/${city.slug}`;
@@ -573,13 +631,14 @@ function buildHtmlSitemapXml(): string {
     .map((id) => `/blog/${id}`);
 
   const entries = [
-    ...cityRoutes.map((route) => ({ route, priority: '0.7' })),
+    ...voivRoutes.map((route) => ({ route, priority: '0.6' })),
+    ...cityRoutes.map((route) => ({ route, priority: '0.5' })),
     ...blogRoutes.map((route) => ({ route, priority: '0.6' })),
     ...MAIN_HTML_ROUTES.map((route) => ({ route, priority: '0.8' })),
   ];
 
-  if (cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 12 || entries.length !== 314) {
-    throw new Error(`[prerender] sitemap-html invalid counts: cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
+  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 12 || entries.length !== 330) {
+    throw new Error(`[prerender] sitemap-html invalid counts: voiv=${voivRoutes.length}, cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
