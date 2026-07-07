@@ -3,6 +3,7 @@
   const clientId = script?.dataset.clientId || 'openmindai';
   const locale = script?.dataset.locale || 'pl';
   const apiBaseUrl = (script?.dataset.apiBaseUrl || '').replace(/\/$/, '');
+  const defaultAvatarEmbedUrl = script?.dataset.avatarEmbedUrl || 'https://embed.liveavatar.com/v1/6730a102-8aa9-4634-a921-ef18a5f9697d?orientation=horizontal';
 
   function injectStyles() {
     if (document.getElementById('om-avatar-widget-styles')) return;
@@ -30,6 +31,46 @@
     training: 'Szkolenia są praktyczne: ChatGPT, automatyzacja pracy, generowanie obrazów i wideo oraz zasady bezpiecznego użycia AI w firmie lub szkole.',
     meeting: 'Jasne. Żeby przygotować rozmowę i wysłać potwierdzenie, potrzebuję imienia, emaila, telefonu, firmy oraz krótkiego opisu potrzeby. Potrzebna jest też zgoda na kontakt.',
   };
+
+  function fallbackConfig() {
+    return {
+      client_id: clientId,
+      brand: {
+        name: 'OpenMind AI',
+        advisor_name: 'OpenMind AI Advisor',
+        launcher_label: 'Zapytaj doradcę AI',
+      },
+      welcome_message: 'Cześć, jestem doradcą AI OpenMind AI. Możesz porozmawiać ze mną głosowo w oknie avatara.',
+      knowledge: {
+        company_overview: responses.company,
+        answers: {
+          automation: responses.automation,
+          training: responses.training,
+          meeting: responses.meeting,
+        },
+      },
+      pricing: [
+        { label: 'Konsultacja / audyt AI', price_from: 500, price_to: 1500, currency: 'PLN netto' },
+        { label: 'Szkolenie AI dla zespołu', price_from: 2500, price_to: 8000, currency: 'PLN netto' },
+        { label: 'Prosta automatyzacja procesu', price_from: 3000, price_to: 12000, currency: 'PLN netto' },
+        { label: 'Live avatar / doradca AI', price_from: 8000, price_to: 30000, currency: 'PLN netto setup' },
+      ],
+      lead_capture: {
+        consent_text: 'Wyrażam zgodę na kontakt ze strony OpenMind AI w sprawie mojego zapytania.',
+        consent_version: '2026-07-06-v1',
+      },
+      avatar_embed: {
+        provider: 'heygen_liveavatar_embed',
+        voice_agent: 'OpenMind AI Supporter',
+        url: defaultAvatarEmbedUrl,
+        allow: 'microphone',
+        title: 'LiveAvatar Embed',
+        orientation: 'horizontal',
+        aspect_ratio: '16/9',
+      },
+      api_available: false,
+    };
+  }
 
   function priceLine(item) {
     const to = item.price_to ? ` do ${item.price_to}` : '+';
@@ -137,7 +178,11 @@
       if (consent && clientConfig.lead_capture?.consent_text) consent.textContent = clientConfig.lead_capture.consent_text;
       return clientConfig;
     } catch {
-      state.config = { brand: { name: 'OpenMind AI' } };
+      state.config = fallbackConfig();
+      ui.launcher.textContent = state.config.brand.launcher_label;
+      ui.widget.querySelector('.om-avatar-title strong').textContent = state.config.brand.advisor_name;
+      const consent = ui.widget.querySelector('.om-consent span');
+      if (consent) consent.textContent = state.config.lead_capture.consent_text;
       return state.config;
     }
   }
