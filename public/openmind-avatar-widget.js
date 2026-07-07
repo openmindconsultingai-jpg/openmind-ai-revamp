@@ -9,7 +9,7 @@
     if (document.getElementById('om-avatar-widget-styles')) return;
     const style = document.createElement('style');
     style.id = 'om-avatar-widget-styles';
-    style.textContent = ".om-avatar-launcher,.om-avatar-widget,.om-avatar-widget *{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif}\n.om-avatar-launcher{position:fixed;right:22px;bottom:22px;z-index:2147483000;border:1px solid #111827;background:#111827;color:#fff;border-radius:8px;min-height:42px;padding:10px 14px;cursor:pointer;font-weight:700;box-shadow:0 18px 50px rgba(17,24,39,.18)}\n.om-avatar-widget{position:fixed;right:22px;bottom:82px;width:min(440px,calc(100vw - 28px));max-height:calc(100vh - 104px);display:none;grid-template-rows:auto auto minmax(190px,1fr) auto;border:1px solid #dce2ea;border-radius:8px;background:#fff;box-shadow:0 18px 60px rgba(17,24,39,.22);overflow:hidden;z-index:2147483001;color:#111827}\n.om-avatar-widget.is-open{display:grid}.om-avatar-widget button{font:inherit}\n.om-avatar-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;border-bottom:1px solid #dce2ea}\n.om-avatar-title{display:grid;gap:3px}.om-avatar-title strong{font-size:15px}.om-avatar-title span{font-size:12px;color:#5f6b7a}\n.om-avatar-close{width:36px;min-height:36px;padding:0;border:1px solid #111827;background:#111827;color:#fff;border-radius:8px;cursor:pointer}\n.om-avatar-video{height:188px;border-bottom:1px solid #dce2ea;background:linear-gradient(145deg,rgba(29,78,216,.12),transparent 50%),linear-gradient(30deg,rgba(4,120,87,.14),transparent 52%),#eef2f7;display:grid;place-items:center;position:relative}\n.om-avatar-face{width:92px;height:92px;border-radius:50%;background:#f0c7a7;border:3px solid #111827;position:relative}\n.om-avatar-face:before{content:\"\";position:absolute;left:8px;right:8px;top:-12px;height:38px;border-radius:40px 40px 12px 12px;background:#1f2937}\n.om-avatar-face:after{content:\"\";position:absolute;left:29px;bottom:22px;width:32px;height:12px;border-bottom:3px solid #111827;border-radius:0 0 18px 18px;animation:omTalk 1.1s ease-in-out infinite}\n@keyframes omTalk{0%,100%{transform:scaleX(.92);height:10px}50%{transform:scaleX(1.05);height:18px}}\n.om-avatar-status{position:absolute;left:12px;bottom:12px;right:12px;border:1px solid rgba(220,226,234,.92);border-radius:8px;padding:9px 10px;background:rgba(255,255,255,.9);font-size:12px;color:#344052}\n.om-avatar-chat{overflow:auto;background:#fafbfc;padding:12px;display:grid;gap:9px;align-content:start}\n.om-msg{max-width:88%;border:1px solid #dce2ea;border-radius:8px;background:#fff;padding:10px 11px;line-height:1.42;font-size:14px}.om-msg.user{justify-self:end;background:#eaf1ff;border-color:#b8c9ef}\n.om-avatar-controls{border-top:1px solid #dce2ea;padding:12px;display:grid;gap:10px}.om-chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}\n.om-chips button,.om-slots button{white-space:nowrap;background:#fff;color:#111827;border:1px solid #dce2ea;border-radius:8px;min-height:34px;padding:7px 10px;font-size:13px;cursor:pointer}\n.om-input-row{display:grid;grid-template-columns:1fr auto;gap:8px}\n.om-input-row input,.om-lead-form input,.om-lead-form textarea{width:100%;border:1px solid #dce2ea;border-radius:8px;min-height:42px;padding:9px 11px;background:#fff;color:#111827}\n.om-input-row button,.om-lead-form button{border:1px solid #111827;background:#111827;color:#fff;border-radius:8px;min-height:42px;padding:10px 14px;cursor:pointer;font-weight:700}\n.om-lead-form{display:none;gap:8px;border-top:1px solid #dce2ea;padding:12px}.om-lead-form.is-open{display:grid}\n.om-consent{display:grid;grid-template-columns:auto 1fr;align-items:start;gap:8px;color:#5f6b7a;font-size:12px;line-height:1.35}.om-consent input{width:16px;margin-top:2px}\n.om-slots{display:none;gap:8px}.om-slots.is-open{display:grid}.om-slots button{justify-content:flex-start;text-align:left}\n.om-avatar-iframe{width:100%;height:100%;border:0;display:block;aspect-ratio:16/9}\n@media(max-width:560px){.om-avatar-launcher{left:14px;right:14px}.om-avatar-widget{right:14px;bottom:80px}}";
+    style.textContent = ".om-avatar-launcher,.om-avatar-widget,.om-avatar-widget *{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif}\n.om-avatar-launcher{position:fixed;right:22px;bottom:22px;z-index:2147483000;border:1px solid #111827;background:#111827;color:#fff;border-radius:8px;min-height:42px;padding:10px 14px;cursor:pointer;font-weight:700;box-shadow:0 18px 50px rgba(17,24,39,.18)}\n.om-avatar-widget{position:fixed;right:22px;bottom:82px;width:min(580px,calc(100vw - 28px));max-height:calc(100vh - 44px);display:none;grid-template-rows:auto auto auto minmax(220px,1fr) auto;border:1px solid #dce2ea;border-radius:8px;background:#fff;box-shadow:0 18px 60px rgba(17,24,39,.22);overflow:hidden;z-index:2147483001;color:#111827}\n.om-avatar-widget.is-open{display:grid}.om-avatar-widget button{font:inherit}\n.om-avatar-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;border-bottom:1px solid #dce2ea}\n.om-avatar-title{display:grid;gap:3px}.om-avatar-title strong{font-size:15px}.om-avatar-title span{font-size:12px;color:#5f6b7a}\n.om-avatar-close{width:36px;min-height:36px;padding:0;border:1px solid #111827;background:#111827;color:#fff;border-radius:8px;cursor:pointer}\n.om-avatar-video{height:326px;border-bottom:1px solid #dce2ea;background:linear-gradient(145deg,rgba(29,78,216,.12),transparent 50%),linear-gradient(30deg,rgba(4,120,87,.14),transparent 52%),#eef2f7;display:grid;place-items:center;position:relative}\n.om-avatar-face{width:92px;height:92px;border-radius:50%;background:#f0c7a7;border:3px solid #111827;position:relative}\n.om-avatar-face:before{content:\"\";position:absolute;left:8px;right:8px;top:-12px;height:38px;border-radius:40px 40px 12px 12px;background:#1f2937}\n.om-avatar-face:after{content:\"\";position:absolute;left:29px;bottom:22px;width:32px;height:12px;border-bottom:3px solid #111827;border-radius:0 0 18px 18px;animation:omTalk 1.1s ease-in-out infinite}\n@keyframes omTalk{0%,100%{transform:scaleX(.92);height:10px}50%{transform:scaleX(1.05);height:18px}}\n.om-avatar-status{position:absolute;left:12px;bottom:12px;right:12px;border:1px solid rgba(220,226,234,.92);border-radius:8px;padding:9px 10px;background:rgba(255,255,255,.9);font-size:12px;color:#344052}\n.om-avatar-chat{overflow:auto;background:#fafbfc;padding:12px;display:grid;gap:9px;align-content:start}\n.om-msg{max-width:88%;border:1px solid #dce2ea;border-radius:8px;background:#fff;padding:10px 11px;line-height:1.42;font-size:14px}.om-msg.user{justify-self:end;background:#eaf1ff;border-color:#b8c9ef}\n.om-avatar-controls{border-top:1px solid #dce2ea;padding:12px;display:grid;gap:10px}.om-chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}\n.om-chips button,.om-slots button{white-space:nowrap;background:#fff;color:#111827;border:1px solid #dce2ea;border-radius:8px;min-height:34px;padding:7px 10px;font-size:13px;cursor:pointer}\n.om-input-row{display:grid;grid-template-columns:1fr auto;gap:8px}\n.om-input-row input,.om-lead-form input,.om-lead-form textarea{width:100%;border:1px solid #dce2ea;border-radius:8px;min-height:42px;padding:9px 11px;background:#fff;color:#111827}\n.om-input-row button,.om-lead-form button{border:1px solid #111827;background:#111827;color:#fff;border-radius:8px;min-height:42px;padding:10px 14px;cursor:pointer;font-weight:700}\n.om-lead-form{display:none;gap:8px;border-top:1px solid #dce2ea;padding:12px}.om-lead-form.is-open{display:grid}\n.om-consent{display:grid;grid-template-columns:auto 1fr;align-items:start;gap:8px;color:#5f6b7a;font-size:12px;line-height:1.35}.om-consent input{width:16px;margin-top:2px}\n.om-slots{display:none;gap:8px}.om-slots.is-open{display:grid}.om-slots button{justify-content:flex-start;text-align:left}\n.om-avatar-iframe{width:100%;height:100%;border:0;display:block;aspect-ratio:16/9}\n.om-mode-toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;border-bottom:1px solid #dce2ea;background:#fff}.om-mode-toggle button{border:1px solid #dce2ea;background:#fff;color:#111827;border-radius:8px;min-height:42px;padding:10px 12px;cursor:pointer;font-weight:800}.om-mode-toggle button.is-active{background:#111827;color:#fff;border-color:#111827}.om-avatar-title span,.om-avatar-status{display:none}.om-avatar-widget.is-voice-mode{grid-template-rows:auto auto auto}.om-avatar-widget.is-voice-mode .om-avatar-video{height:min(392px,calc(100vh - 170px))}.om-avatar-widget.is-voice-mode .om-avatar-chat,.om-avatar-widget.is-voice-mode .om-avatar-controls,.om-avatar-widget.is-voice-mode .om-lead-form{display:none}.om-avatar-widget.is-chat-mode .om-avatar-video{display:none}.om-avatar-widget.is-chat-mode .om-avatar-chat{min-height:280px}@media(max-width:560px){.om-avatar-launcher{left:14px;right:14px}.om-avatar-widget{right:14px;bottom:80px;width:calc(100vw - 28px)}.om-avatar-widget.is-voice-mode .om-avatar-video{height:calc((100vw - 28px) * .5625)}}";
     document.head.appendChild(style);
   }
 
@@ -21,6 +21,7 @@
     leadId: null,
     slots: [],
     selectedIntent: 'company_overview',
+    mode: 'voice',
     config: null,
   };
 
@@ -108,10 +109,14 @@
       <header class="om-avatar-header">
         <div class="om-avatar-title">
           <strong>OpenMind AI Advisor</strong>
-          <span data-role="session-status">Łączenie...</span>
+          <span data-role="session-status" aria-live="polite"></span>
         </div>
         <button class="om-avatar-close" type="button" aria-label="Zamknij">×</button>
       </header>
+      <div class="om-mode-toggle" role="tablist" aria-label="Tryb rozmowy">
+        <button type="button" class="is-active" data-mode="voice" aria-selected="true">Rozmowa głosowa</button>
+        <button type="button" data-mode="chat" aria-selected="false">Chat</button>
+      </div>
       <div class="om-avatar-video">
         <div class="om-avatar-face" aria-hidden="true"></div>
         <div class="om-avatar-status" data-role="avatar-status">Kliknij, aby rozpocząć sesję doradcy AI.</div>
@@ -162,7 +167,7 @@
     const video = ui.widget.querySelector('.om-avatar-video');
     if (!video || video.dataset.embedInstalled === 'true') return true;
     video.dataset.embedInstalled = 'true';
-    video.innerHTML = `<iframe class="om-avatar-iframe" src="${escapeAttr(embed.url)}" allow="${escapeAttr(embed.allow || 'microphone')}" title="${escapeAttr(embed.title || 'LiveAvatar Embed')}"></iframe><div class="om-avatar-status" data-role="avatar-status">HeyGen LiveAvatar embed aktywny.</div>`;
+    video.innerHTML = `<iframe class="om-avatar-iframe" src="${escapeAttr(embed.url)}" allow="${escapeAttr(embed.allow || 'microphone')}" title="${escapeAttr(embed.title || 'LiveAvatar Embed')}"></iframe>`;
     avatarStatus = ui.widget.querySelector('[data-role="avatar-status"]');
     return true;
   }
@@ -194,13 +199,24 @@
     chat.scrollTop = chat.scrollHeight;
   }
 
+  function setMode(mode) {
+    state.mode = mode === 'chat' ? 'chat' : 'voice';
+    ui.widget.classList.toggle('is-voice-mode', state.mode === 'voice');
+    ui.widget.classList.toggle('is-chat-mode', state.mode === 'chat');
+    ui.widget.querySelectorAll('[data-mode]').forEach((button) => {
+      const active = button.dataset.mode === state.mode;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+  }
+
   async function openWidget() {
     ui.widget.classList.add('is-open');
     const clientConfig = await loadConfig();
     if (renderAvatarEmbed(clientConfig)) {
       if (!state.session) {
         state.session = { provider: 'heygen_embed' };
-        setStatus('HeyGen LiveAvatar embed aktywny.');
+        setStatus('');
         addMessage(clientConfig.welcome_message || 'Cześć, jestem doradcą AI OpenMind AI. Możesz rozmawiać ze mną głosowo w oknie avatara.');
       }
       return;
@@ -209,8 +225,8 @@
   }
 
   function setStatus(text) {
-    status.textContent = text;
-    avatarStatus.textContent = text;
+    if (status) status.textContent = '';
+    if (avatarStatus) avatarStatus.textContent = '';
   }
 
   async function api(path, options = {}) {
@@ -347,6 +363,9 @@
   ui.launcher.addEventListener('click', openWidget);
   document.querySelectorAll('[data-open-avatar]').forEach((node) => node.addEventListener('click', openWidget));
   ui.widget.querySelector('.om-avatar-close').addEventListener('click', () => ui.widget.classList.remove('is-open'));
+  ui.widget.querySelectorAll('[data-mode]').forEach((node) => {
+    node.addEventListener('click', () => setMode(node.dataset.mode));
+  });
   ui.widget.querySelectorAll('[data-intent]').forEach((node) => {
     node.addEventListener('click', () => handleIntent(node.dataset.intent));
   });
@@ -365,5 +384,6 @@
       ui.widget.querySelector('[data-role="send"]').click();
     }
   });
+  setMode('voice');
   form.addEventListener('submit', submitLead);
 })();
