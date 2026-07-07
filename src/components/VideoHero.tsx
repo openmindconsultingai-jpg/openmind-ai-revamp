@@ -391,6 +391,27 @@ const VideoHero = () => {
           />
         </button>
 
+        {/* OpenMind AI Advisor — otwiera widget (openmind-avatar-widget.js) */}
+        <button
+          type="button"
+          data-open-avatar
+          onClick={() => {
+            const launcher = document.querySelector('.om-avatar-launcher') as HTMLButtonElement | null;
+            launcher?.click();
+          }}
+          className="hero-cta mt-4 inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-foreground/90 hover:text-primary transition-all duration-300 hover:scale-105"
+          style={{
+            background: 'linear-gradient(135deg, hsl(220 15% 8% / 0.75), hsl(220 15% 12% / 0.55))',
+            backdropFilter: 'blur(14px)',
+            WebkitBackdropFilter: 'blur(14px)',
+            border: '1px solid hsl(176 100% 43% / 0.35)',
+            boxShadow: '0 0 24px hsl(176 100% 43% / 0.15)',
+          }}
+        >
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          Zapytaj doradcę AI
+        </button>
+
         {/* Mobile-only 3D Neural iframe — full model, auto-load after 5s */}
         {!isDesktop && (
           <div
