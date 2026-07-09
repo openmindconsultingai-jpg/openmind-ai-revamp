@@ -72,6 +72,15 @@ const App = () => (
             <Route path="/gdzie-dzialamy/:slug.html" element={<Suspense fallback={<PageLoader />}><VoivodeshipDetail /></Suspense>} />
             <Route path="/gdzie-dzialamy/:slug/:citySlug" element={<Suspense fallback={<PageLoader />}><CityDetail /></Suspense>} />
             <Route path="/gdzie-dzialamy/:slug/:citySlug.html" element={<Suspense fallback={<PageLoader />}><CityDetail /></Suspense>} />
+            {/* Szkolenia AI — SEO landing pages */}
+            <Route path="/szkolenia-ai" element={<Suspense fallback={<PageLoader />}><TrainingPage slugOverride="szkolenia-ai" /></Suspense>} />
+            <Route path="/szkolenia-ai.html" element={<Suspense fallback={<PageLoader />}><TrainingPage slugOverride="szkolenia-ai" /></Suspense>} />
+            <Route path="/szkolenia-ai/dla-firm" element={<Suspense fallback={<PageLoader />}><TrainingPage slugOverride="szkolenia-ai-dla-firm" /></Suspense>} />
+            <Route path="/szkolenia-ai/dla-firm.html" element={<Suspense fallback={<PageLoader />}><TrainingPage slugOverride="szkolenia-ai-dla-firm" /></Suspense>} />
+            <Route path="/szkolenia-ai/dla-szkol" element={<Suspense fallback={<PageLoader />}><TrainingPage slugOverride="szkolenia-ai-dla-szkol" /></Suspense>} />
+            <Route path="/szkolenia-ai/dla-szkol.html" element={<Suspense fallback={<PageLoader />}><TrainingPage slugOverride="szkolenia-ai-dla-szkol" /></Suspense>} />
+            <Route path="/szkolenia-ai/chatgpt" element={<Suspense fallback={<PageLoader />}><TrainingPage slugOverride="szkolenia-chatgpt" /></Suspense>} />
+            <Route path="/szkolenia-ai/chatgpt.html" element={<Suspense fallback={<PageLoader />}><TrainingPage slugOverride="szkolenia-chatgpt" /></Suspense>} />
             <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
           </Routes>
         </BrowserRouter>
