@@ -1,0 +1,186 @@
+{
+ "title": "Szkolenia AI indywidualne 1:1 i mentoring – w siedzibie, u Ciebie lub online | OpenMind AI",
+ "description": "Indywidualne szkolenia AI 1:1 z trenerem: program pod Twoje stanowisko, praca na Twoich dokumentach, elastyczne terminy. Mentoring AI i konsultacje w naszej siedzibie lub online.",
+ "h1": "Szkolenia indywidualne i mentoring AI — 1:1 z trenerem",
+ "sections": [
+  {
+   "h2": "Nauka 1:1 — najszybsza droga do biegłości w AI",
+   "p": [
+    "Sesje sam na sam z trenerem, w pełni pod Twoje cele, tempo i branżę. W naszej siedzibie, u Ciebie lub online."
+   ],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Szkolenie indywidualne",
+     "p": [
+      "Idealne dla właścicieli firm, menedżerów i specjalistów, którzy cenią czas i dyskrecję."
+     ],
+     "li": [
+      "Program zbudowany pod Twoje stanowisko i cele",
+      "Praca na Twoich realnych dokumentach — także poufnych",
+      "Elastyczne terminy, również wieczory i weekendy",
+      "Gotowe rozwiązania po każdej sesji, nie tylko wiedza",
+      "Wsparcie mailowe między sesjami"
+     ]
+    },
+    {
+     "h3": "Mentoring i konsultacje w siedzibie",
+     "p": [
+      "Zobacz też konsultacje strategiczne AI dla firm."
+     ],
+     "li": [
+      "Regularna współpraca długoterminowa — od strategii po wdrożenia",
+      "Zapraszamy do naszej siedziby na indywidualne konsultacje",
+      "Wspólne budowanie Twoich automatyzacji i agentów AI",
+      "Przegląd narzędzi i kosztów pod Twój budżet",
+      "Dostępność między sesjami — jesteś z nami w kontakcie"
+     ]
+    }
+   ]
+  },
+  {
+   "h2": "Przykładowe ścieżki 1:1",
+   "p": [],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Właściciel firmy",
+     "p": [
+      "Od audytu Twojej codziennej pracy po zestaw asystentów AI: oferty, e-maile, analizy, raporty. Zwykle 4–5 sesji."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Marketer / twórca",
+     "p": [
+      "Content, grafika, wideo i automatyczna dystrybucja — kompletny warsztat pracy kreatywnej z AI. Zwykle 3–4 sesje."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Specjalista / analityk",
+     "p": [
+      "Praca z danymi i dokumentami: analiza, raportowanie, przetwarzanie plików, własne GPT-y i agenci. Zwykle 3–5 sesji."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Pytania o szkolenia indywidualne",
+   "p": [
+    "Do wyboru: w naszej siedzibie (zapraszamy na kawę i pracę przy wspólnym ekranie), u Ciebie w firmie lub online. Wielu klientów łączy formaty — pierwsze spotkanie na miejscu, kolejne zdalnie.",
+    "Dla właścicieli firm, menedżerów i specjalistów, którzy chcą szybko wejść na wysoki poziom pracy z AI bez czekania na grupę. Także dla osób, które wolą uczyć się we własnym tempie i na własnych, często poufnych, materiałach.",
+    "Większość klientów zaczyna od pakietu 3–5 sesji po 2 godziny. Pierwsza sesja zawsze kończy się konkretnym efektem — np. gotowym asystentem AI dla Twojego stanowiska. Plan kolejnych ustalamy wspólnie.",
+    "Tak — to największa zaleta formatu 1:1. Pracujemy na Twoich dokumentach, procesach i narzędziach. Efektem są rozwiązania gotowe do użycia następnego dnia, nie notatki z wykładu.",
+    "Mentoring to współpraca długoterminowa: regularne sesje, wsparcie między spotkaniami i wspólne rozwijanie Twoich projektów AI — od pomysłu po wdrożenie. Szkolenie to zamknięty program nauki konkretnych umiejętności."
+   ],
+   "li": [],
+   "subs": []
+  },
+  {
+   "h2": "Porozmawiajmy o Twoim projekcie",
+   "p": [
+    "Pierwsza konsultacja (30–45 minut, online lub w naszej siedzibie) jest zawsze bezpłatna i niezobowiązująca. Odpowiadamy w ciągu 24 godzin w dni robocze."
+   ],
+   "li": [],
+   "subs": []
+  }
+ ],
+ "jsonld": [
+  {
+   "@context": "https://schema.org",
+   "@type": "Course",
+   "name": "Szkolenia AI indywidualne 1:1 i mentoring",
+   "description": "Indywidualne szkolenia ze sztucznej inteligencji 1:1: program pod stanowisko klienta, praca na realnych dokumentach, mentoring długoterminowy. W siedzibie OpenMind AI, u klienta lub online.",
+   "url": "https://www.openmindai.pl/szkolenia-ai-indywidualne.html",
+   "provider": {
+    "@type": "Organization",
+    "name": "OpenMind AI Consulting",
+    "url": "https://www.openmindai.pl"
+   },
+   "inLanguage": "pl",
+   "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": [
+     "Onsite",
+     "Online"
+    ],
+    "location": {
+     "@type": "Country",
+     "name": "Polska"
+    }
+   }
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Gdzie odbywają się szkolenia indywidualne?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Do wyboru: w naszej siedzibie (zapraszamy na kawę i pracę przy wspólnym ekranie), u Ciebie w firmie lub online. Wielu klientów łączy formaty — pierwsze spotkanie na miejscu, kolejne zdalnie."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Dla kogo jest szkolenie 1:1?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Dla właścicieli firm, menedżerów i specjalistów, którzy chcą szybko wejść na wysoki poziom pracy z AI bez czekania na grupę. Także dla osób, które wolą uczyć się we własnym tempie i na własnych, często poufnych, materiałach."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Ile sesji potrzebuję?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Większość klientów zaczyna od pakietu 3–5 sesji po 2 godziny. Pierwsza sesja zawsze kończy się konkretnym efektem — np. gotowym asystentem AI dla Twojego stanowiska. Plan kolejnych ustalamy wspólnie."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy indywidualne szkolenie może dotyczyć mojej firmy, a nie ogólnych narzędzi?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak — to największa zaleta formatu 1:1. Pracujemy na Twoich dokumentach, procesach i narzędziach. Efektem są rozwiązania gotowe do użycia następnego dnia, nie notatki z wykładu."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czym różni się mentoring od szkolenia?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Mentoring to współpraca długoterminowa: regularne sesje, wsparcie między spotkaniami i wspólne rozwijanie Twoich projektów AI — od pomysłu po wdrożenie. Szkolenie to zamknięty program nauki konkretnych umiejętności."
+     }
+    }
+   ]
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Strona główna",
+     "item": "https://www.openmindai.pl/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Usługi AI",
+     "item": "https://www.openmindai.pl/services.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Szkolenia AI indywidualne",
+     "item": "https://www.openmindai.pl/szkolenia-ai-indywidualne.html"
+    }
+   ]
+  }
+ ]
+}

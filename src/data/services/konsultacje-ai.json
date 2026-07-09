@@ -1,0 +1,190 @@
+{
+ "title": "Konsultacje AI – doradztwo indywidualne i konsulting strategiczny | OpenMind AI",
+ "description": "Konsultacje AI dla firm i osób prywatnych: w naszej siedzibie, u Ciebie lub online. Audyt procesów, dobór narzędzi, strategia wdrożenia, RODO. Pierwsza rozmowa bezpłatna.",
+ "h1": "Konsultacje i doradztwo AI — indywidualnie, także w naszej siedzibie",
+ "sections": [
+  {
+   "h2": "Konsultacje AI — od pierwszej rozmowy po strategię wdrożenia",
+   "p": [
+    "Godzina z konsultantem, który zrobił dziesiątki wdrożeń, oszczędza tygodnie samodzielnych poszukiwań i kosztownych błędnych decyzji."
+   ],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Konsultacje indywidualne w naszej siedzibie",
+     "p": [
+      "Zapraszamy na spotkanie na miejscu: wspólna praca przy ekranie, analiza Twoich procesów i narzędzi, konkretne odpowiedzi zamiast ogólników. Idealny format dla właścicieli firm i osób, które wolą rozmowę twarzą w twarz. Możliwe także dojazdy do klienta i terminy wieczorne."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Konsulting strategiczny dla firm",
+     "p": [
+      "Audyt procesów, identyfikacja przypadków użycia o najwyższym zwrocie, dobór modeli i narzędzi, analiza kosztów licencji i infrastruktury, mapa drogowa wdrożenia oraz zarządzanie zmianą w organizacji."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Bezpieczeństwo i zgodność",
+     "p": [
+      "RODO w pracy z AI, polityki użycia dla pracowników, dobór modeli z gwarancjami prywatności, rozwiązania on-premise dla wymagających środowisk."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Drugie zdanie eksperta",
+     "p": [
+      "Masz już ofertę od dostawcy albo pomysł na wdrożenie? Zweryfikujemy założenia, koszty i ryzyka, zanim podpiszesz umowę."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Pierwsza konsultacja — zawsze bezpłatna",
+   "p": [],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Umów rozmowę",
+     "p": [
+      "Formularz lub e-mail — odpowiadamy w 24 h i proponujemy termin, także wieczorny."
+     ],
+     "li": []
+    },
+    {
+     "h3": "30–45 minut rozmowy",
+     "p": [
+      "Online lub w siedzibie. Poznajemy Twoją firmę i wskazujemy obszary o największym potencjale."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Propozycja planu",
+     "p": [
+      "Dostajesz podsumowanie z rekomendacją: konsulting, szkolenie lub wdrożenie — i wycenę."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Decyzja bez presji",
+     "p": [
+      "Konsultacja jest niezobowiązująca. Plan możesz zrealizować z nami lub na własną rękę."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Pytania o konsultacje",
+   "p": [
+    "Konsultacja to praca nad Twoim konkretnym problemem: strategią, wyborem narzędzi, projektem wdrożenia. Szkolenie to nauka umiejętności. Często zaczynamy od konsultacji, a z niej wynika plan szkoleń lub wdrożenia — zobacz też szkolenia indywidualne 1:1.",
+    "Online (30–45 minut pierwszej rozmowy zawsze bezpłatnie) lub stacjonarnie — zapraszamy do naszej siedziby, możemy też przyjechać do Twojej firmy w dowolnym mieście w Polsce.",
+    "Nie wiem, od czego zacząć z AI; które procesy zautomatyzować najpierw; jak policzyć koszty i zwrot; jakie narzędzia wybrać; jak bezpiecznie wdrożyć AI zgodnie z RODO; jak przekonać zespół do zmiany.",
+    "Konkretny dokument: mapę przypadków użycia z priorytetami, rekomendacje narzędzi z kosztami licencji, plan wdrożenia krok po kroku i szacunek zwrotu z inwestycji. To plan, który możesz zrealizować z nami albo samodzielnie.",
+    "Tak, na życzenie jeszcze przed pierwszą rozmową. Wszystkie informacje z konsultacji traktujemy poufnie."
+   ],
+   "li": [],
+   "subs": []
+  },
+  {
+   "h2": "Porozmawiajmy o Twoim projekcie",
+   "p": [
+    "Pierwsza konsultacja (30–45 minut, online lub w naszej siedzibie) jest zawsze bezpłatna i niezobowiązująca. Odpowiadamy w ciągu 24 godzin w dni robocze."
+   ],
+   "li": [],
+   "subs": []
+  }
+ ],
+ "jsonld": [
+  {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Konsultacje i doradztwo AI",
+   "description": "Konsultacje AI: audyt procesów biznesowych, dobór narzędzi i modeli, strategia wdrożenia sztucznej inteligencji, zgodność z RODO. Indywidualnie w siedzibie, u klienta lub online.",
+   "serviceType": "Konsulting AI",
+   "url": "https://www.openmindai.pl/konsultacje-ai.html",
+   "provider": {
+    "@type": "Organization",
+    "name": "OpenMind AI Consulting",
+    "url": "https://www.openmindai.pl",
+    "email": "biuro@openmindai.pl"
+   },
+   "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+   },
+   "availableLanguage": "pl"
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Czym różni się konsultacja od szkolenia?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Konsultacja to praca nad Twoim konkretnym problemem: strategią, wyborem narzędzi, projektem wdrożenia. Szkolenie to nauka umiejętności. Często zaczynamy od konsultacji, a z niej wynika plan szkoleń lub wdrożenia — zobacz też szkolenia indywidualne 1:1."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Gdzie odbywają się konsultacje?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Online (30–45 minut pierwszej rozmowy zawsze bezpłatnie) lub stacjonarnie — zapraszamy do naszej siedziby, możemy też przyjechać do Twojej firmy w dowolnym mieście w Polsce."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Z czym najczęściej przychodzą klienci?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nie wiem, od czego zacząć z AI; które procesy zautomatyzować najpierw; jak policzyć koszty i zwrot; jakie narzędzia wybrać; jak bezpiecznie wdrożyć AI zgodnie z RODO; jak przekonać zespół do zmiany."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Co dostaję po konsultacji strategicznej?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Konkretny dokument: mapę przypadków użycia z priorytetami, rekomendacje narzędzi z kosztami licencji, plan wdrożenia krok po kroku i szacunek zwrotu z inwestycji. To plan, który możesz zrealizować z nami albo samodzielnie."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy podpisujecie NDA?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak, na życzenie jeszcze przed pierwszą rozmową. Wszystkie informacje z konsultacji traktujemy poufnie."
+     }
+    }
+   ]
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Strona główna",
+     "item": "https://www.openmindai.pl/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Usługi AI",
+     "item": "https://www.openmindai.pl/services.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Konsultacje AI",
+     "item": "https://www.openmindai.pl/konsultacje-ai.html"
+    }
+   ]
+  }
+ ]
+}

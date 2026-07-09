@@ -1,0 +1,172 @@
+{
+ "title": "Usługi AI – Automatyzacje, Szkolenia, Teledyski, Strony WWW | OpenMind AI",
+ "description": "Pełna oferta OpenMind AI: automatyzacje i agenci AI, szkolenia (stacjonarne, online, 1:1), teledyski i wideo AI, AI dla szkół, strony WWW z brandingiem, konsultacje. Cała Polska.",
+ "h1": "Usługi AI dla firm, twórców i szkół — od automatyzacji po teledyski",
+ "sections": [
+  {
+   "h2": "Czym możemy się zająć w Twojej firmie",
+   "p": [
+    "Sześć obszarów, jedna zasada: rozwiązania, które działają w produkcji miesiącami — nie efektowne demo. Każda usługa ma osobną stronę ze szczegółami, programem i FAQ."
+   ],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Automatyzacje, systemy i agenci AI",
+     "p": [
+      "Nasza główna specjalizacja: agenci AI, automatyzacja procesów (Make, n8n, dedykowane API), chatboty, przetwarzanie dokumentów i integracje z CRM/ERP. Zaczynamy od pilotażu o szybkim zwrocie."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Szkolenia AI",
+     "p": [
+      "Praktyczne warsztaty z ChatGPT, Claude, prompt engineeringu i automatyzacji — stacjonarnie w całej Polsce, online na żywo i indywidualnie 1:1. Programy szyte pod branżę i poziom zespołu."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Teledyski i wideo AI",
+     "p": [
+      "Pełne teledyski do utworów muzycznych, spoty reklamowe, animacje i filmiki social media — kinowa jakość bez kinowego budżetu. Od scenariusza po formaty na każdą platformę."
+     ],
+     "li": []
+    },
+    {
+     "h3": "AI dla szkół i edukacji",
+     "p": [
+      "Kursy i pokazy w szkołach: szkolenia rad pedagogicznych, warsztaty dla uczniów dopasowane do wieku, widowiskowe pokazy na wydarzenia i polityki użycia AI w placówkach."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Strony WWW i branding",
+     "p": [
+      "Strony zaprojektowane pod wyniki wyszukiwania — szybkie, dostępne (WCAG), z modułami AI: chatbot, wyszukiwanie semantyczne, personalizacja. Plus kompletne identyfikacje wizualne."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Konsultacje i konsulting AI",
+     "p": [
+      "Audyt procesów, dobór narzędzi, strategia wdrożenia i bezpieczeństwo danych. Indywidualne konsultacje w naszej siedzibie, u Ciebie lub online — pierwsza rozmowa zawsze bezpłatna."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Dlaczego OpenMind AI",
+   "p": [],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Inżynieria + kreacja",
+     "p": [
+      "Łączymy wiedzę o modelach (ChatGPT, Claude, Gemini, open-source LLaMA/Mistral) z warsztatem kreatywnym i doświadczeniem wdrożeniowym."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Doświadczenie branżowe",
+     "p": [
+      "E-commerce, medycyna, prawo, nieruchomości, finanse, produkcja, edukacja, marketing — znamy wzorce i pułapki wdrożeń w Twojej branży."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Edukacja zamiast uzależnienia",
+     "p": [
+      "Przekazujemy wiedzę i dokumentację. Po współpracy Twój zespół rozumie i rozwija rozwiązania samodzielnie."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Porozmawiajmy o Twoim projekcie",
+   "p": [
+    "Pierwsza konsultacja (30–45 minut, online lub w naszej siedzibie) jest zawsze bezpłatna i niezobowiązująca. Odpowiadamy w ciągu 24 godzin w dni robocze."
+   ],
+   "li": [],
+   "subs": []
+  }
+ ],
+ "jsonld": [
+  {
+   "@context": "https://schema.org",
+   "@type": "Organization",
+   "name": "OpenMind AI Consulting",
+   "url": "https://www.openmindai.pl",
+   "email": "biuro@openmindai.pl",
+   "description": "Polski hub technologiczny: automatyzacje i agenci AI, szkolenia ze sztucznej inteligencji, produkcja teledysków i wideo AI, strony internetowe i branding, konsultacje strategiczne.",
+   "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+   },
+   "founder": {
+    "@type": "Person",
+    "name": "Łukasz Czarnecki"
+   }
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "ItemList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Automatyzacje i agenci AI",
+     "url": "https://www.openmindai.pl/automatyzacja-ai.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Szkolenia AI",
+     "url": "https://www.openmindai.pl/szkolenia-ai.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Szkolenia AI stacjonarne",
+     "url": "https://www.openmindai.pl/szkolenia-ai-stacjonarne.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "name": "Szkolenia AI online",
+     "url": "https://www.openmindai.pl/szkolenia-ai-online.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 5,
+     "name": "Szkolenia AI indywidualne 1:1",
+     "url": "https://www.openmindai.pl/szkolenia-ai-indywidualne.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 6,
+     "name": "AI dla szkół",
+     "url": "https://www.openmindai.pl/ai-dla-szkol.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 7,
+     "name": "Teledyski i wideo AI",
+     "url": "https://www.openmindai.pl/teledyski-ai.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 8,
+     "name": "Strony WWW i branding",
+     "url": "https://www.openmindai.pl/strony-www-branding.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 9,
+     "name": "Konsultacje AI",
+     "url": "https://www.openmindai.pl/konsultacje-ai.html"
+    }
+   ]
+  }
+ ]
+}

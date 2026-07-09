@@ -1,0 +1,204 @@
+{
+ "title": "Tworzenie stron internetowych i branding z modułami AI | OpenMind AI",
+ "description": "Projektujemy strony WWW zoptymalizowane pod SEO i identyfikacje wizualne marek. Moduły AI: chatboty, wyszukiwanie semantyczne, personalizacja. Szybkość, WCAG, integracje CRM.",
+ "h1": "Strony internetowe i branding — wizerunek, który sprzedaje",
+ "sections": [
+  {
+   "h2": "Strony internetowe i branding — zaprojektowane pod klientów z Google",
+   "p": [
+    "Strona, którą właśnie oglądasz, jest naszym portfolio: szybka, dostępna i zbudowana pod frazy, którymi szukają nas klienci. Dokładnie tak projektujemy dla Ciebie."
+   ],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Strony firmowe i usługowe",
+     "p": [
+      "Szybkie, responsywne i zoptymalizowane pod SEO strony wizytówkowe, usługowe i landing page — z architekturą treści zaprojektowaną pod wyszukiwarki."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Branding i identyfikacja wizualna",
+     "p": [
+      "Logo, kolorystyka, typografia, materiały firmowe i szablony social media. Spójny wizerunek marki od wizytówki po stronę WWW."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Moduły AI na stronie",
+     "p": [
+      "Chatbot znający Twoją ofertę, wyszukiwanie semantyczne, personalizacja treści, automatyczna obsługa zapytań z formularzy — strona, która sama pracuje na sprzedaż."
+     ],
+     "li": []
+    },
+    {
+     "h3": "SEO techniczne i treściowe",
+     "p": [
+      "Dane strukturalne, meta tagi, szybkość ładowania, architektura fraz i teksty, które rankują. SEO wbudowane w projekt, nie doklejone po fakcie."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Dostępność WCAG",
+     "p": [
+      "Strony dostępne dla wszystkich użytkowników i zgodne z wymaganiami dla instytucji publicznych."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Integracje",
+     "p": [
+      "CRM, ERP, systemy rezerwacji, płatności, newslettery i analityka — strona podpięta do narzędzi, na których pracujesz."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Od pomysłu do publikacji",
+   "p": [],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Strategia",
+     "p": [
+      "Analiza konkurencji i fraz, architektura treści, moodboard kierunków wizualnych."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Projekt",
+     "p": [
+      "Makiety i design system — akceptujesz wygląd, zanim powstanie kod."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Wdrożenie",
+     "p": [
+      "Szybki, dostępny kod, treści pod SEO, dane strukturalne, testy na urządzeniach."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Rozwój",
+     "p": [
+      "Publikacja, monitoring pozycji, opieka i rozbudowa — strona rośnie razem z firmą."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Pytania o strony i branding",
+   "p": [
+    "Zależy od zakresu: wizytówka firmowa, strona usługowa z blogiem czy serwis z modułami AI to różne budżety. Po bezpłatnej rozmowie dostajesz konkretną wycenę z zakresem prac — bez ukrytych kosztów.",
+    "Projektujemy strony pod wyniki wyszukiwania od pierwszego dnia: architektura treści pod frazy, szybkość ładowania, dostępność WCAG i dane strukturalne. Do tego moduły AI, których typowe agencje nie robią: chatboty znające Twoją ofertę, wyszukiwanie semantyczne, personalizacja treści.",
+    "Tak — logo, paleta kolorów, typografia, materiały firmowe i szablony social media. Branding i strona powstają jako jedna spójna całość, a generatywna AI pozwala nam pokazać kilka kierunków wizualnych już na starcie.",
+    "Tak, oferujemy opiekę: aktualizacje, rozwój treści pod SEO, monitoring pozycji i poprawki. Możemy też przeszkolić Twój zespół z samodzielnej edycji.",
+    "Tak — przeprowadzamy migracje z zachowaniem SEO: mapowanie adresów, przekierowania 301, zachowanie treści, które już rankują. Strona zyskuje nowy wygląd bez utraty pozycji."
+   ],
+   "li": [],
+   "subs": []
+  },
+  {
+   "h2": "Porozmawiajmy o Twoim projekcie",
+   "p": [
+    "Pierwsza konsultacja (30–45 minut, online lub w naszej siedzibie) jest zawsze bezpłatna i niezobowiązująca. Odpowiadamy w ciągu 24 godzin w dni robocze."
+   ],
+   "li": [],
+   "subs": []
+  }
+ ],
+ "jsonld": [
+  {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Tworzenie stron internetowych i branding",
+   "description": "Projektowanie stron WWW zoptymalizowanych pod SEO z modułami AI oraz identyfikacji wizualnych marek: logo, kolorystyka, materiały firmowe.",
+   "serviceType": "Tworzenie stron internetowych i branding",
+   "url": "https://www.openmindai.pl/strony-www-branding.html",
+   "provider": {
+    "@type": "Organization",
+    "name": "OpenMind AI Consulting",
+    "url": "https://www.openmindai.pl",
+    "email": "biuro@openmindai.pl"
+   },
+   "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+   },
+   "availableLanguage": "pl"
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Ile kosztuje strona internetowa?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Zależy od zakresu: wizytówka firmowa, strona usługowa z blogiem czy serwis z modułami AI to różne budżety. Po bezpłatnej rozmowie dostajesz konkretną wycenę z zakresem prac — bez ukrytych kosztów."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czym różnią się Wasze strony od typowej oferty agencji?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Projektujemy strony pod wyniki wyszukiwania od pierwszego dnia: architektura treści pod frazy, szybkość ładowania, dostępność WCAG i dane strukturalne. Do tego moduły AI, których typowe agencje nie robią: chatboty znające Twoją ofertę, wyszukiwanie semantyczne, personalizacja treści."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy robicie też identyfikację wizualną?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak — logo, paleta kolorów, typografia, materiały firmowe i szablony social media. Branding i strona powstają jako jedna spójna całość, a generatywna AI pozwala nam pokazać kilka kierunków wizualnych już na starcie."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy zajmujecie się stroną po wdrożeniu?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak, oferujemy opiekę: aktualizacje, rozwój treści pod SEO, monitoring pozycji i poprawki. Możemy też przeszkolić Twój zespół z samodzielnej edycji."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy przeniesiecie moją obecną stronę?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak — przeprowadzamy migracje z zachowaniem SEO: mapowanie adresów, przekierowania 301, zachowanie treści, które już rankują. Strona zyskuje nowy wygląd bez utraty pozycji."
+     }
+    }
+   ]
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Strona główna",
+     "item": "https://www.openmindai.pl/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Usługi AI",
+     "item": "https://www.openmindai.pl/services.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Strony WWW i branding",
+     "item": "https://www.openmindai.pl/strony-www-branding.html"
+    }
+   ]
+  }
+ ]
+}

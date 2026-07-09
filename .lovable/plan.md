@@ -1,72 +1,90 @@
+# Przebudowa usług pod SEO — wdrożenie kompletne (9 stron)
 
+Wierne wdrożenie treści z 9 prototypów `.htm` + strategii z `STRATE~1.MD`. Bez ikonek AI w kategoriach — czyste karty tekstowe z brandowym stylem OpenMind (glassmorphism, Outfit/DM Sans, teal `#00dbcd`).
 
-## Why most pages aren't being indexed — diagnosis & fix
+## Zakres
 
-I checked the live site and found **the actual root cause**, plus several secondary issues. Good news: it's mostly fixable in one pass.
+### Nowa architektura URL (płaska, zastępuje zagnieżdżoną)
+```
+/services.html                     ← przeprojektowany hub
+/automatyzacja-ai.html
+/szkolenia-ai.html                 ← hub szkoleń (+ mapa 192 miast)
+/szkolenia-ai-stacjonarne.html     (+ mapa 192 miast)
+/szkolenia-ai-online.html
+/szkolenia-ai-indywidualne.html
+/ai-dla-szkol.html                 (+ mapa 192 miast)
+/teledyski-ai.html
+/strony-www-branding.html
+/konsultacje-ai.html
+```
 
----
+### Usuwane (stara struktura z poprzedniej iteracji)
+- Routy `/szkolenia-ai/dla-firm`, `/szkolenia-ai/dla-szkol`, `/szkolenia-ai/chatgpt` (+ `.html`)
+- Dane `src/data/trainings.ts` (kategorie `dla-firm`, `dla-szkol`, `chatgpt`) — przepiszę pod nowe slugi
+- Wpisy w `sitemap-main.xml` prowadzące do starej struktury
 
-### 🔴 Critical bug #1 — `sitemap.xml` is broken on the custom domain
+## Implementacja
 
-When I fetched `https://www.openmindai.pl/sitemap.xml` I got back **the React 404 page** (HTML, not XML). The same URL on `openmind-ai-revamp.lovable.app/sitemap.xml` returns the correct XML.
+### 1. Dane treści — 1:1 z prototypów
+- `src/data/services/servicesHub.ts` — treść hub (z `SERVIC~1.HTM`)
+- `src/data/services/automatyzacja.ts` (z `AUTOMA~1.HTM`)
+- `src/data/services/szkoleniaHub.ts` (z `SZKOLE~1.HTM`)
+- `src/data/services/szkoleniaStacjonarne.ts` (z `SZKOLE~2.HTM`)
+- `src/data/services/szkoleniaOnline.ts` (z `SZKOLE~3.HTM`)
+- `src/data/services/szkoleniaIndywidualne.ts` (z `SZKOLE~4.HTM`)
+- `src/data/services/aiDlaSzkol.ts` (z `AI-DLA~1.HTM`)
+- `src/data/services/teledyski.ts` (z `TELEDY~1.HTM`)
+- `src/data/services/stronyBranding.ts` (z `STRONY~1.HTM`)
+- `src/data/services/konsultacje.ts` (z `KONSUL~1.HTM`)
 
-This means **your custom domain isn't actually serving the static `public/sitemap.xml` file** — it's falling through to the SPA and rendering the 404 component. Result: **Google has had no working sitemap on `www.openmindai.pl` for the entire time it's been live.** Every URL it knows about, it had to discover by crawling links — which is dramatically slower and often skips deep pages like the 192 city URLs.
+Każdy plik eksportuje: `title` (meta ≤60), `description` (meta ≤160), `h1`, `intro`, `sections[]` (nagłówek + treść/listy), `faqs[]`, `courseOrServiceJsonLd`, `breadcrumbs`.
 
-This single issue explains 80% of "page not indexed" reports.
+### 2. Uniwersalny szablon stron
+`src/pages/ServiceLandingPage.tsx` — jeden komponent, przyjmuje `slug` i dobiera dane. Sekcje w kolejności prototypu:
+- Hero (H1 + intro + CTA)
+- Sekcje treści (glassmorphism cards **bez ikon**)
+- Mapa 192 miast (`<ServiceAreas>`) — tylko na 3 stronach flagowanych w danych
+- FAQ (akordeon, JSON-LD `FAQPage`)
+- Linkowanie krzyżowe (grid do siostrzanych usług — tekst + krótki opis, **bez ikon**)
+- CTA końcowe → `/contact.html`
 
-**Fix:** This is a hosting/routing problem on the custom domain side, not a code problem. The static files (`sitemap.xml`, `robots.txt`, `og-image.jpg`) work on the `.lovable.app` domain but not on `openmindai.pl`. Most likely cause: the domain still points partially to LH.pl (old hosting) instead of fully to Lovable, OR Lovable's static-asset serving isn't being hit because of a DNS / proxy layer at LH.pl.
-**Action:** verify in Project → Settings → Domains that `www.openmindai.pl` shows status "Connected" with a green check, and that DNS at LH.pl points the A record to `185.158.133.1` (Lovable) with **no Cloudflare/LH proxy in front**. I can't check DNS from here — you need to confirm in the hosting panel.
+Typografia: justowanie + `noWidows` (wg brand memory). Kolory: token semantyczny `teal` / `text-gradient`.
 
----
+### 3. Przeprojektowany hub `/services.html`
+Nowy komponent `src/components/ServicesHub.tsx` (zastępuje logikę `Services.tsx` na `/services.html`; obecny komponent tabowy pozostaje dostępny na starych URL-ach `/services/:slug` tylko dla wstecznej kompatybilności, ale każda karta linkuje do nowego płaskiego URL-a).
 
-### 🟡 Issue #2 — Sitemap is too large & undifferentiated
+Hub: intro + grid 7 kart usług (title + short desc + link "Poznaj →"), **bez ikonek**, sekcja "dlaczego my" (z prototypu), sekcja miast, JSON-LD `Organization` + `ItemList`.
 
-315 URLs is fine in principle, but ~192 of them are city pages with very similar templates. Google is conservative about indexing large numbers of near-duplicate template pages on a young domain. Even after we added unique content per city, the **template structure** (same H1 pattern, same sections, same CTA) signals "low diversity".
+### 4. Routing (`src/App.tsx`)
+Dodać 9 nowych route'ów (każdy z wariantem `.html` i bez). Usunąć 3 stare route'y (`/szkolenia-ai/dla-firm|dla-szkol|chatgpt` × 2). Dodać `RedirectWithSeo` z każdego starego URL-a na nowy odpowiednik:
+- `/szkolenia-ai/dla-firm(.html)` → `/szkolenia-ai-stacjonarne.html`
+- `/szkolenia-ai/dla-szkol(.html)` → `/ai-dla-szkol.html`
+- `/szkolenia-ai/chatgpt(.html)` → `/szkolenia-ai-online.html`
 
-**Fix:**
-- Split sitemap into `sitemap-main.xml` + `sitemap-cities.xml` + `sitemap-blog.xml` and reference them from a `sitemap-index.xml`. This helps GSC report indexing status per group.
-- Drop `priority` and `changefreq` from city URLs (Google ignores them and they currently look spammy when all 192 say `priority 0.8`).
-- Lower city priorities to `0.5` so main pages clearly outrank them.
+### 5. Nawigacja i stopka
+- `FloatingNav.tsx`: dropdown "Usługi" z 7 pozycjami (bez ikon)
+- `Footer.tsx`: grid sitelinków zaktualizowany pod nowe URL-e
 
----
+### 6. SEO infrastruktura
+- `public/sitemap-main.xml`: dodać 9 nowych URL-i (priority 0.9 hub, 0.8 podstrony), usunąć stare 3
+- `public/sitemap-html.xml`: to samo z `.html`
+- `scripts/prerender.ts`: dodać 9 tras do listy prerenderowanej (SSG dla botów)
 
-### 🟡 Issue #3 — All pages share the same SSR shell
+### 7. Sprzątanie
+- `src/data/trainings.ts` — usuwam (lub przepisuję pod nowy hub)
+- `src/pages/TrainingPage.tsx` — usuwam (zastąpione przez `ServiceLandingPage.tsx`)
 
-When Googlebot fetches any URL, the initial HTML is identical (same `<title>`, same `<meta description>`, same H1 placeholder). The per-page meta is set client-side by `usePageMeta` after JS runs. Googlebot **does** render JS, but with delay — and during the first crawl it often indexes the static shell. Two URLs with the same shell HTML look like duplicates until JS runs.
+## Weryfikacja
 
-**Fix options (pick one):**
-- **A. Pre-render with `vite-plugin-prerender` or `react-snap`** at build time for the ~20 most important pages (home, services, about, contact, blog index, top 10 cities). Generates real static HTML per route. Best long-term solution.
-- **B. Inject per-route fallback `<title>`/`<meta>` via a tiny edge function** that intercepts the request before serving `index.html`. Lower lift than full SSR.
-- **C. Accept it and wait** — rely on Google's JS rendering. Works eventually but slow.
+1. Każda z 9 stron ładuje się pod nowym URL i pod `.html`
+2. Stare URL-e szkoleń robią redirect z `noindex` + `canonical`
+3. `document.title`, `<meta description>`, canonical, JSON-LD widoczne w DOM (spot-check przez Playwright na 2-3 stronach)
+4. Build zielony, brak linków do usuniętych route'ów w kodzie
+5. Sitemap zawiera 9 nowych wpisów, nie ma starych
 
-I'd recommend **A** for the ~20 most important URLs.
+## Uwagi
 
----
-
-### 🟢 Issue #4 — Recently changed canonicals/redirects need re-validation in GSC
-
-The redirect+canonical work we did last cycle is correct, but Google needs to re-crawl those URLs before status updates. That can take 2–6 weeks. This is normal, not a bug.
-
-**Action (you, in GSC):** for each affected URL category, click "Validate fix". Don't keep re-requesting indexing on individual URLs — it doesn't speed things up after the first request.
-
----
-
-### What I'll change in the codebase (once you approve)
-
-1. **Split sitemap** into `sitemap-index.xml` + `sitemap-main.xml` + `sitemap-cities.xml` + `sitemap-blog.xml` (`public/`). Drop `changefreq`, lower city `priority` to `0.5`.
-2. **Update `robots.txt`** to point at `sitemap-index.xml`.
-3. **Add per-route static `<title>` and `<meta description>` injection** via a small build script that generates one HTML file per top-20 route into `dist/` (lightweight prerender — no SSR runtime needed). Cities stay client-rendered for now.
-4. **Add an internal-link block to `Home`** linking to ~12 voivodeship overview pages (currently missing) so crawl depth to city pages drops from 3 to 2.
-
-### What only YOU can do (not in code)
-
-1. **Verify `www.openmindai.pl/sitemap.xml` returns XML, not HTML.** This is the critical one. Check DNS at LH.pl, confirm domain status in Lovable settings. Without this, nothing else matters.
-2. In GSC: open Sitemaps, **delete** the old sitemap entry, **resubmit** `https://www.openmindai.pl/sitemap-index.xml` (after step 1 works).
-3. Wait 2–4 weeks. Don't keep clicking "Request indexing" — it has diminishing returns.
-
----
-
-### TL;DR
-
-> The main reason pages aren't indexed isn't your code — **your custom domain isn't serving `sitemap.xml`**. Fix DNS first, then I'll split the sitemap + prerender top pages to speed up the rest.
-
+- **Bez ikonek AI** w kartach kategorii — użytkownik wyraźnie tego nie chce. Zamiast ikon: numer/liczba porządkowa lub sam gradient tekstu w headerze karty.
+- Treść przenoszę **wiernie** z prototypów (H1, sekcje, FAQ, JSON-LD), ale renderuję we własnym reactowym designie zgodnym z resztą strony (nie osadzam surowego HTML).
+- Mapa 192 miast reużywa istniejący `ServiceAreas` — działa od razu, nic tam nie zmieniam.
+- To duża zmiana; wdrożę w jednym podejściu jak potwierdziłeś. Kolejność edycji: dane → template → hub → routing → nav/footer → sitemap/prerender → usunięcie starego.

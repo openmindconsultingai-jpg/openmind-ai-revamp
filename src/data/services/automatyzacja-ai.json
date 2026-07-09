@@ -1,0 +1,221 @@
+{
+ "title": "Automatyzacja procesów i agenci AI dla firm – wdrożenia | OpenMind AI",
+ "description": "Budujemy systemy, agentów AI i automatyzacje dla firm: obsługa klienta, dokumenty, raporty, integracje z CRM/ERP. Make, n8n, dedykowane API. Audyt i pilotaż o szybkim zwrocie.",
+ "h1": "Systemy, agenci AI i automatyzacje — oddaj maszynom powtarzalną pracę",
+ "sections": [
+  {
+   "h2": "Systemy, agenci i automatyzacje — nasza główna specjalizacja",
+   "p": [
+    "Budujemy rozwiązania, które przejmują powtarzalną pracę Twojego zespołu: od pojedynczych automatyzacji po autonomicznych agentów AI zintegrowanych z systemami firmy."
+   ],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Agenci AI",
+     "p": [
+      "Asystenci, którzy samodzielnie realizują wieloetapowe zadania: analizują dokumenty, przygotowują oferty, obsługują zapytania, raportują — pod kontrolą i według Waszych reguł."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Automatyzacja procesów",
+     "p": [
+      "Make, n8n, Zapier + AI: obieg dokumentów, obsługa skrzynki, generowanie raportów, synchronizacja danych między systemami. Bez zmiany narzędzi, na których już pracujecie."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Chatboty i asystenci klienta",
+     "p": [
+      "Boty na stronę, Messengera i WhatsApp, które znają Waszą ofertę, odpowiadają w sekundę i przekazują trudne sprawy ludziom — z pełną historią rozmowy."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Przetwarzanie dokumentów",
+     "p": [
+      "Faktury, umowy, CV, zamówienia, protokoły — AI czyta, klasyfikuje, wyciąga dane i wprowadza je do Waszych systemów."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Raportowanie i analiza danych",
+     "p": [
+      "Automatyczne raporty z wielu źródeł, streszczenia i wnioski pisane ludzkim językiem, alerty gdy dzieje się coś ważnego."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Integracje i wdrożenia API",
+     "p": [
+      "Łączymy modele AI z Waszym CRM, ERP, sklepem i helpdeskiem. Dedykowane rozwiązania tam, gdzie no-code się kończy."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Jak wdrażamy automatyzacje",
+   "p": [],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Audyt procesów",
+     "p": [
+      "Mapujemy powtarzalne zadania i liczymy, gdzie automatyzacja zwróci się najszybciej."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Pilotaż",
+     "p": [
+      "Zaczynamy od jednego procesu o szybkim zwrocie — widzisz wartość, zanim zainwestujesz w więcej."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Wdrożenie i integracja",
+     "p": [
+      "Budujemy, testujemy i podpinamy rozwiązanie do Waszych systemów. Szkolimy zespół z obsługi."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Opieka i rozwój",
+     "p": [
+      "Monitoring, poprawki i rozbudowa w miarę wzrostu firmy. Dokumentacja — bez uzależnienia od nas."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Bezpieczeństwo i zgodność z RODO",
+   "p": [
+    "Każde wdrożenie projektujemy z myślą o ochronie danych: umowy powierzenia, modele niewykorzystujące danych klientów do treningu, a w wymagających środowiskach — modele open-source (LLaMA, Mistral) na Waszej infrastrukturze. Uczciwie mówimy też, czego AI dziś jeszcze nie potrafi."
+   ],
+   "li": [],
+   "subs": []
+  },
+  {
+   "h2": "Pytania o automatyzacje i agentów AI",
+   "p": [
+    "Zwykle te powtarzalne i oparte na dokumentach lub wiadomościach: obsługa skrzynki i zapytań klientów, wystawianie ofert, raportowanie, przetwarzanie faktur i umów, publikacja contentu. Na bezpłatnej konsultacji wskazujemy procesy o najwyższym zwrocie.",
+    "Automatyzacja wykonuje z góry zaplanowane kroki. Agent AI rozumie cel i sam decyduje, jak go osiągnąć: czyta dokumenty, korzysta z narzędzi, zadaje pytania i obsługuje wyjątki. Łączymy oba podejścia — sztywne tam, gdzie trzeba przewidywalności, agentowe tam, gdzie potrzeba elastyczności.",
+    "Make, n8n, Zapier, dedykowane API modeli (OpenAI, Anthropic, Google), a przy większych wdrożeniach — rozwiązania szyte na miarę. Dobieramy stack pod istniejące systemy firmy: CRM, ERP, e-commerce, helpdesk.",
+    "Tak — projektujemy wdrożenia zgodnie z RODO: umowy powierzenia, modele z gwarancją nietrenowania na danych klienta, a tam gdzie to konieczne — modele open-source uruchamiane na Waszej infrastrukturze.",
+    "Każde wdrożenie obejmuje okres stabilizacji i dokumentację. Oferujemy też opiekę utrzymaniową: monitoring, poprawki i rozwój systemu w miarę zmian w Waszych procesach.",
+    "Od bezpłatnej konsultacji i krótkiego audytu procesów. Potem proponujemy pilotaż — jedną automatyzację o szybkim zwrocie, żeby zobaczyć wartość zanim zdecydujesz o większym wdrożeniu."
+   ],
+   "li": [],
+   "subs": []
+  },
+  {
+   "h2": "Porozmawiajmy o Twoim projekcie",
+   "p": [
+    "Pierwsza konsultacja (30–45 minut, online lub w naszej siedzibie) jest zawsze bezpłatna i niezobowiązująca. Odpowiadamy w ciągu 24 godzin w dni robocze."
+   ],
+   "li": [],
+   "subs": []
+  }
+ ],
+ "jsonld": [
+  {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Automatyzacja procesów i agenci AI",
+   "description": "Wdrożenia systemów AI dla firm: agenci AI, automatyzacja procesów (Make, n8n, Zapier), chatboty, przetwarzanie dokumentów, integracje z CRM i ERP.",
+   "serviceType": "Automatyzacja procesów biznesowych AI",
+   "url": "https://www.openmindai.pl/automatyzacja-ai.html",
+   "provider": {
+    "@type": "Organization",
+    "name": "OpenMind AI Consulting",
+    "url": "https://www.openmindai.pl",
+    "email": "biuro@openmindai.pl"
+   },
+   "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+   },
+   "availableLanguage": "pl"
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Które procesy najbardziej opłaca się zautomatyzować?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Zwykle te powtarzalne i oparte na dokumentach lub wiadomościach: obsługa skrzynki i zapytań klientów, wystawianie ofert, raportowanie, przetwarzanie faktur i umów, publikacja contentu. Na bezpłatnej konsultacji wskazujemy procesy o najwyższym zwrocie."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czym różni się agent AI od zwykłej automatyzacji?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Automatyzacja wykonuje z góry zaplanowane kroki. Agent AI rozumie cel i sam decyduje, jak go osiągnąć: czyta dokumenty, korzysta z narzędzi, zadaje pytania i obsługuje wyjątki. Łączymy oba podejścia — sztywne tam, gdzie trzeba przewidywalności, agentowe tam, gdzie potrzeba elastyczności."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Na jakich narzędziach budujecie?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Make, n8n, Zapier, dedykowane API modeli (OpenAI, Anthropic, Google), a przy większych wdrożeniach — rozwiązania szyte na miarę. Dobieramy stack pod istniejące systemy firmy: CRM, ERP, e-commerce, helpdesk."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy nasze dane są bezpieczne?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak — projektujemy wdrożenia zgodnie z RODO: umowy powierzenia, modele z gwarancją nietrenowania na danych klienta, a tam gdzie to konieczne — modele open-source uruchamiane na Waszej infrastrukturze."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Co jeśli automatyzacja przestanie działać po wdrożeniu?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Każde wdrożenie obejmuje okres stabilizacji i dokumentację. Oferujemy też opiekę utrzymaniową: monitoring, poprawki i rozwój systemu w miarę zmian w Waszych procesach."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Od czego zaczynamy współpracę?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Od bezpłatnej konsultacji i krótkiego audytu procesów. Potem proponujemy pilotaż — jedną automatyzację o szybkim zwrocie, żeby zobaczyć wartość zanim zdecydujesz o większym wdrożeniu."
+     }
+    }
+   ]
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Strona główna",
+     "item": "https://www.openmindai.pl/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Usługi AI",
+     "item": "https://www.openmindai.pl/services.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Automatyzacje i agenci AI",
+     "item": "https://www.openmindai.pl/automatyzacja-ai.html"
+    }
+   ]
+  }
+ ]
+}
