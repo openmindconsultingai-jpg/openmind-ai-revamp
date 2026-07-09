@@ -44,7 +44,18 @@ const voivodeshipImages: Record<string, string> = {
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ServiceAreas = () => {
+export interface ServiceAreasProps {
+  /** Optional H2 override. Defaults to "Gdzie Działamy" / "Where We Operate". */
+  heading?: string;
+  /** Optional subtitle override. */
+  sub?: string;
+  /** Prefix prepended to each city link text (e.g. "Szkolenia AI"). If omitted, only the city name is shown. */
+  anchorPrefix?: string;
+  /** Section id (for anchor links). Defaults to "gdzie-dzialamy". */
+  id?: string;
+}
+
+const ServiceAreas = ({ heading, sub, anchorPrefix, id = 'gdzie-dzialamy' }: ServiceAreasProps = {}) => {
   const { language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -71,13 +82,13 @@ const ServiceAreas = () => {
     return () => ctx.revert();
   }, []);
 
-  const title = language === 'pl' ? 'Gdzie Działamy' : 'Where We Operate';
-  const subtitle = language === 'pl'
+  const title = heading ?? (language === 'pl' ? 'Gdzie Działamy' : 'Where We Operate');
+  const subtitle = sub ?? (language === 'pl'
     ? 'Świadczymy usługi doradztwa i wdrożeń AI na terenie całej Polski – zdalnie i stacjonarnie.'
-    : 'We provide AI consulting and implementation services across all of Poland – remotely and on-site.';
+    : 'We provide AI consulting and implementation services across all of Poland – remotely and on-site.');
 
   return (
-    <section ref={sectionRef} id="gdzie-dzialamy" className="relative py-20 md:py-28 overflow-hidden">
+    <section ref={sectionRef} id={id} className="relative py-20 md:py-28 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-14 md:mb-20">
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -149,7 +160,7 @@ const ServiceAreas = () => {
                         className="flex items-center gap-2 text-sm text-foreground/70 font-sans hover:text-foreground transition-colors"
                       >
                         <span className="w-1 h-1 rounded-full bg-primary/50 shrink-0" />
-                        {city.name}
+                        {anchorPrefix ? `${anchorPrefix} ${city.name}` : city.name}
                       </Link>
                     </li>
                   ))}
