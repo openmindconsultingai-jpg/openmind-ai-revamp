@@ -162,8 +162,8 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
               className="font-sans text-base md:text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-10"
               style={justify}
             >
-              Wybierz stronę dedykowaną Twojej branży — program, przykłady i FAQ opisane są
-              językiem osób z Twojej dziedziny.
+              Każda branża ma inne procesy, ryzyka i przepisy. Dlatego oprócz formatów oferujemy
+              programy branżowe — z ćwiczeniami na dokumentach i zadaniach typowych dla Twojej pracy.
             </p>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[...industries, ...trainingsHubExtras].map((s) => (
