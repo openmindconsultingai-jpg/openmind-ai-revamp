@@ -12,6 +12,7 @@ import { fileURLToPath } from 'node:url';
 import { voivodeships } from '../src/data/voivodeships';
 import { findCityContent } from '../src/data/cityContent/index';
 import { digestArticles } from '../src/data/blogArticlesDigest';
+import { services as SERVICES_REGISTRY, HUB as SERVICES_HUB, servicesList, type Proto } from '../src/data/services/index';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
