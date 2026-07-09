@@ -30,7 +30,8 @@ const PageLoader = () => (
   </div>
 );
 
-// The 9 flat service slugs — each gets `/slug` and `/slug.html` route
+// Flat service slugs — each gets `/slug` and `/slug.html` route.
+// 9 core services + 9 industry-specific training landing pages.
 const SERVICE_SLUGS = [
   'automatyzacja-ai',
   'szkolenia-ai',
@@ -41,6 +42,16 @@ const SERVICE_SLUGS = [
   'teledyski-ai',
   'strony-www-branding',
   'konsultacje-ai',
+  // Industry-specific training pages
+  'szkolenia-ai-dla-lekarzy',
+  'szkolenia-ai-dla-prawnikow',
+  'szkolenia-ai-dla-jdg',
+  'szkolenia-ai-dla-msp',
+  'szkolenia-ai-dla-korporacji',
+  'szkolenia-ai-dla-marketingu',
+  'szkolenia-ai-dla-ksiegowych',
+  'szkolenia-ai-dla-hr',
+  'szkolenia-ai-dla-urzedow',
 ] as const;
 
 const wrap = (el: React.ReactNode) => <Suspense fallback={<PageLoader />}>{el}</Suspense>;

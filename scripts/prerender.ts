@@ -643,7 +643,7 @@ const allUrls = [
 const HTML_SITEMAP_LASTMOD = '2026-06-12';
 const MAIN_HTML_ROUTES = [
   '/services',
-  ...servicesList.map((s) => s.path), // 9 flat service pages
+  ...servicesList.map((s) => s.path), // 9 core + 9 industry-specific training pages
   '/about',
   '/contact',
   '/blog',
@@ -674,7 +674,7 @@ function buildHtmlSitemapXml(): string {
     ...MAIN_HTML_ROUTES.map((route) => ({ route, priority: '0.8' })),
   ];
 
-  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 15 || entries.length !== 333) {
+  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 24 || entries.length !== 342) {
     throw new Error(`[prerender] sitemap-html invalid counts: voiv=${voivRoutes.length}, cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
   }
 

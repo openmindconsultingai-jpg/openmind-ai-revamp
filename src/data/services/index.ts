@@ -12,6 +12,7 @@ import teledyski from './teledyski-ai.json';
 import strony from './strony-www-branding.json';
 import konsultacje from './konsultacje-ai.json';
 import hub from './services-hub.json';
+import { INDUSTRY_TRAINING_ENTRIES } from './industry-trainings';
 
 export interface ProtoSub {
   h3: string;
@@ -136,6 +137,21 @@ export const services: Record<string, ServiceEntry> = {
     data: konsultacje as unknown as Proto,
   },
 };
+
+// Merge industry-specific training pages into the registry.
+for (const e of INDUSTRY_TRAINING_ENTRIES) {
+  services[e.slug] = {
+    slug: e.slug,
+    path: e.path,
+    navLabel: e.navLabel,
+    shortDesc: e.shortDesc,
+    showCities: e.showCities,
+    data: e.data,
+  };
+}
+
+/** Slugs of the 9 industry-specific training pages (for hub grid, footer, sitemap). */
+export const INDUSTRY_TRAINING_SLUGS = INDUSTRY_TRAINING_ENTRIES.map((e) => e.slug);
 
 export const servicesList: ServiceEntry[] = Object.values(services);
 
