@@ -19,6 +19,33 @@ import {
   INDUSTRY_TRAINING_SLUGS,
   type ServiceEntry,
 } from '@/data/services';
+import { voivodeships } from '@/data/voivodeships';
+
+/** Normalize a voivodeship display name for matching (strip "Woj." / accents / case). */
+const normVoiv = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/^woj\.?\s*/i, '')
+    .replace(/[.\s-]+/g, '-')
+    .replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e')
+    .replace(/ł/g, 'l').replace(/ń/g, 'n').replace(/ó/g, 'o')
+    .replace(/ś/g, 's').replace(/ż/g, 'z').replace(/ź/g, 'z')
+    .trim();
+
+const voivBySlug = new Map(voivodeships.map((v) => [v.slug, v]));
+
+/** Given an <h3> like "Woj. dolnośląskie" return the matching voivodeship, if any. */
+function matchVoivodeship(h3: string) {
+  const key = normVoiv(h3);
+  return voivBySlug.get(key);
+}
+
+/** Given a bullet like "Szkolenia AI Wrocław" find the matching city in `v`. */
+function matchCity(text: string, v: { cities: { name: string; slug: string }[] }) {
+  // Longest name first, to prefer "Nakło nad Notecią" over "Nakło".
+  const cities = [...v.cities].sort((a, b) => b.name.length - a.name.length);
+  return cities.find((c) => text.includes(c.name));
+}
 
 const FORMAT_LINKS: Record<string, string> = {
   stacjonar: '/szkolenia-ai-stacjonarne.html',
