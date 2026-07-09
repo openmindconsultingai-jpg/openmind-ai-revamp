@@ -1,0 +1,179 @@
+{
+ "title": "Szkolenia AI online na żywo – kurs ChatGPT i automatyzacji dla firm | OpenMind AI",
+ "description": "Szkolenia AI online na żywo z trenerem: ChatGPT, Claude, prompt engineering, automatyzacje. Warsztaty przez Teams/Zoom/Meet, nagrania, certyfikaty. Cała Polska, szybkie terminy.",
+ "h1": "Szkolenia AI online — warsztaty na żywo z trenerem",
+ "sections": [
+  {
+   "h2": "Warsztaty AI online na żywo z trenerem — nie kolejny kurs wideo",
+   "p": [
+    "Szkolenia online to najszybszy sposób na przeszkolenie zespołu rozproszonego — bez logistyki, dojazdów i rezerwacji sal, z tą samą jakością warsztatową co stacjonarnie."
+   ],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Jak pracujemy online",
+     "p": [],
+     "li": [
+      "Sesje na żywo z ćwiczeniami — każdy pracuje na swoim stanowisku",
+      "Breakout roomy do pracy w małych grupach",
+      "Ćwiczenia na Waszych realnych dokumentach i procesach",
+      "Nagranie każdej sesji dla uczestników",
+      "Wsparcie mailowe po szkoleniu"
+     ]
+    },
+    {
+     "h3": "Popularne programy online",
+     "p": [],
+     "li": [
+      "ChatGPT / Claude od zera do zaawansowanej pracy — cykl 2×4 h",
+      "Prompt engineering dla zespołów — 4×2 h",
+      "Automatyzacje z AI (Make / n8n) — warsztat praktyczny",
+      "AI w marketingu i social media — content, grafika, wideo",
+      "Webinar inspiracyjny dla całej firmy (do kilkuset osób)"
+     ]
+    }
+   ]
+  },
+  {
+   "h2": "Dla kogo szkolenia AI online",
+   "p": [],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Zespoły rozproszone",
+     "p": [
+      "Pracownicy w różnych miastach lub na pracy zdalnej — wszyscy szkolą się razem, bez kosztów podróży."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Szybkie starty",
+     "p": [
+      "Termin szkolenia online zorganizujemy nawet w kilka dni — idealne, gdy zespół potrzebuje kompetencji „na już\"."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Programy cykliczne",
+     "p": [
+      "Regularne, krótkie sesje budują nawyki lepiej niż jednorazowy maraton — AI wchodzi do codziennej pracy naturalnie."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Pytania o szkolenia online",
+   "p": [
+    "Wszystkie nasze szkolenia online odbywają się na żywo, z trenerem i ćwiczeniami — to warsztat, nie nagranie. Uczestnicy pracują na własnych zadaniach, zadają pytania i dostają feedback w czasie rzeczywistym. Nagranie otrzymują dodatkowo, do powtórki.",
+    "Microsoft Teams, Zoom lub Google Meet — dopasowujemy się do narzędzi Twojej firmy. Nie wymagamy instalowania niczego dodatkowego.",
+    "Najczęściej 2 sesje po 3–4 godziny lub cykl 4 spotkań po 2 godziny — krótsze bloki online utrzymują wysoką koncentrację. Możemy też zrealizować pełny dzień warsztatowy.",
+    "Tak. Dla dużych organizacji łączymy webinar inspiracyjny dla wszystkich pracowników z warsztatami w mniejszych grupach roboczych — to najtańszy sposób na przeszkolenie całej firmy.",
+    "Nagranie sesji, bibliotekę promptów, materiały PDF, checklisty wdrożeniowe oraz imienny certyfikat. Do tego okres wsparcia mailowego po szkoleniu."
+   ],
+   "li": [],
+   "subs": []
+  },
+  {
+   "h2": "Porozmawiajmy o Twoim projekcie",
+   "p": [
+    "Pierwsza konsultacja (30–45 minut, online lub w naszej siedzibie) jest zawsze bezpłatna i niezobowiązująca. Odpowiadamy w ciągu 24 godzin w dni robocze."
+   ],
+   "li": [],
+   "subs": []
+  }
+ ],
+ "jsonld": [
+  {
+   "@context": "https://schema.org",
+   "@type": "Course",
+   "name": "Szkolenia AI online na żywo",
+   "description": "Szkolenia ze sztucznej inteligencji online na żywo z trenerem: ChatGPT, Claude, prompt engineering, automatyzacja procesów. Warsztaty przez Teams, Zoom lub Google Meet.",
+   "url": "https://www.openmindai.pl/szkolenia-ai-online.html",
+   "provider": {
+    "@type": "Organization",
+    "name": "OpenMind AI Consulting",
+    "url": "https://www.openmindai.pl"
+   },
+   "inLanguage": "pl",
+   "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "Online",
+    "location": {
+     "@type": "Country",
+     "name": "Polska"
+    }
+   }
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Czym różni się Wasze szkolenie online od kursu wideo?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Wszystkie nasze szkolenia online odbywają się na żywo, z trenerem i ćwiczeniami — to warsztat, nie nagranie. Uczestnicy pracują na własnych zadaniach, zadają pytania i dostają feedback w czasie rzeczywistym. Nagranie otrzymują dodatkowo, do powtórki."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Na jakiej platformie odbywają się szkolenia?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Microsoft Teams, Zoom lub Google Meet — dopasowujemy się do narzędzi Twojej firmy. Nie wymagamy instalowania niczego dodatkowego."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Jak długo trwa szkolenie online?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Najczęściej 2 sesje po 3–4 godziny lub cykl 4 spotkań po 2 godziny — krótsze bloki online utrzymują wysoką koncentrację. Możemy też zrealizować pełny dzień warsztatowy."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy szkolenie online może być dla całej firmy?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak. Dla dużych organizacji łączymy webinar inspiracyjny dla wszystkich pracowników z warsztatami w mniejszych grupach roboczych — to najtańszy sposób na przeszkolenie całej firmy."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Co otrzymują uczestnicy po szkoleniu?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nagranie sesji, bibliotekę promptów, materiały PDF, checklisty wdrożeniowe oraz imienny certyfikat. Do tego okres wsparcia mailowego po szkoleniu."
+     }
+    }
+   ]
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Strona główna",
+     "item": "https://www.openmindai.pl/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Usługi AI",
+     "item": "https://www.openmindai.pl/services.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Szkolenia AI online",
+     "item": "https://www.openmindai.pl/szkolenia-ai-online.html"
+    }
+   ]
+  }
+ ]
+}

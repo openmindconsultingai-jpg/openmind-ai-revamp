@@ -1,0 +1,221 @@
+{
+ "title": "Teledyski AI i filmy reklamowe – produkcja wideo AI | OpenMind AI",
+ "description": "Produkcja teledysków AI, spotów reklamowych, animacji i filmików social media. Pełne teledyski do utworów, cyfrowi bohaterowie, lektor AI. Wycena w 24–48 h, cała Polska.",
+ "h1": "Teledyski AI, spoty i filmiki — kinowa produkcja bez kinowego budżetu",
+ "sections": [
+  {
+   "h2": "Teledyski i wideo AI — produkcja, na którą wcześniej było stać tylko wytwórnie",
+   "p": [
+    "Generatywna AI zmieniła zasady gry: sceny, które kiedyś wymagały planu zdjęciowego, statystów i tygodni postprodukcji, dziś tworzymy w studiu — w dowolnej stylistyce, od fotorealizmu po animację."
+   ],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Teledyski AI",
+     "p": [
+      "Pełne teledyski do utworów muzycznych: koncepcja, scenariusz, spójny styl wizualny, montaż w rytm muzyki, mastering kolorów. Formaty pod YouTube, TikTok i telewizję."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Spoty i filmy reklamowe",
+     "p": [
+      "Reklamy produktów i usług, filmy wizerunkowe, zapowiedzi wydarzeń — z lektorem AI w dowolnym języku (ElevenLabs) i muzyką na licencji."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Filmiki social media",
+     "p": [
+      "Rolki, shortsy i animacje pod TikToka, Instagram i YouTube Shorts — seriami, w spójnym stylu Twojej marki, gotowe do publikacji."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Animacje i motion design",
+     "p": [
+      "Animowane loga, intra, przejścia, wizualizacje koncertowe i eventowe, animacja okładek i grafik statycznych."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Cyfrowi bohaterowie i awatary",
+     "p": [
+      "Spójna postać przez cały klip lub kampanię: wirtualny wokalista, maskotka marki, prezenter produktu."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Okładki i materiały wydawnicze",
+     "p": [
+      "Okładki singli i albumów, canvasy na Spotify, grafiki promocyjne premiery — spójne z teledyskiem."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Jak powstaje Twój teledysk",
+   "p": [],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Utwór i brief",
+     "p": [
+      "Przesyłasz utwór i opisujesz klimat. Rozmawiamy o inspiracjach, budżecie i terminie."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Koncepcja i styl",
+     "p": [
+      "Dostajesz scenariusz i próbki stylu wizualnego (moodboard + testowe ujęcia) do akceptacji."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Produkcja",
+     "p": [
+      "Generujemy i selekcjonujemy ujęcia, montujemy w rytm muzyki, dodajemy kolor i efekty."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Finał i formaty",
+     "p": [
+      "Runda poprawek, potem eksport pod wszystkie platformy + materiały promocyjne premiery."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Narzędzia, na których pracujemy",
+   "p": [
+    "Łączymy najlepsze modele generatywne z klasycznym warsztatem montażowym — to różnica między „wygenerowanym filmikiem\" a produkcją, którą chce się oglądać."
+   ],
+   "li": [],
+   "subs": []
+  },
+  {
+   "h2": "Pytania o teledyski i wideo AI",
+   "p": [
+    "Znacznie mniej niż tradycyjna produkcja z ekipą filmową, planem zdjęciowym i postprodukcją. Cena zależy od długości, stylu i liczby scen — po przesłaniu utworu lub briefu wyceniamy projekt w 24–48 godzin.",
+    "Standardowo od kilku dni do 2–3 tygodni, zależnie od złożoności. Pierwsze szkice koncepcji i styl wizualny pokazujemy zwykle w ciągu kilku dni od akceptacji briefu.",
+    "Tak. Pracujemy na narzędziach z licencjami komercyjnymi i przekazujemy pełne prawa do wykorzystania materiału. Dostarczamy formaty pod każdą platformę: YouTube, TikTok, Instagram, telewizję.",
+    "Tak — łączymy materiał filmowy z artystą z sekwencjami generowanymi przez AI, albo tworzymy spójnego cyfrowego bohatera na cały klip. Możemy też animować okładkę albumu czy zdjęcia zespołu.",
+    "Tak — spoty reklamowe, filmy produktowe, animacje logo, intra na YouTube, rolki na TikToka i Instagram, wizualizacje do muzyki na koncerty i eventy. Wszystko, co da się opowiedzieć obrazem.",
+    "Wystarczy utwór (lub brief, jeśli to spot) i kilka słów o klimacie, jaki chcecie osiągnąć. Resztę bierzemy na siebie: scenariusz, styl wizualny, generacje, montaż, kolor, finalne formaty."
+   ],
+   "li": [],
+   "subs": []
+  },
+  {
+   "h2": "Porozmawiajmy o Twoim projekcie",
+   "p": [
+    "Pierwsza konsultacja (30–45 minut, online lub w naszej siedzibie) jest zawsze bezpłatna i niezobowiązująca. Odpowiadamy w ciągu 24 godzin w dni robocze."
+   ],
+   "li": [],
+   "subs": []
+  }
+ ],
+ "jsonld": [
+  {
+   "@context": "https://schema.org",
+   "@type": "Service",
+   "name": "Produkcja teledysków i wideo AI",
+   "description": "Produkcja teledysków AI, spotów reklamowych, animacji i filmików social media z wykorzystaniem generatywnej sztucznej inteligencji.",
+   "serviceType": "Produkcja wideo AI",
+   "url": "https://www.openmindai.pl/teledyski-ai.html",
+   "provider": {
+    "@type": "Organization",
+    "name": "OpenMind AI Consulting",
+    "url": "https://www.openmindai.pl",
+    "email": "biuro@openmindai.pl"
+   },
+   "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+   },
+   "availableLanguage": "pl"
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Ile kosztuje teledysk AI?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Znacznie mniej niż tradycyjna produkcja z ekipą filmową, planem zdjęciowym i postprodukcją. Cena zależy od długości, stylu i liczby scen — po przesłaniu utworu lub briefu wyceniamy projekt w 24–48 godzin."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Jak długo trwa produkcja teledysku AI?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Standardowo od kilku dni do 2–3 tygodni, zależnie od złożoności. Pierwsze szkice koncepcji i styl wizualny pokazujemy zwykle w ciągu kilku dni od akceptacji briefu."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy mogę wykorzystać teledysk komercyjnie — na YouTube, Spotify, w telewizji?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak. Pracujemy na narzędziach z licencjami komercyjnymi i przekazujemy pełne prawa do wykorzystania materiału. Dostarczamy formaty pod każdą platformę: YouTube, TikTok, Instagram, telewizję."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy w teledysku AI może wystąpić prawdziwy artysta?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak — łączymy materiał filmowy z artystą z sekwencjami generowanymi przez AI, albo tworzymy spójnego cyfrowego bohatera na cały klip. Możemy też animować okładkę albumu czy zdjęcia zespołu."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Robicie też krótkie filmiki, nie tylko teledyski?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak — spoty reklamowe, filmy produktowe, animacje logo, intra na YouTube, rolki na TikToka i Instagram, wizualizacje do muzyki na koncerty i eventy. Wszystko, co da się opowiedzieć obrazem."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Jak wygląda proces — co musimy dostarczyć?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Wystarczy utwór (lub brief, jeśli to spot) i kilka słów o klimacie, jaki chcecie osiągnąć. Resztę bierzemy na siebie: scenariusz, styl wizualny, generacje, montaż, kolor, finalne formaty."
+     }
+    }
+   ]
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Strona główna",
+     "item": "https://www.openmindai.pl/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Usługi AI",
+     "item": "https://www.openmindai.pl/services.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Teledyski i wideo AI",
+     "item": "https://www.openmindai.pl/teledyski-ai.html"
+    }
+   ]
+  }
+ ]
+}

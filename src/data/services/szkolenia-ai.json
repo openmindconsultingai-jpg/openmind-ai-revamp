@@ -1,0 +1,552 @@
+{
+ "title": "Szkolenia AI dla firm – stacjonarne, online i 1:1 | Kursy ChatGPT | OpenMind AI",
+ "description": "Praktyczne szkolenia ze sztucznej inteligencji: ChatGPT, Claude, automatyzacja, agenci AI. Stacjonarnie w całej Polsce, online na żywo i indywidualnie 1:1. Certyfikaty i materiały.",
+ "h1": "Szkolenia AI dla firm i zespołów — praktycznie, bez zbędnej teorii",
+ "sections": [
+  {
+   "h2": "Wybierz format szkolenia dopasowany do Twojego zespołu",
+   "p": [
+    "Każde szkolenie budujemy od podstaw pod branżę, narzędzia i poziom uczestników. Nie prowadzimy odczytów z prezentacji — pracujemy warsztatowo, na prawdziwych zadaniach z Waszej firmy."
+   ],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Szkolenia stacjonarne — w Twojej firmie lub u nas",
+     "p": [
+      "Zamknięte warsztaty dla zespołów i kadry zarządzającej. Przyjeżdżamy do dowolnego miasta w Polsce albo zapraszamy do naszej siedziby. Intensywna praca w grupach, realne procesy, natychmiastowe wdrożenie."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Szkolenia AI online — na żywo",
+     "p": [
+      "Interaktywne warsztaty przez Teams, Zoom lub Meet. Idealne dla zespołów rozproszonych i firm, które chcą przeszkolić pracowników bez kosztów logistyki. Nagranie i materiały w cenie."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Szkolenia indywidualne 1:1 i mentoring",
+     "p": [
+      "Praca sam na sam z trenerem — w naszej siedzibie, u Ciebie lub online. Najszybsza droga od zera do samodzielnej pracy z AI. Program w 100% pod Twoje stanowisko i cele."
+     ],
+     "li": []
+    },
+    {
+     "h3": "AI dla szkół — kursy i pokazy",
+     "p": [
+      "Szkolenia rad pedagogicznych, warsztaty dla uczniów, pokazy AI na wydarzeniach szkolnych, polityki użycia AI w placówce. Program zgodny z realiami polskiej oświaty."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Czego uczymy na szkoleniach ze sztucznej inteligencji",
+   "p": [
+    "Programy modułowe — składamy je pod potrzeby Twojego zespołu. Najczęściej wybierane bloki tematyczne:"
+   ],
+   "li": [],
+   "subs": [
+    {
+     "h3": "ChatGPT i Claude w codziennej pracy",
+     "p": [
+      "Skuteczne prompty, praca z dokumentami, analiza danych, e-maile, oferty i raporty w ułamku dotychczasowego czasu."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Prompt engineering",
+     "p": [
+      "Struktury promptów, które działają: role, konteksty, przykłady, iteracja. Biblioteka promptów dla Waszych procesów."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Automatyzacja pracy (Make, n8n, Zapier)",
+     "p": [
+      "Łączenie AI z narzędziami firmy: automatyczne raporty, obsługa skrzynki, przetwarzanie dokumentów, integracje z CRM."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Agenci AI dla zespołów",
+     "p": [
+      "Jak projektować i wdrażać asystentów AI, którzy samodzielnie realizują wieloetapowe zadania — bezpiecznie i pod kontrolą."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Generatywna grafika i wideo",
+     "p": [
+      "Midjourney, Stable Diffusion, Runway, Sora — tworzenie materiałów marketingowych, ofert i contentu social media."
+     ],
+     "li": []
+    },
+    {
+     "h3": "AI w marketingu i sprzedaży",
+     "p": [
+      "Content marketing z AI, personalizacja komunikacji, analiza konkurencji, przygotowanie kampanii od briefu po publikację."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Jak wygląda współpraca",
+   "p": [],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Bezpłatna konsultacja",
+     "p": [
+      "Poznajemy Wasze procesy, narzędzia i cele. Ustalamy poziom grupy i oczekiwane efekty."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Program szyty na miarę",
+     "p": [
+      "Przygotowujemy agendę z ćwiczeniami na Waszych realnych zadaniach — do akceptacji przed szkoleniem."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Warsztat",
+     "p": [
+      "Intensywna praca praktyczna. Każdy uczestnik wychodzi z gotowymi promptami i automatyzacjami."
+     ],
+     "li": []
+    },
+    {
+     "h3": "Wsparcie po szkoleniu",
+     "p": [
+      "Materiały, nagrania, konsultacje follow-up. Pomagamy utrwalić nawyki i wdrożyć AI na stałe."
+     ],
+     "li": []
+    }
+   ]
+  },
+  {
+   "h2": "Szkolenia AI w Twoim mieście — działamy w całej Polsce",
+   "p": [
+    "Prowadzimy szkolenia stacjonarne w siedzibach klientów w każdym województwie. Wybierz swoje miasto, aby zobaczyć szczegóły oferty w Twoim regionie."
+   ],
+   "li": [],
+   "subs": [
+    {
+     "h3": "Woj. dolnośląskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Wrocław",
+      "Szkolenia AI Wałbrzych",
+      "Szkolenia AI Legnica",
+      "Szkolenia AI Jelenia Góra",
+      "Szkolenia AI Lubin",
+      "Szkolenia AI Głogów",
+      "Szkolenia AI Świdnica",
+      "Szkolenia AI Bolesławiec",
+      "Szkolenia AI Oleśnica",
+      "Szkolenia AI Oława",
+      "Szkolenia AI Dzierżoniów",
+      "Szkolenia AI Zgorzelec"
+     ]
+    },
+    {
+     "h3": "Woj. kujawsko-pomorskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Bydgoszcz",
+      "Szkolenia AI Toruń",
+      "Szkolenia AI Włocławek",
+      "Szkolenia AI Grudziądz",
+      "Szkolenia AI Inowrocław",
+      "Szkolenia AI Brodnica",
+      "Szkolenia AI Świecie",
+      "Szkolenia AI Chełmno",
+      "Szkolenia AI Nakło nad Notecią",
+      "Szkolenia AI Rypin",
+      "Szkolenia AI Tuchola",
+      "Szkolenia AI Aleksandrów Kujawski"
+     ]
+    },
+    {
+     "h3": "Woj. lubelskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Lublin",
+      "Szkolenia AI Zamość",
+      "Szkolenia AI Chełm",
+      "Szkolenia AI Biała Podlaska",
+      "Szkolenia AI Puławy",
+      "Szkolenia AI Świdnik",
+      "Szkolenia AI Kraśnik",
+      "Szkolenia AI Łuków",
+      "Szkolenia AI Biłgoraj",
+      "Szkolenia AI Lubartów",
+      "Szkolenia AI Tomaszów Lubelski",
+      "Szkolenia AI Hrubieszów"
+     ]
+    },
+    {
+     "h3": "Woj. lubuskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Zielona Góra",
+      "Szkolenia AI Gorzów Wielkopolski",
+      "Szkolenia AI Nowa Sól",
+      "Szkolenia AI Żary",
+      "Szkolenia AI Żagań",
+      "Szkolenia AI Świebodzin",
+      "Szkolenia AI Kostrzyn nad Odrą",
+      "Szkolenia AI Międzyrzecz",
+      "Szkolenia AI Słubice",
+      "Szkolenia AI Sulechów",
+      "Szkolenia AI Gubin",
+      "Szkolenia AI Szprotawa"
+     ]
+    },
+    {
+     "h3": "Woj. łódzkie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Łódź",
+      "Szkolenia AI Pabianice",
+      "Szkolenia AI Zgierz",
+      "Szkolenia AI Aleksandrów Łódzki",
+      "Szkolenia AI Konstantynów Łódzki",
+      "Szkolenia AI Ozorków",
+      "Szkolenia AI Głowno",
+      "Szkolenia AI Kutno",
+      "Szkolenia AI Sieradz",
+      "Szkolenia AI Piotrków Trybunalski",
+      "Szkolenia AI Tomaszów Mazowiecki",
+      "Szkolenia AI Bełchatów"
+     ]
+    },
+    {
+     "h3": "Woj. małopolskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Kraków",
+      "Szkolenia AI Tarnów",
+      "Szkolenia AI Nowy Sącz",
+      "Szkolenia AI Oświęcim",
+      "Szkolenia AI Chrzanów",
+      "Szkolenia AI Olkusz",
+      "Szkolenia AI Nowy Targ",
+      "Szkolenia AI Bochnia",
+      "Szkolenia AI Gorlice",
+      "Szkolenia AI Zakopane",
+      "Szkolenia AI Wieliczka",
+      "Szkolenia AI Andrychów"
+     ]
+    },
+    {
+     "h3": "Woj. mazowieckie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Warszawa",
+      "Szkolenia AI Radom",
+      "Szkolenia AI Płock",
+      "Szkolenia AI Siedlce",
+      "Szkolenia AI Pruszków",
+      "Szkolenia AI Legionowo",
+      "Szkolenia AI Ostrołęka",
+      "Szkolenia AI Piaseczno",
+      "Szkolenia AI Otwock",
+      "Szkolenia AI Ciechanów",
+      "Szkolenia AI Mińsk Mazowiecki",
+      "Szkolenia AI Wyszków"
+     ]
+    },
+    {
+     "h3": "Woj. opolskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Opole",
+      "Szkolenia AI Kędzierzyn-Koźle",
+      "Szkolenia AI Nysa",
+      "Szkolenia AI Brzeg",
+      "Szkolenia AI Kluczbork",
+      "Szkolenia AI Prudnik",
+      "Szkolenia AI Strzelce Opolskie",
+      "Szkolenia AI Namysłów",
+      "Szkolenia AI Krapkowice",
+      "Szkolenia AI Głubczyce",
+      "Szkolenia AI Olesno",
+      "Szkolenia AI Grodków"
+     ]
+    },
+    {
+     "h3": "Woj. podkarpackie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Rzeszów",
+      "Szkolenia AI Przemyśl",
+      "Szkolenia AI Stalowa Wola",
+      "Szkolenia AI Mielec",
+      "Szkolenia AI Tarnobrzeg",
+      "Szkolenia AI Krosno",
+      "Szkolenia AI Dębica",
+      "Szkolenia AI Jarosław",
+      "Szkolenia AI Sanok",
+      "Szkolenia AI Jasło",
+      "Szkolenia AI Łańcut",
+      "Szkolenia AI Ropczyce"
+     ]
+    },
+    {
+     "h3": "Woj. podlaskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Białystok",
+      "Szkolenia AI Suwałki",
+      "Szkolenia AI Łomża",
+      "Szkolenia AI Augustów",
+      "Szkolenia AI Zambrów",
+      "Szkolenia AI Grajewo",
+      "Szkolenia AI Hajnówka",
+      "Szkolenia AI Sokółka",
+      "Szkolenia AI Łapy",
+      "Szkolenia AI Siemiatycze",
+      "Szkolenia AI Bielsk Podlaski",
+      "Szkolenia AI Kolno"
+     ]
+    },
+    {
+     "h3": "Woj. pomorskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Gdańsk",
+      "Szkolenia AI Gdynia",
+      "Szkolenia AI Sopot",
+      "Szkolenia AI Tczew",
+      "Szkolenia AI Starogard Gdański",
+      "Szkolenia AI Rumia",
+      "Szkolenia AI Chojnice",
+      "Szkolenia AI Malbork",
+      "Szkolenia AI Kwidzyn",
+      "Szkolenia AI Słupsk",
+      "Szkolenia AI Wejherowo",
+      "Szkolenia AI Lębork"
+     ]
+    },
+    {
+     "h3": "Woj. śląskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Katowice",
+      "Szkolenia AI Częstochowa",
+      "Szkolenia AI Sosnowiec",
+      "Szkolenia AI Gliwice",
+      "Szkolenia AI Zabrze",
+      "Szkolenia AI Bielsko-Biała",
+      "Szkolenia AI Bytom",
+      "Szkolenia AI Ruda Śląska",
+      "Szkolenia AI Rybnik",
+      "Szkolenia AI Tychy",
+      "Szkolenia AI Dąbrowa Górnicza",
+      "Szkolenia AI Jastrzębie-Zdrój"
+     ]
+    },
+    {
+     "h3": "Woj. świętokrzyskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Kielce",
+      "Szkolenia AI Starachowice",
+      "Szkolenia AI Ostrowiec Świętokrzyski",
+      "Szkolenia AI Skarżysko-Kamienna",
+      "Szkolenia AI Sandomierz",
+      "Szkolenia AI Końskie",
+      "Szkolenia AI Busko-Zdrój",
+      "Szkolenia AI Staszów",
+      "Szkolenia AI Jędrzejów",
+      "Szkolenia AI Włoszczowa",
+      "Szkolenia AI Pińczów",
+      "Szkolenia AI Opatów"
+     ]
+    },
+    {
+     "h3": "Woj. warmińsko-mazurskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Olsztyn",
+      "Szkolenia AI Elbląg",
+      "Szkolenia AI Ełk",
+      "Szkolenia AI Iława",
+      "Szkolenia AI Ostróda",
+      "Szkolenia AI Giżycko",
+      "Szkolenia AI Kętrzyn",
+      "Szkolenia AI Mrągowo",
+      "Szkolenia AI Bartoszyce",
+      "Szkolenia AI Szczytno",
+      "Szkolenia AI Działdowo",
+      "Szkolenia AI Nidzica"
+     ]
+    },
+    {
+     "h3": "Woj. wielkopolskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Poznań",
+      "Szkolenia AI Kalisz",
+      "Szkolenia AI Konin",
+      "Szkolenia AI Piła",
+      "Szkolenia AI Ostrów Wielkopolski",
+      "Szkolenia AI Gniezno",
+      "Szkolenia AI Leszno",
+      "Szkolenia AI Luboń",
+      "Szkolenia AI Świdnica",
+      "Szkolenia AI Śrem",
+      "Szkolenia AI Swarzędz",
+      "Szkolenia AI Turek"
+     ]
+    },
+    {
+     "h3": "Woj. zachodniopomorskie",
+     "p": [],
+     "li": [
+      "Szkolenia AI Szczecin",
+      "Szkolenia AI Koszalin",
+      "Szkolenia AI Stargard",
+      "Szkolenia AI Kołobrzeg",
+      "Szkolenia AI Świnoujście",
+      "Szkolenia AI Szczecinek",
+      "Szkolenia AI Police",
+      "Szkolenia AI Wałcz",
+      "Szkolenia AI Białogard",
+      "Szkolenia AI Goleniów",
+      "Szkolenia AI Gryfino",
+      "Szkolenia AI Choszczno"
+     ]
+    }
+   ]
+  },
+  {
+   "h2": "Najczęstsze pytania o szkolenia AI",
+   "p": [
+    "Dla firm każdej wielkości, agencji marketingowych, urzędów, szkół i osób prywatnych. Program zawsze dopasowujemy do branży i poziomu grupy — od pierwszych kroków z ChatGPT po zaawansowaną automatyzację pracy z agentami AI.",
+    "Tak. Prowadzimy szkolenia zamknięte w siedzibie klienta w każdym mieście w Polsce — przyjeżdżamy z pełnym przygotowaniem warsztatowym. Zobacz stronę szkoleń stacjonarnych.",
+    "Tak, na żywo przez Teams, Zoom lub Google Meet — z ćwiczeniami praktycznymi, materiałami i nagraniem dla uczestników. To najczęściej wybierany format dla zespołów rozproszonych.",
+    "Cena zależy od formatu (stacjonarne, online, 1:1), liczby uczestników i długości programu. Po bezpłatnej konsultacji przygotowujemy wycenę w 24 godziny — bez zobowiązań.",
+    "Tak, każdy uczestnik otrzymuje imienny certyfikat ukończenia szkolenia oraz komplet materiałów: prompty, checklisty i nagrania (w formatach online).",
+    "Nie. Większość naszych grup zaczyna od zera. Uczymy na realnych zadaniach z Waszej codziennej pracy, więc efekty widać już w trakcie warsztatu."
+   ],
+   "li": [],
+   "subs": []
+  },
+  {
+   "h2": "Porozmawiajmy o Twoim projekcie",
+   "p": [
+    "Pierwsza konsultacja (30–45 minut, online lub w naszej siedzibie) jest zawsze bezpłatna i niezobowiązująca. Odpowiadamy w ciągu 24 godzin w dni robocze."
+   ],
+   "li": [],
+   "subs": []
+  }
+ ],
+ "jsonld": [
+  {
+   "@context": "https://schema.org",
+   "@type": "Course",
+   "name": "Szkolenia AI dla firm — OpenMind AI",
+   "description": "Praktyczne szkolenia ze sztucznej inteligencji dla firm: ChatGPT, Claude, prompt engineering, automatyzacja procesów i agenci AI. Formaty: stacjonarne, online, indywidualne 1:1.",
+   "url": "https://www.openmindai.pl/szkolenia-ai.html",
+   "provider": {
+    "@type": "Organization",
+    "name": "OpenMind AI Consulting",
+    "url": "https://www.openmindai.pl"
+   },
+   "inLanguage": "pl",
+   "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": [
+     "Onsite",
+     "Online"
+    ],
+    "location": {
+     "@type": "Country",
+     "name": "Polska"
+    }
+   }
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Dla kogo są szkolenia AI OpenMind?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Dla firm każdej wielkości, agencji marketingowych, urzędów, szkół i osób prywatnych. Program zawsze dopasowujemy do branży i poziomu grupy — od pierwszych kroków z ChatGPT po zaawansowaną automatyzację pracy z agentami AI."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy szkolenie może odbyć się w naszej firmie?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak. Prowadzimy szkolenia zamknięte w siedzibie klienta w każdym mieście w Polsce — przyjeżdżamy z pełnym przygotowaniem warsztatowym. Zobacz stronę szkoleń stacjonarnych."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy prowadzicie szkolenia online?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak, na żywo przez Teams, Zoom lub Google Meet — z ćwiczeniami praktycznymi, materiałami i nagraniem dla uczestników. To najczęściej wybierany format dla zespołów rozproszonych."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Ile kosztuje szkolenie AI?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Cena zależy od formatu (stacjonarne, online, 1:1), liczby uczestników i długości programu. Po bezpłatnej konsultacji przygotowujemy wycenę w 24 godziny — bez zobowiązań."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy uczestnicy otrzymują certyfikaty?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tak, każdy uczestnik otrzymuje imienny certyfikat ukończenia szkolenia oraz komplet materiałów: prompty, checklisty i nagrania (w formatach online)."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Czy potrzebujemy wcześniejszej wiedzy o AI?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nie. Większość naszych grup zaczyna od zera. Uczymy na realnych zadaniach z Waszej codziennej pracy, więc efekty widać już w trakcie warsztatu."
+     }
+    }
+   ]
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Strona główna",
+     "item": "https://www.openmindai.pl/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Usługi AI",
+     "item": "https://www.openmindai.pl/services.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Szkolenia AI",
+     "item": "https://www.openmindai.pl/szkolenia-ai.html"
+    }
+   ]
+  }
+ ]
+}
