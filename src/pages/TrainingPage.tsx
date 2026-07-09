@@ -24,9 +24,8 @@ const TrainingPage = ({ slugOverride }: Props) => {
   const slug = slugOverride ?? params.slug ?? '';
   const data: TrainingData | undefined = trainings[slug];
 
-  if (!data) return <Navigate to="/" replace />;
-
-  const jsonLd = useMemo(() => {
+  // NOTE: all hooks below must run unconditionally — the early Navigate must
+  // come AFTER hook calls to keep hook order stable across renders.
     const course = {
       '@context': 'https://schema.org',
       '@type': 'Course',
