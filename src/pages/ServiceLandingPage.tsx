@@ -16,8 +16,25 @@ import {
   extractFaq,
   services,
   servicesList,
+  INDUSTRY_TRAINING_SLUGS,
   type ServiceEntry,
 } from '@/data/services';
+
+const FORMAT_LINKS: Record<string, string> = {
+  stacjonar: '/szkolenia-ai-stacjonarne.html',
+  online: '/szkolenia-ai-online.html',
+  indywidua: '/szkolenia-ai-indywidualne.html',
+  '1:1': '/szkolenia-ai-indywidualne.html',
+};
+
+/** Map a "Formaty" sub-card heading to a matching format landing page. */
+function formatHref(h3: string): string | null {
+  const lower = h3.toLowerCase();
+  for (const [key, href] of Object.entries(FORMAT_LINKS)) {
+    if (lower.includes(key)) return href;
+  }
+  return null;
+}
 
 interface Props {
   /** Explicit slug; when omitted, taken from route param `slug`. */
