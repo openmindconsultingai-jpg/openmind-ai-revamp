@@ -272,11 +272,30 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
                             </p>
                           ))}
                           {sub.li.length > 0 && (
-                            <ul className="mt-3 space-y-1.5 font-sans text-sm text-muted-foreground list-disc list-inside">
-                              {sub.li.map((li, j) => (
-                                <li key={j}>{li}</li>
-                              ))}
-                            </ul>
+                            (() => {
+                              const voiv = matchVoivodeship(sub.h3);
+                              return (
+                                <ul className="mt-3 space-y-1.5 font-sans text-sm text-muted-foreground list-disc list-inside">
+                                  {sub.li.map((li, j) => {
+                                    const city = voiv ? matchCity(li, voiv) : null;
+                                    return (
+                                      <li key={j}>
+                                        {city && voiv ? (
+                                          <Link
+                                            to={`/gdzie-dzialamy/${voiv.slug}/${city.slug}.html`}
+                                            className="text-foreground/85 hover:text-primary underline-offset-2 hover:underline transition-colors"
+                                          >
+                                            {li}
+                                          </Link>
+                                        ) : (
+                                          li
+                                        )}
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              );
+                            })()
                           )}
                           {href && (
                             <span className="mt-4 inline-block font-sans text-sm font-semibold text-primary">
