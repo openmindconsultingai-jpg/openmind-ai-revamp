@@ -31,46 +31,63 @@ const SPECS: IndustrySpec[] = [
     path: '/szkolenia-ai-dla-lekarzy',
     navLabel: 'Dla lekarzy i medycyny',
     shortDesc:
-      'Praktyczne szkolenie dla lekarzy, przychodni i klinik — jak bezpiecznie używać AI w codziennej pracy z zachowaniem tajemnicy lekarskiej i RODO.',
-    title: 'Szkolenia AI dla lekarzy i placówek medycznych | OpenMind AI',
+      'Uczymy lekarzy i zespoły medyczne bezpiecznej pracy z AI: od dokumentacji i opisów wizyt po streszczanie publikacji naukowych. Bez danych pacjentów w publicznych narzędziach — rozwiązania zgodne z tajemnicą lekarską i RODO.',
+    title:
+      'Szkolenia AI dla lekarzy i placówek medycznych — bezpiecznie, zgodnie z RODO | OpenMind AI',
     description:
-      'Szkolenia AI dla lekarzy, przychodni i klinik. Dokumentacja medyczna, streszczanie publikacji, komunikacja z pacjentem — bezpiecznie, zgodnie z RODO i tajemnicą lekarską.',
-    h1: 'Szkolenia AI dla lekarzy i placówek medycznych',
+      'Praktyczne szkolenia AI dla lekarzy, przychodni i szpitali: dokumentacja medyczna szybciej, streszczanie badań, komunikacja z pacjentem. Tajemnica lekarska i RODO w standardzie.',
+    h1: 'Szkolenia AI dla lekarzy — odzyskaj czas pochłaniany przez dokumentację',
     audienceLd: 'Lekarze, personel medyczny, kadra zarządzająca placówek ochrony zdrowia',
-    whyH2: 'Dlaczego AI w medycynie — i gdzie faktycznie oszczędza czas',
+    whyH2: 'Dlaczego AI w medycynie',
     whyLead:
-      'AI nie zastępuje lekarza. Dobrze dobrane narzędzia realnie skracają czas spędzany na dokumentacji, opisach wizyt, korespondencji z pacjentami i przeglądzie literatury — a to codziennie kilkadziesiąt minut, które można oddać pacjentowi lub sobie. Uczymy tego w sposób bezpieczny: żadnych danych pacjentów w publicznych narzędziach, jasne zasady wynikające z tajemnicy lekarskiej i RODO.',
+      'Uczymy lekarzy i zespoły medyczne bezpiecznej pracy z AI: od dokumentacji i opisów wizyt po streszczanie publikacji naukowych. Bez danych pacjentów w publicznych narzędziach — rozwiązania zgodne z tajemnicą lekarską i RODO.',
     whyBullets: [
-      'Szybsze uzupełnianie dokumentacji medycznej i opisów wizyt',
-      'Streszczanie publikacji, wytycznych i procedur w minutach',
-      'Uprzejma, jasna komunikacja z pacjentem i rodziną',
-      'Organizacja pracy gabinetu, przypomnienia i szablony pism',
-      'Bezpieczne narzędzia — enterprise, on-premise lub anonimizacja danych',
+      'Lekarz spędza nawet 1/3 dnia na dokumentacji — AI skraca to wielokrotnie.',
+      'Tempo publikacji przekracza możliwości śledzenia — AI streszcza i filtruje.',
+      'Komunikacja z pacjentem może być jaśniejsza i szybsza.',
     ],
     modules: [
-      { name: 'RODO i tajemnica lekarska w pracy z AI', desc: 'Co wolno, czego absolutnie nie. Klasyfikacja danych, zasady anonimizacji i wybór narzędzi dopuszczalnych w placówce medycznej.' },
-      { name: 'Dokumentacja i opisy wizyt', desc: 'Szablony i prompty do szybkiego uzupełniania kart pacjentów, opisów badań i wypisów — na anonimizowanych przykładach.' },
-      { name: 'Streszczanie publikacji naukowych i wytycznych', desc: 'Jak w kilka minut przejść przez artykuł, wytyczne PTK/PTG/EULAR czy metaanalizę i wyciągnąć wnioski dla praktyki klinicznej.' },
-      { name: 'Komunikacja z pacjentem', desc: 'Empatyczne odpowiedzi, tłumaczenie języka medycznego na prosty, szablony maili i informacji pozabiegowych.' },
-      { name: 'Bezpieczne narzędzia dla placówki', desc: 'Copilot, ChatGPT Enterprise, rozwiązania on-premise (LLaMA, Mistral) — dobór, konfiguracja, polityka użycia.' },
-      { name: 'Organizacja gabinetu i automatyzacje', desc: 'Kalendarz, przypomnienia SMS/e-mail, obsługa recepcji, generowanie zaświadczeń — z gotowymi automatyzacjami.' },
+      {
+        name: 'Bezpieczny start: zasady pracy z AI w medycynie',
+        desc: 'Tajemnica lekarska, RODO, anonimizacja, narzędzia z gwarancjami prywatności.',
+      },
+      {
+        name: 'Dokumentacja medyczna z AI',
+        desc: 'Szkice wpisów, opisy wizyt, epikryzy, skierowania; biblioteka promptów gabinetu.',
+      },
+      {
+        name: 'Praca z wiedzą medyczną',
+        desc: 'Streszczanie publikacji i wytycznych, porównywanie badań; weryfikacja źródeł i granice zaufania do AI.',
+      },
+      {
+        name: 'Komunikacja z pacjentem',
+        desc: 'Zalecenia prostym językiem, materiały edukacyjne, wielojęzyczność.',
+      },
+      {
+        name: 'Organizacja pracy gabinetu',
+        desc: 'Grafiki, korespondencja, przygotowanie dokumentów rozliczeniowych, automatyzacja rejestracji i przypomnień.',
+      },
+      {
+        name: 'Warsztat wdrożeniowy',
+        desc: 'Zestaw narzędzi pod specjalizację, plan wdrożenia i polityka użycia AI w placówce.',
+      },
     ],
     faq: [
       {
-        q: 'Czy dane pacjentów są bezpieczne w narzędziach AI?',
-        a: 'Wyłącznie wtedy, gdy zostały wcześniej odpowiednio zabezpieczone lub anonimizowane. Publiczny ChatGPT czy Claude nie są dopuszczalne dla danych osobowych pacjenta. Na szkoleniu pokazujemy trzy bezpieczne ścieżki: rozwiązania enterprise z umową powierzenia przetwarzania, warianty on-premise oraz konsekwentną anonimizację przed wysłaniem promptu.',
+        q: 'Czy dane pacjentów są bezpieczne?',
+        a: 'Na szkoleniu tylko dane syntetyczne i zanonimizowane. Zasada: żadnych danych pacjentów w publicznych narzędziach, tylko rozwiązania z umowami powierzenia lub modele lokalne.',
       },
       {
-        q: 'Czy AI może wspierać diagnostykę?',
-        a: 'AI wspiera lekarza — nie zastępuje. Może pomóc w różnicowaniu, sugerować pytania różnicujące w wywiadzie, streszczać opisy badań i przypominać o wytycznych. Decyzja diagnostyczna i terapeutyczna zawsze należy do lekarza, a odpowiedzialność zawodowa pozostaje niezmieniona.',
+        q: 'Czy AI może stawiać diagnozy?',
+        a: 'Nie. AI wspiera administrację i dostęp do wiedzy — odpowiedzialność kliniczna zawsze po stronie lekarza.',
       },
       {
-        q: 'Czy prowadzicie szkolenia dla całych placówek?',
-        a: 'Tak. Realizujemy warsztaty dla rad lekarskich, całych oddziałów oraz przychodni — od 6 do 40 osób w grupie. Program dostosowujemy do specjalności (POZ, kardiologia, ginekologia, ortopedia, stomatologia, medycyna estetyczna) i do systemów, których używacie na co dzień.',
+        q: 'Czy szkolicie całe placówki?',
+        a: 'Tak: 1:1, zespoły przychodni, szpitale (program kaskadowy).',
       },
       {
-        q: 'W jakich formatach można zorganizować szkolenie?',
-        a: 'Stacjonarnie w Waszej placówce, online na żywo (Zoom/Teams/Meet) oraz indywidualnie 1:1 dla właścicieli praktyk. Standardowo 4 lub 8 godzin dydaktycznych, materiały i biblioteka bezpiecznych promptów w cenie.',
+        q: 'W jakich formatach?',
+        a: 'Stacjonarnie w placówce w całej Polsce, online lub 1:1, także weekendy.',
       },
     ],
   },
@@ -79,46 +96,63 @@ const SPECS: IndustrySpec[] = [
     path: '/szkolenia-ai-dla-prawnikow',
     navLabel: 'Dla prawników i kancelarii',
     shortDesc:
-      'AI w praktyce prawniczej — research, umowy, pisma i due diligence z zachowaniem tajemnicy zawodowej i weryfikacją źródeł.',
-    title: 'Szkolenia AI dla prawników i kancelarii | OpenMind AI',
+      'Uczymy prawników wykorzystywać AI tam, gdzie daje przewagę: analiza i streszczanie umów, research, projekty pism — z żelaznymi zasadami weryfikacji źródeł i ochrony tajemnicy zawodowej.',
+    title:
+      'Szkolenia AI dla prawników i kancelarii — analiza umów, research, poufność | OpenMind AI',
     description:
-      'Szkolenia AI dla adwokatów, radców i kancelarii: analiza umów, research prawny, projekty pism, due diligence. Bezpieczne narzędzia i weryfikacja halucynacji.',
-    h1: 'Szkolenia AI dla prawników i kancelarii',
+      'Szkolenia AI dla adwokatów, radców i kancelarii: analiza umów, research z weryfikacją źródeł, projekty pism. Tajemnica zawodowa i bezpieczne narzędzia w standardzie.',
+    h1: 'Szkolenia AI dla prawników — więcej merytoryki, mniej rzemiosła',
     audienceLd: 'Adwokaci, radcowie prawni, aplikanci, prawnicy in-house, kadry kancelarii',
-    whyH2: 'Dlaczego AI w kancelarii — i dlaczego trzeba to robić ostrożnie',
+    whyH2: 'Dlaczego AI w kancelarii',
     whyLead:
-      'Dobrze użyte narzędzia AI potrafią skrócić czas przygotowania standardowych pism i analiz o 30–60 procent. Źle użyte prowadzą do halucynacji orzeczeń, naruszenia tajemnicy adwokackiej lub radcowskiej i błędów, które kończą się w izbie. Uczymy jednego i drugiego — z naciskiem na weryfikację źródeł, dobór narzędzi zgodnych z etyką zawodu i polityki bezpieczeństwa dla kancelarii.',
+      'Uczymy prawników wykorzystywać AI tam, gdzie daje przewagę: analiza i streszczanie umów, research, projekty pism — z żelaznymi zasadami weryfikacji źródeł i ochrony tajemnicy zawodowej.',
     whyBullets: [
-      'Szybsza analiza i streszczanie długich umów oraz akt',
-      'Research prawny z twardą weryfikacją źródeł',
-      'Projekty pism, opinii i draftów decyzji',
-      'Due diligence i porównywanie dokumentów',
-      'Ochrona tajemnicy zawodowej — narzędzia i polityki',
+      'Analiza dokumentów to godziny, które AI skraca do minut.',
+      'Klienci oczekują szybszych odpowiedzi przy tych samych stawkach.',
+      'Kancelarie, które wdrożą AI wcześniej, przejmą klientów pozostałych.',
     ],
     modules: [
-      { name: 'Etyka zawodowa i tajemnica adwokacka/radcowska', desc: 'Kodeksy etyki, RODO, tajemnica przedsiębiorstwa — mapa dopuszczalnych narzędzi i praktyk.' },
-      { name: 'Analiza i streszczanie umów', desc: 'Praca z długimi kontraktami: identyfikacja ryzyk, klauzul standardowych i odstępstw, porównywanie wersji.' },
-      { name: 'Research prawny z weryfikacją', desc: 'Metodyka pytań, cross-check w LEX/Legalis, uczymy rozpoznawania halucynowanych orzeczeń i cytatów.' },
-      { name: 'Projekty pism i opinii', desc: 'Draft pozwu, odpowiedzi, apelacji, opinii prawnej — na własnych szablonach kancelarii, z zachowaniem stylu.' },
-      { name: 'Due diligence i data room', desc: 'Praca z dużymi zbiorami dokumentów, wyciąganie kluczowych informacji, streszczenia dla klienta i partnerów.' },
-      { name: 'Polityka AI w kancelarii', desc: 'Regulamin użycia narzędzi AI, klauzula dla klientów, procedury dla zespołu — gotowe wzory.' },
+      {
+        name: 'Zasady bezpieczeństwa i etyki',
+        desc: 'Tajemnica adwokacka/radcowska a AI; co wolno wprowadzać do modeli; anonimizacja; polityka AI kancelarii; stanowiska samorządów.',
+      },
+      {
+        name: 'Halucynacje i weryfikacja',
+        desc: 'Dlaczego AI wymyśla orzeczenia; techniki weryfikacji każdego wyniku; praca na własnych dokumentach.',
+      },
+      {
+        name: 'Analiza umów i dokumentów',
+        desc: 'Streszczanie, ryzyka i klauzule, porównywanie wersji, checklisty due diligence.',
+      },
+      {
+        name: 'Research prawniczy',
+        desc: 'Przyspieszanie kwerend, syntezy stanowisk, argumentacja — zawsze z weryfikacją w źródłach pierwotnych.',
+      },
+      {
+        name: 'Pisma i dokumenty',
+        desc: 'Projekty pism i umów na bazie wzorów kancelarii; styl; korespondencja prostym językiem.',
+      },
+      {
+        name: 'Warsztat wdrożeniowy',
+        desc: 'Biblioteka promptów pod praktykę, wybór narzędzi z poufnością danych, plan wdrożenia.',
+      },
     ],
     faq: [
       {
-        q: 'Czy używanie AI narusza tajemnicę adwokacką?',
-        a: 'Nie, jeżeli używa się narzędzi z odpowiednim reżimem przetwarzania (umowa powierzenia, brak treningu na danych, wersje enterprise lub on-premise) i przestrzega procedur wewnętrznych kancelarii. Publiczny ChatGPT bez konta enterprise nie jest właściwym miejscem na dane objęte tajemnicą.',
+        q: 'Czy wprowadzanie dokumentów klientów do AI narusza tajemnicę?',
+        a: 'Do publicznych darmowych narzędzi może naruszać. Uczymy pracy na rozwiązaniach z umowami powierzenia, wersjach enterprise i anonimizacji.',
       },
       {
-        q: 'Jak radzić sobie z halucynacjami orzeczeń?',
-        a: 'Uczymy dwuetapowego procesu: model generuje hipotezę i cytat, a prawnik weryfikuje sygnaturę i treść w LEX, Legalis lub bazie SN. Pokazujemy też prompty ograniczające ryzyko halucynacji i narzędzia RAG oparte na zamkniętych bazach kancelarii.',
+        q: 'AI wymyśla orzeczenia — jak temu ufać?',
+        a: 'Nie ufać. Weryfikacja to główny moduł — każde źródło sprawdza prawnik.',
       },
       {
-        q: 'Czy szkolenie obejmuje aplikantów i sekretariat?',
-        a: 'Tak. Prowadzimy warsztaty dla całej kancelarii — z osobnymi ścieżkami dla wspólników, prawników, aplikantów oraz sekretariatu i administracji. Każda ścieżka ma inne priorytety i inne prompty.',
+        q: 'Dla całej kancelarii?',
+        a: 'Tak, od jednoosobowych praktyk po duże kancelarie; osobne ścieżki dla prawników i administracji.',
       },
       {
-        q: 'Czy pomożecie napisać wewnętrzną politykę AI kancelarii?',
-        a: 'Tak. Po szkoleniu dostarczamy szablon regulaminu użycia narzędzi AI, klauzulę informacyjną dla klientów oraz procedurę weryfikacji outputów. Wdrożenie polityki możemy przeprowadzić w ramach osobnej konsultacji.',
+        q: 'W jakich formatach?',
+        a: 'Stacjonarnie w kancelarii, online lub 1:1.',
       },
     ],
   },
@@ -127,46 +161,64 @@ const SPECS: IndustrySpec[] = [
     path: '/szkolenia-ai-dla-jdg',
     navLabel: 'Dla JDG i solopreneurów',
     shortDesc:
-      'Jednoosobowa firma z AI działa jak z zespołem. Marketing, oferty, obsługa klienta, automatyzacje — konkret i szybki zwrot.',
-    title: 'Szkolenia AI dla przedsiębiorców JDG i solopreneurów | OpenMind AI',
+      'Jednoosobowa działalność to dziesiątki ról naraz. Pokazujemy, jak AI przejmuje marketing, oferty, dokumenty i obsługę klienta — za ułamek kosztu etatu. Konkretnie, na Twojej firmie, z efektami od pierwszej sesji.',
+    title:
+      'Szkolenia AI dla przedsiębiorców JDG — firma jednoosobowa z mocą zespołu | OpenMind AI',
     description:
-      'Szkolenia AI 1:1 i w małych grupach dla właścicieli jednoosobowych firm. Marketing, oferty, obsługa klienta, automatyzacje niskim kosztem. Format konkretny i szybki.',
-    h1: 'Szkolenia AI dla przedsiębiorców JDG',
-    audienceLd: 'Właściciele jednoosobowych działalności gospodarczych, freelancerzy, solopreneurzy',
-    whyH2: 'Dlaczego AI w JDG — jedna osoba, moc małego zespołu',
+      'Szkolenie AI dla jednoosobowej działalności: marketing, oferty, obsługa klienta i automatyzacje niskim kosztem. Praktycznie, 1:1 lub w małych grupach. Efekty od pierwszej sesji.',
+    h1: 'Szkolenia AI dla JDG — prowadź firmę, jakbyś miał zespół',
+    audienceLd:
+      'Właściciele jednoosobowych działalności gospodarczych, freelancerzy, solopreneurzy',
+    whyH2: 'Dlaczego AI w JDG',
     whyLead:
-      'W jednoosobowej firmie każda godzina spędzona na powtarzalnych zadaniach to godzina zabrana klientom. AI robi tu największą różnicę: pisze pierwsze wersje ofert, prowadzi social media, obsługuje maile, generuje dokumenty i porządkuje kalendarz. Nasze szkolenie jest maksymalnie praktyczne — wychodzisz z gotowymi promptami i automatyzacjami dopasowanymi do Twojej branży.',
+      'Jednoosobowa działalność to dziesiątki ról naraz. Pokazujemy, jak AI przejmuje marketing, oferty, dokumenty i obsługę klienta — za ułamek kosztu etatu. Konkretnie, na Twojej firmie, z efektami od pierwszej sesji.',
     whyBullets: [
-      'Marketing i social media prowadzone w kilkadziesiąt minut tygodniowo',
-      'Oferty, wyceny i propozycje handlowe generowane na szablonach',
-      'Obsługa klienta i FAQ oparte o Twoje materiały',
-      'Faktury, umowy i dokumenty przygotowane z wyprzedzeniem',
-      'Proste automatyzacje bez zespołu IT i wysokich kosztów',
+      'AI zastępuje kompetencje, na które solo-przedsiębiorcy nie stać etatowo (copywriter, grafik, asystent).',
+      'Godzina zaoszczędzona dziennie to ponad miesiąc pracy rocznie.',
+      'Przewaga nad konkurencją robiącą wszystko ręcznie.',
     ],
     modules: [
-      { name: 'Twój biznes na jednej kartce — wejście AI', desc: 'Wspólnie mapujemy Twoje procesy i wybieramy 3-5 obszarów z największym potencjałem oszczędności czasu.' },
-      { name: 'Marketing i social media z AI', desc: 'Planer treści, generowanie postów, grafik i krótkich filmów pod Twój profil marki.' },
-      { name: 'Oferty, wyceny, propozycje handlowe', desc: 'Szablony pod Twoją usługę, prompty do szybkiego dopasowania do klienta, dobór ceny i argumentacji.' },
-      { name: 'Obsługa klienta i skrzynka mailowa', desc: 'Bazy odpowiedzi, szablony dla typowych sytuacji, mini-chatbot na stronę lub Messengera.' },
-      { name: 'Dokumenty i formalności', desc: 'Umowy, protokoły, faktury opisowe, pisma do urzędów — z zachowaniem Twojego stylu.' },
-      { name: 'Automatyzacje niskim kosztem', desc: 'Make/Zapier/n8n w minimalnej wersji — 2-3 automatyzacje, które realnie oszczędzają godziny tygodniowo.' },
+      {
+        name: 'Twój wirtualny zespół',
+        desc: 'Konfiguracja ChatGPT/Claude pod firmę: kontekst, styl, oferta; asystenci do powtarzalnych zadań.',
+      },
+      {
+        name: 'Marketing i social media',
+        desc: 'Posty, rolki, grafiki i harmonogram w godzinę tygodniowo.',
+      },
+      {
+        name: 'Oferty, wyceny i e-maile',
+        desc: 'Szablony ofert, które sprzedają; odpowiedzi w minutę.',
+      },
+      {
+        name: 'Dokumenty i organizacja',
+        desc: 'Szkice umów, faktury, ewidencje, plan tygodnia.',
+      },
+      {
+        name: 'Automatyzacje niskim kosztem',
+        desc: 'Make/Zapier w wersjach darmowych i tanich: odpowiedzi, przypomnienia, publikacje, leady.',
+      },
+      {
+        name: 'Warsztat wdrożeniowy',
+        desc: 'Komplet narzędzi na żywo; plan na 30 dni.',
+      },
     ],
     faq: [
       {
-        q: 'W jakim formacie prowadzicie szkolenia dla JDG?',
-        a: 'Najczęściej 1:1 online lub stacjonarnie w naszej siedzibie — pełny dzień pracy nad Twoją firmą. Alternatywnie małe grupy 4-8 osób z branż komplementarnych. Wybieramy razem to, co bardziej Ci pasuje.',
-      },
-      {
-        q: 'Ile to kosztuje i jak szybko się zwraca?',
-        a: 'Standardowe szkolenie 1:1 to jeden dzień pracy trenera. Zwrot z inwestycji najczęściej pojawia się w pierwszym miesiącu — dzięki oszczędności kilku godzin tygodniowo na marketingu i obsłudze klientów.',
-      },
-      {
         q: 'Nie znam się na technologii — dam radę?',
-        a: 'Tak. Zdecydowana większość naszych uczestników JDG nie miała wcześniej styczności z AI. Pracujemy na Twoim komputerze i Twoich narzędziach; zaczynamy od podstaw i kończymy przy działających workflow.',
+        a: 'Tak, zaczynamy od zera na Twojej firmie. Większość uczestników to nie-informatycy.',
       },
       {
-        q: 'Czy dostanę gotowe prompty i szablony?',
-        a: 'Tak. Wychodzisz ze szkolenia z biblioteką promptów i szablonów dopasowanych do Twojej działalności, gotowymi do użycia następnego dnia. Otrzymujesz też materiały do samodzielnej dalszej nauki.',
+        q: 'Kiedy się zwróci?',
+        a: 'Jeśli AI oszczędza 5 h tygodniowo, szkolenie zwraca się w pierwszy miesiąc.',
+      },
+      {
+        q: '1:1 czy grupa?',
+        a: 'Oba: 1:1 (także w naszej siedzibie) lub małe grupy otwarte.',
+      },
+      {
+        q: 'Jakie narzędzia?',
+        a: 'ChatGPT/Claude, Canva AI, Make/Zapier, grafika i wideo — pod budżet JDG, większość darmowa lub do ok. 100 zł/mies.',
       },
     ],
   },
@@ -175,46 +227,64 @@ const SPECS: IndustrySpec[] = [
     path: '/szkolenia-ai-dla-msp',
     navLabel: 'Dla MŚP',
     shortDesc:
-      'Programy szkoleniowe dla małych i średnich firm — dział po dziale, ze wspólną polityką AI i pilotażowymi automatyzacjami.',
-    title: 'Szkolenia AI dla małych i średnich firm (MŚP) | OpenMind AI',
+      'Przeszkolimy Twoją firmę działami — od sprzedaży po produkcję — i zostawimy wspólne standardy pracy z AI, politykę bezpieczeństwa oraz plan pierwszych automatyzacji. Program dopasowany do rytmu firmy.',
+    title:
+      'Szkolenia AI dla małych i średnich firm — przeszkol zespół działami | OpenMind AI',
     description:
-      'Szkolenia AI dla firm 10–250 osób. Warsztaty dla działów sprzedaży, biura, marketingu i produkcji. Wspólne standardy, polityka AI i pilotażowe automatyzacje.',
-    h1: 'Szkolenia AI dla małych i średnich firm',
-    audienceLd: 'Właściciele i kadra zarządzająca małych i średnich firm, kierownicy działów',
-    whyH2: 'Dlaczego program dla całej firmy zamiast pojedynczego szkolenia',
+      'Szkolenia AI dla MŚP: sprzedaż, biuro, marketing, produkcja. Wspólne standardy, polityka AI i pilotażowe automatyzacje po szkoleniu. Stacjonarnie w całej Polsce i online.',
+    h1: 'Szkolenia AI dla małych i średnich firm — cały zespół na wyższym biegu',
+    audienceLd:
+      'Właściciele i kadra zarządzająca małych i średnich firm, kierownicy działów',
+    whyH2: 'Dlaczego program dla całej firmy',
     whyLead:
-      'W firmie 10–250 osobowej największy zysk z AI pojawia się wtedy, gdy używają jej wszystkie działy — a nie jedna zapalona osoba. Nasze programy dla MŚP obejmują kolejne zespoły (sprzedaż, biuro, marketing, produkcja, obsługa klienta), wspólną politykę użycia oraz 2-3 pilotażowe automatyzacje wdrożone po szkoleniu. Program rozkładamy w czasie tak, żeby nie sparaliżować bieżącej pracy.',
+      'Przeszkolimy Twoją firmę działami — od sprzedaży po produkcję — i zostawimy wspólne standardy pracy z AI, politykę bezpieczeństwa oraz plan pierwszych automatyzacji. Program dopasowany do rytmu firmy.',
     whyBullets: [
-      'Warsztaty dopasowane do konkretnych działów — nie jeden słajd dla wszystkich',
-      'Wspólne standardy pracy z AI dla całej firmy',
-      'Pilotażowe automatyzacje uruchamiane w tygodniach po szkoleniu',
-      'Mierzalne KPI adopcji i oszczędności czasu',
-      'Wsparcie po szkoleniu w formie stałych konsultacji',
+      'Największy zwrot z AI jest w firmach 10–250 osób — procesy już są, biurokracji jeszcze nie ma.',
+      'Nierówna adopcja między działami tworzy chaos.',
+      'Pracownicy i tak używają AI — lepiej ustalić zasady, zanim wyciekną dane.',
     ],
     modules: [
-      { name: 'Diagnoza i mapa procesów', desc: 'Warsztat z kadrą zarządzającą — identyfikujemy działy i procesy z największym potencjałem AI.' },
-      { name: 'Warsztaty per dział', desc: 'Sprzedaż, biuro, marketing, produkcja — każdy dział dostaje własny półdniowy lub dniowy warsztat.' },
-      { name: 'Polityka AI dla firmy', desc: 'Regulamin użycia, zasady bezpieczeństwa, klasyfikacja danych, dopuszczalne narzędzia.' },
-      { name: 'Kadry zarządzającej perspektywa', desc: 'Sesja dla właścicieli i menedżerów — jak zarządzać transformacją i mierzyć efekty.' },
-      { name: 'Pilotażowe automatyzacje', desc: '2–3 wybrane workflow (raporty, obsługa maili, generowanie ofert) wdrażamy po szkoleniu.' },
-      { name: 'Follow-up i community wewnętrzna', desc: 'Konsultacje po miesiącu i po trzech miesiącach, wewnętrzna baza promptów w firmie.' },
+      {
+        name: 'Kickoff dla całej firmy',
+        desc: 'Webinar: co AI zmienia w Waszej branży, cele, zasady bezpieczeństwa.',
+      },
+      {
+        name: 'Sprzedaż i obsługa klienta',
+        desc: 'Oferty, follow-upy, notatki ze spotkań, CRM.',
+      },
+      {
+        name: 'Biuro i administracja',
+        desc: 'Dokumenty, raporty, korespondencja, faktury.',
+      },
+      {
+        name: 'Marketing',
+        desc: 'Content, grafiki, kampanie w standardzie marki.',
+      },
+      {
+        name: 'Standardy i polityka AI',
+        desc: 'Biblioteka promptów, zasady danych, RODO, koszty licencji per stanowisko.',
+      },
+      {
+        name: 'Pilotaż automatyzacji',
+        desc: '1–2 procesy o najszybszym zwrocie budowane z zespołem; plan na kwartał.',
+      },
     ],
     faq: [
       {
-        q: 'Ile trwa taki program w firmie MŚP?',
-        a: 'Standardowo od 3 do 8 tygodni w zależności od liczby działów i pracowników. Zaczynamy od warsztatu strategicznego z kadrą zarządzającą, następnie prowadzimy warsztaty per dział, a kończymy wdrożeniem pilotażowych automatyzacji.',
+        q: 'Jak szkolić, żeby firma nie stanęła?',
+        a: 'Działami, w blokach 3–4 h, program na 2–6 tygodni.',
       },
       {
-        q: 'Czy da się to zrobić bez wyłączania firmy z pracy?',
-        a: 'Tak. Warsztaty prowadzimy w blokach półdniowych albo dziennych, tak aby dział mógł normalnie funkcjonować. Zwykle rozkładamy je na 2-3 tygodnie i przeplatamy zdalną pracą własną uczestników.',
+        q: 'Jeden program dla wszystkich?',
+        a: 'Nie, moduły są działowe: sprzedaż ćwiczy na ofertach, biuro na dokumentach.',
       },
       {
-        q: 'Kto powinien uczestniczyć w warsztacie strategicznym?',
-        a: 'Właściciel lub prezes, dyrektor operacyjny, kierownicy kluczowych działów i osoba odpowiedzialna za IT lub cyfryzację. Warsztat trwa 3-4 godziny i kończy się gotową mapą wdrożeń na najbliższe pół roku.',
+        q: 'Co zostaje po szkoleniu?',
+        a: 'Biblioteka promptów, polityka AI, certyfikaty, nagrania, 1–2 automatyzacje pilotażowe, plan rozwoju.',
       },
       {
-        q: 'Czy pomożecie z bezpieczeństwem danych?',
-        a: 'Tak. Wspólnie klasyfikujemy dane firmy, dobieramy narzędzia z odpowiednim reżimem przetwarzania, przygotowujemy politykę AI i klauzule dla pracowników. W razie potrzeby konsultujemy się z Waszym DPO.',
+        q: 'Koszt licencji?',
+        a: 'Warianty od darmowych po enterprise, liczymy per stanowisko.',
       },
     ],
   },
@@ -223,46 +293,64 @@ const SPECS: IndustrySpec[] = [
     path: '/szkolenia-ai-dla-korporacji',
     navLabel: 'Dla korporacji',
     shortDesc:
-      'Programy kaskadowe dla dużych firm — webinar dla wszystkich, warsztaty dla zespołów, ścieżki per dział, governance i AI Act.',
-    title: 'Szkolenia AI dla korporacji i dużych firm | OpenMind AI',
+      'Projektujemy programy rozwojowe AI dla dużych organizacji: kaskadowe szkolenia (inspiracja dla wszystkich, warsztaty dla zespołów), ścieżki per dział, governance i polityki użycia oraz mierzenie adopcji po wdrożeniu.',
+    title:
+      'Szkolenia AI dla dużych firm i korporacji — programy rozwojowe, governance | OpenMind AI',
     description:
-      'Programy szkoleniowe AI dla dużych firm i korporacji: webinary, warsztaty, ścieżki per dział, governance, AI Act, RODO, integracja z Copilot. Mierzenie adopcji.',
-    h1: 'Szkolenia AI dla korporacji i dużych organizacji',
-    audienceLd: 'Duże firmy i korporacje: zarządy, HR, L&D, IT, dyrektorzy działów, pracownicy',
+      'Programy szkoleniowe AI dla korporacji: kaskada webinar + warsztaty, ścieżki per dział, polityki AI, zgodność RODO/AI Act, mierzenie adopcji. Realizacja w całej Polsce.',
+    h1: 'Szkolenia AI dla korporacji — od inspiracji po zmierzoną adopcję',
+    audienceLd:
+      'Duże firmy i korporacje: zarządy, HR, L&D, IT, dyrektorzy działów, pracownicy',
     whyH2: 'Dlaczego korporacja potrzebuje programu, nie pojedynczego szkolenia',
     whyLead:
-      'W organizacji powyżej 250 osób pojedyncze szkolenie prowadzone dla wybranej grupy szybko rozmywa się w codziennej pracy. Skuteczne programy AI w korporacjach są kaskadowe: zaczynają się od webinaru dla wszystkich, przechodzą przez warsztaty per dział i kończą wdrożeniem governance. Prowadzimy takie programy zgodnie z wymaganiami RODO, AI Act oraz standardów bezpieczeństwa informacji.',
+      'Projektujemy programy rozwojowe AI dla dużych organizacji: kaskadowe szkolenia (inspiracja dla wszystkich, warsztaty dla zespołów), ścieżki per dział, governance i polityki użycia oraz mierzenie adopcji po wdrożeniu.',
     whyBullets: [
-      'Webinar wprowadzający dla wszystkich pracowników — spójny start',
-      'Warsztaty per dział z realnymi case study branżowymi',
-      'Governance i polityka AI zgodna z AI Act i RODO',
-      'Integracja z narzędziami enterprise (Microsoft 365 Copilot, Google Gemini)',
-      'Mierzenie adopcji i raportowanie postępów do zarządu',
+      'Pojedynczy warsztat nie zmienia praktyki dużej organizacji — potrzebna kaskada i utrwalenie.',
+      'Shadow AI (prywatne konta pracowników) to realne ryzyko wycieku.',
+      'RODO i AI Act wymagają ładu korporacyjnego.',
     ],
     modules: [
-      { name: 'Warsztat strategiczny z zarządem', desc: 'AI jako element strategii, mapa ryzyk i szans, model governance.' },
-      { name: 'Webinar dla całej organizacji', desc: 'Wspólny wstęp, terminologia, zasady bezpieczeństwa, przykłady z branży.' },
-      { name: 'Ścieżki warsztatowe per dział', desc: 'Osobne programy dla sprzedaży, marketingu, HR, finansów, IT, prawnych, obsługi klienta.' },
-      { name: 'Governance i AI Act', desc: 'Klasyfikacja systemów, rejestr AI, procedura DPIA, audyt zewnętrzny.' },
-      { name: 'Copilot i narzędzia enterprise', desc: 'Wdrożenie Microsoft 365 Copilot, Gemini for Workspace, ChatGPT Enterprise — z konfiguracją SSO i DLP.' },
-      { name: 'Adopcja, KPI, community wewnętrzna', desc: 'Metryki adopcji, sieć ambasadorów AI, wewnętrzna baza wiedzy i promptów.' },
+      {
+        name: 'Executive briefing',
+        desc: 'Zarząd: strategia, ryzyka, decyzje licencyjne, architektura wdrożenia.',
+      },
+      {
+        name: 'Webinar inspiracyjny dla wszystkich pracowników',
+        desc: 'Do kilkuset osób — spójny start, terminologia, zasady bezpieczeństwa.',
+      },
+      {
+        name: 'Warsztaty działowe',
+        desc: 'Sprzedaż, finanse, HR, IT, operacje, marketing — na realnych procesach.',
+      },
+      {
+        name: 'Governance i zgodność',
+        desc: 'Polityka użycia AI, klasyfikacja danych, RODO i AI Act, integracja z narzędziami enterprise (Copilot, ChatGPT Enterprise, Claude), rola IT.',
+      },
+      {
+        name: 'Champions program',
+        desc: 'Wewnętrzni liderzy AI utrzymujący adopcję; materiały train-the-trainer.',
+      },
+      {
+        name: 'Pomiar i utrwalenie',
+        desc: 'Ankiety adopcji, metryki, follow-up po 30/90 dniach, raport dla zarządu.',
+      },
     ],
     faq: [
       {
-        q: 'Czy jesteście w stanie przeszkolić 500+ osób?',
-        a: 'Tak. Prowadziliśmy programy dla organizacji rzędu 500–3000 pracowników. Standardowa architektura: webinar dla całej organizacji, potem warsztaty w grupach 15-20 osób prowadzone równolegle przez zespół trenerów.',
+        q: 'Ilu pracowników?',
+        a: 'Od 50 do kilku tysięcy: webinary skalują inspirację, warsztaty 8–15 osób budują umiejętności.',
       },
       {
-        q: 'Jak wpisujecie się w AI Act?',
-        a: 'Nasz program uwzględnia klasyfikację systemów AI według AI Act (niedopuszczalne / wysokiego ryzyka / ograniczonego ryzyka / minimalnego ryzyka), obowiązki organizacji jako deployera oraz wymogi dokumentacyjne. Wspólnie budujemy rejestr AI i procedurę DPIA.',
+        q: 'Współpraca z IT i compliance?',
+        a: 'Tak, od pierwszego dnia — governance to moduł programu.',
       },
       {
-        q: 'Czy integracja z Microsoft 365 Copilot jest w zakresie?',
-        a: 'Tak. Prowadzimy zarówno warsztaty dla użytkowników końcowych Copilot (Word, Excel, PowerPoint, Outlook, Teams), jak i wsparcie techniczne dla IT: konfiguracja SSO, DLP, uprawnień, Copilot Studio.',
+        q: 'Mamy Copilota — szkolicie z niego?',
+        a: 'Tak, prowadzimy ścieżki na licencjonowanych narzędziach.',
       },
       {
-        q: 'Jak mierzycie efekty programu?',
-        a: 'Ustalamy KPI z zarządem na starcie — zwykle adopcja narzędzi, oszczędność czasu w wybranych procesach, liczba wdrożonych automatyzacji. Raportujemy po 30, 90 i 180 dniach; korygujemy program w razie potrzeby.',
+        q: 'Jak mierzycie efekt?',
+        a: 'Ankiety przed/po, metryki adopcji per dział, raport po 30 i 90 dniach.',
       },
     ],
   },
