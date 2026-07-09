@@ -342,6 +342,47 @@ const STATIC_META: Record<string, Meta> = {
   },
 };
 
+// ---------------------------------------------------------------------------
+// Flat SEO service pages (2026-07 rebuild) — dynamically inject STATIC_META
+// entries from src/data/services registry so the prerender picks up the 9 new
+// landing pages and the hub without hand-copying every prose block.
+// ---------------------------------------------------------------------------
+function protoToBody(p: Proto): string {
+  const parts: string[] = [];
+  for (const sec of p.sections) {
+    parts.push(`<h2>${esc(sec.h2)}</h2>`);
+    for (const par of sec.p) parts.push(`<p>${par}</p>`);
+    if (sec.li.length) parts.push('<ul>' + sec.li.map((li) => `<li>${li}</li>`).join('') + '</ul>');
+    for (const sub of sec.subs) {
+      parts.push(`<h3>${esc(sub.h3)}</h3>`);
+      for (const par of sub.p) parts.push(`<p>${par}</p>`);
+      if (sub.li.length) parts.push('<ul>' + sub.li.map((li) => `<li>${li}</li>`).join('') + '</ul>');
+    }
+  }
+  return parts.join('\n');
+}
+
+// Hub at /services (overrides the legacy entry above)
+STATIC_META['/services'] = {
+  title: SERVICES_HUB.title,
+  description: SERVICES_HUB.description,
+  h1: SERVICES_HUB.h1,
+  body: protoToBody(SERVICES_HUB),
+  jsonLd: { '@context': 'https://schema.org', '@graph': SERVICES_HUB.jsonld },
+};
+
+// 9 flat service landing pages at /<slug>
+for (const s of servicesList) {
+  STATIC_META[s.path] = {
+    title: s.data.title,
+    description: s.data.description,
+    h1: s.data.h1,
+    body: protoToBody(s.data),
+    jsonLd: { '@context': 'https://schema.org', '@graph': s.data.jsonld },
+  };
+}
+
+
 const CATEGORY_LABEL: Record<number, { pl: string }> = Object.fromEntries(
   digestArticles.map((a) => [a.id, { pl: a.category.pl }]),
 );
