@@ -24,13 +24,16 @@ const TrainingPage = ({ slugOverride }: Props) => {
   const slug = slugOverride ?? params.slug ?? '';
   const data: TrainingData | undefined = trainings[slug];
 
-  // NOTE: all hooks below must run unconditionally — the early Navigate must
-  // come AFTER hook calls to keep hook order stable across renders.
+  // Fallback keeps hooks order stable when slug is unknown; component still
+  // early-returns <Navigate/> below after all hooks have run.
+  const safe: TrainingData = data ?? trainingsList[0];
+
+  const jsonLd = useMemo(() => {
     const course = {
       '@context': 'https://schema.org',
       '@type': 'Course',
-      name: data.h1,
-      description: data.metaDescription,
+      name: safe.h1,
+      description: safe.metaDescription,
       provider: {
         '@type': 'Organization',
         name: 'OpenMind AI Consulting',
@@ -46,7 +49,7 @@ const TrainingPage = ({ slugOverride }: Props) => {
     const faqPage = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: data.faq.map((f) => ({
+      mainEntity: safe.faq.map((f) => ({
         '@type': 'Question',
         name: f.q,
         acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -58,19 +61,21 @@ const TrainingPage = ({ slugOverride }: Props) => {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://www.openmindai.pl/' },
         { '@type': 'ListItem', position: 2, name: 'Szkolenia AI', item: 'https://www.openmindai.pl/szkolenia-ai' },
-        { '@type': 'ListItem', position: 3, name: data.h1, item: `https://www.openmindai.pl${data.path}` },
+        { '@type': 'ListItem', position: 3, name: safe.h1, item: `https://www.openmindai.pl${safe.path}` },
       ],
     };
     return { '@context': 'https://schema.org', '@graph': [course, faqPage, breadcrumb] };
-  }, [data]);
+  }, [safe]);
 
   usePageMeta({
-    title: data.metaTitle,
-    description: data.metaDescription,
-    keywords: data.keywords,
-    path: data.path,
+    title: safe.metaTitle,
+    description: safe.metaDescription,
+    keywords: safe.keywords,
+    path: safe.path,
     jsonLd,
   });
+
+  if (!data) return <Navigate to="/" replace />;
 
   const ctaHref = data.ctaHref ?? '/contact.html';
 
