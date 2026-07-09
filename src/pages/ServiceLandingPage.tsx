@@ -85,6 +85,16 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
 
   const related = servicesList.filter((s) => s.slug !== safe.slug).slice(0, 6);
 
+  // Industry-specific training pages get a breadcrumb: Home > Szkolenia AI > current
+  const isIndustry = INDUSTRY_TRAINING_SLUGS.includes(safe.slug);
+  // Hub page (/szkolenia-ai) shows the "industries" grid before the body.
+  const isTrainingsHub = safe.slug === 'szkolenia-ai';
+  const industries = servicesList.filter((s) => INDUSTRY_TRAINING_SLUGS.includes(s.slug));
+  // Extra hub cards (per user request): also show AI dla szkół + Szkolenia 1:1 on trainings hub
+  const trainingsHubExtras = ['ai-dla-szkol', 'szkolenia-ai-indywidualne']
+    .map((sl) => services[sl])
+    .filter((x): x is ServiceEntry => Boolean(x));
+
   return (
     <PageLayout>
       <main className="relative pt-28 md:pt-32 pb-8">
