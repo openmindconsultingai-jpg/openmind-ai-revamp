@@ -98,6 +98,30 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
   return (
     <PageLayout>
       <main className="relative pt-28 md:pt-32 pb-8">
+        {/* Breadcrumbs — industry training pages */}
+        {isIndustry && (
+          <nav
+            aria-label="Ścieżka nawigacji"
+            className="container mx-auto px-6 max-w-5xl mb-6"
+          >
+            <ol className="flex flex-wrap items-center gap-2 font-sans text-xs md:text-sm text-muted-foreground">
+              <li>
+                <Link to="/" className="hover:text-primary transition-colors">
+                  Strona główna
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link to="/szkolenia-ai.html" className="hover:text-primary transition-colors">
+                  Szkolenia AI
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="text-foreground/80">{safe.navLabel}</li>
+            </ol>
+          </nav>
+        )}
+
         {/* Hero */}
         <section className="container mx-auto px-6 max-w-5xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-4 py-1.5 text-xs md:text-sm text-primary/90 font-sans mb-6">
