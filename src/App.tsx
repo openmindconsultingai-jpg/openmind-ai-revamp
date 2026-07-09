@@ -23,6 +23,7 @@ const AIAdvisorPage = lazy(() => import("./pages/AIAdvisor"));
 const VoivodeshipDetail = lazy(() => import("./pages/VoivodeshipDetail"));
 const CityDetail = lazy(() => import("./pages/CityDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const TrainingPage = lazy(() => import("./pages/TrainingPage"));
 
 const queryClient = new QueryClient();
 
