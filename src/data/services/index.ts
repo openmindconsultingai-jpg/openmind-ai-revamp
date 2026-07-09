@@ -12,6 +12,7 @@ import teledyski from './teledyski-ai.json';
 import strony from './strony-www-branding.json';
 import konsultacje from './konsultacje-ai.json';
 import hub from './services-hub.json';
+import { INDUSTRY_TRAINING_ENTRIES } from './industry-trainings';
 
 export interface ProtoSub {
   h3: string;
