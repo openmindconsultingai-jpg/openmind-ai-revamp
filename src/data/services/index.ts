@@ -138,6 +138,21 @@ export const services: Record<string, ServiceEntry> = {
   },
 };
 
+// Merge industry-specific training pages into the registry.
+for (const e of INDUSTRY_TRAINING_ENTRIES) {
+  services[e.slug] = {
+    slug: e.slug,
+    path: e.path,
+    navLabel: e.navLabel,
+    shortDesc: e.shortDesc,
+    showCities: e.showCities,
+    data: e.data,
+  };
+}
+
+/** Slugs of the 9 industry-specific training pages (for hub grid, footer, sitemap). */
+export const INDUSTRY_TRAINING_SLUGS = INDUSTRY_TRAINING_ENTRIES.map((e) => e.slug);
+
 export const servicesList: ServiceEntry[] = Object.values(services);
 
 /** Extract FAQ Q/A pairs from the JSON-LD FAQPage node (if present). */
