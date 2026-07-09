@@ -643,7 +643,7 @@ const allUrls = [
 const HTML_SITEMAP_LASTMOD = '2026-06-12';
 const MAIN_HTML_ROUTES = [
   '/services',
-  ...servicesList.map((s) => s.path), // 9 flat service pages
+  ...servicesList.map((s) => s.path), // 9 core + 9 industry-specific training pages
   '/about',
   '/contact',
   '/blog',
