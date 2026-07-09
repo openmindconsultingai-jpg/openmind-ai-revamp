@@ -160,7 +160,7 @@ const ServiceAreas = ({ heading, sub, anchorPrefix, id = 'gdzie-dzialamy' }: Ser
                         className="flex items-center gap-2 text-sm text-foreground/70 font-sans hover:text-foreground transition-colors"
                       >
                         <span className="w-1 h-1 rounded-full bg-primary/50 shrink-0" />
-                        {city.name}
+                        {anchorPrefix ? `${anchorPrefix} ${city.name}` : city.name}
                       </Link>
                     </li>
                   ))}
