@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { trainingsList } from '@/data/trainings';
+import { servicesList } from '@/data/services';
 
 const Footer = () => {
   const { t, language } = useLanguage();
@@ -8,28 +8,31 @@ const Footer = () => {
   return (
     <footer className="border-t border-border py-12 bg-card">
       <div className="container mx-auto px-4">
-        {/* Sitelinks — visible only in PL, since trainings are PL landing pages */}
+        {/* Sitelinks — PL only, since service landing pages are PL */}
         {language === 'pl' && (
-          <nav
-            aria-label="Szkolenia AI"
-            className="mb-8 grid gap-6 md:grid-cols-4"
-          >
+          <nav aria-label="Usługi AI" className="mb-8 grid gap-6 md:grid-cols-4">
             <div className="md:col-span-1">
               <h3 className="font-heading text-sm font-semibold text-primary mb-3 tracking-wide uppercase">
-                Szkolenia AI
+                Usługi AI
               </h3>
               <p className="font-sans text-sm text-muted-foreground leading-relaxed">
-                Praktyczne warsztaty ze sztucznej inteligencji dla firm, szkół i zespołów – w całej Polsce.
+                Automatyzacje, szkolenia, teledyski AI, strony WWW i konsultacje — cała Polska.
               </p>
+              <Link
+                to="/services.html"
+                className="mt-3 inline-block font-sans text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+              >
+                Zobacz wszystkie →
+              </Link>
             </div>
             <ul className="md:col-span-3 grid gap-2 sm:grid-cols-2">
-              {trainingsList.map((t) => (
-                <li key={t.slug}>
+              {servicesList.map((s) => (
+                <li key={s.slug}>
                   <Link
-                    to={`${t.path}.html`}
+                    to={`${s.path}.html`}
                     className="font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {t.h1}
+                    {s.navLabel}
                   </Link>
                 </li>
               ))}
@@ -38,18 +41,15 @@ const Footer = () => {
         )}
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-border/60">
-          <p className="text-muted-foreground">
-            {t('footer.copyright')}
+          <p className="font-sans text-sm text-muted-foreground text-center md:text-left">
+            © {new Date().getFullYear()} OpenMind AI Consulting. {t('footer.rights')}
           </p>
-
-          <div className="flex items-center gap-6">
-            <Link
-              to="/privacy.html"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              {t('footer.privacy')}
-            </Link>
-          </div>
+          <Link
+            to="/privacy.html"
+            className="font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            {t('footer.privacy')}
+          </Link>
         </div>
       </div>
     </footer>
