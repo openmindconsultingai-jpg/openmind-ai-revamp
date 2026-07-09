@@ -643,12 +643,7 @@ const allUrls = [
 const HTML_SITEMAP_LASTMOD = '2026-06-12';
 const MAIN_HTML_ROUTES = [
   '/services',
-  '/services/konsulting-ai',
-  '/services/szkolenia-ai',
-  '/services/automatyzacja-ai',
-  '/services/agencja-kreatywna-ai',
-  '/services/ai-dla-szkol',
-  '/services/tworzenie-stron-www',
+  ...servicesList.map((s) => s.path), // 9 flat service pages
   '/about',
   '/contact',
   '/blog',
