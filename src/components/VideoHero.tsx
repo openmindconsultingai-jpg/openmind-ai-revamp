@@ -222,21 +222,12 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* 3D Neural Model — prawa strona hero, bez widocznej ramki (blend + mask fade) */}
+      {/* 3D Neural Model — prawa strona hero */}
       <div
         className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center lg:justify-end"
         aria-hidden="true"
       >
-        <div
-          className="pointer-events-auto w-full h-full max-w-[680px] lg:max-w-none lg:w-[62vw] xl:w-[58vw]"
-          style={{
-            mixBlendMode: 'screen',
-            WebkitMaskImage:
-              'radial-gradient(ellipse at center, #000 55%, rgba(0,0,0,0.6) 75%, transparent 100%)',
-            maskImage:
-              'radial-gradient(ellipse at center, #000 55%, rgba(0,0,0,0.6) 75%, transparent 100%)',
-          }}
-        >
+        <div className="pointer-events-auto w-full h-full max-w-[680px] lg:max-w-none lg:w-[62vw] xl:w-[58vw]">
           <Suspense fallback={null}>
             <LazyNeuralIframe
               className="w-full h-full"
