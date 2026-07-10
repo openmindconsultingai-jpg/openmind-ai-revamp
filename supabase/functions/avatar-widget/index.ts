@@ -162,21 +162,26 @@ async function handleAvatarSession(req: Request): Promise<Response> {
   }
 
   async function getFallbackAvatarId(): Promise<string | null> {
-    const resp = await fetch("https://api.liveavatar.com/v1/avatars?page=1&page_size=20", {
-      headers: { "X-API-KEY": liveAvatarKey! },
-    });
-    const data = await resp.json().catch(() => ({}));
-    if (!resp.ok) {
-      console.error("LiveAvatar list avatars failed:", `LiveAvatar ${resp.status}: ${JSON.stringify(data).slice(0, 300)}`);
-      return null;
+    async function fetchAvatarList(url: string): Promise<any[]> {
+      const resp = await fetch(url, { headers: { "X-API-KEY": liveAvatarKey! } });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok) {
+        console.error("LiveAvatar list avatars failed:", `LiveAvatar ${resp.status}: ${JSON.stringify(data).slice(0, 300)}`);
+        return [];
+      }
+      return Array.isArray(data?.data?.results)
+        ? data.data.results
+        : Array.isArray(data?.results)
+          ? data.results
+          : Array.isArray(data?.data)
+            ? data.data
+            : [];
     }
-    const avatars = Array.isArray(data?.data?.results)
-      ? data.data.results
-      : Array.isArray(data?.results)
-        ? data.results
-        : Array.isArray(data?.data)
-          ? data.data
-          : [];
+
+    const avatars = [
+      ...await fetchAvatarList("https://api.liveavatar.com/v1/avatars?page=1&page_size=20"),
+      ...await fetchAvatarList("https://api.liveavatar.com/v1/avatars/public?page=1&page_size=20"),
+    ];
     console.info("LiveAvatar available avatars:", avatars.length);
     const usable = avatars.find((avatar: any) => avatar?.id && avatar?.is_expired !== true && String(avatar?.status ?? "").toUpperCase() !== "INIT")
       ?? avatars.find((avatar: any) => avatar?.id && avatar?.is_expired !== true)
