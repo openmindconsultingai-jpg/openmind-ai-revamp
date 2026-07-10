@@ -67,7 +67,7 @@ const CLIENT_CONFIG = {
   avatar_embed: {
     provider: "heygen_liveavatar_embed",
     voice_agent: "Max - OpenMind AI",
-    url: "https://embed.liveavatar.com/v1/6730a102-8aa9-4634-a921-ef18a5f9697d?orientation=horizontal",
+    url: "https://embed.liveavatar.com/v1/64b526e4-741c-43b6-a918-4e40f3261c7a?orientation=horizontal",
     orientation: "horizontal",
     aspect_ratio: "16/9",
     default_language: "pl",
