@@ -712,6 +712,176 @@ const SPECS: IndustrySpec[] = [
       { q: 'Od czego zacząć?', a: 'Od korespondencji i dokumentów — najszybszy zwrot.' },
     ],
   },
+  {
+    slug: 'szkolenia-ai-dla-produkcji',
+    path: '/szkolenia-ai-dla-produkcji',
+    navLabel: 'Dla produkcji i przemysłu',
+    shortDesc:
+      'Szkolenia AI dla firm produkcyjnych: dokumentacja techniczna, instrukcje stanowiskowe, BHP, raporty zmianowe, analiza awarii i przestojów. Stacjonarnie w zakładzie i online.',
+    title: 'Szkolenia AI dla produkcji i przemysłu | OpenMind AI',
+    description:
+      'Szkolenia AI dla firm produkcyjnych: dokumentacja techniczna, instrukcje stanowiskowe, BHP, raporty zmianowe, analiza awarii i przestojów. Stacjonarnie w zakładzie i online.',
+    h1: 'Szkolenia AI dla produkcji — dokumentacja i raporty bez zatrzymywania linii',
+    audienceLd: 'Firmy produkcyjne, kierownicy produkcji, technolodzy, utrzymanie ruchu, jakość, BHP',
+    whyH2: 'Dlaczego AI w produkcji',
+    whyLead:
+      'Uczymy firmy produkcyjne pracy z AI tam, gdzie papier spotyka halę: dokumentacja techniczna, instrukcje stanowiskowe, raporty zmianowe, BHP i analiza przestojów — jasno, szybko i wielojęzycznie dla załóg międzynarodowych.',
+    whyBullets: [
+      'Dokumentacja techniczna i instrukcje to setki stron do pisania i aktualizacji.',
+      'Raporty zmianowe i analiza awarii zawierają wiedzę, której nikt nie ma czasu czytać — AI wyciąga wnioski.',
+      'Załogi wielojęzyczne (PL/UA/EN) potrzebują instrukcji w swoich językach.',
+    ],
+    modules: [
+      { name: 'Dokumentacja techniczna', desc: 'Instrukcje, procedury, karty technologiczne: tworzenie, aktualizacja, upraszczanie języka.' },
+      { name: 'Instrukcje stanowiskowe i BHP', desc: 'Wersje wielojęzyczne, checklisty, materiały szkoleniowe dla operatorów.' },
+      { name: 'Raporty zmianowe i produkcyjne', desc: 'Standaryzacja, streszczenia dla kierownictwa, trendy z danych.' },
+      { name: 'Analiza awarii i przestojów', desc: 'Wnioski z historii, 5-why wspierane AI, baza wiedzy utrzymania ruchu.' },
+      { name: 'Komunikacja i administracja', desc: 'Korespondencja z dostawcami, dokumenty jakościowe, audyty.' },
+      { name: 'Warsztat wdrożeniowy', desc: 'Automatyzacja jednego obiegu dokumentów, plan dla zakładu.' },
+    ],
+    faq: [
+      { q: 'Czy dane produkcyjne są bezpieczne?', a: 'Uczymy zasad: dane wrażliwe tylko w narzędziach z umowami powierzenia lub lokalnie; część zastosowań działa bez danych wrażliwych.' },
+      { q: 'Czy to wymaga integracji z MES/ERP?', a: 'Nie na starcie — najszybszy zwrot dają dokumenty i raporty; integracje pokazujemy jako kolejny krok.' },
+      { q: 'W jakich formatach?', a: 'Stacjonarnie w zakładzie (także przy linii), online dla biura.' },
+      { q: 'Dla kogo w firmie?', a: 'Kierownicy produkcji, technolodzy, utrzymanie ruchu, jakość, BHP.' },
+    ],
+  },
+  {
+    slug: 'szkolenia-ai-dla-beauty-wellness',
+    path: '/szkolenia-ai-dla-beauty-wellness',
+    navLabel: 'Dla beauty i wellness',
+    shortDesc:
+      'Szkolenia AI dla salonów beauty, gabinetów kosmetycznych, siłowni i trenerów: social media, rezerwacje, komunikacja z klientkami, pakiety i promocje.',
+    title: 'Szkolenia AI dla branży beauty i wellness | OpenMind AI',
+    description:
+      'Szkolenia AI dla salonów beauty, gabinetów kosmetycznych, siłowni i trenerów: social media, rezerwacje, komunikacja z klientkami, pakiety i promocje.',
+    h1: 'Szkolenia AI dla beauty i wellness — pełny grafik bez agencji marketingowej',
+    audienceLd: 'Salony beauty, gabinety kosmetyczne, siłownie, trenerzy personalni, właściciele i managerowie',
+    whyH2: 'Dlaczego AI w beauty i wellness',
+    whyLead:
+      'Uczymy salony, gabinety, siłownie i trenerów prowadzić marketing i komunikację z AI: social media, które wyglądają profesjonalnie, szybkie odpowiedzi na zapytania, przypomnienia o wizytach i oferty, które wracają klientki.',
+    whyBullets: [
+      'W beauty decyduje Instagram — AI tworzy treści na poziomie agencji za ułamek ceny.',
+      'Nieodebrane zapytanie wieczorem to stracona wizyta — AI odpowiada od razu.',
+      'Stali klienci wracają dzięki regularnej, osobistej komunikacji.',
+    ],
+    modules: [
+      { name: 'Social media salonu', desc: 'Posty, rolki, harmonogram, spójna estetyka; zdjęcia przed/po z poszanowaniem prywatności.' },
+      { name: 'Zapytania i rezerwacje', desc: 'Szybkie odpowiedzi, cenniki, przypomnienia, listy oczekujących.' },
+      { name: 'Oferty i pakiety', desc: 'Sezonowe promocje, pakiety zabiegów, vouchery, teksty sprzedażowe.' },
+      { name: 'Komunikacja z klientkami', desc: 'Zalecenia po zabiegach, plany pielęgnacyjne/treningowe (informacyjne, nie medyczne), newslettery.' },
+      { name: 'Opinie i polecenia', desc: 'Odpowiedzi na opinie, prośby o recenzje, program poleceń.' },
+      { name: 'Warsztat wdrożeniowy', desc: 'Zestaw narzędzi salonu, automatyzacja przypomnień.' },
+    ],
+    faq: [
+      { q: 'Nie jestem „techniczna" — dam radę?', a: 'Tak, program jest dla praktyków, nie informatyków; większość uczestniczek zaczyna od zera.' },
+      { q: 'Czy AI może układać plany zabiegowe?', a: 'Tworzy materiały informacyjne i komunikację; decyzje zabiegowe i medyczne zawsze po stronie specjalisty.' },
+      { q: 'W jakich formatach?', a: '1:1 w salonie lub online, małe grupy dla ekip.' },
+      { q: 'Ile czasu tygodniowo zajmie marketing z AI?', a: 'Zwykle 1–2 godziny na tydzień treści.' },
+    ],
+  },
+  {
+    slug: 'szkolenia-ai-dla-rolnictwa',
+    path: '/szkolenia-ai-dla-rolnictwa',
+    navLabel: 'Dla rolnictwa i agrobiznesu',
+    shortDesc:
+      'Szkolenia AI dla rolników i firm agro: wnioski o dopłaty, dokumentacja, analiza cen i pogody, sprzedaż bezpośrednia i marketing gospodarstwa.',
+    title: 'Szkolenia AI dla rolnictwa i agrobiznesu | OpenMind AI',
+    description:
+      'Szkolenia AI dla rolników i firm agro: wnioski o dopłaty, dokumentacja, analiza cen i pogody, sprzedaż bezpośrednia i marketing gospodarstwa.',
+    h1: 'Szkolenia AI dla rolnictwa — technologia, która rozumie gospodarstwo',
+    audienceLd: 'Rolnicy, gospodarstwa rodzinne, grupy producenckie, firmy agrobiznesu',
+    whyH2: 'Dlaczego AI w rolnictwie',
+    whyLead:
+      'Uczymy rolników, grupy producenckie i firmy agro pracy z AI: szybsze wnioski i dokumentacja (dopłaty, ekoschematy), analiza cen skupu, marketing sprzedaży bezpośredniej i codzienna papierologia gospodarstwa.',
+    whyBullets: [
+      'Wnioski o dopłaty i ekoschematy to coraz więcej biurokracji — AI pomaga ją ogarnąć.',
+      'Ceny skupu i prognozy zmieniają się codziennie — AI zbiera i streszcza informacje.',
+      'Sprzedaż bezpośrednia (od pola do stołu) wymaga marketingu, na który nie ma czasu.',
+    ],
+    modules: [
+      { name: 'Dokumentacja i wnioski', desc: 'Przygotowanie dokumentów do dopłat i ekoschematów, rejestry, ewidencje (z weryfikacją u doradcy).' },
+      { name: 'Analiza rynku', desc: 'Ceny skupu, trendy, kalkulacje opłacalności upraw i produkcji.' },
+      { name: 'Sprzedaż bezpośrednia', desc: 'Marketing gospodarstwa, social media, opisy produktów, współpraca z lokalnymi odbiorcami.' },
+      { name: 'Korespondencja i urzędy', desc: 'Pisma do ARiMR, KOWR, gmin; umowy z odbiorcami.' },
+      { name: 'Planowanie sezonu', desc: 'Harmonogramy prac, checklisty, notatki polowe zamieniane w raporty.' },
+      { name: 'Warsztat wdrożeniowy', desc: 'Zestaw narzędzi gospodarstwa, praktyka na realnych dokumentach.' },
+    ],
+    faq: [
+      { q: 'Czy AI wypełni za mnie wniosek o dopłaty?', a: 'Pomoże przygotować dane i treści, ale wniosek warto zweryfikować z doradcą — uczymy współpracy obu światów.' },
+      { q: 'Nie mam czasu na kursy — jak to wygląda?', a: 'Krótkie sesje online wieczorami lub zjazd stacjonarny poza sezonem.' },
+      { q: 'Czy to dla małych gospodarstw?', a: 'Tak, największy efekt daje tam, gdzie jedna osoba robi wszystko.' },
+      { q: 'W jakich formatach?', a: 'Online, stacjonarnie u nas lub wyjazdowo dla grup producenckich.' },
+    ],
+  },
+  {
+    slug: 'szkolenia-ai-dla-ngo',
+    path: '/szkolenia-ai-dla-ngo',
+    navLabel: 'Dla NGO i fundacji',
+    shortDesc:
+      'Szkolenia AI dla organizacji pozarządowych: wnioski grantowe, sprawozdania, fundraising, komunikacja z darczyńcami. Specjalne stawki dla III sektora.',
+    title: 'Szkolenia AI dla NGO i fundacji — wnioski grantowe z AI | OpenMind AI',
+    description:
+      'Szkolenia AI dla organizacji pozarządowych: wnioski grantowe, sprawozdania, fundraising, komunikacja z darczyńcami. Specjalne stawki dla III sektora.',
+    h1: 'Szkolenia AI dla NGO — więcej misji, mniej biurokracji',
+    audienceLd: 'Fundacje, stowarzyszenia, organizacje pozarządowe, koordynatorzy projektów, zarządy NGO',
+    whyH2: 'Dlaczego AI w NGO',
+    whyLead:
+      'Uczymy fundacje i stowarzyszenia pracy z AI tam, gdzie III sektor traci najwięcej czasu: wnioski grantowe, sprawozdania, fundraising i komunikacja. Małymi zespołami można robić wielkie rzeczy — AI to dźwignia.',
+    whyBullets: [
+      'Wniosek grantowy to dziesiątki stron — AI pomaga pisać lepiej i szybciej, zwiększając szanse organizacji.',
+      'Sprawozdawczość (merytoryczna i finansowa) zjada czas, który powinien iść na misje.',
+      'Fundraising wymaga regularnej, osobistej komunikacji z darczyńcami.',
+    ],
+    modules: [
+      { name: 'Wnioski grantowe', desc: 'Analiza regulaminów konkursów, struktura wniosku, opisy projektów, budżety, harmonogramy; bank treści organizacji.' },
+      { name: 'Sprawozdania', desc: 'Merytoryczne i częściowe, zestawienia działań, wskaźniki, raporty dla grantodawców.' },
+      { name: 'Fundraising i darczyńcy', desc: 'Apele, podziękowania, newslettery, kampanie 1,5%, komunikacja z biznesem.' },
+      { name: 'Komunikacja i social media', desc: 'Historie beneficjentów (z poszanowaniem godności i prywatności), promocja działań.' },
+      { name: 'Organizacja pracy', desc: 'Protokoły, uchwały, dokumenty statutowe, wolontariat.' },
+      { name: 'Warsztat wdrożeniowy', desc: 'Narzędzia darmowe i nonprofit-owe (rabaty dla NGO), plan wdrożenia.' },
+    ],
+    faq: [
+      { q: 'Czy nas na to stać?', a: 'Mamy specjalne stawki dla III sektora, a większość narzędzi pokazujemy w wersjach darmowych lub z rabatami nonprofit.' },
+      { q: 'Czy grantodawcy akceptują wnioski pisane z AI?', a: 'AI pomaga pisać — treść merytoryczna i prawda o projekcie są Wasze; uczymy uczciwego i skutecznego użycia.' },
+      { q: 'W jakich formatach?', a: 'Online (także wieczorami), stacjonarnie, warsztaty dla federacji i sieci.' },
+      { q: 'A dane beneficjentów?', a: 'Zasady jak przy RODO: anonimizacja, żadnych danych wrażliwych w publicznych narzędziach.' },
+    ],
+  },
+  {
+    slug: 'szkolenia-ai-dla-turystyki',
+    path: '/szkolenia-ai-dla-turystyki',
+    navLabel: 'Dla turystyki i biur podróży',
+    shortDesc:
+      'Szkolenia AI dla biur podróży, pilotów i organizatorów turystyki: oferty i programy wyjazdów, wielojęzyczna obsługa, social media i dokumenty.',
+    title: 'Szkolenia AI dla turystyki i biur podróży | OpenMind AI',
+    description:
+      'Szkolenia AI dla biur podróży, pilotów i organizatorów turystyki: oferty i programy wyjazdów, wielojęzyczna obsługa, social media i dokumenty.',
+    h1: 'Szkolenia AI dla turystyki — oferty i programy wyjazdów w godzinę, nie w tydzień',
+    audienceLd: 'Biura podróży, touroperatorzy, organizatorzy turystyki, piloci wycieczek, przewodnicy',
+    whyH2: 'Dlaczego AI w turystyce',
+    whyLead:
+      'Uczymy biura podróży, organizatorów i przewodników pracy z AI: atrakcyjne oferty i programy wyjazdów, wielojęzyczna obsługa klientów, social media pełne inspiracji i sprawna dokumentacja imprez turystycznych.',
+    whyBullets: [
+      'Oferta wyjazdu to godziny researchu i pisania — AI skraca to do minut.',
+      'Klienci pytają o wszystko i o każdej porze — AI odpowiada natychmiast.',
+      'Sezonowość wymaga intensywnego marketingu w krótkich oknach sprzedażowych.',
+    ],
+    modules: [
+      { name: 'Oferty i programy', desc: 'Itineraria dzień po dniu, opisy hoteli i atrakcji, warianty cenowe, oferty grupowe.' },
+      { name: 'Research destynacji', desc: 'Informacje praktyczne, pogoda, wymogi wizowe (z weryfikacją u źródeł oficjalnych).' },
+      { name: 'Obsługa klienta', desc: 'Odpowiedzi na zapytania, dokumenty podróży, komunikaty przed wyjazdem, obsługa wielojęzyczna.' },
+      { name: 'Social media i inspiracje', desc: 'Posty kierunkowe, grafiki, kampanie first/last minute.' },
+      { name: 'Dokumentacja imprez', desc: 'Umowy, warunki uczestnictwa, rozliczenia (szkice do weryfikacji prawnej).' },
+      { name: 'Warsztat wdrożeniowy', desc: 'Zestaw narzędzi biura, automatyzacja zapytań i ofertowania.' },
+    ],
+    faq: [
+      { q: 'Czy AI nie wymyśli nieistniejących atrakcji?', a: 'Może — dlatego uczymy weryfikacji i pracy na własnych materiałach; AI przyspiesza, człowiek potwierdza.' },
+      { q: 'W jakich formatach?', a: 'Online lub stacjonarnie, najlepiej przed sezonem sprzedażowym.' },
+      { q: 'Czy dla pilotów i przewodników też?', a: 'Tak: przygotowanie tras, materiały krajoznawcze, komunikacja z grupą.' },
+      { q: 'Integracja z naszym systemem rezerwacji?', a: 'Pokazujemy automatyzacje wokół istniejących systemów.' },
+    ],
+  },
 ];
 
 /* ── Proto builder ── */
