@@ -245,17 +245,14 @@ async function handleCalendarSlots(_req: Request): Promise<Response> {
     let addedForDay = 0;
     for (const time of free) {
       if (results.length >= 9 || addedForDay >= wantedPerDay) break;
-      const start = new Date(Date.UTC(Number(yyyy), Number(mm) - 1, Number(dd), Number(time.slice(0, 2)) - 1, Number(time.slice(3, 5))));
-      const end = new Date(start.getTime() + 30 * 60_000);
       results.push({
         slot_id: encodeSlotId(dateStr, time),
-        start: start.toISOString(),
-        end: end.toISOString(),
+        start: `${dateStr}T${time}:00`,
+        end: `${dateStr}T${time}:30`,
         timezone: "Europe/Warsaw",
-        label: new Intl.DateTimeFormat("pl-PL", {
-          weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit",
-          timeZone: "Europe/Warsaw",
-        }).format(start),
+        label: `${new Intl.DateTimeFormat("pl-PL", {
+          weekday: "long", day: "numeric", month: "long",
+        }).format(dt)}, ${time}`,
       });
       addedForDay++;
     }
