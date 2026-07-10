@@ -278,12 +278,12 @@ const VideoHero = () => {
         {/* 3D Neural Model — right column, vertically centered */}
         <div
           className="relative w-full mx-auto"
-          style={{ maxWidth: '620px', height: 'min(70svh, 620px)' }}
+          style={{ maxWidth: '720px', height: 'min(75svh, 720px)' }}
         >
           <Suspense fallback={null}>
             <LazyNeuralIframe
               className="absolute inset-0 w-full h-full"
-              src="/openmind-neural-recreated.html?v=6"
+              src="/openmind-neural-recreated.html?v=7"
               loadStrategy="auto"
             />
           </Suspense>
