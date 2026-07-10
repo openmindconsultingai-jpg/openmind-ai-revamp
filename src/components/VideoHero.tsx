@@ -222,29 +222,8 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* Interactive 3D Neural Model — right side on desktop, top-aligned with hero text */}
-      {isDesktop && (
-        <div
-          className="hidden lg:block absolute z-[25]"
-          style={{
-            top: 'clamp(4rem, 12vh, 8rem)',
-            right: 'clamp(1rem, 4vw, 4rem)',
-            width: 'clamp(700px, 55vw, 1100px)',
-            aspectRatio: '4 / 3',
-            minHeight: '500px',
-            maxHeight: '80svh',
-            pointerEvents: 'auto',
-          }}
-        >
-          <Suspense fallback={null}>
-            <LazyNeuralIframe
-              src="/openmind-neural-recreated.html?v=5"
-              className="absolute inset-0 w-full h-full"
-              style={{ pointerEvents: 'auto' } as React.CSSProperties}
-            />
-          </Suspense>
-        </div>
-      )}
+      {/* Model 3D usunięty — jego rolę przejmuje HeyGen Live Avatar (OpenMindAvatarWidget),
+          otwierany przyciskiem „Zapytaj doradcę AI" w hero. */}
 
 
 
@@ -412,21 +391,7 @@ const VideoHero = () => {
           Zapytaj doradcę AI
         </button>
 
-        {/* Mobile-only 3D Neural iframe — full model, auto-load after 5s */}
-        {!isDesktop && (
-          <div
-            className="lg:hidden relative w-full mt-8 mb-2"
-            style={{ minHeight: '60vh', aspectRatio: '4 / 5' }}
-          >
-            <Suspense fallback={null}>
-              <LazyNeuralIframe
-                src="/openmind-neural-recreated.html?v=5"
-                className="absolute inset-0 w-full h-full rounded-2xl"
-                style={{ pointerEvents: 'auto' } as React.CSSProperties}
-              />
-            </Suspense>
-          </div>
-        )}
+        {/* 3D model na mobile również został zastąpiony przez HeyGen Live Avatar. */}
 
         {/* Scroll indicator */}
         <div className="mt-5 mb-3 sm:mt-6 sm:mb-4 flex flex-col items-center gap-2">
