@@ -134,7 +134,7 @@ async function handleAvatarSession(req: Request): Promise<Response> {
   // Wymień klucz API LiveAvatar/HeyGen na krótkotrwały JWT sesji streamingu.
   // Preferujemy nowy klucz LiveAvatar; stary HEYGEN_API_KEY zostaje tylko jako fallback.
   const liveAvatarKey = Deno.env.get("LIVEAVATAR_API_KEY") || Deno.env.get("HEYGEN_API_KEY");
-  const configuredAvatarId = Deno.env.get("LIVEAVATAR_AVATAR_ID") || "6730a102-8aa9-4634-a921-ef18a5f9697d";
+  const configuredAvatarId = Deno.env.get("LIVEAVATAR_AVATAR_ID") || "64b526e4-741c-43b6-a918-4e40f3261c7a";
   let sessionToken = "";
   let liveAvatarSessionId = id("session");
   let tokenError: string | null = null;
