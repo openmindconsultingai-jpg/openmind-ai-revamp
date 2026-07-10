@@ -14,6 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
+      avatar_leads: {
+        Row: {
+          budget_range: string
+          client_id: string
+          company: string
+          consent_contact: boolean
+          consent_text_version: string
+          consent_timestamp: string
+          conversation_id: string | null
+          created_at: string
+          email: string
+          id: string
+          intent: string
+          interest_area: string
+          lead_score: string
+          name: string
+          organization_type: string
+          phone: string
+          problem_description: string
+          source_url: string
+          timeline: string
+        }
+        Insert: {
+          budget_range?: string
+          client_id?: string
+          company?: string
+          consent_contact?: boolean
+          consent_text_version?: string
+          consent_timestamp?: string
+          conversation_id?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          intent?: string
+          interest_area?: string
+          lead_score?: string
+          name?: string
+          organization_type?: string
+          phone: string
+          problem_description?: string
+          source_url?: string
+          timeline?: string
+        }
+        Update: {
+          budget_range?: string
+          client_id?: string
+          company?: string
+          consent_contact?: boolean
+          consent_text_version?: string
+          consent_timestamp?: string
+          conversation_id?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          intent?: string
+          interest_area?: string
+          lead_score?: string
+          name?: string
+          organization_type?: string
+          phone?: string
+          problem_description?: string
+          source_url?: string
+          timeline?: string
+        }
+        Relationships: []
+      }
       booking_rate_limits: {
         Row: {
           client_identifier: string
