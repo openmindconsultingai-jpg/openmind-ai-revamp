@@ -222,28 +222,13 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* Hero content wrapper — model on top, text below */}
-      <div className="relative z-20 w-full max-w-6xl mx-auto px-5 flex flex-col items-center">
+      {/* Hero content wrapper — two-column grid: text left, model right */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-5 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-        {/* 3D Neural Model — identyczny jak w sekcji O nas */}
-        <div
-          className="relative mx-auto w-full mb-10 md:mb-14"
-          style={{ maxWidth: '880px', height: 'min(70svh, 620px)' }}
-        >
-          <Suspense fallback={null}>
-            <LazyNeuralIframe
-              className="absolute inset-0 w-full h-full"
-              src="/openmind-neural-recreated.html?v=5"
-              loadStrategy="auto"
-            />
-          </Suspense>
-        </div>
-
-        {/* Text block — centered under the model */}
-        <div className="text-center w-full max-w-3xl mx-auto">
+        {/* Text block — left column */}
+        <div className="text-center lg:text-left w-full max-w-2xl mx-auto lg:mx-0">
 
           {/* Visually prominent brand name */}
-
           <div 
             ref={titleRef}
             className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-[4.5rem] xl:text-[5.25rem] 2xl:text-[6.25rem] font-bold mb-4 leading-none tracking-tight"
@@ -272,24 +257,39 @@ const VideoHero = () => {
             </span>
           </div>
 
-          {/* SEO H1 - visually smaller but semantically the main heading */}
-          <h1 className="hero-subtitle font-heading text-base sm:text-lg md:text-xl lg:text-[1.35rem] font-semibold text-foreground/85 mb-4 max-w-3xl mx-auto">
+          {/* SEO H1 */}
+          <h1 className="hero-subtitle font-heading text-base sm:text-lg md:text-xl lg:text-[1.35rem] font-semibold text-foreground/85 mb-4">
             {seoH1Text}
           </h1>
 
           {/* Subtitle */}
-          <div className="hero-subtitle font-sans max-w-2xl mx-auto mb-6 sm:mb-8 space-y-1" style={{ textAlign: 'center' }}>
-            <p className="text-sm sm:text-base md:text-lg leading-snug text-foreground/60" style={{ textAlign: 'center' }}>
+          <div className="hero-subtitle font-sans mb-6 sm:mb-8 space-y-1">
+            <p className="text-sm sm:text-base md:text-lg leading-snug text-foreground/60">
               {heroDescriptionText}
             </p>
             {heroDescription2Text && (
-              <p className="text-sm sm:text-base md:text-lg leading-snug text-foreground/60" style={{ textAlign: 'center' }}>
+              <p className="text-sm sm:text-base md:text-lg leading-snug text-foreground/60">
                 {heroDescription2Text}
               </p>
             )}
           </div>
         </div>
+
+        {/* 3D Neural Model — right column, vertically centered */}
+        <div
+          className="relative w-full mx-auto"
+          style={{ maxWidth: '620px', height: 'min(70svh, 620px)' }}
+        >
+          <Suspense fallback={null}>
+            <LazyNeuralIframe
+              className="absolute inset-0 w-full h-full"
+              src="/openmind-neural-recreated.html?v=5"
+              loadStrategy="auto"
+            />
+          </Suspense>
+        </div>
       </div>
+
 
       {/* CTA + Scroll indicator + Logo Ticker — centered full-width below hero columns */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-5 mt-8 lg:mt-12 flex flex-col items-center">
