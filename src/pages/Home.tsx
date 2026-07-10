@@ -73,6 +73,7 @@ const Home = () => {
         <ServiceAreas />
         <ParticleFooter />
         <Chatbot />
+        <OpenMindAvatarWidget />
       </Suspense>
     </div>
   );
