@@ -502,6 +502,216 @@ const SPECS: IndustrySpec[] = [
       { q: 'Macie doświadczenie z sektorem publicznym?', a: 'Prowadzimy zajęcia dla placówek oświatowych i instytucji; znamy wymogi formalne.' },
     ],
   },
+  {
+    slug: 'szkolenia-microsoft-copilot',
+    path: '/szkolenia-microsoft-copilot',
+    navLabel: 'Microsoft Copilot (M365)',
+    shortDesc:
+      'Praktyczne szkolenie Microsoft 365 Copilot: Word, Excel, Outlook, Teams, PowerPoint i agenci w Copilot Studio. Dla firm z licencjami M365 — dane pozostają w Waszym tenancie.',
+    title:
+      'Szkolenie Microsoft Copilot — Word, Excel, Outlook, Teams | OpenMind AI',
+    description:
+      'Praktyczne szkolenie z pakietu Microsoft 365 Copilot: dokumenty w Word, analiza w Excel, maile w Outlook, spotkania w Teams, agenci w Copilot Studio. Dla firm z licencjami M365.',
+    h1: 'Szkolenie Microsoft Copilot — wyciśnij maksimum z licencji, za którą płacisz',
+    audienceLd: 'Firmy z licencjami Microsoft 365 Copilot, kadra kierownicza, administratorzy IT, pracownicy biurowi',
+    whyH2: 'Dlaczego Microsoft Copilot',
+    whyLead:
+      'Copilot potrafi znacznie więcej niż podpowiadać tekst — pod warunkiem, że zespół umie z niego korzystać. Uczymy pracy z Copilotem w Word, Excel, Outlook, Teams i PowerPoint oraz budowy prostych agentów w Copilot Studio. Dane firmy zostają w Waszym tenancie M365.',
+    whyBullets: [
+      'Firmy płacą za licencje Copilot, których pracownicy używają w 10%.',
+      'Copilot działa na danych firmowych (maile, dokumenty, spotkania) — to przewaga nad zwykłym chatem, ale wymaga warsztatu.',
+      'Dobrze skonfigurowany Copilot to AI zgodna z polityką bezpieczeństwa IT.',
+    ],
+    modules: [
+      { name: 'Start z Copilot w M365 — licencje, dostępy, prywatność', desc: 'Co widzi Copilot, gdzie zostają dane, ustawienia administracyjne.' },
+      { name: 'Word i PowerPoint', desc: 'Tworzenie i redakcja dokumentów, streszczenia, prezentacje z dokumentów źródłowych, styl firmowy.' },
+      { name: 'Excel z Copilotem', desc: 'Analiza danych, formuły, tabele przestawne, wykresy i wnioski z danych pisane ludzkim językiem.' },
+      { name: 'Outlook i Teams', desc: 'Streszczenia wątków, szkice odpowiedzi, podsumowania i notatki ze spotkań, zadania po spotkaniach.' },
+      { name: 'Copilot Chat i agenci', desc: 'Praca na plikach firmowych, wyszukiwanie w wiedzy organizacji, proste agenty w Copilot Studio.' },
+      { name: 'Wdrożenie i adopcja', desc: 'Zasady użycia, scenariusze per dział, mierzenie wykorzystania licencji, plan rozwoju.' },
+    ],
+    faq: [
+      { q: 'Czy potrzebujemy licencji Copilot?', a: 'Na warsztat tak; dla części ćwiczeń wystarczy plan M365 z Copilot Chat. Pomagamy też zdecydować przed zakupem, czy licencja się opłaci.' },
+      { q: 'Czym Copilot różni się od ChatGPT?', a: 'Działa wewnątrz M365 na danych firmy (maile, pliki, spotkania) i nie wysyła ich poza tenant — to inna klasa zastosowań i bezpieczeństwa.' },
+      { q: 'Czy dane firmowe są bezpieczne?', a: 'Tak — Copilot respektuje uprawnienia M365; na szkoleniu omawiamy ustawienia administracyjne i dobre praktyki.' },
+      { q: 'W jakich formatach?', a: 'Stacjonarnie, online lub program kaskadowy dla całej organizacji; także ścieżka dla administratorów IT.' },
+    ],
+  },
+  {
+    slug: 'szkolenia-ai-dla-nieruchomosci',
+    path: '/szkolenia-ai-dla-nieruchomosci',
+    navLabel: 'Dla nieruchomości',
+    shortDesc:
+      'Szkolenia AI dla pośredników, biur nieruchomości i deweloperów: opisy ofert, home staging AI, analiza rynku i błyskawiczna obsługa zapytań.',
+    title:
+      'Szkolenia AI dla biur nieruchomości i deweloperów | OpenMind AI',
+    description:
+      'Szkolenia AI dla pośredników i deweloperów: opisy ofert, które sprzedają, home staging AI, analiza rynku, obsługa zapytań 24/7. Stacjonarnie i online.',
+    h1: 'Szkolenia AI dla nieruchomości — oferty, które sprzedają same',
+    audienceLd: 'Pośrednicy nieruchomości, biura nieruchomości, deweloperzy, agenci sprzedaży',
+    whyH2: 'Dlaczego AI w nieruchomościach',
+    whyLead:
+      'Uczymy pośredników, biura i deweloperów pracy z AI: perfekcyjne opisy ofert w minutę, wirtualny home staging, analiza cen i obsługa zapytań o każdej porze. Agent, który odpisuje pierwszy, wygrywa klienta.',
+    whyBullets: [
+      'Opis oferty decyduje o kliknięciach — AI pisze warianty pod portale i social media.',
+      'Wirtualny home staging za grosze zamiast sesji aranżacyjnych.',
+      'Szybkość odpowiedzi na zapytania = przewaga w walce o klienta.',
+    ],
+    modules: [
+      { name: 'Opisy ofert i ogłoszenia', desc: 'Struktura, język korzyści, warianty pod portale, social media i eksport.' },
+      { name: 'Grafika i home staging AI', desc: 'Poprawa zdjęć, wirtualne aranżacje pustych wnętrz, wizualizacje.' },
+      { name: 'Analiza rynku i wyceny', desc: 'Porównania ofert, trendy cenowe, raporty dla klientów.' },
+      { name: 'Obsługa zapytań', desc: 'Szybkie odpowiedzi, kwalifikacja leadów, przypomnienia i follow-upy.' },
+      { name: 'Dokumenty i umowy', desc: 'Szkice pism, checklisty transakcyjne, notatki ze spotkań.' },
+      { name: 'Warsztat wdrożeniowy', desc: 'Zestaw narzędzi biura, automatyzacja publikacji ofert.' },
+    ],
+    faq: [
+      { q: 'Czy AI może pisać oferty za cały zespół?', a: 'Tak, z zachowaniem stylu biura — budujemy wspólne szablony i prompty.' },
+      { q: 'Home staging AI — czy to legalne w ogłoszeniach?', a: 'Uczymy dobrych praktyk: wizualizacje oznaczamy, stan faktyczny dokumentują zdjęcia.' },
+      { q: 'W jakich formatach?', a: 'Stacjonarnie w biurze, online, 1:1 dla właścicieli.' },
+      { q: 'Czy dotyczy też deweloperów?', a: 'Tak: opisy inwestycji, materiały sprzedażowe, obsługa zapytań z kampanii.' },
+    ],
+  },
+  {
+    slug: 'szkolenia-ai-dla-ecommerce',
+    path: '/szkolenia-ai-dla-ecommerce',
+    navLabel: 'Dla e-commerce',
+    shortDesc:
+      'Szkolenia AI dla e-commerce i sklepów internetowych: opisy produktów na skalę, obsługa klienta 24/7, personalizacja, grafiki produktowe i marketplace.',
+    title:
+      'Szkolenia AI dla e-commerce i sklepów internetowych | OpenMind AI',
+    description:
+      'Szkolenia AI dla e-commerce: opisy produktów na skalę, obsługa klienta, personalizacja, grafiki produktowe i automatyzacja marketplace. Stacjonarnie i online.',
+    h1: 'Szkolenia AI dla e-commerce — setki opisów, obsługa 24/7, wyższa konwersja',
+    audienceLd: 'Właściciele sklepów internetowych, managerowie e-commerce, zespoły marketingu i obsługi',
+    whyH2: 'Dlaczego AI w e-commerce',
+    whyLead:
+      'Uczymy zespoły e-commerce wykorzystywać AI na całej długości lejka: opisy i zdjęcia produktów, obsługa klienta, personalizacja komunikacji i automatyzacja pracy na marketplace’ach.',
+    whyBullets: [
+      'Opisy setek produktów to tygodnie pracy — AI robi to w godziny, z SEO.',
+      'Większość zapytań klientów jest powtarzalna — chatbot odpowiada natychmiast.',
+      'Personalizacja komunikacji podnosi konwersje bez zwiększania budżetu na reklamę.',
+    ],
+    modules: [
+      { name: 'Opisy produktów na skalę', desc: 'Szablony, warianty pod SEO i marketplace, tłumaczenia na rynki zagraniczne.' },
+      { name: 'Grafika produktowa AI', desc: 'Tła, packshoty, warianty lifestyle, bannery kampanii.' },
+      { name: 'Obsługa klienta', desc: 'Chatbot znający ofertę, statusy zamówień, zwroty; przekazywanie trudnych spraw ludziom.' },
+      { name: 'Marketing i personalizacja', desc: 'Newslettery, segmentacja, opisy kategorii, kampanie produktowe.' },
+      { name: 'Analiza danych sklepu', desc: 'Trendy sprzedaży, analiza opinii, raporty pisane ludzkim językiem.' },
+      { name: 'Automatyzacje', desc: 'Synchronizacja ofert, alerty cenowe, obieg zamówień i dokumentów.' },
+    ],
+    faq: [
+      { q: 'Mamy 5000 produktów — da się to ogarnąć AI?', a: 'Tak, to typowy przypadek: szablony + dane produktowe + automatyzacja dają opisy całego katalogu.' },
+      { q: 'Czy chatbot nie zepsuje nam opinii?', a: 'Dobrze wdrożony bot odpowiada tylko na to, co wie, i oddaje rozmowę człowiekowi — uczymy takiej konfiguracji.' },
+      { q: 'A integracje?', a: 'Pokazujemy podejścia dla popularnych platform (Shoper, WooCommerce, PrestaShop, Allegro).' },
+      { q: 'W jakich formatach?', a: 'Online najczęściej, stacjonarnie lub 1:1 dla właścicieli.' },
+    ],
+  },
+  {
+    slug: 'szkolenia-ai-dla-gastronomii-hotelarstwa',
+    path: '/szkolenia-ai-dla-gastronomii-hotelarstwa',
+    navLabel: 'Dla gastronomii i hotelarstwa',
+    shortDesc:
+      'Szkolenia AI dla restauracji, hoteli i pensjonatów: wielojęzyczna obsługa gości, odpowiedzi na opinie, social media, rezerwacje i menu.',
+    title:
+      'Szkolenia AI dla gastronomii i hotelarstwa (HoReCa) | OpenMind AI',
+    description:
+      'Szkolenia AI dla restauracji i hoteli: wielojęzyczna obsługa gości, odpowiedzi na opinie, social media, rezerwacje i menu. Stacjonarnie w całej Polsce i online.',
+    h1: 'Szkolenia AI dla HoReCa — gościnność wspierana technologią',
+    audienceLd: 'Restauracje, hotele, pensjonaty, obiekty HoReCa, właściciele i managerowie',
+    whyH2: 'Dlaczego AI w HoReCa',
+    whyLead:
+      'Uczymy restauracje, hotele i pensjonaty pracy z AI: wielojęzyczna komunikacja z gościem, błyskawiczne odpowiedzi na opinie, social media, które same się prowadzą, i sprawna obsługa rezerwacji.',
+    whyBullets: [
+      'Odpowiedzi na opinie (Google, Booking, TripAdvisor) budują pozycję obiektu — AI pisze je w minutę, w każdym języku.',
+      'Goście pytają o to samo — AI odpowiada natychmiast, także nocą.',
+      'Sezonowość wymaga elastycznego marketingu bez etatu marketera.',
+    ],
+    modules: [
+      { name: 'Opinie i reputacja', desc: 'Profesjonalne odpowiedzi na każdą opinię, monitoring, wnioski z feedbacku gości.' },
+      { name: 'Wielojęzyczna obsługa gości', desc: 'Odpowiedzi na zapytania, informacje przed przyjazdem, komunikaty.' },
+      { name: 'Social media i promocja', desc: 'Posty, zdjęcia dań i wnętrz z AI, oferty sezonowe, współpraca z portalami.' },
+      { name: 'Menu i oferta', desc: 'Opisy dań, karty sezonowe, tłumaczenia menu, oferty grup i eventów.' },
+      { name: 'Rezerwacje i organizacja', desc: 'Potwierdzenia, przypomnienia, grafiki zespołu, checklisty.' },
+      { name: 'Warsztat wdrożeniowy', desc: 'Zestaw narzędzi obiektu, automatyzacja powtarzalnej komunikacji.' },
+    ],
+    faq: [
+      { q: 'Nie mamy czasu na szkolenia w sezonie — kiedy najlepiej?', a: 'Poza sezonem lub w krótkich blokach online 2h; program dopasowujemy do rytmu obiektu.' },
+      { q: 'Czy AI odpisze na każdą opinię?', a: 'Przygotowuje szkic w tonie obiektu — publikujecie po akceptacji; przy dużej skali automatyzujemy z regułami.' },
+      { q: 'W jakich formatach?', a: 'Stacjonarnie w obiekcie, online, 1:1 dla właścicieli.' },
+      { q: 'Czy to działa dla małej restauracji?', a: 'Tak — właśnie dla małych zespołów AI daje największy efekt.' },
+    ],
+  },
+  {
+    slug: 'szkolenia-ai-dla-budownictwa',
+    path: '/szkolenia-ai-dla-budownictwa',
+    navLabel: 'Dla budownictwa i architektury',
+    shortDesc:
+      'Szkolenia AI dla firm budowlanych i pracowni architektonicznych: kosztorysy, dokumentacja przetargowa, wizualizacje koncepcyjne, korespondencja z inwestorami.',
+    title:
+      'Szkolenia AI dla budownictwa i architektury | OpenMind AI',
+    description:
+      'Szkolenia AI dla firm budowlanych i pracowni architektonicznych: kosztorysy, dokumentacja przetargowa, wizualizacje koncepcyjne, korespondencja z inwestorami.',
+    h1: 'Szkolenia AI dla budownictwa — mniej papierów, więcej budowania',
+    audienceLd: 'Firmy budowlane, generalni wykonawcy, pracownie architektoniczne, inżynierowie, kierownicy budów',
+    whyH2: 'Dlaczego AI w budownictwie',
+    whyLead:
+      'Uczymy firmy budowlane, pracownie projektowe i inżynierów pracy z AI: szybsze kosztorysy i oferty przetargowe, dokumentacja budowy, wizualizacje koncepcyjne i sprawna komunikacja z inwestorami.',
+    whyBullets: [
+      'Przetargi wymagają ton dokumentów — AI przyspiesza ich przygotowanie i analizę SIWZ/SWZ.',
+      'Dziennik budowy, protokoły i korespondencja zjadają godziny kierowników.',
+      'Wizualizacje koncepcyjne z AI pozwalają pokazać pomysł inwestorowi w godzinę.',
+    ],
+    modules: [
+      { name: 'Dokumentacja przetargowa', desc: 'Analiza SWZ, przygotowanie ofert, pytania do zamawiającego, harmonogramy.' },
+      { name: 'Kosztorysy i wyceny', desc: 'Struktura kosztorysów, warianty ofert, analiza cen materiałów.' },
+      { name: 'Dokumentacja budowy', desc: 'Protokoły, notatki, raporty postępu, korespondencja z inspektorami.' },
+      { name: 'Wizualizacje koncepcyjne AI', desc: 'Moodboardy, warianty elewacji i wnętrz, materiały dla inwestora (z oznaczeniem, że to koncepcja).' },
+      { name: 'BHP i procedury', desc: 'Instrukcje, szkolenia stanowiskowe, checklisty kontroli.' },
+      { name: 'Warsztat wdrożeniowy', desc: 'Narzędzia pod firmę, automatyzacja obiegu dokumentów budowy.' },
+    ],
+    faq: [
+      { q: 'Czy AI zna polskie prawo budowlane?', a: 'Modele bywają nieaktualne — uczymy pracy z własnymi źródłami i weryfikacji; AI przyspiesza pisanie, nie zastępuje uprawnień.' },
+      { q: 'Wizualizacje AI zamiast projektu?', a: 'Nie — to materiał koncepcyjny do rozmów z inwestorem; projekt robi projektant.' },
+      { q: 'W jakich formatach?', a: 'Stacjonarnie w firmie lub na budowie, online dla biur projektowych.' },
+      { q: 'Dla jak dużych firm?', a: 'Od jednoosobowych wykonawców po generalnych wykonawców.' },
+    ],
+  },
+  {
+    slug: 'szkolenia-ai-dla-logistyki',
+    path: '/szkolenia-ai-dla-logistyki',
+    navLabel: 'Dla transportu i logistyki (TSL)',
+    shortDesc:
+      'Szkolenia AI dla branży TSL: dokumenty przewozowe, korespondencja międzynarodowa, komunikacja z kierowcami i klientami, analiza stawek.',
+    title:
+      'Szkolenia AI dla transportu, spedycji i logistyki (TSL) | OpenMind AI',
+    description:
+      'Szkolenia AI dla branży TSL: dokumenty przewozowe, korespondencja międzynarodowa, optymalizacja komunikacji z kierowcami i klientami, analiza stawek.',
+    h1: 'Szkolenia AI dla TSL — szybsza spedycja, mniej papierologii',
+    audienceLd: 'Firmy transportowe, spedycje, operatorzy logistyczni, spedytorzy, managerowie TSL',
+    whyH2: 'Dlaczego AI w TSL',
+    whyLead:
+      'Uczymy firmy transportowe, spedycje i operatorów logistycznych pracy z AI: błyskawiczna korespondencja w każdym języku, obieg dokumentów przewozowych, analiza stawek i sprawna komunikacja z kierowcami i klientami.',
+    whyBullets: [
+      'Spedytor żyje w skrzynce mailowej i komunikatorach — AI pisze i tłumaczy w sekundy.',
+      'Dokumenty przewozowe (CMR, faktury, zlecenia) to idealny materiał do automatycznego przetwarzania.',
+      'Szybka wycena zapytania często decyduje o zleceniu.',
+    ],
+    modules: [
+      { name: 'Korespondencja międzynarodowa', desc: 'Maile i komunikaty w każdym języku, negocjacje stawek, reklamacje.' },
+      { name: 'Dokumenty przewozowe', desc: 'Odczyt i klasyfikacja CMR, zleceń, faktur; kontrola kompletności.' },
+      { name: 'Wyceny i analiza stawek', desc: 'Szybkie odpowiedzi na zapytania, analiza rentowności tras.' },
+      { name: 'Komunikacja z kierowcami', desc: 'Instrukcje, awizacje, statusy — jasno i wielojęzycznie.' },
+      { name: 'Raporty i KPI', desc: 'Punktualność, reklamacje, rentowność — raporty pisane ludzkim językiem.' },
+      { name: 'Warsztat wdrożeniowy', desc: 'Automatyzacja jednego procesu (np. obieg zleceń), plan rozwoju.' },
+    ],
+    faq: [
+      { q: 'Czy AI zintegrować z naszym TMS?', a: 'Pokazujemy podejścia przez API i automatyzacje; na warsztacie pracujemy na Waszych realnych dokumentach.' },
+      { q: 'Wielojęzyczność naprawdę działa?', a: 'Tak — to najmocniejsza strona AI: korespondencja PL/EN/DE/UA i inne w sekundach.' },
+      { q: 'W jakich formatach?', a: 'Online (spedycja pracuje w różnych lokalizacjach) lub stacjonarnie w centrali.' },
+      { q: 'Od czego zacząć?', a: 'Od korespondencji i dokumentów — najszybszy zwrot.' },
+    ],
+  },
 ];
 
 /* ── Proto builder ── */
