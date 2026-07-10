@@ -435,9 +435,11 @@ controls.dampingFactor = .12;
 controls.rotateSpeed = .45;
 controls.enablePan = false;
 controls.enableZoom = true;
-controls.zoomSpeed = .12;
-controls.minDistance = 18;
-controls.maxDistance = 55;
+controls.zoomSpeed = .18;
+const ZOOM_MIN_DISTANCE = 18;
+const ZOOM_MAX_DISTANCE = 55;
+controls.minDistance = ZOOM_MIN_DISTANCE;
+controls.maxDistance = ZOOM_MAX_DISTANCE;
 controls.autoRotate = true;
 controls.autoRotateSpeed = .55;
 controls.mouseButtons = {
@@ -449,6 +451,38 @@ controls.touches = {
   ONE: THREE.TOUCH.ROTATE,
   TWO: THREE.TOUCH.DOLLY_PAN
 };
+
+let desiredCameraDistance = camera.position.distanceTo(controls.target);
+let lastWheelZoomAt = 0;
+
+function syncDesiredCameraDistance() {
+  const currentDistance = camera.position.distanceTo(controls.target);
+  if (Date.now() - lastWheelZoomAt > 450) desiredCameraDistance = currentDistance;
+}
+
+function handleSmoothWheelZoom(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  if (typeof event.stopImmediatePropagation === "function") event.stopImmediatePropagation();
+
+  cameraGuided = false;
+  controls.autoRotate = false;
+  lastWheelZoomAt = Date.now();
+
+  const currentDistance = camera.position.distanceTo(controls.target);
+  if (!Number.isFinite(desiredCameraDistance) || Math.abs(desiredCameraDistance - currentDistance) > 8) {
+    desiredCameraDistance = currentDistance;
+  }
+
+  const normalizedDelta = THREE.MathUtils.clamp(event.deltaY, -120, 120);
+  desiredCameraDistance = THREE.MathUtils.clamp(
+    desiredCameraDistance + normalizedDelta * .018,
+    ZOOM_MIN_DISTANCE,
+    ZOOM_MAX_DISTANCE
+  );
+}
+
+renderer.domElement.addEventListener("wheel", handleSmoothWheelZoom, { passive: false, capture: true });
 
 const root = new THREE.Group();
 scene.add(root);
@@ -726,6 +760,7 @@ renderer.domElement.addEventListener("pointerdown", (event) => {
   dragged = false;
   cameraGuided = false;
   controls.autoRotate = false;
+  syncDesiredCameraDistance();
   lastPointerType = event.pointerType || "mouse";
   // Ensure raycaster picks up the node on touch taps (no prior pointermove).
   mouse.x = (event.clientX / innerWidth) * 2 - 1;
@@ -795,6 +830,7 @@ function focusNode(index) {
   selectedNode = nodes[activeIndex];
   const direction = selectedNode.position.clone().normalize();
   targetCameraPosition = direction.multiplyScalar(32);
+  desiredCameraDistance = targetCameraPosition.distanceTo(controls.target);
   cameraGuided = true;
   controls.autoRotate = false;
   highlightSelectedNode();
@@ -937,6 +973,18 @@ function animate() {
     if (camera.position.distanceTo(targetCameraPosition) < .12) {
       cameraGuided = false;
       controls.autoRotate = true;
+      syncDesiredCameraDistance();
+    }
+  } else if (Date.now() - lastWheelZoomAt <= 1400) {
+    const offset = camera.position.clone().sub(controls.target);
+    const currentDistance = offset.length();
+    if (currentDistance > .001) {
+      const nextDistance = THREE.MathUtils.lerp(currentDistance, desiredCameraDistance, .12);
+      camera.position.copy(controls.target).add(offset.normalize().multiplyScalar(nextDistance));
+    }
+    if (Math.abs(camera.position.distanceTo(controls.target) - desiredCameraDistance) < .03) {
+      camera.position.copy(controls.target).add(camera.position.clone().sub(controls.target).normalize().multiplyScalar(desiredCameraDistance));
+      lastWheelZoomAt = 0;
     }
   }
   controls.update();
