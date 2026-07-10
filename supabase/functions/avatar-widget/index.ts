@@ -139,9 +139,10 @@ async function handleAvatarSession(req: Request): Promise<Response> {
   let liveAvatarSessionId = id("session");
   let tokenError: string | null = null;
 
-  // Voice agent ID = LiveAvatar context_id (agent konwersacyjny Maxa).
-  const configuredContextId = Deno.env.get("LIVEAVATAR_CONTEXT_ID")
-    || Deno.env.get("LIVEAVATAR_VOICE_AGENT_ID")
+  // Voice agent Maxa: w LiveAvatar używamy `voice_agent.id`, nie `avatar_persona.context_id`.
+  // Błąd „Errors validating session token” wynikał z walidacji `context_id`, którego konto nie posiadało.
+  const configuredVoiceAgentId = Deno.env.get("LIVEAVATAR_VOICE_AGENT_ID")
+    || Deno.env.get("LIVEAVATAR_CONTEXT_ID")
     || "d386ad02-e180-416a-994d-7513f5936eea";
 
   async function createLiveAvatarToken(avatarId: string): Promise<{ ok: boolean; status: number; data: any }> {
@@ -156,8 +157,8 @@ async function handleAvatarSession(req: Request): Promise<Response> {
         mode: "FULL",
         is_sandbox: false,
         max_session_duration: 300,
-        avatar_persona: {
-          context_id: configuredContextId,
+        voice_agent: {
+          id: configuredVoiceAgentId,
           language: "pl",
         },
         interactivity_type: "CONVERSATIONAL",
@@ -241,7 +242,7 @@ async function handleAvatarSession(req: Request): Promise<Response> {
     session_id: liveAvatarSessionId,
     session_token: sessionToken,
     sessionToken: sessionToken,
-    context_id: configuredContextId,
+    voice_agent_id: configuredVoiceAgentId,
     max_session_duration: 300,
     sdk_start_required: false,
     advisor_name: CLIENT_CONFIG.brand.advisor_name,
