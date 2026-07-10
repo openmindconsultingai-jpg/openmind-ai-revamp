@@ -452,12 +452,12 @@ controls.touches = {
   TWO: THREE.TOUCH.DOLLY_PAN
 };
 
+// Manage zoom ourselves so rotating never affects camera distance.
+controls.enableZoom = false;
 let desiredCameraDistance = camera.position.distanceTo(controls.target);
-let lastWheelZoomAt = 0;
 
 function syncDesiredCameraDistance() {
-  const currentDistance = camera.position.distanceTo(controls.target);
-  if (Date.now() - lastWheelZoomAt > 450) desiredCameraDistance = currentDistance;
+  // No-op kept for backward compatibility with existing call sites.
 }
 
 function handleSmoothWheelZoom(event) {
@@ -467,12 +467,6 @@ function handleSmoothWheelZoom(event) {
 
   cameraGuided = false;
   controls.autoRotate = false;
-  lastWheelZoomAt = Date.now();
-
-  const currentDistance = camera.position.distanceTo(controls.target);
-  if (!Number.isFinite(desiredCameraDistance) || Math.abs(desiredCameraDistance - currentDistance) > 8) {
-    desiredCameraDistance = currentDistance;
-  }
 
   const normalizedDelta = THREE.MathUtils.clamp(event.deltaY, -120, 120);
   desiredCameraDistance = THREE.MathUtils.clamp(
