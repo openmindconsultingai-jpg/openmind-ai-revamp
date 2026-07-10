@@ -170,7 +170,14 @@ async function handleAvatarSession(req: Request): Promise<Response> {
       console.error("LiveAvatar list avatars failed:", `LiveAvatar ${resp.status}: ${JSON.stringify(data).slice(0, 300)}`);
       return null;
     }
-    const avatars = Array.isArray(data?.data?.results) ? data.data.results : [];
+    const avatars = Array.isArray(data?.data?.results)
+      ? data.data.results
+      : Array.isArray(data?.results)
+        ? data.results
+        : Array.isArray(data?.data)
+          ? data.data
+          : [];
+    console.info("LiveAvatar available avatars:", avatars.length);
     const usable = avatars.find((avatar: any) => avatar?.id && avatar?.is_expired !== true && String(avatar?.status ?? "").toUpperCase() !== "INIT")
       ?? avatars.find((avatar: any) => avatar?.id && avatar?.is_expired !== true)
       ?? avatars.find((avatar: any) => avatar?.id);
