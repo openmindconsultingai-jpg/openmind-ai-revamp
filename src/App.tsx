@@ -42,6 +42,7 @@ const SERVICE_SLUGS = [
   'teledyski-ai',
   'strony-www-branding',
   'konsultacje-ai',
+  'zakladanie-firmy-z-ai',
   // Industry-specific training pages
   'szkolenia-ai-dla-lekarzy',
   'szkolenia-ai-dla-prawnikow',

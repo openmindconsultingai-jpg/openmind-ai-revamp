@@ -674,7 +674,7 @@ function buildHtmlSitemapXml(): string {
     ...MAIN_HTML_ROUTES.map((route) => ({ route, priority: '0.8' })),
   ];
 
-  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 45 || entries.length !== 363) {
+  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 46 || entries.length !== 364) {
    throw new Error(`[prerender] sitemap-html invalid counts: voiv=${voivRoutes.length}, cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
   }
 
