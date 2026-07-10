@@ -131,42 +131,56 @@ async function handleAvatarSession(req: Request): Promise<Response> {
   try { body = await req.json(); } catch { /* ignore */ }
   const conversationId = id("conv");
 
-  // Wymień sekretny klucz HeyGen na krótkotrwały JWT sesji streamingu.
-  const heygenKey = Deno.env.get("HEYGEN_API_KEY");
+  // Wymień klucz API LiveAvatar/HeyGen na krótkotrwały JWT sesji streamingu.
+  // Preferujemy nowy klucz LiveAvatar; stary HEYGEN_API_KEY zostaje tylko jako fallback.
+  const liveAvatarKey = Deno.env.get("LIVEAVATAR_API_KEY") || Deno.env.get("HEYGEN_API_KEY");
   let sessionToken = "";
+  let liveAvatarSessionId = id("session");
   let tokenError: string | null = null;
 
-  if (!heygenKey) {
-    tokenError = "HEYGEN_API_KEY nie jest skonfigurowany.";
+  if (!liveAvatarKey) {
+    tokenError = "LIVEAVATAR_API_KEY nie jest skonfigurowany.";
   } else {
     try {
-      const resp = await fetch("https://api.heygen.com/v1/streaming.create_token", {
+      const resp = await fetch("https://api.liveavatar.com/v1/sessions/token", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Key": heygenKey,
+          "X-API-KEY": liveAvatarKey,
         },
+        body: JSON.stringify({
+          avatar_id: "6730a102-8aa9-4634-a921-ef18a5f9697d",
+          mode: "FULL",
+          is_sandbox: false,
+          max_session_duration: 600,
+          interactivity_type: "CONVERSATIONAL",
+          dynamic_variables: {
+            locale: body?.locale ?? "pl",
+            source_url: body?.source_url ?? null,
+          },
+        }),
       });
       const data = await resp.json().catch(() => ({}));
       if (!resp.ok) {
-        tokenError = `HeyGen ${resp.status}: ${JSON.stringify(data).slice(0, 300)}`;
-        console.error("HeyGen create_token failed:", tokenError);
+        tokenError = `LiveAvatar ${resp.status}: ${JSON.stringify(data).slice(0, 300)}`;
+        console.error("LiveAvatar session token failed:", tokenError);
       } else {
-        sessionToken = String(data?.data?.token ?? data?.token ?? "");
+        sessionToken = String(data?.data?.session_token ?? data?.data?.token ?? data?.session_token ?? data?.token ?? "");
+        liveAvatarSessionId = String(data?.data?.session_id ?? data?.session_id ?? liveAvatarSessionId);
         if (!sessionToken) {
-          tokenError = "Brak pola token w odpowiedzi HeyGen.";
-          console.error("HeyGen create_token: missing token", data);
+          tokenError = "Brak pola session_token w odpowiedzi LiveAvatar.";
+          console.error("LiveAvatar sessions/token: missing token", data);
         }
       }
     } catch (e) {
-      tokenError = `Wyjątek przy pobieraniu tokenu HeyGen: ${String((e as Error)?.message ?? e)}`;
+      tokenError = `Wyjątek przy pobieraniu tokenu LiveAvatar: ${String((e as Error)?.message ?? e)}`;
       console.error(tokenError);
     }
   }
 
   if (!sessionToken) {
     return json(502, {
-      error: "Nie udało się wygenerować tokenu HeyGen.",
+      error: "Nie udało się wygenerować tokenu LiveAvatar.",
       details: tokenError,
     });
   }
@@ -175,7 +189,7 @@ async function handleAvatarSession(req: Request): Promise<Response> {
     provider: "heygen",
     mode: "LIVE",
     conversation_id: conversationId,
-    session_id: id("session"),
+    session_id: liveAvatarSessionId,
     session_token: sessionToken,
     sessionToken: sessionToken,
     max_session_duration: 600,
