@@ -134,41 +134,73 @@ async function handleAvatarSession(req: Request): Promise<Response> {
   // Wymień klucz API LiveAvatar/HeyGen na krótkotrwały JWT sesji streamingu.
   // Preferujemy nowy klucz LiveAvatar; stary HEYGEN_API_KEY zostaje tylko jako fallback.
   const liveAvatarKey = Deno.env.get("LIVEAVATAR_API_KEY") || Deno.env.get("HEYGEN_API_KEY");
+  const configuredAvatarId = Deno.env.get("LIVEAVATAR_AVATAR_ID") || "6730a102-8aa9-4634-a921-ef18a5f9697d";
   let sessionToken = "";
   let liveAvatarSessionId = id("session");
   let tokenError: string | null = null;
+
+  async function createLiveAvatarToken(avatarId: string): Promise<{ ok: boolean; status: number; data: any }> {
+    const resp = await fetch("https://api.liveavatar.com/v1/sessions/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-KEY": liveAvatarKey!,
+      },
+      body: JSON.stringify({
+        avatar_id: avatarId,
+        mode: "FULL",
+        is_sandbox: false,
+        max_session_duration: 600,
+        avatar_persona: {
+          language: "pl",
+        },
+        interactivity_type: "CONVERSATIONAL",
+      }),
+    });
+    const data = await resp.json().catch(() => ({}));
+    return { ok: resp.ok, status: resp.status, data };
+  }
+
+  async function getFallbackAvatarId(): Promise<string | null> {
+    const resp = await fetch("https://api.liveavatar.com/v1/avatars?page=1&page_size=20", {
+      headers: { "X-API-KEY": liveAvatarKey! },
+    });
+    const data = await resp.json().catch(() => ({}));
+    if (!resp.ok) {
+      console.error("LiveAvatar list avatars failed:", `LiveAvatar ${resp.status}: ${JSON.stringify(data).slice(0, 300)}`);
+      return null;
+    }
+    const avatars = Array.isArray(data?.data?.results) ? data.data.results : [];
+    const usable = avatars.find((avatar: any) => avatar?.id && avatar?.is_expired !== true && String(avatar?.status ?? "").toUpperCase() !== "INIT")
+      ?? avatars.find((avatar: any) => avatar?.id && avatar?.is_expired !== true)
+      ?? avatars.find((avatar: any) => avatar?.id);
+    return usable?.id ? String(usable.id) : null;
+  }
 
   if (!liveAvatarKey) {
     tokenError = "LIVEAVATAR_API_KEY nie jest skonfigurowany.";
   } else {
     try {
-      const resp = await fetch("https://api.liveavatar.com/v1/sessions/token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-API-KEY": liveAvatarKey,
-        },
-        body: JSON.stringify({
-          avatar_id: "6730a102-8aa9-4634-a921-ef18a5f9697d",
-          mode: "FULL",
-          is_sandbox: false,
-          max_session_duration: 600,
-          avatar_persona: {
-            language: "pl",
-          },
-          interactivity_type: "CONVERSATIONAL",
-        }),
-      });
-      const data = await resp.json().catch(() => ({}));
-      if (!resp.ok) {
-        tokenError = `LiveAvatar ${resp.status}: ${JSON.stringify(data).slice(0, 300)}`;
+      let tokenResponse = await createLiveAvatarToken(configuredAvatarId);
+      const avatarMissing = tokenResponse.status === 400 && /Avatar not found/i.test(JSON.stringify(tokenResponse.data));
+
+      if (avatarMissing) {
+        const fallbackAvatarId = await getFallbackAvatarId();
+        if (fallbackAvatarId && fallbackAvatarId !== configuredAvatarId) {
+          console.warn("Configured LiveAvatar avatar_id not found; using account fallback avatar.");
+          tokenResponse = await createLiveAvatarToken(fallbackAvatarId);
+        }
+      }
+
+      if (!tokenResponse.ok) {
+        tokenError = `LiveAvatar ${tokenResponse.status}: ${JSON.stringify(tokenResponse.data).slice(0, 300)}`;
         console.error("LiveAvatar session token failed:", tokenError);
       } else {
-        sessionToken = String(data?.data?.session_token ?? data?.data?.token ?? data?.session_token ?? data?.token ?? "");
-        liveAvatarSessionId = String(data?.data?.session_id ?? data?.session_id ?? liveAvatarSessionId);
+        sessionToken = String(tokenResponse.data?.data?.session_token ?? tokenResponse.data?.data?.token ?? tokenResponse.data?.session_token ?? tokenResponse.data?.token ?? "");
+        liveAvatarSessionId = String(tokenResponse.data?.data?.session_id ?? tokenResponse.data?.session_id ?? liveAvatarSessionId);
         if (!sessionToken) {
           tokenError = "Brak pola session_token w odpowiedzi LiveAvatar.";
-          console.error("LiveAvatar sessions/token: missing token", data);
+          console.error("LiveAvatar sessions/token: missing token", tokenResponse.data);
         }
       }
     } catch (e) {
