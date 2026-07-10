@@ -225,8 +225,8 @@ const VideoHero = () => {
       {/* Hero content wrapper — two-column grid: text left, model right */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-5 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-        {/* Text block — left column */}
-        <div className="text-center lg:text-left w-full max-w-2xl mx-auto lg:mx-0">
+        {/* Text block — left column, perfectly centered */}
+        <div className="text-center w-full max-w-2xl mx-auto">
 
           {/* Visually prominent brand name */}
           <div 
