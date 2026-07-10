@@ -213,13 +213,13 @@ const ServicesHubPage = () => {
                   </div>
 
                   {/* Industries */}
-                  {industryEntries.length > 0 && (
+                  {[...industryEntries, schoolsEntry].filter(Boolean).length > 0 && (
                     <>
                       <h3 className="font-heading text-sm md:text-base font-semibold text-foreground/90 uppercase tracking-wider mb-4">
-                        Szkolenia branżowe
+                        Szkolenia branżowe i sektorowe
                       </h3>
                       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                        {industryEntries.map((s) => (
+                        {[...industryEntries, schoolsEntry].filter(Boolean).map((s) => (
                           <Link
                             key={s.slug}
                             to={`${s.path}.html`}
