@@ -179,8 +179,8 @@ async function handleAvatarSession(req: Request): Promise<Response> {
     }
 
     const avatars = [
-      ...await fetchAvatarList("https://api.liveavatar.com/v1/avatars?page=1&page_size=20"),
-      ...await fetchAvatarList("https://api.liveavatar.com/v1/avatars/public?page=1&page_size=20"),
+      ...(await fetchAvatarList("https://api.liveavatar.com/v1/avatars?page=1&page_size=20")),
+      ...(await fetchAvatarList("https://api.liveavatar.com/v1/avatars/public?page=1&page_size=20")),
     ];
     console.info("LiveAvatar available avatars:", avatars.length);
     const usable = avatars.find((avatar: any) => avatar?.id && avatar?.is_expired !== true && String(avatar?.status ?? "").toUpperCase() !== "INIT")
