@@ -239,11 +239,11 @@ const VideoHero = () => {
           </Suspense>
         </div>
 
-
-
-
+        {/* Text block — centered under the model */}
+        <div className="text-center w-full max-w-3xl mx-auto">
 
           {/* Visually prominent brand name */}
+
           <div 
             ref={titleRef}
             className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-[4.5rem] xl:text-[5.25rem] 2xl:text-[6.25rem] font-bold mb-4 leading-none tracking-tight"
