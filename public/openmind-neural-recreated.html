@@ -760,6 +760,7 @@ renderer.domElement.addEventListener("pointerdown", (event) => {
   dragged = false;
   cameraGuided = false;
   controls.autoRotate = false;
+  syncDesiredCameraDistance();
   lastPointerType = event.pointerType || "mouse";
   // Ensure raycaster picks up the node on touch taps (no prior pointermove).
   mouse.x = (event.clientX / innerWidth) * 2 - 1;
@@ -829,6 +830,7 @@ function focusNode(index) {
   selectedNode = nodes[activeIndex];
   const direction = selectedNode.position.clone().normalize();
   targetCameraPosition = direction.multiplyScalar(32);
+  desiredCameraDistance = targetCameraPosition.distanceTo(controls.target);
   cameraGuided = true;
   controls.autoRotate = false;
   highlightSelectedNode();
@@ -971,6 +973,18 @@ function animate() {
     if (camera.position.distanceTo(targetCameraPosition) < .12) {
       cameraGuided = false;
       controls.autoRotate = true;
+      syncDesiredCameraDistance();
+    }
+  } else if (Date.now() - lastWheelZoomAt <= 1400) {
+    const offset = camera.position.clone().sub(controls.target);
+    const currentDistance = offset.length();
+    if (currentDistance > .001) {
+      const nextDistance = THREE.MathUtils.lerp(currentDistance, desiredCameraDistance, .12);
+      camera.position.copy(controls.target).add(offset.normalize().multiplyScalar(nextDistance));
+    }
+    if (Math.abs(camera.position.distanceTo(controls.target) - desiredCameraDistance) < .03) {
+      camera.position.copy(controls.target).add(camera.position.clone().sub(controls.target).normalize().multiplyScalar(desiredCameraDistance));
+      lastWheelZoomAt = 0;
     }
   }
   controls.update();
