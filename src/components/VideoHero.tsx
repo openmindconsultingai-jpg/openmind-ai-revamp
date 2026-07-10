@@ -283,7 +283,7 @@ const VideoHero = () => {
           <Suspense fallback={null}>
             <LazyNeuralIframe
               className="absolute inset-0 w-full h-full"
-              src="/openmind-neural-recreated.html?v=8"
+              src="/openmind-neural-recreated.html?v=9"
               loadStrategy="auto"
             />
           </Suspense>
