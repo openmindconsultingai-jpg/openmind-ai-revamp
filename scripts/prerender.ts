@@ -674,8 +674,8 @@ function buildHtmlSitemapXml(): string {
     ...MAIN_HTML_ROUTES.map((route) => ({ route, priority: '0.8' })),
   ];
 
-  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 40 || entries.length !== 358) {
-    throw new Error(`[prerender] sitemap-html invalid counts: voiv=${voivRoutes.length}, cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
+  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 45 || entries.length !== 363) {
+   throw new Error(`[prerender] sitemap-html invalid counts: voiv=${voivRoutes.length}, cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
