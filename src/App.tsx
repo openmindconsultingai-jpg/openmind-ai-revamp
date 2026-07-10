@@ -63,6 +63,11 @@ const SERVICE_SLUGS = [
   'szkolenia-ai-dla-rolnictwa',
   'szkolenia-ai-dla-ngo',
   'szkolenia-ai-dla-turystyki',
+  'szkolenia-ai-dla-programistow',
+  'szkolenia-ai-dla-psychologow',
+  'szkolenia-ai-dla-fizjoterapeutow',
+  'szkolenia-ai-dla-weterynarzy',
+  'szkolenia-ai-dla-fotografow',
 ] as const;
 
 const wrap = (el: React.ReactNode) => <Suspense fallback={<PageLoader />}>{el}</Suspense>;
