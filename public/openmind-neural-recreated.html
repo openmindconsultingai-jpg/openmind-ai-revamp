@@ -452,12 +452,12 @@ controls.touches = {
   TWO: THREE.TOUCH.DOLLY_PAN
 };
 
+// Manage zoom ourselves so rotating never affects camera distance.
+controls.enableZoom = false;
 let desiredCameraDistance = camera.position.distanceTo(controls.target);
-let lastWheelZoomAt = 0;
 
 function syncDesiredCameraDistance() {
-  const currentDistance = camera.position.distanceTo(controls.target);
-  if (Date.now() - lastWheelZoomAt > 450) desiredCameraDistance = currentDistance;
+  // No-op kept for backward compatibility with existing call sites.
 }
 
 function handleSmoothWheelZoom(event) {
@@ -467,12 +467,6 @@ function handleSmoothWheelZoom(event) {
 
   cameraGuided = false;
   controls.autoRotate = false;
-  lastWheelZoomAt = Date.now();
-
-  const currentDistance = camera.position.distanceTo(controls.target);
-  if (!Number.isFinite(desiredCameraDistance) || Math.abs(desiredCameraDistance - currentDistance) > 8) {
-    desiredCameraDistance = currentDistance;
-  }
 
   const normalizedDelta = THREE.MathUtils.clamp(event.deltaY, -120, 120);
   desiredCameraDistance = THREE.MathUtils.clamp(
@@ -973,21 +967,20 @@ function animate() {
     if (camera.position.distanceTo(targetCameraPosition) < .12) {
       cameraGuided = false;
       controls.autoRotate = true;
-      syncDesiredCameraDistance();
     }
-  } else if (Date.now() - lastWheelZoomAt <= 1400) {
+    desiredCameraDistance = camera.position.distanceTo(controls.target);
+  }
+  controls.update();
+  // Radius correction: keep camera distance locked to desiredCameraDistance so
+  // rotation (drag / autoRotate / damping) can never change the zoom level.
+  {
     const offset = camera.position.clone().sub(controls.target);
     const currentDistance = offset.length();
-    if (currentDistance > .001) {
+    if (currentDistance > .001 && Number.isFinite(desiredCameraDistance)) {
       const nextDistance = THREE.MathUtils.lerp(currentDistance, desiredCameraDistance, .12);
       camera.position.copy(controls.target).add(offset.normalize().multiplyScalar(nextDistance));
     }
-    if (Math.abs(camera.position.distanceTo(controls.target) - desiredCameraDistance) < .03) {
-      camera.position.copy(controls.target).add(camera.position.clone().sub(controls.target).normalize().multiplyScalar(desiredCameraDistance));
-      lastWheelZoomAt = 0;
-    }
   }
-  controls.update();
   raycaster.setFromCamera(mouse, camera);
   const hits = raycaster.intersectObjects(nodeCores, false);
   pointerHovered = hits.length ? nodes[nodeCores.indexOf(hits[0].object)] : null;
