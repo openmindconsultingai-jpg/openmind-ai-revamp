@@ -222,14 +222,20 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* 3D Neural Model — prawa kolumna hero (desktop + mobile) */}
+      {/* 3D Neural Model — prawa strona hero, bez widocznej ramki (blend + mask fade) */}
       <div
-        className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center lg:justify-end lg:pr-[2vw] xl:pr-[4vw]"
+        className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center lg:justify-end"
         aria-hidden="true"
       >
         <div
-          className="pointer-events-auto w-full max-w-[560px] lg:max-w-[52vw] xl:max-w-[48vw]"
-          style={{ height: 'min(70svh, 640px)' }}
+          className="pointer-events-auto w-full h-full max-w-[680px] lg:max-w-none lg:w-[62vw] xl:w-[58vw]"
+          style={{
+            mixBlendMode: 'screen',
+            WebkitMaskImage:
+              'radial-gradient(ellipse at center, #000 55%, rgba(0,0,0,0.6) 75%, transparent 100%)',
+            maskImage:
+              'radial-gradient(ellipse at center, #000 55%, rgba(0,0,0,0.6) 75%, transparent 100%)',
+          }}
         >
           <Suspense fallback={null}>
             <LazyNeuralIframe
@@ -240,6 +246,7 @@ const VideoHero = () => {
           </Suspense>
         </div>
       </div>
+
 
 
 
