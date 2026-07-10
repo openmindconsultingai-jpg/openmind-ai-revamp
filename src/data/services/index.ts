@@ -11,6 +11,7 @@ import aiDlaSzkol from './ai-dla-szkol.json';
 import teledyski from './teledyski-ai.json';
 import strony from './strony-www-branding.json';
 import konsultacje from './konsultacje-ai.json';
+import zakladanieFirmy from './zakladanie-firmy-z-ai.json';
 import hub from './services-hub.json';
 import { INDUSTRY_TRAINING_ENTRIES } from './industry-trainings';
 
@@ -135,6 +136,15 @@ export const services: Record<string, ServiceEntry> = {
       'Konsultacje indywidualne w naszej siedzibie, u Ciebie lub online. Audyt, dobór narzędzi, strategia.',
     showCities: false,
     data: konsultacje as unknown as Proto,
+  },
+  'zakladanie-firmy-z-ai': {
+    slug: 'zakladanie-firmy-z-ai',
+    path: '/zakladanie-firmy-z-ai',
+    navLabel: 'Zakładanie i rozwój firmy z AI',
+    shortDesc:
+      'Od pomysłu po skalowanie: biznesplan i analiza rynku, marka, strona, automatyzacje od dnia 1 i marketing startowy.',
+    showCities: false,
+    data: zakladanieFirmy as unknown as Proto,
   },
 };
 
