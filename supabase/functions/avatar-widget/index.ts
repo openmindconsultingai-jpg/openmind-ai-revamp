@@ -131,42 +131,99 @@ async function handleAvatarSession(req: Request): Promise<Response> {
   try { body = await req.json(); } catch { /* ignore */ }
   const conversationId = id("conv");
 
-  // Wymień sekretny klucz HeyGen na krótkotrwały JWT sesji streamingu.
-  const heygenKey = Deno.env.get("HEYGEN_API_KEY");
+  // Wymień klucz API LiveAvatar/HeyGen na krótkotrwały JWT sesji streamingu.
+  // Preferujemy nowy klucz LiveAvatar; stary HEYGEN_API_KEY zostaje tylko jako fallback.
+  const liveAvatarKey = Deno.env.get("LIVEAVATAR_API_KEY") || Deno.env.get("HEYGEN_API_KEY");
+  const configuredAvatarId = Deno.env.get("LIVEAVATAR_AVATAR_ID") || "6730a102-8aa9-4634-a921-ef18a5f9697d";
   let sessionToken = "";
+  let liveAvatarSessionId = id("session");
   let tokenError: string | null = null;
 
-  if (!heygenKey) {
-    tokenError = "HEYGEN_API_KEY nie jest skonfigurowany.";
-  } else {
-    try {
-      const resp = await fetch("https://api.heygen.com/v1/streaming.create_token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Api-Key": heygenKey,
+  async function createLiveAvatarToken(avatarId: string): Promise<{ ok: boolean; status: number; data: any }> {
+    const resp = await fetch("https://api.liveavatar.com/v1/sessions/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-KEY": liveAvatarKey!,
+      },
+      body: JSON.stringify({
+        avatar_id: avatarId,
+        mode: "FULL",
+        is_sandbox: false,
+        max_session_duration: 300,
+        avatar_persona: {
+          language: "pl",
         },
-      });
+        interactivity_type: "CONVERSATIONAL",
+      }),
+    });
+    const data = await resp.json().catch(() => ({}));
+    return { ok: resp.ok, status: resp.status, data };
+  }
+
+  async function getFallbackAvatarId(): Promise<string | null> {
+    async function fetchAvatarList(url: string): Promise<any[]> {
+      const resp = await fetch(url, { headers: { "X-API-KEY": liveAvatarKey! } });
       const data = await resp.json().catch(() => ({}));
       if (!resp.ok) {
-        tokenError = `HeyGen ${resp.status}: ${JSON.stringify(data).slice(0, 300)}`;
-        console.error("HeyGen create_token failed:", tokenError);
+        console.error("LiveAvatar list avatars failed:", `LiveAvatar ${resp.status}: ${JSON.stringify(data).slice(0, 300)}`);
+        return [];
+      }
+      return Array.isArray(data?.data?.results)
+        ? data.data.results
+        : Array.isArray(data?.results)
+          ? data.results
+          : Array.isArray(data?.data)
+            ? data.data
+            : [];
+    }
+
+    const avatars = [
+      ...(await fetchAvatarList("https://api.liveavatar.com/v1/avatars?page=1&page_size=20")),
+      ...(await fetchAvatarList("https://api.liveavatar.com/v1/avatars/public?page=1&page_size=20")),
+    ];
+    console.info("LiveAvatar available avatars:", avatars.length);
+    const usable = avatars.find((avatar: any) => avatar?.id && avatar?.is_expired !== true && String(avatar?.status ?? "").toUpperCase() !== "INIT")
+      ?? avatars.find((avatar: any) => avatar?.id && avatar?.is_expired !== true)
+      ?? avatars.find((avatar: any) => avatar?.id);
+    return usable?.id ? String(usable.id) : null;
+  }
+
+  if (!liveAvatarKey) {
+    tokenError = "LIVEAVATAR_API_KEY nie jest skonfigurowany.";
+  } else {
+    try {
+      let tokenResponse = await createLiveAvatarToken(configuredAvatarId);
+      const avatarMissing = tokenResponse.status === 400 && /Avatar not found/i.test(JSON.stringify(tokenResponse.data));
+
+      if (avatarMissing) {
+        const fallbackAvatarId = await getFallbackAvatarId();
+        if (fallbackAvatarId && fallbackAvatarId !== configuredAvatarId) {
+          console.warn("Configured LiveAvatar avatar_id not found; using account fallback avatar.");
+          tokenResponse = await createLiveAvatarToken(fallbackAvatarId);
+        }
+      }
+
+      if (!tokenResponse.ok) {
+        tokenError = `LiveAvatar ${tokenResponse.status}: ${JSON.stringify(tokenResponse.data).slice(0, 300)}`;
+        console.error("LiveAvatar session token failed:", tokenError);
       } else {
-        sessionToken = String(data?.data?.token ?? data?.token ?? "");
+        sessionToken = String(tokenResponse.data?.data?.session_token ?? tokenResponse.data?.data?.token ?? tokenResponse.data?.session_token ?? tokenResponse.data?.token ?? "");
+        liveAvatarSessionId = String(tokenResponse.data?.data?.session_id ?? tokenResponse.data?.session_id ?? liveAvatarSessionId);
         if (!sessionToken) {
-          tokenError = "Brak pola token w odpowiedzi HeyGen.";
-          console.error("HeyGen create_token: missing token", data);
+          tokenError = "Brak pola session_token w odpowiedzi LiveAvatar.";
+          console.error("LiveAvatar sessions/token: missing token", tokenResponse.data);
         }
       }
     } catch (e) {
-      tokenError = `Wyjątek przy pobieraniu tokenu HeyGen: ${String((e as Error)?.message ?? e)}`;
+      tokenError = `Wyjątek przy pobieraniu tokenu LiveAvatar: ${String((e as Error)?.message ?? e)}`;
       console.error(tokenError);
     }
   }
 
   if (!sessionToken) {
     return json(502, {
-      error: "Nie udało się wygenerować tokenu HeyGen.",
+      error: "Nie udało się wygenerować tokenu LiveAvatar.",
       details: tokenError,
     });
   }
@@ -175,10 +232,10 @@ async function handleAvatarSession(req: Request): Promise<Response> {
     provider: "heygen",
     mode: "LIVE",
     conversation_id: conversationId,
-    session_id: id("session"),
+    session_id: liveAvatarSessionId,
     session_token: sessionToken,
     sessionToken: sessionToken,
-    max_session_duration: 600,
+    max_session_duration: 300,
     sdk_start_required: false,
     advisor_name: CLIENT_CONFIG.brand.advisor_name,
     context_id: null,
