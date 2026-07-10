@@ -129,18 +129,36 @@ export function OpenMindAvatarWidget() {
       sessionRef.current = session;
 
       session.on(SessionEvent.SESSION_STREAM_READY, () => {
+        console.log('[LiveAvatar] stream ready');
         if (videoRef.current) {
           session.attach(videoRef.current);
           videoRef.current.autoplay = true;
           videoRef.current.playsInline = true;
+          videoRef.current.muted = false;
           videoRef.current.play().catch((e) => console.warn('video.play blocked', e));
         }
         setConnected(true);
         setStatus('listening');
-        void ensureLiveAvatarListening(session);
+        void ensureLiveAvatarListening(session).then(() => {
+          // Wymuś pierwszą wypowiedź Maxa, jeśli agent nie ma auto-greeting.
+          setTimeout(() => {
+            try {
+              const greeting = 'Przywitaj się krótko jako Max z OpenMind AI i zapytaj, w czym możesz pomóc.';
+              if (typeof (session as any).sendUserMessage === 'function') {
+                (session as any).sendUserMessage(greeting);
+              } else if (typeof (session as any).message === 'function') {
+                (session as any).message(greeting);
+              }
+              console.log('[LiveAvatar] initial greeting trigger sent');
+            } catch (error) {
+              console.error('[LiveAvatar] initial greeting trigger failed', error);
+            }
+          }, 1200);
+        });
       });
 
       session.on(SessionEvent.SESSION_DISCONNECTED, () => {
+        console.log('[LiveAvatar] session disconnected');
         setConnected(false);
         setStatus('disconnected');
         sessionRef.current = null;
@@ -151,17 +169,29 @@ export function OpenMindAvatarWidget() {
         }
       });
 
-      session.on(AgentEventsEnum.USER_SPEAK_STARTED, () => setStatus('user-speaking'));
-      session.on(AgentEventsEnum.USER_SPEAK_ENDED, () => setStatus('processing'));
+      session.on(AgentEventsEnum.USER_SPEAK_STARTED, () => {
+        console.log('[LiveAvatar] user speak started');
+        setStatus('user-speaking');
+      });
+      session.on(AgentEventsEnum.USER_SPEAK_ENDED, () => {
+        console.log('[LiveAvatar] user speak ended');
+        setStatus('processing');
+      });
       session.on(AgentEventsEnum.USER_TRANSCRIPTION, (e: any) => {
+        console.log('[LiveAvatar] user text', e);
         if (e?.text) addMessage('user', e.text);
       });
-      session.on(AgentEventsEnum.AVATAR_SPEAK_STARTED, () => setStatus('avatar-speaking'));
+      session.on(AgentEventsEnum.AVATAR_SPEAK_STARTED, () => {
+        console.log('[LiveAvatar] avatar speak started');
+        setStatus('avatar-speaking');
+      });
       session.on(AgentEventsEnum.AVATAR_SPEAK_ENDED, () => {
+        console.log('[LiveAvatar] avatar speak ended');
         setStatus('listening');
         void ensureLiveAvatarListening(sessionRef.current);
       });
       session.on(AgentEventsEnum.AVATAR_TRANSCRIPTION, (e: any) => {
+        console.log('[LiveAvatar] avatar text', e);
         if (e?.text) addMessage('avatar', e.text);
       });
 
