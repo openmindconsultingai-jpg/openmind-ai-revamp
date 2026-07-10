@@ -150,7 +150,7 @@ async function handleAvatarSession(req: Request): Promise<Response> {
         avatar_id: avatarId,
         mode: "FULL",
         is_sandbox: false,
-        max_session_duration: 600,
+        max_session_duration: 300,
         avatar_persona: {
           language: "pl",
         },
@@ -235,7 +235,7 @@ async function handleAvatarSession(req: Request): Promise<Response> {
     session_id: liveAvatarSessionId,
     session_token: sessionToken,
     sessionToken: sessionToken,
-    max_session_duration: 600,
+    max_session_duration: 300,
     sdk_start_required: false,
     advisor_name: CLIENT_CONFIG.brand.advisor_name,
     context_id: null,
