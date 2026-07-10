@@ -51,7 +51,6 @@ const FloatingNav = memo(() => {
   const navItems = [
     { path: '/', label: t('nav.home'), prefetch: () => import('@/pages/Home') },
     { path: '/services', label: t('nav.services'), prefetch: () => import('@/pages/ServicesHubPage') },
-    { path: '/szkolenia-ai', label: 'Szkolenia', prefetch: () => import('@/pages/ServiceLandingPage') },
     { path: '/ai-advisor', label: t('nav.aiAdvisor') || 'AI Advisor', prefetch: () => import('@/pages/AIAdvisor') },
     { path: '/about', label: t('nav.about'), prefetch: () => import('@/pages/About') },
     { path: '/blog', label: t('nav.blog'), prefetch: () => import('@/pages/Blog') },
