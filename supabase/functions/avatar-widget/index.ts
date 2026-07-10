@@ -139,6 +139,8 @@ async function handleAvatarSession(req: Request): Promise<Response> {
   let liveAvatarSessionId = id("session");
   let tokenError: string | null = null;
 
+  const configuredVoiceAgentId = Deno.env.get("LIVEAVATAR_VOICE_AGENT_ID") || "d386ad02-e180-416a-994d-7513f5936eea";
+
   async function createLiveAvatarToken(avatarId: string): Promise<{ ok: boolean; status: number; data: any }> {
     const resp = await fetch("https://api.liveavatar.com/v1/sessions/token", {
       method: "POST",
@@ -153,7 +155,9 @@ async function handleAvatarSession(req: Request): Promise<Response> {
         max_session_duration: 300,
         avatar_persona: {
           language: "pl",
+          voice_agent_id: configuredVoiceAgentId,
         },
+        voice_agent_id: configuredVoiceAgentId,
         interactivity_type: "CONVERSATIONAL",
       }),
     });
