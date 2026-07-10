@@ -222,33 +222,28 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* 3D Neural Model — prawa strona hero */}
-      <div
-        className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center lg:justify-end"
-        aria-hidden="true"
-      >
-        <div className="pointer-events-auto w-full h-full max-w-[680px] lg:max-w-none lg:w-[62vw] xl:w-[58vw]">
+      {/* Hero content wrapper — model on top, text below */}
+      <div className="relative z-20 w-full max-w-6xl mx-auto px-5 flex flex-col items-center">
+
+        {/* 3D Neural Model — identyczny jak w sekcji O nas */}
+        <div
+          className="relative mx-auto w-full mb-10 md:mb-14"
+          style={{ maxWidth: '880px', height: 'min(70svh, 620px)' }}
+        >
           <Suspense fallback={null}>
             <LazyNeuralIframe
-              className="w-full h-full"
+              className="absolute inset-0 w-full h-full"
               src="/openmind-neural-recreated.html?v=5"
               loadStrategy="auto"
             />
           </Suspense>
         </div>
-      </div>
 
-
-
-
-
-      {/* Hero Text Content — left column on lg+; pointer-events scoped so model stays clickable */}
-      <div className="relative z-20 w-full lg:flex lg:justify-start pointer-events-none">
-        <div className="text-center px-5 max-w-6xl mx-auto w-full lg:max-w-[28rem] lg:mx-0 lg:ml-0 lg:pr-3 lg:pl-5 xl:max-w-[34rem] xl:ml-[2vw] 2xl:max-w-[40rem] 2xl:ml-[4vw] pointer-events-auto">
-
-
+        {/* Text block — centered under the model */}
+        <div className="text-center w-full max-w-3xl mx-auto">
 
           {/* Visually prominent brand name */}
+
           <div 
             ref={titleRef}
             className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-[4.5rem] xl:text-[5.25rem] 2xl:text-[6.25rem] font-bold mb-4 leading-none tracking-tight"
