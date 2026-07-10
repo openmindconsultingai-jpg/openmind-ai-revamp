@@ -210,23 +210,6 @@ const ServicesHubPage = () => {
                         </p>
                       </Link>
                     ))}
-                    {schoolsEntry && (
-                      <Link
-                        to={`${schoolsEntry.path}.html`}
-                        className="group rounded-xl p-4 md:p-5 transition hover:scale-[1.01]"
-                        style={{
-                          background: 'hsl(220 15% 6% / 0.55)',
-                          border: '1px solid hsl(176 100% 43% / 0.12)',
-                        }}
-                      >
-                        <h4 className="font-heading text-base font-semibold text-primary group-hover:text-primary/80 mb-2">
-                          {schoolsEntry.navLabel}
-                        </h4>
-                        <p className="font-sans text-xs md:text-sm text-muted-foreground leading-relaxed">
-                          {schoolsEntry.shortDesc}
-                        </p>
-                      </Link>
-                    )}
                   </div>
 
                   {/* Industries */}
