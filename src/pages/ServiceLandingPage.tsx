@@ -151,9 +151,6 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
 
         {/* Hero */}
         <section className="container mx-auto px-6 max-w-5xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-4 py-1.5 text-xs md:text-sm text-primary/90 font-sans mb-6">
-            OpenMind AI · Usługi
-          </div>
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="text-gradient">{safe.data.h1}</span>
           </h1>
