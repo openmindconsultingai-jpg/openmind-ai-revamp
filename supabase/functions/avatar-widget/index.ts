@@ -153,13 +153,8 @@ async function handleAvatarSession(req: Request): Promise<Response> {
           mode: "FULL",
           is_sandbox: false,
           max_session_duration: 600,
-          voice_agent: {
-            id: "6730a102-8aa9-4634-a921-ef18a5f9697d",
+          avatar_persona: {
             language: "pl",
-            dynamic_variables: {
-              locale: String(body?.locale ?? "pl"),
-              source_url: String(body?.source_url ?? ""),
-            },
           },
           interactivity_type: "CONVERSATIONAL",
         }),
