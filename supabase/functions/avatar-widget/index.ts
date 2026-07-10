@@ -235,16 +235,16 @@ async function handleAvatarSession(req: Request): Promise<Response> {
   }
 
   return json(200, {
-    provider: "heygen",
+    provider: "liveavatar",
     mode: "LIVE",
     conversation_id: conversationId,
     session_id: liveAvatarSessionId,
     session_token: sessionToken,
     sessionToken: sessionToken,
+    context_id: configuredContextId,
     max_session_duration: 300,
     sdk_start_required: false,
     advisor_name: CLIENT_CONFIG.brand.advisor_name,
-    context_id: null,
     echo: { locale: body?.locale ?? "pl" },
   });
 }
