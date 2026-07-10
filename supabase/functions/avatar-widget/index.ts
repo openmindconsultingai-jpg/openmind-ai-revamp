@@ -127,23 +127,61 @@ async function handleConfig(): Promise<Response> {
 }
 
 async function handleAvatarSession(req: Request): Promise<Response> {
-  // Widget renderuje HeyGen iframe bezpośrednio z `data-avatar-embed-url`,
-  // więc backend tylko rejestruje konwersację i zwraca tryb demo.
   let body: Record<string, unknown> = {};
   try { body = await req.json(); } catch { /* ignore */ }
   const conversationId = id("conv");
+
+  // Wymień sekretny klucz HeyGen na krótkotrwały JWT sesji streamingu.
+  const heygenKey = Deno.env.get("HEYGEN_API_KEY");
+  let sessionToken = "";
+  let tokenError: string | null = null;
+
+  if (!heygenKey) {
+    tokenError = "HEYGEN_API_KEY nie jest skonfigurowany.";
+  } else {
+    try {
+      const resp = await fetch("https://api.heygen.com/v1/streaming.create_token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Key": heygenKey,
+        },
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok) {
+        tokenError = `HeyGen ${resp.status}: ${JSON.stringify(data).slice(0, 300)}`;
+        console.error("HeyGen create_token failed:", tokenError);
+      } else {
+        sessionToken = String(data?.data?.token ?? data?.token ?? "");
+        if (!sessionToken) {
+          tokenError = "Brak pola token w odpowiedzi HeyGen.";
+          console.error("HeyGen create_token: missing token", data);
+        }
+      }
+    } catch (e) {
+      tokenError = `Wyjątek przy pobieraniu tokenu HeyGen: ${String((e as Error)?.message ?? e)}`;
+      console.error(tokenError);
+    }
+  }
+
+  if (!sessionToken) {
+    return json(502, {
+      error: "Nie udało się wygenerować tokenu HeyGen.",
+      details: tokenError,
+    });
+  }
+
   return json(200, {
-    provider: "iframe",
-    mode: "IFRAME",
+    provider: "heygen",
+    mode: "LIVE",
     conversation_id: conversationId,
     session_id: id("session"),
-    session_token: "iframe-session",
-    sessionToken: "iframe-session",
+    session_token: sessionToken,
+    sessionToken: sessionToken,
     max_session_duration: 600,
     sdk_start_required: false,
     advisor_name: CLIENT_CONFIG.brand.advisor_name,
     context_id: null,
-    message: "Iframe embed mode — HeyGen LiveAvatar renderuje się bezpośrednio.",
     echo: { locale: body?.locale ?? "pl" },
   });
 }
