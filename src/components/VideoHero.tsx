@@ -222,8 +222,25 @@ const VideoHero = () => {
         </div>
       )}
 
-      {/* Model 3D usunięty — jego rolę przejmuje HeyGen Live Avatar (OpenMindAvatarWidget),
-          otwierany przyciskiem „Zapytaj doradcę AI" w hero. */}
+      {/* 3D Neural Model — prawa kolumna hero (desktop + mobile) */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center lg:justify-end lg:pr-[2vw] xl:pr-[4vw]"
+        aria-hidden="true"
+      >
+        <div
+          className="pointer-events-auto w-full max-w-[560px] lg:max-w-[52vw] xl:max-w-[48vw]"
+          style={{ height: 'min(70svh, 640px)' }}
+        >
+          <Suspense fallback={null}>
+            <LazyNeuralIframe
+              className="w-full h-full"
+              src="/openmind-neural-recreated.html?v=5"
+              loadStrategy="auto"
+            />
+          </Suspense>
+        </div>
+      </div>
+
 
 
 
