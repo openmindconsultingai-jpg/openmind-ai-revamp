@@ -14,9 +14,6 @@ const ServiceAreas = lazy(() => import('@/components/ServiceAreas'));
 const ParticleFooter = lazy(() => import('@/components/ParticleFooter'));
 const SeoContentSections = lazy(() => import('@/components/SeoContentSections'));
 const Chatbot = lazy(() => import('@/components/Chatbot'));
-const OpenMindAvatarWidget = lazy(() =>
-  import('@/components/OpenMindAvatarWidget').then((m) => ({ default: m.OpenMindAvatarWidget }))
-);
 
 const Home = () => {
   const { language } = useLanguage();
@@ -73,7 +70,6 @@ const Home = () => {
         <ServiceAreas />
         <ParticleFooter />
         <Chatbot />
-        <OpenMindAvatarWidget />
       </Suspense>
     </div>
   );
