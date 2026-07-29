@@ -167,18 +167,26 @@ const VideoHero = () => {
             muted
             loop
             playsInline
-            preload="metadata"
+            disablePictureInPicture
+            disableRemotePlayback
+            preload="auto"
+            // @ts-expect-error non-standard but widely supported priority hint
+            fetchpriority="high"
+            onLoadedData={handleVideoCanPlay}
             onCanPlay={handleVideoCanPlay}
             className="absolute inset-0 w-full h-full object-cover"
             style={{
               opacity: isVideoReady ? 1 : 0,
-              transition: 'opacity 1.5s ease-out',
-              willChange: isMobile ? 'auto' : 'transform, filter',
+              transition: 'opacity 1s ease-out',
+              willChange: isMobile ? 'auto' : 'transform',
+              contain: 'paint',
+              transform: 'translate3d(0,0,0)',
             }}
           >
             <source src={HERO_VIDEO_URL} type="video/mp4" />
           </video>
         )}
+
 
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-background/25" />
