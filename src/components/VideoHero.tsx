@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { supabase } from '@/integrations/supabase/client';
 import { noWidows } from '@/lib/typography';
 import { useIsDesktop } from '@/hooks/useIsDesktop';
+import heroVideoAsset from '@/assets/openmind-hero-mobile.mp4.asset.json';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -13,7 +13,7 @@ const LazyNeuralIframe = lazy(() => import('@/components/LazyNeuralIframe'));
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HERO_VIDEO_URL = supabase.storage.from('hero').getPublicUrl('HERO OPENMIND 2.mp4').data.publicUrl;
+const HERO_VIDEO_URL = heroVideoAsset.url;
 
 const VideoHero = () => {
   const { t } = useLanguage();
