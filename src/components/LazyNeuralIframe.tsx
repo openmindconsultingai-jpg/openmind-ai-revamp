@@ -5,7 +5,8 @@ interface Props {
   title?: string;
   className?: string;
   style?: React.CSSProperties;
-  loadStrategy?: 'auto' | 'viewport';
+  loadStrategy?: 'auto' | 'viewport' | 'click';
+  ctaLabel?: string;
 }
 
 const LazyNeuralIframe = ({
@@ -14,6 +15,7 @@ const LazyNeuralIframe = ({
   className = '',
   style,
   loadStrategy = 'auto',
+  ctaLabel = 'Uruchom model 3D',
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
@@ -54,6 +56,7 @@ const LazyNeuralIframe = ({
         triggerLoad();
       }
     }
+    // 'click' strategy: nothing loads until the user explicitly asks for it
 
     return () => {
       cancelled = true;
@@ -61,6 +64,8 @@ const LazyNeuralIframe = ({
       observer?.disconnect();
     };
   }, [loadStrategy]);
+
+  const isClickStrategy = loadStrategy === 'click';
 
   return (
     <div
@@ -70,23 +75,42 @@ const LazyNeuralIframe = ({
     >
       {/* Instant gradient placeholder — no layout shift */}
       <div
-        aria-hidden="true"
+        aria-hidden={!isClickStrategy || shouldLoad}
         className="absolute inset-0 w-full h-full transition-opacity duration-700"
         style={{
           opacity: loaded ? 0 : 1,
+          pointerEvents: loaded ? 'none' : 'auto',
           background:
-            'radial-gradient(ellipse at center, rgba(59, 130, 246, 0.2) 0%, rgba(30, 58, 138, 0.3) 40%, rgba(0, 0, 0, 0.6) 100%)',
+            'radial-gradient(ellipse at center, hsl(176 100% 43% / 0.16) 0%, hsl(190 100% 50% / 0.10) 40%, transparent 75%)',
         }}
       >
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-          <div className="flex gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-blue-400/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0s' }} />
-            <div className="w-2.5 h-2.5 rounded-full bg-blue-400/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0.2s' }} />
-            <div className="w-2.5 h-2.5 rounded-full bg-blue-400/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0.4s' }} />
-          </div>
-          <p className="text-sm md:text-base font-medium text-blue-200/80 tracking-wider uppercase">
-            Ładowanie modelu AI
-          </p>
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+          {isClickStrategy && !shouldLoad ? (
+            <button
+              type="button"
+              onClick={() => setShouldLoad(true)}
+              className="group relative px-8 py-4 rounded-full font-heading font-semibold text-base text-foreground transition-all duration-300 hover:scale-105"
+              style={{
+                background: 'linear-gradient(135deg, hsl(176 100% 43% / 0.12) 0%, hsl(190 100% 50% / 0.06) 100%)',
+                border: '1px solid hsl(176 100% 43% / 0.35)',
+                boxShadow: '0 0 40px hsl(176 100% 43% / 0.15)',
+                backdropFilter: 'blur(12px)',
+              }}
+            >
+              <span className="group-hover:text-primary transition-colors duration-300">{ctaLabel}</span>
+            </button>
+          ) : (
+            <>
+              <div className="flex gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-primary/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0s' }} />
+                <div className="w-2.5 h-2.5 rounded-full bg-primary/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0.2s' }} />
+                <div className="w-2.5 h-2.5 rounded-full bg-primary/60" style={{ animation: 'pulse 1.4s ease-in-out infinite', animationDelay: '0.4s' }} />
+              </div>
+              <p className="text-sm md:text-base font-medium text-foreground/70 tracking-wider uppercase">
+                Ładowanie modelu AI
+              </p>
+            </>
+          )}
         </div>
       </div>
 
