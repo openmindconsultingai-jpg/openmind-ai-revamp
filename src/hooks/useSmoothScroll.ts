@@ -10,13 +10,20 @@ const useSmoothScroll = () => {
       return;
     }
 
+    // On touch devices native scrolling is already smooth — Lenis only adds jank there
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (isTouch) {
+      return;
+    }
+
     // Faster, more responsive smooth scroll
     const lenis = new Lenis({
-      duration: 0.8,
+      duration: 0.9,
       easing: (t) => 1 - Math.pow(1 - t, 3),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
+      syncTouch: false,
       touchMultiplier: 1.5,
     });
 
@@ -29,6 +36,7 @@ const useSmoothScroll = () => {
     }
 
     rafId = requestAnimationFrame(raf);
+
 
     return () => {
       cancelAnimationFrame(rafId);
