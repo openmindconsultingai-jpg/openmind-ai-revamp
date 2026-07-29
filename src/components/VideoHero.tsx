@@ -28,18 +28,25 @@ const VideoHero = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [videoLoadDeferred, setVideoLoadDeferred] = useState(true);
 
-  // Check if mobile and defer video loading
+  // Check if mobile and defer video loading until the browser is idle (keeps main thread free)
   useEffect(() => {
     const checkMobile = window.innerWidth < 768;
     setIsMobile(checkMobile);
-    
-    // Defer video loading to after critical content is painted
-    const timer = setTimeout(() => {
-      setVideoLoadDeferred(false);
-    }, checkMobile ? 100 : 0); // Small delay on mobile for faster FCP
-    
-    return () => clearTimeout(timer);
+
+    let cancelled = false;
+    const arm = () => { if (!cancelled) setVideoLoadDeferred(false); };
+    const idle = (window as any).requestIdleCallback as
+      | ((cb: () => void, opts?: { timeout: number }) => number)
+      | undefined;
+    const handle = idle ? idle(arm, { timeout: 1200 }) : window.setTimeout(arm, 300);
+
+    return () => {
+      cancelled = true;
+      if (idle && (window as any).cancelIdleCallback) (window as any).cancelIdleCallback(handle);
+      else clearTimeout(handle as number);
+    };
   }, []);
+
 
   // Text reveal animation - starts immediately
   useEffect(() => {
