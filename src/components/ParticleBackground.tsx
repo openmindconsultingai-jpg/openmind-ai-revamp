@@ -111,8 +111,7 @@ const ParticleCanvas = memo(() => {
     });
     io.observe(canvas);
 
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(document.body);
+    // Only react to real viewport changes — observing body caused canvas resets while scrolling
     window.addEventListener('resize', resize);
 
 
@@ -120,7 +119,6 @@ const ParticleCanvas = memo(() => {
       cancelAnimationFrame(animId);
       document.removeEventListener('visibilitychange', handleVisibility);
       window.removeEventListener('resize', resize);
-      resizeObserver.disconnect();
       io.disconnect();
     };
   }, []);

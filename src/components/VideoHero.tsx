@@ -28,18 +28,25 @@ const VideoHero = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [videoLoadDeferred, setVideoLoadDeferred] = useState(true);
 
-  // Check if mobile and defer video loading
+  // Check if mobile and defer video loading until the browser is idle (keeps main thread free)
   useEffect(() => {
     const checkMobile = window.innerWidth < 768;
     setIsMobile(checkMobile);
-    
-    // Defer video loading to after critical content is painted
-    const timer = setTimeout(() => {
-      setVideoLoadDeferred(false);
-    }, checkMobile ? 100 : 0); // Small delay on mobile for faster FCP
-    
-    return () => clearTimeout(timer);
+
+    let cancelled = false;
+    const arm = () => { if (!cancelled) setVideoLoadDeferred(false); };
+    const idle = (window as any).requestIdleCallback as
+      | ((cb: () => void, opts?: { timeout: number }) => number)
+      | undefined;
+    const handle = idle ? idle(arm, { timeout: 1200 }) : window.setTimeout(arm, 300);
+
+    return () => {
+      cancelled = true;
+      if (idle && (window as any).cancelIdleCallback) (window as any).cancelIdleCallback(handle);
+      else clearTimeout(handle as number);
+    };
   }, []);
+
 
   // Text reveal animation - starts immediately
   useEffect(() => {
@@ -84,10 +91,10 @@ const VideoHero = () => {
     return () => ctx.revert();
   }, [animationStarted]);
 
-  // Scroll-based video effects
+  // Scroll-based video effect — cheap transform only (blur filter caused scroll jank)
   useEffect(() => {
+    if (isMobile) return;
     const ctx = gsap.context(() => {
-      // Video blur and scale on scroll
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: 'top top',
@@ -95,31 +102,38 @@ const VideoHero = () => {
         scrub: 1,
         onUpdate: (self) => {
           if (videoRef.current) {
-            const blur = self.progress * 8;
-            const scale = 1 + self.progress * 0.15;
-            videoRef.current.style.filter = `blur(${blur}px)`;
-            videoRef.current.style.transform = `scale(${scale})`;
+            const scale = 1 + self.progress * 0.08;
+            videoRef.current.style.transform = `scale3d(${scale}, ${scale}, 1)`;
           }
-        }
+        },
       });
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
-  // Mouse parallax effect - disabled on mobile for performance
+  // Mouse parallax effect — rAF-throttled, disabled on mobile for performance
   useEffect(() => {
     if (isMobile) return;
-    
+
+    let frame = 0;
     const handleMouseMove = (e: MouseEvent) => {
+      if (frame) return;
       const x = e.clientX / window.innerWidth;
       const y = e.clientY / window.innerHeight;
-      setMousePosition({ x, y });
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        setMousePosition({ x, y });
+      });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, [isMobile]);
+
 
   const handleVideoCanPlay = () => {
     setIsVideoReady(true);
@@ -153,18 +167,26 @@ const VideoHero = () => {
             muted
             loop
             playsInline
-            preload="metadata"
+            disablePictureInPicture
+            disableRemotePlayback
+            preload="auto"
+            // @ts-expect-error non-standard but widely supported priority hint
+            fetchpriority="high"
+            onLoadedData={handleVideoCanPlay}
             onCanPlay={handleVideoCanPlay}
             className="absolute inset-0 w-full h-full object-cover"
             style={{
               opacity: isVideoReady ? 1 : 0,
-              transition: 'opacity 1.5s ease-out',
-              willChange: isMobile ? 'auto' : 'transform, filter',
+              transition: 'opacity 1s ease-out',
+              willChange: isMobile ? 'auto' : 'transform',
+              contain: 'paint',
+              transform: 'translate3d(0,0,0)',
             }}
           >
             <source src={HERO_VIDEO_URL} type="video/mp4" />
           </video>
         )}
+
 
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-background/25" />
@@ -284,9 +306,10 @@ const VideoHero = () => {
             <LazyNeuralIframe
               className="absolute inset-0 w-full h-full"
               src="/openmind-neural-recreated.html?v=9"
-              loadStrategy="auto"
+              loadStrategy="click"
             />
           </Suspense>
+
         </div>
       </div>
 
