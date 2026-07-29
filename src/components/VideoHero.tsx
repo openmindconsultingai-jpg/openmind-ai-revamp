@@ -284,9 +284,10 @@ const VideoHero = () => {
             <LazyNeuralIframe
               className="absolute inset-0 w-full h-full"
               src="/openmind-neural-recreated.html?v=9"
-              loadStrategy="auto"
+              loadStrategy="click"
             />
           </Suspense>
+
         </div>
       </div>
 
