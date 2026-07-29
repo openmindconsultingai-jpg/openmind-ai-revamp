@@ -84,10 +84,10 @@ const VideoHero = () => {
     return () => ctx.revert();
   }, [animationStarted]);
 
-  // Scroll-based video effects
+  // Scroll-based video effect — cheap transform only (blur filter caused scroll jank)
   useEffect(() => {
+    if (isMobile) return;
     const ctx = gsap.context(() => {
-      // Video blur and scale on scroll
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: 'top top',
@@ -95,31 +95,38 @@ const VideoHero = () => {
         scrub: 1,
         onUpdate: (self) => {
           if (videoRef.current) {
-            const blur = self.progress * 8;
-            const scale = 1 + self.progress * 0.15;
-            videoRef.current.style.filter = `blur(${blur}px)`;
-            videoRef.current.style.transform = `scale(${scale})`;
+            const scale = 1 + self.progress * 0.08;
+            videoRef.current.style.transform = `scale3d(${scale}, ${scale}, 1)`;
           }
-        }
+        },
       });
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
-  // Mouse parallax effect - disabled on mobile for performance
+  // Mouse parallax effect — rAF-throttled, disabled on mobile for performance
   useEffect(() => {
     if (isMobile) return;
-    
+
+    let frame = 0;
     const handleMouseMove = (e: MouseEvent) => {
+      if (frame) return;
       const x = e.clientX / window.innerWidth;
       const y = e.clientY / window.innerHeight;
-      setMousePosition({ x, y });
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        setMousePosition({ x, y });
+      });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, [isMobile]);
+
 
   const handleVideoCanPlay = () => {
     setIsVideoReady(true);
