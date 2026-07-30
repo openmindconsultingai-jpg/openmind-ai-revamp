@@ -22,7 +22,7 @@ const Footer = () => {
                 Automatyzacje, szkolenia, teledyski AI, strony WWW i konsultacje — cała Polska.
               </p>
               <Link
-                to="/services.html"
+                 to="/services"
                 className="inline-block font-sans text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
               >
                 Zobacz wszystkie →
@@ -36,7 +36,7 @@ const Footer = () => {
                 {coreServices.map((s) => (
                   <li key={s.slug}>
                     <Link
-                      to={`${s.path}.html`}
+                       to={s.path}
                       className="font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
                     >
                       {s.navLabel}
@@ -53,7 +53,7 @@ const Footer = () => {
                 {industryServices.map((s) => (
                   <li key={s.slug}>
                     <Link
-                      to={`${s.path}.html`}
+                       to={s.path}
                       className="font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
                     >
                       {s.navLabel}
@@ -71,7 +71,7 @@ const Footer = () => {
             © {new Date().getFullYear()} OpenMind AI Consulting. {t('footer.rights')}
           </p>
           <Link
-            to="/privacy.html"
+             to="/privacy"
             className="font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
           >
             {t('footer.privacy')}

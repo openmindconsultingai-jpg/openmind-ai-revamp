@@ -48,10 +48,10 @@ function matchCity(text: string, v: { cities: { name: string; slug: string }[] }
 }
 
 const FORMAT_LINKS: Record<string, string> = {
-  stacjonar: '/szkolenia-ai-stacjonarne.html',
-  online: '/szkolenia-ai-online.html',
-  indywidua: '/szkolenia-ai-indywidualne.html',
-  '1:1': '/szkolenia-ai-indywidualne.html',
+  stacjonar: '/szkolenia-ai-stacjonarne',
+  online: '/szkolenia-ai-online',
+  indywidua: '/szkolenia-ai-indywidualne',
+  '1:1': '/szkolenia-ai-indywidualne',
 };
 
 /** Map a "Formaty" sub-card heading to a matching format landing page. */
@@ -139,7 +139,7 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
               </li>
               <li aria-hidden="true">/</li>
               <li>
-                <Link to="/szkolenia-ai.html" className="hover:text-primary transition-colors">
+                <Link to="/szkolenia-ai" className="hover:text-primary transition-colors">
                   Szkolenia AI
                 </Link>
               </li>
@@ -161,12 +161,12 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
             {safe.shortDesc}
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link to="/contact.html">
+            <Link to="/contact">
               <Button size="lg" className="font-semibold">
                 Zapytaj o ofertę
               </Button>
             </Link>
-            <Link to="/services.html">
+            <Link to="/services">
               <Button variant="outline" size="lg" className="font-semibold">
                 Zobacz wszystkie usługi
               </Button>
@@ -193,7 +193,7 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
               {[...industries, ...trainingsHubExtras].map((s) => (
                 <Link
                   key={s.slug}
-                  to={`${s.path}.html`}
+                  to={s.path}
                   className="group rounded-2xl p-6 md:p-7 transition hover:scale-[1.01]"
                   style={glassCard}
                 >
@@ -279,7 +279,7 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
                                       <li key={j}>
                                         {city && voiv ? (
                                           <Link
-                                            to={`/gdzie-dzialamy/${voiv.slug}/${city.slug}.html`}
+                                            to={`/gdzie-dzialamy/${voiv.slug}/${city.slug}`}
                                             className="text-foreground/85 hover:text-primary underline-offset-2 hover:underline transition-colors"
                                           >
                                             {li}
@@ -371,7 +371,7 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
             {related.map((s) => (
               <Link
                 key={s.slug}
-                to={`${s.path}.html`}
+                to={s.path}
                 className="group rounded-2xl p-6 transition hover:scale-[1.01]"
                 style={glassCard}
               >
@@ -409,7 +409,7 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
               Pierwsza konsultacja (30–45 minut, online lub w naszej siedzibie) jest zawsze
               bezpłatna i niezobowiązująca. Odpowiadamy w ciągu 24 godzin w dni robocze.
             </p>
-            <Link to="/contact.html">
+            <Link to="/contact">
               <Button size="lg" className="font-semibold">
                 Umów bezpłatną konsultację
               </Button>
