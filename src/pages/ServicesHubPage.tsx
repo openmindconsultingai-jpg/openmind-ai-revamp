@@ -84,7 +84,7 @@ const ServicesHubPage = () => {
             nie efektowne demo. Każda usługa ma osobną stronę ze szczegółami, programem i FAQ.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link to="/contact.html">
+            <Link to="/contact">
               <Button size="lg" className="font-semibold">
                 Umów bezpłatną konsultację
               </Button>
@@ -98,7 +98,7 @@ const ServicesHubPage = () => {
             {nonTraining.map((s) => (
               <Link
                 key={s.slug}
-                to={`${s.path}.html`}
+                to={s.path}
                 className="group rounded-2xl p-6 md:p-7 transition hover:scale-[1.01]"
                 style={glassCard}
               >
@@ -180,7 +180,7 @@ const ServicesHubPage = () => {
                       prowadzone przez praktyków, z certyfikatem i materiałami do wdrożenia.
                     </p>
                     <Link
-                      to="/szkolenia-ai.html"
+                      to="/szkolenia-ai"
                       className="font-sans text-sm font-semibold text-primary hover:text-primary/80 whitespace-nowrap"
                     >
                       Strona główna szkoleń →
@@ -195,7 +195,7 @@ const ServicesHubPage = () => {
                     {formatEntries.map((s) => (
                       <Link
                         key={s.slug}
-                        to={`${s.path}.html`}
+                        to={s.path}
                         className="group rounded-xl p-4 md:p-5 transition hover:scale-[1.01]"
                         style={{
                           background: 'hsl(220 15% 6% / 0.55)',
@@ -222,7 +222,7 @@ const ServicesHubPage = () => {
                         {[...industryEntries, schoolsEntry].filter(Boolean).map((s) => (
                           <Link
                             key={s.slug}
-                            to={`${s.path}.html`}
+                            to={s.path}
                             className="group rounded-lg px-4 py-3 transition"
                             style={{
                               background: 'hsl(220 15% 6% / 0.45)',
@@ -290,7 +290,7 @@ const ServicesHubPage = () => {
               Pierwsza konsultacja (30–45 minut, online lub w naszej siedzibie) jest zawsze
               bezpłatna i niezobowiązująca. Odpowiadamy w ciągu 24 godzin w dni robocze.
             </p>
-            <Link to="/contact.html">
+            <Link to="/contact">
               <Button size="lg" className="font-semibold">
                 Umów bezpłatną konsultację
               </Button>

@@ -133,7 +133,7 @@ const ServiceAreas = ({ heading, sub, anchorPrefix, id = 'gdzie-dzialamy' }: Ser
               <div className="relative z-10 p-5 md:p-6">
                 <div className="flex items-center justify-between mb-4">
                   <Link
-                    to={`/gdzie-dzialamy/${v.slug}/${v.cities[0].slug}.html`}
+                    to={`/gdzie-dzialamy/${v.slug}`}
                     className="flex items-center gap-2 min-w-0"
                     aria-label={
                       language === 'pl'
@@ -156,7 +156,7 @@ const ServiceAreas = ({ heading, sub, anchorPrefix, id = 'gdzie-dzialamy' }: Ser
                   {v.cities.map((city) => (
                     <li key={city.slug}>
                       <Link
-                        to={`/gdzie-dzialamy/${v.slug}/${city.slug}.html`}
+                        to={`/gdzie-dzialamy/${v.slug}/${city.slug}`}
                         className="flex items-center gap-2 text-sm text-foreground/70 font-sans hover:text-foreground transition-colors"
                       >
                         <span className="w-1 h-1 rounded-full bg-primary/50 shrink-0" />

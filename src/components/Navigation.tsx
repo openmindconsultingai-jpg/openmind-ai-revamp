@@ -46,7 +46,7 @@ const Navigation = () => {
               {t('nav.home')}
             </Link>
             <Link
-              to="/services.html"
+              to="/services"
               className={`text-foreground hover:text-primary transition-colors font-medium ${
                 location.pathname === '/services' || location.pathname === '/services.html' ? 'text-primary' : ''
               }`}
@@ -54,7 +54,7 @@ const Navigation = () => {
               {t('nav.services')}
             </Link>
             <Link
-              to="/about.html"
+              to="/about"
               className={`text-foreground hover:text-primary transition-colors font-medium ${
                 location.pathname === '/about' || location.pathname === '/about.html' ? 'text-primary' : ''
               }`}
@@ -62,14 +62,14 @@ const Navigation = () => {
               {t('nav.about')}
             </Link>
             <Link
-              to="/blog.html"
+              to="/blog"
               className={`text-foreground hover:text-primary transition-colors font-medium ${
                 location.pathname === '/blog' || location.pathname === '/blog.html' ? 'text-primary' : ''
               }`}
             >
               {t('nav.blog')}
             </Link>
-            <Link to="/contact.html">
+            <Link to="/contact">
               <Button
                 variant="glass"
                 className="font-semibold"
@@ -121,7 +121,7 @@ const Navigation = () => {
               {t('nav.home')}
             </Link>
             <Link
-              to="/services.html"
+              to="/services"
               onClick={closeMobileMenu}
               className={`block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 ${
                 location.pathname === '/services' || location.pathname === '/services.html' ? 'text-primary' : ''
@@ -130,7 +130,7 @@ const Navigation = () => {
               {t('nav.services')}
             </Link>
             <Link
-              to="/about.html"
+              to="/about"
               onClick={closeMobileMenu}
               className={`block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 ${
                 location.pathname === '/about' || location.pathname === '/about.html' ? 'text-primary' : ''
@@ -139,7 +139,7 @@ const Navigation = () => {
               {t('nav.about')}
             </Link>
             <Link
-              to="/blog.html"
+              to="/blog"
               onClick={closeMobileMenu}
               className={`block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 ${
                 location.pathname === '/blog' || location.pathname === '/blog.html' ? 'text-primary' : ''
@@ -147,7 +147,7 @@ const Navigation = () => {
             >
               {t('nav.blog')}
             </Link>
-            <Link to="/contact.html" onClick={closeMobileMenu}>
+            <Link to="/contact" onClick={closeMobileMenu}>
               <Button
                 variant="glass"
                 className="w-full font-semibold"
