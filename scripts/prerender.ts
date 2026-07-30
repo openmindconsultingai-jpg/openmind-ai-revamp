@@ -774,30 +774,18 @@ function buildHtml(routePath: string, meta: Meta): string {
 }
 
 /**
- * Post-process every prerendered HTML file to rewrite internal links that
- * point to bare section paths (no .html suffix) → .html variant. This catches
- * links coming from markdown-derived content, FAQ blocks, JSON-LD body text
- * or any future component that forgets the suffix.
- *
- * Rules:
- * - Only href values are touched (text content is left alone).
- * - Only the 6 SPA sections + city tree are normalized.
- * - Skips: paths already ending in .html, root paths ("/services"-style that
- *   end with "/" before query/hash), fragments-only, query-only.
- * - Preserves optional https://www.openmindai.pl/ prefix, query string, hash.
+ * Post-process prerendered HTML anchors so internal crawl links point to bare
+ * URLs. This intentionally touches only <a href="...">, not canonical,
+ * hreflang, og:url, JSON-LD or sitemap output.
  */
-const INTERNAL_LINK_RE =
-  /href="((?:https:\/\/www\.openmindai\.pl)?)\/(services|about|contact|blog|ai-advisor|privacy|gdzie-dzialamy)((?:\/[^"#?\s]*)?)((?:[?#][^"\s]*)?)"/g;
+const INTERNAL_ANCHOR_HTML_RE =
+  /(<a\b[^>]*\bhref=")((?:https:\/\/www\.openmindai\.pl)?)\/(services|about|contact|blog|ai-advisor|privacy|gdzie-dzialamy)((?:\/[^"#?\s]*)?)\.html((?:[?#][^"\s]*)?)(")/g;
 
 function fixInternalLinks(html: string): string {
-  return html.replace(INTERNAL_LINK_RE, (match, prefix, root, rest, query) => {
-    // rest is "" or "/segment[/segment...]"
-    if (rest.endsWith('.html')) return match;          // already correct
-    if (rest.endsWith('/')) return match;              // trailing slash variant — leave alone
-    // Build canonical .html path
-    const fixedPath = '/' + root + rest + '.html';
-    return `href="${prefix}${fixedPath}${query}"`;
-  });
+  return html.replace(
+    INTERNAL_ANCHOR_HTML_RE,
+    (_match, before, prefix, root, rest, query, after) => `${before}${prefix}/${root}${rest}${query}${after}`,
+  );
 }
 
 function writeRoute(routePath: string, html: string) {
