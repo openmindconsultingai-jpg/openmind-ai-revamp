@@ -476,7 +476,7 @@ function voivMeta(slug: string): Meta | null {
   const cityLinks = v.cities
     .map(
       (c) =>
-        `<li><a href="/gdzie-dzialamy/${v.slug}/${c.slug}.html">AI w ${esc(c.locative)} – wdrożenia, szkolenia, konsulting</a></li>`,
+        `<li><a href="/gdzie-dzialamy/${v.slug}/${c.slug}">AI w ${esc(c.locative)} – wdrożenia, szkolenia, konsulting</a></li>`,
     )
     .join('');
 
@@ -495,7 +495,7 @@ function voivMeta(slug: string): Meta | null {
 <p>Prowadzimy szkolenia z ChatGPT, Claude, Gemini i Microsoft Copilot dla firm, instytucji oraz szkół w miastach: ${esc(v.cities.map((c) => c.name).join(', '))}. Warsztaty realizujemy w formatach 4-godzinnych, całodniowych i wielodniowych – online, stacjonarnie w siedzibie klienta lub hybrydowo.</p>
 
 <h2>Skontaktuj się z nami</h2>
-<p>Pierwsza konsultacja dla firm z województwa ${esc(v.locativeName)} jest bezpłatna i niezobowiązująca. Napisz na biuro@openmindai.pl lub wypełnij <a href="/contact.html">formularz kontaktowy</a>, a my przygotujemy propozycję dopasowaną do Twojej organizacji.</p>`;
+<p>Pierwsza konsultacja dla firm z województwa ${esc(v.locativeName)} jest bezpłatna i niezobowiązująca. Napisz na biuro@openmindai.pl lub wypełnij <a href="/contact">formularz kontaktowy</a>, a my przygotujemy propozycję dopasowaną do Twojej organizacji.</p>`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
