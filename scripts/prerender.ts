@@ -19,6 +19,13 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const SITE = 'https://www.openmindai.pl';
+const TRAINING_SERVICES = servicesList.filter(
+  (service) => service.slug.startsWith('szkolenia-') || service.slug === 'ai-dla-szkol',
+);
+const CORE_SERVICES = servicesList.filter(
+  (service) => !service.slug.startsWith('szkolenia-ai-dla-'),
+);
+const BLOG_ARTICLE_IDS = Array.from({ length: 110 }, (_, index) => index + 1);
 
 if (!fs.existsSync(DIST)) {
   console.error('[prerender] dist/ not found — run `vite build` first.');
@@ -66,6 +73,12 @@ function serviceLd(name: string, description: string, url: string, serviceType: 
 }
 
 const STATIC_META: Record<string, Meta> = {
+  '/': {
+    title: 'OpenMind AI Consulting — Wdrożenia AI i szkolenia',
+    description: 'Wdrożenia, automatyzacje, konsulting i praktyczne szkolenia AI dla firm, szkół i instytucji w całej Polsce.',
+    h1: 'OpenMind AI Consulting',
+    body: '<p>Wdrażamy sztuczną inteligencję, automatyzujemy procesy i prowadzimy praktyczne szkolenia AI dla organizacji w całej Polsce.</p>',
+  },
   '/services': {
     title: 'Usługi AI – Konsulting, Szkolenia, Wdrożenia, Automatyzacja | OpenMind AI',
     description: 'Pełna oferta OpenMind AI: konsulting AI, szkolenia ze sztucznej inteligencji, wdrożenia AI, automatyzacja procesów, agencja kreatywna AI, AI dla szkół, tworzenie stron WWW.',
@@ -396,6 +409,91 @@ for (const m of langSrc.matchAll(/'(blog\.article\d+\.(?:title|excerpt))'\s*:\s*
   if (!(m[1] in PL_TRANSLATIONS)) PL_TRANSLATIONS[m[1]] = m[2];
 }
 
+function linkList(items: Array<{ href: string; label: string }>): string {
+  return `<ul>${items.map((item) => `<li><a href="${item.href}">${esc(item.label)}</a></li>`).join('')}</ul>`;
+}
+
+function locationsHubBody(): string {
+  return voivodeships.map((voivodeship) => {
+    const cities = voivodeship.cities.map((city) => ({
+      href: `/gdzie-dzialamy/${voivodeship.slug}/${city.slug}`,
+      label: `AI w ${city.locative}`,
+    }));
+    return `<section><h2>Województwo ${esc(voivodeship.name)}</h2><p><a href="/gdzie-dzialamy/${voivodeship.slug}">Wszystkie usługi AI w województwie ${esc(voivodeship.locativeName)}</a></p>${linkList(cities)}</section>`;
+  }).join('\n');
+}
+
+STATIC_META['/lokalizacje'] = {
+  title: 'Lokalizacje usług AI w Polsce | OpenMind AI',
+  description: 'Wdrożenia, konsulting i szkolenia AI w 192 miastach i 16 województwach Polski. Znajdź lokalną stronę usług OpenMind AI.',
+  h1: 'Usługi AI w 192 miastach Polski',
+  body: `<p>Wybierz województwo lub miasto, aby sprawdzić lokalną ofertę wdrożeń, konsultingu, automatyzacji i szkoleń AI.</p>${locationsHubBody()}`,
+  jsonLd: {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Lokalizacje usług AI OpenMind AI',
+    url: `${SITE}/lokalizacje`,
+  },
+};
+
+const blogHub = STATIC_META['/blog'];
+if (blogHub) {
+  blogHub.body += `<h2>Wszystkie artykuły w Bazie Wiedzy AI</h2>${linkList(
+    BLOG_ARTICLE_IDS.map((id) => ({
+      href: `/blog/${id}`,
+      label: PL_TRANSLATIONS[`blog.article${id}.title`] || `Artykuł ${id} – Baza Wiedzy AI`,
+    })),
+  )}`;
+}
+
+function homeCrawlLinks(): string {
+  const voivodeshipLinks = voivodeships.map((voivodeship) => ({
+    href: `/gdzie-dzialamy/${voivodeship.slug}`,
+    label: `AI w województwie ${voivodeship.name}`,
+  }));
+  const trainingLinks = TRAINING_SERVICES.map((service) => ({ href: service.path, label: service.navLabel }));
+  const serviceLinks = CORE_SERVICES.map((service) => ({ href: service.path, label: service.navLabel }));
+  return `<footer aria-label="Oferta i lokalizacje OpenMind AI"><h2>Usługi AI</h2>${linkList(serviceLinks)}<h2>Szkolenia AI</h2>${linkList(trainingLinks)}<h2>AI w Polsce</h2>${linkList(voivodeshipLinks)}<p><a href="/lokalizacje">Wszystkie 192 lokalizacje usług AI</a></p></footer>`;
+}
+
+function cityClusterLinks(voivSlug: string, citySlug: string): string {
+  const voivodeship = voivodeships.find((item) => item.slug === voivSlug);
+  if (!voivodeship) return '';
+  const cityIndex = voivodeship.cities.findIndex((item) => item.slug === citySlug);
+  if (cityIndex < 0) return '';
+
+  const nearbyCities = Array.from({ length: Math.min(8, voivodeship.cities.length - 1) }, (_, offset) => {
+    const step = Math.floor(offset / 2) + 1;
+    const direction = offset % 2 === 0 ? 1 : -1;
+    const index = (cityIndex + direction * step + voivodeship.cities.length) % voivodeship.cities.length;
+    return voivodeship.cities[index];
+  });
+  const trainingLinks = Array.from({ length: Math.min(5, TRAINING_SERVICES.length) }, (_, offset) =>
+    TRAINING_SERVICES[(cityIndex + offset) % TRAINING_SERVICES.length],
+  );
+
+  return `<nav aria-label="Powiązane lokalizacje i szkolenia"><h2>Usługi AI w pobliżu</h2><p><a href="/gdzie-dzialamy/${voivodeship.slug}">Wszystkie miasta w województwie ${esc(voivodeship.name)}</a></p>${linkList(
+    nearbyCities.map((city) => ({ href: `/gdzie-dzialamy/${voivodeship.slug}/${city.slug}`, label: `AI w ${city.locative}` })),
+  )}<h2>Powiązane szkolenia AI</h2>${linkList(trainingLinks.map((service) => ({ href: service.path, label: service.navLabel })))}</nav>`;
+}
+
+function trainingCrossLinks(routePath: string): string {
+  const current = TRAINING_SERVICES.find((service) => service.path === routePath);
+  if (!current) return '';
+  return `<nav aria-label="Pozostałe szkolenia AI"><h2>Inne szkolenia AI</h2><p><a href="/szkolenia-ai">Zobacz główną ofertę szkoleń AI</a></p>${linkList(
+    TRAINING_SERVICES.filter((service) => service.path !== routePath).map((service) => ({ href: service.path, label: service.navLabel })),
+  )}</nav>`;
+}
+
+function staticCrawlLinks(routePath: string): string {
+  if (routePath === '/') return homeCrawlLinks();
+  if (/^\/gdzie-dzialamy\/[^/]+\/[^/]+$/.test(routePath)) {
+    const [, , voivSlug, citySlug] = routePath.split('/');
+    return cityClusterLinks(voivSlug, citySlug);
+  }
+  return trainingCrossLinks(routePath);
+}
+
 function clip(s: string, n: number): string {
   if (s.length <= n) return s;
   return s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…';
@@ -649,6 +747,7 @@ const MAIN_HTML_ROUTES = [
   '/blog',
   '/ai-advisor',
   '/privacy',
+  '/lokalizacje',
 ];
 
 function buildHtmlSitemapXml(): string {
@@ -674,7 +773,7 @@ function buildHtmlSitemapXml(): string {
     ...MAIN_HTML_ROUTES.map((route) => ({ route, priority: '0.8' })),
   ];
 
-  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 46 || entries.length !== 364) {
+  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 47 || entries.length !== 365) {
    throw new Error(`[prerender] sitemap-html invalid counts: voiv=${voivRoutes.length}, cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
   }
 
@@ -750,13 +849,15 @@ function buildHtml(routePath: string, meta: Meta): string {
     `<div id="root">\n` +
     `      <h1>${meta.h1}</h1>\n` +
     `      ${meta.body}\n` +
-    `      <nav aria-label="Główna nawigacja SEO">\n` +
+    `      ${staticCrawlLinks(routePath)}\n` +
+    `      <footer><nav aria-label="Główna nawigacja SEO">\n` +
     `        <a href="/">Strona główna</a>\n` +
     `        <a href="/services">Usługi AI</a>\n` +
     `        <a href="/about">O nas</a>\n` +
     `        <a href="/blog">Blog</a>\n` +
     `        <a href="/contact">Kontakt</a>\n` +
-    `      </nav>\n` +
+    `        <a href="/lokalizacje">Lokalizacje</a>\n` +
+    `      </nav></footer>\n` +
     `    </div>`;
   // The SEO snippet has <section> but no nested <div>, so non-greedy </div> matches the root close.
   html = html.replace(/<div id="root">[\s\S]*?<\/div>/, newRoot);
@@ -833,8 +934,13 @@ for (const url of allUrls) {
   if (routePath.endsWith('.html')) routePath = routePath.slice(0, -5) || '/';
 
   if (routePath === '/') {
-    // Home is already correct in dist/index.html
-    skipped++;
+    const homeMeta = STATIC_META['/'];
+    if (!homeMeta) {
+      missing.push('/');
+      continue;
+    }
+    fs.writeFileSync(path.join(DIST, 'index.html'), fixInternalLinks(buildHtml('/', homeMeta)), 'utf8');
+    written++;
     continue;
   }
 

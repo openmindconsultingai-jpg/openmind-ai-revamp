@@ -20,6 +20,7 @@ const PrivacyPage = lazy(() => import("./pages/Privacy"));
 const AIAdvisorPage = lazy(() => import("./pages/AIAdvisor"));
 const VoivodeshipDetail = lazy(() => import("./pages/VoivodeshipDetail"));
 const CityDetail = lazy(() => import("./pages/CityDetail"));
+const LocationsPage = lazy(() => import("./pages/Locations"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -145,6 +146,7 @@ const App = () => (
             <Route path="/gdzie-dzialamy/:slug.html" element={wrap(<VoivodeshipDetail />)} />
             <Route path="/gdzie-dzialamy/:slug/:citySlug" element={wrap(<CityDetail />)} />
             <Route path="/gdzie-dzialamy/:slug/:citySlug.html" element={wrap(<CityDetail />)} />
+            <Route path="/lokalizacje" element={wrap(<LocationsPage />)} />
 
             <Route path="*" element={wrap(<NotFound />)} />
           </Routes>
