@@ -70,12 +70,20 @@ const Footer = () => {
           <p className="font-sans text-sm text-muted-foreground text-center md:text-left">
             © {new Date().getFullYear()} OpenMind AI Consulting. {t('footer.rights')}
           </p>
-          <Link
-             to="/privacy"
-            className="font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
-          >
-            {t('footer.privacy')}
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              to="/lokalizacje"
+              className="font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Lokalizacje
+            </Link>
+            <Link
+              to="/privacy"
+              className="font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              {t('footer.privacy')}
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
