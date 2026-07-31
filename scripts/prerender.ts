@@ -453,7 +453,7 @@ function homeCrawlLinks(): string {
   }));
   const trainingLinks = TRAINING_SERVICES.map((service) => ({ href: service.path, label: service.navLabel }));
   const serviceLinks = CORE_SERVICES.map((service) => ({ href: service.path, label: service.navLabel }));
-  return `<nav aria-label="Oferta i lokalizacje OpenMind AI"><h2>Usługi AI</h2>${linkList(serviceLinks)}<h2>Szkolenia AI</h2>${linkList(trainingLinks)}<h2>AI w Polsce</h2>${linkList(voivodeshipLinks)}<p><a href="/lokalizacje">Wszystkie 192 lokalizacje usług AI</a></p></nav>`;
+  return `<footer aria-label="Oferta i lokalizacje OpenMind AI"><h2>Usługi AI</h2>${linkList(serviceLinks)}<h2>Szkolenia AI</h2>${linkList(trainingLinks)}<h2>AI w Polsce</h2>${linkList(voivodeshipLinks)}<p><a href="/lokalizacje">Wszystkie 192 lokalizacje usług AI</a></p></footer>`;
 }
 
 function cityClusterLinks(voivSlug: string, citySlug: string): string {
@@ -850,14 +850,14 @@ function buildHtml(routePath: string, meta: Meta): string {
     `      <h1>${meta.h1}</h1>\n` +
     `      ${meta.body}\n` +
     `      ${staticCrawlLinks(routePath)}\n` +
-    `      <nav aria-label="Główna nawigacja SEO">\n` +
+    `      <footer><nav aria-label="Główna nawigacja SEO">\n` +
     `        <a href="/">Strona główna</a>\n` +
     `        <a href="/services">Usługi AI</a>\n` +
     `        <a href="/about">O nas</a>\n` +
     `        <a href="/blog">Blog</a>\n` +
     `        <a href="/contact">Kontakt</a>\n` +
     `        <a href="/lokalizacje">Lokalizacje</a>\n` +
-    `      </nav>\n` +
+    `      </nav></footer>\n` +
     `    </div>`;
   // The SEO snippet has <section> but no nested <div>, so non-greedy </div> matches the root close.
   html = html.replace(/<div id="root">[\s\S]*?<\/div>/, newRoot);
