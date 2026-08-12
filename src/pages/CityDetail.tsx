@@ -7,6 +7,13 @@ import { MapPin, ArrowLeft, Building2, Lightbulb, Clock, HelpCircle, Navigation,
 import { Button } from '@/components/ui/button';
 import { findCity, voivodeships } from '@/data/voivodeships';
 import { findCityContent } from '@/data/cityContent';
+import {
+  buildCitySeoSections,
+  buildCitySeoFaq,
+  cityPageTitle,
+  cityPageDescription,
+  cityPageH1,
+} from '@/data/cityContent/localSeo';
 import usePageMeta from '@/hooks/usePageMeta';
 import useCanonical from '@/hooks/useCanonical';
 import {
@@ -40,15 +47,16 @@ const CityDetail = () => {
       .filter(Boolean) as { city: typeof city; voivodeship: typeof voivodeship }[];
   }, [content, voivodeship]);
 
+  // Title & description MUST match scripts/prerender.ts (shared source of truth)
   const seoTitle = city
     ? language === 'pl'
-      ? `Szkolenia AI ${city.name} – Wdrożenia, Automatyzacja, Agencja Kreatywna | OpenMind AI`
+      ? cityPageTitle(city)
       : `AI Training ${city.name} – Implementation, Automation, Creative Agency | OpenMind AI`
     : 'OpenMind AI';
 
   const seoDescription = city && voivodeship
     ? language === 'pl'
-      ? `Szkolenia AI w ${city.locative} ✓ Wdrożenia sztucznej inteligencji ✓ Automatyzacja procesów ✓ Produkcja wideo i grafik AI ✓ Chatboty ✓ Doradztwo strategiczne. Bezpłatna konsultacja. Woj. ${voivodeship.name.toLowerCase()}.`
+      ? cityPageDescription(city, voivodeship)
       : `AI Training in ${city.name} ✓ Artificial intelligence implementation ✓ Process automation ✓ AI video & graphics production ✓ Chatbots ✓ Strategic consulting. Free consultation. ${voivodeship.name} voivodeship.`
     : '';
 
@@ -68,7 +76,18 @@ const CityDetail = () => {
   const localWyzwaniaAI = isEn && enData?.wyzwaniaAI ? enData.wyzwaniaAI : content?.wyzwaniaAI;
   const localCzasDojazdu = isEn && enData?.czasDojazdu ? enData.czasDojazdu : content?.czasDojazdu;
   const localPrzykladZastosowania = isEn && enData?.przykladZastosowania ? enData.przykladZastosowania : content?.przykladZastosowania;
-  const localFaq = isEn && enData?.faq ? enData.faq.map(f => ({ pytanie: f.question, odpowiedz: f.answer })) : (!isEn ? content?.faq : undefined);
+  const baseFaq = isEn && enData?.faq ? enData.faq.map(f => ({ pytanie: f.question, odpowiedz: f.answer })) : (!isEn ? content?.faq : undefined);
+
+  // Extra localized SEO sections + FAQ (PL only) — identical to static prerender output
+  const seoSections = useMemo(
+    () => (!isEn && city && voivodeship ? buildCitySeoSections(city, voivodeship, content?.branzeKluczowe) : []),
+    [isEn, city, voivodeship, content],
+  );
+  const localFaq = useMemo(
+    () => (!isEn && city ? [...(baseFaq ?? []), ...buildCitySeoFaq(city)] : baseFaq),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isEn, city, baseFaq],
+  );
 
   const jsonLd = useMemo(() => {
     if (!city || !voivodeship) return undefined;
@@ -139,7 +158,7 @@ const CityDetail = () => {
   if (!result) return <Navigate to="/" replace />;
 
   const heading = language === 'pl'
-    ? `Wdrożenia AI, szkolenia ChatGPT i konsulting dla firm w ${city!.locative}`
+    ? cityPageH1(city!)
     : `AI Implementation, ChatGPT Training & Consulting in ${city!.name}`;
 
   return (
@@ -286,6 +305,29 @@ const CityDetail = () => {
                 </>
               )}
             </div>
+
+            {/* Localized SEO sections (PL) — mirrored in the static prerender */}
+            {seoSections.length > 0 && (
+              <div className="mb-14 md:mb-20 space-y-10">
+                {seoSections.map((section) => (
+                  <section key={section.id}>
+                    <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-3">
+                      {section.heading}
+                    </h2>
+                    <div className="space-y-4">
+                      {section.paragraphs.map((p, i) => (
+                        <p
+                          key={i}
+                          className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl text-justify hyphens-auto"
+                        >
+                          {p}
+                        </p>
+                      ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
+            )}
 
             {/* Service cards */}
             <div className="mb-14 md:mb-20 grid sm:grid-cols-3 gap-4">

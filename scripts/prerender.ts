@@ -11,6 +11,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { voivodeships } from '../src/data/voivodeships';
 import { findCityContent } from '../src/data/cityContent/index';
+import {
+  buildCitySeoSections,
+  buildCitySeoFaq,
+  cityPageTitle,
+  cityPageDescription,
+  cityPageH1,
+} from '../src/data/cityContent/localSeo';
 import { digestArticles } from '../src/data/blogArticlesDigest';
 import { services as SERVICES_REGISTRY, HUB as SERVICES_HUB, servicesList, type Proto } from '../src/data/services/index';
 
@@ -74,8 +81,8 @@ function serviceLd(name: string, description: string, url: string, serviceType: 
 
 const STATIC_META: Record<string, Meta> = {
   '/': {
-    title: 'OpenMind AI Consulting — Wdrożenia AI i szkolenia',
-    description: 'Wdrożenia, automatyzacje, konsulting i praktyczne szkolenia AI dla firm, szkół i instytucji w całej Polsce.',
+    title: 'OpenMind AI Consulting — Wdrożenia AI, szkolenia i konsulting dla firm i szkół w Polsce',
+    description: 'OpenMind AI — polski lider wdrożeń sztucznej inteligencji dla firm, agencji i szkół. Konsulting, szkolenia AI i automatyzacja. Bezpłatne konsultacje.',
     h1: 'OpenMind AI Consulting',
     body: '<p>Wdrażamy sztuczną inteligencję, automatyzujemy procesy i prowadzimy praktyczne szkolenia AI dla organizacji w całej Polsce.</p>',
   },
@@ -641,6 +648,10 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
   const routePath = `/gdzie-dzialamy/${v.slug}/${c.slug}`;
   const canonical = `${SITE}${routePath}.html`;
 
+  const seoSections = buildCitySeoSections(c, v, content?.branzeKluczowe);
+  const seoFaq = buildCitySeoFaq(c);
+  const allFaq = [...(content?.faq ?? []), ...seoFaq];
+
   let body = '';
   if (content) {
     body += `<p>${esc(content.opisGospodarki)}</p>`;
@@ -658,14 +669,22 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
     if (content.czasDojazdu) {
       body += `<h2>Obsługa i dojazd</h2><p>${esc(content.czasDojazdu)}</p>`;
     }
-    if (content.faq?.length) {
-      body += `<h2>FAQ – sztuczna inteligencja w ${esc(c.locative)}</h2>` +
-        content.faq.map((f) => `<h3>${esc(f.pytanie)}</h3><p>${esc(f.odpowiedz)}</p>`).join('');
-    }
-    body += `<p><a href="/gdzie-dzialamy/${v.slug}">Zobacz pełną listę miast w województwie ${esc(v.name)}</a></p>`;
   } else {
-    body = `<p>OpenMind AI świadczy usługi wdrożeń, szkoleń i konsultingu sztucznej inteligencji w ${esc(c.locative)} (województwo ${esc(v.locativeName)}). Pomagamy lokalnym firmom wdrażać ChatGPT, automatyzować procesy oraz tworzyć materiały reklamowe z generatywną AI.</p><p><a href="/gdzie-dzialamy/${v.slug}">Zobacz pełną listę miast w województwie ${esc(v.name)}</a></p>`;
+    body = `<p>OpenMind AI świadczy usługi wdrożeń, szkoleń i konsultingu sztucznej inteligencji w ${esc(c.locative)} (województwo ${esc(v.locativeName)}). Pomagamy lokalnym firmom wdrażać ChatGPT, automatyzować procesy oraz tworzyć materiały reklamowe z generatywną AI.</p>`;
   }
+
+  body += seoSections
+    .map(
+      (s) =>
+        `<h2>${esc(s.heading)}</h2>` + s.paragraphs.map((p) => `<p>${esc(p)}</p>`).join(''),
+    )
+    .join('');
+
+  body += `<h2>FAQ – sztuczna inteligencja w ${esc(c.locative)}</h2>` +
+    allFaq.map((f) => `<h3>${esc(f.pytanie)}</h3><p>${esc(f.odpowiedz)}</p>`).join('');
+
+  body += `<p><a href="/gdzie-dzialamy/${v.slug}">Zobacz pełną listę miast w województwie ${esc(v.name)}</a></p>`;
+
 
   const graph: object[] = [
     {
@@ -695,10 +714,10 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
       ],
     },
   ];
-  if (content?.faq?.length) {
+  if (allFaq.length) {
     graph.push({
       '@type': 'FAQPage',
-      mainEntity: content.faq.map((f) => ({
+      mainEntity: allFaq.map((f) => ({
         '@type': 'Question',
         name: f.pytanie,
         acceptedAnswer: { '@type': 'Answer', text: f.odpowiedz },
@@ -716,9 +735,9 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
   });
 
   return {
-    title: `AI w ${c.locative} – Wdrożenia, Szkolenia i Konsulting Sztucznej Inteligencji | OpenMind AI`,
-    description: `Sztuczna inteligencja w ${c.locative} (województwo ${v.locativeName}). Wdrożenia AI, szkolenia z ChatGPT, automatyzacja procesów, agencja kreatywna AI. Bezpłatna konsultacja.`,
-    h1: `Sztuczna inteligencja (AI) w ${c.locative}`,
+    title: cityPageTitle(c),
+    description: cityPageDescription(c, v),
+    h1: cityPageH1(c),
     body,
     jsonLd: { '@context': 'https://schema.org', '@graph': graph },
   };

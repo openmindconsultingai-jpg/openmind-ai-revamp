@@ -80,7 +80,12 @@ const BlogArticlePage = () => {
 
   usePageMeta({
     title: article ? `${articleTitle} | Baza Wiedzy AI – OpenMind AI` : 'Artykuł | OpenMind AI',
-    description: article ? articleExcerpt.slice(0, 155) + '…' : '',
+    // clip() mirrors scripts/prerender.ts so static & hydrated description match
+    description: article
+      ? (articleExcerpt.length <= 155
+          ? articleExcerpt
+          : articleExcerpt.slice(0, 154).replace(/\s+\S*$/, '') + '…')
+      : '',
     keywords: 'artykuł AI, sztuczna inteligencja, machine learning, automatyzacja, ChatGPT, OpenMind AI, baza wiedzy',
     path: `/blog/${id}`,
     ogType: 'article',
