@@ -648,6 +648,10 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
   const routePath = `/gdzie-dzialamy/${v.slug}/${c.slug}`;
   const canonical = `${SITE}${routePath}.html`;
 
+  const seoSections = buildCitySeoSections(c, v, content?.branzeKluczowe);
+  const seoFaq = buildCitySeoFaq(c);
+  const allFaq = [...(content?.faq ?? []), ...seoFaq];
+
   let body = '';
   if (content) {
     body += `<p>${esc(content.opisGospodarki)}</p>`;
@@ -665,14 +669,22 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
     if (content.czasDojazdu) {
       body += `<h2>Obsługa i dojazd</h2><p>${esc(content.czasDojazdu)}</p>`;
     }
-    if (content.faq?.length) {
-      body += `<h2>FAQ – sztuczna inteligencja w ${esc(c.locative)}</h2>` +
-        content.faq.map((f) => `<h3>${esc(f.pytanie)}</h3><p>${esc(f.odpowiedz)}</p>`).join('');
-    }
-    body += `<p><a href="/gdzie-dzialamy/${v.slug}">Zobacz pełną listę miast w województwie ${esc(v.name)}</a></p>`;
   } else {
-    body = `<p>OpenMind AI świadczy usługi wdrożeń, szkoleń i konsultingu sztucznej inteligencji w ${esc(c.locative)} (województwo ${esc(v.locativeName)}). Pomagamy lokalnym firmom wdrażać ChatGPT, automatyzować procesy oraz tworzyć materiały reklamowe z generatywną AI.</p><p><a href="/gdzie-dzialamy/${v.slug}">Zobacz pełną listę miast w województwie ${esc(v.name)}</a></p>`;
+    body = `<p>OpenMind AI świadczy usługi wdrożeń, szkoleń i konsultingu sztucznej inteligencji w ${esc(c.locative)} (województwo ${esc(v.locativeName)}). Pomagamy lokalnym firmom wdrażać ChatGPT, automatyzować procesy oraz tworzyć materiały reklamowe z generatywną AI.</p>`;
   }
+
+  body += seoSections
+    .map(
+      (s) =>
+        `<h2>${esc(s.heading)}</h2>` + s.paragraphs.map((p) => `<p>${esc(p)}</p>`).join(''),
+    )
+    .join('');
+
+  body += `<h2>FAQ – sztuczna inteligencja w ${esc(c.locative)}</h2>` +
+    allFaq.map((f) => `<h3>${esc(f.pytanie)}</h3><p>${esc(f.odpowiedz)}</p>`).join('');
+
+  body += `<p><a href="/gdzie-dzialamy/${v.slug}">Zobacz pełną listę miast w województwie ${esc(v.name)}</a></p>`;
+
 
   const graph: object[] = [
     {
