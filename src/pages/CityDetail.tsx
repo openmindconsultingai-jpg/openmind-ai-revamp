@@ -158,7 +158,7 @@ const CityDetail = () => {
   if (!result) return <Navigate to="/" replace />;
 
   const heading = language === 'pl'
-    ? `Wdrożenia AI, szkolenia ChatGPT i konsulting dla firm w ${city!.locative}`
+    ? cityPageH1(city!)
     : `AI Implementation, ChatGPT Training & Consulting in ${city!.name}`;
 
   return (
