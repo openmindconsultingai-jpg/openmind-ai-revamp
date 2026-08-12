@@ -306,6 +306,29 @@ const CityDetail = () => {
               )}
             </div>
 
+            {/* Localized SEO sections (PL) — mirrored in the static prerender */}
+            {seoSections.length > 0 && (
+              <div className="mb-14 md:mb-20 space-y-10">
+                {seoSections.map((section) => (
+                  <section key={section.id}>
+                    <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-3">
+                      {section.heading}
+                    </h2>
+                    <div className="space-y-4">
+                      {section.paragraphs.map((p, i) => (
+                        <p
+                          key={i}
+                          className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl text-justify hyphens-auto"
+                        >
+                          {p}
+                        </p>
+                      ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
+            )}
+
             {/* Service cards */}
             <div className="mb-14 md:mb-20 grid sm:grid-cols-3 gap-4">
               {[
