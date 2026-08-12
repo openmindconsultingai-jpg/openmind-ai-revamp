@@ -7,6 +7,13 @@ import { MapPin, ArrowLeft, Building2, Lightbulb, Clock, HelpCircle, Navigation,
 import { Button } from '@/components/ui/button';
 import { findCity, voivodeships } from '@/data/voivodeships';
 import { findCityContent } from '@/data/cityContent';
+import {
+  buildCitySeoSections,
+  buildCitySeoFaq,
+  cityPageTitle,
+  cityPageDescription,
+  cityPageH1,
+} from '@/data/cityContent/localSeo';
 import usePageMeta from '@/hooks/usePageMeta';
 import useCanonical from '@/hooks/useCanonical';
 import {
