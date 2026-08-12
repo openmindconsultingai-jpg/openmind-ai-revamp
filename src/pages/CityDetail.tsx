@@ -76,7 +76,18 @@ const CityDetail = () => {
   const localWyzwaniaAI = isEn && enData?.wyzwaniaAI ? enData.wyzwaniaAI : content?.wyzwaniaAI;
   const localCzasDojazdu = isEn && enData?.czasDojazdu ? enData.czasDojazdu : content?.czasDojazdu;
   const localPrzykladZastosowania = isEn && enData?.przykladZastosowania ? enData.przykladZastosowania : content?.przykladZastosowania;
-  const localFaq = isEn && enData?.faq ? enData.faq.map(f => ({ pytanie: f.question, odpowiedz: f.answer })) : (!isEn ? content?.faq : undefined);
+  const baseFaq = isEn && enData?.faq ? enData.faq.map(f => ({ pytanie: f.question, odpowiedz: f.answer })) : (!isEn ? content?.faq : undefined);
+
+  // Extra localized SEO sections + FAQ (PL only) — identical to static prerender output
+  const seoSections = useMemo(
+    () => (!isEn && city && voivodeship ? buildCitySeoSections(city, voivodeship, content?.branzeKluczowe) : []),
+    [isEn, city, voivodeship, content],
+  );
+  const localFaq = useMemo(
+    () => (!isEn && city ? [...(baseFaq ?? []), ...buildCitySeoFaq(city)] : baseFaq),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isEn, city, baseFaq],
+  );
 
   const jsonLd = useMemo(() => {
     if (!city || !voivodeship) return undefined;
