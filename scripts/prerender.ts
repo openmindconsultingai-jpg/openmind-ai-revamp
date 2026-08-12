@@ -714,10 +714,10 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
       ],
     },
   ];
-  if (content?.faq?.length) {
+  if (allFaq.length) {
     graph.push({
       '@type': 'FAQPage',
-      mainEntity: content.faq.map((f) => ({
+      mainEntity: allFaq.map((f) => ({
         '@type': 'Question',
         name: f.pytanie,
         acceptedAnswer: { '@type': 'Answer', text: f.odpowiedz },
