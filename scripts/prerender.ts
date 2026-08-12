@@ -11,6 +11,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { voivodeships } from '../src/data/voivodeships';
 import { findCityContent } from '../src/data/cityContent/index';
+import {
+  buildCitySeoSections,
+  buildCitySeoFaq,
+  cityPageTitle,
+  cityPageDescription,
+  cityPageH1,
+} from '../src/data/cityContent/localSeo';
 import { digestArticles } from '../src/data/blogArticlesDigest';
 import { services as SERVICES_REGISTRY, HUB as SERVICES_HUB, servicesList, type Proto } from '../src/data/services/index';
 
