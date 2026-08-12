@@ -40,15 +40,16 @@ const CityDetail = () => {
       .filter(Boolean) as { city: typeof city; voivodeship: typeof voivodeship }[];
   }, [content, voivodeship]);
 
+  // Title & description MUST match scripts/prerender.ts (shared source of truth)
   const seoTitle = city
     ? language === 'pl'
-      ? `Szkolenia AI ${city.name} – Wdrożenia, Automatyzacja, Agencja Kreatywna | OpenMind AI`
+      ? cityPageTitle(city)
       : `AI Training ${city.name} – Implementation, Automation, Creative Agency | OpenMind AI`
     : 'OpenMind AI';
 
   const seoDescription = city && voivodeship
     ? language === 'pl'
-      ? `Szkolenia AI w ${city.locative} ✓ Wdrożenia sztucznej inteligencji ✓ Automatyzacja procesów ✓ Produkcja wideo i grafik AI ✓ Chatboty ✓ Doradztwo strategiczne. Bezpłatna konsultacja. Woj. ${voivodeship.name.toLowerCase()}.`
+      ? cityPageDescription(city, voivodeship)
       : `AI Training in ${city.name} ✓ Artificial intelligence implementation ✓ Process automation ✓ AI video & graphics production ✓ Chatbots ✓ Strategic consulting. Free consultation. ${voivodeship.name} voivodeship.`
     : '';
 
