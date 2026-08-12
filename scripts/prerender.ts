@@ -81,8 +81,8 @@ function serviceLd(name: string, description: string, url: string, serviceType: 
 
 const STATIC_META: Record<string, Meta> = {
   '/': {
-    title: 'OpenMind AI Consulting — Wdrożenia AI i szkolenia',
-    description: 'Wdrożenia, automatyzacje, konsulting i praktyczne szkolenia AI dla firm, szkół i instytucji w całej Polsce.',
+    title: 'OpenMind AI Consulting — Wdrożenia AI, szkolenia i konsulting dla firm i szkół w Polsce',
+    description: 'OpenMind AI — polski lider wdrożeń sztucznej inteligencji dla firm, agencji i szkół. Konsulting, szkolenia AI i automatyzacja. Bezpłatne konsultacje.',
     h1: 'OpenMind AI Consulting',
     body: '<p>Wdrażamy sztuczną inteligencję, automatyzujemy procesy i prowadzimy praktyczne szkolenia AI dla organizacji w całej Polsce.</p>',
   },
