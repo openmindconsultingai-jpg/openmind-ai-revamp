@@ -735,9 +735,9 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
   });
 
   return {
-    title: `AI w ${c.locative} – Wdrożenia, Szkolenia i Konsulting Sztucznej Inteligencji | OpenMind AI`,
-    description: `Sztuczna inteligencja w ${c.locative} (województwo ${v.locativeName}). Wdrożenia AI, szkolenia z ChatGPT, automatyzacja procesów, agencja kreatywna AI. Bezpłatna konsultacja.`,
-    h1: `Sztuczna inteligencja (AI) w ${c.locative}`,
+    title: cityPageTitle(c),
+    description: cityPageDescription(c, v),
+    h1: cityPageH1(c),
     body,
     jsonLd: { '@context': 'https://schema.org', '@graph': graph },
   };
