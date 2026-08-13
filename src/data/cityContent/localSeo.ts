@@ -19,11 +19,13 @@ export interface CitySeoFaq {
 interface CityLike {
   name: string;
   locative: string;
+  genitive: string;
 }
 
 interface VoivLike {
   name: string;
   locativeName: string;
+  genitiveName: string;
 }
 
 export const cityPageTitle = (city: CityLike): string =>
@@ -54,6 +56,7 @@ export const buildCitySeoSections = (
 ): CitySeoSection[] => {
   const M = city.name;
   const L = city.locative;
+  const G = city.genitive;
   const branze = listBranze(branzeKluczowe);
 
   return [
@@ -63,7 +66,7 @@ export const buildCitySeoSections = (
       paragraphs: [
         `Wdrożenia AI ${M} realizujemy etapowo: zaczynamy od audytu procesów, w którym mierzymy czas pracy poświęcany na powtarzalne zadania, a następnie wybieramy te obszary, w których sztuczna inteligencja ${M} przyniesie najszybszy zwrot z inwestycji. Najczęściej automatyzujemy obsługę korespondencji i skrzynek firmowych, kwalifikację zapytań ofertowych, przygotowywanie ofert i kosztorysów, obieg dokumentów, wystawianie i opisywanie faktur, tworzenie raportów sprzedażowych oraz przygotowywanie treści marketingowych.`,
         `Pracujemy z firmami z ${L} działającymi w obszarach takich jak ${branze}. Dla e-commerce budujemy generatory opisów produktów i asystentów obsługi zamówień, dla firm produkcyjnych – automatyczne raportowanie i analizę danych z systemów ERP, dla biur rachunkowych i kancelarii – narzędzia do streszczania dokumentów i wyszukiwania informacji w archiwach, a dla sektora usługowego – systemy odpowiadające na zapytania klientów przez całą dobę.`,
-        `Każde wdrożenie kończy się przekazaniem dokumentacji, instrukcji dla zespołu i krótkim szkoleniem wdrożeniowym. Dzięki temu firma z ${M} nie zostaje z narzędziem, którego nikt nie umie obsłużyć – pracownicy od pierwszego dnia wiedzą, jak korzystać z nowych rozwiązań i jak zgłaszać potrzeby rozwojowe.`,
+        `Każde wdrożenie kończy się przekazaniem dokumentacji, instrukcji dla zespołu i krótkim szkoleniem wdrożeniowym. Dzięki temu firma z ${G} nie zostaje z narzędziem, którego nikt nie umie obsłużyć – pracownicy od pierwszego dnia wiedzą, jak korzystać z nowych rozwiązań i jak zgłaszać potrzeby rozwojowe.`,
       ],
     },
     {
@@ -72,7 +75,7 @@ export const buildCitySeoSections = (
       paragraphs: [
         `Szkolenia AI ${M} prowadzimy w trzech formatach: stacjonarnie w siedzibie klienta lub wynajętej sali w ${L}, online w formie warsztatów na żywo oraz indywidualnie – jako mentoring dla właścicieli firm i kadry zarządzającej. Każdy program dopasowujemy do branży i realnych zadań uczestników, więc ćwiczenia wykonujemy na dokumentach, materiałach i procesach danej organizacji, a nie na abstrakcyjnych przykładach.`,
         `Program podstawowy obejmuje pracę z ChatGPT i innymi najlepszymi narzędziami AI: skuteczne formułowanie poleceń, przygotowywanie ofert i pism, analizę danych i tabel, tworzenie prezentacji, redagowanie treści marketingowych oraz zasady bezpieczeństwa i ochrony danych osobowych zgodnie z RODO. Poziom zaawansowany to automatyzacja workflow, budowa własnych asystentów AI, integracje z narzędziami firmowymi oraz generatywna grafika i wideo.`,
-        `Szkolenia kierujemy do zespołów sprzedaży, marketingu, obsługi klienta, HR, administracji i działów technicznych, a także do jednoosobowych działalności i mikrofirm z ${M}, które chcą pracować szybciej bez zwiększania zatrudnienia. Po warsztacie uczestnicy otrzymują materiały, bibliotekę gotowych promptów i możliwość konsultacji wdrożeniowej.`,
+        `Szkolenia kierujemy do zespołów sprzedaży, marketingu, obsługi klienta, HR, administracji i działów technicznych, a także do jednoosobowych działalności i mikrofirm z ${G}, które chcą pracować szybciej bez zwiększania zatrudnienia. Po warsztacie uczestnicy otrzymują materiały, bibliotekę gotowych promptów i możliwość konsultacji wdrożeniowej.`,
       ],
     },
     {
@@ -85,7 +88,7 @@ export const buildCitySeoSections = (
     },
     {
       id: 'agenci',
-      heading: `Agenci AI i chatboty dla firm z ${M}`,
+      heading: `Agenci AI i chatboty dla firm z ${G}`,
       paragraphs: [
         `Agent AI ${M} to asystent, który zna ofertę, cennik, procedury i najczęstsze pytania konkretnej firmy. Budujemy go na bazie dokumentów klienta, dzięki czemu odpowiada zgodnie z realnymi zasadami organizacji, a nie ogólną wiedzą z internetu. Agent może pracować na stronie internetowej, w komunikatorze, w wewnętrznym systemie firmy lub jako asystent telefoniczny obsługujący pierwszy kontakt.`,
         `Chatboty wdrażane w firmach z ${L} przejmują powtarzalne rozmowy: pytania o dostępność, godziny pracy, status zamówienia, warunki współpracy czy dokumenty potrzebne do wyceny. Rozmowy, które wymagają decyzji człowieka, agent przekazuje do zespołu wraz z podsumowaniem. Dzięki temu klient dostaje odpowiedź natychmiast, a pracownicy zajmują się wyłącznie sprawami o realnej wartości.`,
@@ -95,28 +98,28 @@ export const buildCitySeoSections = (
       id: 'edukacja',
       heading: `AI dla szkół i edukacji w ${L}`,
       paragraphs: [
-        `Placówkom oświatowym z ${M} oferujemy szkolenia rad pedagogicznych, warsztaty dla uczniów oraz pomoc w przygotowaniu szkolnej polityki korzystania ze sztucznej inteligencji. Nauczyciele uczą się przygotowywać materiały dydaktyczne, sprawdziany, scenariusze lekcji i informacje zwrotne dla uczniów, oszczędzając czas na pracy administracyjnej.`,
+        `Placówkom oświatowym z ${G} oferujemy szkolenia rad pedagogicznych, warsztaty dla uczniów oraz pomoc w przygotowaniu szkolnej polityki korzystania ze sztucznej inteligencji. Nauczyciele uczą się przygotowywać materiały dydaktyczne, sprawdziany, scenariusze lekcji i informacje zwrotne dla uczniów, oszczędzając czas na pracy administracyjnej.`,
         `Osobno pracujemy z uczniami nad świadomym i uczciwym korzystaniem z narzędzi AI: weryfikacją źródeł, rozpoznawaniem błędnych odpowiedzi modeli oraz odpowiedzialnym wykorzystaniem generatywnej grafiki i tekstu. Szkolenia prowadzimy stacjonarnie w ${L} oraz zdalnie, także dla zespołów kilku placówek jednocześnie.`,
       ],
     },
     {
       id: 'dlaczego',
-      heading: `Dlaczego firmy z ${M} wybierają OpenMind AI`,
+      heading: `Dlaczego firmy z ${G} wybierają OpenMind AI`,
       paragraphs: [
         `Pracujemy po polsku – dokumentacja, szkolenia, wsparcie i kontakt z opiekunem projektu prowadzone są w języku polskim, co znacząco skraca czas wdrożenia w zespołach nietechnicznych. Rozliczamy się w oparciu o jasny zakres prac, a przed startem pokazujemy, które procesy realnie warto zautomatyzować, a które lepiej zostawić bez zmian.`,
         `Pierwsze efekty pojawiają się zwykle w ciągu kilku dni do kilku tygodni, w zależności od złożoności projektu: proste automatyzacje i szkolenia działają niemal od razu, rozbudowani agenci AI i integracje z systemami firmowymi wymagają dłuższego cyklu. Po zakończeniu wdrożenia zapewniamy wsparcie techniczne, aktualizacje narzędzi i konsultacje rozwojowe.`,
-        `Firmy z ${L} i całego województwa ${voivodeship.locativeName} obsługujemy zarówno zdalnie, jak i na miejscu – dojeżdżamy na warsztaty, spotkania wdrożeniowe i prezentacje dla zarządu. Pierwsza rozmowa konsultacyjna jest bezpłatna i niezobowiązująca.`,
+        `Firmy z ${L} i całego województwa ${voivodeship.genitiveName} obsługujemy zarówno zdalnie, jak i na miejscu – dojeżdżamy na warsztaty, spotkania wdrożeniowe i prezentacje dla zarządu. Pierwsza rozmowa konsultacyjna jest bezpłatna i niezobowiązująca.`,
       ],
     },
   ];
 };
 
 export const buildCitySeoFaq = (city: CityLike): CitySeoFaq[] => {
-  const M = city.name;
+  const G = city.genitive;
   const L = city.locative;
   return [
     {
-      pytanie: `Ile kosztuje wdrożenie AI w firmie z ${M}?`,
+      pytanie: `Ile kosztuje wdrożenie AI w firmie z ${G}?`,
       odpowiedz: `Koszt zależy od zakresu: pojedyncza automatyzacja procesu to zwykle wydatek rzędu kilku tysięcy złotych, a rozbudowany agent AI zintegrowany z systemami firmowymi kosztuje odpowiednio więcej. Wycenę przygotowujemy dopiero po bezpłatnym audycie, w którym sprawdzamy, ile czasu pracy pochłaniają obecne procesy. Dzięki temu od razu widać, w jakim czasie wdrożenie się zwróci. Nie pobieramy opłat za pierwszą rozmowę i wstępną analizę potrzeb.`,
     },
     {
