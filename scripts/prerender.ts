@@ -585,14 +585,14 @@ function voivMeta(slug: string): Meta | null {
     )
     .join('');
 
-  const body = `<p>OpenMind AI Consulting świadczy pełen zakres usług z obszaru sztucznej inteligencji dla firm, instytucji publicznych, agencji marketingowych oraz placówek edukacyjnych z województwa ${esc(v.locativeName)}. Obsługujemy ${cityCount} miast regionu — od największych ośrodków (${esc(firstFour)}) po miejscowości powiatowe. Działamy zarówno zdalnie, jak i stacjonarnie na miejscu u klienta.</p>
+  const body = `<p>OpenMind AI Consulting świadczy pełen zakres usług z obszaru sztucznej inteligencji dla firm, instytucji publicznych, agencji marketingowych oraz placówek edukacyjnych z województwa ${esc(v.genitiveName)}. Obsługujemy ${cityCount} miast regionu — od największych ośrodków (${esc(firstFour)}) po miejscowości powiatowe. Działamy zarówno zdalnie, jak i stacjonarnie na miejscu u klienta.</p>
 <p>W województwie ${esc(v.locativeName)} wdrażamy modele językowe (ChatGPT, Claude, Gemini, Microsoft Copilot), automatyzujemy procesy w Make/n8n/Zapier, projektujemy asystentów AI dla obsługi klienta oraz produkujemy materiały reklamowe z wykorzystaniem generatywnej sztucznej inteligencji (wideo AI, obrazy AI, voice-over). Prowadzimy praktyczne szkolenia z prompt engineeringu dla pracowników biurowych, zespołów sprzedażowych, marketingu, HR oraz zarządów.</p>
 
 <h2>Miasta obsługiwane w województwie ${esc(v.name)}</h2>
 <p>Pełna lista miast, dla których przygotowaliśmy dedykowane strony z opisem lokalnej gospodarki, kluczowych branż i przykładów wdrożeń sztucznej inteligencji:</p>
 <ul>${cityLinks}</ul>
 
-<h2>Zastosowania AI dla firm z województwa ${esc(v.name)}</h2>
+<h2>Zastosowania AI dla firm z województwa ${esc(v.genitiveName)}</h2>
 <p>Najczęstsze scenariusze wdrożeń w regionie ${esc(v.locativeName)} obejmują: automatyzację obsługi zapytań mailowych i czatów, generowanie ofert handlowych i dokumentów, ekstrakcję danych z faktur i umów, kwalifikację leadów sprzedażowych, raportowanie zarządcze, tworzenie treści marketingowych i social media, wewnętrzne bazy wiedzy oparte o wyszukiwanie semantyczne, a także asystentów AI dla działów HR i obsługi klienta.</p>
 <p>Dla przedsiębiorstw produkcyjnych oferujemy analizę danych operacyjnych i predykcyjne utrzymanie ruchu; dla e-commerce – personalizację rekomendacji i automatyczne opisy produktów; dla kancelarii prawnych – analizę umów; dla klinik medycznych – wsparcie dokumentacji. Wszystkie wdrożenia projektujemy zgodnie z RODO, z opcją self-hosted dla danych wrażliwych.</p>
 
@@ -600,7 +600,7 @@ function voivMeta(slug: string): Meta | null {
 <p>Prowadzimy szkolenia z ChatGPT, Claude, Gemini i Microsoft Copilot dla firm, instytucji oraz szkół w miastach: ${esc(v.cities.map((c) => c.name).join(', '))}. Warsztaty realizujemy w formatach 4-godzinnych, całodniowych i wielodniowych – online, stacjonarnie w siedzibie klienta lub hybrydowo.</p>
 
 <h2>Skontaktuj się z nami</h2>
-<p>Pierwsza konsultacja dla firm z województwa ${esc(v.locativeName)} jest bezpłatna i niezobowiązująca. Napisz na biuro@openmindai.pl lub wypełnij <a href="/contact">formularz kontaktowy</a>, a my przygotujemy propozycję dopasowaną do Twojej organizacji.</p>`;
+<p>Pierwsza konsultacja dla firm z województwa ${esc(v.genitiveName)} jest bezpłatna i niezobowiązująca. Napisz na biuro@openmindai.pl lub wypełnij <a href="/contact">formularz kontaktowy</a>, a my przygotujemy propozycję dopasowaną do Twojej organizacji.</p>`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -632,7 +632,7 @@ function voivMeta(slug: string): Meta | null {
 
   return {
     title: `AI w województwie ${v.name} – Wdrożenia, Szkolenia i Konsulting Sztucznej Inteligencji | OpenMind AI`,
-    description: `Sztuczna inteligencja w województwie ${v.locativeName}. Wdrożenia AI, szkolenia z ChatGPT, automatyzacja procesów. Konsulting dla firm z ${cityCount} miast regionu ${v.name}.`.slice(0, 158),
+    description: `Sztuczna inteligencja w województwie ${v.locativeName}. Wdrożenia AI, szkolenia z ChatGPT, automatyzacja procesów. Konsulting dla firm z ${cityCount} miast regionu ${v.genitiveName}.`.slice(0, 158),
     h1: `AI w województwie ${v.name}`,
     body,
     jsonLd,
@@ -660,7 +660,7 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
         .map((b) => `<li>${esc(b)}</li>`)
         .join('')}</ul>`;
     }
-    body += `<h2>Zastosowania AI dla firm z ${esc(c.name)}</h2><p>${esc(content.wyzwaniaAI)}</p>`;
+    body += `<h2>Zastosowania AI dla firm z ${esc(c.genitive)}</h2><p>${esc(content.wyzwaniaAI)}</p>`;
     if (content.przykladZastosowania) {
       body += `<h2>Przykładowy scenariusz wdrożenia AI w ${esc(c.locative)}</h2><p>${esc(
         content.przykladZastosowania,

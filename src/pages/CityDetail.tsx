@@ -205,7 +205,7 @@ const CityDetail = () => {
                   {hasLocalizedContent ? (
                     language === 'pl' ? (
                       <>
-                        OpenMind AI Consulting świadczy usługi wdrożeń AI, szkoleń z najlepszych narzędzi AI na rynku oraz konsultingu strategicznego dla firm z {city!.name} ({voivodeship!.name}, {content.populacja} mieszkańców). {content.wyzwaniaAI} Pierwsze konsultacje są bezpłatne, szkolenia dostępne stacjonarnie i online, wdrożenia realizowane etapowo z pierwszymi efektami już w ciągu kilku dni lub tygodni, w zależności od stopnia zaawansowania projektu.
+                        OpenMind AI Consulting świadczy usługi wdrożeń AI, szkoleń z najlepszych narzędzi AI na rynku oraz konsultingu strategicznego dla firm z {city!.genitive} ({voivodeship!.name}, {content.populacja} mieszkańców). {content.wyzwaniaAI} Pierwsze konsultacje są bezpłatne, szkolenia dostępne stacjonarnie i online, wdrożenia realizowane etapowo z pierwszymi efektami już w ciągu kilku dni lub tygodni, w zależności od stopnia zaawansowania projektu.
                       </>
                     ) : (
                       <>
@@ -233,7 +233,7 @@ const CityDetail = () => {
                     <div className="flex items-center gap-2 mb-3">
                       <Building2 className="w-5 h-5 text-primary" />
                       <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground">
-                        {language === 'pl' ? `Gospodarka ${city!.name} i potencjał dla AI` : `Economy of ${city!.name} & AI Potential`}
+                        {language === 'pl' ? `Gospodarka ${city!.genitive} i potencjał dla AI` : `Economy of ${city!.name} & AI Potential`}
                       </h2>
                     </div>
                     <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
@@ -261,7 +261,7 @@ const CityDetail = () => {
                     <div className="flex items-center gap-2 mb-3">
                       <Lightbulb className="w-5 h-5 text-primary" />
                       <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground">
-                        {language === 'pl' ? `Zastosowania AI dla firm z ${city!.name}` : `AI Applications for Businesses in ${city!.name}`}
+                        {language === 'pl' ? `Zastosowania AI dla firm z ${city!.genitive}` : `AI Applications for Businesses in ${city!.name}`}
                       </h2>
                     </div>
                     <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
@@ -284,7 +284,7 @@ const CityDetail = () => {
                     <div className="flex items-center gap-2 mb-3">
                       <Clock className="w-5 h-5 text-primary" />
                       <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground">
-                        {language === 'pl' ? `Jak obsługujemy klientów z ${city!.name}` : `How We Serve Clients in ${city!.name}`}
+                        {language === 'pl' ? `Jak obsługujemy klientów z ${city!.genitive}` : `How We Serve Clients in ${city!.name}`}
                       </h2>
                     </div>
                     <p className="text-sm text-muted-foreground">{localCzasDojazdu}</p>
@@ -387,7 +387,7 @@ const CityDetail = () => {
                 <div className="flex items-center gap-2 mb-6">
                   <Navigation className="w-5 h-5 text-primary" />
                   <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground">
-                    {language === 'pl' ? `Obsługujemy też firmy z okolic ${city!.name}` : `We also serve businesses near ${city!.name}`}
+                    {language === 'pl' ? `Obsługujemy też firmy z okolic ${city!.genitive}` : `We also serve businesses near ${city!.name}`}
                   </h2>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -408,7 +408,7 @@ const CityDetail = () => {
             <div className="mb-14 md:mb-20 text-center p-8 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10">
               <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3">
                 <span className="text-gradient">
-                  {language === 'pl' ? `Gotowy na wdrożenie AI w Twojej firmie z ${city!.name}?` : `Ready for AI implementation in ${city!.name}?`}
+                  {language === 'pl' ? `Gotowy na wdrożenie AI w Twojej firmie z ${city!.genitive}?` : `Ready for AI implementation in ${city!.name}?`}
                 </span>
               </h2>
               <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
