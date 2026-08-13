@@ -83,7 +83,7 @@ export const buildCitySeoSections = (
       heading: `Automatyzacja procesów biznesowych w ${L}`,
       paragraphs: [
         `Automatyzacja AI ${M} to połączenie modeli językowych z narzędziami przepływu pracy, dzięki którym dane przenoszą się między systemami bez ręcznego przepisywania. Łączymy pocztę, arkusze, CRM, systemy magazynowe, kalendarze i komunikatory w spójny obieg, w którym zgłoszenie klienta trafia od razu do właściwej osoby, a raport powstaje automatycznie o ustalonej godzinie.`,
-        `Typowe scenariusze dla firm z ${L} to: automatyczne odpowiedzi na zapytania ofertowe wraz z wyceną wstępną, kategoryzacja i priorytetyzacja zgłoszeń serwisowych, odczytywanie danych z faktur i dokumentów PDF, przypomnienia o płatnościach, monitoring opinii w internecie oraz cykliczne podsumowania sprzedaży i ruchu na stronie. Efektem jest zwykle kilka do kilkunastu godzin pracy odzyskiwanych tygodniowo w skali zespołu.`,
+        `Typowe scenariusze dla firm z ${G} to: automatyczne odpowiedzi na zapytania ofertowe wraz z wyceną wstępną, kategoryzacja i priorytetyzacja zgłoszeń serwisowych, odczytywanie danych z faktur i dokumentów PDF, przypomnienia o płatnościach, monitoring opinii w internecie oraz cykliczne podsumowania sprzedaży i ruchu na stronie. Efektem jest zwykle kilka do kilkunastu godzin pracy odzyskiwanych tygodniowo w skali zespołu.`,
       ],
     },
     {
@@ -108,7 +108,7 @@ export const buildCitySeoSections = (
       paragraphs: [
         `Pracujemy po polsku – dokumentacja, szkolenia, wsparcie i kontakt z opiekunem projektu prowadzone są w języku polskim, co znacząco skraca czas wdrożenia w zespołach nietechnicznych. Rozliczamy się w oparciu o jasny zakres prac, a przed startem pokazujemy, które procesy realnie warto zautomatyzować, a które lepiej zostawić bez zmian.`,
         `Pierwsze efekty pojawiają się zwykle w ciągu kilku dni do kilku tygodni, w zależności od złożoności projektu: proste automatyzacje i szkolenia działają niemal od razu, rozbudowani agenci AI i integracje z systemami firmowymi wymagają dłuższego cyklu. Po zakończeniu wdrożenia zapewniamy wsparcie techniczne, aktualizacje narzędzi i konsultacje rozwojowe.`,
-        `Firmy z ${L} i całego województwa ${voivodeship.genitiveName} obsługujemy zarówno zdalnie, jak i na miejscu – dojeżdżamy na warsztaty, spotkania wdrożeniowe i prezentacje dla zarządu. Pierwsza rozmowa konsultacyjna jest bezpłatna i niezobowiązująca.`,
+        `Firmy z ${G} i całego województwa ${voivodeship.genitiveName} obsługujemy zarówno zdalnie, jak i na miejscu – dojeżdżamy na warsztaty, spotkania wdrożeniowe i prezentacje dla zarządu. Pierwsza rozmowa konsultacyjna jest bezpłatna i niezobowiązująca.`,
       ],
     },
   ];
