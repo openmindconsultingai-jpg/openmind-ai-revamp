@@ -9,6 +9,7 @@ export interface VoivodeshipData {
   name: string;
   slug: string;
   locativeName: string; // e.g. "kujawsko-pomorskim"
+  genitiveName: string; // e.g. "kujawsko-pomorskiego" (z województwa ...)
   cities: CityData[];
 }
 
@@ -22,7 +23,7 @@ const toSlug = (name: string) =>
 
 export const voivodeships: VoivodeshipData[] = [
   {
-    name: 'Dolnośląskie', slug: 'dolnoslaskie', locativeName: 'dolnośląskim',
+    name: 'Dolnośląskie', slug: 'dolnoslaskie', locativeName: 'dolnośląskim', genitiveName: 'dolnośląskiego',
     cities: [
       { name: 'Wrocław', slug: toSlug('Wrocław'), locative: 'Wrocławiu', genitive: 'Wrocławia' },
       { name: 'Wałbrzych', slug: toSlug('Wałbrzych'), locative: 'Wałbrzychu', genitive: 'Wałbrzycha' },
@@ -39,7 +40,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Kujawsko-Pomorskie', slug: 'kujawsko-pomorskie', locativeName: 'kujawsko-pomorskim',
+    name: 'Kujawsko-Pomorskie', slug: 'kujawsko-pomorskie', locativeName: 'kujawsko-pomorskim', genitiveName: 'kujawsko-pomorskiego',
     cities: [
       { name: 'Bydgoszcz', slug: toSlug('Bydgoszcz'), locative: 'Bydgoszczy', genitive: 'Bydgoszczy' },
       { name: 'Toruń', slug: toSlug('Toruń'), locative: 'Toruniu', genitive: 'Torunia' },
@@ -56,7 +57,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Lubelskie', slug: 'lubelskie', locativeName: 'lubelskim',
+    name: 'Lubelskie', slug: 'lubelskie', locativeName: 'lubelskim', genitiveName: 'lubelskiego',
     cities: [
       { name: 'Lublin', slug: toSlug('Lublin'), locative: 'Lublinie', genitive: 'Lublina' },
       { name: 'Zamość', slug: toSlug('Zamość'), locative: 'Zamościu', genitive: 'Zamościa' },
@@ -73,7 +74,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Lubuskie', slug: 'lubuskie', locativeName: 'lubuskim',
+    name: 'Lubuskie', slug: 'lubuskie', locativeName: 'lubuskim', genitiveName: 'lubuskiego',
     cities: [
       { name: 'Zielona Góra', slug: toSlug('Zielona Góra'), locative: 'Zielonej Górze', genitive: 'Zielonej Góry' },
       { name: 'Gorzów Wielkopolski', slug: toSlug('Gorzów Wielkopolski'), locative: 'Gorzowie Wielkopolskim', genitive: 'Gorzowa Wielkopolskiego' },
@@ -90,7 +91,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Łódzkie', slug: 'lodzkie', locativeName: 'łódzkim',
+    name: 'Łódzkie', slug: 'lodzkie', locativeName: 'łódzkim', genitiveName: 'łódzkiego',
     cities: [
       { name: 'Łódź', slug: toSlug('Łódź'), locative: 'Łodzi', genitive: 'Łodzi' },
       { name: 'Pabianice', slug: toSlug('Pabianice'), locative: 'Pabianicach', genitive: 'Pabianic' },
@@ -107,7 +108,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Małopolskie', slug: 'malopolskie', locativeName: 'małopolskim',
+    name: 'Małopolskie', slug: 'malopolskie', locativeName: 'małopolskim', genitiveName: 'małopolskiego',
     cities: [
       { name: 'Kraków', slug: toSlug('Kraków'), locative: 'Krakowie', genitive: 'Krakowa' },
       { name: 'Tarnów', slug: toSlug('Tarnów'), locative: 'Tarnowie', genitive: 'Tarnowa' },
@@ -124,7 +125,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Mazowieckie', slug: 'mazowieckie', locativeName: 'mazowieckim',
+    name: 'Mazowieckie', slug: 'mazowieckie', locativeName: 'mazowieckim', genitiveName: 'mazowieckiego',
     cities: [
       { name: 'Warszawa', slug: toSlug('Warszawa'), locative: 'Warszawie', genitive: 'Warszawy' },
       { name: 'Radom', slug: toSlug('Radom'), locative: 'Radomiu', genitive: 'Radomia' },
@@ -141,7 +142,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Opolskie', slug: 'opolskie', locativeName: 'opolskim',
+    name: 'Opolskie', slug: 'opolskie', locativeName: 'opolskim', genitiveName: 'opolskiego',
     cities: [
       { name: 'Opole', slug: toSlug('Opole'), locative: 'Opolu', genitive: 'Opola' },
       { name: 'Kędzierzyn-Koźle', slug: toSlug('Kędzierzyn-Koźle'), locative: 'Kędzierzynie-Koźlu', genitive: 'Kędzierzyna-Koźla' },
@@ -158,7 +159,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Podkarpackie', slug: 'podkarpackie', locativeName: 'podkarpackim',
+    name: 'Podkarpackie', slug: 'podkarpackie', locativeName: 'podkarpackim', genitiveName: 'podkarpackiego',
     cities: [
       { name: 'Rzeszów', slug: toSlug('Rzeszów'), locative: 'Rzeszowie', genitive: 'Rzeszowa' },
       { name: 'Przemyśl', slug: toSlug('Przemyśl'), locative: 'Przemyślu', genitive: 'Przemyśla' },
@@ -175,7 +176,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Podlaskie', slug: 'podlaskie', locativeName: 'podlaskim',
+    name: 'Podlaskie', slug: 'podlaskie', locativeName: 'podlaskim', genitiveName: 'podlaskiego',
     cities: [
       { name: 'Białystok', slug: toSlug('Białystok'), locative: 'Białymstoku', genitive: 'Białegostoku' },
       { name: 'Suwałki', slug: toSlug('Suwałki'), locative: 'Suwałkach', genitive: 'Suwałk' },
@@ -192,7 +193,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Pomorskie', slug: 'pomorskie', locativeName: 'pomorskim',
+    name: 'Pomorskie', slug: 'pomorskie', locativeName: 'pomorskim', genitiveName: 'pomorskiego',
     cities: [
       { name: 'Gdańsk', slug: toSlug('Gdańsk'), locative: 'Gdańsku', genitive: 'Gdańska' },
       { name: 'Gdynia', slug: toSlug('Gdynia'), locative: 'Gdyni', genitive: 'Gdyni' },
@@ -209,7 +210,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Śląskie', slug: 'slaskie', locativeName: 'śląskim',
+    name: 'Śląskie', slug: 'slaskie', locativeName: 'śląskim', genitiveName: 'śląskiego',
     cities: [
       { name: 'Katowice', slug: toSlug('Katowice'), locative: 'Katowicach', genitive: 'Katowic' },
       { name: 'Częstochowa', slug: toSlug('Częstochowa'), locative: 'Częstochowie', genitive: 'Częstochowy' },
@@ -226,7 +227,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Świętokrzyskie', slug: 'swietokrzyskie', locativeName: 'świętokrzyskim',
+    name: 'Świętokrzyskie', slug: 'swietokrzyskie', locativeName: 'świętokrzyskim', genitiveName: 'świętokrzyskiego',
     cities: [
       { name: 'Kielce', slug: toSlug('Kielce'), locative: 'Kielcach', genitive: 'Kielc' },
       { name: 'Starachowice', slug: toSlug('Starachowice'), locative: 'Starachowicach', genitive: 'Starachowic' },
@@ -243,7 +244,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Warmińsko-Mazurskie', slug: 'warminsko-mazurskie', locativeName: 'warmińsko-mazurskim',
+    name: 'Warmińsko-Mazurskie', slug: 'warminsko-mazurskie', locativeName: 'warmińsko-mazurskim', genitiveName: 'warmińsko-mazurskiego',
     cities: [
       { name: 'Olsztyn', slug: toSlug('Olsztyn'), locative: 'Olsztynie', genitive: 'Olsztyna' },
       { name: 'Elbląg', slug: toSlug('Elbląg'), locative: 'Elblągu', genitive: 'Elbląga' },
@@ -260,7 +261,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Wielkopolskie', slug: 'wielkopolskie', locativeName: 'wielkopolskim',
+    name: 'Wielkopolskie', slug: 'wielkopolskie', locativeName: 'wielkopolskim', genitiveName: 'wielkopolskiego',
     cities: [
       { name: 'Poznań', slug: toSlug('Poznań'), locative: 'Poznaniu', genitive: 'Poznania' },
       { name: 'Kalisz', slug: toSlug('Kalisz'), locative: 'Kaliszu', genitive: 'Kalisza' },
@@ -277,7 +278,7 @@ export const voivodeships: VoivodeshipData[] = [
     ],
   },
   {
-    name: 'Zachodniopomorskie', slug: 'zachodniopomorskie', locativeName: 'zachodniopomorskim',
+    name: 'Zachodniopomorskie', slug: 'zachodniopomorskie', locativeName: 'zachodniopomorskim', genitiveName: 'zachodniopomorskiego',
     cities: [
       { name: 'Szczecin', slug: toSlug('Szczecin'), locative: 'Szczecinie', genitive: 'Szczecina' },
       { name: 'Koszalin', slug: toSlug('Koszalin'), locative: 'Koszalinie', genitive: 'Koszalina' },
