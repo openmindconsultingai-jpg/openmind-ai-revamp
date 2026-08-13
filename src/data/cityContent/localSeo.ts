@@ -65,7 +65,7 @@ export const buildCitySeoSections = (
       heading: `Wdrożenia AI dla firm w ${L}`,
       paragraphs: [
         `Wdrożenia AI ${M} realizujemy etapowo: zaczynamy od audytu procesów, w którym mierzymy czas pracy poświęcany na powtarzalne zadania, a następnie wybieramy te obszary, w których sztuczna inteligencja ${M} przyniesie najszybszy zwrot z inwestycji. Najczęściej automatyzujemy obsługę korespondencji i skrzynek firmowych, kwalifikację zapytań ofertowych, przygotowywanie ofert i kosztorysów, obieg dokumentów, wystawianie i opisywanie faktur, tworzenie raportów sprzedażowych oraz przygotowywanie treści marketingowych.`,
-        `Pracujemy z firmami z ${L} działającymi w obszarach takich jak ${branze}. Dla e-commerce budujemy generatory opisów produktów i asystentów obsługi zamówień, dla firm produkcyjnych – automatyczne raportowanie i analizę danych z systemów ERP, dla biur rachunkowych i kancelarii – narzędzia do streszczania dokumentów i wyszukiwania informacji w archiwach, a dla sektora usługowego – systemy odpowiadające na zapytania klientów przez całą dobę.`,
+        `Pracujemy z firmami z ${G} działającymi w obszarach takich jak ${branze}. Dla e-commerce budujemy generatory opisów produktów i asystentów obsługi zamówień, dla firm produkcyjnych – automatyczne raportowanie i analizę danych z systemów ERP, dla biur rachunkowych i kancelarii – narzędzia do streszczania dokumentów i wyszukiwania informacji w archiwach, a dla sektora usługowego – systemy odpowiadające na zapytania klientów przez całą dobę.`,
         `Każde wdrożenie kończy się przekazaniem dokumentacji, instrukcji dla zespołu i krótkim szkoleniem wdrożeniowym. Dzięki temu firma z ${G} nie zostaje z narzędziem, którego nikt nie umie obsłużyć – pracownicy od pierwszego dnia wiedzą, jak korzystać z nowych rozwiązań i jak zgłaszać potrzeby rozwojowe.`,
       ],
     },
@@ -91,7 +91,7 @@ export const buildCitySeoSections = (
       heading: `Agenci AI i chatboty dla firm z ${G}`,
       paragraphs: [
         `Agent AI ${M} to asystent, który zna ofertę, cennik, procedury i najczęstsze pytania konkretnej firmy. Budujemy go na bazie dokumentów klienta, dzięki czemu odpowiada zgodnie z realnymi zasadami organizacji, a nie ogólną wiedzą z internetu. Agent może pracować na stronie internetowej, w komunikatorze, w wewnętrznym systemie firmy lub jako asystent telefoniczny obsługujący pierwszy kontakt.`,
-        `Chatboty wdrażane w firmach z ${L} przejmują powtarzalne rozmowy: pytania o dostępność, godziny pracy, status zamówienia, warunki współpracy czy dokumenty potrzebne do wyceny. Rozmowy, które wymagają decyzji człowieka, agent przekazuje do zespołu wraz z podsumowaniem. Dzięki temu klient dostaje odpowiedź natychmiast, a pracownicy zajmują się wyłącznie sprawami o realnej wartości.`,
+        `Chatboty wdrażane w firmach z ${G} przejmują powtarzalne rozmowy: pytania o dostępność, godziny pracy, status zamówienia, warunki współpracy czy dokumenty potrzebne do wyceny. Rozmowy, które wymagają decyzji człowieka, agent przekazuje do zespołu wraz z podsumowaniem. Dzięki temu klient dostaje odpowiedź natychmiast, a pracownicy zajmują się wyłącznie sprawami o realnej wartości.`,
       ],
     },
     {
