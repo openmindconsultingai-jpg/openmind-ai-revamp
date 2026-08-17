@@ -1395,12 +1395,21 @@ function buildProto(s: IndustrySpec): Proto {
           },
         ],
       },
+      ...extendedSections(s),
+      // FAQ — renderowana w statycznym HTML (React filtruje "Najczęstsze pytania")
+      {
+        h2: `Najczęstsze pytania — szkolenia AI dla ${industryGen(s)}`,
+        p: [],
+        li: [],
+        subs: fullFaq(s).map((f) => ({ h3: f.q, p: [f.a], li: [] })),
+      },
     ],
     jsonld: [
       courseLd(s, url),
       faqLd(s),
       breadcrumbsLd(s.h1, url),
     ] as unknown as Record<string, unknown>[],
+
   };
 }
 
