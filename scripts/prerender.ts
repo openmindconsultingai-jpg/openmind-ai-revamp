@@ -453,6 +453,40 @@ if (blogHub) {
   )}`;
 }
 
+// --- /services hub: rozbudowa treści + pełne linkowanie wewnętrzne -----------
+const INDUSTRY_SERVICES = servicesList.filter((s) => s.slug.startsWith('szkolenia-ai-dla-'));
+
+function servicesHubExtra(): string {
+  const core = CORE_SERVICES.map((s) => ({ href: s.path, label: s.navLabel }));
+  const industry = INDUSTRY_SERVICES.map((s) => ({ href: s.path, label: s.navLabel }));
+
+  const categories = CORE_SERVICES.map(
+    (s) =>
+      `<h2>${esc(s.navLabel)}</h2><p>${esc(s.shortDesc)}</p><p><a href="${s.path}">${esc(
+        s.navLabel,
+      )} — zobacz szczegóły oferty, program i FAQ</a></p>`,
+  ).join('\n');
+
+  return `
+<h2>Jak wygląda współpraca z OpenMind AI</h2>
+<p>Każdy projekt zaczynamy od bezpłatnej rozmowy (30–45 minut, online lub w naszej siedzibie), podczas której poznajemy procesy, narzędzia i cele biznesowe. Na tej podstawie przygotowujemy propozycję zakresu: pilotaż automatyzacji, program szkolenia dopasowany do branży, produkcję wideo albo kompletny projekt strony z modułami AI. Wycena jest konkretna i pozbawiona ukrytych kosztów, a harmonogram ustalamy tak, aby wdrożenie nie zatrzymywało bieżącej pracy zespołu.</p>
+<p>Pracujemy iteracyjnie: najpierw jeden proces lub jeden zespół, potem skalowanie. Dzięki temu efekty widać w dniach i tygodniach, a nie po kwartale. Po zakończeniu przekazujemy dokumentację i wiedzę — zależy nam, żeby Wasz zespół rozwijał rozwiązania samodzielnie, bez stałej zależności od dostawcy.</p>
+<h2>Główne kategorie usług AI</h2>
+${categories}
+<h2>Szkolenia AI dla konkretnych branż</h2>
+<p>Programy szkoleniowe przygotowaliśmy osobno dla ${INDUSTRY_SERVICES.length} branż — od medycyny i prawa, przez produkcję i budownictwo, po marketing, HR i edukację. Każde szkolenie AI dla branży ma własny program, listę narzędzi, przykładowe procesy i FAQ. Wybierz swoją branżę:</p>
+${linkList(industry)}
+<h2>Wszystkie usługi i szkolenia w jednym miejscu</h2>
+${linkList([...core, ...industry])}
+<h2>Usługi AI w całej Polsce</h2>
+<p>Szkolenia i wdrożenia prowadzimy stacjonarnie w każdym mieście w Polsce oraz online. Sprawdź <a href="/lokalizacje">lokalne strony usług AI w 192 miastach i 16 województwach</a>, skorzystaj z <a href="/ai-advisor">bezpłatnego doradcy AI</a> lub napisz przez <a href="/contact">formularz kontaktowy</a>. Więcej praktycznej wiedzy znajdziesz w <a href="/blog">Bazie Wiedzy AI</a>, a informacje o zespole na stronie <a href="/about">o nas</a>.</p>`;
+}
+
+const servicesHub = STATIC_META['/services'];
+if (servicesHub) servicesHub.body += servicesHubExtra();
+
+
+
 function homeCrawlLinks(): string {
   const voivodeshipLinks = voivodeships.map((voivodeship) => ({
     href: `/gdzie-dzialamy/${voivodeship.slug}`,

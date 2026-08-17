@@ -3,7 +3,7 @@
 // maintainable — each page still gets ~500 words of unique Polish copy,
 // 6-module curriculum, format cards, and JSON-LD (Course + FAQPage + Breadcrumbs).
 
-import type { Proto } from './index';
+import type { Proto, ProtoSection } from './index';
 
 const SITE = 'https://www.openmindai.pl';
 
@@ -1233,7 +1233,7 @@ function faqLd(s: IndustrySpec) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: s.faq.map((f) => ({
+    mainEntity: fullFaq(s).map((f) => ({
       '@type': 'Question',
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -1241,7 +1241,110 @@ function faqLd(s: IndustrySpec) {
   };
 }
 
+/** "Dla lekarzy i medycyny" -> "lekarzy i medycyny" (dopełniacz, gotowy po "dla") */
+function industryGen(s: IndustrySpec): string {
+  return s.navLabel.replace(/^Dla\s+/i, '').trim().toLowerCase();
+}
+
+/** Rozbudowane sekcje SEO (unikalne dzięki danym branżowym ze specyfikacji). */
+function extendedSections(s: IndustrySpec): ProtoSection[] {
+  const g = industryGen(s);
+  const mods = s.modules;
+  const bullets = s.whyBullets;
+
+  return [
+    {
+      h2: `Jak AI zmienia pracę ${g}`,
+      p: [
+        `Sztuczna inteligencja w pracy ${g} nie jest już eksperymentem — to zestaw codziennych narzędzi, które przejmują powtarzalne czynności i skracają czas reakcji. ${s.whyLead}`,
+        `Najszybszy zwrot widać tam, gdzie praca polega na tekście, dokumentach i komunikacji: przygotowaniu pism i zestawień, odpowiedziach na zapytania, streszczaniu długich materiałów, porządkowaniu notatek oraz tworzeniu treści marketingowych. W praktyce oznacza to, że zadania zajmujące wcześniej godzinę realizuje się w kilkanaście minut, a osoba odpowiedzialna pilnuje jakości zamiast pisać wszystko od zera.`,
+        `Na szkoleniu pokazujemy konkretne procesy: ${mods
+          .slice(0, 4)
+          .map((m) => m.name.toLowerCase())
+          .join(', ')}. Każdy z nich rozkładamy na kroki, wskazujemy miejsca, w których AI realnie pomaga, i te, w których jej użycie jest ryzykowne lub zbędne. Uczestnicy wychodzą z gotowymi promptami dopasowanymi do własnych zadań, a nie z ogólnymi przykładami z internetu.`,
+        `Ważny element to granice odpowiedzialności. AI przygotowuje materiał, ale decyzję zawsze podejmuje człowiek — omawiamy weryfikację treści, ochronę danych i zasady, które warto spisać w firmie, zanim narzędzia trafią do codziennego użytku.`,
+      ],
+      li: bullets,
+      subs: [],
+    },
+    {
+      h2: `Program szkolenia AI dla ${g} — przebieg, czas trwania, poziom`,
+      p: [
+        `Szkolenia AI dla ${g} prowadzimy w formule warsztatowej: krótkie wprowadzenie teoretyczne, a następnie ćwiczenia na realnych zadaniach uczestników. Standardowy wariant to jeden dzień warsztatowy (6–7 godzin z przerwami) lub dwa spotkania po 3–4 godziny, jeśli zespół nie może wypaść z bieżącej pracy na cały dzień.`,
+        `Program obejmuje sześć modułów: ${mods.map((m) => m.name).join('; ')}. Realizujemy je w całości albo wybieramy zakres priorytetowy — przed szkoleniem przeprowadzamy krótką rozmowę i ankietę, żeby poznać narzędzia, procesy i najczęstsze wąskie gardła w Waszej organizacji.`,
+        `Poziom zaawansowania dobieramy do grupy. Wariant podstawowy zaczyna się od zera: czym są modele językowe, jak formułować polecenia, jak weryfikować odpowiedzi. Wariant zaawansowany przeznaczony jest dla zespołów, które używają AI od kilku miesięcy — pracujemy wtedy na własnych bazach wiedzy, integracjach i automatyzacjach.`,
+        `Grupy liczą zwykle 6–15 osób, co pozwala trenerowi podejść do każdego uczestnika. Po warsztacie uczestnicy dostają materiały, bibliotekę promptów dla ${g} oraz listę zadań wdrożeniowych na pierwsze tygodnie.`,
+      ],
+      li: [],
+      subs: [],
+    },
+    {
+      h2: `Narzędzia AI dla ${g} — czego uczymy w praktyce`,
+      p: [
+        `Nie promujemy jednego dostawcy. Uczymy dobierać narzędzie do zadania i porównywać wyniki, bo modele różnią się stylem pracy i mocnymi stronami. Podstawą warsztatów są ChatGPT, Claude, Microsoft Copilot i Gemini, uzupełnione o rozwiązania branżowe używane w pracy ${g}.`,
+        `ChatGPT wykorzystujemy do pracy koncepcyjnej, tworzenia treści, analizy plików i budowania własnych asystentów. Claude sprawdza się przy długich dokumentach i wymagającej redakcji — pokazujemy pracę na obszernych materiałach źródłowych. Copilot omawiamy w kontekście pakietu Microsoft 365: Word, Excel, Outlook i Teams, czyli środowiska, w którym większość zespołów spędza cały dzień. Gemini pokazujemy tam, gdzie firma pracuje na Google Workspace.`,
+        `Do tego dochodzą narzędzia do automatyzacji (Make, n8n), transkrypcji i notatek ze spotkań oraz generowania grafiki i wideo, jeśli branża tego wymaga. Konkretne przypadki użycia bierzemy wprost z modułów programu — m.in. ${mods
+          .slice(2)
+          .map((m) => m.name.toLowerCase())
+          .join(', ')}.`,
+        `Osobno omawiamy bezpieczeństwo: wersje biznesowe narzędzi, ustawienia prywatności, dane, których nie wolno wklejać, oraz sposoby anonimizacji. To warunek, by AI dla ${g} weszła do firmy bez ryzyka prawnego.`,
+      ],
+      li: [],
+      subs: [],
+    },
+    {
+      h2: `Efekty wdrożenia AI w pracy ${g}`,
+      p: [
+        `Uczestnicy naszych szkoleń najczęściej raportują oszczędność kilku godzin tygodniowo na osobę — głównie na dokumentach, korespondencji i przygotowaniu materiałów. Przy zespole dziesięcioosobowym to równowartość ponad etatu miesięcznie, odzyskana bez zatrudniania kogokolwiek.`,
+        `Drugi efekt to szybsza reakcja wobec klientów i partnerów: oferty, odpowiedzi i zestawienia powstają tego samego dnia, a nie w kolejnym tygodniu. Trzeci — wyrównanie jakości. Mniej doświadczone osoby pracują na sprawdzonych szablonach i promptach, więc standard obsługi przestaje zależeć od tego, kto akurat ma dyżur.`,
+        `Redukcja kosztów pojawia się tam, gdzie wcześniej zlecano na zewnątrz teksty, grafiki, transkrypcje czy proste analizy. Warto jednak liczyć realnie: pierwsze tygodnie to nauka, a wymierne efekty pojawiają się zwykle po kilku–kilkunastu dniach regularnego używania narzędzi na własnych zadaniach.`,
+      ],
+      li: [],
+      subs: [],
+    },
+    {
+      h2: 'Dla kogo jest to szkolenie',
+      p: [
+        `Grupa docelowa to: ${s.audienceLd.toLowerCase()}. Zapraszamy zarówno osoby decyzyjne, które chcą ocenić, gdzie AI ma sens w organizacji, jak i specjalistów wykonujących codzienną pracę operacyjną.`,
+        `Nie wymagamy wiedzy technicznej ani doświadczenia z programowaniem. Wystarczy swobodna obsługa komputera, przeglądarki i pakietu biurowego. Uczestnicy, którzy nigdy nie korzystali z ChatGPT, zaczynają od podstaw; osoby zaawansowane dostają równolegle trudniejsze zadania, żeby nikt się nie nudził.`,
+        `Szkolenie ma sens szczególnie wtedy, gdy w firmie pojawia się dużo powtarzalnej pracy z tekstem i dokumentami, gdy zespół używa AI chaotycznie i bez zasad albo gdy chcecie ustalić jedną, bezpieczną politykę korzystania z narzędzi.`,
+      ],
+      li: [],
+      subs: [],
+    },
+  ];
+}
+
+/** 5 standardowych pytań + pytania branżowe ze specyfikacji. */
+function fullFaq(s: IndustrySpec): Array<{ q: string; a: string }> {
+  const g = industryGen(s);
+  return [
+    {
+      q: `Ile kosztuje szkolenie AI dla ${g}?`,
+      a: `Cena zależy od formatu, liczby uczestników i zakresu programu. Szkolenia zamknięte dla zespołu wyceniamy ryczałtem za dzień warsztatowy, sesje indywidualne 1:1 — za godzinę. Po krótkiej, bezpłatnej rozmowie wysyłamy konkretną wycenę z programem, bez ukrytych kosztów; przy szkoleniach stacjonarnych poza naszą siedzibą doliczamy jedynie dojazd.`,
+    },
+    {
+      q: 'Jak długo trwa szkolenie?',
+      a: 'Standardowo jeden dzień warsztatowy (6–7 godzin) lub dwa spotkania po 3–4 godziny. Wersja skrócona (3–4 godziny) sprawdza się jako wprowadzenie dla całego zespołu, a program rozszerzony realizujemy w cyklu kilku sesji rozłożonych na kilka tygodni, z zadaniami wdrożeniowymi pomiędzy nimi.',
+    },
+    {
+      q: 'Czy potrzebna jest wiedza techniczna?',
+      a: 'Nie. Zaczynamy od zera i nie wymagamy znajomości programowania. Wystarczy podstawowa obsługa komputera i przeglądarki. Trener pracuje w tempie grupy, a osoby bardziej zaawansowane dostają dodatkowe, trudniejsze ćwiczenia.',
+    },
+    {
+      q: 'Czy szkolenie jest dostosowane do naszych procesów?',
+      a: `Tak — to podstawa naszej pracy. Przed warsztatem przeprowadzamy rozmowę i krótką ankietę, poznajemy narzędzia, dokumenty i wąskie gardła w pracy ${g}, a następnie budujemy ćwiczenia na Waszych realnych przypadkach (po anonimizacji danych wrażliwych).`,
+    },
+    {
+      q: 'Czy otrzymujemy materiały i wsparcie po szkoleniu?',
+      a: 'Tak. Uczestnicy dostają materiały PDF, bibliotekę gotowych promptów dopasowanych do branży, checklisty wdrożeniowe oraz imienne certyfikaty. Po szkoleniu zapewniamy okres wsparcia mailowego, a na życzenie organizujemy sesję kontrolną po kilku tygodniach.',
+    },
+    ...s.faq,
+  ];
+}
+
 function buildProto(s: IndustrySpec): Proto {
+
   const url = `${SITE}${s.path}.html`;
 
   return {
@@ -1292,12 +1395,21 @@ function buildProto(s: IndustrySpec): Proto {
           },
         ],
       },
+      ...extendedSections(s),
+      // FAQ — renderowana w statycznym HTML (React filtruje "Najczęstsze pytania")
+      {
+        h2: `Najczęstsze pytania — szkolenia AI dla ${industryGen(s)}`,
+        p: [],
+        li: [],
+        subs: fullFaq(s).map((f) => ({ h3: f.q, p: [f.a], li: [] })),
+      },
     ],
     jsonld: [
       courseLd(s, url),
       faqLd(s),
       breadcrumbsLd(s.h1, url),
     ] as unknown as Record<string, unknown>[],
+
   };
 }
 
@@ -1312,5 +1424,5 @@ export const INDUSTRY_TRAINING_ENTRIES = SPECS.map((s) => ({
   showCities: false as const,
   data: buildProto(s),
   // Extra data used by the template for FAQ rendering (mirrors JSON-LD FAQPage)
-  faq: s.faq,
+  faq: fullFaq(s),
 }));
