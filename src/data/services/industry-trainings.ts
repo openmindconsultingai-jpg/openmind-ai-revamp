@@ -1233,7 +1233,7 @@ function faqLd(s: IndustrySpec) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: s.faq.map((f) => ({
+    mainEntity: fullFaq(s).map((f) => ({
       '@type': 'Question',
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -1424,5 +1424,5 @@ export const INDUSTRY_TRAINING_ENTRIES = SPECS.map((s) => ({
   showCities: false as const,
   data: buildProto(s),
   // Extra data used by the template for FAQ rendering (mirrors JSON-LD FAQPage)
-  faq: s.faq,
+  faq: fullFaq(s),
 }));
