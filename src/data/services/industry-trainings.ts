@@ -3,7 +3,7 @@
 // maintainable — each page still gets ~500 words of unique Polish copy,
 // 6-module curriculum, format cards, and JSON-LD (Course + FAQPage + Breadcrumbs).
 
-import type { Proto } from './index';
+import type { Proto, ProtoSection } from './index';
 
 const SITE = 'https://www.openmindai.pl';
 
