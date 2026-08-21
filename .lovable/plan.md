@@ -11,10 +11,12 @@ To samo dotyczy Twoich innych projektów, jeśli tam też został domyślny `pub
 
 ## Co zrobię
 
-1. Wygeneruję kwadratową ikonę z logo OpenMind (`src/assets/openmind-logo-nobg.webp`) — przeskalowaną z zachowaniem proporcji i wyśrodkowaną, bez rozciągania:
-   - `public/favicon.png` (48x48 i 96x96 — wariant PNG)
-   - `public/favicon.ico` — **nadpisanie serca Lovable** prawdziwym logo (to jest kluczowe, bo Google i przeglądarki i tak pytają o `/favicon.ico`)
+1. Użyję **dokładnie tej samej ikony, która była dotychczas** — pliku `Open_Mind-min[1].png` z zewnętrznego adresu (sprawdziłem: nadal dostępny, HTTP 200). Pobiorę go i zapiszę lokalnie, kwadratowo wyśrodkowany, bez rozciągania:
+   - `public/favicon.png` (96x96)
+   - `public/favicon.ico` — **nadpisanie serca Lovable** tą samą ikoną (to kluczowe, bo Google i przeglądarki i tak pytają o `/favicon.ico`)
    - `public/apple-touch-icon.png` (180x180)
+   Wygląd ikony pozostaje identyczny jak dotychczas — zmienia się tylko to, że jest hostowana na Twojej domenie.
+
 2. W `index.html` podmienię tag ikony na ścieżki lokalne (same-origin):
    - `<link rel="icon" href="/favicon.ico" sizes="any">`
    - `<link rel="icon" type="image/png" href="/favicon.png">`
