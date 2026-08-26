@@ -17,6 +17,7 @@ interface ContactEmailRequest {
   email: string;
   phone: string;
   message: string;
+  recaptchaToken?: string;
 }
 
 // HTML escape function to prevent XSS
