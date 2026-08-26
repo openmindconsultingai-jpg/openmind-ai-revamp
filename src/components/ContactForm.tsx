@@ -39,6 +39,7 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const { language, t } = useLanguage();
+  const { getToken } = useRecaptcha();
   
   const contactSchema = getContactSchema(language);
   type ContactFormData = z.infer<typeof contactSchema>;
