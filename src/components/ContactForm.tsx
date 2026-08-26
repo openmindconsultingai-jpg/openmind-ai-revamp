@@ -62,14 +62,17 @@ const ContactForm = () => {
     
     try {
       console.log("Wysyłanie wiadomości...");
-      
+
+      const recaptchaToken = await getToken('contact_form');
+
       // Email jest krytyczny — CRM jest dodatkowy i nie może blokować formularza.
       const emailResult = await supabase.functions.invoke('send-contact-email', {
         body: {
           name: data.name,
           email: data.email,
           phone: data.phone,
-          message: data.message
+          message: data.message,
+          recaptchaToken
         }
       });
 
