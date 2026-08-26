@@ -11,6 +11,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { supabase } from '@/integrations/supabase/client';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
+import RecaptchaNotice from '@/components/RecaptchaNotice';
 
 const getContactSchema = (language: 'pl' | 'en') => z.object({
   name: z.string()
