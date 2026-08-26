@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import PageLayout from '@/components/PageLayout';
 import ContactForm from '@/components/ContactForm';
+import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { MapPin, ArrowLeft, Building2, Lightbulb, Clock, HelpCircle, Navigation, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -438,6 +439,7 @@ const CityDetail = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </PageLayout>
   );
 };
