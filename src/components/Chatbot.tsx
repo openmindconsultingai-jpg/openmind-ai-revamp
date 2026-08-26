@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import logo from '@/assets/openmind-logo.webp';
 const ReactMarkdown = lazy(() => import('react-markdown'));
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 type Msg = { role: "user" | "assistant"; content: string };
 
