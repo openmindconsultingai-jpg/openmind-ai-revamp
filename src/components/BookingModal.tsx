@@ -40,6 +40,7 @@ type BookingFormData = z.infer<ReturnType<typeof getBookingSchema>>;
 const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
   const { language, t } = useLanguage();
   const { toast } = useToast();
+  const { getToken } = useRecaptcha();
   
   const [step, setStep] = useState<'date' | 'time' | 'form' | 'success'>('date');
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
