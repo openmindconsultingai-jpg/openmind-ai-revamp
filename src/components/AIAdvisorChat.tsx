@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import jsPDF from 'jspdf';
 import robotoFontUrl from '@/assets/fonts/Roboto-Regular.ttf';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 // Helper: load font as base64 for jsPDF Unicode support
 const loadFontBase64 = async (): Promise<string> => {
@@ -32,6 +33,8 @@ const AIAdvisorChat = () => {
   const [isInitialized, setIsInitialized] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const recaptchaPass = useRef<string | null>(null);
+  const { getToken } = useRecaptcha();
 
   // Initialize conversation
   useEffect(() => {
@@ -80,14 +83,21 @@ const AIAdvisorChat = () => {
     onDelta: (deltaText: string) => void;
     onDone: () => void;
   }) => {
+    // reCAPTCHA raz na konwersację — potem korzystamy z paszportu sesji.
+    const recaptchaToken = recaptchaPass.current ? null : await getToken('advisor_session');
+
     const resp = await fetch(CHAT_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
       },
-      body: JSON.stringify({ messages }),
+      body: JSON.stringify({ messages, recaptchaToken, recaptchaPass: recaptchaPass.current }),
     });
+
+    const newPass = resp.headers.get('X-Recaptcha-Pass');
+    if (newPass) recaptchaPass.current = newPass;
+
 
     if (!resp.ok) {
       const errorData = await resp.json().catch(() => ({}));
@@ -195,7 +205,7 @@ const AIAdvisorChat = () => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages, generatePdf: true }),
+        body: JSON.stringify({ messages, generatePdf: true, recaptchaPass: recaptchaPass.current }),
       });
 
       if (!resp.ok) throw new Error('Failed to generate PDF');

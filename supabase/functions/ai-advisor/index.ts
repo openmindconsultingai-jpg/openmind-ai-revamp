@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { guardChatSession } from "../_shared/recaptcha.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -93,12 +94,22 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, generatePdf } = await req.json();
+    const reqBody = await req.json();
+    const { messages, generatePdf } = reqBody;
     
     // Validate messages array
     if (!messages || !Array.isArray(messages)) {
       return new Response(JSON.stringify({ error: "Invalid request format" }), {
         status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // reCAPTCHA: jedna weryfikacja na rozpoczętą konwersację (paszport sesji).
+    const captcha = await guardChatSession(reqBody, "advisor_session", clientIP);
+    if (!captcha.ok) {
+      return new Response(JSON.stringify({ error: captcha.error }), {
+        status: captcha.status,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
@@ -214,7 +225,9 @@ serve(async (req) => {
       headers: { 
         ...corsHeaders, 
         "Content-Type": "text/event-stream",
-        "X-RateLimit-Remaining": String(rateCheck.remaining)
+        "X-RateLimit-Remaining": String(rateCheck.remaining),
+        "X-Recaptcha-Pass": captcha.pass ?? "",
+        "Access-Control-Expose-Headers": "X-RateLimit-Remaining, X-Recaptcha-Pass"
       },
     });
   } catch (error) {

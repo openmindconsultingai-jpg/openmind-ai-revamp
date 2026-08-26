@@ -430,3 +430,8 @@ html.lenis, html.lenis body {
 
 
 
+
+/* reCAPTCHA v3 — badge ukryty, informacja prawna w komponencie RecaptchaNotice */
+.grecaptcha-badge {
+  visibility: hidden;
+}

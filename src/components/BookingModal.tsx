@@ -12,6 +12,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
+import RecaptchaNotice from '@/components/RecaptchaNotice';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -38,6 +40,7 @@ type BookingFormData = z.infer<ReturnType<typeof getBookingSchema>>;
 const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
   const { language, t } = useLanguage();
   const { toast } = useToast();
+  const { getToken } = useRecaptcha();
   
   const [step, setStep] = useState<'date' | 'time' | 'form' | 'success'>('date');
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -163,6 +166,8 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
     
     
     try {
+      const recaptchaToken = await getToken('booking_form');
+
       // Wszystko (rate limit, dostępność, insert, email) załatwia edge function po stronie serwera.
       // Bookings nie można już wstawiać bezpośrednio przez RLS — to znacznie zwiększa bezpieczeństwo.
       const { data: result, error } = await supabase.functions.invoke('send-booking-confirmation', {
@@ -173,6 +178,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
           bookingDate: dateStr,
           bookingTime: selectedTime,
           notes: data.notes,
+          recaptchaToken,
         },
       });
 
@@ -559,6 +565,8 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                       language === 'pl' ? 'Zarezerwuj konsultację' : 'Book consultation'
                     )}
                   </Button>
+
+                  <RecaptchaNotice className="pt-1" />
                 </form>
               </Form>
             </div>

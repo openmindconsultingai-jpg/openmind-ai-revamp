@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import logo from '@/assets/openmind-logo.webp';
 const ReactMarkdown = lazy(() => import('react-markdown'));
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -29,6 +30,8 @@ const Chatbot = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const sessionId = useRef(getSessionId());
+  const recaptchaPass = useRef<string | null>(null);
+  const { getToken } = useRecaptcha();
 
   // Auto-open once on first visit
   useEffect(() => {
@@ -78,6 +81,10 @@ const Chatbot = () => {
     let assistantSoFar = "";
 
     try {
+      // reCAPTCHA: weryfikacja raz na rozpoczętą konwersację.
+      // Dopóki mamy ważny "paszport" sesji, nie odpytujemy Google ponownie.
+      const recaptchaToken = recaptchaPass.current ? null : await getToken("chat_session");
+
       const resp = await fetch(CHAT_URL, {
         method: "POST",
         headers: {
@@ -88,12 +95,18 @@ const Chatbot = () => {
           messages: updatedMessages,
           sessionId: sessionId.current,
           conversationId,
+          recaptchaToken,
+          recaptchaPass: recaptchaPass.current,
         }),
       });
 
       // Get conversation ID from response
       const convId = resp.headers.get("X-Conversation-Id");
       if (convId) setConversationId(convId);
+
+      const newPass = resp.headers.get("X-Recaptcha-Pass");
+      if (newPass) recaptchaPass.current = newPass;
+
 
       if (!resp.ok || !resp.body) {
         const errorData = await resp.json().catch(() => ({}));

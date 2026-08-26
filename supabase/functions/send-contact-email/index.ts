@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@4.0.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
+import { verifyRecaptcha } from "../_shared/recaptcha.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const resend = new Resend(RESEND_API_KEY);
@@ -16,6 +17,7 @@ interface ContactEmailRequest {
   email: string;
   phone: string;
   message: string;
+  recaptchaToken?: string;
 }
 
 // HTML escape function to prevent XSS
@@ -59,7 +61,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, phone, message }: ContactEmailRequest = await req.json();
+    const { name, email, phone, message, recaptchaToken }: ContactEmailRequest = await req.json();
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -68,6 +70,17 @@ const handler = async (req: Request): Promise<Response> => {
         { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
+
+    // reCAPTCHA v3
+    const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+    const captcha = await verifyRecaptcha(recaptchaToken, "contact_form", clientIp);
+    if (!captcha.ok) {
+      return new Response(
+        JSON.stringify({ error: captcha.error }),
+        { status: captcha.status, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
 
     // Rate limit check
     if (!checkRateLimit(email.toLowerCase())) {

@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
+import { verifyRecaptcha } from "../_shared/recaptcha.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
@@ -60,6 +61,7 @@ interface BookingConfirmationRequest {
   bookingDate: string;
   bookingTime: string;
   notes?: string;
+  recaptchaToken?: string;
 }
 
 // Parsujemy YYYY-MM-DD jawnie i wymuszamy strefę Europe/Warsaw,
@@ -306,6 +308,16 @@ serve(async (req: Request): Promise<Response> => {
     if (booking.notes && (typeof booking.notes !== "string" || booking.notes.length > 1000)) {
       return new Response(JSON.stringify({ error: "Invalid notes" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
+
+    // ── reCAPTCHA v3 ──
+    const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+    const captcha = await verifyRecaptcha(booking.recaptchaToken, "booking_form", clientIp);
+    if (!captcha.ok) {
+      return new Response(JSON.stringify({ error: captcha.error }), {
+        status: captcha.status, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
 
     const dateObj = new Date(booking.bookingDate + "T00:00:00");
     const today = new Date(); today.setHours(0, 0, 0, 0);

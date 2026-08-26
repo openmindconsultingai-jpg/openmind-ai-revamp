@@ -10,6 +10,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { supabase } from '@/integrations/supabase/client';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
+import RecaptchaNotice from '@/components/RecaptchaNotice';
 
 const getContactSchema = (language: 'pl' | 'en') => z.object({
   name: z.string()
@@ -38,6 +40,7 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const { language, t } = useLanguage();
+  const { getToken } = useRecaptcha();
   
   const contactSchema = getContactSchema(language);
   type ContactFormData = z.infer<typeof contactSchema>;
@@ -60,14 +63,17 @@ const ContactForm = () => {
     
     try {
       console.log("Wysyłanie wiadomości...");
-      
+
+      const recaptchaToken = await getToken('contact_form');
+
       // Email jest krytyczny — CRM jest dodatkowy i nie może blokować formularza.
       const emailResult = await supabase.functions.invoke('send-contact-email', {
         body: {
           name: data.name,
           email: data.email,
           phone: data.phone,
-          message: data.message
+          message: data.message,
+          recaptchaToken
         }
       });
 
@@ -230,6 +236,8 @@ const ContactForm = () => {
             </>
           )}
         </Button>
+
+        <RecaptchaNotice />
       </form>
     </div>
   );

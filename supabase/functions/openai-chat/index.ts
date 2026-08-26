@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { guardChatSession } from "../_shared/recaptcha.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -135,7 +136,8 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, sessionId, conversationId } = await req.json();
+    const body = await req.json();
+    const { messages, sessionId, conversationId } = body;
 
     if (!messages || !Array.isArray(messages)) {
       return new Response(JSON.stringify({ error: "Invalid request" }), {
@@ -143,6 +145,17 @@ serve(async (req) => {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
+
+    // reCAPTCHA: jedna weryfikacja na rozpoczętą konwersację (paszport sesji).
+    const captcha = await guardChatSession(body, "chat_session", clientIP);
+    if (!captcha.ok) {
+      return new Response(JSON.stringify({ error: captcha.error }), {
+        status: captcha.status,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const recaptchaPassHeader = captcha.pass ?? "";
+
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     const MEM0_API_KEY = Deno.env.get("MEM0_API_KEY");
@@ -331,6 +344,8 @@ serve(async (req) => {
         ...corsHeaders,
         "Content-Type": "text/event-stream",
         "X-Conversation-Id": convId || "",
+        "X-Recaptcha-Pass": recaptchaPassHeader,
+        "Access-Control-Expose-Headers": "X-Conversation-Id, X-Recaptcha-Pass",
       },
     });
   } catch (error) {
