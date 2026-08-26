@@ -61,7 +61,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, phone, message }: ContactEmailRequest = await req.json();
+    const { name, email, phone, message, recaptchaToken }: ContactEmailRequest = await req.json();
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -70,6 +70,17 @@ const handler = async (req: Request): Promise<Response> => {
         { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
+
+    // reCAPTCHA v3
+    const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+    const captcha = await verifyRecaptcha(recaptchaToken, "contact_form", clientIp);
+    if (!captcha.ok) {
+      return new Response(
+        JSON.stringify({ error: captcha.error }),
+        { status: captcha.status, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
 
     // Rate limit check
     if (!checkRateLimit(email.toLowerCase())) {
