@@ -911,7 +911,6 @@ function buildHtml(routePath: string, meta: Meta): string {
     `        <a href="/contact">Kontakt</a>\n` +
     `        <a href="/lokalizacje">Lokalizacje</a>\n` +
     `      </nav></footer>\n` +
-    `      <p class="recaptcha-notice" style="font-size:0.75rem;color:#94a3b8;text-align:center;margin-top:1rem;">Ta strona jest chroniona przez reCAPTCHA. Obowiązuje <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">Polityka prywatności</a> i <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">Regulamin</a> Google.</p>\n` +
     `    </div>`;
   // The SEO snippet has <section> but no nested <div>, so non-greedy </div> matches the root close.
   html = html.replace(/<div id="root">[\s\S]*?<\/div>/, newRoot);
