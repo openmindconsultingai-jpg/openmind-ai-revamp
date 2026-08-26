@@ -80,14 +80,21 @@ const AIAdvisorChat = () => {
     onDelta: (deltaText: string) => void;
     onDone: () => void;
   }) => {
+    // reCAPTCHA raz na konwersację — potem korzystamy z paszportu sesji.
+    const recaptchaToken = recaptchaPass.current ? null : await getToken('advisor_session');
+
     const resp = await fetch(CHAT_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
       },
-      body: JSON.stringify({ messages }),
+      body: JSON.stringify({ messages, recaptchaToken, recaptchaPass: recaptchaPass.current }),
     });
+
+    const newPass = resp.headers.get('X-Recaptcha-Pass');
+    if (newPass) recaptchaPass.current = newPass;
+
 
     if (!resp.ok) {
       const errorData = await resp.json().catch(() => ({}));
