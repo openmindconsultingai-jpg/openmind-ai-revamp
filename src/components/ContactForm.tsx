@@ -235,6 +235,8 @@ const ContactForm = () => {
             </>
           )}
         </Button>
+
+        <RecaptchaNotice />
       </form>
     </div>
   );
