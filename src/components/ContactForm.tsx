@@ -10,6 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { supabase } from '@/integrations/supabase/client';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 const getContactSchema = (language: 'pl' | 'en') => z.object({
   name: z.string()
