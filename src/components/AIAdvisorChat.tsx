@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import jsPDF from 'jspdf';
 import robotoFontUrl from '@/assets/fonts/Roboto-Regular.ttf';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 // Helper: load font as base64 for jsPDF Unicode support
 const loadFontBase64 = async (): Promise<string> => {
