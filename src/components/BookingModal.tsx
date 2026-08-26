@@ -166,6 +166,8 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
     
     
     try {
+      const recaptchaToken = await getToken('booking_form');
+
       // Wszystko (rate limit, dostępność, insert, email) załatwia edge function po stronie serwera.
       // Bookings nie można już wstawiać bezpośrednio przez RLS — to znacznie zwiększa bezpieczeństwo.
       const { data: result, error } = await supabase.functions.invoke('send-booking-confirmation', {
@@ -176,6 +178,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
           bookingDate: dateStr,
           bookingTime: selectedTime,
           notes: data.notes,
+          recaptchaToken,
         },
       });
 
