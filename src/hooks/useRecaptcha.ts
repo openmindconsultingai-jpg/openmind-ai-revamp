@@ -1,4 +1,5 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
+import { RECAPTCHA_SITE_KEY } from '@/config/recaptcha';
 
 declare global {
   interface Window {
@@ -9,34 +10,31 @@ declare global {
   }
 }
 
-const CONFIG_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/recaptcha-config`;
-
-let siteKeyPromise: Promise<string | null> | null = null;
 let scriptPromise: Promise<void> | null = null;
 
-/** Publiczny site key pobierany raz z backendu (nie wymaga rebuildu przy zmianie klucza). */
-function loadSiteKey(): Promise<string | null> {
-  if (!siteKeyPromise) {
-    siteKeyPromise = fetch(CONFIG_URL, {
-      headers: { Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}` },
-    })
-      .then((r) => r.json())
-      .then((d) => (typeof d?.siteKey === 'string' && d.siteKey ? d.siteKey : null))
-      .catch(() => null);
-  }
-  return siteKeyPromise;
-}
-
 /** Leniwe wstrzyknięcie skryptu Google — dopiero przy pierwszym użyciu. */
-function loadScript(siteKey: string): Promise<void> {
+function loadScript(): Promise<void> {
+  if (window.grecaptcha) return Promise.resolve();
+
   if (!scriptPromise) {
     scriptPromise = new Promise<void>((resolve, reject) => {
+      const existing = document.querySelector<HTMLScriptElement>('script[data-openmind-recaptcha]');
+      if (existing) {
+        existing.addEventListener('load', () => resolve(), { once: true });
+        existing.addEventListener('error', () => reject(new Error('recaptcha script failed')), { once: true });
+        return;
+      }
+
       const s = document.createElement('script');
-      s.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+      s.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(RECAPTCHA_SITE_KEY)}`;
       s.async = true;
       s.defer = true;
+      s.dataset.openmindRecaptcha = 'true';
       s.onload = () => resolve();
-      s.onerror = () => reject(new Error('recaptcha script failed'));
+      s.onerror = () => {
+        scriptPromise = null;
+        reject(new Error('recaptcha script failed'));
+      };
       document.head.appendChild(s);
     });
   }
@@ -51,16 +49,25 @@ function loadScript(siteKey: string): Promise<void> {
 export function useRecaptcha() {
   const pendingRef = useRef<Promise<string | null> | null>(null);
 
+  // Chronione komponenty montują bibliotekę od razu, aby była gotowa przed wysyłką.
+  useEffect(() => {
+    void loadScript().catch((error) => {
+      console.error('[reCAPTCHA] Nie udało się załadować skryptu:', error);
+    });
+  }, []);
+
   const getToken = useCallback(async (action: string): Promise<string | null> => {
     try {
-      const siteKey = await loadSiteKey();
-      if (!siteKey) return null;
-      await loadScript(siteKey);
+      await loadScript();
       const grecaptcha = window.grecaptcha;
-      if (!grecaptcha) return null;
+      if (!grecaptcha) throw new Error('window.grecaptcha is unavailable');
       await new Promise<void>((resolve) => grecaptcha.ready(() => resolve()));
-      return await grecaptcha.execute(siteKey, { action });
-    } catch {
+      const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action });
+      // Tymczasowy log diagnostyczny: nie ujawnia treści tokenu.
+      console.info('[reCAPTCHA] Token wygenerowany', { action, tokenLength: token.length });
+      return token;
+    } catch (error) {
+      console.error('[reCAPTCHA] Generowanie tokenu nie powiodło się:', error);
       return null;
     }
   }, []);
