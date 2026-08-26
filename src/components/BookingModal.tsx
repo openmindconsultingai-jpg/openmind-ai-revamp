@@ -565,6 +565,8 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                       language === 'pl' ? 'Zarezerwuj konsultację' : 'Book consultation'
                     )}
                   </Button>
+
+                  <RecaptchaNotice className="pt-1" />
                 </form>
               </Form>
             </div>
