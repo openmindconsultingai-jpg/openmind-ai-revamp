@@ -6,8 +6,8 @@ Niewidoczna weryfikacja reCAPTCHA v3 przy każdym wysłaniu formularza kontaktow
 ## Co będzie chronione
 - Formularz kontaktowy (`send-contact-email` + przekazanie do CRM)
 - Formularz rezerwacji konsultacji (`send-booking-confirmation`)
-- Chatbot (`openai-chat`) — token generowany przy każdej wysyłanej wiadomości (akcja `chat_message`), chroni przed zużyciem limitów AI przez boty
-- Doradca AI (`ai-advisor`) — ta sama ochrona, bo również zużywa limity AI
+- Chatbot (`openai-chat`) — weryfikacja RAZ na rozpoczętą konwersację (akcja `chat_session`), nie przy każdej wiadomości
+- Doradca AI (`ai-advisor`) — ta sama ochrona, raz na sesję rozmowy
 
 ## Jak to zadziała
 1. Skrypt reCAPTCHA v3 ładowany leniwie (dopiero przy pierwszej interakcji z formularzem — bez wpływu na Core Web Vitals).
