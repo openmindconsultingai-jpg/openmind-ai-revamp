@@ -205,7 +205,7 @@ const AIAdvisorChat = () => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages, generatePdf: true }),
+        body: JSON.stringify({ messages, generatePdf: true, recaptchaPass: recaptchaPass.current }),
       });
 
       if (!resp.ok) throw new Error('Failed to generate PDF');
