@@ -60,6 +60,7 @@ interface BookingConfirmationRequest {
   bookingDate: string;
   bookingTime: string;
   notes?: string;
+  recaptchaToken?: string;
 }
 
 // Parsujemy YYYY-MM-DD jawnie i wymuszamy strefę Europe/Warsaw,
