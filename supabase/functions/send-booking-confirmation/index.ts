@@ -308,6 +308,16 @@ serve(async (req: Request): Promise<Response> => {
       return new Response(JSON.stringify({ error: "Invalid notes" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
 
+    // ── reCAPTCHA v3 ──
+    const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+    const captcha = await verifyRecaptcha(booking.recaptchaToken, "booking_form", clientIp);
+    if (!captcha.ok) {
+      return new Response(JSON.stringify({ error: captcha.error }), {
+        status: captcha.status, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+
     const dateObj = new Date(booking.bookingDate + "T00:00:00");
     const today = new Date(); today.setHours(0, 0, 0, 0);
     if (dateObj < today) {
