@@ -6,7 +6,8 @@ Niewidoczna weryfikacja reCAPTCHA v3 przy każdym wysłaniu formularza kontaktow
 ## Co będzie chronione
 - Formularz kontaktowy (`send-contact-email` + przekazanie do CRM)
 - Formularz rezerwacji konsultacji (`send-booking-confirmation`)
-- Opcjonalnie: chatbot (`openai-chat`) — chroni przed zużyciem limitów AI przez boty
+- Chatbot (`openai-chat`) — token generowany przy każdej wysyłanej wiadomości (akcja `chat_message`), chroni przed zużyciem limitów AI przez boty
+- Doradca AI (`ai-advisor`) — ta sama ochrona, bo również zużywa limity AI
 
 ## Jak to zadziała
 1. Skrypt reCAPTCHA v3 ładowany leniwie (dopiero przy pierwszej interakcji z formularzem — bez wpływu na Core Web Vitals).
@@ -25,9 +26,9 @@ Bez tych kluczy wdrożenie nie ruszy; do czasu ich dodania weryfikacja może dzi
 
 ## Szczegóły techniczne
 - Nowy hook `src/hooks/useRecaptcha.ts`: leniwe wstrzyknięcie `https://www.google.com/recaptcha/api.js?render=SITE_KEY` + `execute(action)`.
-- `src/components/ContactForm.tsx` i `src/components/BookingModal.tsx`: pobranie tokenu przed `functions.invoke`, dorzucenie pól `recaptchaToken` i `recaptchaAction`.
+- `src/components/ContactForm.tsx`, `src/components/BookingModal.tsx`, `src/components/Chatbot.tsx` i `src/components/AIAdvisorChat.tsx`: pobranie tokenu przed `functions.invoke`, dorzucenie pól `recaptchaToken` i `recaptchaAction`.
 - Nowy współdzielony moduł `supabase/functions/_shared/recaptcha.ts` z funkcją `verifyRecaptcha(token, expectedAction)`.
-- Weryfikacja wpięta w `send-contact-email`, `forward-to-crm` (pośrednio przez kontakt) oraz `send-booking-confirmation`.
+- Weryfikacja wpięta w `send-contact-email`, `send-booking-confirmation`, `openai-chat` oraz `ai-advisor`. W czacie token pobierany jest przy każdej wiadomości (tokeny v3 wygasają po 2 minutach), a niski score kończy się uprzejmym komunikatem zamiast odpowiedzi AI.
 - Sekret `RECAPTCHA_SECRET_KEY` w backendzie; próg score konfigurowalny stałą w kodzie (domyślnie 0.5).
 - Ukrycie badge'a Google zgodnie z regulaminem: dyskretna informacja tekstowa „Chronione przez reCAPTCHA – Prywatność / Warunki” pod przyciskiem wysyłki (PL/EN), stylizacja zgodna z motywem.
 - Uzupełnienie polityki prywatności o wzmiankę o reCAPTCHA.
