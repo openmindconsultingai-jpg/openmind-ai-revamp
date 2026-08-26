@@ -343,6 +343,8 @@ serve(async (req) => {
         ...corsHeaders,
         "Content-Type": "text/event-stream",
         "X-Conversation-Id": convId || "",
+        "X-Recaptcha-Pass": recaptchaPassHeader,
+        "Access-Control-Expose-Headers": "X-Conversation-Id, X-Recaptcha-Pass",
       },
     });
   } catch (error) {
