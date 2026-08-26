@@ -29,6 +29,8 @@ const Chatbot = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const sessionId = useRef(getSessionId());
+  const recaptchaPass = useRef<string | null>(null);
+  const { getToken } = useRecaptcha();
 
   // Auto-open once on first visit
   useEffect(() => {
