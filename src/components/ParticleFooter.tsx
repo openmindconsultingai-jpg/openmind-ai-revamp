@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import RecaptchaNotice from '@/components/RecaptchaNotice';
 
 
 const ParticleFooter = () => {
@@ -265,6 +266,7 @@ const ParticleFooter = () => {
           <p className="font-sans text-sm text-muted-foreground">
             {t('footer.copyright')}
           </p>
+          <RecaptchaNotice className="mt-4" />
         </div>
       </div>
     </footer>
