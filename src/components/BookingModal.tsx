@@ -12,6 +12,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
+import RecaptchaNotice from '@/components/RecaptchaNotice';
 
 interface BookingModalProps {
   isOpen: boolean;
