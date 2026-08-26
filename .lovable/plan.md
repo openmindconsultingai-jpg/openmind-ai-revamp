@@ -26,7 +26,7 @@ Bez tych kluczy wdrożenie nie ruszy; do czasu ich dodania weryfikacja może dzi
 
 ## Szczegóły techniczne
 - Nowy hook `src/hooks/useRecaptcha.ts`: leniwe wstrzyknięcie `https://www.google.com/recaptcha/api.js?render=SITE_KEY` + `execute(action)`.
-- `src/components/ContactForm.tsx` i `src/components/BookingModal.tsx`: pobranie tokenu przed `functions.invoke`, dorzucenie pól `recaptchaToken` i `recaptchaAction`.
+- `src/components/ContactForm.tsx`, `src/components/BookingModal.tsx`, `src/components/Chatbot.tsx` i `src/components/AIAdvisorChat.tsx`: pobranie tokenu przed `functions.invoke`, dorzucenie pól `recaptchaToken` i `recaptchaAction`.
 - Nowy współdzielony moduł `supabase/functions/_shared/recaptcha.ts` z funkcją `verifyRecaptcha(token, expectedAction)`.
 - Weryfikacja wpięta w `send-contact-email`, `forward-to-crm` (pośrednio przez kontakt) oraz `send-booking-confirmation`.
 - Sekret `RECAPTCHA_SECRET_KEY` w backendzie; próg score konfigurowalny stałą w kodzie (domyślnie 0.5).
