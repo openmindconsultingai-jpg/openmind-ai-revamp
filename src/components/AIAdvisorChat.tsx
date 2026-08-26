@@ -32,6 +32,8 @@ const AIAdvisorChat = () => {
   const [isInitialized, setIsInitialized] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const recaptchaPass = useRef<string | null>(null);
+  const { getToken } = useRecaptcha();
 
   // Initialize conversation
   useEffect(() => {
