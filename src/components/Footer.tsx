@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { servicesList, INDUSTRY_TRAINING_SLUGS } from '@/data/services';
+import RecaptchaNotice from '@/components/RecaptchaNotice';
+
 
 const Footer = () => {
   const { t, language } = useLanguage();
@@ -85,6 +87,7 @@ const Footer = () => {
             </Link>
           </div>
         </div>
+        <RecaptchaNotice className="mt-6" />
       </div>
     </footer>
   );
