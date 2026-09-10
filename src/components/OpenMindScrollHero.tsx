@@ -114,7 +114,7 @@ export default function OpenMindScrollHero({
   const trackRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const headRef = useRef<HTMLDivElement>(null);
-  const barRef = useRef<HTMLSpanElement>(null);
+  
   const hintRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
@@ -195,9 +195,6 @@ export default function OpenMindScrollHero({
         }
       }
 
-      if (barRef.current) {
-        barRef.current.style.transform = `scaleX(${progress.toFixed(4)})`;
-      }
       if (headRef.current) {
         const fade = clamp01(1 - progress / headlineHold);
         headRef.current.style.opacity = String(fade);
