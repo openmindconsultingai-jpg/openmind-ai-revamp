@@ -109,7 +109,7 @@ export default function OpenMindScrollHero({
   secondary = "#00C8E8",
   services = DEFAULT_SERVICES,
   subtitle = "Doradztwo i wdrożenia dla firm, szkół i instytucji w całej Polsce.",
-  title = "AI, które naprawdę działa u Ciebie w firmie",
+  title = "AI, które naprawdę działa u Ciebie w firmie, urzędzie, szkole czy w domu",
 }: OpenMindScrollHeroProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
