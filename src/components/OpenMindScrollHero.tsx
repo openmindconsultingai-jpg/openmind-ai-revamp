@@ -327,7 +327,7 @@ const CSS_TEXT = `
   position: relative;
   background: #0D1117;
   color: #E9F2F0;
-  font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
 }
 .omh-stage {
   position: sticky;
@@ -366,7 +366,7 @@ const CSS_TEXT = `
 }
 .omh-head { will-change: opacity, transform; }
 .omh-kicker {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -374,7 +374,7 @@ const CSS_TEXT = `
   margin: 0 0 18px;
 }
 .omh-title {
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-family: "Outfit", system-ui, sans-serif;
   font-weight: 700;
   font-size: clamp(36px, 6.6vw, 82px);
   line-height: 0.98;
@@ -405,13 +405,13 @@ const CSS_TEXT = `
   will-change: transform, opacity, filter;
 }
 .omh-depth-no {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.3em;
   color: var(--omh-accent);
 }
 .omh-depth-title {
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-family: "Outfit", system-ui, sans-serif;
   font-weight: 700;
   font-size: clamp(34px, 6.2vw, 76px);
   line-height: 0.98;
@@ -433,7 +433,7 @@ const CSS_TEXT = `
   margin-top: 6px;
   width: fit-content;
   padding-bottom: 5px;
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -463,7 +463,7 @@ const CSS_TEXT = `
   transition: opacity 0.5s ease;
 }
 .omh-hint-label {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: ui-monospace, monospace;
   font-size: 10.5px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
