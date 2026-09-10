@@ -114,7 +114,7 @@ export default function OpenMindScrollHero({
   const trackRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const headRef = useRef<HTMLDivElement>(null);
-  const barRef = useRef<HTMLSpanElement>(null);
+  
   const hintRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
@@ -195,9 +195,6 @@ export default function OpenMindScrollHero({
         }
       }
 
-      if (barRef.current) {
-        barRef.current.style.transform = `scaleX(${progress.toFixed(4)})`;
-      }
       if (headRef.current) {
         const fade = clamp01(1 - progress / headlineHold);
         headRef.current.style.opacity = String(fade);
@@ -321,10 +318,6 @@ export default function OpenMindScrollHero({
             <span className="omh-hint-bead" />
           </span>
         </div>
-
-        <span aria-hidden="true" className="omh-bar">
-          <span className="omh-bar-fill" ref={barRef} />
-        </span>
       </div>
     </section>
   );
@@ -499,24 +492,6 @@ const CSS_TEXT = `
   0% { transform: translateY(-14px); opacity: 0; }
   35% { opacity: 1; }
   100% { transform: translateY(38px); opacity: 0; }
-}
-.omh-bar {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  background: rgba(233,242,240,0.12);
-  display: block;
-}
-.omh-bar-fill {
-  display: block;
-  height: 100%;
-  width: 100%;
-  transform: scaleX(0);
-  transform-origin: left;
-  background: linear-gradient(to right, #00A8D6, var(--omh-secondary), var(--omh-accent));
-  box-shadow: 0 0 18px rgba(0,200,150,0.55);
 }
 @media (max-width: 760px) {
   .omh-head,
