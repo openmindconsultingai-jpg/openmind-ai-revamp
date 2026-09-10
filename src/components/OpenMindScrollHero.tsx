@@ -215,7 +215,15 @@ export default function OpenMindScrollHero({
         const from = start + index * span;
         const local = (progress - (from + span / 2)) / (span / 2);
         const distance = Math.abs(local);
-        const strength = distance < 1 ? 1 - distance ** 2 : 0;
+        // Plateau: pełna widoczność przez środkowe 60% okna napisu, potem
+        // łagodne wygaszanie na krawędziach — napis "trzyma" dłużej.
+        const hold = 0.6;
+        const strength =
+          distance <= hold
+            ? 1
+            : distance < 1
+              ? 1 - (distance - hold) / (1 - hold)
+              : 0;
         node.style.opacity = String(strength);
         node.style.transform = `translate3d(0, ${(-local * 42).toFixed(2)}px, 0)`;
         node.style.filter = `blur(${((1 - strength) * 9).toFixed(2)}px)`;
@@ -358,7 +366,7 @@ const CSS_TEXT = `
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
+  top: 42%;
   transform: translateY(-50%);
   margin: 0 auto;
   max-width: 1180px;
