@@ -1,5 +1,5 @@
 import { lazy, Suspense, useMemo } from 'react';
-import VideoHero from '@/components/VideoHero';
+import OpenMindScrollHero from '@/components/OpenMindScrollHero';
 import FloatingNav from '@/components/FloatingNav';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -8,12 +8,18 @@ import useCanonical from '@/hooks/useCanonical';
 import usePageMeta from '@/hooks/usePageMeta';
 
 // Lazy load below-the-fold sections for better FCP/LCP
-const MissionSection = lazy(() => import('@/components/MissionSection'));
-const BentoGrid = lazy(() => import('@/components/BentoGrid'));
+const LogoTicker = lazy(() => import('@/components/LogoTicker'));
 const ServiceAreas = lazy(() => import('@/components/ServiceAreas'));
 const ParticleFooter = lazy(() => import('@/components/ParticleFooter'));
 const SeoContentSections = lazy(() => import('@/components/SeoContentSections'));
 const Chatbot = lazy(() => import('@/components/Chatbot'));
+
+const HERO_BASE =
+  'https://nyxcjvbeipocvgjforpn.supabase.co/storage/v1/object/public/hero/';
+const HERO_DESKTOP = `${HERO_BASE}httpsopenmind-ai.higgsfield.appassetsworldscene-01.mp4.mp4`;
+const HERO_MOBILE = `${HERO_BASE}httpsopenmind-ai.higgsfield.appassetsworldscene-01-mobile.mp4.mp4`;
+const HERO_POSTER = `${HERO_BASE}httpsopenmind-ai.higgsfield.appassetsworldscene-01-poster.png.png`;
+const HERO_MOBILE_POSTER = `${HERO_BASE}httpsopenmind-ai.higgsfield.appassetsworldscene-01-mobile-poster.png.png`;
 
 const Home = () => {
   const { language } = useLanguage();
@@ -55,17 +61,24 @@ const Home = () => {
       : 'OpenMind AI Consulting — AI Implementation for Businesses and Schools in Poland',
     ogDescription: language === 'pl'
       ? 'Polski lider wdrożeń sztucznej inteligencji. Konsulting, szkolenia AI z ChatGPT, Claude, Copilot, Gemini. Bezpłatne pierwsze konsultacje.'
-      : 'Polish leader in AI implementation. Consulting, AI training with ChatGPT, Claude, Copilot, Gemini. Free first consultations.',
+      : 'Polish leader in AI implementation. Consulting, AI training with ChatGPT, Claude, Copilot, Gemini. First consultations free.',
     jsonLd,
   });
 
   return (
     <div className="min-h-screen bg-background">
       <FloatingNav />
-      <VideoHero />
+      <OpenMindScrollHero
+        desktopSrc={HERO_DESKTOP}
+        mobileSrc={HERO_MOBILE}
+        poster={HERO_POSTER}
+        mobilePoster={HERO_MOBILE_POSTER}
+        scrollVh={6}
+      />
       <Suspense fallback={<div className="min-h-screen bg-background" />}>
-        <MissionSection />
-        <BentoGrid />
+        <div className="pt-12 md:pt-16">
+          <LogoTicker />
+        </div>
         <SeoContentSections />
         <ServiceAreas />
         <ParticleFooter />
