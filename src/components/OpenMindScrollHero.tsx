@@ -217,7 +217,7 @@ export default function OpenMindScrollHero({
         const distance = Math.abs(local);
         // Plateau: pełna widoczność przez środkowe 60% okna napisu, potem
         // łagodne wygaszanie na krawędziach — napis "trzyma" dłużej.
-        const hold = 0.6;
+        const hold = 0.82;
         const strength =
           distance <= hold
             ? 1
@@ -366,7 +366,7 @@ const CSS_TEXT = `
   position: absolute;
   left: 0;
   right: 0;
-  top: 42%;
+  top: 32%;
   transform: translateY(-50%);
   margin: 0 auto;
   max-width: 1180px;
@@ -519,6 +519,8 @@ const CSS_TEXT = `
   box-shadow: 0 0 18px rgba(0,200,150,0.55);
 }
 @media (max-width: 760px) {
+  .omh-head,
+  .omh-depths { top: 29%; }
   .omh-depth-title { max-width: 11ch; }
   .omh-sub { max-width: 28ch; }
 }

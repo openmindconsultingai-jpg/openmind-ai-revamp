@@ -73,7 +73,8 @@ const Home = () => {
         mobileSrc={HERO_MOBILE}
         poster={HERO_POSTER}
         mobilePoster={HERO_MOBILE_POSTER}
-        scrollVh={6}
+        scrollVh={9}
+        headlineHold={0.18}
       />
       <Suspense fallback={<div className="min-h-screen bg-background" />}>
         <div className="pt-12 md:pt-16">
