@@ -1,5 +1,4 @@
 import {clamp,interpolate,activeIndex} from './timeline.mjs';
-import {createCategoryPins} from './category-pins.mjs';
 
 /** Viewport background + separate clickable UI. No dependencies on the host site's copy or chat. */
 export function createTower(options){
