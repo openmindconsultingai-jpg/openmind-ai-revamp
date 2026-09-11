@@ -90,6 +90,15 @@ const ServicesHubPage = () => {
               </Button>
             </Link>
           </div>
+
+          {/* Interaktywny model 3D — 20 obszarów usług */}
+          <div className="mt-10 md:mt-14 w-full h-[420px] md:h-[600px] lg:h-[680px]">
+            <LazyNeuralIframe
+              src="/openmind-neural-recreated.html?v=8"
+              title="OpenMind AI – interaktywna mapa usług"
+              loadStrategy="viewport"
+            />
+          </div>
         </section>
 
         {/* Services grid */}
