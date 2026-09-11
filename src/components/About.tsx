@@ -116,6 +116,8 @@ const COPY = {
     reach1:
       'Działamy stacjonarnie w każdym mieście w Polsce i online dla zespołów rozproszonych. Pierwsza konsultacja jest zawsze bezpłatna i niezobowiązująca.',
     cta: 'Napisz do nas przez formularz',
+    more: 'Zobacz zakres',
+    hint: 'Przewijaj, aby odtworzyć',
     services: SERVICES_PL,
   },
   en: {
@@ -142,6 +144,8 @@ const COPY = {
     reach1:
       'We work on-site in every city in Poland and online for distributed teams. The first consultation is always free and comes with no obligation.',
     cta: 'Write to us via the form',
+    more: 'See the scope',
+    hint: 'Scroll to play',
     services: SERVICES_EN,
   },
 } as const;
@@ -188,6 +192,8 @@ const About = () => {
         scrollVh={6}
         headlineHold={0.14}
         headingLevel={2}
+        moreLabel={c.more}
+        hintLabel={c.hint}
       />
 
       <section className="relative pt-20 md:pt-28 pb-20 md:pb-28">

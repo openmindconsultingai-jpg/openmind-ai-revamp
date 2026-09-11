@@ -48,6 +48,10 @@ export type OpenMindScrollHeroProps = {
   headlineHold?: number;
   /** Poziom nagłówka: 1 na stronie głównej, 2 gdy strona ma już swój H1. */
   headingLevel?: 1 | 2;
+  /** Etykieta linku pod każdym opisem. */
+  moreLabel?: string;
+  /** Podpowiedź przewijania. */
+  hintLabel?: string;
   /** Accent colours. Defaults are the OpenMind brand. */
   accent?: string;
   secondary?: string;
@@ -104,6 +108,8 @@ export default function OpenMindScrollHero({
   desktopSrc,
   headingLevel = 1,
   headlineHold = 0.13,
+  moreLabel = "Zobacz zakres",
+  hintLabel = "Przewijaj, aby odtworzyć",
   kicker = "OpenMind AI Consulting",
   mobilePoster,
   mobileSrc,
@@ -312,7 +318,7 @@ export default function OpenMindScrollHero({
               <span className="omh-depth-title">{service.title}</span>
               <span className="omh-depth-body">{service.body}</span>
               <span className="omh-depth-more">
-                Zobacz zakres
+                {moreLabel}
                 <span aria-hidden="true">&#8594;</span>
               </span>
             </a>
@@ -320,7 +326,7 @@ export default function OpenMindScrollHero({
         </div>
 
         <div aria-hidden="true" className="omh-hint" ref={hintRef}>
-          <span className="omh-hint-label">Przewijaj, aby odtworzyć</span>
+          <span className="omh-hint-label">{hintLabel}</span>
           <span className="omh-hint-rail">
             <span className="omh-hint-bead" />
           </span>
