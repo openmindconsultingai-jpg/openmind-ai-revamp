@@ -49,6 +49,7 @@ const FORMAT_SLUGS = [
  */
 const ServicesHubPage = () => {
   const [openTraining, setOpenTraining] = useState(false);
+  const isMobile = useIsMobile();
 
   const jsonLd = useMemo(
     () => ({ '@context': 'https://schema.org', '@graph': HUB.jsonld }),
