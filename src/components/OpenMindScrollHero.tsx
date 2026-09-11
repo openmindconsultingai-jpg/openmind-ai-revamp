@@ -263,7 +263,8 @@ export default function OpenMindScrollHero({
               : 0;
         node.style.opacity = String(strength);
         node.style.transform = `translate3d(0, ${(-local * 42).toFixed(2)}px, 0)`;
-        node.style.filter = `blur(${((1 - strength) * 9).toFixed(2)}px)`;
+        // Rozmycie jest bardzo kosztowne na telefonach — tam zostaje sama płynna zmiana krycia.
+        if (!light) node.style.filter = `blur(${((1 - strength) * 9).toFixed(2)}px)`;
         node.style.pointerEvents = strength > 0.55 ? "auto" : "none";
         node.tabIndex = strength > 0.55 ? 0 : -1;
         node.setAttribute("aria-hidden", strength > 0.4 ? "false" : "true");
