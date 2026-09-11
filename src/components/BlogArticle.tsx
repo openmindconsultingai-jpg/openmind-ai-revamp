@@ -1,5 +1,5 @@
 import { Card } from '@/components/ui/card';
-import { User, ArrowLeft, Calendar } from 'lucide-react';
+import { User, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useNavigate } from 'react-router-dom';
@@ -16,14 +16,6 @@ interface BlogArticleProps {
 const BlogArticle = ({ titleKey, contentKey, articleId, onBack, publishDate }: BlogArticleProps) => {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
-
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString(language === 'pl' ? 'pl-PL' : 'en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
 
   // Sanitize HTML content to prevent XSS attacks
   const sanitizeHtml = (html: string): string => {
@@ -111,13 +103,6 @@ const BlogArticle = ({ titleKey, contentKey, articleId, onBack, publishDate }: B
       </Button>
       
       <Card className="p-8">
-        {publishDate && (
-          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-            <Calendar className="w-4 h-4" />
-            <span>{formatDate(publishDate)}</span>
-          </div>
-        )}
-        
         <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
           {t(titleKey)}
         </h1>
