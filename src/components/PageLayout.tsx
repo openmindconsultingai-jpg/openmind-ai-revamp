@@ -41,8 +41,6 @@ const PageLayout = memo(({ children }: PageLayoutProps) => {
   }, []);
 
   return (
-    {/* overflow-x-clip zamiast overflow-hidden — nie tworzy kontenera przewijania,
-        dzięki czemu position: sticky (kula wideo) działa względem okna */}
     <div className="min-h-screen bg-background relative overflow-x-clip">
 
       {/* Static background gradient - no animation for performance */}
