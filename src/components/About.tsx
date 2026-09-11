@@ -144,6 +144,8 @@ const COPY = {
     reach1:
       'We work on-site in every city in Poland and online for distributed teams. The first consultation is always free and comes with no obligation.',
     cta: 'Write to us via the form',
+    more: 'See the scope',
+    hint: 'Scroll to play',
     services: SERVICES_EN,
   },
 } as const;
