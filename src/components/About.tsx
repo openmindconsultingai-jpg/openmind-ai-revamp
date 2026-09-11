@@ -192,6 +192,8 @@ const About = () => {
         scrollVh={6}
         headlineHold={0.14}
         headingLevel={2}
+        moreLabel={c.more}
+        hintLabel={c.hint}
       />
 
       <section className="relative pt-20 md:pt-28 pb-20 md:pb-28">
