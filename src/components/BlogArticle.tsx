@@ -10,10 +10,9 @@ interface BlogArticleProps {
   contentKey: string;
   articleId: number;
   onBack: () => void;
-  publishDate?: Date;
 }
 
-const BlogArticle = ({ titleKey, contentKey, articleId, onBack, publishDate }: BlogArticleProps) => {
+const BlogArticle = ({ titleKey, contentKey, articleId, onBack }: BlogArticleProps) => {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
 

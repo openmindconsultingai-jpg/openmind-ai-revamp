@@ -74,7 +74,6 @@ const Blog = memo(() => {
                 titleKey={article.titleKey}
                 excerptKey={article.excerptKey}
                 articleId={article.id}
-                publishDate={article.publishDate}
                 category={article.category}
               />
             </div>

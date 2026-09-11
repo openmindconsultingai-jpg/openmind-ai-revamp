@@ -7,11 +7,10 @@ interface BlogArticleCardProps {
   titleKey: string;
   excerptKey: string;
   articleId: number;
-  publishDate?: Date;
   category?: string;
 }
 
-const BlogArticleCard = memo(({ titleKey, excerptKey, articleId, publishDate, category }: BlogArticleCardProps) => {
+const BlogArticleCard = memo(({ titleKey, excerptKey, articleId, category }: BlogArticleCardProps) => {
   const { t, language } = useLanguage();
 
   return (

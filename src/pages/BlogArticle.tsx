@@ -107,7 +107,6 @@ const BlogArticlePage = () => {
             contentKey={article.contentKey}
             articleId={article.id}
             onBack={() => navigate('/blog')}
-            publishDate={article.publishDate}
           />
         </div>
       </section>
