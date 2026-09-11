@@ -10,6 +10,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import RedirectWithSeo from "@/components/RedirectWithSeo";
 
 const Home = lazy(() => import("./pages/Home"));
+const HomeTower = lazy(() => import("./pages/HomeTower"));
 const ServicesHubPage = lazy(() => import("./pages/ServicesHubPage"));
 const ServiceLandingPage = lazy(() => import("./pages/ServiceLandingPage"));
 const AboutPage = lazy(() => import("./pages/About"));
