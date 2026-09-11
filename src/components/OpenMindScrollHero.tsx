@@ -290,7 +290,11 @@ export default function OpenMindScrollHero({
 
         <div className="omh-head" ref={headRef}>
           <p className="omh-kicker">{kicker}</p>
-          <h1 className="omh-title">{title}</h1>
+          {headingLevel === 2 ? (
+            <h2 className="omh-title">{title}</h2>
+          ) : (
+            <h1 className="omh-title">{title}</h1>
+          )}
           <p className="omh-sub">{subtitle}</p>
         </div>
 
