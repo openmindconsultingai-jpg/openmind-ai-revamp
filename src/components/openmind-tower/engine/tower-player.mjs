@@ -22,6 +22,9 @@ export function createTower(options){
   const status=document.createElement('span');status.className='omt-status';status.setAttribute('role','status');
   ui.append(control,status);
   let ready=false,loading=false,dead=false,tour=false,error=false,url=null,offsets=[],smooth=0,lastTick=0,lastSeek=0,raf=0,active=-1;
+  const conn=navigator.connection||{};
+  const lightMode=matchMedia('(max-width: 900px), (pointer: coarse)').matches||conn.saveData===true||(navigator.deviceMemory||8)<=4;
+  const seekInterval=lightMode?1000/18:1000/30,seekEpsilon=lightMode?1/20:1/48;
   const headerOffset=()=>Number(options.headerOffset||0);
   function measure(){
     const next=sections.map(s=>s.getBoundingClientRect().top+scrollY-headerOffset());
