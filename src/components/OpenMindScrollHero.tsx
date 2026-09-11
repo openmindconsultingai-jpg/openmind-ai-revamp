@@ -540,9 +540,25 @@ const CSS_TEXT = `
 }
 @media (max-width: 760px) {
   .omh-head,
-  .omh-depths { top: 29%; }
-  .omh-depth-title { max-width: 11ch; }
-  .omh-sub { max-width: 28ch; }
+  .omh-depths {
+    top: 27%;
+    padding: 0 20px;
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+  }
+  .omh-depth {
+    left: max(20px, env(safe-area-inset-left));
+    right: max(20px, env(safe-area-inset-right));
+    gap: 8px;
+  }
+  .omh-depth-title { max-width: 13ch; font-size: clamp(30px, 8.4vw, 44px); }
+  .omh-title { font-size: clamp(32px, 8.8vw, 48px); max-width: 14ch; }
+  .omh-sub { max-width: 30ch; }
+  .omh-depth-body { max-width: 30ch; }
+  /* Rozmycie i filtry zjadają wydajność telefonów. */
+  .omh-depth { will-change: transform, opacity; filter: none !important; }
+  .omh-hint { bottom: max(20px, env(safe-area-inset-bottom)); }
+  .omh-depth-more { padding: 6px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .omh-hint-bead { animation: none; top: 12px; }
