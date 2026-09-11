@@ -157,6 +157,18 @@ export default function OpenMindScrollHero({
       isMobile.matches && mobilePoster ? mobilePoster : poster;
     if (chosenPoster) video.setAttribute("poster", chosenPoster);
 
+    // Tryb oszczędny: telefony, słabsze urządzenia i tryb oszczędzania danych.
+    const nav = navigator as Navigator & {
+      connection?: { saveData?: boolean };
+      deviceMemory?: number;
+    };
+    const light =
+      isMobile.matches ||
+      nav.connection?.saveData === true ||
+      (nav.deviceMemory ?? 8) <= 4;
+    const seekInterval = light ? 1000 / 18 : 1000 / 30;
+    let lastSeek = 0;
+
     if (reduced.matches) {
       // Honour the setting: no fetch, no scrub, poster only. The captions stay
       // legible because they are rendered, just not animated.
