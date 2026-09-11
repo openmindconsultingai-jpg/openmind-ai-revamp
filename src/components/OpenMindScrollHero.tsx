@@ -309,7 +309,7 @@ export default function OpenMindScrollHero({
         {
           "--omh-accent": accent,
           "--omh-secondary": secondary,
-          height: `${scrollVh * 100}vh`,
+          height: `${Math.round(scrollVh * (small ? 0.7 : 1) * 100)}vh`,
         } as React.CSSProperties
       }
     >
