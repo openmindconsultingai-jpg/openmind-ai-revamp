@@ -127,6 +127,20 @@ export default function OpenMindScrollHero({
   const hintRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
+  // Telefony dostają krótszą trasę przewijania — ten sam film, mniej scrollowania.
+  const [small, setSmall] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 760px)").matches
+      : false
+  );
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 760px)");
+    const on = () => setSmall(mql.matches);
+    on();
+    mql.addEventListener("change", on);
+    return () => mql.removeEventListener("change", on);
+  }, []);
+
   useEffect(() => {
     const track = trackRef.current;
     const video = videoRef.current;
