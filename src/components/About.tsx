@@ -68,20 +68,43 @@ const About = () => {
               </p>
             </div>
 
-            <div>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Co robimy</h2>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {WHAT_WE_DO.map((item) => (
+            <div className="relative lg:-mx-[12vw]">
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-8 lg:px-[12vw]">
+                Co <span className="text-gradient">robimy</span>
+              </h2>
+
+              <div className="grid gap-8 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start lg:px-6">
+                <div className="relative lg:sticky lg:top-28">
                   <div
-                    key={item.title}
-                    className="rounded-xl border border-border/50 bg-card/30 p-5"
+                    className="relative w-full h-[320px] sm:h-[420px] lg:h-[560px] rounded-3xl overflow-hidden"
+                    style={{
+                      background:
+                        'radial-gradient(ellipse at center, hsl(176 100% 43% / 0.10) 0%, transparent 70%)',
+                    }}
                   >
-                    <h3 className="font-heading text-base md:text-lg font-semibold mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed" style={justify}>
-                      {item.body}
-                    </p>
+                    <LazyNeuralIframe
+                      src="/openmind-neural-recreated.html?v=8"
+                      title="OpenMind AI – interaktywny model sieci neuronowej"
+                      loadStrategy="viewport"
+                    />
                   </div>
-                ))}
+                </div>
+
+                <div className="grid gap-4">
+                  {WHAT_WE_DO.map((item) => (
+                    <div
+                      key={item.title}
+                      className="group rounded-xl border border-primary/15 bg-card/40 p-5 backdrop-blur-sm transition-colors duration-300 hover:border-primary/40 hover:bg-card/60"
+                    >
+                      <h3 className="font-heading text-base md:text-lg font-semibold mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed" style={justify}>
+                        {item.body}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
