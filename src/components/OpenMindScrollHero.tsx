@@ -326,7 +326,7 @@ export default function OpenMindScrollHero({
         </div>
 
         <div aria-hidden="true" className="omh-hint" ref={hintRef}>
-          <span className="omh-hint-label">Przewijaj, aby odtworzyć</span>
+          <span className="omh-hint-label">{hintLabel}</span>
           <span className="omh-hint-rail">
             <span className="omh-hint-bead" />
           </span>
