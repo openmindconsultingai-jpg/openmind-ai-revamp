@@ -154,7 +154,7 @@ const Home = () => {
           <section
             key={section.id}
             id={section.id}
-            className="min-h-screen flex items-center bg-transparent"
+            className="min-h-[80vh] md:min-h-screen flex items-center bg-transparent"
           >
             <div className="max-w-[1180px] w-full mx-auto px-6 md:px-14">
               <div className="max-w-xl">
