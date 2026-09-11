@@ -108,6 +108,8 @@ export default function OpenMindScrollHero({
   desktopSrc,
   headingLevel = 1,
   headlineHold = 0.13,
+  moreLabel = "Zobacz zakres",
+  hintLabel = "Przewijaj, aby odtworzyć",
   kicker = "OpenMind AI Consulting",
   mobilePoster,
   mobileSrc,
