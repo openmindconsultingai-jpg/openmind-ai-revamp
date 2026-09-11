@@ -64,7 +64,6 @@ const HomeTower = () => {
     title: 'Wariant HERO — OpenMind Tower | OpenMind AI Consulting',
     description: 'Podgląd alternatywnego wariantu sekcji powitalnej z animacją wieży sterowaną przewijaniem.',
     path: '/wariant-tower',
-    noindex: true,
   });
 
   return (
