@@ -92,12 +92,14 @@ const ServicesHubPage = () => {
             </Link>
           </div>
 
-          {/* Interaktywny model 3D — 20 obszarów usług */}
-          <div className="mt-10 md:mt-14 w-full h-[420px] md:h-[600px] lg:h-[680px]">
+          {/* Interaktywny model 3D — 20 obszarów usług.
+              Na telefonach uruchamiany dopiero po kliknięciu, żeby nie obciążać urządzenia. */}
+          <div className="mt-10 md:mt-14 w-full h-[320px] sm:h-[420px] md:h-[600px] lg:h-[680px] overflow-hidden rounded-2xl">
             <LazyNeuralIframe
               src="/openmind-neural-recreated.html?v=8"
               title="OpenMind AI – interaktywna mapa usług"
-              loadStrategy="viewport"
+              loadStrategy={isMobile ? 'click' : 'viewport'}
+              ctaLabel="Pokaż mapę usług 3D"
             />
           </div>
         </section>
