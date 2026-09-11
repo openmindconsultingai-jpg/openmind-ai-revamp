@@ -41,7 +41,8 @@ const PageLayout = memo(({ children }: PageLayoutProps) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen bg-background relative overflow-x-clip">
+
       {/* Static background gradient - no animation for performance */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div 

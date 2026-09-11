@@ -46,6 +46,8 @@ export type OpenMindScrollHeroProps = {
   scrollVh?: number;
   /** Fraction of the journey the opening headline holds. */
   headlineHold?: number;
+  /** Poziom nagłówka: 1 na stronie głównej, 2 gdy strona ma już swój H1. */
+  headingLevel?: 1 | 2;
   /** Accent colours. Defaults are the OpenMind brand. */
   accent?: string;
   secondary?: string;
@@ -100,6 +102,7 @@ const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 export default function OpenMindScrollHero({
   accent = "#00C896",
   desktopSrc,
+  headingLevel = 1,
   headlineHold = 0.13,
   kicker = "OpenMind AI Consulting",
   mobilePoster,
@@ -287,7 +290,11 @@ export default function OpenMindScrollHero({
 
         <div className="omh-head" ref={headRef}>
           <p className="omh-kicker">{kicker}</p>
-          <h1 className="omh-title">{title}</h1>
+          {headingLevel === 2 ? (
+            <h2 className="omh-title">{title}</h2>
+          ) : (
+            <h1 className="omh-title">{title}</h1>
+          )}
           <p className="omh-sub">{subtitle}</p>
         </div>
 
