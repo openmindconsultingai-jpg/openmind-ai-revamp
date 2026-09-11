@@ -46,6 +46,8 @@ export type OpenMindScrollHeroProps = {
   scrollVh?: number;
   /** Fraction of the journey the opening headline holds. */
   headlineHold?: number;
+  /** Poziom nagłówka: 1 na stronie głównej, 2 gdy strona ma już swój H1. */
+  headingLevel?: 1 | 2;
   /** Accent colours. Defaults are the OpenMind brand. */
   accent?: string;
   secondary?: string;
