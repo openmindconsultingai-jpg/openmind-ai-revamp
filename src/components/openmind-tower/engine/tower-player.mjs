@@ -1,5 +1,4 @@
 import {clamp,interpolate,activeIndex} from './timeline.mjs';
-import {createCategoryPins} from './category-pins.mjs';
 
 /** Viewport background + separate clickable UI. No dependencies on the host site's copy or chat. */
 export function createTower(options){
@@ -24,7 +23,12 @@ export function createTower(options){
   ui.append(control,status);
   let ready=false,loading=false,dead=false,tour=false,error=false,url=null,offsets=[],smooth=0,lastTick=0,lastSeek=0,raf=0,active=-1;
   const headerOffset=()=>Number(options.headerOffset||0);
-  function measure(){offsets=sections.map(s=>s.getBoundingClientRect().top+scrollY-headerOffset());if(offsets.some((v,i)=>i&&v<=offsets[i-1]))throw new Error('Sections must appear in increasing vertical order.');}
+  function measure(){
+    const next=sections.map(s=>s.getBoundingClientRect().top+scrollY-headerOffset());
+    // Layout may not be settled yet (lazy sections, fonts, images) — keep the last valid measurement.
+    if(next.some((v,i)=>!Number.isFinite(v)||(i&&v<=next[i-1]))){if(!offsets.length)offsets=next.map((v,i)=>i*Math.max(1,innerHeight));return;}
+    offsets=next;
+  }
   measure();
   const maxTime=()=>Math.max(0,video.duration-1/24);
   function progress(){return interpolate(scrollY,offsets,timeline)}
@@ -32,11 +36,8 @@ export function createTower(options){
   function label(){control.disabled=loading;control.textContent=loading?'Ładowanie…':error?'Ponów ładowanie':tour?'Ⅱ Pauza':'▷ Przelot';control.setAttribute('aria-pressed',String(tour));control.setAttribute('aria-label',tour?'Zatrzymaj przelot':'Odtwórz przelot wieży')}
   function stop(){if(!tour)return;tour=false;video.pause();smooth=video.currentTime;label()}
   function select(id){const i=categories.findIndex(c=>c.id===id);if(i<0)throw new Error('Unknown category: '+id);stop();scrollToAt(timeline[i],reduce.matches?'instant':'smooth')}
-  const pins=createCategoryPins(ui,categories,(category,index)=>{
-    stop();const event=new CustomEvent('tower:category',{bubbles:true,cancelable:true,detail:{category,index}});
-    const proceed=root.dispatchEvent(event);const handled=options.onCategory?.(category,index)===false;
-    if(proceed&&!handled)select(category.id);
-  });pins.setActive(0);
+  // Pins (the "+" markers) are intentionally disabled — the scrolling section copy carries the links.
+  const pins={setActive(){},destroy(){}};
   function fail(err){if(dead)return;ready=false;loading=false;error=true;tour=false;video.pause();status.textContent='Nie udało się wczytać animacji. Użyj przycisku „Ponów ładowanie”.';label();options.onError?.(err)}
   async function load(){
     if(loading||dead)return;loading=true;error=false;status.textContent='Ładowanie animacji…';label();

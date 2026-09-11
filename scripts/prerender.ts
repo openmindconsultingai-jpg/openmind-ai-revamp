@@ -234,20 +234,25 @@ const STATIC_META: Record<string, Meta> = {
   '/about': {
     title: 'O nas – OpenMind AI Consulting | Eksperci AI w Polsce',
     description: 'Poznaj OpenMind AI Consulting – polski hub technologiczny łączący inżynierię AI z kreatywnością. Szkolenia, wdrożenia, generatywne media, automatyzacja.',
-    h1: 'O OpenMind AI – polski hub konsultingu sztucznej inteligencji',
-    body: `<p>OpenMind AI Consulting to polski hub technologiczny łączący głęboką wiedzę inżynierską o sztucznej inteligencji z kreatywnością i doświadczeniem biznesowym. Powstaliśmy z przekonania, że AI nie powinna być wyłącznie domeną Doliny Krzemowej — polskie firmy, szkoły i instytucje zasługują na partnera, który mówi ich językiem, rozumie realia rynkowe i dostarcza wdrożenia przynoszące mierzalne efekty.</p>
-<h2>Misja</h2>
-<p>Naszą misją jest demokratyzacja dostępu do najlepszych narzędzi AI w polskich organizacjach. Wierzymy, że sztuczna inteligencja powinna wspierać człowieka — odciążać od powtarzalnych zadań, otwierać nowe możliwości twórcze i podnosić jakość pracy.</p>
-<h2>Założyciel</h2>
-<p>OpenMind AI Consulting prowadzi <strong>Łukasz Czarnecki</strong> — przedsiębiorca, konsultant AI i edukator z wieloletnim doświadczeniem w transformacji cyfrowej. Łukasz osobiście prowadzi kluczowe projekty wdrożeniowe i szkolenia, dbając o najwyższą jakość każdej współpracy.</p>
-<h2>Zespół ekspertów</h2>
-<p>Nasz zespół to inżynierowie AI, specjaliści ds. automatyzacji procesów, designerzy, copywriterzy i edukatorzy. Łączy nas pasja do nowych technologii oraz nastawienie na realne wyniki klientów — nie efektowne demo, lecz wdrożenia, które działają w produkcji miesiącami i latami.</p>
-<h2>Doświadczenie branżowe</h2>
-<p>Realizowaliśmy projekty dla klientów z e-commerce, medycyny, prawa, edukacji, nieruchomości, produkcji, gastronomii, beauty, finansów, marketingu i mediów. To pozwala nam szybko rozpoznawać wzorce, dostarczać sprawdzone rozwiązania i unikać pułapek typowych dla nowych wdrożeń AI.</p>
-<h2>Wartości</h2>
-<p>Praktyczność — każde rozwiązanie musi przynieść konkretną wartość. Transparentność — uczciwie mówimy o tym, czego AI dziś jeszcze nie potrafi. Bezpieczeństwo — wszystkie wdrożenia zgodne z RODO i dobrymi praktykami branżowymi. Edukacja — przekazujemy wiedzę, a nie tworzymy uzależnienia od konsultanta.</p>
-<h2>Skontaktuj się z nami</h2>
-<p>Bezpłatna pierwsza konsultacja: <a href="/contact">formularz</a> lub biuro@openmindai.pl. Działamy w całej Polsce.</p>`,
+    h1: 'O nas',
+    body: `<p>OpenMind AI Consulting to polska firma doradczo-wdrożeniowa, która pomaga firmom, instytucjom publicznym i szkołom faktycznie wykorzystywać sztuczną inteligencję w codziennej pracy, a nie tylko o niej rozmawiać.</p>
+<h2>Dla kogo pracujemy</h2>
+<p>Od startu przeprowadziliśmy dziesiątki projektów w praktycznie każdej branży, jaka funkcjonuje w polskiej gospodarce: w produkcji i przemyśle, budownictwie, rolnictwie i agrobiznesie, handlu detalicznym i hurtowym, imporcie i logistyce, nieruchomościach i budownictwie społecznym, bankowości, kancelariach prawnych, gabinetach lekarskich i psychoterapeutycznych, hotelarstwie i gastronomii, muzealnictwie i instytucjach kultury, fundacjach i NGO, a także w administracji publicznej i urzędach.</p>
+<p>Pracujemy zarówno z dużymi korporacjami, jak i z małymi, rodzinnymi firmami. Pięcioosobowy zespół i stuosobowa organizacja dostają program tak samo dopasowany do ich rzeczywistej pracy, nigdy ten sam uniwersalny szablon.</p>
+<h2>Co robimy</h2>
+<p><strong>Szkolenia:</strong> stacjonarne w całej Polsce, online na żywo i 1:1. Zawsze budowane od podstaw pod branżę, narzędzia i poziom grupy, nigdy z gotowej prezentacji.</p>
+<p><strong>Audyty wdrożenia AI:</strong> analiza procesów, danych i infrastruktury, zanim zaproponujemy jakiekolwiek rozwiązanie. Bez audytu nie projektujemy wdrożeń szytych na miarę.</p>
+<p><strong>Wdrożenia i integracje:</strong> konfiguracja ChatGPT, Microsoft Copilot i Claude w środowisku firmowym, budowa własnych asystentów pod konkretne stanowiska, automatyzacje (Make, n8n) łączące AI z Excelem, pocztą i systemami CRM.</p>
+<p><strong>Rozwiązania lokalne:</strong> dla branż, w których dane nie mogą opuszczać firmy, na przykład kancelarii czy placówek medycznych, wdrażamy modele językowe lokalnie, na własnej infrastrukturze klienta.</p>
+<p><strong>Zgodność z AI Act:</strong> audyty i dokumentacja zgodności dla firm objętych unijnym rozporządzeniem o sztucznej inteligencji.</p>
+<p><strong>Treści generatywne:</strong> obrazy i wideo (Midjourney, Runway, Sora) na potrzeby marketingu i sprzedaży.</p>
+<h2>Jak pracujemy</h2>
+<p>Nie prowadzimy wykładów o AI. Prowadzimy warsztaty, audyty i wdrożenia, po których zespół wraca do pracy z czymś gotowym do użycia: przetestowanym promptem, działającym asystentem albo uruchomionym procesem, nigdy z listą ciekawostek.</p>
+<p>Każdy projekt zaczyna się od tego samego pytania: jak dziś wygląda Wasza praca? Dopiero potem dobieramy narzędzie, nigdy odwrotnie. Jesteśmy niezależni od jednego dostawcy: ChatGPT, Microsoft Copilot, Claude albo lokalny model open source, w zależności od tego, co faktycznie rozwiąże problem.</p>
+<h2>Kto za tym stoi</h2>
+<p>Założycielem OpenMind AI Consulting jest <strong>Łukasz Czarnecki</strong>, który łączy doświadczenie wdrożeniowe i trenerskie w sektorze bankowym i dużych korporacjach z bliską współpracą z małymi, rodzinnymi firmami. Dzięki temu rozmawiamy zarówno językiem zarządu, jak i językiem zespołu, który ma z AI korzystać na co dzień.</p>
+<h2>Zasięg</h2>
+<p>Działamy stacjonarnie w każdym mieście w Polsce i online dla zespołów rozproszonych. Pierwsza konsultacja jest zawsze bezpłatna i niezobowiązująca. Napisz do nas przez <a href="/contact">formularz kontaktowy</a> lub na biuro@openmindai.pl.</p>`,
     jsonLd: {
       '@context': 'https://schema.org',
       ...ORG_JSONLD,

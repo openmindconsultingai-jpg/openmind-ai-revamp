@@ -1,197 +1,132 @@
-import { useEffect, useRef, lazy, Suspense } from 'react';
-import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
-import { Sparkles, Cpu, GraduationCap, Globe, CheckCircle, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const LazyNeuralIframe = lazy(() => import('@/components/LazyNeuralIframe'));
+const justify: React.CSSProperties = { textAlign: 'justify', hyphens: 'auto' };
 
-gsap.registerPlugin(ScrollTrigger);
-
-const DNA_CARDS = [
+const WHAT_WE_DO = [
   {
-    icon: Sparkles,
-    title: 'KREATYWNOŚĆ BEZ GRANIC',
-    description: '„Algorytmy też mają duszę." Tworzymy wideo i kampanie typu Scroll-Stoppers. Wykorzystujemy Sora i Runway do produkcji teledysków i wirtualnych influencerów, generując miliony organicznych wyświetleń.',
-    accent: 'from-rose-500/20 to-fuchsia-500/20',
-    borderAccent: 'group-hover:border-rose-500/40',
-    iconBg: 'bg-rose-500/10 text-rose-400',
+    title: 'Szkolenia',
+    body: 'Stacjonarne w całej Polsce, online na żywo i 1:1. Zawsze budowane od podstaw pod branżę, narzędzia i poziom grupy, nigdy z gotowej prezentacji.',
   },
   {
-    icon: Cpu,
-    title: 'EFEKTYWNOŚĆ I AUTOMATYZACJA',
-    description: '„Zostaw robotę robotom." Wdrażamy systemy (Make/n8n) i dedykowane aplikacje LLM, które obsługują klientów 24/7, odzyskując czas Twojego zespołu na strategię.',
-    accent: 'from-primary/20 to-cyan-500/20',
-    borderAccent: 'group-hover:border-primary/40',
-    iconBg: 'bg-primary/10 text-primary',
+    title: 'Audyty wdrożenia AI',
+    body: 'Analiza procesów, danych i infrastruktury, zanim zaproponujemy jakiekolwiek rozwiązanie. Bez audytu nie projektujemy wdrożeń szytych na miarę.',
   },
   {
-    icon: GraduationCap,
-    title: 'EDUKACJA POKOLEŃ',
-    description: '„Od Juniora do CEO." Uczymy biznes współpracy z AI, a w Akademii Młodego Twórcy pokazujemy dzieciom, jak bezpiecznie tworzyć przyszłość, zamiast ją tylko konsumować.',
-    accent: 'from-violet-500/20 to-indigo-500/20',
-    borderAccent: 'group-hover:border-violet-500/40',
-    iconBg: 'bg-violet-500/10 text-violet-400',
+    title: 'Wdrożenia i integracje',
+    body: 'Konfiguracja ChatGPT, Microsoft Copilot i Claude w środowisku firmowym, budowa własnych asystentów pod konkretne stanowiska, automatyzacje (Make, n8n) łączące AI z Excelem, pocztą i systemami CRM.',
   },
   {
-    icon: Globe,
-    title: 'CYFROWA TOŻSAMOŚĆ',
-    description: '„Strona, która myśli." Projektujemy inteligentne strony WWW zintegrowane z chatbotami i asystentami głosowymi, tworząc branding wyprzedzający konkurencję.',
-    accent: 'from-emerald-500/20 to-teal-500/20',
-    borderAccent: 'group-hover:border-emerald-500/40',
-    iconBg: 'bg-emerald-500/10 text-emerald-400',
+    title: 'Rozwiązania lokalne',
+    body: 'Dla branż, w których dane nie mogą opuszczać firmy, na przykład kancelarii czy placówek medycznych, wdrażamy modele językowe lokalnie, na własnej infrastrukturze klienta.',
   },
-];
-
-const TRUST_POINTS = [
-  { text: 'Pionierzy Wdrożeń – Testujemy modele w dniu premiery.' },
-  { text: 'Holistyczne Podejście – Strategia + Tech + Kreacja.' },
-  { text: 'Bezpieczeństwo – AI Safety First & Ethics.' },
+  {
+    title: 'Zgodność z AI Act',
+    body: 'Audyty i dokumentacja zgodności dla firm objętych unijnym rozporządzeniem o sztucznej inteligencji.',
+  },
+  {
+    title: 'Treści generatywne',
+    body: 'Obrazy i wideo (Midjourney, Runway, Sora) na potrzeby marketingu i sprzedaży.',
+  },
 ];
 
 const About = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Hero text — render natychmiast (NO hidden state) by nie blokować FCP
-
-      // Mission — szybciej
-      gsap.fromTo('.about-mission', { opacity: 0, y: 30 }, {
-        opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
-        scrollTrigger: { trigger: '.about-mission', start: 'top 85%' },
-      });
-
-      // DNA cards — krótszy stagger, bez scale
-      gsap.fromTo('.dna-card', { opacity: 0, y: 30 }, {
-        opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out',
-        scrollTrigger: { trigger: '.dna-grid', start: 'top 85%' },
-      });
-
-      // Trust
-      gsap.fromTo('.trust-item', { opacity: 0, x: -20 }, {
-        opacity: 1, x: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out',
-        scrollTrigger: { trigger: '.trust-section', start: 'top 85%' },
-      });
-
-      gsap.fromTo('.trust-cta', { opacity: 0, y: 20 }, {
-        opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
-        scrollTrigger: { trigger: '.trust-cta', start: 'top 85%' },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-
-
   return (
-    <section ref={sectionRef} className="pt-20 md:pt-24 pb-20 md:pb-32 relative overflow-hidden">
-      {/* Ambient background effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[150px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-violet-500/5 blur-[150px]" />
-      </div>
+    <section className="pt-28 md:pt-36 pb-20 md:pb-28">
+      <div className="container mx-auto px-6">
+        <div className="max-w-3xl mx-auto">
 
-      <div className="container mx-auto px-4 relative">
-        <div className="max-w-6xl mx-auto">
-
-          {/* ═══ BLOCK 1: HERO HEADER ═══ */}
-          <div className="text-center mb-24 md:mb-32 pt-8 md:pt-16">
-            <h1 className="about-hero-h1 font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-              <span className="text-gradient text-glow">
-                Nie tylko przewidujemy przyszłość.
-              </span>
-              <br />
-              <span className="text-foreground">
-                My ją wdrażamy.
-              </span>
+          <header className="mb-14 md:mb-20">
+            <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-[-0.04em] leading-[1.02] mb-6">
+              O nas
             </h1>
-            <p className="about-hero-sub text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              OpenMindAI: Twoja przewaga technologiczna w świecie, który zmienia się szybciej niż kiedykolwiek.
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed" style={justify}>
+              OpenMind AI Consulting to polska firma doradczo-wdrożeniowa, która pomaga firmom,
+              instytucjom publicznym i szkołom faktycznie wykorzystywać sztuczną inteligencję
+              w codziennej pracy, a nie tylko o niej rozmawiać.
             </p>
-          </div>
+          </header>
 
-          {/* ═══ BLOCK 2: MISSION STATEMENT ═══ */}
-          <div className="about-mission mb-24 md:mb-32">
-            <div className="relative rounded-2xl border border-border/50 bg-card/30 backdrop-blur-md p-8 md:p-14 overflow-hidden">
-              {/* Glow accent */}
-              <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-primary/10 blur-[100px] pointer-events-none" />
+          <div className="space-y-14 md:space-y-20">
 
-              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-                <span className="text-gradient">Witaj w erze „AI-First".</span>
-              </h2>
-              <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-4xl" style={{ textAlign: 'justify', hyphens: 'auto' }}>
-                W OpenMindAI wierzymy, że sztuczna inteligencja to nie tylko narzędzie – to nowy system operacyjny dla biznesu, kreatywności i edukacji. Nasza misja jest prosta: przekształcić technologiczny chaos w Twoją konkretną przewagę rynkową. Nie jesteśmy teoretykami. Jesteśmy praktykami, którzy budują milionowe zasięgi i automatyzują całe działy firm.
+            <div>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5">Dla kogo pracujemy</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4" style={justify}>
+                Od startu przeprowadziliśmy dziesiątki projektów w praktycznie każdej branży, jaka
+                funkcjonuje w polskiej gospodarce: w produkcji i przemyśle, budownictwie, rolnictwie
+                i agrobiznesie, handlu detalicznym i hurtowym, imporcie i logistyce, nieruchomościach
+                i budownictwie społecznym, bankowości, kancelariach prawnych, gabinetach lekarskich
+                i psychoterapeutycznych, hotelarstwie i gastronomii, muzealnictwie i instytucjach
+                kultury, fundacjach i NGO, a także w administracji publicznej i urzędach.
+              </p>
+              <p className="text-muted-foreground leading-relaxed" style={justify}>
+                Pracujemy zarówno z dużymi korporacjami, jak i z małymi, rodzinnymi firmami.
+                Pięcioosobowy zespół i stuosobowa organizacja dostają program tak samo dopasowany
+                do ich rzeczywistej pracy, nigdy ten sam uniwersalny szablon.
               </p>
             </div>
 
-            {/* 3D Neural Model — mirrors Hero showcase */}
-            <div
-              className="relative mx-auto mt-10 md:mt-14 w-full"
-              style={{ maxWidth: '880px', height: 'min(70svh, 620px)' }}
-            >
-              <Suspense fallback={null}>
-                <LazyNeuralIframe className="absolute inset-0 w-full h-full" src="/openmind-neural-recreated.html?v=9" loadStrategy="viewport" />
-              </Suspense>
-            </div>
-          </div>
-
-          {/* ═══ BLOCK 3: OUR DNA – 2×2 BENTO ═══ */}
-          <div className="mb-24 md:mb-32">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12">
-              <span className="text-gradient">Nasze DNA</span>
-            </h2>
-            <div className="dna-grid grid grid-cols-1 md:grid-cols-2 gap-6">
-              {DNA_CARDS.map((card) => (
-                <div key={card.title} className={`dna-card group relative rounded-2xl border border-border/40 ${card.borderAccent} bg-card/30 backdrop-blur-sm p-8 transition-all duration-500 hover:bg-card/50 overflow-hidden`}>
-                  {/* Hover gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${card.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`} />
-
-                  <div className="relative z-10">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${card.iconBg} transition-transform duration-300 group-hover:scale-110`}>
-                      <card.icon size={24} />
-                    </div>
-                    <h2 className="font-heading text-lg md:text-xl font-bold text-foreground mb-3 tracking-wide">
-                      {card.title}
-                    </h2>
-                    <p className="text-muted-foreground text-sm md:text-base leading-relaxed" style={{ textAlign: 'justify', hyphens: 'auto' }}>
-                      {card.description}
+            <div>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Co robimy</h2>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {WHAT_WE_DO.map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-xl border border-border/50 bg-card/30 p-5"
+                  >
+                    <h3 className="font-heading text-base md:text-lg font-semibold mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed" style={justify}>
+                      {item.body}
                     </p>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* ═══ BLOCK 4: TRUST & CTA ═══ */}
-          <div className="trust-section">
-            {/* Trust points */}
-            <div className="flex flex-col md:flex-row justify-center gap-6 md:gap-10 mb-16">
-              {TRUST_POINTS.map((point) => (
-                <div key={point.text} className="trust-item flex items-start gap-3">
-                  <CheckCircle size={22} className="text-primary mt-0.5 shrink-0" />
-                  <p className="text-foreground/90 text-sm md:text-base">{point.text}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            {/* CTA */}
-            <div className="trust-cta text-center">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-8">
-                <span className="text-gradient text-glow-subtle">Gotowy na przyspieszenie?</span>
-              </h2>
+            <div>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5">Jak pracujemy</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4" style={justify}>
+                Nie prowadzimy wykładów o AI. Prowadzimy warsztaty, audyty i wdrożenia, po których
+                zespół wraca do pracy z czymś gotowym do użycia: przetestowanym promptem, działającym
+                asystentem albo uruchomionym procesem, nigdy z listą ciekawostek.
+              </p>
+              <p className="text-muted-foreground leading-relaxed" style={justify}>
+                Każdy projekt zaczyna się od tego samego pytania: jak dziś wygląda Wasza praca?
+                Dopiero potem dobieramy narzędzie, nigdy odwrotnie. Jesteśmy niezależni od jednego
+                dostawcy: ChatGPT, Microsoft Copilot, Claude albo lokalny model open source,
+                w zależności od tego, co faktycznie rozwiąże problem.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5">Kto za tym stoi</h2>
+              <p className="text-muted-foreground leading-relaxed" style={justify}>
+                Założycielem OpenMind AI Consulting jest Łukasz Czarnecki, który łączy doświadczenie
+                wdrożeniowe i trenerskie w sektorze bankowym i dużych korporacjach z bliską współpracą
+                z małymi, rodzinnymi firmami. Dzięki temu rozmawiamy zarówno językiem zarządu, jak
+                i językiem zespołu, który ma z AI korzystać na co dzień.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5">Zasięg</h2>
+              <p className="text-muted-foreground leading-relaxed" style={justify}>
+                Działamy stacjonarnie w każdym mieście w Polsce i online dla zespołów rozproszonych.
+                Pierwsza konsultacja jest zawsze bezpłatna i niezobowiązująca.
+              </p>
+            </div>
+
+            <div className="pt-2">
               <Link to="/contact">
-                <Button variant="glass" size="lg" className="text-base px-10 py-6 font-semibold tracking-wide">
-                  ROZPOCZNIJ WSPÓŁPRACĘ
-                  <ArrowRight size={20} />
+                <Button size="lg" className="font-semibold">
+                  Napisz do nas przez formularz
+                  <ArrowRight size={18} />
                 </Button>
               </Link>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </section>

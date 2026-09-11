@@ -411,7 +411,7 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
             </p>
             <Link to="/contact">
               <Button size="lg" className="font-semibold">
-                Umów bezpłatną konsultację
+                Napisz do nas przez formularz
               </Button>
             </Link>
           </div>
