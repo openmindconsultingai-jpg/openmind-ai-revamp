@@ -34,13 +34,21 @@ const WHAT_WE_DO = [
 
 const About = () => {
   return (
-    <section className="pt-28 md:pt-36 pb-20 md:pb-28">
-      <div className="container mx-auto px-6">
+    <section className="relative pt-28 md:pt-36 pb-20 md:pb-28 overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-[60vh] pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse at 50% 0%, hsl(176 100% 43% / 0.10) 0%, transparent 65%)',
+        }}
+      />
+      <div className="container mx-auto px-6 relative">
         <div className="max-w-3xl mx-auto">
 
           <header className="mb-14 md:mb-20">
             <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-[-0.04em] leading-[1.02] mb-6">
-              O nas
+              O <span className="text-gradient">nas</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed" style={justify}>
               OpenMind AI Consulting to polska firma doradczo-wdrożeniowa, która pomaga firmom,
