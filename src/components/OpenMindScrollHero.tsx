@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * OpenMindScrollHero
@@ -127,6 +127,20 @@ export default function OpenMindScrollHero({
   const hintRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
+  // Telefony dostają krótszą trasę przewijania — ten sam film, mniej scrollowania.
+  const [small, setSmall] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 760px)").matches
+      : false
+  );
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 760px)");
+    const on = () => setSmall(mql.matches);
+    on();
+    mql.addEventListener("change", on);
+    return () => mql.removeEventListener("change", on);
+  }, []);
+
   useEffect(() => {
     const track = trackRef.current;
     const video = videoRef.current;
@@ -142,6 +156,18 @@ export default function OpenMindScrollHero({
     const chosenPoster =
       isMobile.matches && mobilePoster ? mobilePoster : poster;
     if (chosenPoster) video.setAttribute("poster", chosenPoster);
+
+    // Tryb oszczędny: telefony, słabsze urządzenia i tryb oszczędzania danych.
+    const nav = navigator as Navigator & {
+      connection?: { saveData?: boolean };
+      deviceMemory?: number;
+    };
+    const light =
+      isMobile.matches ||
+      nav.connection?.saveData === true ||
+      (nav.deviceMemory ?? 8) <= 4;
+    const seekInterval = light ? 1000 / 18 : 1000 / 30;
+    let lastSeek = 0;
 
     if (reduced.matches) {
       // Honour the setting: no fetch, no scrub, poster only. The captions stay
@@ -181,8 +207,9 @@ export default function OpenMindScrollHero({
     const span = 0.8 / Math.max(services.length, 1);
     const start = 0.17;
 
-    const paint = () => {
+    const paint = (now?: number) => {
       frame = 0;
+      const stamp = now ?? performance.now();
       const rect = track.getBoundingClientRect();
       const travel = rect.height - window.innerHeight;
       const progress = travel > 0 ? clamp01(-rect.top / travel) : 0;
@@ -191,12 +218,16 @@ export default function OpenMindScrollHero({
       // as a camera move rather than a jump cut.
       if (duration > 0) {
         target = progress * (duration - 0.05);
-        current += (target - current) * 0.16;
+        current += (target - current) * (light ? 0.22 : 0.16);
         if (Math.abs(target - current) < 0.004) current = target;
-        if (!seeking) {
+        // Przeskoki klatek są kosztowne — na telefonach ograniczamy je do ~18/s.
+        if (!seeking && !video.seeking && stamp - lastSeek >= seekInterval) {
           seeking = true;
+          lastSeek = stamp;
           try {
-            video.currentTime = current;
+            const fast = (video as HTMLVideoElement & { fastSeek?: (t: number) => void }).fastSeek;
+            if (light && typeof fast === "function") fast.call(video, current);
+            else video.currentTime = current;
           } catch {
             // Some browsers throw while the buffer is still filling.
           }
@@ -232,7 +263,8 @@ export default function OpenMindScrollHero({
               : 0;
         node.style.opacity = String(strength);
         node.style.transform = `translate3d(0, ${(-local * 42).toFixed(2)}px, 0)`;
-        node.style.filter = `blur(${((1 - strength) * 9).toFixed(2)}px)`;
+        // Rozmycie jest bardzo kosztowne na telefonach — tam zostaje sama płynna zmiana krycia.
+        if (!light) node.style.filter = `blur(${((1 - strength) * 9).toFixed(2)}px)`;
         node.style.pointerEvents = strength > 0.55 ? "auto" : "none";
         node.tabIndex = strength > 0.55 ? 0 : -1;
         node.setAttribute("aria-hidden", strength > 0.4 ? "false" : "true");
@@ -277,7 +309,7 @@ export default function OpenMindScrollHero({
         {
           "--omh-accent": accent,
           "--omh-secondary": secondary,
-          height: `${scrollVh * 100}vh`,
+          height: `${Math.round(scrollVh * (small ? 0.7 : 1) * 100)}vh`,
         } as React.CSSProperties
       }
     >
@@ -508,9 +540,25 @@ const CSS_TEXT = `
 }
 @media (max-width: 760px) {
   .omh-head,
-  .omh-depths { top: 29%; }
-  .omh-depth-title { max-width: 11ch; }
-  .omh-sub { max-width: 28ch; }
+  .omh-depths {
+    top: 27%;
+    padding: 0 20px;
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+  }
+  .omh-depth {
+    left: max(20px, env(safe-area-inset-left));
+    right: max(20px, env(safe-area-inset-right));
+    gap: 8px;
+  }
+  .omh-depth-title { max-width: 13ch; font-size: clamp(30px, 8.4vw, 44px); }
+  .omh-title { font-size: clamp(32px, 8.8vw, 48px); max-width: 14ch; }
+  .omh-sub { max-width: 30ch; }
+  .omh-depth-body { max-width: 30ch; }
+  /* Rozmycie i filtry zjadają wydajność telefonów. */
+  .omh-depth { will-change: transform, opacity; filter: none !important; }
+  .omh-hint { bottom: max(20px, env(safe-area-inset-bottom)); }
+  .omh-depth-more { padding: 6px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .omh-hint-bead { animation: none; top: 12px; }

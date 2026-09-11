@@ -53,8 +53,13 @@ const Chatbot = () => {
     }
     const dismissed = sessionStorage.getItem("chatbot-bubble-dismissed");
     if (dismissed) return;
+    // Dymek pokazuje się na chwilę i sam znika, żeby nie zasłaniał treści na telefonie.
     const timer = setTimeout(() => setShowBubble(true), 2500);
-    return () => clearTimeout(timer);
+    const hide = setTimeout(() => setShowBubble(false), 12000);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(hide);
+    };
   }, [isOpen]);
 
   const dismissBubble = (e: React.MouseEvent) => {
@@ -179,7 +184,7 @@ const Chatbot = () => {
             <button
               type="button"
               onClick={() => { setIsOpen(true); setShowBubble(false); }}
-              className="relative group max-w-[240px] rounded-2xl rounded-br-sm bg-background/30 backdrop-blur-xl border border-primary/40 px-4 py-2.5 pr-8 text-sm font-sans text-foreground shadow-xl animate-in fade-in slide-in-from-bottom-2 duration-500 hover:border-primary/70 transition-colors"
+              className="relative group max-w-[200px] sm:max-w-[240px] rounded-2xl rounded-br-sm bg-background/90 backdrop-blur-xl border border-primary/40 px-4 py-2.5 pr-8 text-sm font-sans text-foreground shadow-xl animate-in fade-in slide-in-from-bottom-2 duration-500 hover:border-primary/70 transition-colors"
               style={{ boxShadow: '0 0 24px rgba(0, 223, 217, 0.18), 0 10px 25px rgba(0,0,0,0.25)' }}
             >
               <span className="block text-left leading-snug font-sans">
@@ -194,7 +199,7 @@ const Chatbot = () => {
                 <X className="w-3 h-3" />
               </span>
               {/* tail */}
-              <span className="absolute -bottom-1.5 right-4 w-3 h-3 bg-background/30 backdrop-blur-xl border-r border-b border-primary/40 rotate-45" />
+              <span className="absolute -bottom-1.5 right-4 w-3 h-3 bg-background/90 backdrop-blur-xl border-r border-b border-primary/40 rotate-45" />
             </button>
           )}
         <Button

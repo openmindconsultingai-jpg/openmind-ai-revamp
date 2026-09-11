@@ -22,6 +22,9 @@ export function createTower(options){
   const status=document.createElement('span');status.className='omt-status';status.setAttribute('role','status');
   ui.append(control,status);
   let ready=false,loading=false,dead=false,tour=false,error=false,url=null,offsets=[],smooth=0,lastTick=0,lastSeek=0,raf=0,active=-1;
+  const conn=navigator.connection||{};
+  const lightMode=matchMedia('(max-width: 900px), (pointer: coarse)').matches||conn.saveData===true||(navigator.deviceMemory||8)<=4;
+  const seekInterval=lightMode?1000/18:1000/30,seekEpsilon=lightMode?1/20:1/48;
   const headerOffset=()=>Number(options.headerOffset||0);
   function measure(){
     const next=sections.map(s=>s.getBoundingClientRect().top+scrollY-headerOffset());
@@ -41,6 +44,12 @@ export function createTower(options){
   function fail(err){if(dead)return;ready=false;loading=false;error=true;tour=false;video.pause();status.textContent='Nie udało się wczytać animacji. Użyj przycisku „Ponów ładowanie”.';label();options.onError?.(err)}
   async function load(){
     if(loading||dead)return;loading=true;error=false;status.textContent='Ładowanie animacji…';label();
+    // Telefony i łącza z oszczędzaniem danych: strumieniujemy plik przez zwykły
+    // <video src>, zamiast ściągać kilkanaście MB do pamięci jako Blob.
+    if(lightMode){
+      try{if(video.getAttribute('src')!==options.video){video.src=options.video;video.load()}}catch(err){fail(err)}
+      return;
+    }
     try{
       const response=await fetch(options.video,{signal});if(!response.ok)throw new Error('Video HTTP '+response.status);
       let blob;
@@ -73,7 +82,11 @@ export function createTower(options){
     if(tour){scrollToAt(clamp(video.currentTime/maxTime()),'instant');smooth=video.currentTime;return}
     const target=p*maxTime(),damping=Math.max(.01,options.damping??.22);
     smooth=reduce.matches?target:smooth+(target-smooth)*(1-Math.exp(-dt/damping));if(Math.abs(smooth-target)<.01)smooth=target;
-    if(!video.seeking&&now-lastSeek>=1000/30&&Math.abs(video.currentTime-smooth)>=1/48){video.currentTime=clamp(smooth,0,maxTime());lastSeek=now}
+    if(!video.seeking&&now-lastSeek>=seekInterval&&Math.abs(video.currentTime-smooth)>=seekEpsilon){
+      const t=clamp(smooth,0,maxTime());
+      if(lightMode&&typeof video.fastSeek==='function'){try{video.fastSeek(t)}catch{video.currentTime=t}}else video.currentTime=t;
+      lastSeek=now;
+    }
   }
   label();load();raf=requestAnimationFrame(tick);
   return {select,play,pause:stop,refresh:measure,retry:load,destroy(){
