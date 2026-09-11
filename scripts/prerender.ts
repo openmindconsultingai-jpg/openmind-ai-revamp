@@ -245,7 +245,7 @@ const STATIC_META: Record<string, Meta> = {
 <p><strong>Wdrożenia i integracje:</strong> konfiguracja ChatGPT, Microsoft Copilot i Claude w środowisku firmowym, budowa własnych asystentów pod konkretne stanowiska, automatyzacje (Make, n8n) łączące AI z Excelem, pocztą i systemami CRM.</p>
 <p><strong>Rozwiązania lokalne:</strong> dla branż, w których dane nie mogą opuszczać firmy, na przykład kancelarii czy placówek medycznych, wdrażamy modele językowe lokalnie, na własnej infrastrukturze klienta.</p>
 <p><strong>Zgodność z AI Act:</strong> audyty i dokumentacja zgodności dla firm objętych unijnym rozporządzeniem o sztucznej inteligencji.</p>
-<p><strong>Treści generatywne:</strong> obrazy i wideo (Midjourney, Runway, Sora) na potrzeby marketingu i sprzedaży.</p>
+<p><strong>Doradztwo strategiczne:</strong> pomagamy zarządom wybrać kierunek: gdzie AI realnie zwróci się w firmie, w jakiej kolejności wdrażać i jak mierzyć efekty.</p>
 <h2>Jak pracujemy</h2>
 <p>Nie prowadzimy wykładów o AI. Prowadzimy warsztaty, audyty i wdrożenia, po których zespół wraca do pracy z czymś gotowym do użycia: przetestowanym promptem, działającym asystentem albo uruchomionym procesem, nigdy z listą ciekawostek.</p>
 <p>Każdy projekt zaczyna się od tego samego pytania: jak dziś wygląda Wasza praca? Dopiero potem dobieramy narzędzie, nigdy odwrotnie. Jesteśmy niezależni od jednego dostawcy: ChatGPT, Microsoft Copilot, Claude albo lokalny model open source, w zależności od tego, co faktycznie rozwiąże problem.</p>
