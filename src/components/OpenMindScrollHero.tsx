@@ -207,8 +207,9 @@ export default function OpenMindScrollHero({
     const span = 0.8 / Math.max(services.length, 1);
     const start = 0.17;
 
-    const paint = () => {
+    const paint = (now?: number) => {
       frame = 0;
+      const stamp = now ?? performance.now();
       const rect = track.getBoundingClientRect();
       const travel = rect.height - window.innerHeight;
       const progress = travel > 0 ? clamp01(-rect.top / travel) : 0;
@@ -217,12 +218,16 @@ export default function OpenMindScrollHero({
       // as a camera move rather than a jump cut.
       if (duration > 0) {
         target = progress * (duration - 0.05);
-        current += (target - current) * 0.16;
+        current += (target - current) * (light ? 0.22 : 0.16);
         if (Math.abs(target - current) < 0.004) current = target;
-        if (!seeking) {
+        // Przeskoki klatek są kosztowne — na telefonach ograniczamy je do ~18/s.
+        if (!seeking && !video.seeking && stamp - lastSeek >= seekInterval) {
           seeking = true;
+          lastSeek = stamp;
           try {
-            video.currentTime = current;
+            const fast = (video as HTMLVideoElement & { fastSeek?: (t: number) => void }).fastSeek;
+            if (light && typeof fast === "function") fast.call(video, current);
+            else video.currentTime = current;
           } catch {
             // Some browsers throw while the buffer is still filling.
           }
