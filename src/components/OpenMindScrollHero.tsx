@@ -102,6 +102,7 @@ const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 export default function OpenMindScrollHero({
   accent = "#00C896",
   desktopSrc,
+  headingLevel = 1,
   headlineHold = 0.13,
   kicker = "OpenMind AI Consulting",
   mobilePoster,
