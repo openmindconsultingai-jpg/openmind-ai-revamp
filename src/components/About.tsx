@@ -116,6 +116,8 @@ const COPY = {
     reach1:
       'Działamy stacjonarnie w każdym mieście w Polsce i online dla zespołów rozproszonych. Pierwsza konsultacja jest zawsze bezpłatna i niezobowiązująca.',
     cta: 'Napisz do nas przez formularz',
+    more: 'Zobacz zakres',
+    hint: 'Przewijaj, aby odtworzyć',
     services: SERVICES_PL,
   },
   en: {
