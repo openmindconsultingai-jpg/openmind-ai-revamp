@@ -108,8 +108,9 @@ const About = () => {
         title="Co robimy"
         subtitle="Sześć obszarów, w których wdrażamy AI u naszych klientów."
         services={WHAT_WE_DO}
-        scrollVh={9}
-        headlineHold={0.16}
+        scrollVh={6}
+        headlineHold={0.14}
+        headingLevel={2}
       />
 
       <section className="relative pt-20 md:pt-28 pb-20 md:pb-28">
