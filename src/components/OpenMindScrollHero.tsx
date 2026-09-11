@@ -318,7 +318,7 @@ export default function OpenMindScrollHero({
               <span className="omh-depth-title">{service.title}</span>
               <span className="omh-depth-body">{service.body}</span>
               <span className="omh-depth-more">
-                Zobacz zakres
+                {moreLabel}
                 <span aria-hidden="true">&#8594;</span>
               </span>
             </a>
