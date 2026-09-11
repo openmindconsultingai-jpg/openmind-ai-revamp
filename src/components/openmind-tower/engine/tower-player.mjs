@@ -82,7 +82,11 @@ export function createTower(options){
     if(tour){scrollToAt(clamp(video.currentTime/maxTime()),'instant');smooth=video.currentTime;return}
     const target=p*maxTime(),damping=Math.max(.01,options.damping??.22);
     smooth=reduce.matches?target:smooth+(target-smooth)*(1-Math.exp(-dt/damping));if(Math.abs(smooth-target)<.01)smooth=target;
-    if(!video.seeking&&now-lastSeek>=1000/30&&Math.abs(video.currentTime-smooth)>=1/48){video.currentTime=clamp(smooth,0,maxTime());lastSeek=now}
+    if(!video.seeking&&now-lastSeek>=seekInterval&&Math.abs(video.currentTime-smooth)>=seekEpsilon){
+      const t=clamp(smooth,0,maxTime());
+      if(lightMode&&typeof video.fastSeek==='function'){try{video.fastSeek(t)}catch{video.currentTime=t}}else video.currentTime=t;
+      lastSeek=now;
+    }
   }
   label();load();raf=requestAnimationFrame(tick);
   return {select,play,pause:stop,refresh:measure,retry:load,destroy(){
