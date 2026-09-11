@@ -37,3 +37,5 @@ Allow: /
 Sitemap: https://www.openmindai.pl/sitemap-index.xml
 Sitemap: https://www.openmindai.pl/sitemap.xml
 Sitemap: https://www.openmindai.pl/sitemap-html.xml
+
+Disallow: /wariant-tower
