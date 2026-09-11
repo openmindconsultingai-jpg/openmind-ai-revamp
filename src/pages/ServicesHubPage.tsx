@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import PageLayout from '@/components/PageLayout';
+import { useIsMobile } from '@/hooks/use-mobile';
 import Footer from '@/components/Footer';
 import usePageMeta from '@/hooks/usePageMeta';
 import { Button } from '@/components/ui/button';
