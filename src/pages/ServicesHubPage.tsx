@@ -5,6 +5,7 @@ import PageLayout from '@/components/PageLayout';
 import Footer from '@/components/Footer';
 import usePageMeta from '@/hooks/usePageMeta';
 import { Button } from '@/components/ui/button';
+import LazyNeuralIframe from '@/components/LazyNeuralIframe';
 import {
   HUB,
   services,
