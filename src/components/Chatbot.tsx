@@ -53,8 +53,13 @@ const Chatbot = () => {
     }
     const dismissed = sessionStorage.getItem("chatbot-bubble-dismissed");
     if (dismissed) return;
+    // Dymek pokazuje się na chwilę i sam znika, żeby nie zasłaniał treści na telefonie.
     const timer = setTimeout(() => setShowBubble(true), 2500);
-    return () => clearTimeout(timer);
+    const hide = setTimeout(() => setShowBubble(false), 12000);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(hide);
+    };
   }, [isOpen]);
 
   const dismissBubble = (e: React.MouseEvent) => {
