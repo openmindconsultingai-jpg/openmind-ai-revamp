@@ -130,7 +130,7 @@ const Home = () => {
 
       <main className="relative z-[1]">
         {/* Intro / H1 */}
-        <section className="min-h-[90vh] flex items-center bg-transparent">
+        <section className="min-h-[68vh] md:min-h-[90vh] flex items-end md:items-center pb-16 md:pb-0 pt-24 md:pt-0 bg-transparent">
           <div className="max-w-[1180px] w-full mx-auto px-6 md:px-14">
             <div className="max-w-2xl">
               <h1 className="text-4xl md:text-6xl font-bold leading-[1.02] tracking-[-0.04em] text-foreground mb-6">
