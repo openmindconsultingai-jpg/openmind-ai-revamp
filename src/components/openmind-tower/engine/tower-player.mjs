@@ -41,6 +41,12 @@ export function createTower(options){
   function fail(err){if(dead)return;ready=false;loading=false;error=true;tour=false;video.pause();status.textContent='Nie udało się wczytać animacji. Użyj przycisku „Ponów ładowanie”.';label();options.onError?.(err)}
   async function load(){
     if(loading||dead)return;loading=true;error=false;status.textContent='Ładowanie animacji…';label();
+    // Telefony i łącza z oszczędzaniem danych: strumieniujemy plik przez zwykły
+    // <video src>, zamiast ściągać kilkanaście MB do pamięci jako Blob.
+    if(lightMode){
+      try{if(video.getAttribute('src')!==options.video){video.src=options.video;video.load()}}catch(err){fail(err)}
+      return;
+    }
     try{
       const response=await fetch(options.video,{signal});if(!response.ok)throw new Error('Video HTTP '+response.status);
       let blob;
