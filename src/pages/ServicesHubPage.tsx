@@ -86,7 +86,7 @@ const ServicesHubPage = () => {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link to="/contact">
               <Button size="lg" className="font-semibold">
-                Umów bezpłatną konsultację
+                Napisz do nas przez formularz
               </Button>
             </Link>
           </div>
@@ -292,7 +292,7 @@ const ServicesHubPage = () => {
             </p>
             <Link to="/contact">
               <Button size="lg" className="font-semibold">
-                Umów bezpłatną konsultację
+                Napisz do nas przez formularz
               </Button>
             </Link>
           </div>

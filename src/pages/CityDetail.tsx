@@ -419,7 +419,7 @@ const CityDetail = () => {
               </p>
               <Link to="/contact">
                 <Button size="lg" className="px-8">
-                  {language === 'pl' ? 'Umów bezpłatną rozmowę' : 'Schedule a free call'}
+                  {language === 'pl' ? 'Napisz do nas przez formularz' : 'Send us a message'}
                 </Button>
               </Link>
             </div>

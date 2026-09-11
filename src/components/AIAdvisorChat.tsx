@@ -499,7 +499,7 @@ const AIAdvisorChat = () => {
             onClick={goToContact}
             className="gap-2"
           >
-            Umów konsultację
+            Przejdź do formularza kontaktowego
             <ArrowRight size={16} />
           </Button>
         </div>

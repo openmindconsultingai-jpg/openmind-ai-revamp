@@ -29,7 +29,7 @@ const translations: Translations = {
     'hero.description2': 'Nie goń rynku – wyprzedź go.',
     'hero.description3': 'Dostarczamy rozwiązania AI, które adaptują się szybciej niż Twoja konkurencja.',
     'hero.cta': 'Wkrocz w technologię jutra już dziś',
-    'hero.cta.consultation': 'Umów bezpłatną konsultację',
+    'hero.cta.consultation': 'Napisz do nas przez formularz',
     'hero.seo.h1': 'Sztuczna Inteligencja dla firm, agencji i szkół — wdrożenia, szkolenia, konsulting',
     'hero.seo.description': 'OpenMind AI Consulting to polski lider wdrożeń sztucznej inteligencji dla biznesu i\u00a0edukacji. Pomagamy firmom, agencjom marketingowym i\u00a0szkołom w\u00a0całej Polsce praktycznie wykorzystać możliwości AI — od bezpłatnych konsultacji i\u00a0audytu, przez szkolenia z\u00a0najlepszych narzędzi AI na rynku (ChatGPT, Claude, Gemini, Copilot, Midjourney i\u00a0innych), po kompleksowe wdrożenia i\u00a0gotowe automatyzacje dopasowane do Twojej branży.',
     'hero.seo.description2': 'Pierwsze efekty widoczne w\u00a0kilka dni, pełna transformacja cyfrowa rozłożona na tygodnie lub miesiące — w\u00a0zależności od skali projektu.',
@@ -853,7 +853,7 @@ W tej rzeczywistości rola twórcy ulegnie głębokiej redefinicji. Twórca przy
     'services.header.title1': 'Agencja AI, Automatyzacja i Szkolenia –',
     'services.header.title2': 'Wdrażamy Sztuczną Inteligencję w Biznesie',
     'services.header.subtitle': 'Pionierskie rozwiązania – od wiralowych produkcji wideo, przez automatyzację firm, aż po edukację przyszłych pokoleń.',
-    'services.cta': 'Umów bezpłatną konsultację',
+    'services.cta': 'Napisz do nas przez formularz',
 
     // Service tabs
     'services.tab.creative.label': 'Agencja Kreatywna',
