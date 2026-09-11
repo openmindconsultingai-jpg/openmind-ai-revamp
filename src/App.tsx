@@ -91,6 +91,7 @@ const App = () => (
           <ScrollToTop />
           <Routes>
             <Route path="/" element={wrap(<Home />)} />
+            <Route path="/wariant-tower" element={wrap(<HomeTower />)} />
 
             {/* Services hub */}
             <Route path="/services" element={wrap(<ServicesHubPage />)} />
