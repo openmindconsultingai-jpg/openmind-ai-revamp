@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import LazyNeuralIframe from '@/components/LazyNeuralIframe';
 
 const justify: React.CSSProperties = { textAlign: 'justify', hyphens: 'auto' };
 
