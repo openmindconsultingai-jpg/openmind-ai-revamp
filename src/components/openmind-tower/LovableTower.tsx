@@ -15,7 +15,7 @@ export function LovableTower(props: LovableTowerProps) {
   const [mountError, setMountError] = useState<string | null>(null);
   // Keep callback identities from restarting the film on host-page re-renders.
   useEffect(() => { callbacks.current = props; });
-  const { video, poster, videoBytes, categories, damping, headerOffset, theme } = props;
+  const { video, videoHd, poster, videoBytes, videoHdBytes, categories, damping, headerOffset, theme } = props;
 
   useEffect(() => {
     const element = root.current;
