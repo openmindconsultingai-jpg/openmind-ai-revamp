@@ -39,7 +39,7 @@ export function LovableTower(props: LovableTowerProps) {
       instance?.destroy();
       callbacks.current.onInstance?.(null);
     };
-  }, [video, poster, videoBytes, categories, damping, headerOffset, theme]);
+  }, [video, videoHd, poster, videoBytes, videoHdBytes, categories, damping, headerOffset, theme]);
 
   return <>
     <div ref={root} className={props.className} />
