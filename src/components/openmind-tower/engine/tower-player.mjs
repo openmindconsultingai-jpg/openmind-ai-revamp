@@ -27,6 +27,9 @@ export function createTower(options){
   // Materiał jest zakodowany wyłącznie klatkami kluczowymi (24 kl./s), więc
   // przeskok do dowolnego miejsca jest tani — celujemy w każdą klatkę filmu.
   const seekInterval=0,seekEpsilon=1/96;
+  // Duże ekrany dostają ostrzejszy plik, telefony lżejszy.
+  const source=(!lightMode&&options.videoHd)||options.video;
+  const sourceBytes=(!lightMode&&options.videoHd?options.videoHdBytes:options.videoBytes)||0;
   const headerOffset=()=>Number(options.headerOffset||0);
   function measure(){
     const next=sections.map(s=>s.getBoundingClientRect().top+scrollY-headerOffset());
