@@ -85,8 +85,8 @@ export function createTower(options){
     const target=p*maxTime(),damping=Math.max(.01,options.damping??.22);
     smooth=reduce.matches?target:smooth+(target-smooth)*(1-Math.exp(-dt/damping));if(Math.abs(smooth-target)<.01)smooth=target;
     if(!video.seeking&&now-lastSeek>=seekInterval&&Math.abs(video.currentTime-smooth)>=seekEpsilon){
-      const t=clamp(smooth,0,maxTime());
-      if(lightMode&&typeof video.fastSeek==='function'){try{video.fastSeek(t)}catch{video.currentTime=t}}else video.currentTime=t;
+      // Zawsze dokładny czas — każda klatka filmu jest osiągalna, bez zaokrąglania.
+      try{video.currentTime=clamp(smooth,0,maxTime())}catch{}
       lastSeek=now;
     }
   }
