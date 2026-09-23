@@ -24,7 +24,7 @@ export function LovableTower(props: LovableTowerProps) {
     setMountError(null);
     try {
       instance = createTower({
-        root: element, video, poster, videoBytes, categories, damping, headerOffset, theme,
+        root: element, video, videoHd, poster, videoBytes, videoHdBytes, categories, damping, headerOffset, theme,
         onCategory: (category, index) => callbacks.current.onCategory?.(category, index),
         onChange: (category, index) => callbacks.current.onChange?.(category, index),
         onReady: () => callbacks.current.onReady?.(),
