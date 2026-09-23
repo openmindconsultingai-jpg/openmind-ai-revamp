@@ -24,7 +24,9 @@ export function createTower(options){
   let ready=false,loading=false,dead=false,tour=false,error=false,url=null,offsets=[],smooth=0,lastTick=0,lastSeek=0,raf=0,active=-1;
   const conn=navigator.connection||{};
   const lightMode=matchMedia('(max-width: 900px), (pointer: coarse)').matches||conn.saveData===true||(navigator.deviceMemory||8)<=4;
-  const seekInterval=lightMode?1000/18:1000/30,seekEpsilon=lightMode?1/20:1/48;
+  // Materiał jest zakodowany wyłącznie klatkami kluczowymi (24 kl./s), więc
+  // przeskok do dowolnego miejsca jest tani — celujemy w każdą klatkę filmu.
+  const seekInterval=0,seekEpsilon=1/96;
   const headerOffset=()=>Number(options.headerOffset||0);
   function measure(){
     const next=sections.map(s=>s.getBoundingClientRect().top+scrollY-headerOffset());
@@ -83,8 +85,8 @@ export function createTower(options){
     const target=p*maxTime(),damping=Math.max(.01,options.damping??.22);
     smooth=reduce.matches?target:smooth+(target-smooth)*(1-Math.exp(-dt/damping));if(Math.abs(smooth-target)<.01)smooth=target;
     if(!video.seeking&&now-lastSeek>=seekInterval&&Math.abs(video.currentTime-smooth)>=seekEpsilon){
-      const t=clamp(smooth,0,maxTime());
-      if(lightMode&&typeof video.fastSeek==='function'){try{video.fastSeek(t)}catch{video.currentTime=t}}else video.currentTime=t;
+      // Zawsze dokładny czas — każda klatka filmu jest osiągalna, bez zaokrąglania.
+      try{video.currentTime=clamp(smooth,0,maxTime())}catch{}
       lastSeek=now;
     }
   }

@@ -23,6 +23,6 @@ export const towerConfig = {
   videoBytes: towerVideo.size,
   categories: towerCategories,
   theme: towerTheme,
-  damping: .22,
+  damping: .12,
   headerOffset: 0,
 };
