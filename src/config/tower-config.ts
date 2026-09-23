@@ -20,8 +20,10 @@ export const towerTheme: TowerTheme = {
 
 export const towerConfig = {
   video: towerVideo.url,
+  videoHd: towerVideoHd.url,
   poster: '/tower/poster.jpg',
   videoBytes: towerVideo.size,
+  videoHdBytes: towerVideoHd.size,
   categories: towerCategories,
   theme: towerTheme,
   damping: .12,
