@@ -166,7 +166,9 @@ export default function OpenMindScrollHero({
       isMobile.matches ||
       nav.connection?.saveData === true ||
       (nav.deviceMemory ?? 8) <= 4;
-    const seekInterval = light ? 1000 / 18 : 1000 / 30;
+    // Film jest zakodowany samymi klatkami kluczowymi, więc skok do dowolnego
+    // miejsca jest tani — pokazujemy każdą klatkę, bez ograniczania tempa.
+    const seekInterval = 0;
     let lastSeek = 0;
 
     if (reduced.matches) {
@@ -218,22 +220,25 @@ export default function OpenMindScrollHero({
       // as a camera move rather than a jump cut.
       if (duration > 0) {
         target = progress * (duration - 0.05);
-        current += (target - current) * (light ? 0.22 : 0.16);
-        if (Math.abs(target - current) < 0.004) current = target;
-        // Przeskoki klatek są kosztowne — na telefonach ograniczamy je do ~18/s.
-        if (!seeking && !video.seeking && stamp - lastSeek >= seekInterval) {
+        current += (target - current) * (light ? 0.28 : 0.22);
+        if (Math.abs(target - current) < 0.002) current = target;
+        if (
+          !seeking &&
+          !video.seeking &&
+          stamp - lastSeek >= seekInterval &&
+          Math.abs(video.currentTime - current) >= 1 / 96
+        ) {
           seeking = true;
           lastSeek = stamp;
           try {
-            const fast = (video as HTMLVideoElement & { fastSeek?: (t: number) => void }).fastSeek;
-            if (light && typeof fast === "function") fast.call(video, current);
-            else video.currentTime = current;
+            video.currentTime = current;
           } catch {
             // Some browsers throw while the buffer is still filling.
           }
           seeking = false;
         }
       }
+
 
       if (headRef.current) {
         const fade = clamp01(1 - progress / headlineHold);
