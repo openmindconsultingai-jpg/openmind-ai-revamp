@@ -24,7 +24,9 @@ export function createTower(options){
   let ready=false,loading=false,dead=false,tour=false,error=false,url=null,offsets=[],smooth=0,lastTick=0,lastSeek=0,raf=0,active=-1;
   const conn=navigator.connection||{};
   const lightMode=matchMedia('(max-width: 900px), (pointer: coarse)').matches||conn.saveData===true||(navigator.deviceMemory||8)<=4;
-  const seekInterval=lightMode?1000/18:1000/30,seekEpsilon=lightMode?1/20:1/48;
+  // Materiał jest zakodowany wyłącznie klatkami kluczowymi (24 kl./s), więc
+  // przeskok do dowolnego miejsca jest tani — celujemy w każdą klatkę filmu.
+  const seekInterval=0,seekEpsilon=1/96;
   const headerOffset=()=>Number(options.headerOffset||0);
   function measure(){
     const next=sections.map(s=>s.getBoundingClientRect().top+scrollY-headerOffset());
