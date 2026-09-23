@@ -15,7 +15,7 @@ export function LovableTower(props: LovableTowerProps) {
   const [mountError, setMountError] = useState<string | null>(null);
   // Keep callback identities from restarting the film on host-page re-renders.
   useEffect(() => { callbacks.current = props; });
-  const { video, poster, videoBytes, categories, damping, headerOffset, theme } = props;
+  const { video, videoHd, poster, videoBytes, videoHdBytes, categories, damping, headerOffset, theme } = props;
 
   useEffect(() => {
     const element = root.current;
@@ -24,7 +24,7 @@ export function LovableTower(props: LovableTowerProps) {
     setMountError(null);
     try {
       instance = createTower({
-        root: element, video, poster, videoBytes, categories, damping, headerOffset, theme,
+        root: element, video, videoHd, poster, videoBytes, videoHdBytes, categories, damping, headerOffset, theme,
         onCategory: (category, index) => callbacks.current.onCategory?.(category, index),
         onChange: (category, index) => callbacks.current.onChange?.(category, index),
         onReady: () => callbacks.current.onReady?.(),
@@ -39,7 +39,7 @@ export function LovableTower(props: LovableTowerProps) {
       instance?.destroy();
       callbacks.current.onInstance?.(null);
     };
-  }, [video, poster, videoBytes, categories, damping, headerOffset, theme]);
+  }, [video, videoHd, poster, videoBytes, videoHdBytes, categories, damping, headerOffset, theme]);
 
   return <>
     <div ref={root} className={props.className} />
