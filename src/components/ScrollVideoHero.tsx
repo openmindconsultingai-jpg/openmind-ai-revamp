@@ -62,12 +62,14 @@ export default function ScrollVideoHero() {
         if (!res.ok || !res.body) throw new Error("fetch failed");
         const total = Number(res.headers.get("content-length")) || 0;
         const reader = res.body.getReader();
-        const chunks: Uint8Array[] = [];
+        const chunks: ArrayBuffer[] = [];
         let received = 0;
         for (;;) {
           const { done, value } = await reader.read();
           if (done) break;
-          chunks.push(value);
+          const chunk = new Uint8Array(value.byteLength);
+          chunk.set(value);
+          chunks.push(chunk.buffer);
           received += value.length;
           if (total) setLoadPct(Math.round((received / total) * 100));
         }
