@@ -170,7 +170,7 @@ export default function ScrollVideoHero() {
             >
               <span className="block text-[10px] tracking-[0.35em] text-primary md:text-xs">USŁUGA</span>
               <span className="mt-2 block font-heading text-3xl font-bold leading-tight text-foreground md:text-5xl">{c.title}</span>
-              <span className="mt-3 block text-sm leading-relaxed text-foreground/80 md:text-lg">{noWidows(c.text)}</span>
+              <span className="mt-3 block text-justify text-sm leading-relaxed text-foreground/80 md:text-lg">{noWidows(c.text)}</span>
               <span className="mt-4 inline-block border-b border-primary pb-1 text-[10px] tracking-[0.3em] text-primary md:text-xs">
                 ZOBACZ →
               </span>
@@ -190,7 +190,7 @@ export default function ScrollVideoHero() {
           <h1 className="max-w-4xl hyphens-auto font-heading text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-6xl">
             {noWidows("AI, które naprawdę działa u Ciebie w firmie, urzędzie, szkole czy w domu")}
           </h1>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/80 sm:text-base md:mt-4 md:text-lg">
+          <p className="mt-3 max-w-2xl text-justify text-sm leading-relaxed text-foreground/80 sm:text-base md:mt-4 md:text-lg">
             {noWidows("Szkolenia, audyty i wdrożenia sztucznej inteligencji, od pierwszej rozmowy po działający proces.")}
           </p>
           <a
