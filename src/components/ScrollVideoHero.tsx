@@ -176,7 +176,25 @@ export default function ScrollVideoHero() {
     const section = sectionRef.current;
     if (!video || !section) return;
     let raf = 0;
-    let lastShown = -1;
+    let displayedFrame = Math.round(video.currentTime * FPS);
+    let targetFrame = displayedFrame;
+    let seekPending = false;
+
+    const showNextFrame = () => {
+      if (seekPending || displayedFrame === targetFrame) return;
+
+      displayedFrame += targetFrame > displayedFrame ? 1 : -1;
+      seekPending = true;
+      video.currentTime = displayedFrame / FPS + 0.001;
+      setProgress(displayedFrame / (FRAME_COUNT - 1));
+    };
+
+    const onSeeked = () => {
+      seekPending = false;
+      showNextFrame();
+    };
+
+    video.addEventListener("seeked", onSeeked);
 
     const tick = () => {
       const rect = section.getBoundingClientRect();
@@ -185,16 +203,15 @@ export default function ScrollVideoHero() {
       currentRef.current += (target - currentRef.current) * SMOOTHING;
       if (Math.abs(target - currentRef.current) < 0.0005) currentRef.current = target;
 
-      const frame = Math.round(currentRef.current * (FRAME_COUNT - 1));
-      if (frame !== lastShown && !video.seeking) {
-        video.currentTime = frame / FPS + 0.001;
-        lastShown = frame;
-      }
-      setProgress((p) => (Math.abs(p - currentRef.current) > 0.002 ? currentRef.current : p));
+      targetFrame = Math.round(currentRef.current * (FRAME_COUNT - 1));
+      showNextFrame();
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      video.removeEventListener("seeked", onSeeked);
+    };
   }, [ready, reducedMotion]);
 
   const p = reducedMotion ? 1 : progress;
