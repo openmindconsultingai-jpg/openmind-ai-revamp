@@ -5,25 +5,78 @@ import { noWidows } from "@/lib/typography";
 const VIDEO_SRC =
   "https://d2ol7oe51mr4n9.cloudfront.net/user_34xv3lFIvmqHeU79zolBBgWasHd/b1aec198-10f6-4bfc-9324-c478112c963e.mp4";
 
+// Zdjęcie bazowe: pierwsza klatka filmu w wysokiej jakości (2560x1440).
+// Widoczne od razu po wejściu, znika przy pierwszym ruchu scrolla.
+const POSTER_SRC =
+  "https://d2ol7oe51mr4n9.cloudfront.net/user_34xv3lFIvmqHeU79zolBBgWasHd/bcd38187-af45-488c-863c-4d8afb89bf38.webp";
+const POSTER_ALT =
+  "Odbicie strony openmindai.pl w okularach przeciwsłonecznych właściciela firmy, który odpoczywa na morzu w dmuchanym kole OpenMind.";
+
 // Kadrowanie na pionowych ekranach: "50% 50%" = środek kadru.
-// Pierwsza wartość przesuwa widoczny wycinek w poziomie (np. "45% 50%" lekko w lewo).
 const OBJECT_POSITION_PORTRAIT = "50% 50%";
 
 const FRAME_COUNT = 721;
 const FPS = 24;
 const SCROLL_HEIGHT_VH = 600;
-const SMOOTHING = 0.12; // 0.08 = bardziej miękko, 0.2 = szybciej za palcem
+const SMOOTHING = 0.12;
 
-// Podpisy usług: od najprostszej do najbardziej zaawansowanej.
-// from/to = zakres postępu scrolla (0..1), w którym podpis jest widoczny.
+// Podpisy usług: od detalu do widoku z lotu ptaka.
 const CAPTIONS = [
-  { from: 0.06, to: 0.2, title: "Szkolenia AI", text: "Zespół, który wie, jak pracować z AI na co dzień.", href: "/szkolenia-ai" },
-  { from: 0.22, to: 0.36, title: "Audyt AI", text: "Sprawdzamy, gdzie AI da Ci realny zysk.", href: "/konsultacje-ai" },
-  { from: 0.38, to: 0.52, title: "Automatyzacja procesów", text: "Powtarzalna praca robi się sama.", href: "/automatyzacja-ai" },
-  { from: 0.54, to: 0.68, title: "Wdrożenia LLM i RAG", text: "Asystenci AI na Twoich danych i dokumentach.", href: "/automatyzacja-ai" },
-  { from: 0.7, to: 0.82, title: "Strategia AI", text: "Plan rozwoju AI dla całej organizacji.", href: "/konsultacje-ai" },
+  {
+    from: 0.06,
+    to: 0.2,
+    title: "Zespół, który nie dzwoni z każdym pytaniem",
+    text: "Szkolenia AI uczą ludzi pracować szybciej i samodzielnie. Ty możesz wyłączyć telefon.",
+    label: "SZKOLENIA AI",
+    href: "/szkolenia-ai",
+  },
+  {
+    from: 0.22,
+    to: 0.36,
+    title: "Najpierw sprawdzamy, gdzie ucieka czas",
+    text: "Audyt AI pokazuje, które procesy w Twojej firmie warto oddać sztucznej inteligencji.",
+    label: "KONSULTACJE I AUDYT AI",
+    href: "/konsultacje-ai",
+  },
+  {
+    from: 0.38,
+    to: 0.52,
+    title: "Faktury, maile i raporty robią się same",
+    text: "Automatyzujemy powtarzalną pracę, żeby firma działała także wtedy, gdy Cię nie ma.",
+    label: "AUTOMATYZACJA PROCESÓW",
+    href: "/automatyzacja-ai",
+  },
+  {
+    from: 0.54,
+    to: 0.68,
+    title: "Asystent, który zna Twoją firmę",
+    text: "Model językowy na Twoich dokumentach. Odpowiedzi w sekundy, bez szukania po folderach.",
+    label: "ASYSTENCI AI (LLM I RAG)",
+    href: "/automatyzacja-ai",
+  },
+  {
+    from: 0.7,
+    to: 0.82,
+    title: "Spójrz na firmę z lotu ptaka",
+    text: "Strategia AI to plan na lata, a nie jednorazowy gadżet.",
+    label: "STRATEGIA AI",
+    href: "/konsultacje-ai",
+  },
 ];
 const HEADLINE_FROM = 0.86;
+
+const VIDEO_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: "Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz",
+  description:
+    "Właściciel firmy odpoczywa na morzu, a jego firma pracuje dzięki AI. Film OpenMind AI Consulting o szkoleniach, audytach, automatyzacji i asystentach AI dla firm.",
+  thumbnailUrl: [POSTER_SRC],
+  contentUrl: VIDEO_SRC,
+  uploadDate: "2026-09-25",
+  duration: "PT30S",
+  publisher: { "@type": "Organization", name: "OpenMind AI Consulting", url: "https://openmindai.pl" },
+};
 
 const clamp = (v: number, min = 0, max = 1) => Math.min(max, Math.max(min, v));
 
@@ -35,6 +88,32 @@ export default function ScrollVideoHero() {
   const [loadPct, setLoadPct] = useState(0);
   const [ready, setReady] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [userScrolled, setUserScrolled] = useState(false);
+
+  // 0. Pierwszy, nawet najmniejszy ruch scrolla (kółko, dotyk, klawiatura, pasek)
+  useEffect(() => {
+    if (window.scrollY > 0) {
+      setUserScrolled(true);
+      return;
+    }
+    const mark = () => setUserScrolled(true);
+    const onScroll = () => {
+      if (window.scrollY > 0) mark();
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (["ArrowDown", "PageDown", "Space", " ", "End"].includes(e.key)) mark();
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("wheel", mark, { passive: true });
+    window.addEventListener("touchmove", mark, { passive: true });
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("wheel", mark);
+      window.removeEventListener("touchmove", mark);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, []);
 
   // 1. Wczytanie całego filmu do pamięci (blob), żeby przeskakiwanie po klatkach było natychmiastowe.
   useEffect(() => {
@@ -120,6 +199,8 @@ export default function ScrollVideoHero() {
 
   const p = reducedMotion ? 1 : progress;
   const headlineOpacity = clamp((p - HEADLINE_FROM) / 0.08);
+  // Zdjęcie bazowe znika dopiero, gdy film jest gotowy i użytkownik ruszył scrollem.
+  const posterVisible = reducedMotion ? !ready : !(ready && userScrolled);
 
   return (
     <section
@@ -128,6 +209,7 @@ export default function ScrollVideoHero() {
       style={{ height: reducedMotion ? "100vh" : `${SCROLL_HEIGHT_VH}vh` }}
       aria-label="OpenMind AI Consulting"
     >
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(VIDEO_JSON_LD) }} />
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <video
           ref={videoRef}
@@ -136,13 +218,25 @@ export default function ScrollVideoHero() {
           muted
           playsInline
           preload="auto"
-          poster="/scroll-video-hero-poster.jpg"
+          poster={POSTER_SRC}
           disablePictureInPicture
           aria-hidden="true"
         />
 
+        {/* zdjęcie bazowe w wysokiej jakości nad filmem */}
+        <img
+          src={POSTER_SRC}
+          alt={POSTER_ALT}
+          width={2560}
+          height={1440}
+          decoding="async"
+          {...({ fetchpriority: "high" } as Record<string, string>)}
+          className="pointer-events-none absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-300"
+          style={{ objectPosition: OBJECT_POSITION_PORTRAIT, opacity: posterVisible ? 1 : 0 }}
+        />
+
         {/* delikatny gradient pod napisami */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/20" />
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-background/60 via-transparent to-background/20" />
 
         {/* pasek ładowania */}
         {!ready && (
@@ -159,18 +253,22 @@ export default function ScrollVideoHero() {
           const o = Math.min(fadeIn, fadeOut);
           return (
             <a
-              key={c.title}
+              key={c.label}
               href={c.href}
-              className="absolute bottom-[12vh] left-5 z-20 max-w-[calc(100vw-2.5rem)] hyphens-auto md:bottom-[14vh] md:left-16 md:max-w-md"
+              className="absolute bottom-[12vh] left-5 z-20 max-w-[calc(100vw-2.5rem)] hyphens-auto md:bottom-[14vh] md:left-16 md:max-w-xl"
               style={{
                 opacity: o,
                 transform: `translateY(${(1 - o) * 24}px)`,
                 pointerEvents: o > 0.5 ? "auto" : "none",
               }}
             >
-              <span className="block text-[10px] tracking-[0.35em] text-primary md:text-xs">USŁUGA</span>
-              <span className="mt-2 block font-heading text-3xl font-bold leading-tight text-foreground md:text-5xl">{c.title}</span>
-              <span className="mt-3 block text-justify text-sm leading-relaxed text-foreground/80 md:text-lg">{noWidows(c.text)}</span>
+              <span className="block text-[10px] tracking-[0.35em] text-primary md:text-xs">{c.label}</span>
+              <span className="mt-2 block font-heading text-3xl font-bold leading-tight text-foreground md:text-5xl">
+                {noWidows(c.title)}
+              </span>
+              <span className="mt-3 block text-justify text-sm leading-relaxed text-foreground/80 md:text-lg">
+                {noWidows(c.text)}
+              </span>
               <span className="mt-4 inline-block border-b border-primary pb-1 text-[10px] tracking-[0.3em] text-primary md:text-xs">
                 ZOBACZ →
               </span>
@@ -178,7 +276,7 @@ export default function ScrollVideoHero() {
           );
         })}
 
-        {/* nagłówek na końcu filmu */}
+        {/* nagłówek na końcu filmu (w HTML od początku, widoczny na końcu) */}
         <div
           className="absolute inset-x-0 bottom-[8vh] z-20 px-5 md:bottom-[12vh] md:px-16"
           style={{
@@ -188,16 +286,18 @@ export default function ScrollVideoHero() {
           }}
         >
           <h1 className="max-w-4xl hyphens-auto font-heading text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-6xl">
-            {noWidows("AI, które naprawdę działa u Ciebie w firmie, urzędzie, szkole czy w domu")}
+            {noWidows("Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz")}
           </h1>
           <p className="mt-3 max-w-2xl text-justify text-sm leading-relaxed text-foreground/80 sm:text-base md:mt-4 md:text-lg">
-            {noWidows("Szkolenia, audyty i wdrożenia sztucznej inteligencji, od pierwszej rozmowy po działający proces.")}
+            {noWidows(
+              "Szkolenia, audyty i automatyzacja z AI dla firm, urzędów i szkół w całej Polsce. Od pierwszej rozmowy po proces, który pracuje bez Ciebie."
+            )}
           </p>
           <a
             href="/contact#contact"
             className="mt-6 inline-block border-b border-primary pb-1 text-[10px] tracking-[0.22em] text-primary sm:text-xs md:mt-8 md:text-sm md:tracking-[0.3em]"
           >
-            NAPISZ DO NAS PRZEZ FORMULARZ →
+            POROZMAWIAJMY O TWOJEJ FIRMIE →
           </a>
         </div>
 
