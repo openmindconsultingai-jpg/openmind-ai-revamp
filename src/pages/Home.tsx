@@ -40,20 +40,20 @@ const Home = () => {
 
   usePageMeta({
     title: language === 'pl'
-      ? 'OpenMind AI Consulting — Wdrożenia AI, szkolenia i konsulting dla firm i szkół w Polsce'
+      ? 'Wdrożenia AI dla firm | Szkolenia i automatyzacja | OpenMind'
       : 'OpenMind AI Consulting — AI Implementation, Training & Consulting for Businesses and Schools in Poland',
     description: language === 'pl'
-      ? 'OpenMind AI — polski lider wdrożeń sztucznej inteligencji dla firm, agencji i szkół. Konsulting, szkolenia AI i automatyzacja. Bezpłatne konsultacje.'
+      ? 'Wdrażamy AI w firmach, urzędach i szkołach w całej Polsce: szkolenia, audyty, automatyzacja i asystenci AI na Twoich danych. Firma działa, Ty odpoczywasz.'
       : 'OpenMind AI — Polish leader in AI implementation for businesses, agencies and schools. Consulting, AI training and automation. Free consultations.',
     keywords: language === 'pl'
       ? 'wdrożenia AI, szkolenia AI, konsulting AI, sztuczna inteligencja, automatyzacja procesów, ChatGPT, Claude, Gemini, Copilot, AI dla firm, AI dla szkół, OpenMind AI, Polska'
       : 'AI implementation, AI training, AI consulting, artificial intelligence, process automation, ChatGPT, Claude, Gemini, Copilot, AI for business, AI for schools, OpenMind AI, Poland',
     path: '/',
     ogTitle: language === 'pl'
-      ? 'OpenMind AI Consulting — Wdrożenia AI dla firm i szkół w Polsce'
+      ? 'Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz | OpenMind'
       : 'OpenMind AI Consulting — AI Implementation for Businesses and Schools in Poland',
     ogDescription: language === 'pl'
-      ? 'Polski lider wdrożeń sztucznej inteligencji. Konsulting, szkolenia AI z ChatGPT, Claude, Copilot, Gemini. Bezpłatne pierwsze konsultacje.'
+      ? 'Wdrażamy AI w firmach, urzędach i szkołach w całej Polsce: szkolenia, audyty, automatyzacja i asystenci AI na Twoich danych. Firma działa, Ty odpoczywasz.'
       : 'Polish leader in AI implementation. Consulting, AI training with ChatGPT, Claude, Copilot, Gemini. First consultations free.',
     jsonLd,
   });
