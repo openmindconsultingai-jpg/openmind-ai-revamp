@@ -255,7 +255,7 @@ export default function ScrollVideoHero() {
             <a
               key={c.label}
               href={c.href}
-              className="absolute bottom-[12vh] left-5 z-20 max-w-[calc(100vw-2.5rem)] hyphens-auto md:bottom-[14vh] md:left-16 md:max-w-xl"
+              className="absolute bottom-[280px] left-5 z-20 max-w-[calc(100vw-2.5rem)] hyphens-auto md:bottom-[14vh] md:left-16 md:max-w-xl"
               style={{
                 opacity: o,
                 transform: `translateY(${(1 - o) * 24}px)`,
@@ -278,7 +278,7 @@ export default function ScrollVideoHero() {
 
         {/* nagłówek na końcu filmu (w HTML od początku, widoczny na końcu) */}
         <div
-          className="absolute inset-x-0 bottom-[8vh] z-20 px-5 md:bottom-[12vh] md:px-16"
+          className="absolute inset-x-0 bottom-[16vh] z-20 px-5 pr-20 md:bottom-[12vh] md:px-16 md:pr-16"
           style={{
             opacity: headlineOpacity,
             transform: `translateY(${(1 - headlineOpacity) * 30}px)`,
