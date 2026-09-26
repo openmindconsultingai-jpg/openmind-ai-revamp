@@ -235,8 +235,8 @@ export default function ScrollVideoHero() {
           style={{ objectPosition: OBJECT_POSITION_PORTRAIT, opacity: posterVisible ? 1 : 0 }}
         />
 
-        {/* delikatny gradient pod napisami */}
-        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-background/60 via-transparent to-background/20" />
+        {/* gradient pod napisami — mocniejszy przy dole dla czytelności */}
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-background/80 via-background/25 to-background/10" />
 
         {/* pasek ładowania */}
         {!ready && (
@@ -255,22 +255,29 @@ export default function ScrollVideoHero() {
             <a
               key={c.label}
               href={c.href}
-              className="absolute bottom-[280px] left-5 z-20 max-w-[calc(100vw-2.5rem)] hyphens-auto md:bottom-[14vh] md:left-16 md:max-w-xl"
+              className="group absolute bottom-[280px] left-5 z-20 max-w-[calc(100vw-2.5rem)] hyphens-auto md:bottom-[14vh] md:left-16 md:max-w-xl"
               style={{
                 opacity: o,
                 transform: `translateY(${(1 - o) * 24}px)`,
                 pointerEvents: o > 0.5 ? "auto" : "none",
               }}
             >
-              <span className="block text-[10px] tracking-[0.35em] text-primary md:text-xs">{c.label}</span>
-              <span className="mt-2 block font-heading text-3xl font-bold leading-tight text-foreground md:text-5xl">
+              <span className="mb-3 inline-block rounded-sm border border-foreground/10 bg-background/60 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-primary backdrop-blur-sm md:text-xs">
+                {c.label}
+              </span>
+              <span className="block font-heading text-3xl font-bold leading-tight text-foreground drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] md:text-5xl">
                 {noWidows(c.title)}
               </span>
-              <span className="mt-3 block text-justify text-sm leading-relaxed text-foreground/80 md:text-lg">
+              <span className="mt-3 block text-justify text-sm font-normal leading-relaxed text-foreground drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] md:text-lg">
                 {noWidows(c.text)}
               </span>
-              <span className="mt-4 inline-block border-b border-primary pb-1 text-[10px] tracking-[0.3em] text-primary md:text-xs">
-                ZOBACZ →
+              <span className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.25em] text-primary md:text-sm">
+                <span className="border-b-2 border-primary pb-0.5 transition-colors group-hover:border-white group-hover:text-white">
+                  ZOBACZ
+                </span>
+                <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+                  →
+                </span>
               </span>
             </a>
           );
@@ -285,19 +292,24 @@ export default function ScrollVideoHero() {
             pointerEvents: headlineOpacity > 0.5 ? "auto" : "none",
           }}
         >
-          <h1 className="max-w-4xl hyphens-auto font-heading text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-6xl">
+          <h1 className="max-w-4xl hyphens-auto font-heading text-3xl font-bold leading-tight text-foreground drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] sm:text-4xl md:text-6xl">
             {noWidows("Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz")}
           </h1>
-          <p className="mt-3 max-w-2xl text-justify text-sm leading-relaxed text-foreground/80 sm:text-base md:mt-4 md:text-lg">
+          <p className="mt-3 max-w-2xl text-justify text-sm leading-relaxed text-foreground drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] sm:text-base md:mt-4 md:text-lg">
             {noWidows(
               "Szkolenia, audyty i automatyzacja z AI dla firm, urzędów i szkół w całej Polsce. Od pierwszej rozmowy po proces, który pracuje bez Ciebie."
             )}
           </p>
           <a
             href="/contact#contact"
-            className="mt-6 inline-block border-b border-primary pb-1 text-[10px] tracking-[0.22em] text-primary sm:text-xs md:mt-8 md:text-sm md:tracking-[0.3em]"
+            className="group mt-6 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.22em] text-primary sm:text-xs md:mt-8 md:text-sm md:tracking-[0.3em]"
           >
-            POROZMAWIAJMY O TWOJEJ FIRMIE →
+            <span className="border-b-2 border-primary pb-0.5 transition-colors group-hover:border-white group-hover:text-white">
+              POROZMAWIAJMY O TWOJEJ FIRMIE
+            </span>
+            <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+              →
+            </span>
           </a>
         </div>
 
