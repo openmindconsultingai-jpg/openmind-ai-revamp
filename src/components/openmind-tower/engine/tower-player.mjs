@@ -27,6 +27,9 @@ export function createTower(options){
   // Materiał jest zakodowany wyłącznie klatkami kluczowymi (24 kl./s), więc
   // przeskok do dowolnego miejsca jest tani — celujemy w każdą klatkę filmu.
   const seekInterval=0,seekEpsilon=1/96;
+  // Duże ekrany dostają ostrzejszy plik, telefony lżejszy.
+  const source=(!lightMode&&options.videoHd)||options.video;
+  const sourceBytes=(!lightMode&&options.videoHd?options.videoHdBytes:options.videoBytes)||0;
   const headerOffset=()=>Number(options.headerOffset||0);
   function measure(){
     const next=sections.map(s=>s.getBoundingClientRect().top+scrollY-headerOffset());
@@ -49,14 +52,14 @@ export function createTower(options){
     // Telefony i łącza z oszczędzaniem danych: strumieniujemy plik przez zwykły
     // <video src>, zamiast ściągać kilkanaście MB do pamięci jako Blob.
     if(lightMode){
-      try{if(video.getAttribute('src')!==options.video){video.src=options.video;video.load()}}catch(err){fail(err)}
+      try{if(video.getAttribute('src')!==source){video.src=source;video.load()}}catch(err){fail(err)}
       return;
     }
     try{
-      const response=await fetch(options.video,{signal});if(!response.ok)throw new Error('Video HTTP '+response.status);
+      const response=await fetch(source,{signal});if(!response.ok)throw new Error('Video HTTP '+response.status);
       let blob;
       if(response.body?.getReader){
-        const reader=response.body.getReader(),chunks=[],total=Number(response.headers.get('content-length'))||options.videoBytes||0;let bytes=0;
+        const reader=response.body.getReader(),chunks=[],total=Number(response.headers.get('content-length'))||sourceBytes||0;let bytes=0;
         while(true){const {value,done}=await reader.read();if(done)break;chunks.push(value);bytes+=value.length;
           if(total)status.textContent='Ładowanie animacji: '+Math.min(99,Math.round(bytes/total*100))+'%';
         }blob=new Blob(chunks,{type:'video/mp4'});

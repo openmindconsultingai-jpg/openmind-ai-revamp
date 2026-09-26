@@ -20,8 +20,11 @@ export type TowerTheme = Record<string, string | number>;
 export interface TowerOptions {
   root: string | HTMLElement;
   video: string;
+  /** Ostrzejszy plik dla dużych ekranów; telefony dostają lżejszy `video`. */
+  videoHd?: string;
   poster?: string;
   videoBytes?: number;
+  videoHdBytes?: number;
   categories: TowerCategory[];
   damping?: number;
   headerOffset?: number;
