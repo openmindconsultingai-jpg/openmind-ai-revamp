@@ -255,7 +255,7 @@ export default function ScrollVideoHero() {
             <a
               key={c.label}
               href={c.href}
-              className="absolute bottom-[260px] left-5 z-20 max-w-[calc(100vw-2.5rem)] hyphens-auto md:bottom-[14vh] md:left-16 md:max-w-xl"
+              className="absolute bottom-[280px] left-5 z-20 max-w-[calc(100vw-2.5rem)] hyphens-auto md:bottom-[14vh] md:left-16 md:max-w-xl"
               style={{
                 opacity: o,
                 transform: `translateY(${(1 - o) * 24}px)`,
