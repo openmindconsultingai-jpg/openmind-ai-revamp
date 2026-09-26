@@ -1,6 +1,5 @@
 import type { TowerCategory, TowerTheme } from '../components/openmind-tower';
 import towerVideo from '../assets/tower.mp4.asset.json';
-import towerVideoHd from '../assets/tower-hd.mp4.asset.json';
 
 // Sekcje odpowiadają realnym usługom OpenMind AI (patrz src/pages/HomeTower.tsx).
 export const towerCategories: TowerCategory[] = [
@@ -20,10 +19,8 @@ export const towerTheme: TowerTheme = {
 
 export const towerConfig = {
   video: towerVideo.url,
-  videoHd: towerVideoHd.url,
   poster: '/tower/poster.jpg',
   videoBytes: towerVideo.size,
-  videoHdBytes: towerVideoHd.size,
   categories: towerCategories,
   theme: towerTheme,
   damping: .12,
