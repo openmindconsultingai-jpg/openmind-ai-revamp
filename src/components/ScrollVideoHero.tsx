@@ -262,7 +262,7 @@ export default function ScrollVideoHero() {
             <a
               key={c.label}
               href={c.href}
-              className="absolute bottom-[22vh] left-4 z-20 max-w-[calc(100vw-2rem)] rounded-md border border-border/60 bg-background/85 p-4 hyphens-auto shadow-lg backdrop-blur-md sm:left-5 sm:max-w-[calc(100vw-2.5rem)] md:bottom-[14vh] md:left-16 md:max-w-xl md:p-6"
+              className="absolute bottom-[12vh] left-5 z-20 max-w-[calc(100vw-2.5rem)] hyphens-auto md:bottom-[14vh] md:left-16 md:max-w-xl"
               style={{
                 opacity: o,
                 transform: `translateY(${(1 - o) * 24}px)`,
@@ -285,7 +285,7 @@ export default function ScrollVideoHero() {
 
         {/* nagłówek na końcu filmu (w HTML od początku, widoczny na końcu) */}
         <div
-          className="absolute bottom-[20vh] left-4 right-4 z-20 rounded-md border border-border/60 bg-background/85 p-4 shadow-lg backdrop-blur-md sm:left-5 sm:right-auto sm:max-w-4xl md:bottom-[12vh] md:left-16 md:p-6"
+          className="absolute inset-x-0 bottom-[8vh] z-20 px-5 md:bottom-[12vh] md:px-16"
           style={{
             opacity: headlineOpacity,
             transform: `translateY(${(1 - headlineOpacity) * 30}px)`,
