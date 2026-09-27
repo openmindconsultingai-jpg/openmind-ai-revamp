@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { noWidows } from "@/lib/typography";
+import posterAsset from "@/assets/scroll-video-hero-poster.png.asset.json";
 
 // Jeden poziomy film dla desktopu i telefonów
 const VIDEO_SRC =
@@ -7,8 +8,7 @@ const VIDEO_SRC =
 
 // Zdjęcie bazowe: pierwsza klatka filmu w wysokiej jakości (2560x1440).
 // Widoczne od razu po wejściu, znika przy pierwszym ruchu scrolla.
-const POSTER_SRC =
-  "https://d2ol7oe51mr4n9.cloudfront.net/user_34xv3lFIvmqHeU79zolBBgWasHd/bcd38187-af45-488c-863c-4d8afb89bf38.webp";
+const POSTER_SRC = posterAsset.url;
 const POSTER_ALT =
   "Odbicie strony openmindai.pl w okularach przeciwsłonecznych właściciela firmy, który odpoczywa na morzu w dmuchanym kole OpenMind.";
 
@@ -17,8 +17,7 @@ const OBJECT_POSITION_PORTRAIT = "50% 50%";
 
 const FRAME_COUNT = 721;
 const FPS = 24;
-const SCROLL_HEIGHT_VH = 600;
-const SMOOTHING = 0.12;
+const SCROLL_HEIGHT_VH = 480;
 
 // Podpisy usług: od detalu do widoku z lotu ptaka.
 const CAPTIONS = [
@@ -83,7 +82,6 @@ const clamp = (v: number, min = 0, max = 1) => Math.min(max, Math.max(min, v));
 export default function ScrollVideoHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const currentRef = useRef(0);
   const [progress, setProgress] = useState(0);
   const [loadPct, setLoadPct] = useState(0);
   const [ready, setReady] = useState(false);
@@ -169,7 +167,8 @@ export default function ScrollVideoHero() {
     };
   }, []);
 
-  // 2. Scroll -> klatka, wygładzone w pętli requestAnimationFrame.
+  // 2. Scroll -> dokładna klatka. Bez limitu częstotliwości i bez pomijania
+  // zakresu filmu: pozycja scrolla mapuje się bezpośrednio na klatki 0–720.
   useEffect(() => {
     if (!ready || reducedMotion) return;
     const video = videoRef.current;
@@ -178,23 +177,31 @@ export default function ScrollVideoHero() {
     let raf = 0;
     let lastShown = -1;
 
-    const tick = () => {
+    const renderFrame = () => {
       const rect = section.getBoundingClientRect();
       const scrollable = rect.height - window.innerHeight;
-      const target = scrollable > 0 ? clamp(-rect.top / scrollable) : 0;
-      currentRef.current += (target - currentRef.current) * SMOOTHING;
-      if (Math.abs(target - currentRef.current) < 0.0005) currentRef.current = target;
-
-      const frame = Math.round(currentRef.current * (FRAME_COUNT - 1));
+      const nextProgress = scrollable > 0 ? clamp(-rect.top / scrollable) : 0;
+      const frame = Math.round(nextProgress * (FRAME_COUNT - 1));
       if (frame !== lastShown) {
         video.currentTime = frame / FPS + 0.001;
         lastShown = frame;
       }
-      setProgress((p) => (Math.abs(p - currentRef.current) > 0.002 ? currentRef.current : p));
-      raf = requestAnimationFrame(tick);
+      setProgress((previous) => (previous === nextProgress ? previous : nextProgress));
+      raf = 0;
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+
+    const requestRender = () => {
+      if (!raf) raf = requestAnimationFrame(renderFrame);
+    };
+
+    requestRender();
+    window.addEventListener("scroll", requestRender, { passive: true });
+    window.addEventListener("resize", requestRender, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", requestRender);
+      window.removeEventListener("resize", requestRender);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, [ready, reducedMotion]);
 
   const p = reducedMotion ? 1 : progress;
@@ -227,8 +234,8 @@ export default function ScrollVideoHero() {
         <img
           src={POSTER_SRC}
           alt={POSTER_ALT}
-          width={2560}
-          height={1440}
+          width={1920}
+          height={1075}
           decoding="async"
           {...({ fetchpriority: "high" } as Record<string, string>)}
           className="pointer-events-none absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-300"
