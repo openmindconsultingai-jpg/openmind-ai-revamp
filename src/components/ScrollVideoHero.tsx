@@ -177,12 +177,22 @@ export default function ScrollVideoHero() {
     let raf = 0;
     let targetFrame = -1;
     let shownFrame = -1;
+    let displayedFrame = -1;
+    let latestProgress = 0;
+    const smoothOnTouch = window.matchMedia("(pointer: coarse)").matches;
 
-    // Ustawiamy nową klatkę tylko wtedy, gdy dekoder skończył poprzednią.
-    // Dzięki temu na telefonach nie kolejkują się dziesiątki skoków naraz.
+    // Telefon przechodzi przez kolejne klatki zamiast skakać od razu do odległego celu.
+    // Dekoder dostaje nowe zadanie dopiero po zakończeniu poprzedniego seekowania.
     const flush = () => {
-      if (video.seeking || targetFrame < 0 || targetFrame === shownFrame) return;
-      shownFrame = targetFrame;
+      if (video.seeking || targetFrame < 0 || targetFrame === displayedFrame) return;
+
+      if (displayedFrame < 0 || !smoothOnTouch) {
+        displayedFrame = targetFrame;
+      } else {
+        displayedFrame += Math.sign(targetFrame - displayedFrame);
+      }
+
+      shownFrame = displayedFrame;
       try {
         video.currentTime = shownFrame / FPS + 0.001;
       } catch {
@@ -190,10 +200,11 @@ export default function ScrollVideoHero() {
       }
     };
 
-    const renderFrame = () => {
+    const readScroll = () => {
       const rect = section.getBoundingClientRect();
       const scrollable = rect.height - window.innerHeight;
       const nextProgress = scrollable > 0 ? clamp(-rect.top / scrollable) : 0;
+      latestProgress = nextProgress;
       targetFrame = Math.round(nextProgress * (FRAME_COUNT - 1));
       flush();
       setProgress((previous) => (previous === nextProgress ? previous : nextProgress));
@@ -201,15 +212,25 @@ export default function ScrollVideoHero() {
     };
 
     const requestRender = () => {
-      if (!raf) raf = requestAnimationFrame(renderFrame);
+      if (!raf) raf = requestAnimationFrame(readScroll);
+    };
+
+    const continueMobileSequence = () => {
+      flush();
+      if (smoothOnTouch && displayedFrame >= 0 && displayedFrame !== targetFrame) {
+        const frameProgress = displayedFrame / (FRAME_COUNT - 1);
+        setProgress((previous) => (previous === frameProgress ? previous : frameProgress));
+      } else {
+        setProgress((previous) => (previous === latestProgress ? previous : latestProgress));
+      }
     };
 
     requestRender();
-    video.addEventListener("seeked", flush);
+    video.addEventListener("seeked", continueMobileSequence);
     window.addEventListener("scroll", requestRender, { passive: true });
     window.addEventListener("resize", requestRender, { passive: true });
     return () => {
-      video.removeEventListener("seeked", flush);
+      video.removeEventListener("seeked", continueMobileSequence);
       window.removeEventListener("scroll", requestRender);
       window.removeEventListener("resize", requestRender);
       if (raf) cancelAnimationFrame(raf);
@@ -255,8 +276,9 @@ export default function ScrollVideoHero() {
           style={{ objectPosition: OBJECT_POSITION_PORTRAIT, opacity: posterVisible ? 1 : 0 }}
         />
 
-        {/* delikatny gradient pod napisami */}
-        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-background/60 via-transparent to-background/20" />
+        {/* kinowa winieta poprawiająca kontrast bez zasłaniania kadru taflą */}
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_left_bottom,hsl(var(--background)/0.62)_0%,hsl(var(--background)/0.24)_34%,transparent_68%)]" />
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-background/45 via-transparent to-background/15" />
 
         {/* pasek ładowania */}
         {!ready && (
@@ -275,24 +297,24 @@ export default function ScrollVideoHero() {
             <a
               key={c.label}
               href={c.href}
-              className="absolute bottom-[24vh] left-4 z-20 max-w-[calc(100vw-2rem)] rounded-2xl border border-primary/15 bg-background/25 px-4 py-4 shadow-[0_18px_50px_-30px_hsl(var(--background))] backdrop-blur-md hyphens-auto sm:max-w-md md:bottom-[14vh] md:left-16 md:max-w-xl md:px-7 md:py-6"
+              className="absolute bottom-[28vh] left-4 z-20 max-w-[calc(100vw-5.5rem)] hyphens-auto drop-shadow-[0_3px_10px_hsl(var(--background))] sm:max-w-md md:bottom-[14vh] md:left-16 md:max-w-xl"
               style={{
                 opacity: o,
                 transform: `translateY(${(1 - o) * 24}px)`,
                 pointerEvents: o > 0.5 ? "auto" : "none",
               }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-background/30 px-3 py-1 text-[10px] tracking-[0.3em] text-primary md:text-xs">
+              <span className="inline-flex items-center gap-2 rounded bg-background/55 px-2.5 py-1 text-[10px] font-bold tracking-[0.24em] text-primary shadow-sm backdrop-blur-sm md:text-xs md:tracking-[0.3em]">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                 {c.label}
               </span>
-              <span className="mt-3 block font-heading text-2xl font-bold leading-tight text-foreground sm:text-3xl md:text-5xl">
+              <span className="mt-3 block font-heading text-2xl font-bold leading-tight text-foreground [text-shadow:0_2px_12px_hsl(var(--background)),0_1px_3px_hsl(var(--background))] sm:text-3xl md:text-5xl">
                 {noWidows(c.title)}
               </span>
-              <span className="mt-2 block text-justify text-sm leading-relaxed text-foreground/90 md:mt-3 md:text-lg">
+              <span className="mt-2 block text-justify text-sm font-medium leading-relaxed text-foreground [text-shadow:0_2px_10px_hsl(var(--background)),0_1px_2px_hsl(var(--background))] md:mt-3 md:text-lg">
                 {noWidows(c.text)}
               </span>
-              <span className="mt-4 inline-block border-b border-primary/70 pb-1 text-[10px] tracking-[0.3em] text-primary md:text-xs">
+              <span className="mt-4 inline-block border-b border-primary pb-1 text-[10px] font-bold tracking-[0.24em] text-primary [text-shadow:0_2px_8px_hsl(var(--background))] md:text-xs md:tracking-[0.3em]">
                 ZOBACZ USŁUGĘ →
               </span>
             </a>
@@ -302,7 +324,7 @@ export default function ScrollVideoHero() {
 
         {/* nagłówek na końcu filmu (w HTML od początku, widoczny na końcu) */}
         <div
-          className="absolute inset-x-0 bottom-[20vh] z-20 px-4 md:bottom-[12vh] md:px-16"
+          className="absolute inset-x-0 bottom-[26vh] z-20 px-4 drop-shadow-[0_3px_10px_hsl(var(--background))] md:bottom-[12vh] md:px-16"
           style={{
             opacity: headlineOpacity,
             transform: `translateY(${(1 - headlineOpacity) * 30}px)`,
