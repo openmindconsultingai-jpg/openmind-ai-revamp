@@ -175,17 +175,27 @@ export default function ScrollVideoHero() {
     const section = sectionRef.current;
     if (!video || !section) return;
     let raf = 0;
-    let lastShown = -1;
+    let targetFrame = -1;
+    let shownFrame = -1;
+
+    // Ustawiamy nową klatkę tylko wtedy, gdy dekoder skończył poprzednią.
+    // Dzięki temu na telefonach nie kolejkują się dziesiątki skoków naraz.
+    const flush = () => {
+      if (video.seeking || targetFrame < 0 || targetFrame === shownFrame) return;
+      shownFrame = targetFrame;
+      try {
+        video.currentTime = shownFrame / FPS + 0.001;
+      } catch {
+        /* ignore */
+      }
+    };
 
     const renderFrame = () => {
       const rect = section.getBoundingClientRect();
       const scrollable = rect.height - window.innerHeight;
       const nextProgress = scrollable > 0 ? clamp(-rect.top / scrollable) : 0;
-      const frame = Math.round(nextProgress * (FRAME_COUNT - 1));
-      if (frame !== lastShown) {
-        video.currentTime = frame / FPS + 0.001;
-        lastShown = frame;
-      }
+      targetFrame = Math.round(nextProgress * (FRAME_COUNT - 1));
+      flush();
       setProgress((previous) => (previous === nextProgress ? previous : nextProgress));
       raf = 0;
     };
@@ -195,14 +205,17 @@ export default function ScrollVideoHero() {
     };
 
     requestRender();
+    video.addEventListener("seeked", flush);
     window.addEventListener("scroll", requestRender, { passive: true });
     window.addEventListener("resize", requestRender, { passive: true });
     return () => {
+      video.removeEventListener("seeked", flush);
       window.removeEventListener("scroll", requestRender);
       window.removeEventListener("resize", requestRender);
       if (raf) cancelAnimationFrame(raf);
     };
   }, [ready, reducedMotion]);
+
 
   const p = reducedMotion ? 1 : progress;
   const headlineOpacity = clamp((p - HEADLINE_FROM) / 0.08);
