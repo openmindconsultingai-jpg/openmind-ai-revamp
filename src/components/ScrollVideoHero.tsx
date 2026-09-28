@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { noWidows } from "@/lib/typography";
+import { useLanguage } from "@/contexts/LanguageContext";
 import posterAsset from "@/assets/scroll-video-hero-poster.png.asset.json";
 
 // Jeden poziomy film dla desktopu i telefonów
@@ -9,8 +10,10 @@ const VIDEO_SRC =
 // Zdjęcie bazowe: pierwsza klatka filmu w wysokiej jakości (2560x1440).
 // Widoczne od razu po wejściu, znika przy pierwszym ruchu scrolla.
 const POSTER_SRC = posterAsset.url;
-const POSTER_ALT =
+const POSTER_ALT_PL =
   "Odbicie strony openmindai.pl w okularach przeciwsłonecznych właściciela firmy, który odpoczywa na morzu w dmuchanym kole OpenMind.";
+const POSTER_ALT_EN =
+  "The openmindai.pl website reflected in the sunglasses of the company owner relaxing at sea on an OpenMind inflatable ring.";
 
 // Kadrowanie na pionowych ekranach: "50% 50%" = środek kadru.
 const OBJECT_POSITION_PORTRAIT = "50% 50%";
@@ -19,8 +22,8 @@ const FRAME_COUNT = 721;
 const FPS = 24;
 const SCROLL_HEIGHT_VH = 480;
 
-// Podpisy usług: od detalu do widoku z lotu ptaka.
-const CAPTIONS = [
+// Podpisy usług: od detalu do widoku z lotu ptaka (PL + EN).
+const CAPTIONS_PL = [
   {
     from: 0.06,
     to: 0.2,
@@ -62,24 +65,75 @@ const CAPTIONS = [
     href: "/konsultacje-ai",
   },
 ];
+
+const CAPTIONS_EN = [
+  {
+    from: 0.06,
+    to: 0.2,
+    title: "A team that doesn't call you with every question",
+    text: "AI training teaches people to work faster and on their own. You can switch your phone off.",
+    label: "AI TRAINING",
+    href: "/szkolenia-ai",
+  },
+  {
+    from: 0.22,
+    to: 0.36,
+    title: "First we find out where your time leaks away",
+    text: "An AI audit shows which processes in your company are worth handing over to artificial intelligence.",
+    label: "AI CONSULTING & AUDIT",
+    href: "/konsultacje-ai",
+  },
+  {
+    from: 0.38,
+    to: 0.52,
+    title: "Invoices, emails and reports get done by themselves",
+    text: "We automate repetitive work so your company keeps running even when you're not there.",
+    label: "PROCESS AUTOMATION",
+    href: "/automatyzacja-ai",
+  },
+  {
+    from: 0.54,
+    to: 0.68,
+    title: "An assistant that knows your company",
+    text: "A language model built on your own documents. Answers in seconds, no more searching through folders.",
+    label: "AI ASSISTANTS (LLM & RAG)",
+    href: "/automatyzacja-ai",
+  },
+  {
+    from: 0.7,
+    to: 0.82,
+    title: "See your company from a bird's-eye view",
+    text: "An AI strategy is a plan for years to come, not a one-off gimmick.",
+    label: "AI STRATEGY",
+    href: "/konsultacje-ai",
+  },
+];
 const HEADLINE_FROM = 0.86;
 
-const VIDEO_JSON_LD = {
+const videoJsonLd = (lang: string) => ({
   "@context": "https://schema.org",
   "@type": "VideoObject",
-  name: "Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz",
+  name:
+    lang === "pl"
+      ? "Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz"
+      : "AI implementations for companies that keep working while you rest",
   description:
-    "Właściciel firmy odpoczywa na morzu, a jego firma pracuje dzięki AI. Film OpenMind AI Consulting o szkoleniach, audytach, automatyzacji i asystentach AI dla firm.",
+    lang === "pl"
+      ? "Właściciel firmy odpoczywa na morzu, a jego firma pracuje dzięki AI. Film OpenMind AI Consulting o szkoleniach, audytach, automatyzacji i asystentach AI dla firm."
+      : "A company owner relaxes at sea while his business runs on AI. An OpenMind AI Consulting film about AI training, audits, automation and AI assistants for companies.",
   thumbnailUrl: [POSTER_SRC],
   contentUrl: VIDEO_SRC,
   uploadDate: "2026-09-25",
   duration: "PT30S",
   publisher: { "@type": "Organization", name: "OpenMind AI Consulting", url: "https://openmindai.pl" },
-};
+});
 
 const clamp = (v: number, min = 0, max = 1) => Math.min(max, Math.max(min, v));
 
 export default function ScrollVideoHero() {
+  const { language } = useLanguage();
+  const isPl = language === "pl";
+  const captions = isPl ? CAPTIONS_PL : CAPTIONS_EN;
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [progress, setProgress] = useState(0);
@@ -233,7 +287,7 @@ export default function ScrollVideoHero() {
       style={{ height: reducedMotion ? "100vh" : `${SCROLL_HEIGHT_VH}vh` }}
       aria-label="OpenMind AI Consulting"
     >
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(VIDEO_JSON_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd(language)) }} />
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <video
           ref={videoRef}
@@ -250,7 +304,7 @@ export default function ScrollVideoHero() {
         {/* zdjęcie bazowe w wysokiej jakości nad filmem */}
         <img
           src={POSTER_SRC}
-          alt={POSTER_ALT}
+          alt={isPl ? POSTER_ALT_PL : POSTER_ALT_EN}
           width={1920}
           height={1075}
           decoding="async"
@@ -267,12 +321,12 @@ export default function ScrollVideoHero() {
         {!ready && (
           <div className="absolute inset-x-0 bottom-0 z-30">
             <div className="h-[3px] bg-primary transition-[width] duration-200" style={{ width: `${loadPct}%` }} />
-            <p className="px-6 py-3 text-xs tracking-[0.3em] text-foreground/70">ŁADOWANIE {loadPct}%</p>
+            <p className="px-6 py-3 text-xs tracking-[0.3em] text-foreground/70">{isPl ? "ŁADOWANIE" : "LOADING"} {loadPct}%</p>
           </div>
         )}
 
         {/* podpisy usług */}
-        {CAPTIONS.map((c) => {
+        {captions.map((c) => {
           const fadeIn = clamp((p - c.from) / 0.03);
           const fadeOut = clamp((c.to - p) / 0.03);
           const o = Math.min(fadeIn, fadeOut);
@@ -298,7 +352,7 @@ export default function ScrollVideoHero() {
                 {noWidows(c.text)}
               </span>
               <span className="mt-4 inline-block border-b border-primary pb-1 text-[10px] font-bold tracking-[0.24em] text-primary [text-shadow:0_2px_8px_hsl(var(--background))] md:text-xs md:tracking-[0.3em]">
-                ZOBACZ USŁUGĘ →
+                {isPl ? "ZOBACZ USŁUGĘ →" : "SEE THE SERVICE →"}
               </span>
             </a>
 
@@ -315,18 +369,24 @@ export default function ScrollVideoHero() {
           }}
         >
           <h1 className="max-w-4xl hyphens-auto font-heading text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-6xl">
-            {noWidows("Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz")}
+            {noWidows(
+              isPl
+                ? "Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz"
+                : "AI implementations for companies that keep working while you rest"
+            )}
           </h1>
           <p className="mt-3 max-w-2xl text-justify text-sm leading-relaxed text-foreground/80 sm:text-base md:mt-4 md:text-lg">
             {noWidows(
-              "Szkolenia, audyty i automatyzacja z AI dla firm, urzędów i szkół w całej Polsce. Od pierwszej rozmowy po proces, który pracuje bez Ciebie."
+              isPl
+                ? "Szkolenia, audyty i automatyzacja z AI dla firm, urzędów i szkół w całej Polsce. Od pierwszej rozmowy po proces, który pracuje bez Ciebie."
+                : "AI training, audits and automation for companies, public offices and schools across Poland. From the first conversation to a process that runs without you."
             )}
           </p>
           <a
             href="/contact#contact"
             className="mt-6 inline-block border-b border-primary pb-1 text-[10px] tracking-[0.22em] text-primary sm:text-xs md:mt-8 md:text-sm md:tracking-[0.3em]"
           >
-            POROZMAWIAJMY O TWOJEJ FIRMIE →
+            {isPl ? "POROZMAWIAJMY O TWOJEJ FIRMIE →" : "LET'S TALK ABOUT YOUR BUSINESS →"}
           </a>
         </div>
 
@@ -335,7 +395,7 @@ export default function ScrollVideoHero() {
           className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap text-[10px] tracking-[0.3em] text-foreground/70 md:text-xs"
           style={{ opacity: ready ? clamp(1 - p / 0.04) : 0 }}
         >
-          PRZEWIŃ ↓
+          {isPl ? "PRZEWIŃ ↓" : "SCROLL ↓"}
         </div>
       </div>
     </section>
