@@ -175,17 +175,27 @@ export default function ScrollVideoHero() {
     const section = sectionRef.current;
     if (!video || !section) return;
     let raf = 0;
-    let lastShown = -1;
+    let targetFrame = -1;
+    let shownFrame = -1;
+
+    // Ustawiamy nową klatkę tylko wtedy, gdy dekoder skończył poprzednią.
+    // Dzięki temu na telefonach nie kolejkują się dziesiątki skoków naraz.
+    const flush = () => {
+      if (video.seeking || targetFrame < 0 || targetFrame === shownFrame) return;
+      shownFrame = targetFrame;
+      try {
+        video.currentTime = shownFrame / FPS + 0.001;
+      } catch {
+        /* ignore */
+      }
+    };
 
     const renderFrame = () => {
       const rect = section.getBoundingClientRect();
       const scrollable = rect.height - window.innerHeight;
       const nextProgress = scrollable > 0 ? clamp(-rect.top / scrollable) : 0;
-      const frame = Math.round(nextProgress * (FRAME_COUNT - 1));
-      if (frame !== lastShown) {
-        video.currentTime = frame / FPS + 0.001;
-        lastShown = frame;
-      }
+      targetFrame = Math.round(nextProgress * (FRAME_COUNT - 1));
+      flush();
       setProgress((previous) => (previous === nextProgress ? previous : nextProgress));
       raf = 0;
     };
@@ -195,14 +205,17 @@ export default function ScrollVideoHero() {
     };
 
     requestRender();
+    video.addEventListener("seeked", flush);
     window.addEventListener("scroll", requestRender, { passive: true });
     window.addEventListener("resize", requestRender, { passive: true });
     return () => {
+      video.removeEventListener("seeked", flush);
       window.removeEventListener("scroll", requestRender);
       window.removeEventListener("resize", requestRender);
       if (raf) cancelAnimationFrame(raf);
     };
   }, [ready, reducedMotion]);
+
 
   const p = reducedMotion ? 1 : progress;
   const headlineOpacity = clamp((p - HEADLINE_FROM) / 0.08);
@@ -262,30 +275,34 @@ export default function ScrollVideoHero() {
             <a
               key={c.label}
               href={c.href}
-              className="absolute bottom-[12vh] left-5 z-20 max-w-[calc(100vw-2.5rem)] hyphens-auto md:bottom-[14vh] md:left-16 md:max-w-xl"
+              className="absolute bottom-[24vh] left-4 z-20 max-w-[calc(100vw-2rem)] rounded-2xl border border-primary/15 bg-background/25 px-4 py-4 shadow-[0_18px_50px_-30px_hsl(var(--background))] backdrop-blur-md hyphens-auto sm:max-w-md md:bottom-[14vh] md:left-16 md:max-w-xl md:px-7 md:py-6"
               style={{
                 opacity: o,
                 transform: `translateY(${(1 - o) * 24}px)`,
                 pointerEvents: o > 0.5 ? "auto" : "none",
               }}
             >
-              <span className="block text-[10px] tracking-[0.35em] text-primary md:text-xs">{c.label}</span>
-              <span className="mt-2 block font-heading text-3xl font-bold leading-tight text-foreground md:text-5xl">
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-background/30 px-3 py-1 text-[10px] tracking-[0.3em] text-primary md:text-xs">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                {c.label}
+              </span>
+              <span className="mt-3 block font-heading text-2xl font-bold leading-tight text-foreground sm:text-3xl md:text-5xl">
                 {noWidows(c.title)}
               </span>
-              <span className="mt-3 block text-justify text-sm leading-relaxed text-foreground/80 md:text-lg">
+              <span className="mt-2 block text-justify text-sm leading-relaxed text-foreground/90 md:mt-3 md:text-lg">
                 {noWidows(c.text)}
               </span>
-              <span className="mt-4 inline-block border-b border-primary pb-1 text-[10px] tracking-[0.3em] text-primary md:text-xs">
-                ZOBACZ →
+              <span className="mt-4 inline-block border-b border-primary/70 pb-1 text-[10px] tracking-[0.3em] text-primary md:text-xs">
+                ZOBACZ USŁUGĘ →
               </span>
             </a>
+
           );
         })}
 
         {/* nagłówek na końcu filmu (w HTML od początku, widoczny na końcu) */}
         <div
-          className="absolute inset-x-0 bottom-[8vh] z-20 px-5 md:bottom-[12vh] md:px-16"
+          className="absolute inset-x-0 bottom-[20vh] z-20 px-4 md:bottom-[12vh] md:px-16"
           style={{
             opacity: headlineOpacity,
             transform: `translateY(${(1 - headlineOpacity) * 30}px)`,
