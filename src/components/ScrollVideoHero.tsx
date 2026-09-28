@@ -275,24 +275,28 @@ export default function ScrollVideoHero() {
             <a
               key={c.label}
               href={c.href}
-              className="absolute bottom-[12vh] left-5 z-20 max-w-[calc(100vw-2.5rem)] hyphens-auto md:bottom-[14vh] md:left-16 md:max-w-xl"
+              className="absolute bottom-[24vh] left-4 z-20 max-w-[calc(100vw-2rem)] rounded-2xl border border-primary/15 bg-background/25 px-4 py-4 shadow-[0_18px_50px_-30px_hsl(var(--background))] backdrop-blur-md hyphens-auto sm:max-w-md md:bottom-[14vh] md:left-16 md:max-w-xl md:px-7 md:py-6"
               style={{
                 opacity: o,
                 transform: `translateY(${(1 - o) * 24}px)`,
                 pointerEvents: o > 0.5 ? "auto" : "none",
               }}
             >
-              <span className="block text-[10px] tracking-[0.35em] text-primary md:text-xs">{c.label}</span>
-              <span className="mt-2 block font-heading text-3xl font-bold leading-tight text-foreground md:text-5xl">
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-background/30 px-3 py-1 text-[10px] tracking-[0.3em] text-primary md:text-xs">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                {c.label}
+              </span>
+              <span className="mt-3 block font-heading text-2xl font-bold leading-tight text-foreground sm:text-3xl md:text-5xl">
                 {noWidows(c.title)}
               </span>
-              <span className="mt-3 block text-justify text-sm leading-relaxed text-foreground/80 md:text-lg">
+              <span className="mt-2 block text-justify text-sm leading-relaxed text-foreground/90 md:mt-3 md:text-lg">
                 {noWidows(c.text)}
               </span>
-              <span className="mt-4 inline-block border-b border-primary pb-1 text-[10px] tracking-[0.3em] text-primary md:text-xs">
-                ZOBACZ →
+              <span className="mt-4 inline-block border-b border-primary/70 pb-1 text-[10px] tracking-[0.3em] text-primary md:text-xs">
+                ZOBACZ USŁUGĘ →
               </span>
             </a>
+
           );
         })}
 
