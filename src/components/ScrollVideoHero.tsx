@@ -287,7 +287,7 @@ export default function ScrollVideoHero() {
       style={{ height: reducedMotion ? "100vh" : `${SCROLL_HEIGHT_VH}vh` }}
       aria-label="OpenMind AI Consulting"
     >
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(VIDEO_JSON_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd(language)) }} />
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <video
           ref={videoRef}
@@ -304,7 +304,7 @@ export default function ScrollVideoHero() {
         {/* zdjęcie bazowe w wysokiej jakości nad filmem */}
         <img
           src={POSTER_SRC}
-          alt={POSTER_ALT}
+          alt={isPl ? POSTER_ALT_PL : POSTER_ALT_EN}
           width={1920}
           height={1075}
           decoding="async"
@@ -321,12 +321,12 @@ export default function ScrollVideoHero() {
         {!ready && (
           <div className="absolute inset-x-0 bottom-0 z-30">
             <div className="h-[3px] bg-primary transition-[width] duration-200" style={{ width: `${loadPct}%` }} />
-            <p className="px-6 py-3 text-xs tracking-[0.3em] text-foreground/70">ŁADOWANIE {loadPct}%</p>
+            <p className="px-6 py-3 text-xs tracking-[0.3em] text-foreground/70">{isPl ? "ŁADOWANIE" : "LOADING"} {loadPct}%</p>
           </div>
         )}
 
         {/* podpisy usług */}
-        {CAPTIONS.map((c) => {
+        {captions.map((c) => {
           const fadeIn = clamp((p - c.from) / 0.03);
           const fadeOut = clamp((c.to - p) / 0.03);
           const o = Math.min(fadeIn, fadeOut);
@@ -352,7 +352,7 @@ export default function ScrollVideoHero() {
                 {noWidows(c.text)}
               </span>
               <span className="mt-4 inline-block border-b border-primary pb-1 text-[10px] font-bold tracking-[0.24em] text-primary [text-shadow:0_2px_8px_hsl(var(--background))] md:text-xs md:tracking-[0.3em]">
-                ZOBACZ USŁUGĘ →
+                {isPl ? "ZOBACZ USŁUGĘ →" : "SEE THE SERVICE →"}
               </span>
             </a>
 
@@ -369,18 +369,24 @@ export default function ScrollVideoHero() {
           }}
         >
           <h1 className="max-w-4xl hyphens-auto font-heading text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-6xl">
-            {noWidows("Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz")}
+            {noWidows(
+              isPl
+                ? "Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz"
+                : "AI implementations for companies that keep working while you rest"
+            )}
           </h1>
           <p className="mt-3 max-w-2xl text-justify text-sm leading-relaxed text-foreground/80 sm:text-base md:mt-4 md:text-lg">
             {noWidows(
-              "Szkolenia, audyty i automatyzacja z AI dla firm, urzędów i szkół w całej Polsce. Od pierwszej rozmowy po proces, który pracuje bez Ciebie."
+              isPl
+                ? "Szkolenia, audyty i automatyzacja z AI dla firm, urzędów i szkół w całej Polsce. Od pierwszej rozmowy po proces, który pracuje bez Ciebie."
+                : "AI training, audits and automation for companies, public offices and schools across Poland. From the first conversation to a process that runs without you."
             )}
           </p>
           <a
             href="/contact#contact"
             className="mt-6 inline-block border-b border-primary pb-1 text-[10px] tracking-[0.22em] text-primary sm:text-xs md:mt-8 md:text-sm md:tracking-[0.3em]"
           >
-            POROZMAWIAJMY O TWOJEJ FIRMIE →
+            {isPl ? "POROZMAWIAJMY O TWOJEJ FIRMIE →" : "LET'S TALK ABOUT YOUR BUSINESS →"}
           </a>
         </div>
 
@@ -389,7 +395,7 @@ export default function ScrollVideoHero() {
           className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap text-[10px] tracking-[0.3em] text-foreground/70 md:text-xs"
           style={{ opacity: ready ? clamp(1 - p / 0.04) : 0 }}
         >
-          PRZEWIŃ ↓
+          {isPl ? "PRZEWIŃ ↓" : "SCROLL ↓"}
         </div>
       </div>
     </section>
