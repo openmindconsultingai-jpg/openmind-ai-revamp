@@ -177,22 +177,12 @@ export default function ScrollVideoHero() {
     let raf = 0;
     let targetFrame = -1;
     let shownFrame = -1;
-    let displayedFrame = -1;
-    let latestProgress = 0;
-    const smoothOnTouch = window.matchMedia("(pointer: coarse)").matches;
 
-    // Telefon przechodzi przez kolejne klatki zamiast skakać od razu do odległego celu.
-    // Dekoder dostaje nowe zadanie dopiero po zakończeniu poprzedniego seekowania.
+    // Na każdym urządzeniu dekoder dostaje najnowszą klatkę wynikającą bezpośrednio
+    // z pozycji scrolla. Nie odtwarzamy klatek samoczynnie po zatrzymaniu przewijania.
     const flush = () => {
-      if (video.seeking || targetFrame < 0 || targetFrame === displayedFrame) return;
-
-      if (displayedFrame < 0 || !smoothOnTouch) {
-        displayedFrame = targetFrame;
-      } else {
-        displayedFrame += Math.sign(targetFrame - displayedFrame);
-      }
-
-      shownFrame = displayedFrame;
+      if (video.seeking || targetFrame < 0 || targetFrame === shownFrame) return;
+      shownFrame = targetFrame;
       try {
         video.currentTime = shownFrame / FPS + 0.001;
       } catch {
@@ -204,7 +194,6 @@ export default function ScrollVideoHero() {
       const rect = section.getBoundingClientRect();
       const scrollable = rect.height - window.innerHeight;
       const nextProgress = scrollable > 0 ? clamp(-rect.top / scrollable) : 0;
-      latestProgress = nextProgress;
       targetFrame = Math.round(nextProgress * (FRAME_COUNT - 1));
       flush();
       setProgress((previous) => (previous === nextProgress ? previous : nextProgress));
@@ -215,22 +204,16 @@ export default function ScrollVideoHero() {
       if (!raf) raf = requestAnimationFrame(readScroll);
     };
 
-    const continueMobileSequence = () => {
+    const showLatestFrame = () => {
       flush();
-      if (smoothOnTouch && displayedFrame >= 0 && displayedFrame !== targetFrame) {
-        const frameProgress = displayedFrame / (FRAME_COUNT - 1);
-        setProgress((previous) => (previous === frameProgress ? previous : frameProgress));
-      } else {
-        setProgress((previous) => (previous === latestProgress ? previous : latestProgress));
-      }
     };
 
     requestRender();
-    video.addEventListener("seeked", continueMobileSequence);
+    video.addEventListener("seeked", showLatestFrame);
     window.addEventListener("scroll", requestRender, { passive: true });
     window.addEventListener("resize", requestRender, { passive: true });
     return () => {
-      video.removeEventListener("seeked", continueMobileSequence);
+      video.removeEventListener("seeked", showLatestFrame);
       window.removeEventListener("scroll", requestRender);
       window.removeEventListener("resize", requestRender);
       if (raf) cancelAnimationFrame(raf);
