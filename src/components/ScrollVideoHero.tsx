@@ -302,7 +302,7 @@ export default function ScrollVideoHero() {
 
         {/* nagłówek na końcu filmu (w HTML od początku, widoczny na końcu) */}
         <div
-          className="absolute inset-x-0 bottom-[8vh] z-20 px-5 md:bottom-[12vh] md:px-16"
+          className="absolute inset-x-0 bottom-[20vh] z-20 px-4 md:bottom-[12vh] md:px-16"
           style={{
             opacity: headlineOpacity,
             transform: `translateY(${(1 - headlineOpacity) * 30}px)`,
