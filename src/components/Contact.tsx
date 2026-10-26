@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, Globe } from 'lucide-react';
 import ContactForm from './ContactForm';
 import logo from '@/assets/openmind-logo-nobg.webp';
 
@@ -129,7 +129,7 @@ const Contact = () => {
 
                 <div className="contact-card flex items-start gap-3 sm:gap-4 p-4 sm:p-6 bg-card border border-border rounded-xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                    <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <h3 className="text-base sm:text-lg font-semibold mb-1 text-foreground text-glow-subtle">{t('contact.location')}</h3>
