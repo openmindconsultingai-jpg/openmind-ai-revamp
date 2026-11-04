@@ -30,7 +30,7 @@ const News = () => {
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-gradient">
             {isEn ? 'News' : 'Aktualności'}
           </h1>
-          <p className="mt-4 text-muted-foreground">
+          <p className="mt-4 !text-center text-muted-foreground">
             {isEn ? 'Updates from OpenMind AI.' : 'Nowości z życia OpenMind AI.'}
           </p>
         </header>
@@ -42,7 +42,7 @@ const News = () => {
         )}
 
         {!isLoading && (isError || items.length === 0) && (
-          <p className="py-16 text-center text-muted-foreground">
+          <p className="py-16 !text-center text-muted-foreground">
             {isError
               ? isEn ? 'Could not load news. Please try again later.' : 'Nie udało się wczytać aktualności. Spróbuj ponownie później.'
               : isEn ? 'No news yet — check back soon.' : 'Wkrótce pojawią się tu pierwsze aktualności.'}
