@@ -327,6 +327,21 @@ const STATIC_META: Record<string, Meta> = {
       description: 'Ponad 110 artykułów o sztucznej inteligencji: modele językowe, agenci AI, wideo i obrazy generatywne, automatyzacja, regulacje, inwestycje.',
     },
   },
+  '/aktualnosci': {
+    title: 'Aktualności OpenMind AI – Nowości z firmy | OpenMind AI',
+    description: 'Aktualności OpenMind AI: nowe projekty, wdrożenia, szkolenia, wydarzenia i ogłoszenia z życia firmy.',
+    h1: 'Aktualności OpenMind AI',
+    body: `<p>Tu publikujemy aktualności z życia OpenMind AI: nowe projekty i wdrożenia sztucznej inteligencji, terminy szkoleń, wydarzenia, w których bierzemy udział, oraz ogłoszenia firmowe.</p>
+<p>Praktyczne poradniki i artykuły o sztucznej inteligencji znajdziesz w <a href="/blog">Bazie Wiedzy AI</a>. Chcesz porozmawiać o wdrożeniu AI w swojej organizacji? Napisz przez <a href="/contact">formularz kontaktowy</a>.</p>`,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Aktualności OpenMind AI',
+      url: `${SITE}/aktualnosci.html`,
+      publisher: ORG_JSONLD,
+      description: 'Aktualności i ogłoszenia z życia firmy OpenMind AI.',
+    },
+  },
   '/ai-advisor': {
     title: 'Wirtualny Doradca AI – Darmowy Doradca Sztucznej Inteligencji | OpenMind AI',
     description: 'Bezpłatny wirtualny doradca AI. Odpowiedz na kilka pytań, a nasz inteligentny doradca zaproponuje optymalne rozwiązania AI dla Twojego biznesu, edukacji lub życia codziennego.',
@@ -803,6 +818,7 @@ const MAIN_HTML_ROUTES = [
   '/about',
   '/contact',
   '/blog',
+  '/aktualnosci',
   '/ai-advisor',
   '/privacy',
   '/lokalizacje',
@@ -831,7 +847,7 @@ function buildHtmlSitemapXml(): string {
     ...MAIN_HTML_ROUTES.map((route) => ({ route, priority: '0.8' })),
   ];
 
-  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 47 || entries.length !== 365) {
+  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 48 || entries.length !== 366) {
    throw new Error(`[prerender] sitemap-html invalid counts: voiv=${voivRoutes.length}, cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
   }
 
@@ -939,7 +955,7 @@ function buildHtml(routePath: string, meta: Meta): string {
  * hreflang, og:url, JSON-LD or sitemap output.
  */
 const INTERNAL_ANCHOR_HTML_RE =
-  /(<a\b[^>]*\bhref=")((?:https:\/\/www\.openmindai\.pl)?)\/(services|about|contact|blog|ai-advisor|privacy|gdzie-dzialamy)((?:\/[^"#?\s]*)?)\.html((?:[?#][^"\s]*)?)(")/g;
+  /(<a\b[^>]*\bhref=")((?:https:\/\/www\.openmindai\.pl)?)\/(services|about|contact|blog|aktualnosci|ai-advisor|privacy|gdzie-dzialamy)((?:\/[^"#?\s]*)?)\.html((?:[?#][^"\s]*)?)(")/g;
 
 function fixInternalLinks(html: string): string {
   return html.replace(
@@ -1041,6 +1057,7 @@ OpenMind AI Consulting — polski lider wdrożeń sztucznej inteligencji dla fir
 - Agencja kreatywna AI: ${SITE}/services/agencja-kreatywna-ai
 - AI dla szkół: ${SITE}/services/ai-dla-szkol
 - Baza wiedzy AI (110 artykułów): ${SITE}/blog
+- Aktualności firmy: ${SITE}/aktualnosci
 - O nas: ${SITE}/about
 - Kontakt: ${SITE}/contact
 
