@@ -8,6 +8,7 @@ import useCanonical from '@/hooks/useCanonical';
 import usePageMeta from '@/hooks/usePageMeta';
 
 // Lazy load below-the-fold sections for better FCP/LCP
+const NewsSection = lazy(() => import('@/components/NewsSection'));
 const LogoTicker = lazy(() => import('@/components/LogoTicker'));
 const ServiceAreas = lazy(() => import('@/components/ServiceAreas'));
 const ParticleFooter = lazy(() => import('@/components/ParticleFooter'));
@@ -66,6 +67,7 @@ const Home = () => {
       <main className="relative z-[1]">
         <div className="bg-background">
           <Suspense fallback={<div className="min-h-screen bg-background" />}>
+            <NewsSection />
             <div className="pt-12 md:pt-16">
               <LogoTicker />
             </div>

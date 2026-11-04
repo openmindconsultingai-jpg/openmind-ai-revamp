@@ -16,6 +16,8 @@ const ServiceLandingPage = lazy(() => import("./pages/ServiceLandingPage"));
 const AboutPage = lazy(() => import("./pages/About"));
 const BlogPage = lazy(() => import("./pages/Blog"));
 const BlogArticlePage = lazy(() => import("./pages/BlogArticle"));
+const NewsPage = lazy(() => import("./pages/News"));
+const NewsArticlePage = lazy(() => import("./pages/NewsArticle"));
 const ContactPage = lazy(() => import("./pages/Contact"));
 const PrivacyPage = lazy(() => import("./pages/Privacy"));
 const AIAdvisorPage = lazy(() => import("./pages/AIAdvisor"));
@@ -127,6 +129,9 @@ const App = () => (
             <Route path="/blog" element={wrap(<BlogPage />)} />
             <Route path="/blog.html" element={wrap(<BlogPage />)} />
             <Route path="/blog/:id" element={wrap(<BlogArticlePage />)} />
+            <Route path="/aktualnosci" element={wrap(<NewsPage />)} />
+            <Route path="/aktualnosci.html" element={wrap(<NewsPage />)} />
+            <Route path="/aktualnosci/:slug" element={wrap(<NewsArticlePage />)} />
             <Route path="/contact" element={wrap(<ContactPage />)} />
             <Route path="/contact.html" element={wrap(<ContactPage />)} />
             <Route path="/privacy" element={wrap(<PrivacyPage />)} />
