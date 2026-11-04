@@ -48,7 +48,7 @@ const NewsArticle = () => {
 
   return (
     <PageLayout>
-      <main className="container mx-auto max-w-3xl px-4 sm:px-6 pt-32 pb-20">
+      <div className="container mx-auto max-w-3xl px-4 sm:px-6 pt-32 pb-20">
         <Link to="/aktualnosci" className="text-xs font-semibold uppercase tracking-[0.15em] text-primary hover:underline">
           {isEn ? '← All news' : '← Wszystkie aktualności'}
         </Link>
@@ -101,7 +101,7 @@ const NewsArticle = () => {
             </div>
           </article>
         )}
-      </main>
+      </div>
       <Footer />
     </PageLayout>
   );

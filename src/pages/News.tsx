@@ -25,7 +25,7 @@ const News = () => {
 
   return (
     <PageLayout>
-      <main className="container mx-auto max-w-6xl px-4 sm:px-6 pt-32 pb-20">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 pt-32 pb-20">
         <header className="mb-10 text-center">
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-gradient">
             {isEn ? 'News' : 'Aktualności'}
@@ -56,7 +56,7 @@ const News = () => {
             ))}
           </div>
         )}
-      </main>
+      </div>
       <Footer />
     </PageLayout>
   );
