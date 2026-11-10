@@ -59,7 +59,7 @@ const ServicesHubPage = () => {
   usePageMeta({
     title: HUB.title,
     description: HUB.description,
-    path: '/services.html',
+    path: '/services',
     jsonLd,
   });
 

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { pageUrl, normalizeStructuredUrls } from '@/lib/seoUrls';
 
-const SITE_URL = 'https://www.openmindai.pl';
 const SITE_NAME = 'OpenMind AI';
 const DEFAULT_IMAGE = 'https://www.openmindai.pl/og-image.jpg';
 
@@ -23,7 +23,7 @@ interface PageMetaOptions {
  *
  * IMPORTANT: canonical & hreflang are derived from the CURRENT window.location.pathname
  * (NOT from the `path` prop) to guarantee they always reflect the real URL.
- * The `path` prop is kept only as a fallback / for og:url.
+ * The `path` prop is retained for compatibility; og:url also self-references.
  */
 const usePageMeta = ({
   title,
@@ -41,13 +41,10 @@ const usePageMeta = ({
   useEffect(() => {
     // Derive canonical URL from the actual browser pathname (most reliable source)
     const rawPath = pathname || window.location.pathname || '';
-    const normalizedPath = rawPath !== '/' ? rawPath.replace(/\/+$/, '') : '';
-    const canonicalUrl = `${SITE_URL}${normalizedPath}`;
+    const canonicalUrl = pageUrl(rawPath);
 
-    // Also compute og:url from explicit path prop if provided, else use canonical
-    const ogUrl = path != null
-      ? `${SITE_URL}${path === '/' ? '' : path}`
-      : canonicalUrl;
+    // og:url must identify the same page as the canonical.
+    const ogUrl = canonicalUrl;
 
     // Title
     document.title = title;
@@ -107,7 +104,7 @@ const usePageMeta = ({
         scriptEl.setAttribute('data-page-jsonld', 'true');
         document.head.appendChild(scriptEl);
       }
-      scriptEl.textContent = JSON.stringify(jsonLd);
+      scriptEl.textContent = JSON.stringify(normalizeStructuredUrls(jsonLd));
     } else if (scriptEl) {
       scriptEl.remove();
     }
@@ -116,7 +113,7 @@ const usePageMeta = ({
       const s = document.querySelector('script[data-page-jsonld]');
       if (s) s.remove();
     };
-  }, [title, description, keywords, path, pathname, ogImage, ogType, jsonLd]);
+  }, [title, description, keywords, path, pathname, ogImage, ogType, ogTitle, ogDescription, jsonLd]);
 };
 
 export default usePageMeta;

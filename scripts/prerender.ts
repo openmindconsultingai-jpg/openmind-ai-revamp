@@ -7,6 +7,8 @@
  * Does NOT touch vite.config.ts.
  */
 import fs from 'node:fs';
+import { pageUrl, normalizeStructuredUrls } from '../src/lib/seoUrls';
+import { validateSeoOutput } from './seo-validation';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { voivodeships } from '../src/data/voivodeships';
@@ -24,7 +26,7 @@ import { services as SERVICES_REGISTRY, HUB as SERVICES_HUB, servicesList, type 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..');
-const DIST = path.join(ROOT, 'dist');
+const DIST = process.env.SEO_OUTPUT_DIR || path.join(ROOT, 'dist');
 const SITE = 'https://www.openmindai.pl';
 const TRAINING_SERVICES = servicesList.filter(
   (service) => service.slug.startsWith('szkolenia-') || service.slug === 'ai-dla-szkol',
@@ -39,7 +41,7 @@ if (!fs.existsSync(DIST)) {
   process.exit(1);
 }
 
-const template = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
+const template = fs.readFileSync(process.env.SEO_TEMPLATE || path.join(DIST, 'index.html'), 'utf8');
 
 // ---------------------------------------------------------------------------
 // URL → metadata mapping
@@ -53,13 +55,13 @@ type Meta = {
 };
 
 const esc = (s: unknown) =>
-  String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] ?? c));
 
 const ORG_JSONLD = {
   '@type': 'Organization',
   '@id': `${SITE}/#organization`,
   name: 'OpenMind AI Consulting',
-  url: SITE,
+  url: `${SITE}/`,
   logo: `${SITE}/og-image.jpg`,
   email: 'biuro@openmindai.pl',
   areaServed: { '@type': 'Country', name: 'Polska' },
@@ -138,7 +140,7 @@ const STATIC_META: Record<string, Meta> = {
 <p>Standardowy audyt z mapą wdrożeń trwa od 2 do 6 tygodni, w zależności od skali organizacji i liczby analizowanych procesów. Pierwsze rekomendacje przekazujemy zwykle już po pierwszych warsztatach.</p>
 <h3>Czy potrzebujemy własnego zespołu AI?</h3>
 <p>Nie. Możemy pełnić rolę zewnętrznego zespołu lub przygotować Twój zespół wewnętrzny do samodzielnego prowadzenia wdrożeń.</p>`,
-    jsonLd: serviceLd('Konsulting AI', 'Strategiczne doradztwo w obszarze sztucznej inteligencji: audyt, dobór narzędzi, mapa wdrożeń, ROI.', `${SITE}/services/konsulting-ai.html`, 'AI Consulting'),
+    jsonLd: serviceLd('Konsulting AI', 'Strategiczne doradztwo w obszarze sztucznej inteligencji: audyt, dobór narzędzi, mapa wdrożeń, ROI.', `${SITE}/services/konsulting-ai`, 'AI Consulting'),
   },
   '/services/szkolenia-ai': {
     title: 'Szkolenia AI dla firm i pracowników – ChatGPT, Claude, Copilot | OpenMind AI',
@@ -158,7 +160,7 @@ const STATIC_META: Record<string, Meta> = {
 <p>Rekomendujemy grupy 8-15 osób dla maksymalnej interaktywności, ale realizujemy też duże webinary edukacyjne dla 100+ uczestników.</p>
 <h3>Czy szkolenie jest dostosowane do mojej branży?</h3>
 <p>Tak. Przed każdym szkoleniem przeprowadzamy krótki wywiad, aby dopasować przykłady i prompty do realiów Twojej firmy.</p>`,
-    jsonLd: serviceLd('Szkolenia AI', 'Praktyczne warsztaty z ChatGPT, Claude, Copilot, Gemini, prompt engineering i automatyzacji workflow.', `${SITE}/services/szkolenia-ai.html`, 'AI Training'),
+    jsonLd: serviceLd('Szkolenia AI', 'Praktyczne warsztaty z ChatGPT, Claude, Copilot, Gemini, prompt engineering i automatyzacji workflow.', `${SITE}/services/szkolenia-ai`, 'AI Training'),
   },
   '/services/automatyzacja-ai': {
     title: 'Automatyzacja procesów z AI – Workflow, n8n, Zapier | OpenMind AI',
@@ -176,7 +178,7 @@ const STATIC_META: Record<string, Meta> = {
 <h2>FAQ – automatyzacja AI</h2>
 <h3>Ile kosztuje wdrożenie?</h3>
 <p>Małe automatyzacje (1-3 workflow) startują od kilku tysięcy złotych. Większe projekty wyceniamy indywidualnie po warsztacie mapującym.</p>`,
-    jsonLd: serviceLd('Automatyzacja procesów AI', 'Workflow z modelami AI w Make, n8n, Zapier, Power Automate oraz dedykowane integracje API.', `${SITE}/services/automatyzacja-ai.html`, 'AI Process Automation'),
+    jsonLd: serviceLd('Automatyzacja procesów AI', 'Workflow z modelami AI w Make, n8n, Zapier, Power Automate oraz dedykowane integracje API.', `${SITE}/services/automatyzacja-ai`, 'AI Process Automation'),
   },
   '/services/agencja-kreatywna-ai': {
     title: 'Agencja Kreatywna AI – Wideo AI, Obrazy AI, Reklamy | OpenMind AI',
@@ -196,7 +198,7 @@ const STATIC_META: Record<string, Meta> = {
 <p>Tak — pracujemy wyłącznie na licencjach komercyjnych narzędzi i przekazujemy klientowi pełne prawa do wykorzystania w kampaniach reklamowych.</p>
 <h3>Jak szybko dostarczacie pierwsze efekty?</h3>
 <p>Pierwsze materiały koncepcyjne przekazujemy zazwyczaj w ciągu kilku dni od briefu.</p>`,
-    jsonLd: serviceLd('Agencja Kreatywna AI', 'Wideo AI, obrazy AI, voice-over, kampanie social media i identyfikacje wizualne z generatywną AI.', `${SITE}/services/agencja-kreatywna-ai.html`, 'Creative AI Agency'),
+    jsonLd: serviceLd('Agencja Kreatywna AI', 'Wideo AI, obrazy AI, voice-over, kampanie social media i identyfikacje wizualne z generatywną AI.', `${SITE}/services/agencja-kreatywna-ai`, 'Creative AI Agency'),
   },
   '/services/ai-dla-szkol': {
     title: 'AI dla Szkół – Szkolenia dla Nauczycieli, Warsztaty | OpenMind AI',
@@ -214,7 +216,7 @@ const STATIC_META: Record<string, Meta> = {
 <h2>FAQ – AI w edukacji</h2>
 <h3>Czy AI w szkole to nie jest oszukiwanie?</h3>
 <p>AI to narzędzie — kluczowe jest, jak nauczyciele i uczniowie się nim posługują. Nasze szkolenia pokazują, jak budować umiejętności krytycznego korzystania z AI, a nie unikania jej.</p>`,
-    jsonLd: serviceLd('AI dla szkół', 'Szkolenia dla nauczycieli, warsztaty dla uczniów, polityki użycia AI, wdrożenia asystentów AI w edukacji.', `${SITE}/services/ai-dla-szkol.html`, 'AI for Education'),
+    jsonLd: serviceLd('AI dla szkół', 'Szkolenia dla nauczycieli, warsztaty dla uczniów, polityki użycia AI, wdrożenia asystentów AI w edukacji.', `${SITE}/services/ai-dla-szkol`, 'AI for Education'),
   },
   '/services/tworzenie-stron-www': {
     title: 'Tworzenie stron WWW z AI – Nowoczesne Strony Internetowe | OpenMind AI',
@@ -229,7 +231,7 @@ const STATIC_META: Record<string, Meta> = {
 <p>Każda strona przechodzi audyt SEO (meta tagi, schema.org, sitemapy, hreflang dla wersji wielojęzycznych) oraz audyt Core Web Vitals. Dbamy o ocenę powyżej 90 w Lighthouse i pełną zgodność z wytycznymi Google.</p>
 <h2>Dla kogo</h2>
 <p>Tworzymy strony dla firm produkcyjnych, usługowych, e-commerce, kancelarii prawnych, klinik medycznych, biur nieruchomości, restauracji, hoteli oraz instytucji publicznych. Pierwsze efekty wdrożenia widać zwykle w ciągu kilku tygodni od startu projektu.</p>`,
-    jsonLd: serviceLd('Tworzenie stron WWW', 'Projektowanie i wdrożenie nowoczesnych stron internetowych z optymalizacją SEO i opcjonalnymi modułami AI.', `${SITE}/services/tworzenie-stron-www.html`, 'Web Development'),
+    jsonLd: serviceLd('Tworzenie stron WWW', 'Projektowanie i wdrożenie nowoczesnych stron internetowych z optymalizacją SEO i opcjonalnymi modułami AI.', `${SITE}/services/tworzenie-stron-www`, 'Web Development'),
   },
   '/about': {
     title: 'O nas – OpenMind AI Consulting | Eksperci AI w Polsce',
@@ -280,7 +282,7 @@ const STATIC_META: Record<string, Meta> = {
       '@context': 'https://schema.org',
       '@type': 'ContactPage',
       name: 'Kontakt – OpenMind AI Consulting',
-      url: `${SITE}/contact.html`,
+      url: `${SITE}/contact`,
       mainEntity: {
         ...ORG_JSONLD,
         contactPoint: {
@@ -322,7 +324,7 @@ const STATIC_META: Record<string, Meta> = {
       '@context': 'https://schema.org',
       '@type': 'Blog',
       name: 'Baza Wiedzy o AI – OpenMind AI',
-      url: `${SITE}/blog.html`,
+      url: `${SITE}/blog`,
       publisher: ORG_JSONLD,
       description: 'Ponad 110 artykułów o sztucznej inteligencji: modele językowe, agenci AI, wideo i obrazy generatywne, automatyzacja, regulacje, inwestycje.',
     },
@@ -337,7 +339,7 @@ const STATIC_META: Record<string, Meta> = {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
       name: 'Aktualności OpenMind AI',
-      url: `${SITE}/aktualnosci.html`,
+      url: `${SITE}/aktualnosci`,
       publisher: ORG_JSONLD,
       description: 'Aktualności i ogłoszenia z życia firmy OpenMind AI.',
     },
@@ -587,7 +589,7 @@ function blogMeta(id: number): Meta {
   const title = realTitle || `Artykuł ${id}${catLabel} – Baza Wiedzy AI`;
   const excerpt = realExcerpt || `Artykuł nr ${id} z bazy wiedzy OpenMind AI${cat ? ` w kategorii ${cat}` : ''}. Praktyczne informacje o sztucznej inteligencji.`;
   const datePub = blogPublishDate(id);
-  const url = `${SITE}/blog/${id}.html`;
+  const url = `${SITE}/blog/${id}`;
 
   const body = `<p><strong>${esc(excerpt)}</strong></p>
 <h2>O artykule</h2>
@@ -630,7 +632,7 @@ function voivMeta(slug: string): Meta | null {
   if (!v) return null;
   const cityCount = v.cities.length;
   const firstFour = v.cities.slice(0, 4).map((c) => c.name).join(', ');
-  const canonical = `${SITE}/gdzie-dzialamy/${v.slug}.html`;
+  const canonical = `${SITE}/gdzie-dzialamy/${v.slug}`;
 
   const cityLinks = v.cities
     .map(
@@ -642,7 +644,7 @@ function voivMeta(slug: string): Meta | null {
   const body = `<p>OpenMind AI Consulting świadczy pełen zakres usług z obszaru sztucznej inteligencji dla firm, instytucji publicznych, agencji marketingowych oraz placówek edukacyjnych z województwa ${esc(v.genitiveName)}. Obsługujemy ${cityCount} miast regionu — od największych ośrodków (${esc(firstFour)}) po miejscowości powiatowe. Działamy zarówno zdalnie, jak i stacjonarnie na miejscu u klienta.</p>
 <p>W województwie ${esc(v.locativeName)} wdrażamy modele językowe (ChatGPT, Claude, Gemini, Microsoft Copilot), automatyzujemy procesy w Make/n8n/Zapier, projektujemy asystentów AI dla obsługi klienta oraz produkujemy materiały reklamowe z wykorzystaniem generatywnej sztucznej inteligencji (wideo AI, obrazy AI, voice-over). Prowadzimy praktyczne szkolenia z prompt engineeringu dla pracowników biurowych, zespołów sprzedażowych, marketingu, HR oraz zarządów.</p>
 
-<h2>Miasta obsługiwane w województwie ${esc(v.name)}</h2>
+<h2>Miasta obsługiwane w województwie ${esc(v.locativeName)}</h2>
 <p>Pełna lista miast, dla których przygotowaliśmy dedykowane strony z opisem lokalnej gospodarki, kluczowych branż i przykładów wdrożeń sztucznej inteligencji:</p>
 <ul>${cityLinks}</ul>
 
@@ -650,7 +652,7 @@ function voivMeta(slug: string): Meta | null {
 <p>Najczęstsze scenariusze wdrożeń w regionie ${esc(v.locativeName)} obejmują: automatyzację obsługi zapytań mailowych i czatów, generowanie ofert handlowych i dokumentów, ekstrakcję danych z faktur i umów, kwalifikację leadów sprzedażowych, raportowanie zarządcze, tworzenie treści marketingowych i social media, wewnętrzne bazy wiedzy oparte o wyszukiwanie semantyczne, a także asystentów AI dla działów HR i obsługi klienta.</p>
 <p>Dla przedsiębiorstw produkcyjnych oferujemy analizę danych operacyjnych i predykcyjne utrzymanie ruchu; dla e-commerce – personalizację rekomendacji i automatyczne opisy produktów; dla kancelarii prawnych – analizę umów; dla klinik medycznych – wsparcie dokumentacji. Wszystkie wdrożenia projektujemy zgodnie z RODO, z opcją self-hosted dla danych wrażliwych.</p>
 
-<h2>Szkolenia AI w województwie ${esc(v.name)}</h2>
+<h2>Szkolenia AI w województwie ${esc(v.locativeName)}</h2>
 <p>Prowadzimy szkolenia z ChatGPT, Claude, Gemini i Microsoft Copilot dla firm, instytucji oraz szkół w miastach: ${esc(v.cities.map((c) => c.name).join(', '))}. Warsztaty realizujemy w formatach 4-godzinnych, całodniowych i wielodniowych – online, stacjonarnie w siedzibie klienta lub hybrydowo.</p>
 
 <h2>Skontaktuj się z nami</h2>
@@ -662,7 +664,7 @@ function voivMeta(slug: string): Meta | null {
       {
         '@type': 'Service',
         '@id': `${canonical}#service`,
-        name: `Sztuczna inteligencja (AI) w województwie ${v.name}`,
+        name: `Sztuczna inteligencja (AI) w województwie ${v.locativeName}`,
         description: `Wdrożenia, szkolenia i konsulting AI w województwie ${v.locativeName}. Obsługujemy ${cityCount} miast regionu.`,
         url: canonical,
         provider: ORG_JSONLD,
@@ -685,9 +687,9 @@ function voivMeta(slug: string): Meta | null {
   };
 
   return {
-    title: `AI w województwie ${v.name} – Wdrożenia, Szkolenia i Konsulting Sztucznej Inteligencji | OpenMind AI`,
+    title: `AI w województwie ${v.locativeName} – Wdrożenia, Szkolenia i Konsulting Sztucznej Inteligencji | OpenMind AI`,
     description: `Sztuczna inteligencja w województwie ${v.locativeName}. Wdrożenia AI, szkolenia z ChatGPT, automatyzacja procesów. Konsulting dla firm z ${cityCount} miast regionu ${v.genitiveName}.`.slice(0, 158),
-    h1: `AI w województwie ${v.name}`,
+    h1: `AI w województwie ${v.locativeName}`,
     body,
     jsonLd,
   };
@@ -700,7 +702,7 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
   if (!c) return null;
   const content = findCityContent(voivSlug, citySlug);
   const routePath = `/gdzie-dzialamy/${v.slug}/${c.slug}`;
-  const canonical = `${SITE}${routePath}.html`;
+  const canonical = `${SITE}${routePath}`;
 
   const seoSections = buildCitySeoSections(c, v, content?.branzeKluczowe);
   const seoFaq = buildCitySeoFaq(c);
@@ -724,7 +726,7 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
       body += `<h2>Obsługa i dojazd</h2><p>${esc(content.czasDojazdu)}</p>`;
     }
   } else {
-    body = `<p>OpenMind AI świadczy usługi wdrożeń, szkoleń i konsultingu sztucznej inteligencji w ${esc(c.locative)} (województwo ${esc(v.locativeName)}). Pomagamy lokalnym firmom wdrażać ChatGPT, automatyzować procesy oraz tworzyć materiały reklamowe z generatywną AI.</p>`;
+    body = `<p>OpenMind AI świadczy usługi wdrożeń, szkoleń i konsultingu sztucznej inteligencji w ${esc(c.locative)} w województwie ${esc(v.locativeName)}. Pomagamy lokalnym firmom wdrażać ChatGPT, automatyzować procesy oraz tworzyć materiały reklamowe z generatywną AI.</p>`;
   }
 
   body += seoSections
@@ -737,7 +739,7 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
   body += `<h2>FAQ – sztuczna inteligencja w ${esc(c.locative)}</h2>` +
     allFaq.map((f) => `<h3>${esc(f.pytanie)}</h3><p>${esc(f.odpowiedz)}</p>`).join('');
 
-  body += `<p><a href="/gdzie-dzialamy/${v.slug}">Zobacz pełną listę miast w województwie ${esc(v.name)}</a></p>`;
+  body += `<p><a href="/gdzie-dzialamy/${v.slug}">Zobacz pełną listę miast w województwie ${esc(v.locativeName)}</a></p>`;
 
 
   const graph: object[] = [
@@ -752,7 +754,7 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
         name: c.name,
         containedInPlace: { '@type': 'AdministrativeArea', name: v.name },
       },
-      provider: { '@type': 'Organization', name: 'OpenMind AI Consulting', url: SITE },
+      provider: { '@type': 'Organization', name: 'OpenMind AI Consulting', url: `${SITE}/` },
       address: {
         '@type': 'PostalAddress',
         addressLocality: c.name,
@@ -805,54 +807,17 @@ function readSitemap(file: string): string[] {
   return [...raw.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 }
 
-const allUrls = [
+// This is the date of this route-specific metadata/content correction, never build time.
+const SEO_CORRECTION_LASTMOD = '2026-11-10';
+const allUrls = [...new Set([
   ...readSitemap('sitemap-main.xml'),
   ...readSitemap('sitemap-blog.xml'),
   ...readSitemap('sitemap-cities.xml'),
-];
-
-const HTML_SITEMAP_LASTMOD = '2026-06-12';
-const MAIN_HTML_ROUTES = [
-  '/services',
-  ...servicesList.map((s) => s.path), // 9 core + 9 industry-specific training pages
-  '/about',
-  '/contact',
-  '/blog',
-  '/aktualnosci',
-  '/ai-advisor',
-  '/privacy',
-  '/lokalizacje',
-];
-
-function buildHtmlSitemapXml(): string {
-  const voivRoutes = voivodeships.map((v) => `/gdzie-dzialamy/${v.slug}`);
-
-  const cityRoutes = voivodeships.flatMap((voivodeship) =>
-    voivodeship.cities.map((city) => {
-      const route = `/gdzie-dzialamy/${voivodeship.slug}/${city.slug}`;
-      findCityContent(voivodeship.slug, city.slug);
-      return route;
-    }),
-  );
-
-  const digestArticleIds = new Set(digestArticles.map((article) => article.id));
-  const blogRoutes = Array.from({ length: 110 }, (_, index) => index + 1)
-    .filter((id) => id <= 60 || digestArticleIds.has(id))
-    .map((id) => `/blog/${id}`);
-
-  const entries = [
-    ...voivRoutes.map((route) => ({ route, priority: '0.6' })),
-    ...cityRoutes.map((route) => ({ route, priority: '0.5' })),
-    ...blogRoutes.map((route) => ({ route, priority: '0.6' })),
-    ...MAIN_HTML_ROUTES.map((route) => ({ route, priority: '0.8' })),
-  ];
-
-  if (voivRoutes.length !== 16 || cityRoutes.length !== 192 || blogRoutes.length !== 110 || MAIN_HTML_ROUTES.length !== 48 || entries.length !== 366) {
-   throw new Error(`[prerender] sitemap-html invalid counts: voiv=${voivRoutes.length}, cities=${cityRoutes.length}, blog=${blogRoutes.length}, main=${MAIN_HTML_ROUTES.length}, total=${entries.length}`);
-  }
-
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
-    .map(({ route, priority }) => `  <url><loc>${SITE}${route}.html</loc><lastmod>${HTML_SITEMAP_LASTMOD}</lastmod><priority>${priority}</priority></url>`)
+  ...Object.keys(STATIC_META).map(pageUrl),
+].map(pageUrl))];
+function buildSitemapXml(urls: string[]): string {
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
+    .map(url => `  <url><loc>${url}</loc><lastmod>${SEO_CORRECTION_LASTMOD}</lastmod></url>`)
     .join('\n')}\n</urlset>\n`;
 }
 
@@ -862,8 +827,8 @@ function buildHtmlSitemapXml(): string {
 const escAttr = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 function buildHtml(routePath: string, meta: Meta): string {
-  // Canonical always points to the .html variant (matches sitemap), except root.
-  const canonical = routePath === '/' ? `${SITE}/` : `${SITE}${routePath}.html`;
+  // One clean self-referencing canonical for every public route.
+  const canonical = pageUrl(routePath);
   let html = template;
 
   // <title>
@@ -937,74 +902,37 @@ function buildHtml(routePath: string, meta: Meta): string {
   // The SEO snippet has <section> but no nested <div>, so non-greedy </div> matches the root close.
   html = html.replace(/<div id="root">[\s\S]*?<\/div>/, newRoot);
 
-  // Inject URL-cleanup script: after first paint, strip ".html" from the URL
-  // so users see a clean path in the address bar; React Router handles bare paths.
-  const cleanupScript =
-    `<script>(function(){try{var p=location.pathname;if(p.endsWith('.html')){history.replaceState(null,'',p.slice(0,-5)+location.search+location.hash);}}catch(e){}})();</script>`;
   const jsonLdTag = meta.jsonLd
-    ? `<script type="application/ld+json" data-page-jsonld>${JSON.stringify(meta.jsonLd).replace(/</g, '\\u003c')}</script>`
+    ? `<script type="application/ld+json" data-page-jsonld>${JSON.stringify(normalizeStructuredUrls(meta.jsonLd)).replace(/</g, '\\u003c')}</script>`
     : '';
-  html = html.replace('</head>', `${jsonLdTag}${cleanupScript}</head>`);
+  html = html.replace('</head>', `${jsonLdTag}</head>`);
 
   return html;
 }
 
-/**
- * Post-process prerendered HTML anchors so internal crawl links point to bare
- * URLs. This intentionally touches only <a href="...">, not canonical,
- * hreflang, og:url, JSON-LD or sitemap output.
- */
-const INTERNAL_ANCHOR_HTML_RE =
-  /(<a\b[^>]*\bhref=")((?:https:\/\/www\.openmindai\.pl)?)\/(services|about|contact|blog|aktualnosci|ai-advisor|privacy|gdzie-dzialamy)((?:\/[^"#?\s]*)?)\.html((?:[?#][^"\s]*)?)(")/g;
-
-function fixInternalLinks(html: string): string {
-  return html.replace(
-    INTERNAL_ANCHOR_HTML_RE,
-    (_match, before, prefix, root, rest, query, after) => `${before}${prefix}/${root}${rest}${query}${after}`,
-  );
+function redirectHtml(routePath: string): string {
+  const canonical = pageUrl(routePath);
+  return `<!doctype html>\n<html lang="pl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Przekierowanie | OpenMind AI</title><meta http-equiv="refresh" content="0; url=${escAttr(routePath)}"><link rel="canonical" href="${canonical}"></head><body><p><a href="${escAttr(routePath)}">Przejdź do strony OpenMind AI</a></p><script>location.replace(${JSON.stringify(routePath)}+location.search+location.hash);</script></body></html>\n`;
 }
 
 function writeRoute(routePath: string, html: string) {
-  // routePath like "/services/konsulting-ai"
-  // Write BOTH variants so Lovable hosting can match the exact request path:
-  //   1) dist/services/konsulting-ai/index.html  (for trailing-slash URLs)
-  //   2) dist/services/konsulting-ai.html        (for clean URLs without slash)
-  // Lovable hosting serves the file matching the request path verbatim and
-  // only falls back to root index.html if no file matches — so we need both.
-  const finalHtml = fixInternalLinks(html);
   const rel = routePath.replace(/^\/+/, '');
   const dir = path.join(DIST, rel);
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), finalHtml, 'utf8');
-
-  // Flat sibling .html — most static hosts map "/foo/bar" → "/foo/bar.html"
-  const parent = path.join(DIST, path.dirname(rel));
-  fs.mkdirSync(parent, { recursive: true });
-  fs.writeFileSync(path.join(DIST, rel + '.html'), finalHtml, 'utf8');
-}
-
-// Also normalize the homepage HTML (links in default index.html body)
-try {
-  const homePath = path.join(DIST, 'index.html');
-  if (fs.existsSync(homePath)) {
-    const homeHtml = fs.readFileSync(homePath, 'utf8');
-    fs.writeFileSync(homePath, fixInternalLinks(homeHtml), 'utf8');
-  }
-} catch (e) {
-  console.warn('[prerender] could not normalize home index.html links', e);
+  fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
+  fs.writeFileSync(path.join(DIST, rel + '.html'), redirectHtml(routePath), 'utf8');
 }
 
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 let written = 0;
-let skipped = 0;
+const generatedRoutes: string[] = [];
 const missing: string[] = [];
 
 for (const url of allUrls) {
   const u = new URL(url);
-  // Sitemap URLs end with ".html" (except root). Strip it for meta lookup
-  // and route matching; canonical/file-write will re-add it.
+  // Resolve only the clean public route.
   let routePath = u.pathname.replace(/\/+$/, '') || '/';
   if (routePath.endsWith('.html')) routePath = routePath.slice(0, -5) || '/';
 
@@ -1014,8 +942,9 @@ for (const url of allUrls) {
       missing.push('/');
       continue;
     }
-    fs.writeFileSync(path.join(DIST, 'index.html'), fixInternalLinks(buildHtml('/', homeMeta)), 'utf8');
+    fs.writeFileSync(path.join(DIST, 'index.html'), buildHtml('/', homeMeta), 'utf8');
     written++;
+    generatedRoutes.push('/');
     continue;
   }
 
@@ -1024,7 +953,7 @@ for (const url of allUrls) {
   if (STATIC_META[routePath]) {
     meta = STATIC_META[routePath];
   } else if (/^\/blog\/(\d+)$/.test(routePath)) {
-    const id = Number(routePath.match(/^\/blog\/(\d+)$/)![1]);
+    const id = Number(routePath.split('/')[2]);
     meta = blogMeta(id);
   } else if (/^\/gdzie-dzialamy\/[^/]+$/.test(routePath)) {
     const slug = routePath.split('/')[2];
@@ -1041,6 +970,7 @@ for (const url of allUrls) {
 
   writeRoute(routePath, buildHtml(routePath, meta));
   written++;
+  generatedRoutes.push(routePath);
 }
 
 // Write llms.txt for AI crawlers (LLM-friendly site map)
@@ -1075,17 +1005,17 @@ biuro@openmindai.pl • ${SITE}/contact
 `;
 fs.writeFileSync(path.join(DIST, 'llms.txt'), llmsTxt, 'utf8');
 
-const htmlSitemapXml = buildHtmlSitemapXml();
-fs.writeFileSync(path.join(DIST, 'sitemap-html.xml'), htmlSitemapXml, 'utf8');
-
-// NOTE (2026-06-12): the former "extensionless leaf files" post-processing
-// pass was ROLLED BACK. Lovable CDN serves extensionless files as
-// application/octet-stream with `x-content-type-options: nosniff`, so Google
-// treated bare URLs as binary downloads and de-indexed them. We now ship ONLY
-// dist/{route}.html and dist/{route}/index.html; bare URLs fall through to the
-// SPA shell and canonicals/sitemaps point at the .html variants.
-
-console.log(`[prerender] wrote ${written} static HTML files + llms.txt + sitemap-html.xml (skipped: ${skipped}, missing: ${missing.length})`);
-if (missing.length) {
-  console.log('[prerender] no metadata for:\n' + missing.slice(0, 10).map((p) => '  ' + p).join('\n'));
+if (missing.length) throw new Error(`[prerender] Missing metadata: ${missing.join(', ')}`);
+const completeSitemap = buildSitemapXml(generatedRoutes.map(pageUrl));
+for (const name of ['sitemap.xml', 'sitemap-html.xml']) {
+  fs.writeFileSync(path.join(DIST, name), completeSitemap, 'utf8');
 }
+for (const [name, filter] of [
+  ['sitemap-main.xml', (route: string) => !route.startsWith('/blog/') && !route.startsWith('/gdzie-dzialamy/')],
+  ['sitemap-blog.xml', (route: string) => route.startsWith('/blog/')],
+  ['sitemap-cities.xml', (route: string) => route.startsWith('/gdzie-dzialamy/')],
+] as const) {
+  fs.writeFileSync(path.join(DIST, name), buildSitemapXml(generatedRoutes.filter(filter).map(pageUrl)), 'utf8');
+}
+validateSeoOutput(DIST, generatedRoutes);
+console.log(`[prerender] ${written} full pages, ${written - 1} HTML redirects; no publication`);

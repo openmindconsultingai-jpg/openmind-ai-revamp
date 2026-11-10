@@ -399,7 +399,7 @@
    "@type": "Course",
    "name": "AI dla szkół — kursy, pokazy i warsztaty",
    "description": "Organizacja kursów i pokazów sztucznej inteligencji w szkołach: szkolenia rad pedagogicznych, warsztaty dla uczniów, pokazy na wydarzenia szkolne, polityki użycia AI w placówkach.",
-   "url": "https://www.openmindai.pl/ai-dla-szkol.html",
+   "url": "https://www.openmindai.pl/ai-dla-szkol",
    "provider": {
     "@type": "Organization",
     "name": "OpenMind AI Consulting",
@@ -478,13 +478,13 @@
      "@type": "ListItem",
      "position": 2,
      "name": "Usługi AI",
-     "item": "https://www.openmindai.pl/services.html"
+     "item": "https://www.openmindai.pl/services"
     },
     {
      "@type": "ListItem",
      "position": 3,
      "name": "AI dla szkół",
-     "item": "https://www.openmindai.pl/ai-dla-szkol.html"
+     "item": "https://www.openmindai.pl/ai-dla-szkol"
     }
    ]
   }
