@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { pageUrl, normalizeStructuredUrls } from '@/lib/seoUrls';
 
 const SITE_URL = 'https://www.openmindai.pl';
 const SITE_NAME = 'OpenMind AI';
@@ -41,13 +42,10 @@ const usePageMeta = ({
   useEffect(() => {
     // Derive canonical URL from the actual browser pathname (most reliable source)
     const rawPath = pathname || window.location.pathname || '';
-    const normalizedPath = rawPath !== '/' ? rawPath.replace(/\/+$/, '') : '';
-    const canonicalUrl = `${SITE_URL}${normalizedPath}`;
+    const canonicalUrl = pageUrl(rawPath);
 
     // Also compute og:url from explicit path prop if provided, else use canonical
-    const ogUrl = path != null
-      ? `${SITE_URL}${path === '/' ? '' : path}`
-      : canonicalUrl;
+    const ogUrl = canonicalUrl;
 
     // Title
     document.title = title;
@@ -107,7 +105,7 @@ const usePageMeta = ({
         scriptEl.setAttribute('data-page-jsonld', 'true');
         document.head.appendChild(scriptEl);
       }
-      scriptEl.textContent = JSON.stringify(jsonLd);
+      scriptEl.textContent = JSON.stringify(normalizeStructuredUrls(jsonLd));
     } else if (scriptEl) {
       scriptEl.remove();
     }
@@ -116,7 +114,7 @@ const usePageMeta = ({
       const s = document.querySelector('script[data-page-jsonld]');
       if (s) s.remove();
     };
-  }, [title, description, keywords, path, pathname, ogImage, ogType, jsonLd]);
+  }, [title, description, keywords, path, pathname, ogImage, ogType, ogTitle, ogDescription, jsonLd]);
 };
 
 export default usePageMeta;

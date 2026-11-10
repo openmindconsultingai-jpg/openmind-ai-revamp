@@ -104,11 +104,11 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
   usePageMeta({
     title: safe.data.title,
     description: safe.data.description,
-    path: `${safe.path}.html`,
+    path: safe.path,
     jsonLd,
   });
 
-  if (!entry) return <Navigate to="/services.html" replace />;
+  if (!entry) return <Navigate to="/services" replace />;
 
   const related = servicesList.filter((s) => s.slug !== safe.slug).slice(0, 6);
 

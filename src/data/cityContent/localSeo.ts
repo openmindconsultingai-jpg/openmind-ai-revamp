@@ -32,7 +32,7 @@ export const cityPageTitle = (city: CityLike): string =>
   `AI w ${city.locative} – Wdrożenia, Szkolenia i Konsulting Sztucznej Inteligencji | OpenMind AI`;
 
 export const cityPageDescription = (city: CityLike, voivodeship: VoivLike): string =>
-  `Sztuczna inteligencja w ${city.locative} (województwo ${voivodeship.locativeName}). Wdrożenia AI, szkolenia z ChatGPT, automatyzacja procesów, agencja kreatywna AI. Bezpłatna konsultacja.`;
+  `Sztuczna inteligencja w ${city.locative}, w województwie ${voivodeship.locativeName}. Wdrożenia AI, szkolenia z ChatGPT, automatyzacja procesów, agencja kreatywna AI. Bezpłatna konsultacja.`;
 
 export const cityPageH1 = (city: CityLike): string =>
   `Sztuczna inteligencja (AI) w ${city.locative}`;
@@ -54,7 +54,6 @@ export const buildCitySeoSections = (
   voivodeship: VoivLike,
   branzeKluczowe?: string[],
 ): CitySeoSection[] => {
-  const M = city.name;
   const L = city.locative;
   const G = city.genitive;
   const branze = listBranze(branzeKluczowe);
@@ -64,7 +63,7 @@ export const buildCitySeoSections = (
       id: 'wdrozenia',
       heading: `Wdrożenia AI dla firm w ${L}`,
       paragraphs: [
-        `Wdrożenia AI ${M} realizujemy etapowo: zaczynamy od audytu procesów, w którym mierzymy czas pracy poświęcany na powtarzalne zadania, a następnie wybieramy te obszary, w których sztuczna inteligencja ${M} przyniesie najszybszy zwrot z inwestycji. Najczęściej automatyzujemy obsługę korespondencji i skrzynek firmowych, kwalifikację zapytań ofertowych, przygotowywanie ofert i kosztorysów, obieg dokumentów, wystawianie i opisywanie faktur, tworzenie raportów sprzedażowych oraz przygotowywanie treści marketingowych.`,
+        `Wdrożenia AI w ${L} realizujemy etapowo: zaczynamy od audytu procesów, w którym mierzymy czas pracy poświęcany na powtarzalne zadania, a następnie wybieramy te obszary, w których sztuczna inteligencja przyniesie firmom z ${G} najszybszy zwrot z inwestycji. Najczęściej automatyzujemy obsługę korespondencji i skrzynek firmowych, kwalifikację zapytań ofertowych, przygotowywanie ofert i kosztorysów, obieg dokumentów, wystawianie i opisywanie faktur, tworzenie raportów sprzedażowych oraz przygotowywanie treści marketingowych.`,
         `Pracujemy z firmami z ${G} działającymi w obszarach takich jak ${branze}. Dla e-commerce budujemy generatory opisów produktów i asystentów obsługi zamówień, dla firm produkcyjnych – automatyczne raportowanie i analizę danych z systemów ERP, dla biur rachunkowych i kancelarii – narzędzia do streszczania dokumentów i wyszukiwania informacji w archiwach, a dla sektora usługowego – systemy odpowiadające na zapytania klientów przez całą dobę.`,
         `Każde wdrożenie kończy się przekazaniem dokumentacji, instrukcji dla zespołu i krótkim szkoleniem wdrożeniowym. Dzięki temu firma z ${G} nie zostaje z narzędziem, którego nikt nie umie obsłużyć – pracownicy od pierwszego dnia wiedzą, jak korzystać z nowych rozwiązań i jak zgłaszać potrzeby rozwojowe.`,
       ],
@@ -73,7 +72,7 @@ export const buildCitySeoSections = (
       id: 'szkolenia',
       heading: `Szkolenia AI i ChatGPT w ${L}`,
       paragraphs: [
-        `Szkolenia AI ${M} prowadzimy w trzech formatach: stacjonarnie w siedzibie klienta lub wynajętej sali w ${L}, online w formie warsztatów na żywo oraz indywidualnie – jako mentoring dla właścicieli firm i kadry zarządzającej. Każdy program dopasowujemy do branży i realnych zadań uczestników, więc ćwiczenia wykonujemy na dokumentach, materiałach i procesach danej organizacji, a nie na abstrakcyjnych przykładach.`,
+        `Szkolenia AI dla firm z ${G} prowadzimy w trzech formatach: stacjonarnie w siedzibie klienta lub wynajętej sali w ${L}, online w formie warsztatów na żywo oraz indywidualnie – jako mentoring dla właścicieli firm i kadry zarządzającej. Każdy program dopasowujemy do branży i realnych zadań uczestników, więc ćwiczenia wykonujemy na dokumentach, materiałach i procesach danej organizacji, a nie na abstrakcyjnych przykładach.`,
         `Program podstawowy obejmuje pracę z ChatGPT i innymi najlepszymi narzędziami AI: skuteczne formułowanie poleceń, przygotowywanie ofert i pism, analizę danych i tabel, tworzenie prezentacji, redagowanie treści marketingowych oraz zasady bezpieczeństwa i ochrony danych osobowych zgodnie z RODO. Poziom zaawansowany to automatyzacja workflow, budowa własnych asystentów AI, integracje z narzędziami firmowymi oraz generatywna grafika i wideo.`,
         `Szkolenia kierujemy do zespołów sprzedaży, marketingu, obsługi klienta, HR, administracji i działów technicznych, a także do jednoosobowych działalności i mikrofirm z ${G}, które chcą pracować szybciej bez zwiększania zatrudnienia. Po warsztacie uczestnicy otrzymują materiały, bibliotekę gotowych promptów i możliwość konsultacji wdrożeniowej.`,
       ],
@@ -82,7 +81,7 @@ export const buildCitySeoSections = (
       id: 'automatyzacja',
       heading: `Automatyzacja procesów biznesowych w ${L}`,
       paragraphs: [
-        `Automatyzacja AI ${M} to połączenie modeli językowych z narzędziami przepływu pracy, dzięki którym dane przenoszą się między systemami bez ręcznego przepisywania. Łączymy pocztę, arkusze, CRM, systemy magazynowe, kalendarze i komunikatory w spójny obieg, w którym zgłoszenie klienta trafia od razu do właściwej osoby, a raport powstaje automatycznie o ustalonej godzinie.`,
+        `Automatyzacja AI w firmach z ${G} to połączenie modeli językowych z narzędziami przepływu pracy, dzięki którym dane przenoszą się między systemami bez ręcznego przepisywania. Łączymy pocztę, arkusze, CRM, systemy magazynowe, kalendarze i komunikatory w spójny obieg, w którym zgłoszenie klienta trafia od razu do właściwej osoby, a raport powstaje automatycznie o ustalonej godzinie.`,
         `Typowe scenariusze dla firm z ${G} to: automatyczne odpowiedzi na zapytania ofertowe wraz z wyceną wstępną, kategoryzacja i priorytetyzacja zgłoszeń serwisowych, odczytywanie danych z faktur i dokumentów PDF, przypomnienia o płatnościach, monitoring opinii w internecie oraz cykliczne podsumowania sprzedaży i ruchu na stronie. Efektem jest zwykle kilka do kilkunastu godzin pracy odzyskiwanych tygodniowo w skali zespołu.`,
       ],
     },
@@ -90,7 +89,7 @@ export const buildCitySeoSections = (
       id: 'agenci',
       heading: `Agenci AI i chatboty dla firm z ${G}`,
       paragraphs: [
-        `Agent AI ${M} to asystent, który zna ofertę, cennik, procedury i najczęstsze pytania konkretnej firmy. Budujemy go na bazie dokumentów klienta, dzięki czemu odpowiada zgodnie z realnymi zasadami organizacji, a nie ogólną wiedzą z internetu. Agent może pracować na stronie internetowej, w komunikatorze, w wewnętrznym systemie firmy lub jako asystent telefoniczny obsługujący pierwszy kontakt.`,
+        `Agent AI dla firmy z ${G} to asystent, który zna ofertę, cennik, procedury i najczęstsze pytania konkretnej firmy. Budujemy go na bazie dokumentów klienta, dzięki czemu odpowiada zgodnie z realnymi zasadami organizacji, a nie ogólną wiedzą z internetu. Agent może pracować na stronie internetowej, w komunikatorze, w wewnętrznym systemie firmy lub jako asystent telefoniczny obsługujący pierwszy kontakt.`,
         `Chatboty wdrażane w firmach z ${G} przejmują powtarzalne rozmowy: pytania o dostępność, godziny pracy, status zamówienia, warunki współpracy czy dokumenty potrzebne do wyceny. Rozmowy, które wymagają decyzji człowieka, agent przekazuje do zespołu wraz z podsumowaniem. Dzięki temu klient dostaje odpowiedź natychmiast, a pracownicy zajmują się wyłącznie sprawami o realnej wartości.`,
       ],
     },
