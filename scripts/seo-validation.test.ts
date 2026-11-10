@@ -27,6 +27,17 @@ test('extensionless output files fail validation', () => {
     assert.throws(() => validateSeoOutput(dir, []), /Extensionless file/);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
+test('root hosting configs are allowed without disabling the page guard', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'seo-check-'));
+  try {
+    fs.writeFileSync(path.join(dir, '_headers'), '/assets/*\n  Cache-Control: public');
+    fs.writeFileSync(path.join(dir, '_redirects'), '/old /new 301');
+    assert.doesNotThrow(() => validateSeoOutput(dir, []));
+    fs.mkdirSync(path.join(dir, 'services'));
+    fs.writeFileSync(path.join(dir, 'services', 'szkolenia-ai'), 'content');
+    assert.throws(() => validateSeoOutput(dir, []), /Extensionless file/);
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});
 test('city nominative keyword phrases fail the guard', () => {
   for (const phrase of ['Wdrożenia AI Nysa realizujemy', 'Szkolenia AI Nysa prowadzimy', 'Automatyzacja AI Nysa to', 'Agent AI Nysa to', 'AI Nysa', 'sztuczna inteligencja Nysa przyniesie']) assert.throws(() => assertCityText(phrase));
   assert.doesNotThrow(() => assertCityText('Wdrożenia AI w Nysie realizujemy etapowo. Szkolenia AI dla firm z Nysy.'));
