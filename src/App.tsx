@@ -35,7 +35,7 @@ const PageLoader = () => (
   </div>
 );
 
-// Flat service slugs — each gets `/slug` and `/slug.html` route.
+// Public flat service routes; HTML aliases are handled by HtmlUrlRedirect.
 // 9 core services + 9 industry-specific training landing pages.
 const SERVICE_SLUGS = [
   'automatyzacja-ai',
@@ -98,9 +98,8 @@ const App = () => (
 
             {/* Services hub */}
             <Route path="/services" element={wrap(<ServicesHubPage />)} />
-            <Route path="/services.html" element={wrap(<ServicesHubPage />)} />
 
-            {/* 9 flat SEO landing pages (each with .html variant) */}
+            {/* 9 flat SEO landing pages (clean URLs) */}
             {SERVICE_SLUGS.map((slug) => (
               <Route
                 key={slug}
@@ -108,52 +107,34 @@ const App = () => (
                 element={wrap(<ServiceLandingPage slugOverride={slug} />)}
               />
             ))}
-            {SERVICE_SLUGS.map((slug) => (
-              <Route
-                key={`${slug}-html`}
-                path={`/${slug}.html`}
-                element={wrap(<ServiceLandingPage slugOverride={slug} />)}
-              />
-            ))}
 
             {/* Legacy service URLs → redirect to new flat structure */}
-            <Route path="/services/:serviceSlug" element={<RedirectWithSeo to="/services.html" />} />
-            <Route path="/szkolenia-ai/dla-firm" element={<RedirectWithSeo to="/szkolenia-ai-stacjonarne.html" />} />
-            <Route path="/szkolenia-ai/dla-firm.html" element={<RedirectWithSeo to="/szkolenia-ai-stacjonarne.html" />} />
-            <Route path="/szkolenia-ai/dla-szkol" element={<RedirectWithSeo to="/ai-dla-szkol.html" />} />
-            <Route path="/szkolenia-ai/dla-szkol.html" element={<RedirectWithSeo to="/ai-dla-szkol.html" />} />
-            <Route path="/szkolenia-ai/chatgpt" element={<RedirectWithSeo to="/szkolenia-ai-online.html" />} />
-            <Route path="/szkolenia-ai/chatgpt.html" element={<RedirectWithSeo to="/szkolenia-ai-online.html" />} />
+            <Route path="/services/:serviceSlug" element={<RedirectWithSeo to="/services" />} />
+            <Route path="/szkolenia-ai/dla-firm" element={<RedirectWithSeo to="/szkolenia-ai-stacjonarne" />} />
+            <Route path="/szkolenia-ai/dla-szkol" element={<RedirectWithSeo to="/ai-dla-szkol" />} />
+            <Route path="/szkolenia-ai/chatgpt" element={<RedirectWithSeo to="/szkolenia-ai-online" />} />
 
             <Route path="/about" element={wrap(<AboutPage />)} />
-            <Route path="/about.html" element={wrap(<AboutPage />)} />
             <Route path="/blog" element={wrap(<BlogPage />)} />
-            <Route path="/blog.html" element={wrap(<BlogPage />)} />
             <Route path="/blog/:id" element={wrap(<BlogArticlePage />)} />
             <Route path="/aktualnosci" element={wrap(<NewsPage />)} />
-            <Route path="/aktualnosci.html" element={wrap(<NewsPage />)} />
             <Route path="/aktualnosci/:slug" element={wrap(<NewsArticlePage />)} />
             <Route path="/contact" element={wrap(<ContactPage />)} />
-            <Route path="/contact.html" element={wrap(<ContactPage />)} />
             <Route path="/privacy" element={wrap(<PrivacyPage />)} />
-            <Route path="/privacy.html" element={wrap(<PrivacyPage />)} />
 
             {/* Legacy PL/EN redirects */}
-            <Route path="/polityka-prywatnosci-i-bezpieczenstwo-danych" element={<RedirectWithSeo to="/privacy.html" />} />
-            <Route path="/polityka-prywatnosci-i-bezpieczenstwa-danych" element={<RedirectWithSeo to="/privacy.html" />} />
-            <Route path="/o-nas" element={<RedirectWithSeo to="/about.html" />} />
-            <Route path="/kontakt" element={<RedirectWithSeo to="/contact.html" />} />
-            <Route path="/oferta" element={<RedirectWithSeo to="/services.html" />} />
-            <Route path="/en/o-nas-en" element={<RedirectWithSeo to="/about.html" />} />
-            <Route path="/en/kontakt-en" element={<RedirectWithSeo to="/contact.html" />} />
-            <Route path="/en/oferta-en" element={<RedirectWithSeo to="/services.html" />} />
+            <Route path="/polityka-prywatnosci-i-bezpieczenstwo-danych" element={<RedirectWithSeo to="/privacy" />} />
+            <Route path="/polityka-prywatnosci-i-bezpieczenstwa-danych" element={<RedirectWithSeo to="/privacy" />} />
+            <Route path="/o-nas" element={<RedirectWithSeo to="/about" />} />
+            <Route path="/kontakt" element={<RedirectWithSeo to="/contact" />} />
+            <Route path="/oferta" element={<RedirectWithSeo to="/services" />} />
+            <Route path="/en/o-nas-en" element={<RedirectWithSeo to="/about" />} />
+            <Route path="/en/kontakt-en" element={<RedirectWithSeo to="/contact" />} />
+            <Route path="/en/oferta-en" element={<RedirectWithSeo to="/services" />} />
 
             <Route path="/ai-advisor" element={wrap(<AIAdvisorPage />)} />
-            <Route path="/ai-advisor.html" element={wrap(<AIAdvisorPage />)} />
             <Route path="/gdzie-dzialamy/:slug" element={wrap(<VoivodeshipDetail />)} />
-            <Route path="/gdzie-dzialamy/:slug.html" element={wrap(<VoivodeshipDetail />)} />
             <Route path="/gdzie-dzialamy/:slug/:citySlug" element={wrap(<CityDetail />)} />
-            <Route path="/gdzie-dzialamy/:slug/:citySlug.html" element={wrap(<CityDetail />)} />
             <Route path="/lokalizacje" element={wrap(<LocationsPage />)} />
 
             <Route path="*" element={wrap(<NotFound />)} />

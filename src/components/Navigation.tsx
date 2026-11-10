@@ -48,7 +48,7 @@ const Navigation = () => {
             <Link
               to="/services"
               className={`text-foreground hover:text-primary transition-colors font-medium ${
-                location.pathname === '/services' || location.pathname === '/services.html' ? 'text-primary' : ''
+                location.pathname === '/services' ? 'text-primary' : ''
               }`}
             >
               {t('nav.services')}
@@ -56,7 +56,7 @@ const Navigation = () => {
             <Link
               to="/about"
               className={`text-foreground hover:text-primary transition-colors font-medium ${
-                location.pathname === '/about' || location.pathname === '/about.html' ? 'text-primary' : ''
+                location.pathname === '/about' ? 'text-primary' : ''
               }`}
             >
               {t('nav.about')}
@@ -64,7 +64,7 @@ const Navigation = () => {
             <Link
               to="/blog"
               className={`text-foreground hover:text-primary transition-colors font-medium ${
-                location.pathname === '/blog' || location.pathname === '/blog.html' ? 'text-primary' : ''
+                location.pathname === '/blog' ? 'text-primary' : ''
               }`}
             >
               {t('nav.blog')}
@@ -124,7 +124,7 @@ const Navigation = () => {
               to="/services"
               onClick={closeMobileMenu}
               className={`block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 ${
-                location.pathname === '/services' || location.pathname === '/services.html' ? 'text-primary' : ''
+                location.pathname === '/services' ? 'text-primary' : ''
               }`}
             >
               {t('nav.services')}
@@ -133,7 +133,7 @@ const Navigation = () => {
               to="/about"
               onClick={closeMobileMenu}
               className={`block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 ${
-                location.pathname === '/about' || location.pathname === '/about.html' ? 'text-primary' : ''
+                location.pathname === '/about' ? 'text-primary' : ''
               }`}
             >
               {t('nav.about')}
@@ -142,7 +142,7 @@ const Navigation = () => {
               to="/blog"
               onClick={closeMobileMenu}
               className={`block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2 ${
-                location.pathname === '/blog' || location.pathname === '/blog.html' ? 'text-primary' : ''
+                location.pathname === '/blog' ? 'text-primary' : ''
               }`}
             >
               {t('nav.blog')}

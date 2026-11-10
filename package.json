@@ -8,6 +8,7 @@
     "build": "vite build && tsx scripts/prerender.ts",
     "build:dev": "vite build --mode development && tsx scripts/prerender.ts",
     "lint": "eslint .",
+    "test:seo": "tsx --test scripts/seo-validation.test.ts",
     "preview": "vite preview"
   },
   "dependencies": {
