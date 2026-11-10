@@ -32,7 +32,9 @@ export function walkFiles(dir: string): string[] {
 export function validateSeoOutput(dist: string, routes: string[]): void {
   const files = walkFiles(dist);
   for (const file of files) {
-    if (!path.extname(file)) throw new Error(`Extensionless file in dist: ${file}`);
+    const relativeFile = path.relative(dist, file);
+    const isRootHostingConfig = path.dirname(relativeFile) === '.' && ['_headers', '_redirects'].includes(relativeFile);
+    if (!path.extname(file) && !isRootHostingConfig) throw new Error(`Extensionless file in dist: ${file}`);
     if (!file.endsWith('.html')) continue;
     const html = fs.readFileSync(file, 'utf8');
     for (const match of html.matchAll(/<a\b[^>]*\bhref\s*=\s*["']([^"']+)["']/gi)) {
