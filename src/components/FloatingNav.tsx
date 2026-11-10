@@ -125,16 +125,9 @@ const FloatingNav = memo(() => {
                   border: '1px solid hsl(176 100% 43% / 0.45)',
                   boxShadow: '0 0 12px hsl(176 100% 43% / 0.18)',
                 }}
-                title="Certyfikat ECJIP ISO 9001"
-                aria-label="Certyfikat ECJIP ISO 9001"
+                title="Certyfikat ISO 9001"
+                aria-label="Certyfikat ISO 9001"
               >
-                <span
-                  className="flex flex-col justify-center px-1.5 py-1 text-[7px] md:text-[8px] font-bold uppercase tracking-wider"
-                  style={{ background: 'hsl(176 100% 43% / 0.18)', color: 'hsl(176 100% 70%)' }}
-                >
-                  <span>Certyfikat</span>
-                  <span className="text-[9px] md:text-[10px]">ECJIP</span>
-                </span>
                 <span
                   className="px-2 text-sm md:text-base font-bold tracking-tight"
                   style={{ color: 'hsl(0 0% 96%)' }}
