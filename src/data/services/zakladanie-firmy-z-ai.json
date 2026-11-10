@@ -145,7 +145,7 @@
    "name": "Zakładanie i rozwój firmy z AI",
    "description": "Kompleksowe wsparcie w założeniu i rozwoju firmy z AI: walidacja pomysłu i biznesplan, nazwa i branding, strona WWW, automatyzacje od pierwszego dnia, marketing startowy oraz skalowanie procesów.",
    "serviceType": "Doradztwo biznesowe i wdrożenia AI dla nowych oraz rozwijających się firm",
-   "url": "https://www.openmindai.pl/zakladanie-firmy-z-ai.html",
+   "url": "https://www.openmindai.pl/zakladanie-firmy-z-ai",
    "provider": {
     "@type": "Organization",
     "name": "OpenMind AI Consulting",
@@ -218,13 +218,13 @@
      "@type": "ListItem",
      "position": 2,
      "name": "Usługi AI",
-     "item": "https://www.openmindai.pl/services.html"
+     "item": "https://www.openmindai.pl/services"
     },
     {
      "@type": "ListItem",
      "position": 3,
      "name": "Zakładanie i rozwój firmy z AI",
-     "item": "https://www.openmindai.pl/zakladanie-firmy-z-ai.html"
+     "item": "https://www.openmindai.pl/zakladanie-firmy-z-ai"
     }
    ]
   }

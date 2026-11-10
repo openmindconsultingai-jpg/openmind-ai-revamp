@@ -93,7 +93,7 @@
    "@type": "Course",
    "name": "Szkolenia AI indywidualne 1:1 i mentoring",
    "description": "Indywidualne szkolenia ze sztucznej inteligencji 1:1: program pod stanowisko klienta, praca na realnych dokumentach, mentoring długoterminowy. W siedzibie OpenMind AI, u klienta lub online.",
-   "url": "https://www.openmindai.pl/szkolenia-ai-indywidualne.html",
+   "url": "https://www.openmindai.pl/szkolenia-ai-indywidualne",
    "provider": {
     "@type": "Organization",
     "name": "OpenMind AI Consulting",
@@ -172,13 +172,13 @@
      "@type": "ListItem",
      "position": 2,
      "name": "Usługi AI",
-     "item": "https://www.openmindai.pl/services.html"
+     "item": "https://www.openmindai.pl/services"
     },
     {
      "@type": "ListItem",
      "position": 3,
      "name": "Szkolenia AI indywidualne",
-     "item": "https://www.openmindai.pl/szkolenia-ai-indywidualne.html"
+     "item": "https://www.openmindai.pl/szkolenia-ai-indywidualne"
     }
    ]
   }

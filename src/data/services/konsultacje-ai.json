@@ -103,7 +103,7 @@
    "name": "Konsultacje i doradztwo AI",
    "description": "Konsultacje AI: audyt procesów biznesowych, dobór narzędzi i modeli, strategia wdrożenia sztucznej inteligencji, zgodność z RODO. Indywidualnie w siedzibie, u klienta lub online.",
    "serviceType": "Konsulting AI",
-   "url": "https://www.openmindai.pl/konsultacje-ai.html",
+   "url": "https://www.openmindai.pl/konsultacje-ai",
    "provider": {
     "@type": "Organization",
     "name": "OpenMind AI Consulting",
@@ -176,13 +176,13 @@
      "@type": "ListItem",
      "position": 2,
      "name": "Usługi AI",
-     "item": "https://www.openmindai.pl/services.html"
+     "item": "https://www.openmindai.pl/services"
     },
     {
      "@type": "ListItem",
      "position": 3,
      "name": "Konsultacje AI",
-     "item": "https://www.openmindai.pl/konsultacje-ai.html"
+     "item": "https://www.openmindai.pl/konsultacje-ai"
     }
    ]
   }

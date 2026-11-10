@@ -388,7 +388,7 @@
    "@type": "Course",
    "name": "Szkolenia AI stacjonarne — zamknięte warsztaty firmowe",
    "description": "Zamknięte szkolenia ze sztucznej inteligencji w siedzibie klienta, w każdym mieście w Polsce. Warsztaty ChatGPT, automatyzacja procesów, agenci AI.",
-   "url": "https://www.openmindai.pl/szkolenia-ai-stacjonarne.html",
+   "url": "https://www.openmindai.pl/szkolenia-ai-stacjonarne",
    "provider": {
     "@type": "Organization",
     "name": "OpenMind AI Consulting",
@@ -464,13 +464,13 @@
      "@type": "ListItem",
      "position": 2,
      "name": "Usługi AI",
-     "item": "https://www.openmindai.pl/services.html"
+     "item": "https://www.openmindai.pl/services"
     },
     {
      "@type": "ListItem",
      "position": 3,
      "name": "Szkolenia AI stacjonarne",
-     "item": "https://www.openmindai.pl/szkolenia-ai-stacjonarne.html"
+     "item": "https://www.openmindai.pl/szkolenia-ai-stacjonarne"
     }
    ]
   }
