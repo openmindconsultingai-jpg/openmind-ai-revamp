@@ -109,6 +109,12 @@ const App = () => (
             ))}
 
             {/* Legacy service URLs → redirect to new flat structure */}
+            <Route path="/services/konsulting-ai" element={wrap(<ServiceLandingPage slugOverride="konsultacje-ai" />)} />
+            <Route path="/services/szkolenia-ai" element={wrap(<ServiceLandingPage slugOverride="szkolenia-ai" />)} />
+            <Route path="/services/automatyzacja-ai" element={wrap(<ServiceLandingPage slugOverride="automatyzacja-ai" />)} />
+            <Route path="/services/agencja-kreatywna-ai" element={wrap(<ServiceLandingPage slugOverride="teledyski-ai" />)} />
+            <Route path="/services/ai-dla-szkol" element={wrap(<ServiceLandingPage slugOverride="ai-dla-szkol" />)} />
+            <Route path="/services/tworzenie-stron-www" element={wrap(<ServiceLandingPage slugOverride="strony-www-branding" />)} />
             <Route path="/services/:serviceSlug" element={<RedirectWithSeo to="/services" />} />
             <Route path="/szkolenia-ai/dla-firm" element={<RedirectWithSeo to="/szkolenia-ai-stacjonarne" />} />
             <Route path="/szkolenia-ai/dla-szkol" element={<RedirectWithSeo to="/ai-dla-szkol" />} />

@@ -1,4 +1,5 @@
 # SEO
-- [ ] Ujednolicić adresy, metadane i przekierowania.
-- [ ] Poprawić frazy miast, mapy strony i dokumenty techniczne.
-- [ ] Dodać i uruchomić testy, sprawdzić wygenerowane strony; bez publikacji.
+- [x] Ujednolicić adresy, metadane i przekierowania.
+- [x] Poprawić frazy miast, mapy strony i dokumenty techniczne.
+- [x] Dodać i uruchomić testy oraz generowanie 373 stron i 372 przekierowań w katalogu testowym; bez publikacji.
+- [ ] Sprawdzić pełny wynik produkcyjnego pakowania: środowisko udostępnia tylko wynik automatycznej kompilacji, nie katalog dist.
