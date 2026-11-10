@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { pageUrl, normalizeStructuredUrls } from '@/lib/seoUrls';
 
-const SITE_URL = 'https://www.openmindai.pl';
 const SITE_NAME = 'OpenMind AI';
 const DEFAULT_IMAGE = 'https://www.openmindai.pl/og-image.jpg';
 
@@ -24,7 +23,7 @@ interface PageMetaOptions {
  *
  * IMPORTANT: canonical & hreflang are derived from the CURRENT window.location.pathname
  * (NOT from the `path` prop) to guarantee they always reflect the real URL.
- * The `path` prop is kept only as a fallback / for og:url.
+ * The `path` prop is retained for compatibility; og:url also self-references.
  */
 const usePageMeta = ({
   title,
@@ -44,7 +43,7 @@ const usePageMeta = ({
     const rawPath = pathname || window.location.pathname || '';
     const canonicalUrl = pageUrl(rawPath);
 
-    // Also compute og:url from explicit path prop if provided, else use canonical
+    // og:url must identify the same page as the canonical.
     const ogUrl = canonicalUrl;
 
     // Title

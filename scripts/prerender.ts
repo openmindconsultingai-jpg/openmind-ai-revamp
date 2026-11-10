@@ -26,7 +26,7 @@ import { services as SERVICES_REGISTRY, HUB as SERVICES_HUB, servicesList, type 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..');
-const DIST = path.join(ROOT, 'dist');
+const DIST = process.env.SEO_OUTPUT_DIR || path.join(ROOT, 'dist');
 const SITE = 'https://www.openmindai.pl';
 const TRAINING_SERVICES = servicesList.filter(
   (service) => service.slug.startsWith('szkolenia-') || service.slug === 'ai-dla-szkol',
@@ -41,7 +41,7 @@ if (!fs.existsSync(DIST)) {
   process.exit(1);
 }
 
-const template = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
+const template = fs.readFileSync(process.env.SEO_TEMPLATE || path.join(DIST, 'index.html'), 'utf8');
 
 // ---------------------------------------------------------------------------
 // URL → metadata mapping
