@@ -1202,7 +1202,7 @@ function breadcrumbsLd(name: string, url: string) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Strona główna', item: `${SITE}/` },
-      { '@type': 'ListItem', position: 2, name: 'Szkolenia AI', item: `${SITE}/szkolenia-ai.html` },
+      { '@type': 'ListItem', position: 2, name: 'Szkolenia AI', item: `${SITE}/szkolenia-ai` },
       { '@type': 'ListItem', position: 3, name, item: url },
     ],
   };
@@ -1345,7 +1345,7 @@ function fullFaq(s: IndustrySpec): Array<{ q: string; a: string }> {
 
 function buildProto(s: IndustrySpec): Proto {
 
-  const url = `${SITE}${s.path}.html`;
+  const url = `${SITE}${s.path}`;
 
   return {
     title: s.title,

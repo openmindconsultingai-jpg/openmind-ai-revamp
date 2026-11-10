@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { VideoProvider } from "@/contexts/VideoContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import RedirectWithSeo from "@/components/RedirectWithSeo";
+import HtmlUrlRedirect from "@/components/HtmlUrlRedirect";
 
 const Home = lazy(() => import("./pages/Home"));
 const HomeTower = lazy(() => import("./pages/HomeTower"));
@@ -91,7 +92,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
-          <Routes>
+          <HtmlUrlRedirect><Routes>
             <Route path="/" element={wrap(<Home />)} />
             <Route path="/wariant-tower" element={wrap(<HomeTower />)} />
 
@@ -156,7 +157,7 @@ const App = () => (
             <Route path="/lokalizacje" element={wrap(<LocationsPage />)} />
 
             <Route path="*" element={wrap(<NotFound />)} />
-          </Routes>
+          </Routes></HtmlUrlRedirect>
         </BrowserRouter>
       </TooltipProvider>
       </VideoProvider>

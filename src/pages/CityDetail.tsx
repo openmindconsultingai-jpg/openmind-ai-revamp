@@ -97,7 +97,7 @@ const CityDetail = () => {
       name: f.pytanie,
       acceptedAnswer: { '@type': 'Answer', text: f.odpowiedz },
     }));
-    const dateModified = new Date().toISOString().split('T')[0];
+    const dateModified = '2026-11-10';
     return {
       '@context': 'https://schema.org',
       '@graph': [

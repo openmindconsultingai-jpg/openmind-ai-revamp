@@ -14,6 +14,7 @@ import konsultacje from './konsultacje-ai.json';
 import zakladanieFirmy from './zakladanie-firmy-z-ai.json';
 import hub from './services-hub.json';
 import { INDUSTRY_TRAINING_ENTRIES } from './industry-trainings';
+import { normalizeStructuredUrls } from '../../lib/seoUrls';
 
 export interface ProtoSub {
   h3: string;
@@ -50,7 +51,7 @@ export interface ServiceEntry {
   data: Proto;
 }
 
-export const HUB: Proto = hub as unknown as Proto;
+export const HUB: Proto = normalizeStructuredUrls(hub as unknown as Proto);
 
 export const services: Record<string, ServiceEntry> = {
   'automatyzacja-ai': {
@@ -163,6 +164,7 @@ for (const e of INDUSTRY_TRAINING_ENTRIES) {
 /** Slugs of the 9 industry-specific training pages (for hub grid, footer, sitemap). */
 export const INDUSTRY_TRAINING_SLUGS = INDUSTRY_TRAINING_ENTRIES.map((e) => e.slug);
 
+for (const entry of Object.values(services)) entry.data = normalizeStructuredUrls(entry.data);
 export const servicesList: ServiceEntry[] = Object.values(services);
 
 /** Extract FAQ Q/A pairs from the JSON-LD FAQPage node (if present). */
