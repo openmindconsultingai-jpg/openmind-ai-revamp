@@ -73,6 +73,13 @@ BAZA WIEDZY — OPENMIND AI CONSULTING
    - Sklepy (Shopify) z automatyzacjami
    - Landing pages konwertujące + integracja z CRM
 
+● CERTYFIKAT ISO 9001 I DOFINANSOWANIE (BUR / PARP)
+- OpenMind AI Consulting posiada certyfikat ISO 9001 (system zarządzania jakością): powtarzalne, udokumentowane procesy szkoleń, audytów i wdrożeń AI, kontrola jakości i dbałość o bezpieczeństwo danych klienta.
+- Jesteśmy wpisani do Bazy Usług Rozwojowych (BUR) prowadzonej przez Polską Agencję Rozwoju Przedsiębiorczości (PARP).
+- Dzięki temu firmy (zwłaszcza MŚP) mogą uzyskać dofinansowanie naszych szkoleń i usług doradczych — nawet do 80% wartości — ze środków regionalnych programów Fundusze Europejskie 2021–2027, przez operatora regionalnego w swoim województwie.
+- Wysokość wsparcia (zwykle 50–80%) zależy od województwa, wielkości firmy i grupy uczestników; dokładne warunki ustala operator regionalny. Nie obiecuj konkretnej kwoty.
+- Jak skorzystać: 1) firma zakłada konto w BUR (uslugirozwojowe.parp.gov.pl), 2) składa wniosek do operatora regionalnego i podpisuje umowę wsparcia, 3) zapisuje się na naszą usługę w BUR, 4) po realizacji rozlicza usługę z operatorem. Pomagamy przejść przez cały proces — zaproś do kontaktu (/contact).
+
 ● PROCES WSPÓŁPRACY
 1. Bezpłatna konsultacja (formularz /contact lub kalendarz /contact → BookingModal)
 2. Audyt potrzeb i koncepcja rozwiązania

@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
 import openmindLogo from '@/assets/openmind-logo-nobg.webp';
+import isoLogo from '@/assets/iso9001-teal.png.asset.json';
+import burLogo from '@/assets/parp-bur-light.png.asset.json';
 
 const FloatingNav = memo(() => {
   const { language, setLanguage, t } = useLanguage();
@@ -51,7 +53,6 @@ const FloatingNav = memo(() => {
   const navItems = [
     { path: '/', label: t('nav.home'), prefetch: () => import('@/pages/Home') },
     { path: '/services', label: t('nav.services'), prefetch: () => import('@/pages/ServicesHubPage') },
-    { path: '/ai-advisor', label: t('nav.aiAdvisor') || 'AI Advisor', prefetch: () => import('@/pages/AIAdvisor') },
     { path: '/aktualnosci', label: t('nav.news'), prefetch: () => import('@/pages/News') },
     { path: '/about', label: t('nav.about'), prefetch: () => import('@/pages/About') },
     { path: '/blog', label: t('nav.blog'), prefetch: () => import('@/pages/Blog') },
@@ -119,23 +120,27 @@ const FloatingNav = memo(() => {
                 loading="eager"
                 decoding="async"
               />
-              <span
-                className="ml-3 flex items-center overflow-hidden rounded-md font-heading leading-none"
-                style={{
-                  border: '1px solid hsl(176 100% 43% / 0.45)',
-                  boxShadow: '0 0 12px hsl(176 100% 43% / 0.18)',
-                }}
+            </Link>
+            <div className="ml-3 flex items-center gap-2 md:gap-3 mr-auto">
+              <Link
+                to="/aktualnosci/certyfikat-iso-9001"
+                onClick={closeMenu}
                 title="Certyfikat ISO 9001"
                 aria-label="Certyfikat ISO 9001"
+                className="opacity-90 transition-opacity hover:opacity-100"
               >
-                <span
-                  className="px-2 text-sm md:text-base font-bold tracking-tight"
-                  style={{ color: 'hsl(0 0% 96%)' }}
-                >
-                  ISO 9001
-                </span>
-              </span>
-            </Link>
+                <img src={isoLogo.url} alt="ISO 9001" className="h-6 w-auto md:h-8" width="64" height="25" style={{ filter: 'drop-shadow(0 0 8px hsl(176 100% 43% / 0.35))' }} />
+              </Link>
+              <Link
+                to="/aktualnosci/wpis-do-bazy-uslug-rozwojowych"
+                onClick={closeMenu}
+                title="PARP – Baza Usług Rozwojowych"
+                aria-label="PARP – Baza Usług Rozwojowych"
+                className="opacity-90 transition-opacity hover:opacity-100"
+              >
+                <img src={burLogo.url} alt="PARP Baza Usług Rozwojowych" className="h-8 w-auto md:h-10" width="58" height="32" />
+              </Link>
+            </div>
 
             {/* Desktop nav */}
             <nav className="hidden items-center gap-1 md:flex">

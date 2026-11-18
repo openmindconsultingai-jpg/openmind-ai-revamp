@@ -9,6 +9,7 @@ import { VideoProvider } from "@/contexts/VideoContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import RedirectWithSeo from "@/components/RedirectWithSeo";
 import HtmlUrlRedirect from "@/components/HtmlUrlRedirect";
+const FundingNotice = lazy(() => import("@/components/FundingNotice"));
 
 const Home = lazy(() => import("./pages/Home"));
 const HomeTower = lazy(() => import("./pages/HomeTower"));
@@ -145,6 +146,7 @@ const App = () => (
 
             <Route path="*" element={wrap(<NotFound />)} />
           </Routes></HtmlUrlRedirect>
+          <Suspense fallback={null}><FundingNotice /></Suspense>
         </BrowserRouter>
       </TooltipProvider>
       </VideoProvider>
