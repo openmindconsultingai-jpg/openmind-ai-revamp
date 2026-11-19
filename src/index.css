@@ -481,23 +481,25 @@ html:not(.js-fx) #root > :is(h1, p, nav, section) { opacity: 1; }
 }
 .eyebrow::before { content: ''; width: 7px; height: 7px; flex: none; background: hsl(var(--signal)); }
 .accent-word { font-style: italic; font-weight: 400; color: hsl(var(--signal)); }
+.dc-cell { position: relative; color: transparent; }
 .dc-g {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-family: 'Martian Mono', ui-monospace, monospace;
   font-stretch: 75%;
   font-size: .62em;
   font-weight: 300;
+  font-style: normal;
+  line-height: 1;
   color: hsl(var(--signal));
-  vertical-align: .12em;
+  pointer-events: none;
 }
-.decode-text { display: block; }
-.decode-text[data-decoding] { position: relative; min-block-size: var(--dc-height); }
-.decode-text[data-decoding] > [aria-hidden] { position: absolute; inset: 0; }
-.decode-caption { display: inline; position: relative; }
-.decode-caption-overlay { display: none; position: absolute; inset: 0; overflow: clip; pointer-events: none; text-align: inherit; }
-.decode-caption[data-decoding] { display: inline-block; max-width: 100%; vertical-align: top; }
-.decode-caption[data-decoding] > .decode-caption-source { opacity: 0; }
-.decode-caption[data-decoding] > .decode-caption-overlay { display: block; }
-.decode-caption .dc-g { font: inherit; color: inherit; vertical-align: baseline; opacity: .72; }
+.decode-text { display: inline; }
+.decode-caption { display: inline; }
+.decode-caption-overlay { display: inline; }
+.decode-caption .dc-g { color: inherit; opacity: .72; }
 
 .fx-reveal { --reveal-y: 14px; transition: opacity .9s var(--signal-ease), transform .9s var(--signal-ease); }
 .area-card { --reveal-y: 16px; }
@@ -651,3 +653,4 @@ html.js-fx .fx-reveal:not(.in):not(:focus-within) { opacity: 0; transform: trans
 }
 .tower-caption-page main h2 { font-family: 'Outfit', system-ui, sans-serif; font-optical-sizing: none; text-wrap: wrap; }
 .tower-caption-page main .font-mono { font-family: ui-monospace, monospace; }
+.decode-text, .decode-caption-source, .decode-caption-overlay { font-kerning: none; font-variant-ligatures: none; }

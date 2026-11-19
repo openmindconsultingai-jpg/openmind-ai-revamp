@@ -113,14 +113,14 @@ const ServiceAreas = ({ heading, sub, anchorPrefix, id = 'gdzie-dzialamy' }: Ser
                 <div className="w-full h-px bg-gradient-to-r from-primary/30 via-primary/10 to-transparent mb-4" />
 
                 <ul className="space-y-1.5">
-                  {v.cities.map((city) => (
+                  {v.cities.map((city, cityIndex) => (
                     <li key={city.slug}>
                       <Link
                         to={`/gdzie-dzialamy/${v.slug}/${city.slug}`}
                         className="flex items-center gap-2 text-sm text-foreground/70 font-sans hover:text-foreground transition-colors"
                       >
                         <span className="w-1 h-1 rounded-full bg-primary/50 shrink-0" />
-                        <DecodeText text={anchorPrefix ? `${anchorPrefix} ${city.name}` : city.name} />
+                        <DecodeText text={anchorPrefix ? `${anchorPrefix} ${city.name}` : city.name} delay={cityIndex * 35} />
                       </Link>
                     </li>
                   ))}
