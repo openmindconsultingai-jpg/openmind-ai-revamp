@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { cleanPagePath, pageUrl, SEO_SITE } from '../src/lib/seoUrls';
+import { cleanPagePath, pageUrl, SEO_SITE, RETIRED_ADVISOR } from '../src/lib/seoUrls';
 import { voivodeships } from '../src/data/voivodeships';
 
 export function internalHtmlUrl(value: string): boolean {
@@ -29,8 +29,32 @@ export function walkFiles(dir: string): string[] {
   });
 }
 
-export function validateSeoOutput(dist: string, routes: string[]): void {
+export function isRetiredAdvisorUrl(value: string): boolean {
+  try {
+    const url = new URL(value, SEO_SITE);
+    return ['www.openmindai.pl', 'openmindai.pl'].includes(url.hostname) && cleanPagePath(url.href) === RETIRED_ADVISOR.source;
+  } catch { return false; }
+}
+
+export function assertRetiredAdvisorRedirect(html: string): void {
+  const { target } = RETIRED_ADVISOR;
+  assertPageCanonical(target, html.match(/rel="canonical" href="([^"]+)"/)?.[1] ?? '');
+  if (!html.includes(`http-equiv="refresh" content="0; url=${target}"`) ||
+      !html.includes(`location.replace(${JSON.stringify(target)}`) || /noindex|<div id="root"|type="module"/.test(html)) {
+    throw new Error('Invalid retired advisor redirect');
+  }
+}
+
+export function validateSeoOutput(dist: string, routes: string[], { retiredAdvisor = false } = {}): void {
   const files = walkFiles(dist);
+  if (retiredAdvisor) {
+    for (const alias of [`${RETIRED_ADVISOR.source}/index.html`, `${RETIRED_ADVISOR.source}.html`]) {
+      assertRetiredAdvisorRedirect(fs.readFileSync(path.join(dist, alias), 'utf8'));
+    }
+    for (const value of fs.readFileSync(path.join(dist, 'llms.txt'), 'utf8').matchAll(/https?:\/\/[^\s]+/g)) {
+      if (isRetiredAdvisorUrl(value[0])) throw new Error(`Retired advisor URL in llms.txt: ${value[0]}`);
+    }
+  }
   for (const file of files) {
     const relativeFile = path.relative(dist, file);
     const isRootHostingConfig = path.dirname(relativeFile) === '.' && ['_headers', '_redirects'].includes(relativeFile);
@@ -39,10 +63,12 @@ export function validateSeoOutput(dist: string, routes: string[]): void {
     const html = fs.readFileSync(file, 'utf8');
     for (const match of html.matchAll(/<a\b[^>]*\bhref\s*=\s*["']([^"']+)["']/gi)) {
       if (internalHtmlUrl(match[1])) throw new Error(`Internal HTML link in ${file}: ${match[1]}`);
+      if (isRetiredAdvisorUrl(match[1])) throw new Error(`Retired advisor link in ${file}: ${match[1]}`);
     }
     for (const match of html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
       for (const url of match[1].matchAll(/https?:\/\/(?:www\.)?openmindai\.pl[^"\s<]*/g)) {
         if (internalHtmlUrl(url[0])) throw new Error(`HTML URL in JSON-LD: ${file}`);
+        if (isRetiredAdvisorUrl(url[0])) throw new Error(`Retired advisor URL in JSON-LD: ${file}`);
       }
     }
   }
@@ -73,6 +99,7 @@ export function validateSeoOutput(dist: string, routes: string[]): void {
   for (const file of files.filter(file => /sitemap.*\.xml$/.test(file))) {
     for (const loc of fs.readFileSync(file, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)) {
       if (internalHtmlUrl(loc[1])) throw new Error(`HTML URL in sitemap: ${loc[1]}`);
+      if (isRetiredAdvisorUrl(loc[1])) throw new Error(`Retired advisor URL in sitemap: ${loc[1]}`);
       const pathname = new URL(loc[1]).pathname;
       if (!pathname.endsWith('.xml') && !routes.includes(cleanPagePath(pathname))) throw new Error(`Unknown sitemap route: ${pathname}`);
     }
@@ -81,6 +108,7 @@ export function validateSeoOutput(dist: string, routes: string[]): void {
     const source = fs.readFileSync(file, 'utf8');
     for (const link of source.matchAll(/\b(?:to|href)\s*[:=]\s*(?:\{\s*)?["'`]([^"'`]+)["'`]/g)) {
       if (internalHtmlUrl(link[1])) throw new Error(`Source HTML link: ${file}: ${link[1]}`);
+      if (isRetiredAdvisorUrl(link[1])) throw new Error(`Retired advisor source link: ${file}: ${link[1]}`);
     }
   }
   console.log(`[seo] validated ${routes.length} full pages and ${routes.length - 1} HTML redirects`);

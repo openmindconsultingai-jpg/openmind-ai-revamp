@@ -5,4 +5,6 @@
 - Generate public prerenders only as route directories with index.html and lightweight sibling HTML redirects; validate all output after prerendering to prevent duplicate content and binary-download regressions.
 - Build news prerenders and sitemaps from the same anonymous production feed, not the draft's data, so only published articles with generated pages are discoverable.
 - Normalize runtime and static structured URLs with the shared SEO URL helpers; this keeps metadata consistent across hydration.
+- Source static sitemap dates from recorded content revisions and news dates from publication; derive index dates from generated child maps so rebuilds alone never refresh dates.
+- Use the shared retired-advisor mapping for runtime and prerender redirects; validate that neither alias remains discoverable.
 - Keep Signal effects scoped to opted-in elements; reuse the shared decoder, accent boundary, and existing caption activation signals so film timing and copy stay independent of the effect.

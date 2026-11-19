@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { assertCityText, assertPageCanonical, internalHtmlUrl, validateSeoOutput } from './seo-validation';
+import { assertCityText, assertPageCanonical, assertRetiredAdvisorRedirect, internalHtmlUrl, isRetiredAdvisorUrl, validateSeoOutput } from './seo-validation';
+import { renderSitemapIndex, sitemapEntries } from './sitemap';
 import { cleanPagePath, pageUrl, normalizeStructuredUrls } from '../src/lib/seoUrls';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -12,6 +13,28 @@ test('Nysa canonical uses the www domain and no HTML suffix', () => {
   assert.throws(() => assertPageCanonical('/gdzie-dzialamy/opolskie/nysa', 'https://www.openmindai.pl/gdzie-dzialamy/opolskie/nysa.html'));
 });
 test('homepage URL has a trailing slash', () => assert.equal(pageUrl('/'), 'https://www.openmindai.pl/'));
+test('both retired advisor aliases are excluded, but the consultations page is not', () => {
+  assert.equal(isRetiredAdvisorUrl('/ai-advisor'), true);
+  assert.equal(isRetiredAdvisorUrl('https://www.openmindai.pl/ai-advisor.html?from=old'), true);
+  assert.equal(isRetiredAdvisorUrl('/konsultacje-ai'), false);
+  assert.throws(() => assertRetiredAdvisorRedirect('<link rel="canonical" href="https://www.openmindai.pl/ai-advisor">'), /Canonical mismatch/);
+});
+
+test('main sitemap dates record the redesign; blog and cities retain their previous dates', () => {
+  const dateFor = (file: string, loc: string) => sitemapEntries(fs.readFileSync(`public/sitemap-${file}.xml`, 'utf8')).find(entry => entry.loc === pageUrl(loc))?.lastmod;
+  assert.equal(dateFor('main', '/'), '2026-11-19');
+  assert.equal(dateFor('blog', '/blog/73'), '2026-11-10');
+  assert.equal(dateFor('cities', '/gdzie-dzialamy/opolskie/nysa'), '2026-11-10');
+});
+
+test('each index date comes from the newest date in its own child sitemap', () => {
+  const index = renderSitemapIndex(new Map([
+    ['sitemap-main.xml', [{ loc: pageUrl('/'), lastmod: '2026-11-19' }]],
+    ['sitemap-news.xml', [{ loc: pageUrl('/aktualnosci/iso'), lastmod: '2026-11-18T12:00:00Z' }, { loc: pageUrl('/aktualnosci/bur'), lastmod: '2026-11-19T12:00:00Z' }]],
+    ['sitemap-blog.xml', [{ loc: pageUrl('/blog/73'), lastmod: '2026-11-10' }]],
+  ]));
+  assert.deepEqual(sitemapEntries(index).map(entry => entry.lastmod), ['2026-11-19', '2026-11-19T12:00:00Z', '2026-11-10']);
+});
 test('all internal HTML links are rejected, including query strings', () => {
   for (const url of ['/blog/73.html', '/privacy.html', '/gdzie-dzialamy/opolskie/nysa.html?x=1#test']) assert.equal(internalHtmlUrl(url), true);
   assert.equal(internalHtmlUrl('/blog/73'), false);

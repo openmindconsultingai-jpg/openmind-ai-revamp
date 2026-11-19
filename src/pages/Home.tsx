@@ -10,7 +10,6 @@ import usePageMeta from '@/hooks/usePageMeta';
 // Lazy load below-the-fold sections for better FCP/LCP
 const NewsSection = lazy(() => import('@/components/NewsSection'));
 const LogoTicker = lazy(() => import('@/components/LogoTicker'));
-const AdvisorWidget = lazy(() => import('@/components/AdvisorWidget'));
 const ServiceAreas = lazy(() => import('@/components/ServiceAreas'));
 const ParticleFooter = lazy(() => import('@/components/ParticleFooter'));
 const SeoContentSections = lazy(() => import('@/components/SeoContentSections'));
@@ -72,7 +71,6 @@ const Home = () => {
             <div className="pt-12 md:pt-16">
               <LogoTicker />
             </div>
-            <AdvisorWidget />
             <ServiceAreas />
             <SeoContentSections />
             <ParticleFooter />

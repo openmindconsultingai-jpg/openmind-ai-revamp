@@ -94,7 +94,6 @@ BAZA WIEDZY — OPENMIND AI CONSULTING
 - Telefon: +48 693 016 974
 
 ● DODATKOWE SEKCJE STRONY
-- /ai-advisor — interaktywny doradca AI generujący spersonalizowany PDF z zastosowaniami AI
 - /blog — artykuły o AI, automatyzacjach, case studies
 - /about — historia firmy i założyciela
 - /services — pełna oferta z podziałem na kategorie (tabs)

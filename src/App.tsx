@@ -4,6 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from 'react-helmet-async';
+import { RETIRED_ADVISOR } from '@/lib/seoUrls';
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { VideoProvider } from "@/contexts/VideoContext";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -22,7 +24,6 @@ const NewsPage = lazy(() => import("./pages/News"));
 const NewsArticlePage = lazy(() => import("./pages/NewsArticle"));
 const ContactPage = lazy(() => import("./pages/Contact"));
 const PrivacyPage = lazy(() => import("./pages/Privacy"));
-const AIAdvisorPage = lazy(() => import("./pages/AIAdvisor"));
 const VoivodeshipDetail = lazy(() => import("./pages/VoivodeshipDetail"));
 const CityDetail = lazy(() => import("./pages/CityDetail"));
 const LocationsPage = lazy(() => import("./pages/Locations"));
@@ -85,7 +86,7 @@ const SERVICE_SLUGS = [
 const wrap = (el: React.ReactNode) => <Suspense fallback={<PageLoader />}>{el}</Suspense>;
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
+  <HelmetProvider><QueryClientProvider client={queryClient}>
     <LanguageProvider>
       <VideoProvider>
         <TooltipProvider>
@@ -141,7 +142,7 @@ const App = () => (
             <Route path="/en/kontakt-en" element={<RedirectWithSeo to="/contact" />} />
             <Route path="/en/oferta-en" element={<RedirectWithSeo to="/services" />} />
 
-            <Route path="/ai-advisor" element={wrap(<AIAdvisorPage />)} />
+            <Route path={RETIRED_ADVISOR.source} element={<RedirectWithSeo to={RETIRED_ADVISOR.target} />} />
             <Route path="/gdzie-dzialamy/:slug" element={wrap(<VoivodeshipDetail />)} />
             <Route path="/gdzie-dzialamy/:slug/:citySlug" element={wrap(<CityDetail />)} />
             <Route path="/lokalizacje" element={wrap(<LocationsPage />)} />
@@ -153,7 +154,7 @@ const App = () => (
       </TooltipProvider>
       </VideoProvider>
     </LanguageProvider>
-  </QueryClientProvider>
+  </QueryClientProvider></HelmetProvider>
 );
 
 export default App;

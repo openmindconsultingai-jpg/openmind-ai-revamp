@@ -21,3 +21,8 @@
 # Indeksowanie aktualności
 - [x] Generować HTML i mapy witryny z publicznych aktualności produkcyjnych; poprawić robots.txt.
 - [x] Sprawdzić przez HTTP wszystkie 25 wygenerowanych aktualności, próbki bloga i lokalizacji oraz awarię pobierania (HTTP 503).
+
+# Porządki w mapach witryny
+- [x] Wycofać Doradcę, przekierować oba warianty adresu i usunąć odnośniki.
+- [x] Rozdzielić daty redesignu, bloga i lokalizacji od dat publikacji Aktualności; wyliczyć daty podmap.
+- [x] Sprawdzić metadane 404 w przeglądarce, mapy i odpowiedzi HTTP wygenerowanych przekierowań.

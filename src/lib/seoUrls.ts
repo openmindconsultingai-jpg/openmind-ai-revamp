@@ -1,4 +1,5 @@
 export const SEO_SITE = 'https://www.openmindai.pl';
+export const RETIRED_ADVISOR = { source: '/ai-advisor', target: '/konsultacje-ai' } as const;
 
 export function cleanPagePath(value: string): string {
   const pathname = new URL(value, SEO_SITE).pathname;

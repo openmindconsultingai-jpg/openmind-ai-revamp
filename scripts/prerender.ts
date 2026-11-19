@@ -7,8 +7,9 @@
  * Does NOT touch vite.config.ts.
  */
 import fs from 'node:fs';
-import { pageUrl, normalizeStructuredUrls } from '../src/lib/seoUrls';
+import { cleanPagePath, pageUrl, normalizeStructuredUrls, RETIRED_ADVISOR } from '../src/lib/seoUrls';
 import { validateSeoOutput } from './seo-validation';
+import { renderSitemap, renderSitemapIndex, sitemapEntries } from './sitemap';
 import { buildNewsPage, fetchPublishedNews, type PublishedNews } from './news-prerender';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -346,22 +347,6 @@ const STATIC_META: Record<string, Meta> = {
       description: 'Aktualności i ogłoszenia z życia firmy OpenMind AI.',
     },
   },
-  '/ai-advisor': {
-    title: 'Wirtualny Doradca AI – Darmowy Doradca Sztucznej Inteligencji | OpenMind AI',
-    description: 'Bezpłatny wirtualny doradca AI. Odpowiedz na kilka pytań, a nasz inteligentny doradca zaproponuje optymalne rozwiązania AI dla Twojego biznesu, edukacji lub życia codziennego.',
-    h1: 'Wirtualny Doradca AI – darmowa konsultacja sztucznej inteligencji',
-    body: `<p>Wirtualny Doradca AI OpenMind to bezpłatne, interaktywne narzędzie, które w kilka minut pomoże Ci odkryć, jak sztuczna inteligencja może zrewolucjonizować Twoją firmę, szkołę lub codzienną pracę. Odpowiedz na kilka pytań o swoją branżę, procesy i cele — nasz doradca AI wygeneruje spersonalizowane rekomendacje konkretnych narzędzi i scenariuszy wdrożeniowych.</p>
-<h2>Jak działa</h2>
-<p>Doradca prowadzi krótką rozmowę: pyta o branżę, wielkość organizacji, główne wyzwania biznesowe, obecne narzędzia oraz cele wdrożenia AI. Na podstawie odpowiedzi generuje raport zawierający rekomendacje narzędzi (ChatGPT, Claude, Copilot, Midjourney, n8n, Zapier i wiele innych), scenariusze automatyzacji oraz szacowane korzyści biznesowe.</p>
-<h2>Co otrzymasz</h2>
-<p>Spersonalizowany dokument PDF z konkretnymi rekomendacjami: jakie narzędzia AI warto wdrożyć w pierwszej kolejności, jakie procesy zautomatyzować, jakie szkolenia będą najbardziej wartościowe dla zespołu oraz jakie pierwsze efekty można osiągnąć w pierwszych tygodniach.</p>
-<h2>Dla kogo</h2>
-<p>Doradca AI sprawdzi się dla właścicieli firm, menedżerów, dyrektorów operacyjnych, dyrektorów szkół, marketerów, freelancerów oraz wszystkich, którzy chcą szybko ocenić potencjał sztucznej inteligencji w swoim środowisku zawodowym.</p>
-<h2>Bezpieczeństwo</h2>
-<p>Rozmowa z doradcą jest anonimowa i bezpieczna. Nie wymagamy rejestracji ani danych kontaktowych do skorzystania z narzędzia. Jeśli chcesz pogłębić temat po otrzymaniu raportu — zapraszamy na bezpłatną konsultację z naszym ekspertem.</p>
-<h2>Następne kroki</h2>
-<p>Po wygenerowaniu raportu możesz umówić bezpłatną rozmowę konsultacyjną przez <a href="/contact">formularz kontaktowy</a> lub mailowo na biuro@openmindai.pl, aby omówić szczegóły wdrożenia rekomendowanych rozwiązań.</p>`,
-  },
   '/privacy': {
     title: 'Polityka Prywatności | OpenMind AI Consulting',
     description: 'Polityka prywatności OpenMind AI Consulting. Przetwarzanie danych osobowych zgodnie z RODO oraz bezpieczeństwem danych.',
@@ -503,7 +488,7 @@ ${linkList(industry)}
 <h2>Wszystkie usługi i szkolenia w jednym miejscu</h2>
 ${linkList([...core, ...industry])}
 <h2>Usługi AI w całej Polsce</h2>
-<p>Szkolenia i wdrożenia prowadzimy stacjonarnie w każdym mieście w Polsce oraz online. Sprawdź <a href="/lokalizacje">lokalne strony usług AI w 192 miastach i 16 województwach</a>, skorzystaj z <a href="/ai-advisor">bezpłatnego doradcy AI</a> lub napisz przez <a href="/contact">formularz kontaktowy</a>. Więcej praktycznej wiedzy znajdziesz w <a href="/blog">Bazie Wiedzy AI</a>, a informacje o zespole na stronie <a href="/about">o nas</a>.</p>`;
+<p>Szkolenia i wdrożenia prowadzimy stacjonarnie w każdym mieście w Polsce oraz online. Sprawdź <a href="/lokalizacje">lokalne strony usług AI w 192 miastach i 16 województwach</a> lub napisz przez <a href="/contact">formularz kontaktowy</a>. Więcej praktycznej wiedzy znajdziesz w <a href="/blog">Bazie Wiedzy AI</a>, a informacje o zespole na stronie <a href="/about">o nas</a>.</p>`;
 }
 
 const servicesHub = STATIC_META['/services'];
@@ -804,13 +789,12 @@ function cityMeta(voivSlug: string, citySlug: string): Meta | null {
 // ---------------------------------------------------------------------------
 // Sitemap parsing
 // ---------------------------------------------------------------------------
-function readSitemap(file: string): string[] {
-  const raw = fs.readFileSync(path.join(ROOT, 'public', file), 'utf8');
-  return [...raw.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-}
-
-// This is the date of this route-specific metadata/content correction, never build time.
-const SEO_CORRECTION_LASTMOD = '2026-11-10';
+const staticLastmod = new Map(
+  ['sitemap-main.xml', 'sitemap-blog.xml', 'sitemap-cities.xml'].flatMap(file =>
+    sitemapEntries(fs.readFileSync(path.join(ROOT, 'public', file), 'utf8'))
+      .map(({ loc, lastmod }) => [cleanPagePath(loc), lastmod] as const),
+  ),
+);
 let news: PublishedNews[] = [];
 try {
   news = await fetchPublishedNews(ROOT);
@@ -825,20 +809,11 @@ for (const row of news) {
   newsLastmod.set(route, lastmod);
 }
 
-const allUrls = [...new Set([
-  ...readSitemap('sitemap-main.xml'),
-  ...readSitemap('sitemap-blog.xml'),
-  ...readSitemap('sitemap-cities.xml'),
-  ...Object.keys(STATIC_META).map(pageUrl),
-].map(pageUrl))];
-function buildSitemapXml(routes: string[]): string {
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes
-    .map(route => {
-      const lastmod = newsLastmod.has(route) ? newsLastmod.get(route) : SEO_CORRECTION_LASTMOD;
-      return `  <url><loc>${esc(pageUrl(route))}</loc>${lastmod ? `<lastmod>${esc(lastmod)}</lastmod>` : ''}</url>`;
-    })
-    .join('\n')}\n</urlset>\n`;
-}
+const allRoutes = [...new Set([...staticLastmod.keys(), ...Object.keys(STATIC_META)])];
+const entriesFor = (routes: string[]) => routes.map(route => ({
+  loc: pageUrl(route),
+  lastmod: (newsLastmod.has(route) ? newsLastmod.get(route) : staticLastmod.get(route)) ?? null,
+}));
 
 // ---------------------------------------------------------------------------
 // HTML transform
@@ -950,12 +925,12 @@ function redirectHtml(routePath: string): string {
   return `<!doctype html>\n<html lang="pl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Przekierowanie | OpenMind AI</title><meta http-equiv="refresh" content="0; url=${escAttr(routePath)}"><link rel="canonical" href="${canonical}"></head><body><p><a href="${escAttr(routePath)}">Przejdź do strony OpenMind AI</a></p><script>location.replace(${JSON.stringify(routePath)}+location.search+location.hash);</script></body></html>\n`;
 }
 
-function writeRoute(routePath: string, html: string) {
+function writeRoute(routePath: string, html: string, redirectTarget = routePath) {
   const rel = routePath.replace(/^\/+/, '');
   const dir = path.join(DIST, rel);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
-  fs.writeFileSync(path.join(DIST, rel + '.html'), redirectHtml(routePath), 'utf8');
+  fs.writeFileSync(path.join(DIST, rel + '.html'), redirectHtml(redirectTarget), 'utf8');
 }
 
 // ---------------------------------------------------------------------------
@@ -965,11 +940,8 @@ let written = 0;
 const generatedRoutes: string[] = [];
 const missing: string[] = [];
 
-for (const url of allUrls) {
-  const u = new URL(url);
-  // Resolve only the clean public route.
-  let routePath = u.pathname.replace(/\/+$/, '') || '/';
-  if (routePath.endsWith('.html')) routePath = routePath.slice(0, -5) || '/';
+for (const routePath of allRoutes) {
+  if (routePath === RETIRED_ADVISOR.source) continue;
 
   if (routePath === '/') {
     const homeMeta = STATIC_META['/'];
@@ -1007,6 +979,7 @@ for (const url of allUrls) {
   written++;
   generatedRoutes.push(routePath);
 }
+writeRoute(RETIRED_ADVISOR.source, redirectHtml(RETIRED_ADVISOR.target), RETIRED_ADVISOR.target);
 
 // Write llms.txt for AI crawlers (LLM-friendly site map)
 const llmsTxt = `# OpenMind AI Consulting
@@ -1041,29 +1014,28 @@ biuro@openmindai.pl • ${SITE}/contact
 fs.writeFileSync(path.join(DIST, 'llms.txt'), llmsTxt, 'utf8');
 
 if (missing.length) throw new Error(`[prerender] Missing metadata: ${missing.join(', ')}`);
-const completeSitemap = buildSitemapXml(generatedRoutes);
+const completeSitemap = renderSitemap(entriesFor(generatedRoutes));
 for (const name of ['sitemap.xml', 'sitemap-html.xml']) {
   fs.writeFileSync(path.join(DIST, name), completeSitemap, 'utf8');
 }
-for (const [name, filter] of [
+const childMaps = [
   ['sitemap-main.xml', (route: string) => !newsLastmod.has(route) && !route.startsWith('/blog/') && !route.startsWith('/gdzie-dzialamy/')],
   ['sitemap-blog.xml', (route: string) => route.startsWith('/blog/')],
   ['sitemap-cities.xml', (route: string) => route.startsWith('/gdzie-dzialamy/')],
-] as const) {
-  fs.writeFileSync(path.join(DIST, name), buildSitemapXml(generatedRoutes.filter(filter)), 'utf8');
+  ['sitemap-news.xml', (route: string) => newsLastmod.has(route)],
+] as const;
+const childSitemaps = new Map(childMaps.map(([name, filter]) => [name, entriesFor(generatedRoutes.filter(filter))]));
+for (const [name, entries] of childSitemaps) {
+  if (!entries.length && name === 'sitemap-news.xml') {
+    fs.rmSync(path.join(DIST, name), { force: true });
+    childSitemaps.delete(name);
+    continue;
+  }
+  fs.writeFileSync(path.join(DIST, name), renderSitemap(entries), 'utf8');
+  console.log(`[sitemap] ${name}: ${entries.length}`);
 }
+fs.writeFileSync(path.join(DIST, 'sitemap-index.xml'), renderSitemapIndex(childSitemaps), 'utf8');
+console.log(`[sitemap] sitemap.xml / sitemap-html.xml: ${generatedRoutes.length} each; sitemap-index.xml: ${childSitemaps.size} maps`);
 
-const newsRoutes = generatedRoutes.filter(route => newsLastmod.has(route));
-const newsSitemapName = 'sitemap-news.xml';
-let indexSitemap = fs.readFileSync(path.join(ROOT, 'public/sitemap-index.xml'), 'utf8');
-if (newsRoutes.length) {
-  fs.writeFileSync(path.join(DIST, newsSitemapName), buildSitemapXml(newsRoutes), 'utf8');
-  const latest = newsRoutes.map(route => newsLastmod.get(route)).filter((date): date is string => Boolean(date))
-    .sort((a, b) => Date.parse(b) - Date.parse(a))[0];
-  const entry = `<sitemap><loc>${SITE}/${newsSitemapName}</loc>${latest ? `<lastmod>${esc(latest)}</lastmod>` : ''}</sitemap>`;
-  indexSitemap = indexSitemap.replace('</sitemapindex>', `  ${entry}\n</sitemapindex>`);
-}
-fs.writeFileSync(path.join(DIST, 'sitemap-index.xml'), indexSitemap, 'utf8');
-
-validateSeoOutput(DIST, generatedRoutes);
+validateSeoOutput(DIST, generatedRoutes, { retiredAdvisor: true });
 console.log(`[prerender] ${written} full pages, ${written - 1} HTML redirects; no publication`);
