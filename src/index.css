@@ -330,7 +330,7 @@
     overflow-x: hidden;
   }
 
-  :where(p, .text-justify-content):not(:where(.signal-home > section:first-of-type *, .text-center *, .hero-subtitle *, .text-center-override, .text-center)) {
+  :where(p, .text-justify-content):not(:where(.text-center *, .hero-subtitle *, .text-center-override, .text-center)) {
     text-align: left;
     text-wrap: pretty;
     hyphens: auto;
@@ -481,7 +481,7 @@ html:not(.js-fx) #root > :is(h1, p, nav, section) { opacity: 1; }
 }
 .eyebrow::before { content: ''; width: 7px; height: 7px; flex: none; background: hsl(var(--signal)); }
 .accent-word { font-style: italic; font-weight: 400; color: hsl(var(--signal)); }
-.dc-cell { position: relative; color: transparent; }
+.dc-cell { position: relative; color: transparent; text-shadow: none; }
 .dc-g {
   position: absolute;
   left: 50%;
@@ -494,12 +494,13 @@ html:not(.js-fx) #root > :is(h1, p, nav, section) { opacity: 1; }
   font-style: normal;
   line-height: 1;
   color: hsl(var(--signal));
+  text-shadow: 0 1px 6px hsl(var(--background) / .8);
   pointer-events: none;
 }
 .decode-text { display: inline; }
 .decode-caption { display: inline; }
 .decode-caption-overlay { display: inline; }
-.decode-caption .dc-g { color: inherit; opacity: .72; }
+.decode-caption .dc-g { opacity: .72; }
 
 .fx-reveal { --reveal-y: 14px; transition: opacity .9s var(--signal-ease), transform .9s var(--signal-ease); }
 .area-card { --reveal-y: 16px; }
@@ -633,17 +634,21 @@ html.js-fx .fx-reveal:not(.in):not(:focus-within) { opacity: 0; transform: trans
   .fx-ticker-track { animation-play-state: paused !important; }
 }
 
-/* Keep the film's established type and colors when global Signal tokens change. */
-.signal-home > section:first-of-type {
-  --background: 220 15% 5%;
-  --foreground: 180 100% 98%;
-  --primary: 176 100% 43%;
-  font-family: 'DM Sans', system-ui, sans-serif;
-  font-weight: 400;
+.signal-film .film-caption-title {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.03em;
 }
-.signal-home > section:first-of-type .font-heading { font-family: 'Outfit', system-ui, sans-serif; }
-.signal-home > section:first-of-type h1 { text-wrap: wrap; font-optical-sizing: none; }
-.signal-home > section:first-of-type .text-justify { text-align: justify; }
+.signal-film .film-caption-label { background: hsl(var(--background) / .7); color: hsl(var(--foreground)); gap: .5rem; }
+.signal-film .film-caption-link {
+  font-family: 'Martian Mono', ui-monospace, monospace;
+  font-stretch: 87.5%;
+  text-transform: uppercase;
+  color: hsl(var(--signal));
+  border-bottom: 1px solid hsl(var(--signal));
+}
 .tower-caption-page main {
   --foreground: 180 100% 98%;
   --primary: 176 100% 43%;

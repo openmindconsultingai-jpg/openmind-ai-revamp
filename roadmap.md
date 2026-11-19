@@ -16,3 +16,4 @@
 - [x] Wydajność przewijania; podgląd strony głównej i /szkolenia-ai bez błędów na komputerze i telefonie, także z ograniczeniem ruchu.
 - [x] Porównać i przywrócić grafiki Aktualności oraz tła podstron.
 - [x] Dodać i sprawdzić dekodowanie nazw miast oraz napisów w filmach.
+- [x] Przywrócić widoczne glify we wszystkich trzech filmach i zastosować Signal tylko w napisach filmu na stronie głównej; sprawdzić przewijanie i zrzuty w Playwright.

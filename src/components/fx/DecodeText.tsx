@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 import { noWidows } from '@/lib/typography';
-import { animateDecode, escapeText, whenRevealed } from './decode.mjs';
+import { animateDecode, escapeText, lastAccentIndex, whenRevealed } from './decode.mjs';
 
 const callbacks = new WeakMap<Element, (inView: boolean) => void>();
 let observer: IntersectionObserver | undefined;
@@ -28,11 +28,11 @@ export default function DecodeText({ text, accentLast = false, delay = 0 }: { te
     const textChanged = previousText.current !== text;
     previousText.current = text;
     const display = noWidows(text);
-    const parts = accentLast ? /\S+(?:\u00a0\S+)*\s*$/.exec(display) : null;
-    const final = parts ? `${escapeText(display.slice(0, parts.index))}<span class="accent-word">${escapeText(parts[0])}</span>` : escapeText(display);
+    const accentIndex = accentLast ? lastAccentIndex(display) : -1;
+    const final = accentIndex >= 0 ? `${escapeText(display.slice(0, accentIndex))}<span class="accent-word">${escapeText(display.slice(accentIndex))}</span>` : escapeText(display);
     const duration = Math.min(34, Math.round(14 + 0.4 * Array.from(display).length)) * (1000 / 60);
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
-    const accentFrom = parts ? Array.from(display.slice(0, parts.index)).length : -1;
+    const accentFrom = accentIndex >= 0 ? Array.from(display.slice(0, accentIndex)).length : -1;
     let cancel: (() => void) | undefined;
     let cancelWait: (() => void) | undefined;
     let stopObserving: (() => void) | undefined;

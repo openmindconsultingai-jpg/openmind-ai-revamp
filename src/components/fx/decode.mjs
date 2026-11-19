@@ -1,6 +1,7 @@
 const glyphs = '01<>/\\[]{}#*+=_-ĄĆĘŁŃÓŚŹŻ';
 const entities = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 export const escapeText = (value) => value.replace(/[&<>"']/g, (char) => entities[char]);
+export const lastAccentIndex = (text) => /\S+(?:\u00a0\S+)*\s*$/.exec(text)?.index ?? -1;
 
 export const MIN_DURATION = 450;
 const SHARED_LIMIT = 40;
@@ -90,7 +91,10 @@ export function setCaptionActive(root, isActive) {
       visual.textContent = '';
       running.delete(caption);
     };
+    const text = source.textContent ?? '';
+    const accent = source.querySelector('.accent-word');
+    const accentFrom = accent ? Array.from(text.slice(0, text.length - (accent.textContent?.length ?? 0))).length : -1;
     source.classList.add('sr-only');
-    running.set(caption, animateDecode(visual, source.textContent ?? '', 650, finish));
+    running.set(caption, animateDecode(visual, text, 650, finish, accentFrom));
   }
 }

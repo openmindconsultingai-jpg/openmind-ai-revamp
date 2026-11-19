@@ -284,7 +284,7 @@ export default function ScrollVideoHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-background"
+      className="signal-film relative w-full bg-background font-normal"
       style={{ height: reducedMotion ? "100vh" : `${SCROLL_HEIGHT_VH}vh` }}
       aria-label="OpenMind AI Consulting"
     >
@@ -342,17 +342,16 @@ export default function ScrollVideoHero() {
                 pointerEvents: o > 0.5 ? "auto" : "none",
               }}
             >
-              <span className="inline-flex items-center gap-2 rounded bg-background/55 px-2.5 py-1 text-[10px] font-bold tracking-[0.24em] text-primary shadow-sm backdrop-blur-sm md:text-xs md:tracking-[0.3em]">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              <span className="eyebrow film-caption-label rounded px-2.5 py-1 shadow-sm">
                 <DecodeCaption active={o > 0} text={c.label} />
               </span>
-              <span className="mt-3 block font-heading text-2xl font-bold leading-tight text-foreground [text-shadow:0_2px_12px_hsl(var(--background)),0_1px_3px_hsl(var(--background))] sm:text-3xl md:text-5xl">
-                <DecodeCaption active={o > 0} text={noWidows(c.title)} />
+              <span className="film-caption-title mt-3 block font-heading text-2xl text-foreground [text-shadow:0_2px_12px_hsl(var(--background)),0_1px_3px_hsl(var(--background))] sm:text-3xl md:text-5xl">
+                <DecodeCaption accentLast active={o > 0} text={noWidows(c.title)} />
               </span>
-              <span className="mt-2 block text-justify text-sm font-medium leading-relaxed text-foreground [text-shadow:0_2px_10px_hsl(var(--background)),0_1px_2px_hsl(var(--background))] md:mt-3 md:text-lg">
+              <span className="mt-2 block text-left text-sm leading-relaxed text-foreground/[.85] [text-shadow:0_2px_10px_hsl(var(--background)),0_1px_2px_hsl(var(--background))] md:mt-3 md:text-lg">
                 <DecodeCaption active={o > 0} text={noWidows(c.text)} />
               </span>
-              <span className="mt-4 inline-block border-b border-primary pb-1 text-[10px] font-bold tracking-[0.24em] text-primary [text-shadow:0_2px_8px_hsl(var(--background))] md:text-xs md:tracking-[0.3em]">
+              <span className="film-caption-link mt-4 inline-block pb-1 text-[10px] [text-shadow:0_2px_8px_hsl(var(--background))] md:text-xs">
                 <DecodeCaption active={o > 0} text={isPl ? "ZOBACZ USŁUGĘ →" : "SEE THE SERVICE →"} />
               </span>
             </a>
@@ -369,14 +368,14 @@ export default function ScrollVideoHero() {
             pointerEvents: headlineOpacity > 0.5 ? "auto" : "none",
           }}
         >
-          <h1 className="max-w-4xl hyphens-auto font-heading text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-6xl">
-            <DecodeCaption active={headlineOpacity > 0} text={noWidows(
+          <h1 className="film-caption-title max-w-4xl hyphens-auto font-heading text-3xl text-foreground sm:text-4xl md:text-6xl">
+            <DecodeCaption accentLast active={headlineOpacity > 0} text={noWidows(
               isPl
                 ? "Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz"
                 : "AI implementations for companies that keep working while you rest"
             )} />
           </h1>
-          <p className="mt-3 max-w-2xl text-justify text-sm leading-relaxed text-foreground/80 sm:text-base md:mt-4 md:text-lg">
+          <p className="mt-3 max-w-2xl text-left text-sm leading-relaxed text-foreground/[.85] sm:text-base md:mt-4 md:text-lg">
             <DecodeCaption active={headlineOpacity > 0} text={noWidows(
               isPl
                 ? "Szkolenia, audyty i automatyzacja z AI dla firm, urzędów i szkół w całej Polsce. Od pierwszej rozmowy po proces, który pracuje bez Ciebie."
@@ -385,7 +384,7 @@ export default function ScrollVideoHero() {
           </p>
           <a
             href="/contact#contact"
-            className="mt-6 inline-block border-b border-primary pb-1 text-[10px] tracking-[0.22em] text-primary sm:text-xs md:mt-8 md:text-sm md:tracking-[0.3em]"
+            className="film-caption-link mt-6 inline-block pb-1 text-[10px] sm:text-xs md:mt-8 md:text-sm"
           >
             <DecodeCaption active={headlineOpacity > 0} text={isPl ? "POROZMAWIAJMY O TWOJEJ FIRMIE →" : "LET'S TALK ABOUT YOUR BUSINESS →"} />
           </a>
