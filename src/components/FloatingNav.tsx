@@ -10,6 +10,7 @@ const FloatingNav = memo(() => {
   const { language, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const pillRef = useRef<HTMLSpanElement>(null);
   const hovered = useRef<string>();
@@ -25,6 +26,8 @@ const FloatingNav = memo(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
       const diff = currentY - lastScrollY.current;
+
+      setScrolled(currentY > 24);
 
       if (isMenuOpen) {
         setHidden(false);
@@ -69,6 +72,7 @@ const FloatingNav = memo(() => {
   const isActive = (path: string) =>
     path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
 
+  const isHome = location.pathname === '/';
   const activePath = navItems.find((item) => isActive(item.path))?.path;
   const highlightLink = useCallback(() => {
     const nav = navRef.current;
@@ -116,7 +120,26 @@ const FloatingNav = memo(() => {
           }}
         />
 
-        <div className="fx-nav-panel w-full">
+        <div
+          className={`w-full transition-all duration-300 ${isHome ? '' : 'fx-nav-panel'}`}
+          style={
+            isHome
+              ? {
+                  background: scrolled
+                    ? 'hsl(220 15% 6% / 0.78)'
+                    : 'hsl(220 15% 6% / 0.45)',
+                  backdropFilter: 'blur(18px) saturate(140%)',
+                  WebkitBackdropFilter: 'blur(18px) saturate(140%)',
+                  borderBottom: scrolled
+                    ? '1px solid hsl(176 100% 43% / 0.12)'
+                    : '1px solid hsl(0 0% 100% / 0.04)',
+                  boxShadow: scrolled
+                    ? '0 8px 32px hsl(220 15% 0% / 0.45)'
+                    : 'none',
+                }
+              : undefined
+          }
+        >
           <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-[72px] md:px-8">
             {/* Logo */}
             <Link
@@ -159,8 +182,38 @@ const FloatingNav = memo(() => {
 
             {/* Desktop nav */}
             <nav ref={navRef} className="relative hidden items-center gap-1 md:flex" onMouseLeave={() => { hovered.current = undefined; highlightLink(); }}>
-              <span ref={pillRef} aria-hidden="true" className="fx-nav-pill" />
+              {!isHome && <span ref={pillRef} aria-hidden="true" className="fx-nav-pill" />}
               {navItems.map((item) => {
+                if (isHome) {
+                  const active = isActive(item.path);
+                  return (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onMouseEnter={() => handlePrefetch(item.path, item.prefetch)}
+                      onFocus={() => handlePrefetch(item.path, item.prefetch)}
+                      className="group relative px-4 py-2 font-sans text-sm transition-colors duration-200 hover:!text-[hsl(176_100%_65%)]"
+                      style={{
+                        color: active
+                          ? 'hsl(176 100% 65%)'
+                          : 'hsl(0 0% 100% / 0.72)',
+                      }}
+                    >
+                      <span className="relative z-10">{item.label}</span>
+                      <span
+                        aria-hidden
+                        className={`pointer-events-none absolute left-3 right-3 -bottom-0.5 h-px transition-all duration-300 ${
+                          active ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                        }`}
+                        style={{
+                          background:
+                            'linear-gradient(90deg, transparent, hsl(176 100% 55%), transparent)',
+                          boxShadow: '0 0 10px hsl(176 100% 55% / 0.7)',
+                        }}
+                      />
+                    </Link>
+                  );
+                }
                 return (
                   <Link
                     key={item.path}
