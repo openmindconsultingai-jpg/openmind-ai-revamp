@@ -20,9 +20,9 @@ const Contact = () => {
             <div className="flex justify-center mb-6">
               <img src={logo} alt="OpenMind AI" width="220" height="80" className="h-20 w-auto object-contain" />
             </div>
-            <h1 className="font-heading h-display mb-6">
+            <h2 className="font-heading h-section mb-6">
               <span className="text-gradient text-glow"><DecodeText text={t('contact.title')} accentLast /></span>
-            </h1>
+            </h2>
             <p className="fx-reveal text-xl text-muted-foreground">
               {t('contact.subtitle')}
             </p>
