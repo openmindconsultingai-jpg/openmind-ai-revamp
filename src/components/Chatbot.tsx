@@ -202,11 +202,10 @@ const Chatbot = () => {
               <span className="absolute -bottom-1.5 right-4 w-3 h-3 bg-black/90 backdrop-blur-xl border-r border-b border-primary/40 rotate-45" />
             </button>
           )}
-        <Button
+        <button type="button" aria-label="OpenMind AI Chat"
           onClick={() => setIsOpen(true)}
-          size="lg"
           className="rounded-full w-20 h-20 p-0 overflow-visible relative group
-                     bg-gradient-to-br from-black via-gray-900 to-black
+                     bg-black
                      border-2 border-primary
                      before:absolute before:inset-0 before:rounded-full 
                      before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-transparent before:opacity-60
@@ -214,14 +213,15 @@ const Chatbot = () => {
                      after:animate-[ping_4s_cubic-bezier(0.4,0,0.6,1)_infinite] after:opacity-50
                      hover:scale-105 transition-all duration-300"
           style={{
+            backgroundColor: '#000',
             boxShadow: '0 0 25px rgba(0, 223, 217, 0.4), 0 0 50px rgba(0, 223, 217, 0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
           }}
         >
           <img src={logo} alt="OpenMind AI Chat" width="64" height="64" className="w-full h-full object-contain p-3 relative z-10" />
-        </Button>
+        </button>
         </div>
       ) : (
-        <div className="w-[380px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-7rem)] flex flex-col rounded-2xl overflow-hidden border border-border/60 shadow-2xl bg-black/95 backdrop-blur-xl"
+        <div className="w-[380px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100dvh-11rem)] flex flex-col rounded-2xl overflow-hidden border border-border/60 shadow-2xl bg-black/95 backdrop-blur-xl"
           style={{ boxShadow: '0 0 60px rgba(0, 223, 217, 0.15), 0 25px 50px rgba(0,0,0,0.5)' }}
         >
           {/* Header */}
