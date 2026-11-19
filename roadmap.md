@@ -10,3 +10,7 @@
 - [x] Zamykany baner o dofinansowaniu do 80% (BUR) z logo OpenMind i PARP/BUR.
 - [x] Wiedza czatbota o ISO 9001 i BUR.
 - [x] Dwa artykuły w Aktualnościach (ISO, BUR).
+
+# Signal
+- [x] Typografia, kolory i efekty bez zmian treści.
+- [x] Wydajność przewijania; podgląd strony głównej i /szkolenia-ai bez błędów na komputerze i telefonie, także z ograniczeniem ruchu.

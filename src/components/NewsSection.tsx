@@ -1,3 +1,4 @@
+import DecodeText from '@/components/fx/DecodeText';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { localizeNews, useNewsList } from '@/hooks/useNews';
@@ -14,14 +15,14 @@ const NewsSection = () => {
   const isEn = language === 'en';
 
   return (
-    <section aria-labelledby="home-news-heading" className="mt-10 pt-12 md:pt-16 w-full max-w-5xl mx-auto px-4 sm:px-6">
-      <div className="mb-6 flex items-end justify-between gap-4">
-        <h2 id="home-news-heading" className="font-heading text-2xl sm:text-3xl font-bold text-gradient">
-          {isEn ? 'News' : 'Aktualności'}
+    <section aria-labelledby="home-news-heading" className="fx-trace mt-10 pt-12 md:pt-16 w-full max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
+        <h2 id="home-news-heading" className="font-heading h-section text-gradient">
+          <DecodeText text={isEn ? 'News' : 'Aktualności'} accentLast />
         </h2>
         <Link
           to="/aktualnosci"
-          className="shrink-0 text-xs font-semibold uppercase tracking-[0.15em] text-primary hover:underline"
+          className="fx-text-link shrink-0 self-end text-xs font-semibold uppercase tracking-[0.15em] text-primary"
         >
           {isEn ? 'See all →' : 'Zobacz wszystkie →'}
         </Link>

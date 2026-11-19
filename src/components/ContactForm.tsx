@@ -223,8 +223,8 @@ const ContactForm = () => {
         <Button
           type="submit"
           disabled={isSubmitting}
-          variant="glass"
-          className="w-full font-semibold py-5 sm:py-6 text-base sm:text-lg group"
+          variant="default"
+          className="w-full py-5 sm:py-6 text-base sm:text-lg group"
         >
           {isSubmitting ? (
             t('contact.form.sending')

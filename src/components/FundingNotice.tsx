@@ -29,7 +29,7 @@ const FundingNotice = () => {
     <div
       role="dialog"
       aria-label={pl ? 'Dofinansowanie usług do 80%' : 'Up to 80% funding'}
-      className="fixed inset-x-3 bottom-3 z-[60] mx-auto max-w-2xl rounded-2xl border border-primary/30 bg-card/80 p-4 shadow-2xl backdrop-blur-xl sm:bottom-6 sm:p-5"
+      className="fixed inset-x-3 bottom-3 z-[60] mx-auto max-w-2xl rounded-2xl border border-primary/30 bg-card p-4 sm:bottom-6 sm:p-5"
     >
       <button
         type="button"
@@ -57,14 +57,14 @@ const FundingNotice = () => {
         <Link
           to="/contact#contact"
           onClick={close}
-          className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+          className="fx-button px-5 py-2 text-sm"
         >
           {pl ? 'Sprawdź dofinansowanie →' : 'Check funding →'}
         </Link>
         <Link
           to="/aktualnosci/wpis-do-bazy-uslug-rozwojowych"
           onClick={close}
-          className="rounded-full border border-border px-5 py-2 text-sm text-foreground transition-colors hover:border-primary"
+          className="fx-button-outline px-5 py-2 text-sm"
         >
           {pl ? 'Jak to działa' : 'How it works'}
         </Link>

@@ -1,3 +1,4 @@
+import DecodeText from '@/components/fx/DecodeText';
 import { memo, useCallback } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useNavigate } from 'react-router-dom';
@@ -46,10 +47,10 @@ const Blog = memo(() => {
 
       <div className="container mx-auto max-w-6xl relative">
         <div className="text-center mb-12">
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-gradient">{t('nav.blog')}</span>
+          <h1 className="font-heading h-display mb-6">
+            <span className="text-gradient"><DecodeText text={t('nav.blog')} accentLast /></span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="fx-reveal text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             {t('blog.subtitle')}
           </p>
         </div>

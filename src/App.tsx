@@ -89,6 +89,8 @@ const App = () => (
     <LanguageProvider>
       <VideoProvider>
         <TooltipProvider>
+        <div className="fx-grain" aria-hidden="true" />
+        <div className="fx-grid" aria-hidden="true" />
         <Toaster />
         <Sonner />
         <BrowserRouter>

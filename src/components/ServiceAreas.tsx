@@ -1,8 +1,6 @@
-import { useEffect, useRef } from 'react';
+import DecodeText from '@/components/fx/DecodeText';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, ChevronRight } from 'lucide-react';
 import { voivodeships } from '@/data/voivodeships';
 
@@ -42,8 +40,6 @@ const voivodeshipImages: Record<string, string> = {
   'zachodniopomorskie': imgZachodniopomorskie,
 };
 
-gsap.registerPlugin(ScrollTrigger);
-
 export interface ServiceAreasProps {
   /** Optional H2 override. Defaults to "Gdzie Działamy" / "Where We Operate". */
   heading?: string;
@@ -57,44 +53,19 @@ export interface ServiceAreasProps {
 
 const ServiceAreas = ({ heading, sub, anchorPrefix, id = 'gdzie-dzialamy' }: ServiceAreasProps = {}) => {
   const { language } = useLanguage();
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.area-card',
-        { opacity: 0, y: 40, scale: 0.97 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          stagger: 0.06,
-          duration: 0.6,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 75%',
-          },
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const title = heading ?? (language === 'pl' ? 'Gdzie Działamy' : 'Where We Operate');
   const subtitle = sub ?? (language === 'pl'
     ? 'Świadczymy usługi doradztwa i wdrożeń AI na terenie całej Polski – zdalnie i stacjonarnie.'
     : 'We provide AI consulting and implementation services across all of Poland – remotely and on-site.');
 
   return (
-    <section ref={sectionRef} id={id} className="relative py-20 md:py-28 overflow-hidden">
+    <section id={id} className="fx-trace relative py-20 md:py-28 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-14 md:mb-20">
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-gradient">{title}</span>
+          <h2 className="font-heading h-section mb-6">
+            <span className="text-gradient"><DecodeText text={title} accentLast /></span>
           </h2>
-          <p className="font-sans text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="fx-reveal font-sans text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {subtitle}
           </p>
         </div>
@@ -103,31 +74,20 @@ const ServiceAreas = ({ heading, sub, anchorPrefix, id = 'gdzie-dzialamy' }: Ser
           {voivodeships.map((v) => (
             <div
               key={v.slug}
-              className="area-card group relative rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02]"
-              style={{
-                border: '1px solid hsl(176 100% 43% / 0.12)',
-                boxShadow: '0 4px 30px hsl(0 0% 0% / 0.3)',
-              }}
+              className="area-card fx-card fx-reveal group overflow-hidden"
             >
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{ backgroundImage: `url(${voivodeshipImages[v.slug]})` }}
+              <img
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src={voivodeshipImages[v.slug]}
+                loading="lazy" decoding="async" alt=""
                 aria-hidden="true"
               />
               <div
                 className="absolute inset-0"
-                style={{
-                  background:
-                    'linear-gradient(145deg, hsl(220 15% 8% / 0.68) 0%, hsl(220 15% 5% / 0.82) 100%)',
-                }}
                 aria-hidden="true"
               />
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  background:
-                    'radial-gradient(300px circle at 50% 0%, hsl(176 100% 43% / 0.18), transparent 60%)',
-                }}
               />
 
               <div className="relative z-10 p-5 md:p-6">
@@ -142,12 +102,12 @@ const ServiceAreas = ({ heading, sub, anchorPrefix, id = 'gdzie-dzialamy' }: Ser
                     }
                   >
                     <MapPin className="w-4 h-4 text-primary shrink-0" />
-                    <h3 className="font-heading text-sm md:text-base font-semibold text-primary tracking-wide truncate">
-                      {language === 'pl' ? `Woj. ${v.name.toLowerCase()}` : v.name}
+                    <h3 className="font-heading text-sm md:text-base font-semibold text-primary min-w-0 break-words">
+                      <DecodeText text={language === 'pl' ? `Woj. ${v.name.toLowerCase()}` : v.name} />
                     </h3>
                   </Link>
 
-                  <ChevronRight className="w-4 h-4 text-primary/50 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                  <ChevronRight className="w-4 h-4 text-primary/50 group-hover:text-primary group-hover:translate-x-1 transition-transform" />
                 </div>
 
                 <div className="w-full h-px bg-gradient-to-r from-primary/30 via-primary/10 to-transparent mb-4" />

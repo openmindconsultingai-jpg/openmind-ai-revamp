@@ -1,3 +1,4 @@
+import DecodeText from '@/components/fx/DecodeText';
 import PageLayout from '@/components/PageLayout';
 import Footer from '@/components/Footer';
 import NewsCard from '@/components/NewsCard';
@@ -27,10 +28,10 @@ const News = () => {
     <PageLayout>
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 pt-32 pb-20">
         <header className="mb-10 text-center">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-gradient">
-            {isEn ? 'News' : 'Aktualności'}
+          <h1 className="font-heading h-display text-gradient">
+            <DecodeText text={isEn ? 'News' : 'Aktualności'} accentLast />
           </h1>
-          <p className="mt-4 !text-center text-muted-foreground">
+          <p className="fx-reveal mt-4 !text-center text-muted-foreground">
             {isEn ? 'Updates from OpenMind AI.' : 'Nowości z życia OpenMind AI.'}
           </p>
         </header>

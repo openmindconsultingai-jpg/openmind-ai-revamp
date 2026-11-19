@@ -2,5 +2,10 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import { initSignal } from "./components/fx/signal";
 
-createRoot(document.getElementById("root")!).render(<App />);
+const root = document.getElementById("root");
+if (root) {
+  initSignal();
+  createRoot(root).render(<App />);
+}

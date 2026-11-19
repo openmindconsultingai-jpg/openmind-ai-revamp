@@ -1,22 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import DecodeText from '@/components/fx/DecodeText';
+import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronDown } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const FaqItem = ({ question, answer }: { question: string; answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   return (
     <div
-      className="rounded-2xl overflow-hidden transition-all duration-300"
-      style={{
-        background: 'linear-gradient(145deg, hsl(220 15% 10% / 0.6) 0%, hsl(220 15% 6% / 0.8) 100%)',
-        border: `1px solid hsl(176 100% 43% / ${isOpen ? '0.25' : '0.1'})`,
-      }}
+      className="fx-card fx-reveal overflow-hidden"
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -29,12 +21,8 @@ const FaqItem = ({ question, answer }: { question: string; answer: string }) => 
         />
       </button>
       <div
-        ref={contentRef}
-        className="overflow-hidden transition-all duration-300"
-        style={{
-          maxHeight: isOpen ? contentRef.current?.scrollHeight ?? 500 : 0,
-          opacity: isOpen ? 1 : 0,
-        }}
+        className="overflow-hidden"
+        hidden={!isOpen}
       >
         <p className="px-5 md:px-6 pb-5 md:pb-6 font-sans text-sm md:text-base text-muted-foreground leading-relaxed">
           {answer}
@@ -46,7 +34,6 @@ const FaqItem = ({ question, answer }: { question: string; answer: string }) => 
 
 const SeoContentSections = () => {
   const { t } = useLanguage();
-  const sectionRef = useRef<HTMLElement>(null);
 
   const sections = [
     { title: t('seo.section1.title'), content: t('seo.section1.content') },
@@ -64,38 +51,16 @@ const SeoContentSections = () => {
     { question: t('seo.faq5.question'), answer: t('seo.faq5.answer') },
   ];
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.seo-section',
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.15,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-          },
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="relative py-20 md:py-28 overflow-hidden">
+    <section className="fx-trace fx-prose relative py-20 md:py-28 overflow-hidden">
       <div className="container mx-auto px-6 max-w-4xl space-y-16 md:space-y-24">
         {/* Content Sections */}
         {sections.map((section, i) => (
           <div key={i} className="seo-section">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-              <span className="text-gradient">{section.title}</span>
+            <h2 className="font-heading h-section-long mb-6">
+              <span className="text-gradient"><DecodeText text={section.title} /></span>
             </h2>
-            <p className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed">
+            <p className="fx-reveal font-sans text-base md:text-lg text-muted-foreground leading-relaxed">
               {section.content}
             </p>
             {i < sections.length - 1 && (
@@ -106,8 +71,8 @@ const SeoContentSections = () => {
 
         {/* FAQ Section */}
         <div className="seo-section pt-8">
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold mb-10 text-center">
-            <span className="text-gradient">{t('seo.faq.title')}</span>
+          <h2 className="font-heading h-section mb-10 text-center">
+            <span className="text-gradient"><DecodeText text={t('seo.faq.title')} accentLast /></span>
           </h2>
           <div className="space-y-4">
             {faqItems.map((item, i) => (

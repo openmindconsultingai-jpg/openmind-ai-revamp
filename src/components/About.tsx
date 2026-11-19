@@ -1,10 +1,11 @@
+import DecodeText from '@/components/fx/DecodeText';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import OpenMindScrollHero, { HeroService } from '@/components/OpenMindScrollHero';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-const justify: React.CSSProperties = { textAlign: 'justify', hyphens: 'auto' };
+const justify: React.CSSProperties = { textAlign: 'left', hyphens: 'auto' };
 
 const HERO_BASE =
   'https://nyxcjvbeipocvgjforpn.supabase.co/storage/v1/object/public/hero/';
@@ -168,10 +169,10 @@ const About = () => {
         <div className="container mx-auto px-6 relative">
           <div className="max-w-3xl mx-auto">
             <header>
-              <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-[-0.04em] leading-[1.02] mb-6">
-                <span className="text-gradient">{c.h1}</span>
+              <h1 className="font-heading h-display mb-6">
+                <span className="text-gradient"><DecodeText text={c.h1} accentLast /></span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed" style={justify}>
+              <p className="fx-reveal text-lg md:text-xl text-muted-foreground leading-relaxed" style={justify}>
                 {c.intro}
               </p>
             </header>
@@ -201,43 +202,43 @@ const About = () => {
           <div className="max-w-3xl mx-auto space-y-14 md:space-y-20">
 
             <div>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5">
-                <span className="text-gradient">{c.forWhom}</span>
+              <h2 className="font-heading h-section-long mb-5">
+                <span className="text-gradient"><DecodeText text={c.forWhom} /></span>
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-4" style={justify}>
+              <p className="fx-reveal text-muted-foreground leading-relaxed mb-4" style={justify}>
                 {c.forWhom1}
               </p>
-              <p className="text-muted-foreground leading-relaxed" style={justify}>
+              <p className="fx-reveal text-muted-foreground leading-relaxed" style={justify}>
                 {c.forWhom2}
               </p>
             </div>
 
             <div>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5">
-                <span className="text-gradient">{c.how}</span>
+              <h2 className="font-heading h-section-long mb-5">
+                <span className="text-gradient"><DecodeText text={c.how} /></span>
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-4" style={justify}>
+              <p className="fx-reveal text-muted-foreground leading-relaxed mb-4" style={justify}>
                 {c.how1}
               </p>
-              <p className="text-muted-foreground leading-relaxed" style={justify}>
+              <p className="fx-reveal text-muted-foreground leading-relaxed" style={justify}>
                 {c.how2}
               </p>
             </div>
 
             <div>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5">
-                <span className="text-gradient">{c.who}</span>
+              <h2 className="font-heading h-section-long mb-5">
+                <span className="text-gradient"><DecodeText text={c.who} /></span>
               </h2>
-              <p className="text-muted-foreground leading-relaxed" style={justify}>
+              <p className="fx-reveal text-muted-foreground leading-relaxed" style={justify}>
                 {c.who1}
               </p>
             </div>
 
             <div>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5">
-                <span className="text-gradient">{c.reach}</span>
+              <h2 className="font-heading h-section-long mb-5">
+                <span className="text-gradient"><DecodeText text={c.reach} /></span>
               </h2>
-              <p className="text-muted-foreground leading-relaxed" style={justify}>
+              <p className="fx-reveal text-muted-foreground leading-relaxed" style={justify}>
                 {c.reach1}
               </p>
             </div>

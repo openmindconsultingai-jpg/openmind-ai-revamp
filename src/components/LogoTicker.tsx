@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const CLIENTS = [
@@ -24,16 +25,33 @@ const allClients = [...CLIENTS, ...CLIENTS];
 
 const LogoTicker = () => {
   const { t } = useLanguage();
+  const trackRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track || !('IntersectionObserver' in window)) return;
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    let visible = false;
+    const sync = () => track.toggleAttribute('data-running', visible && !document.hidden && !motion.matches);
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); });
+    observer.observe(track.parentElement ?? track);
+    document.addEventListener('visibilitychange', sync);
+    motion.addEventListener('change', sync);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', sync);
+      motion.removeEventListener('change', sync);
+    };
+  }, []);
   return (
-    <div className="hero-cta mt-10 w-full max-w-5xl mx-auto px-4 sm:px-6">
+    <div className="hero-cta fx-trace text-center mt-10 w-full max-w-5xl mx-auto px-4 sm:px-6">
       {/* Label */}
-      <p className="font-sans text-xs uppercase tracking-[0.25em] text-center mb-5 text-primary/60">
+      <p className="eyebrow text-center mb-5">
         {t('logoticker.label')}
       </p>
 
       {/* Frosted glass text ticker */}
       <div
-        className="relative overflow-hidden py-4 rounded-2xl border border-border/30 bg-card/20 backdrop-blur-sm"
+        className="relative overflow-hidden py-4 rounded-2xl border border-border/30 bg-card"
         style={{
           maskImage:
             'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
@@ -42,7 +60,8 @@ const LogoTicker = () => {
         }}
       >
         <div
-          className="flex items-center whitespace-nowrap"
+          ref={trackRef}
+          className="fx-ticker-track flex items-center whitespace-nowrap"
           style={{
             animation: 'ticker-scroll 40s linear infinite',
             width: 'max-content',

@@ -1,3 +1,4 @@
+import DecodeText from '@/components/fx/DecodeText';
 import { useMemo } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import PageLayout from '@/components/PageLayout';
@@ -164,7 +165,7 @@ const CityDetail = () => {
 
   return (
     <PageLayout>
-      <section className="pt-28 md:pt-36 pb-20 md:pb-28">
+      <section className="fx-prose pt-28 md:pt-36 pb-20 md:pb-28">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
 
@@ -191,18 +192,18 @@ const CityDetail = () => {
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
-                <span className="text-sm font-medium text-primary tracking-wider uppercase">
+                <span className="eyebrow">
                   {city!.name}{content ? ` · ${content.populacja} ${language === 'pl' ? 'mieszkańców' : 'residents'}` : ''}
                 </span>
               </div>
 
-              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                <span className="text-gradient">{heading}</span>
+              <h1 className="font-heading h-display h-display-limited mb-6">
+                <span className="text-gradient"><DecodeText text={heading} accentLast /></span>
               </h1>
 
               {/* Quick Answer Block — optimized for GEO/AEO (AI citation) */}
               <div className="mb-10 p-6 rounded-xl border border-primary/20 bg-primary/5" role="region" aria-label={language === 'pl' ? 'Podsumowanie usług' : 'Service summary'}>
-                <p className="text-base sm:text-lg text-foreground leading-relaxed">
+                <p className="fx-reveal text-base sm:text-lg text-foreground leading-relaxed">
                   {hasLocalizedContent ? (
                     language === 'pl' ? (
                       <>
@@ -233,11 +234,11 @@ const CityDetail = () => {
                   <div className="mb-8">
                     <div className="flex items-center gap-2 mb-3">
                       <Building2 className="w-5 h-5 text-primary" />
-                      <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground">
-                        {language === 'pl' ? `Gospodarka ${city!.genitive} i potencjał dla AI` : `Economy of ${city!.name} & AI Potential`}
+                      <h2 className="font-heading h-section-long text-foreground">
+                        <DecodeText text={language === 'pl' ? `Gospodarka ${city!.genitive} i potencjał dla AI` : `Economy of ${city!.name} & AI Potential`} />
                       </h2>
                     </div>
-                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                    <p className="fx-reveal text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
                       {localOpisGospodarki}
                     </p>
                   </div>
@@ -261,11 +262,11 @@ const CityDetail = () => {
                   <div className="mb-8">
                     <div className="flex items-center gap-2 mb-3">
                       <Lightbulb className="w-5 h-5 text-primary" />
-                      <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground">
-                        {language === 'pl' ? `Zastosowania AI dla firm z ${city!.genitive}` : `AI Applications for Businesses in ${city!.name}`}
+                      <h2 className="font-heading h-section-long text-foreground">
+                        <DecodeText text={language === 'pl' ? `Zastosowania AI dla firm z ${city!.genitive}` : `AI Applications for Businesses in ${city!.name}`} />
                       </h2>
                     </div>
-                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                    <p className="fx-reveal text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
                       {localWyzwaniaAI}
                     </p>
                   </div>
@@ -275,7 +276,7 @@ const CityDetail = () => {
                     <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
                       {language === 'pl' ? 'Przykładowy scenariusz wdrożenia' : 'Example Implementation Scenario'}
                     </h3>
-                    <p className="text-base text-foreground leading-relaxed">
+                    <p className="fx-reveal text-base text-foreground leading-relaxed">
                       {localPrzykladZastosowania}
                     </p>
                   </div>
@@ -284,8 +285,8 @@ const CityDetail = () => {
                   <div className="mb-8">
                     <div className="flex items-center gap-2 mb-3">
                       <Clock className="w-5 h-5 text-primary" />
-                      <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground">
-                        {language === 'pl' ? `Jak obsługujemy klientów z ${city!.genitive}` : `How We Serve Clients in ${city!.name}`}
+                      <h2 className="font-heading h-section-long text-foreground">
+                        <DecodeText text={language === 'pl' ? `Jak obsługujemy klientów z ${city!.genitive}` : `How We Serve Clients in ${city!.name}`} />
                       </h2>
                     </div>
                     <p className="text-sm text-muted-foreground">{localCzasDojazdu}</p>
@@ -293,12 +294,12 @@ const CityDetail = () => {
                 </>
               ) : (
                 <>
-                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mb-4">
+                  <p className="fx-reveal text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mb-4">
                     {language === 'pl'
                       ? `Szkolenia, wdrażanie i agencja kreatywna AI w ${city!.locative}. Jako regionalny lider transformacji cyfrowej, pomagamy firmom wdrażać technologie jutra, zapewniając realną oszczędność czasu, redukcję kosztów oraz pełne bezpieczeństwo danych w zgodzie z RODO. Nasz zespół ekspertów łączy strategiczne doradztwo z innowacyjną produkcją wizualną, budując przewagę konkurencyjną lokalnych przedsiębiorstw już dziś.`
                       : `AI training, implementation, and creative agency in ${city!.name}. As a regional leader in digital transformation, we help businesses implement tomorrow's technologies, ensuring real time savings, cost reduction, and full GDPR-compliant data security.`}
                   </p>
-                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+                  <p className="fx-reveal text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
                     {language === 'pl'
                       ? `Oferujemy kompleksowe usługi sztucznej inteligencji dla firm w ${city!.locative}. Szkolenia AI, automatyzacja procesów, generatywne media i doradztwo strategiczne – zdalnie lub stacjonarnie w Twoim mieście.`
                       : `We offer comprehensive AI services for businesses in ${city!.name}. AI training, process automation, generative media, and strategic consulting – remotely or on-site in your city.`}
@@ -312,14 +313,14 @@ const CityDetail = () => {
               <div className="mb-14 md:mb-20 space-y-10">
                 {seoSections.map((section) => (
                   <section key={section.id}>
-                    <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-3">
-                      {section.heading}
+                    <h2 className="font-heading h-section-long text-foreground mb-3">
+                      <DecodeText text={section.heading} />
                     </h2>
                     <div className="space-y-4">
                       {section.paragraphs.map((p, i) => (
                         <p
                           key={i}
-                          className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl text-justify hyphens-auto"
+                          className="fx-reveal text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl hyphens-auto"
                         >
                           {p}
                         </p>
@@ -349,7 +350,7 @@ const CityDetail = () => {
                   link: '/services/agencja-kreatywna-ai',
                 },
               ].map((service) => (
-                <Link key={service.title} to={service.link} className="p-5 rounded-xl border border-border bg-card hover:border-primary/40 transition-colors block">
+                <Link key={service.title} to={service.link} className="fx-card fx-reveal p-5 block">
                   <h3 className="font-semibold text-foreground mb-2">{service.title}</h3>
                   <p className="text-sm text-muted-foreground">{service.desc}</p>
                 </Link>
@@ -361,15 +362,15 @@ const CityDetail = () => {
               <div className="mb-14 md:mb-20">
                 <div className="flex items-center gap-2 mb-6">
                   <HelpCircle className="w-5 h-5 text-primary" />
-                  <h2 className="font-heading text-2xl md:text-3xl font-bold">
+                  <h2 className="font-heading h-section-long">
                     <span className="text-gradient">
-                      {language === 'pl' ? `Najczęstsze pytania o AI w ${city!.locative}` : `FAQ about AI in ${city!.name}`}
+                      <DecodeText text={language === 'pl' ? `Najczęstsze pytania o AI w ${city!.locative}` : `FAQ about AI in ${city!.name}`} />
                     </span>
                   </h2>
                 </div>
                 <Accordion type="single" collapsible className="space-y-3">
                   {localFaq.map((item, i) => (
-                    <AccordionItem key={i} value={`faq-${i}`} className="border border-border rounded-xl px-5">
+                    <AccordionItem key={i} value={`faq-${i}`} className="fx-card fx-reveal px-5">
                       <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline">
                         {item.pytanie}
                       </AccordionTrigger>
@@ -387,8 +388,8 @@ const CityDetail = () => {
               <div className="mb-14 md:mb-20">
                 <div className="flex items-center gap-2 mb-6">
                   <Navigation className="w-5 h-5 text-primary" />
-                  <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground">
-                    {language === 'pl' ? `Obsługujemy też firmy z okolic ${city!.genitive}` : `We also serve businesses near ${city!.name}`}
+                  <h2 className="font-heading h-section-long text-foreground">
+                    <DecodeText text={language === 'pl' ? `Obsługujemy też firmy z okolic ${city!.genitive}` : `We also serve businesses near ${city!.name}`} />
                   </h2>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -407,12 +408,12 @@ const CityDetail = () => {
 
             {/* CTA */}
             <div className="mb-14 md:mb-20 text-center p-8 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10">
-              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3">
+              <h2 className="font-heading h-section-long mb-3">
                 <span className="text-gradient">
-                  {language === 'pl' ? `Gotowy na wdrożenie AI w Twojej firmie z ${city!.genitive}?` : `Ready for AI implementation in ${city!.name}?`}
+                  <DecodeText text={language === 'pl' ? `Gotowy na wdrożenie AI w Twojej firmie z ${city!.genitive}?` : `Ready for AI implementation in ${city!.name}?`} />
                 </span>
               </h2>
-              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+              <p className="fx-reveal text-muted-foreground mb-6 max-w-xl mx-auto">
                 {language === 'pl'
                   ? 'Pierwsza rozmowa konsultacyjna jest bezpłatna. Skontaktuj się i sprawdź, co AI może zrobić dla Twojego biznesu.'
                   : 'The first consultation is free. Get in touch and find out what AI can do for your business.'}
@@ -426,12 +427,12 @@ const CityDetail = () => {
 
             {/* Contact form */}
             <div className="max-w-2xl mx-auto">
-              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-2 text-center">
+              <h2 className="font-heading h-section-long mb-2 text-center">
                 <span className="text-gradient">
-                  {language === 'pl' ? 'Skontaktuj się z nami' : 'Get in Touch'}
+                  <DecodeText text={language === 'pl' ? 'Skontaktuj się z nami' : 'Get in Touch'} />
                 </span>
               </h2>
-              <p className="text-center text-muted-foreground mb-8">
+              <p className="fx-reveal text-center text-muted-foreground mb-8">
                 {language === 'pl' ? 'Napisz do nas – odpowiemy w ciągu 24 godzin' : "Write to us – we'll respond within 24 hours"}
               </p>
               <ContactForm />

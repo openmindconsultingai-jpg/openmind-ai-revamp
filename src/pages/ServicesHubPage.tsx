@@ -1,3 +1,4 @@
+import DecodeText from '@/components/fx/DecodeText';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
@@ -15,14 +16,8 @@ import {
   INDUSTRY_TRAINING_SLUGS,
 } from '@/data/services';
 
-const glassCard: React.CSSProperties = {
-  background: 'hsl(220 15% 8% / 0.55)',
-  border: '1px solid hsl(176 100% 43% / 0.15)',
-  boxShadow: '0 4px 30px hsl(0 0% 0% / 0.25)',
-};
-
 const justify: React.CSSProperties = {
-  textAlign: 'justify',
+  textAlign: 'left',
   hyphens: 'auto' as React.CSSProperties['hyphens'],
 };
 
@@ -73,14 +68,14 @@ const ServicesHubPage = () => {
 
   return (
     <PageLayout>
-      <main className="relative pt-28 md:pt-32 pb-8">
+      <main className="fx-prose relative pt-28 md:pt-32 pb-8">
         {/* Hero */}
-        <section className="container mx-auto px-6 max-w-5xl text-center">
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="text-gradient">{HUB.h1}</span>
+        <section className="fx-trace container mx-auto px-6 max-w-5xl text-center">
+          <h1 className="font-heading h-display mb-6">
+            <span className="text-gradient"><DecodeText text={HUB.h1} accentLast /></span>
           </h1>
           <p
-            className="font-sans text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+            className="fx-reveal font-sans text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
             style={justify}
           >
             Sześć obszarów, jedna zasada: rozwiązania, które działają w produkcji miesiącami —
@@ -88,7 +83,7 @@ const ServicesHubPage = () => {
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link to="/contact">
-              <Button size="lg" className="font-semibold">
+              <Button size="lg">
                 Napisz do nas przez formularz
               </Button>
             </Link>
@@ -107,14 +102,13 @@ const ServicesHubPage = () => {
         </section>
 
         {/* Services grid */}
-        <section className="container mx-auto px-6 max-w-6xl mt-16 md:mt-24">
+        <section className="fx-trace container mx-auto px-6 max-w-6xl mt-16 md:mt-24">
           <div className="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {nonTraining.map((s) => (
               <Link
                 key={s.slug}
                 to={s.path}
-                className="group rounded-2xl p-6 md:p-7 transition hover:scale-[1.01]"
-                style={glassCard}
+                className="fx-card fx-reveal group p-6 md:p-7"
               >
                 <h2 className="font-heading text-lg md:text-xl font-semibold text-primary group-hover:text-primary/80 mb-3">
                   {s.navLabel}
@@ -138,8 +132,7 @@ const ServicesHubPage = () => {
                 onClick={() => setOpenTraining((v) => !v)}
                 aria-expanded={openTraining}
                 aria-controls="trainings-panel"
-                className="group rounded-2xl p-6 md:p-7 text-left transition hover:scale-[1.01]"
-                style={glassCard}
+                className="fx-card fx-reveal group p-6 md:p-7 text-left"
               >
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <h2 className="font-heading text-lg md:text-xl font-semibold text-primary group-hover:text-primary/80">
@@ -168,7 +161,7 @@ const ServicesHubPage = () => {
           {trainingHub && (
             <div
               id="trainings-panel"
-              className={`grid transition-all duration-500 ease-out ${
+              className={`grid transition-opacity duration-500 motion-reduce:transition-none ease-out ${
                 openTraining
                   ? 'grid-rows-[1fr] opacity-100 mt-6'
                   : 'grid-rows-[0fr] opacity-0 mt-0'
@@ -176,13 +169,7 @@ const ServicesHubPage = () => {
             >
               <div className="overflow-hidden">
                 <div
-                  className="rounded-2xl p-6 md:p-8"
-                  style={{
-                    ...glassCard,
-                    background:
-                      'linear-gradient(145deg, hsl(176 100% 43% / 0.06), hsl(220 15% 6% / 0.6))',
-                    border: '1px solid hsl(176 100% 43% / 0.22)',
-                  }}
+                  className="border border-border p-6 md:p-8"
                 >
                   {/* Overview link */}
                   <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
@@ -210,11 +197,7 @@ const ServicesHubPage = () => {
                       <Link
                         key={s.slug}
                         to={s.path}
-                        className="group rounded-xl p-4 md:p-5 transition hover:scale-[1.01]"
-                        style={{
-                          background: 'hsl(220 15% 6% / 0.55)',
-                          border: '1px solid hsl(176 100% 43% / 0.12)',
-                        }}
+                        className="fx-card fx-reveal group p-4 md:p-5"
                       >
                         <h4 className="font-heading text-base font-semibold text-primary group-hover:text-primary/80 mb-2">
                           {s.navLabel}
@@ -237,11 +220,7 @@ const ServicesHubPage = () => {
                           <Link
                             key={s.slug}
                             to={s.path}
-                            className="group rounded-lg px-4 py-3 transition"
-                            style={{
-                              background: 'hsl(220 15% 6% / 0.45)',
-                              border: '1px solid hsl(176 100% 43% / 0.1)',
-                            }}
+                            className="fx-card fx-reveal group px-4 py-3"
                           >
                             <span className="font-sans text-sm font-medium text-foreground/85 group-hover:text-primary">
                               {s.navLabel}
@@ -259,13 +238,13 @@ const ServicesHubPage = () => {
 
         {/* Why us */}
         {whyBlock && (
-          <section className="container mx-auto px-6 max-w-6xl mt-20 md:mt-28">
-            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-10">
-              <span className="text-gradient">{whyBlock.h2}</span>
+          <section className="fx-trace container mx-auto px-6 max-w-6xl mt-20 md:mt-28">
+            <h2 className="font-heading h-section text-center mb-10">
+              <span className="text-gradient"><DecodeText text={whyBlock.h2} accentLast /></span>
             </h2>
             <div className="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {whyBlock.subs.map((sub, i) => (
-                <div key={i} className="rounded-2xl p-6 md:p-7" style={glassCard}>
+                <div key={i} className="fx-card fx-reveal p-6 md:p-7">
                   <h3 className="font-heading text-lg md:text-xl font-semibold text-foreground mb-3">
                     {sub.h3}
                   </h3>
@@ -285,7 +264,7 @@ const ServicesHubPage = () => {
         )}
 
         {/* Bottom CTA */}
-        <section className="container mx-auto px-6 max-w-4xl mt-20 mb-24 text-center">
+        <section className="fx-trace container mx-auto px-6 max-w-4xl mt-20 mb-24 text-center">
           <div
             className="rounded-3xl p-10 md:p-14"
             style={{
@@ -294,18 +273,18 @@ const ServicesHubPage = () => {
               border: '1px solid hsl(176 100% 43% / 0.25)',
             }}
           >
-            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
-              Porozmawiajmy o Twoim projekcie
+            <h2 className="font-heading h-section mb-4">
+              <DecodeText text={'Porozmawiajmy o Twoim projekcie'} accentLast />
             </h2>
             <p
-              className="font-sans text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6"
+              className="fx-reveal font-sans text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6"
               style={justify}
             >
               Pierwsza konsultacja (30–45 minut, online lub w naszej siedzibie) jest zawsze
               bezpłatna i niezobowiązująca. Odpowiadamy w ciągu 24 godzin w dni robocze.
             </p>
             <Link to="/contact">
-              <Button size="lg" className="font-semibold">
+              <Button size="lg">
                 Napisz do nas przez formularz
               </Button>
             </Link>

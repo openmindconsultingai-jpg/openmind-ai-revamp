@@ -1,4 +1,4 @@
-import { memo, useState, useCallback, useEffect, useRef } from 'react';
+import { memo, useState, useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
@@ -10,7 +10,10 @@ const FloatingNav = memo(() => {
   const { language, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const pillRef = useRef<HTMLSpanElement>(null);
+  const hovered = useRef<string>();
+  const focused = useRef<string>();
   const lastScrollY = useRef(0);
   const location = useLocation();
 
@@ -22,8 +25,6 @@ const FloatingNav = memo(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
       const diff = currentY - lastScrollY.current;
-
-      setScrolled(currentY > 24);
 
       if (isMenuOpen) {
         setHidden(false);
@@ -68,10 +69,39 @@ const FloatingNav = memo(() => {
   const isActive = (path: string) =>
     path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
 
+  const activePath = navItems.find((item) => isActive(item.path))?.path;
+  const highlightLink = useCallback(() => {
+    const nav = navRef.current;
+    const pill = pillRef.current;
+    if (!nav || !pill) return;
+    const path = hovered.current ?? focused.current ?? activePath;
+    let item: HTMLElement | undefined;
+    for (const link of nav.querySelectorAll<HTMLElement>('[data-nav-path]')) {
+      const highlighted = link.dataset.navPath === path;
+      if (link.hasAttribute('data-highlight') !== highlighted) link.toggleAttribute('data-highlight', highlighted);
+      if (highlighted) item = link;
+    }
+    pill.style.opacity = item?.offsetWidth ? '1' : '0';
+    if (item?.offsetWidth) {
+      pill.style.transform = `translateX(${item.offsetLeft}px)`;
+      pill.style.width = `${item.offsetWidth}px`;
+    }
+  }, [activePath]);
+
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    highlightLink();
+    const resize = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(highlightLink) : undefined;
+    resize?.observe(nav);
+    for (const item of nav.querySelectorAll('a')) resize?.observe(item);
+    return () => resize?.disconnect();
+  }, [highlightLink, language]);
+
   return (
     <>
       <header
-        className="fixed top-0 left-0 right-0 z-50 transition-transform duration-500 ease-out"
+        className="fx-nav-header fixed top-0 left-0 right-0 z-50 transition-transform duration-500 ease-out"
         style={{
           transform: hidden ? 'translateY(-110%)' : 'translateY(0)',
         }}
@@ -86,22 +116,7 @@ const FloatingNav = memo(() => {
           }}
         />
 
-        <div
-          className="w-full transition-all duration-300"
-          style={{
-            background: scrolled
-              ? 'hsl(220 15% 6% / 0.78)'
-              : 'hsl(220 15% 6% / 0.45)',
-            backdropFilter: 'blur(18px) saturate(140%)',
-            WebkitBackdropFilter: 'blur(18px) saturate(140%)',
-            borderBottom: scrolled
-              ? '1px solid hsl(176 100% 43% / 0.12)'
-              : '1px solid hsl(0 0% 100% / 0.04)',
-            boxShadow: scrolled
-              ? '0 8px 32px hsl(220 15% 0% / 0.45)'
-              : 'none',
-          }}
-        >
+        <div className="fx-nav-panel w-full">
           <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-[72px] md:px-8">
             {/* Logo */}
             <Link
@@ -143,34 +158,21 @@ const FloatingNav = memo(() => {
             </div>
 
             {/* Desktop nav */}
-            <nav className="hidden items-center gap-1 md:flex">
+            <nav ref={navRef} className="relative hidden items-center gap-1 md:flex" onMouseLeave={() => { hovered.current = undefined; highlightLink(); }}>
+              <span ref={pillRef} aria-hidden="true" className="fx-nav-pill" />
               {navItems.map((item) => {
-                const active = isActive(item.path);
                 return (
                   <Link
                     key={item.path}
                     to={item.path}
-                    onMouseEnter={() => handlePrefetch(item.path, item.prefetch)}
-                    onFocus={() => handlePrefetch(item.path, item.prefetch)}
-                    className="group relative px-4 py-2 font-sans text-sm transition-colors duration-200 hover:!text-[hsl(176_100%_65%)]"
-                    style={{
-                      color: active
-                        ? 'hsl(176 100% 65%)'
-                        : 'hsl(0 0% 100% / 0.72)',
-                    }}
+                    onMouseEnter={() => { hovered.current = item.path; highlightLink(); handlePrefetch(item.path, item.prefetch); }}
+                    onFocus={() => { focused.current = item.path; highlightLink(); handlePrefetch(item.path, item.prefetch); }}
+                    onBlur={() => { focused.current = undefined; highlightLink(); }}
+                    className="fx-nav-link group relative px-3 lg:px-4 py-2 font-sans text-sm"
+                    data-nav-path={item.path}
                   >
                     <span className="relative z-10">{item.label}</span>
-                    <span
-                      aria-hidden
-                      className={`pointer-events-none absolute left-3 right-3 -bottom-0.5 h-px transition-all duration-300 ${
-                        active ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                      }`}
-                      style={{
-                        background:
-                          'linear-gradient(90deg, transparent, hsl(176 100% 55%), transparent)',
-                        boxShadow: '0 0 10px hsl(176 100% 55% / 0.7)',
-                      }}
-                    />
+                    <span aria-hidden="true" className="absolute pointer-events-none size-px opacity-0" />
                   </Link>
                 );
               })}
@@ -246,7 +248,7 @@ const FloatingNav = memo(() => {
         <div
           className="fixed inset-0 z-40 flex items-center justify-center md:hidden"
           style={{
-            background: 'hsl(220 15% 4% / 0.96)',
+            background: 'hsl(var(--background) / .96)',
             backdropFilter: 'blur(24px)',
             WebkitBackdropFilter: 'blur(24px)',
           }}

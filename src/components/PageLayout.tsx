@@ -41,7 +41,7 @@ const PageLayout = memo(({ children }: PageLayoutProps) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background relative overflow-x-clip">
+    <div className="min-h-screen relative overflow-x-clip">
 
       {/* Static background gradient - no animation for performance */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
@@ -65,7 +65,7 @@ const PageLayout = memo(({ children }: PageLayoutProps) => {
 
       {/* Grid pattern overlay - static */}
       <div 
-        className="fixed inset-0 pointer-events-none opacity-[0.015]"
+        className="fixed inset-0 pointer-events-none opacity-0"
         style={{
           backgroundImage: `
             linear-gradient(hsl(176 100% 43% / 0.3) 1px, transparent 1px),

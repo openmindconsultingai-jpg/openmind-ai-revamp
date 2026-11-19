@@ -61,12 +61,12 @@ const Home = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="signal-home min-h-screen">
       <FloatingNav />
       <ScrollVideoHero />
 
       <main className="relative z-[1]">
-        <div className="bg-background">
+        <div className="fx-prose">
           <Suspense fallback={<div className="min-h-screen bg-background" />}>
             <NewsSection />
             <div className="pt-12 md:pt-16">

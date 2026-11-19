@@ -16,111 +16,26 @@ const ParticleCanvas = memo(() => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Respect user accessibility preference — no animation if reduced motion is requested
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    let animId = 0;
-    let isPaused = document.hidden;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resize();
-
-    const particles: Array<{
-      x: number; y: number;
-      vx: number; vy: number;
-      size: number; alpha: number;
-    }> = [];
-
-    // Keep desktop density identical (~200). Reduce only on small mobile screens where
-    // the visual difference is imperceptible but CPU savings are large.
-    const isMobile = window.innerWidth < 768;
-    const baseCap = isMobile ? 60 : 200;
-    const count = Math.min(baseCap, Math.floor(window.innerWidth * window.innerHeight / 8000));
-
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 2.5 + 1,
-        alpha: Math.random() * 0.6 + 0.3,
-      });
-    }
-
-    const drawStatic = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p) => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(176, 100%, 43%, ${p.alpha})`;
-        ctx.fill();
-      });
-    };
-
-    const FRAME_DURATION = 1000 / 30; // throttle to 30 FPS
-    let lastFrameTime = 0;
-
-    const animate = (currentTime: number) => {
-      if (isPaused) return;
-      animId = requestAnimationFrame(animate);
-      if (currentTime - lastFrameTime < FRAME_DURATION) return;
-      lastFrameTime = currentTime;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(176, 100%, 43%, ${p.alpha})`;
-        ctx.fill();
-      });
-    };
-
-    if (prefersReducedMotion) {
-      drawStatic();
-    } else {
-      animId = requestAnimationFrame(animate);
-    }
-
-    let inViewport = true;
-    const handleVisibility = () => {
-      isPaused = document.hidden || !inViewport;
-      if (!isPaused && !prefersReducedMotion) {
-        cancelAnimationFrame(animId);
-        animId = requestAnimationFrame(animate);
+    const paint = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      const signal = getComputedStyle(canvas).getPropertyValue('--signal').trim();
+      const count = Math.min(width < 768 ? 24 : 50, Math.floor(width * height / 8000));
+      ctx.beginPath();
+      for (let i = 0; i < count; i++) {
+        const x = (0.5 + i * 0.61803398875) % 1 * width;
+        const y = (0.5 + i * 0.75487766625) % 1 * height;
+        ctx.moveTo(x + 1, y);
+        ctx.arc(x, y, 1, 0, Math.PI * 2);
       }
+      ctx.fillStyle = `hsl(${signal} / .22)`;
+      ctx.fill();
     };
-
-    document.addEventListener('visibilitychange', handleVisibility);
-
-    const io = new IntersectionObserver((entries) => {
-      inViewport = entries[0]?.isIntersecting ?? true;
-      handleVisibility();
-    });
-    io.observe(canvas);
-
-    // Only react to real viewport changes — observing body caused canvas resets while scrolling
-    window.addEventListener('resize', resize);
-
-
-    return () => {
-      cancelAnimationFrame(animId);
-      document.removeEventListener('visibilitychange', handleVisibility);
-      window.removeEventListener('resize', resize);
-      io.disconnect();
-    };
+    paint();
+    window.addEventListener('resize', paint, { passive: true });
+    return () => window.removeEventListener('resize', paint);
   }, []);
 
 
