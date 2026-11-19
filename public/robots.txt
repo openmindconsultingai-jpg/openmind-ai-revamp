@@ -1,40 +1,50 @@
 User-agent: Googlebot
 Allow: /
+Disallow: /wariant-tower
 
 User-agent: Bingbot
 Allow: /
+Disallow: /wariant-tower
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /wariant-tower
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /wariant-tower
 
 User-agent: GPTBot
 Allow: /
+Disallow: /wariant-tower
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /wariant-tower
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /wariant-tower
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /wariant-tower
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /wariant-tower
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /wariant-tower
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /wariant-tower
 
 User-agent: *
 Allow: /
+Disallow: /wariant-tower
 
 Sitemap: https://www.openmindai.pl/sitemap-index.xml
 Sitemap: https://www.openmindai.pl/sitemap.xml
-
-Disallow: /wariant-tower

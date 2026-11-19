@@ -17,3 +17,7 @@
 - [x] Porównać i przywrócić grafiki Aktualności oraz tła podstron.
 - [x] Dodać i sprawdzić dekodowanie nazw miast oraz napisów w filmach.
 - [x] Przywrócić widoczne glify we wszystkich trzech filmach i zastosować Signal tylko w napisach filmu na stronie głównej; sprawdzić przewijanie i zrzuty w Playwright.
+
+# Indeksowanie aktualności
+- [x] Generować HTML i mapy witryny z publicznych aktualności produkcyjnych; poprawić robots.txt.
+- [x] Sprawdzić przez HTTP wszystkie 25 wygenerowanych aktualności, próbki bloga i lokalizacji oraz awarię pobierania (HTTP 503).

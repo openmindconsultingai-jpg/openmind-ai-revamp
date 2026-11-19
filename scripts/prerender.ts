@@ -9,6 +9,7 @@
 import fs from 'node:fs';
 import { pageUrl, normalizeStructuredUrls } from '../src/lib/seoUrls';
 import { validateSeoOutput } from './seo-validation';
+import { buildNewsPage, fetchPublishedNews, type PublishedNews } from './news-prerender';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { voivodeships } from '../src/data/voivodeships';
@@ -52,6 +53,7 @@ type Meta = {
   h1: string;
   body: string; // HTML inside #root, replaces the default home snippet
   jsonLd?: object; // optional per-route JSON-LD injected into <head>
+  article?: { image?: string; publishedTime: string };
 };
 
 const esc = (s: unknown) =>
@@ -809,15 +811,32 @@ function readSitemap(file: string): string[] {
 
 // This is the date of this route-specific metadata/content correction, never build time.
 const SEO_CORRECTION_LASTMOD = '2026-11-10';
+let news: PublishedNews[] = [];
+try {
+  news = await fetchPublishedNews(ROOT);
+  console.log(`[prerender] Loaded ${news.length} published news articles`);
+} catch (error) {
+  console.warn(`[prerender] Could not read production news; skipping article prerenders and sitemap entries: ${error instanceof Error ? error.message : 'unknown error'}`);
+}
+const newsLastmod = new Map<string, string | null>();
+for (const row of news) {
+  const { route, meta, lastmod } = buildNewsPage(row, ORG_JSONLD);
+  STATIC_META[route] = meta;
+  newsLastmod.set(route, lastmod);
+}
+
 const allUrls = [...new Set([
   ...readSitemap('sitemap-main.xml'),
   ...readSitemap('sitemap-blog.xml'),
   ...readSitemap('sitemap-cities.xml'),
   ...Object.keys(STATIC_META).map(pageUrl),
 ].map(pageUrl))];
-function buildSitemapXml(urls: string[]): string {
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
-    .map(url => `  <url><loc>${url}</loc><lastmod>${SEO_CORRECTION_LASTMOD}</lastmod></url>`)
+function buildSitemapXml(routes: string[]): string {
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes
+    .map(route => {
+      const lastmod = newsLastmod.has(route) ? newsLastmod.get(route) : SEO_CORRECTION_LASTMOD;
+      return `  <url><loc>${esc(pageUrl(route))}</loc>${lastmod ? `<lastmod>${esc(lastmod)}</lastmod>` : ''}</url>`;
+    })
     .join('\n')}\n</urlset>\n`;
 }
 
@@ -832,12 +851,12 @@ function buildHtml(routePath: string, meta: Meta): string {
   let html = template;
 
   // <title>
-  html = html.replace(/<title>[^<]*<\/title>/, `<title>${escAttr(meta.title)}</title>`);
+  html = html.replace(/<title>[^<]*<\/title>/, () => `<title>${escAttr(meta.title)}</title>`);
 
   // meta description
   html = html.replace(
     /<meta name="description"[^>]*>/,
-    `<meta name="description" content="${escAttr(meta.description)}" />`,
+    () => `<meta name="description" content="${escAttr(meta.description)}" />`,
   );
 
   // canonical (single tag in template)
@@ -867,27 +886,34 @@ function buildHtml(routePath: string, meta: Meta): string {
   );
   html = html.replace(
     /<meta property="og:title"[^>]*>/,
-    `<meta property="og:title" content="${escAttr(meta.title)}" />`,
+    () => `<meta property="og:title" content="${escAttr(meta.title)}" />`,
   );
   html = html.replace(
     /<meta property="og:description"[^>]*>/,
-    `<meta property="og:description" content="${escAttr(meta.description)}" />`,
+    () => `<meta property="og:description" content="${escAttr(meta.description)}" />`,
   );
   html = html.replace(
     /<meta name="twitter:title"[^>]*>/,
-    `<meta name="twitter:title" content="${escAttr(meta.title)}" />`,
+    () => `<meta name="twitter:title" content="${escAttr(meta.title)}" />`,
   );
   html = html.replace(
     /<meta name="twitter:description"[^>]*>/,
-    `<meta name="twitter:description" content="${escAttr(meta.description)}" />`,
+    () => `<meta name="twitter:description" content="${escAttr(meta.description)}" />`,
   );
+
+  const article = meta.article;
+  if (article) {
+    html = html.replace(/<meta property="og:type"[^>]*>/, '<meta property="og:type" content="article" />');
+    html = html.replace(/<meta (?:property="og:image(?::[^"]+)?"|name="twitter:image(?::[^"]+)?")[^>]*>\s*/g, '');
+  }
 
   // Replace the SEO snippet inside #root with route-specific content.
   // Match the entire <div id="root">...</div> block (non-greedy, first occurrence).
   const newRoot =
     `<div id="root">\n` +
-    `      <h1>${meta.h1}</h1>\n` +
-    `      ${meta.body}\n` +
+    (article
+      ? `      <article class="prerender-news"><h1>${esc(meta.h1)}</h1>\n${meta.body}\n</article>\n`
+      : `      <h1>${meta.h1}</h1>\n      ${meta.body}\n`) +
     `      ${staticCrawlLinks(routePath)}\n` +
     `      <footer><nav aria-label="Główna nawigacja SEO">\n` +
     `        <a href="/">Strona główna</a>\n` +
@@ -900,12 +926,21 @@ function buildHtml(routePath: string, meta: Meta): string {
     `      <p class="recaptcha-notice" style="font-size:0.75rem;color:#94a3b8;text-align:center;margin-top:1rem;">Ta strona jest chroniona przez reCAPTCHA. Obowiązuje <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">Polityka prywatności</a> i <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">Regulamin</a> Google.</p>\n` +
     `    </div>`;
   // The SEO snippet has <section> but no nested <div>, so non-greedy </div> matches the root close.
-  html = html.replace(/<div id="root">[\s\S]*?<\/div>/, newRoot);
+  html = html.replace(/<div id="root">[\s\S]*?<\/div>/, () => newRoot);
 
   const jsonLdTag = meta.jsonLd
     ? `<script type="application/ld+json" data-page-jsonld>${JSON.stringify(normalizeStructuredUrls(meta.jsonLd)).replace(/</g, '\\u003c')}</script>`
     : '';
-  html = html.replace('</head>', `${jsonLdTag}</head>`);
+  const articleTags = article ? [
+    `<meta property="article:published_time" content="${escAttr(article.publishedTime)}" />`,
+    ...(article.image ? [
+      `<meta property="og:image" content="${escAttr(article.image)}" />`,
+      `<meta name="twitter:image" content="${escAttr(article.image)}" />`,
+    ] : []),
+    // Match the existing pre-React flash protection without hiding the HTML in a no-JS visit.
+    '<style>@media (scripting: enabled){#root>.prerender-news{opacity:0}}</style>',
+  ].join('\n') : '';
+  html = html.replace('</head>', () => `${articleTags}${jsonLdTag}</head>`);
 
   return html;
 }
@@ -1006,16 +1041,29 @@ biuro@openmindai.pl • ${SITE}/contact
 fs.writeFileSync(path.join(DIST, 'llms.txt'), llmsTxt, 'utf8');
 
 if (missing.length) throw new Error(`[prerender] Missing metadata: ${missing.join(', ')}`);
-const completeSitemap = buildSitemapXml(generatedRoutes.map(pageUrl));
+const completeSitemap = buildSitemapXml(generatedRoutes);
 for (const name of ['sitemap.xml', 'sitemap-html.xml']) {
   fs.writeFileSync(path.join(DIST, name), completeSitemap, 'utf8');
 }
 for (const [name, filter] of [
-  ['sitemap-main.xml', (route: string) => !route.startsWith('/blog/') && !route.startsWith('/gdzie-dzialamy/')],
+  ['sitemap-main.xml', (route: string) => !newsLastmod.has(route) && !route.startsWith('/blog/') && !route.startsWith('/gdzie-dzialamy/')],
   ['sitemap-blog.xml', (route: string) => route.startsWith('/blog/')],
   ['sitemap-cities.xml', (route: string) => route.startsWith('/gdzie-dzialamy/')],
 ] as const) {
-  fs.writeFileSync(path.join(DIST, name), buildSitemapXml(generatedRoutes.filter(filter).map(pageUrl)), 'utf8');
+  fs.writeFileSync(path.join(DIST, name), buildSitemapXml(generatedRoutes.filter(filter)), 'utf8');
 }
+
+const newsRoutes = generatedRoutes.filter(route => newsLastmod.has(route));
+const newsSitemapName = 'sitemap-news.xml';
+let indexSitemap = fs.readFileSync(path.join(ROOT, 'public/sitemap-index.xml'), 'utf8');
+if (newsRoutes.length) {
+  fs.writeFileSync(path.join(DIST, newsSitemapName), buildSitemapXml(newsRoutes), 'utf8');
+  const latest = newsRoutes.map(route => newsLastmod.get(route)).filter((date): date is string => Boolean(date))
+    .sort((a, b) => Date.parse(b) - Date.parse(a))[0];
+  const entry = `<sitemap><loc>${SITE}/${newsSitemapName}</loc>${latest ? `<lastmod>${esc(latest)}</lastmod>` : ''}</sitemap>`;
+  indexSitemap = indexSitemap.replace('</sitemapindex>', `  ${entry}\n</sitemapindex>`);
+}
+fs.writeFileSync(path.join(DIST, 'sitemap-index.xml'), indexSitemap, 'utf8');
+
 validateSeoOutput(DIST, generatedRoutes);
 console.log(`[prerender] ${written} full pages, ${written - 1} HTML redirects; no publication`);

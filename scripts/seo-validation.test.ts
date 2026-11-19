@@ -5,6 +5,7 @@ import { cleanPagePath, pageUrl, normalizeStructuredUrls } from '../src/lib/seoU
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { buildNewsPage, fetchPublishedNews } from './news-prerender';
 
 test('Nysa canonical uses the www domain and no HTML suffix', () => {
   assert.equal(pageUrl('/gdzie-dzialamy/opolskie/nysa.html'), 'https://www.openmindai.pl/gdzie-dzialamy/opolskie/nysa');
@@ -46,4 +47,44 @@ test('incorrect voivodeship inflection fails the guard', () => {
   assert.throws(() => assertCityText('(województwo opolskim)'));
   assert.throws(() => assertCityText('(województwo śląskim)'));
   assert.doesNotThrow(() => assertCityText('w województwie opolskim'));
+});
+
+test('news metadata uses the published date, an absolute cover and a self-referencing URL', () => {
+  const organization = { '@type': 'Organization', name: 'OpenMind AI Consulting' };
+  const { meta, lastmod } = buildNewsPage({
+    slug: 'certyfikat-iso-9001', title_pl: 'Certyfikat ISO 9001', excerpt_pl: 'Zarządzanie jakością',
+    content_pl: '## ISO 9001\n\n**Zarządzanie jakością**\n\n[Blog](/blog/73.html#temat)',
+    image_url: '/news-cover.webp', published_at: '2026-11-19T12:00:00+00:00', created_at: '2026-11-18T12:00:00+00:00',
+  }, organization);
+
+  assert.equal(meta.title, 'Certyfikat ISO 9001 | Aktualności OpenMind AI');
+  assert.equal(meta.description, 'Zarządzanie jakością');
+  assert.equal(lastmod, '2026-11-19T12:00:00+00:00');
+  assert.equal(meta.jsonLd.datePublished, lastmod);
+  assert.equal(meta.jsonLd.url, 'https://www.openmindai.pl/aktualnosci/certyfikat-iso-9001');
+  assert.deepEqual(meta.jsonLd.image, ['https://www.openmindai.pl/news-cover.webp']);
+  assert.deepEqual(meta.jsonLd.author, organization);
+  assert.deepEqual(meta.jsonLd.publisher, organization);
+  assert.match(meta.body, /<h2>ISO 9001<\/h2>\n<p><strong>Zarządzanie jakością<\/strong><\/p>/);
+  assert.match(meta.body, /href="\/blog\/73#temat"/);
+});
+
+test('news fetching keeps the publication filter across every page and discards partial results on failure', async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'news-source-'));
+  try {
+    fs.writeFileSync(path.join(root, '.env'), 'VITE_SUPABASE_URL=https://production.example\nVITE_SUPABASE_PUBLISHABLE_KEY=public-test-key\n');
+    const cursors: Array<string | null> = [];
+    const list = await fetchPublishedNews(root, async (input) => {
+      const url = new URL(String(input));
+      assert.equal(url.origin, 'https://production.example');
+      assert.equal(url.searchParams.get('published'), 'eq.true');
+      const cursor = url.searchParams.get('slug');
+      cursors.push(cursor);
+      return Response.json(cursor === null ? [{ slug: 'iso' }] : cursor === 'gt.iso' ? [{ slug: 'szkolenia' }] : []);
+    });
+    assert.deepEqual(cursors, [null, 'gt.iso', 'gt.szkolenia']);
+    assert.deepEqual(list.map(({ slug }) => slug), ['iso', 'szkolenia']);
+    await assert.rejects(fetchPublishedNews(root, async (input) => new URL(String(input)).searchParams.has('slug')
+      ? new Response(null, { status: 503 }) : Response.json([{ slug: 'iso' }])), /HTTP 503/);
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
 });
