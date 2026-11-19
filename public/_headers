@@ -4,9 +4,6 @@
 /*.html
   Cache-Control: public, max-age=300, must-revalidate
 
-/openmind-neural-recreated.html
-  Cache-Control: public, max-age=86400
-
 /*.webp
   Cache-Control: public, max-age=2592000
 

@@ -1,8 +1,5 @@
 project_id = "nyxcjvbeipocvgjforpn"
 
-[functions.ai-advisor]
-verify_jwt = false
-
 [functions.booking-availability]
 verify_jwt = false
 
@@ -18,5 +15,3 @@ verify_jwt = false
 [functions.send-contact-email]
 verify_jwt = false
 
-[functions.avatar-widget]
-verify_jwt = false
