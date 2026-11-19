@@ -1,3 +1,5 @@
+import DecodeCaption from "@/components/fx/DecodeCaption";
+import { setCaptionActive } from "@/components/fx/decode.mjs";
 import { useEffect, useRef, useState } from "react";
 
 /**
@@ -209,6 +211,7 @@ export default function OpenMindScrollHero({
     const span = 0.8 / Math.max(services.length, 1);
     const start = 0.17;
 
+    const captions = [headRef.current, ...itemRefs.current].filter(Boolean);
     const paint = (now?: number) => {
       frame = 0;
       const stamp = now ?? performance.now();
@@ -243,6 +246,7 @@ export default function OpenMindScrollHero({
       if (headRef.current) {
         const fade = clamp01(1 - progress / headlineHold);
         headRef.current.style.opacity = String(fade);
+        setCaptionActive(headRef.current, !reduced.matches && fade > 0 && rect.top < innerHeight && rect.bottom > 0);
         headRef.current.style.transform = `translate3d(0, ${(
           (1 - fade) * -26
         ).toFixed(2)}px, 0)`;
@@ -267,6 +271,7 @@ export default function OpenMindScrollHero({
               ? 1 - (distance - hold) / (1 - hold)
               : 0;
         node.style.opacity = String(strength);
+        setCaptionActive(node, !reduced.matches && strength > 0 && rect.top < innerHeight && rect.bottom > 0);
         node.style.transform = `translate3d(0, ${(-local * 42).toFixed(2)}px, 0)`;
         // Rozmycie jest bardzo kosztowne na telefonach — tam zostaje sama płynna zmiana krycia.
         if (!light) node.style.filter = `blur(${((1 - strength) * 9).toFixed(2)}px)`;
@@ -290,6 +295,7 @@ export default function OpenMindScrollHero({
 
     return () => {
       if (frame) window.cancelAnimationFrame(frame);
+      captions.forEach((node) => { if (node) setCaptionActive(node, false); });
       window.removeEventListener("scroll", request);
       window.removeEventListener("resize", request);
       window.removeEventListener("touchstart", unlock);
@@ -332,13 +338,13 @@ export default function OpenMindScrollHero({
         <div className="omh-veil" />
 
         <div className="omh-head" ref={headRef}>
-          <p className="omh-kicker">{kicker}</p>
+          <p className="omh-kicker"><DecodeCaption text={kicker} /></p>
           {headingLevel === 2 ? (
-            <h2 className="omh-title">{title}</h2>
+            <h2 className="omh-title"><DecodeCaption text={title} /></h2>
           ) : (
-            <h1 className="omh-title">{title}</h1>
+            <h1 className="omh-title"><DecodeCaption text={title} /></h1>
           )}
-          <p className="omh-sub">{subtitle}</p>
+          <p className="omh-sub"><DecodeCaption text={subtitle} /></p>
         </div>
 
         <div className="omh-depths">
@@ -351,11 +357,11 @@ export default function OpenMindScrollHero({
                 itemRefs.current[index] = node;
               }}
             >
-              <span className="omh-depth-no">{service.no}</span>
-              <span className="omh-depth-title">{service.title}</span>
-              <span className="omh-depth-body">{service.body}</span>
+              <span className="omh-depth-no"><DecodeCaption text={service.no} /></span>
+              <span className="omh-depth-title"><DecodeCaption text={service.title} /></span>
+              <span className="omh-depth-body"><DecodeCaption text={service.body} /></span>
               <span className="omh-depth-more">
-                {moreLabel}
+                <DecodeCaption text={moreLabel} />
                 <span aria-hidden="true">&#8594;</span>
               </span>
             </a>
@@ -378,6 +384,7 @@ const CSS_TEXT = `
   position: relative;
   background: #0D1117;
   color: #E9F2F0;
+  font-weight: 400;
   font-family: "DM Sans", system-ui, -apple-system, sans-serif;
 }
 .omh-stage {
@@ -426,6 +433,8 @@ const CSS_TEXT = `
 }
 .omh-title {
   font-family: "Outfit", system-ui, sans-serif;
+  font-optical-sizing: none;
+  text-wrap: wrap;
   font-weight: 700;
   font-size: clamp(36px, 6.6vw, 82px);
   line-height: 0.98;

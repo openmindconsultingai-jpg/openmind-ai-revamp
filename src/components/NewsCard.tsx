@@ -14,13 +14,13 @@ const NewsCard = ({ item, language, headingLevel = 'h3' }: NewsCardProps) => {
   return (
     <article className="fx-card fx-reveal group flex h-full flex-col overflow-hidden">
       {item.imageUrl && (
-        <Link to={href} tabIndex={-1} aria-hidden="true" className="block aspect-[16/9] overflow-hidden">
+        <Link to={href} tabIndex={-1} aria-hidden="true" className="block aspect-video shrink-0 overflow-hidden">
           <img
             src={item.imageUrl}
             alt={item.title}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="h-full w-full object-contain"
           />
         </Link>
       )}

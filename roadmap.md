@@ -14,3 +14,5 @@
 # Signal
 - [x] Typografia, kolory i efekty bez zmian treści.
 - [x] Wydajność przewijania; podgląd strony głównej i /szkolenia-ai bez błędów na komputerze i telefonie, także z ograniczeniem ruchu.
+- [x] Porównać i przywrócić grafiki Aktualności oraz tła podstron.
+- [x] Dodać i sprawdzić dekodowanie nazw miast oraz napisów w filmach.

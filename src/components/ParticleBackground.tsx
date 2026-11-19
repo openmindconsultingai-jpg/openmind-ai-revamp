@@ -22,16 +22,19 @@ const ParticleCanvas = memo(() => {
       canvas.width = width;
       canvas.height = height;
       const signal = getComputedStyle(canvas).getPropertyValue('--signal').trim();
-      const count = Math.min(width < 768 ? 24 : 50, Math.floor(width * height / 8000));
-      ctx.beginPath();
-      for (let i = 0; i < count; i++) {
-        const x = (0.5 + i * 0.61803398875) % 1 * width;
-        const y = (0.5 + i * 0.75487766625) % 1 * height;
-        ctx.moveTo(x + 1, y);
-        ctx.arc(x, y, 1, 0, Math.PI * 2);
+      const count = Math.min(width < 768 ? 60 : 200, Math.floor(width * height / 8000));
+      for (let group = 0; group < 3; group++) {
+        ctx.beginPath();
+        for (let i = group; i < count; i += 3) {
+          const x = (0.5 + i * 0.61803398875) % 1 * width;
+          const y = (0.5 + i * 0.75487766625) % 1 * height;
+          const radius = 1 + ((i * 0.417) % 1) * 2.5;
+          ctx.moveTo(x + radius, y);
+          ctx.arc(x, y, radius, 0, Math.PI * 2);
+        }
+        ctx.fillStyle = `hsl(${signal} / ${.3 + group * .25})`;
+        ctx.fill();
       }
-      ctx.fillStyle = `hsl(${signal} / .22)`;
-      ctx.fill();
     };
     paint();
     window.addEventListener('resize', paint, { passive: true });

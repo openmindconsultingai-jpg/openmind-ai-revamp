@@ -1,3 +1,4 @@
+import DecodeCaption from "@/components/fx/DecodeCaption";
 import { useEffect, useRef, useState } from "react";
 import { noWidows } from "@/lib/typography";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -343,16 +344,16 @@ export default function ScrollVideoHero() {
             >
               <span className="inline-flex items-center gap-2 rounded bg-background/55 px-2.5 py-1 text-[10px] font-bold tracking-[0.24em] text-primary shadow-sm backdrop-blur-sm md:text-xs md:tracking-[0.3em]">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                {c.label}
+                <DecodeCaption active={o > 0} text={c.label} />
               </span>
               <span className="mt-3 block font-heading text-2xl font-bold leading-tight text-foreground [text-shadow:0_2px_12px_hsl(var(--background)),0_1px_3px_hsl(var(--background))] sm:text-3xl md:text-5xl">
-                {noWidows(c.title)}
+                <DecodeCaption active={o > 0} text={noWidows(c.title)} />
               </span>
               <span className="mt-2 block text-justify text-sm font-medium leading-relaxed text-foreground [text-shadow:0_2px_10px_hsl(var(--background)),0_1px_2px_hsl(var(--background))] md:mt-3 md:text-lg">
-                {noWidows(c.text)}
+                <DecodeCaption active={o > 0} text={noWidows(c.text)} />
               </span>
               <span className="mt-4 inline-block border-b border-primary pb-1 text-[10px] font-bold tracking-[0.24em] text-primary [text-shadow:0_2px_8px_hsl(var(--background))] md:text-xs md:tracking-[0.3em]">
-                {isPl ? "ZOBACZ USŁUGĘ →" : "SEE THE SERVICE →"}
+                <DecodeCaption active={o > 0} text={isPl ? "ZOBACZ USŁUGĘ →" : "SEE THE SERVICE →"} />
               </span>
             </a>
 
@@ -369,24 +370,24 @@ export default function ScrollVideoHero() {
           }}
         >
           <h1 className="max-w-4xl hyphens-auto font-heading text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-6xl">
-            {noWidows(
+            <DecodeCaption active={headlineOpacity > 0} text={noWidows(
               isPl
                 ? "Wdrożenia AI dla firm, które działają, kiedy Ty odpoczywasz"
                 : "AI implementations for companies that keep working while you rest"
-            )}
+            )} />
           </h1>
           <p className="mt-3 max-w-2xl text-justify text-sm leading-relaxed text-foreground/80 sm:text-base md:mt-4 md:text-lg">
-            {noWidows(
+            <DecodeCaption active={headlineOpacity > 0} text={noWidows(
               isPl
                 ? "Szkolenia, audyty i automatyzacja z AI dla firm, urzędów i szkół w całej Polsce. Od pierwszej rozmowy po proces, który pracuje bez Ciebie."
                 : "AI training, audits and automation for companies, public offices and schools across Poland. From the first conversation to a process that runs without you."
-            )}
+            )} />
           </p>
           <a
             href="/contact#contact"
             className="mt-6 inline-block border-b border-primary pb-1 text-[10px] tracking-[0.22em] text-primary sm:text-xs md:mt-8 md:text-sm md:tracking-[0.3em]"
           >
-            {isPl ? "POROZMAWIAJMY O TWOJEJ FIRMIE →" : "LET'S TALK ABOUT YOUR BUSINESS →"}
+            <DecodeCaption active={headlineOpacity > 0} text={isPl ? "POROZMAWIAJMY O TWOJEJ FIRMIE →" : "LET'S TALK ABOUT YOUR BUSINESS →"} />
           </a>
         </div>
 

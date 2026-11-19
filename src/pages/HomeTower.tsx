@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import DecodeCaption from '@/components/fx/DecodeCaption';
 import { useNavigate } from 'react-router-dom';
 import FloatingNav from '@/components/FloatingNav';
 import { LovableTower } from '@/components/openmind-tower';
@@ -59,6 +61,7 @@ const SECTIONS: TowerSection[] = [
 
 const HomeTower = () => {
   const navigate = useNavigate();
+  const [activeCategory, setActiveCategory] = useState(-1);
 
   usePageMeta({
     title: 'Wariant HERO — OpenMind Tower | OpenMind AI Consulting',
@@ -67,10 +70,11 @@ const HomeTower = () => {
   });
 
   return (
-    <div className="min-h-screen" style={{ background: '#080e13' }}>
+    <div className="tower-caption-page min-h-screen" style={{ background: '#080e13' }}>
       <FloatingNav />
       <LovableTower
         {...towerConfig}
+        onChange={(_, index) => setActiveCategory(index)}
         onCategory={(category) => {
           const match = SECTIONS.find((section) => `#${section.id}` === category.section);
           if (match) {
@@ -80,7 +84,7 @@ const HomeTower = () => {
         }}
       />
       <main className="relative z-[1]">
-        {SECTIONS.map((section) => (
+        {SECTIONS.map((section, index) => (
           <section
             key={section.id}
             id={section.id}
@@ -88,16 +92,16 @@ const HomeTower = () => {
           >
             <div className="max-w-[1180px] w-full mx-auto px-6 md:px-14">
               <div className="max-w-xl">
-                <p className="font-mono text-[11px] tracking-[0.3em] text-primary mb-4">{section.no}</p>
+                <p className="font-mono text-[11px] tracking-[0.3em] text-primary mb-4"><DecodeCaption active={index === activeCategory} text={section.no} /></p>
                 <h2 className="text-4xl md:text-6xl font-bold leading-[0.98] tracking-[-0.04em] text-foreground mb-5">
-                  {section.title}
+                  <DecodeCaption active={index === activeCategory} text={section.title} />
                 </h2>
-                <p className="text-base md:text-lg text-muted-foreground mb-7">{section.body}</p>
+                <p className="text-base md:text-lg text-muted-foreground mb-7"><DecodeCaption active={index === activeCategory} text={section.body} /></p>
                 <a
                   href={section.href}
                   className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary border-b border-primary/40 pb-1"
                 >
-                  Zobacz zakres <span aria-hidden="true">&#8594;</span>
+                  <DecodeCaption active={index === activeCategory} text="Zobacz zakres" /> <span aria-hidden="true">&#8594;</span>
                 </a>
               </div>
             </div>

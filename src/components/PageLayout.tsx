@@ -65,7 +65,7 @@ const PageLayout = memo(({ children }: PageLayoutProps) => {
 
       {/* Grid pattern overlay - static */}
       <div 
-        className="fixed inset-0 pointer-events-none opacity-0"
+        className="fixed inset-0 pointer-events-none opacity-[0.015]"
         style={{
           backgroundImage: `
             linear-gradient(hsl(176 100% 43% / 0.3) 1px, transparent 1px),

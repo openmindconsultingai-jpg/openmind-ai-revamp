@@ -492,6 +492,12 @@ html:not(.js-fx) #root > :is(h1, p, nav, section) { opacity: 1; }
 .decode-text { display: block; }
 .decode-text[data-decoding] { position: relative; min-block-size: var(--dc-height); }
 .decode-text[data-decoding] > [aria-hidden] { position: absolute; inset: 0; }
+.decode-caption { display: inline; position: relative; }
+.decode-caption-overlay { display: none; position: absolute; inset: 0; overflow: clip; pointer-events: none; text-align: inherit; }
+.decode-caption[data-decoding] { display: inline-block; max-width: 100%; vertical-align: top; }
+.decode-caption[data-decoding] > .decode-caption-source { opacity: 0; }
+.decode-caption[data-decoding] > .decode-caption-overlay { display: block; }
+.decode-caption .dc-g { font: inherit; color: inherit; vertical-align: baseline; opacity: .72; }
 
 .fx-reveal { --reveal-y: 14px; transition: opacity .9s var(--signal-ease), transform .9s var(--signal-ease); }
 .area-card { --reveal-y: 16px; }
@@ -548,7 +554,7 @@ html.js-fx .fx-reveal:not(.in):not(:focus-within) { opacity: 0; transform: trans
 }
 .fx-card:is(:hover, :focus-within)::before, .fx-card:is(:hover, :focus-within)::after { opacity: 1; transform: none; }
 .area-card > img + div { background: linear-gradient(145deg, hsl(var(--background) / .68), hsl(var(--background) / .82)); }
-.area-card > img + div + div { background: hsl(var(--signal) / .04); }
+.area-card > img + div + div { background: radial-gradient(300px circle at 50% 0%, hsl(var(--signal) / .18), transparent 60%); }
 
 .fx-button, .fx-button-outline {
   position: relative;
@@ -636,3 +642,12 @@ html.js-fx .fx-reveal:not(.in):not(:focus-within) { opacity: 0; transform: trans
 .signal-home > section:first-of-type .font-heading { font-family: 'Outfit', system-ui, sans-serif; }
 .signal-home > section:first-of-type h1 { text-wrap: wrap; font-optical-sizing: none; }
 .signal-home > section:first-of-type .text-justify { text-align: justify; }
+.tower-caption-page main {
+  --foreground: 180 100% 98%;
+  --primary: 176 100% 43%;
+  --muted-foreground: 180 10% 60%;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 400;
+}
+.tower-caption-page main h2 { font-family: 'Outfit', system-ui, sans-serif; font-optical-sizing: none; text-wrap: wrap; }
+.tower-caption-page main .font-mono { font-family: ui-monospace, monospace; }
