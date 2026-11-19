@@ -184,7 +184,7 @@ const Chatbot = () => {
             <button
               type="button"
               onClick={() => { setIsOpen(true); setShowBubble(false); }}
-              className="relative group max-w-[200px] sm:max-w-[240px] rounded-2xl rounded-br-sm bg-background/90 backdrop-blur-xl border border-primary/40 px-4 py-2.5 pr-8 text-sm font-sans text-foreground shadow-xl animate-in fade-in slide-in-from-bottom-2 duration-500 hover:border-primary/70 transition-colors"
+              className="relative group max-w-[200px] sm:max-w-[240px] rounded-2xl rounded-br-sm bg-black/90 backdrop-blur-xl border border-primary/40 px-4 py-2.5 pr-8 text-sm font-sans text-foreground shadow-xl animate-in fade-in slide-in-from-bottom-2 duration-500 hover:border-primary/70 transition-colors"
               style={{ boxShadow: '0 0 24px rgba(0, 223, 217, 0.18), 0 10px 25px rgba(0,0,0,0.25)' }}
             >
               <span className="block text-left leading-snug font-sans">
@@ -199,7 +199,7 @@ const Chatbot = () => {
                 <X className="w-3 h-3" />
               </span>
               {/* tail */}
-              <span className="absolute -bottom-1.5 right-4 w-3 h-3 bg-background/90 backdrop-blur-xl border-r border-b border-primary/40 rotate-45" />
+              <span className="absolute -bottom-1.5 right-4 w-3 h-3 bg-black/90 backdrop-blur-xl border-r border-b border-primary/40 rotate-45" />
             </button>
           )}
         <Button
@@ -221,11 +221,11 @@ const Chatbot = () => {
         </Button>
         </div>
       ) : (
-        <div className="w-[380px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-7rem)] flex flex-col rounded-2xl overflow-hidden border border-border/60 shadow-2xl bg-card/95 backdrop-blur-xl"
+        <div className="w-[380px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-7rem)] flex flex-col rounded-2xl overflow-hidden border border-border/60 shadow-2xl bg-black/95 backdrop-blur-xl"
           style={{ boxShadow: '0 0 60px rgba(0, 223, 217, 0.15), 0 25px 50px rgba(0,0,0,0.5)' }}
         >
           {/* Header */}
-          <div className="flex items-center gap-3 px-4 py-3 border-b border-border/40 bg-card">
+          <div className="flex items-center gap-3 px-4 py-3 border-b border-border/40 bg-black">
             <img src={logo} alt="OpenMind AI" width="32" height="32" className="w-8 h-8 object-contain" />
             <div className="flex-1 min-w-0">
               <p className="font-heading text-sm font-semibold text-foreground">OpenMind AI</p>
@@ -262,7 +262,7 @@ const Chatbot = () => {
                   className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed font-sans backdrop-blur-md ${
                     msg.role === "user"
                       ? "rounded-br-md text-foreground border border-primary/40 bg-primary/15"
-                      : "rounded-bl-md text-foreground border border-border/40 bg-card/30"
+                      : "rounded-bl-md text-foreground border border-border/40 bg-white/5"
                   }`}
                   style={
                     msg.role === "user"
@@ -284,7 +284,7 @@ const Chatbot = () => {
             ))}
             {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
               <div className="flex justify-start">
-                <div className="rounded-2xl rounded-bl-md px-4 py-3 border border-border/40 bg-card/30 backdrop-blur-md">
+                <div className="rounded-2xl rounded-bl-md px-4 py-3 border border-border/40 bg-white/5 backdrop-blur-md">
                   <div className="flex gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: "0ms" }} />
                     <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: "150ms" }} />
@@ -296,7 +296,7 @@ const Chatbot = () => {
           </div>
 
           {/* Input */}
-          <div className="px-3 py-3 border-t border-border/40 bg-card">
+          <div className="px-3 py-3 border-t border-border/40 bg-black">
             <div className="flex items-end gap-2">
               <textarea
                 ref={inputRef}
@@ -305,7 +305,7 @@ const Chatbot = () => {
                 onKeyDown={handleKeyDown}
                 placeholder={language === 'pl' ? "Napisz wiadomość..." : "Type a message..."}
                 rows={1}
-                className="flex-1 resize-none bg-muted/40 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/50 max-h-24 scrollbar-thin"
+                className="flex-1 resize-none bg-white/5 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/50 max-h-24 scrollbar-thin"
                 style={{ minHeight: "40px" }}
               />
               <Button
