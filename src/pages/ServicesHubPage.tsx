@@ -1,4 +1,5 @@
 import DecodeText from '@/components/fx/DecodeText';
+import BurFundingBanner from '@/components/BurFundingBanner';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
@@ -66,6 +67,8 @@ const ServicesHubPage = () => {
   return (
     <PageLayout>
       <main className="fx-prose relative pt-28 md:pt-32 pb-8">
+        <BurFundingBanner />
+
         {/* Hero */}
         <section className="fx-trace container mx-auto px-6 max-w-5xl text-center">
           <h1 className="font-heading h-display mb-6">

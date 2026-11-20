@@ -1,4 +1,6 @@
 import DecodeText from '@/components/fx/DecodeText';
+import BurFundingBanner from '@/components/BurFundingBanner';
+import { hasFundingBanner } from '@/lib/fundingBanner';
 import { useMemo } from 'react';
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import PageLayout from '@/components/PageLayout';
@@ -120,6 +122,8 @@ const ServiceLandingPage = ({ slugOverride }: Props) => {
   return (
     <PageLayout>
       <main className="fx-prose relative pt-28 md:pt-32 pb-8">
+        {hasFundingBanner(pathname) && <BurFundingBanner />}
+
         {/* Breadcrumbs — industry training pages */}
         {isIndustry && (
           <nav

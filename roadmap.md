@@ -26,3 +26,8 @@
 - [x] Wycofać Doradcę, przekierować oba warianty adresu i usunąć odnośniki.
 - [x] Rozdzielić daty redesignu, bloga i lokalizacji od dat publikacji Aktualności; wyliczyć daty podmap.
 - [x] Sprawdzić metadane 404 w przeglądarce, mapy i odpowiedzi HTTP wygenerowanych przekierowań.
+
+# Baner BUR na podstronach
+- [x] Dodać kompaktowy baner PL/EN na wskazanych stronach lokalizacji, szkoleń i doradztwa.
+- [x] Dodać tekst baneru do prerenderu, nie zmieniając metadanych, i uruchomić testy SEO.
+- [x] Sprawdzić stronę miasta i szkolenia na desktopie oraz telefonie; bez publikacji.

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import BurFundingBanner from '@/components/BurFundingBanner';
 import Footer from '@/components/Footer';
 import PageLayout from '@/components/PageLayout';
 import { voivodeships } from '@/data/voivodeships';
@@ -15,6 +16,7 @@ const Locations = () => {
   return (
     <PageLayout>
       <section className="container mx-auto max-w-6xl px-6 pb-20 pt-28 md:pt-36">
+        <BurFundingBanner />
         <header className="mx-auto mb-14 max-w-3xl text-center">
           <h1 className="font-heading text-3xl font-bold sm:text-4xl md:text-5xl">
             <span className="text-gradient">Usługi AI w całej Polsce</span>

@@ -11,6 +11,7 @@ import { cleanPagePath, pageUrl, normalizeStructuredUrls, RETIRED_ADVISOR } from
 import { validateSeoOutput } from './seo-validation';
 import { renderSitemap, renderSitemapIndex, sitemapEntries } from './sitemap';
 import { buildNewsPage, fetchPublishedNews, type PublishedNews } from './news-prerender';
+import { fundingBannerPrerender } from './funding-banner-prerender';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { voivodeships } from '../src/data/voivodeships';
@@ -886,6 +887,7 @@ function buildHtml(routePath: string, meta: Meta): string {
   // Match the entire <div id="root">...</div> block (non-greedy, first occurrence).
   const newRoot =
     `<div id="root">\n` +
+    `      ${fundingBannerPrerender(routePath)}\n` +
     (article
       ? `      <article class="prerender-news"><h1>${esc(meta.h1)}</h1>\n${meta.body}\n</article>\n`
       : `      <h1>${meta.h1}</h1>\n      ${meta.body}\n`) +

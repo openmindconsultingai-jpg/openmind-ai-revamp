@@ -7,6 +7,37 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { buildNewsPage, fetchPublishedNews } from './news-prerender';
+import { fundingBannerPrerender } from './funding-banner-prerender';
+import { getFundingBannerCopy, hasFundingBanner } from '../src/lib/fundingBanner';
+
+test('BUR banner appears only on the requested location, training and consulting routes', () => {
+  const included = [
+    '/services', '/lokalizacje', '/gdzie-dzialamy/lodzkie', '/gdzie-dzialamy/lodzkie/lodz',
+    '/szkolenia-ai', '/szkolenia-ai-stacjonarne', '/szkolenia-ai-online',
+    '/szkolenia-ai-indywidualne', '/szkolenia-microsoft-copilot', '/ai-dla-szkol',
+    '/szkolenia-ai-dla-lekarzy', '/szkolenia-ai-dla-programistow',
+    '/konsultacje-ai', '/automatyzacja-ai', '/zakladanie-firmy-z-ai',
+  ];
+  for (const route of included) assert.equal(hasFundingBanner(route), true, route);
+  for (const route of ['/', '/blog', '/teledyski-ai', '/strony-www-branding', '/contact']) {
+    assert.equal(hasFundingBanner(route), false, route);
+  }
+});
+
+test('BUR banner uses the existing city locative and translates its heading', () => {
+  const city = { name: 'Łódź', locative: 'Łodzi' };
+  assert.match(getFundingBannerCopy('pl', city).body, /szkolenia i doradztwo w Łodzi ze środków/);
+  assert.equal(getFundingBannerCopy('en', city).heading, 'AI training and consulting with up to 80% funding');
+  assert.match(getFundingBannerCopy('en', city).body, /consulting in Łódź through/);
+});
+
+test('BUR prerender contains readable copy and links without changing other routes', () => {
+  const html = fundingBannerPrerender('/gdzie-dzialamy/lodzkie/lodz');
+  assert.match(html, /Szkolenia i doradztwo AI z dofinansowaniem nawet do 80%/);
+  assert.match(html, /w Łodzi ze środków regionalnych programów Fundusze Europejskie/);
+  assert.match(html, /href="\/aktualnosci\/wpis-do-bazy-uslug-rozwojowych"/);
+  assert.equal(fundingBannerPrerender('/blog'), '');
+});
 
 test('Nysa canonical uses the www domain and no HTML suffix', () => {
   assert.equal(pageUrl('/gdzie-dzialamy/opolskie/nysa.html'), 'https://www.openmindai.pl/gdzie-dzialamy/opolskie/nysa');

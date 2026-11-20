@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { hasFundingBanner } from '@/lib/fundingBanner';
 import openmindLogo from '@/assets/openmind-logo-nobg.webp';
 import burLogo from '@/assets/parp-bur-light.png.asset.json';
 
@@ -9,20 +10,22 @@ const STORAGE_KEY = 'funding-notice-closed';
 
 const FundingNotice = () => {
   const { language } = useLanguage();
+  const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
+  const inlineBannerVisible = hasFundingBanner(pathname);
 
   useEffect(() => {
-    if (sessionStorage.getItem(STORAGE_KEY)) return;
+    if (inlineBannerVisible || sessionStorage.getItem(STORAGE_KEY)) return;
     const t = setTimeout(() => setOpen(true), 1500);
     return () => clearTimeout(t);
-  }, []);
+  }, [inlineBannerVisible]);
 
   const close = () => {
     sessionStorage.setItem(STORAGE_KEY, '1');
     setOpen(false);
   };
 
-  if (!open) return null;
+  if (!open || inlineBannerVisible) return null;
   const pl = language !== 'en';
 
   return (

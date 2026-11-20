@@ -1,4 +1,5 @@
 import DecodeText from '@/components/fx/DecodeText';
+import BurFundingBanner from '@/components/BurFundingBanner';
 import { useMemo } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import PageLayout from '@/components/PageLayout';
@@ -167,6 +168,7 @@ const CityDetail = () => {
     <PageLayout>
       <section className="fx-prose pt-28 md:pt-36 pb-20 md:pb-28">
         <div className="container mx-auto px-4">
+          <BurFundingBanner city={city!} />
           <div className="max-w-4xl mx-auto">
 
             {/* Visual Breadcrumbs */}
